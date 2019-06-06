@@ -1,0 +1,197 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:text="常见汽车品牌："
+        android:textColor="@color/gainsboro" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/listViewHeaderView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_blue_select"
+                android:ems="4"
+                android:gravity="center"
+                android:focusable="true"
+                android:nextFocusDown="@+id/listViewHeaderView2"
+                android:padding="5dp"
+                android:textColor="@color/gainsboro" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/listViewHeaderView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_blue_select"
+                android:ems="4"
+                android:gravity="center"
+                android:focusable="true"
+                android:padding="5dp"
+                android:nextFocusUp="@+id/listViewHeaderView1"
+                android:nextFocusDown="@+id/listViewHeaderView3"
+                android:textColor="@color/gainsboro" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/listViewHeaderView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_blue_select"
+                android:ems="4"
+                android:gravity="center"
+                android:nextFocusUp="@+id/listViewHeaderView2"
+                android:nextFocusDown="@+id/listViewHeaderView4"
+                android:focusable="true"
+                android:padding="5dp"
+                android:textColor="@color/gainsboro" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/listViewHeaderView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_blue_select"
+                android:ems="4"
+                android:gravity="center"
+                android:focusable="true"
+                android:nextFocusUp="@+id/listViewHeaderView3"
+                android:nextFocusDown="@+id/listViewHeaderView5"
+                android:padding="5dp"
+                android:textColor="@color/gainsboro" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/listViewHeaderView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_blue_select"
+                android:ems="4"
+                android:nextFocusUp="@+id/listViewHeaderView4"
+                android:nextFocusDown="@+id/listViewHeaderView6"
+                android:gravity="center"
+                android:focusable="true"
+                android:padding="5dp"
+                android:textColor="@color/gainsboro" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/listViewHeaderView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_blue_select"
+                android:ems="4"
+                android:nextFocusUp="@+id/listViewHeaderView5"
+                android:nextFocusDown="@+id/listViewHeaderView7"
+                android:gravity="center"
+                android:focusable="true"
+                android:padding="5dp"
+                android:textColor="@color/gainsboro" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/listViewHeaderView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_blue_select"
+                android:ems="4"
+                android:nextFocusUp="@+id/listViewHeaderView6"
+                android:nextFocusDown="@+id/listViewHeaderView8"
+                android:gravity="center"
+                android:focusable="true"
+                android:padding="5dp"
+                android:textColor="@color/gainsboro" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/listViewHeaderView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_blue_select"
+                android:ems="4"
+                android:nextFocusUp="@+id/listViewHeaderView7"
+                android:gravity="center"
+                android:focusable="true"
+                android:padding="5dp"
+                android:textColor="@color/gainsboro" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

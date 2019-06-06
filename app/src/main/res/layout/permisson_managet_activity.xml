@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/search_bg">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:visibility="gone"
+        android:background="@color/colorAccent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:onClick="back"
+            android:visibility="gone"
+            android:scaleType="centerInside"
+            android:src="@drawable/top_bar_back" />
+
+        <TextView
+            android:id="@+id/tv_team_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:gravity="center"
+            android:layout_toRightOf="@id/iv_back"
+            android:text="权限管理"
+            android:textColor="@color/dvr_title_colro"
+            android:textSize="@dimen/normal_title_size"  />
+
+        <View
+            android:id="@+id/view_temp3"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/iv_back"
+            android:background="@color/colorPrimaryDark" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_prompt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/title"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="该应用需要允许以下所有权限" />
+
+    <RelativeLayout
+        android:id="@+id/rl_read_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:layout_below="@+id/tv_prompt"
+        android:background="@drawable/btn_change"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_read_contacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text="访问联系人"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/iv_read_contacts"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/allow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_location"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/rl_read_contacts"
+        android:background="@drawable/btn_change"
+        android:paddingLeft="20dp"
+        android:visibility="gone"
+        android:paddingRight="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/change_tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text="定位权限"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/iv_icon_location"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/allow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_storage"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/rl_location"
+        android:background="@drawable/btn_change"
+        android:paddingLeft="20dp"
+        android:visibility="gone"
+        android:paddingRight="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_storage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text="访问存储器"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/iv_icon_storage"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/allow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_camera"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/rl_storage"
+        android:background="@drawable/btn_change"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text="拍照"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/iv_icon_camera"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/allow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_record_audio"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/rl_camera"
+        android:background="@drawable/btn_change"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_record_audio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text="录音"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/iv_icon_record_audio"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/allow" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_cancel_dialog"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_below="@+id/rl_record_audio"
+        android:text="取消"
+        android:textSize="17sp" />
+</RelativeLayout>

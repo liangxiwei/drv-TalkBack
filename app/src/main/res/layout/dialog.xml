@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:padding="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:text="优先级设置：" />
+
+    <com.example.jrd48.chat.group.MyNumberPicker
+        android:id="@+id/numberPicker1"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tv_prompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/numberPicker1"
+        android:text="@string/prompt" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tv_prompt">
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:nextFocusUp="@+id/button1"
+            android:nextFocusDown="@+id/button1"
+            android:background="@drawable/dvr_cancel_background"
+            android:text="取消" />
+
+        <TextView
+            android:layout_width="0.1px"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:background="@color/gray_text" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:nextFocusUp="@+id/button2"
+            android:nextFocusDown="@+id/button2"
+            android:background="@drawable/dvr_cancel_background"
+            android:text="确定" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingEnd="20dp"
+    android:paddingStart="20dp"
+    android:focusable="false" >
+
+    <TextView
+        android:id="@+id/call_invite_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/app_name"
+        android:textSize="18sp"
+        android:focusable="false" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:focusable="false" >
+
+        <ImageView
+            android:id="@+id/call_invite_photo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/default_useravatar"
+            android:focusable="false" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/call_invite_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:focusable="false" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/photo_delete_button"
+            android:text="@string/video_invited_cancel"
+            android:textSize="15sp"
+            android:focusable="true"
+            android:nextFocusRight="@+id/accept">
+        </Button>
+
+        <Button
+            android:id="@+id/accept"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/btn_change_color1"
+            android:text="@string/video_invited_ok"
+            android:textSize="15sp"
+            android:focusable="true"
+            android:nextFocusLeft="@+id/cancel">
+            <requestFocus />
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

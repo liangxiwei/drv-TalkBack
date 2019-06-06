@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/rl_image"
+        android:layout_width="48dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_height="48dp">
+    <com.example.jrd48.chat.CircleImageView
+        android:id="@+id/member_image_s"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/man" />
+
+        <ImageView
+            android:id="@+id/iv_on_line"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/rl_image"
+        android:layout_toLeftOf="@+id/cancel_track"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:id="@+id/member_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginLeft="10dp"
+            android:text="张三"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/member_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="Danny:不是这样的"
+            android:visibility="gone"
+            android:textColor="#999999"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cancel_track"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:background="@drawable/map_btn_selector"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="visible"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        android:text="取消跟踪" />
+
+</RelativeLayout>

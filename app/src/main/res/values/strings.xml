@@ -1,0 +1,207 @@
+<resources>
+    <string name="upload_log_url" translatable="false">http://irobbing.com/savelog.php</string>
+    <string name="app_name">DVR</string>
+    <string name="preview">Preview</string>
+    <string name="settings">Settings</string>
+    <string name="files">Files</string>
+    <string name="start_record">Start Record</string>
+    <string name="start_transfer">Start Transfer</string>
+    <string name="switch_camera">Swirch Camera</string>
+    <string name="camera_preview">Camera Preview</string>
+    <string name="auto_run_when_boot">auto run when boot</string>
+    <string name="video_size">video size</string>
+    <string name="video_duration">video duration</string>
+    <string name="audio_sync">audio</string>
+    <string name="collision_sensitivity">collision sensitivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="add_group">Add Group</string>
+    <string name="title_activity_first">FirstActivity</string>
+    <string name="title_activity_show_voice">speaking...</string>
+    <string name="dummy_button">Dummy Button</string>
+
+    <string name="download_version_key">versionCode</string>
+    <string name="download_version_name">versionName</string>
+    <string name="download_url_key">updateURL</string>
+    <string name="update_url" translatable="false">http://www.irobbing.com/download/pocdemo/update_pocdemo.json</string>
+    <string name="title_activity_show_photo">ShowPhotoActivity</string>
+    <string name="my_msg_cancel">您撤回了一条消息</string>
+    <string name="other_msg_cancel">该条消息已被撤回</string>
+    <string name="btn_download_image">Download image</string>
+    <string name="modify_name_tip">为了方便好友辨识您，请点击名称进行修改。</string>
+    <string name="permission_message">Set permissions</string>
+    <string name="download_version_update_description">versionDesc</string>
+    <string name="buffering">Disconnected</string>
+    <string name="connecting">Connecting</string>    <string name="add_link_man">Add Friends</string>
+    <string name="contain">包含：</string>
+    <string name="download_already_latest">已经是最新版本.</string>
+    <string name="download_btn_later">稍后再说</string>
+    <string name="download_btn_start">开始下载</string>
+    <string name="download_check_version_fail">检查版本出错：</string>
+    <string name="download_doing">正在下载，请稍候.</string>
+    <string name="download_failed">下载失败</string>
+    <string name="download_find_new_version">发现新版本，是否立即下载？\n当前版本号：%1$s\n最新版本号：%2$s</string>
+    <string name="download_progress_btn_background">后台下载</string>
+    <string name="download_progress_btn_cancel">取消</string>
+    <string name="download_progress_title">正在下载新版本</string>
+    <string name="download_prompt_title">提示:</string>
+    <string name="my_team_nick_name">我在本群的昵称</string>
+    <string name="prompt">0-优先级最低，15-优先级最高</string>
+    <!--<string name="search_prompt">名称/手机号/群名</string>-->
+    <string name="search_prompt">名称/手机号/车牌号</string>
+    <string name="team_delete_and_quit">删除并退出</string>
+    <string name="team_dismiss">解散</string>
+
+    <string name="unknown_name">未知</string>
+    <string name="tracking_location">跟踪位置</string>
+    <string name="detailed_information">Detailed Information</string>
+    <string name="options_first">选项</string>
+    <string name="add_friend">Add Friend</string>
+
+    <string name="create_team">Create Group</string>
+    <string name="message_notification">Message Notification</string>
+    <string name="search">Search</string>
+
+    <string name="letter_tile_letter_font_family" translatable="false">sans-serif-thin</string>
+    <string name="letter_tile_letter_font_english" translatable="false">sans-serif-light</string>
+    <string name="video_invited_title">Video Call</string>
+    <string name="video_invited_single_content">%s邀请你进行视频对讲</string>
+    <string name="video_invited_team_content">群组%s邀请你进行视频对讲</string>
+    <string name="video_invited_ok">Accept</string>
+    <string name="video_invited_cancel">Cancel</string>
+
+    <string name="video_not_wifi">你正在使用手机流量，请确认要进入视频对讲吗？</string>
+
+    <string name="download_not_wifi">你正在使用手机流量，确认要开始下载？</string>
+
+    <string name="dialog_send_image">send_image：</string>
+    <string name="dialog_cancel">cancel</string>
+    <string name="dialog_send">send</string>
+    <string name="document_pic">Document Pic</string>
+    <string name="document_video">Document Video</string>
+    <string name="document_type">Document Type</string>
+    <string name="document_all">Document All</string>
+    <string name="document_group">Document Group</string>
+    <string name="document_close">Document Close</string>
+
+    <string name="document_reverse">Document Reverse</string>
+    <string name="document_order">Document Order</string>
+
+    <string name="document_group_type">group</string>
+    <string name="document_linkman_type">linkman</string>
+    <string name="document_all_type">all</string>
+
+    <string name="document_all_linkman_type">all linkman</string>
+    <string name="document_all_group_type">all group</string>
+
+    <string name="switch_to_video">Switch to video chat</string>
+    <string name="switch_to_voice">Switch to voice chat</string>
+    <string name="chat_close">Close</string>
+
+    <string name="group_title">Group</string>
+    <string name="contacts_title">Contacts</string>
+    <string name="self_title">Personal Information</string>
+    <string name="road_share">Road Share</string>
+    <string name="search_friend">Search</string>
+    <string name="my_notice">Notice</string>
+
+    <string name="main_name">Video POC</string>
+
+    <string name="video_call">Video Call</string>
+    <string name="voice_call">Voice Call</string>
+    <string name="null_person">Free</string>
+
+    <string name="no_road_request">No Road Request</string>
+    <string name="close_room_success">房间被成功挂断</string>
+    <string name="group_count">人数:</string>
+    <string name="usb_open_failed"> Camera not ready，please try again later！</string>
+    <string name="camera_node_not_exist"> Node not exist,camera not ready,please try again later！</string>
+    <string name="bluetooth_disconnect_close_speak">由于蓝牙失联，停止说话</string>
+
+    <string name="no_notice">No Notice Msg</string>
+    <string name="accept">accept</string>
+    <string name="refuse">refuse</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="j_pickerview_cancel">Cancel</string>
+    <string name="j_pickerview_submit">Sure</string>
+    <string name="j_pickerview_title">Location</string>
+    <string name="long_click_get_address"><Data><![CDATA[确定要查找<font color="#ffffff"><b>%s</b></font>车辆?<br>]]></Data>
+    </string>
+    <string name="nearby">附近</string>
+    <string name="road_inquiry">Road Inquiry</string>
+    <string name="search_show">Be sure to search for vehicles near that location ?</string>
+    <string name="find_strangers_on_condition">Find strangers on condition</string>
+    <string name="check_near_car">look at the nearby car</string>
+    <string name="search_stranger">Search</string>
+    <string name="search_location">Location</string>
+    <string name="search_car_type">Car Type</string>
+    <string name="search_car_brand">Car Brand</string>
+    <string name="search_plate_number">Plate Number</string>
+    <string name="search_sex">Sex</string>
+    <string name="query_by_distance">Query by distance</string>
+    <string name="selection_distance">Selection distance</string>
+    <string name="add_mobile_contact">Add contacts</string>
+
+    <!-- 选择车信息 -->
+    <string name="select_car_brand">Select car brand</string>
+    <string name="select_car_type">Select car type</string>
+    <string name="car_brand">品牌:</string>
+    <string name="write_brand">输入品牌</string>
+    <string name="report_car_type">上报品牌型号</string>
+    <string name="report">上报</string>
+
+    <string name="not_set">Not set</string>
+    <string name="only_one_team">Only One Team</string>
+    <string name="no_team">No Team</string>
+
+    <string name="poc_call">POC CALL</string>
+
+    <string name="dialog_ok">ok</string>
+    <string name="heart_time_set">Heartbeat set time</string>
+    <string name="heart_set_error">Please set right heart time</string>
+
+    <string name="pop_title_sim_status_title">SIM卡流量不足</string>
+    <string name="pop_title_sim_status_content">SIM卡流量不足%1$dMB，请及時使用九方助手进行充值，避免产生额外费用！</string>
+    <string name="button_text_i_know">I Know.</string>
+
+    <string name="toast_tip">提示</string>
+    <string name="toast_logout">确认退出账号吗？</string>
+
+    <!-- input login -->
+    <string name="edittext_input_login_phone_hint">Please input phone number</string>
+    <string name="edittext_input_login_password_hint">Please input password</string>
+    <string name="button_input_login_text">Login</string>
+    <string name="textview_zxing_login_hint">Please using the key of assistant App as password</string>
+    <string name="textview_inout_login_hint">Please Scan ZXing code to login</string>
+    <string name="toast_input_login_phone_pwd_empty">Phone number or password cannot be empty！</string>
+    <string name="toast_input_login_pwd_invalid">Password should not less than 4！</string>
+    <string name="toast_input_login_phone_incompatible">Phone number invalid！</string>
+    <string name="toast_input_login_timeout">Connect timed out, please relogin!</string>
+    <string name="toast_input_login_succeed">Login succeed!</string>
+    <string name="toast_input_login_failed">Login failed!</string>
+
+    <string name="waiting_progress_dialog_group_msg">Loading...</string>
+    <string name="waiting_progress_dialog_friends_msg">Loading...</string>
+
+
+    <string name="network_show">There is no network currently, please check if the network is connected!</string>
+    <string name="ignore">ignore</string>
+    <string name="traffic_request_show">路况分享请求已发出，等待对方允许后，请在车机上查看</string>
+
+    <string name="camera_on_failed">相机打开失败，请检查是否有相机权限、是否被其他应用占用</string>
+
+    <string name="about_us">\t\t\t\t九方助手由北京九方广维科技有限公司于2017年开发的app，与车机联合使用的一套产品。
+                                \n\t\t\t\t九方助手主要是为车机提供基本的辅助功能，比如：添加好友、添加群组、扫码登录车机、套餐订购、解绑车机、扫描登录、强制下线、
+                                查看附近车辆等等。该应用功能虽然不多，但对于车机来说是不可或缺的，每次登录、下线都需要通过九方助手来操作。</string>
+    <string name="send_car">send car</string>
+    <string name="send_location_msg">send location msg</string>
+    <string name="address_show">当前地址：%s</string>
+
+    <string name="manual_input">manual input</string>
+
+
+
+</resources>

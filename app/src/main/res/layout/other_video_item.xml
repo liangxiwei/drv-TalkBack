@@ -1,0 +1,48 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@color/black"
+    android:id="@+id/root"
+    tools:context="com.video.VideoCallActivity">
+
+    <com.pili.pldroid.player.widget.PLVideoView
+        android:id="@+id/other_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+    <ImageView
+        android:id="@+id/cover_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center" />
+    <LinearLayout
+        android:id="@+id/loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+            <!--android:text="@string/buffering" />-->
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.example.jrd48.chat.CircleImageView
+            android:id="@+id/head_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:visibility="visible" />
+    </RelativeLayout>
+</FrameLayout>

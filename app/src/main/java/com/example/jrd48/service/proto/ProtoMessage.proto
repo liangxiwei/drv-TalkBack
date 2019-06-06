@@ -1,0 +1,1398 @@
+syntax = "proto3";
+
+option java_package = "com.example.jrd48.service.proto_gen";
+//package poc_center2;
+
+enum Cmd {
+    cmdDummy = 0;
+    cmdHeartbeat = 0x00010000; // 心跳
+
+    /* 短信验证码
+       req, resp: SmsCodeReq
+       2018-06-14 由 commResponse 改为 SmsCodeReq
+    */
+    cmdSmsCode = 0x00010001;
+    cmdReg = 0x00010002; // 注册
+    cmdLogin = 0x00010003; // 登录
+
+    /** 发送文字消息,
+      * 发送消息休：SendMsg,
+      * 返回消息休: CommonResp
+      */
+    cmdSendText = 0x00010004; // 发送文字消息
+    cmdSendVoice = 0x00010005; // 发送语音消息
+    cmdChangePasswordBySms = 0x00010006; // 通过短信验证码修改密码
+
+    /** 查询用户
+     * In: SearchUser
+     * Out: SearchUser
+     */
+    cmdSearchUser = 0x00010007; // 查询用户
+
+    cmdApplyFriend = 0x00010008; // 申请加好友
+    cmdNotify = 0x00010009; // 通知消息	// 服务器延后主动发送给客户端的消息
+
+    /** 获取可接收或拒绝的好友的列表
+     * 输入：无
+     * 输出：FriendList
+     */
+    cmdAppliedList = 0x0001000A; // 查询加有哪些User加自己好友
+    cmdDeleteFriend = 0x0001000B; // 删除好友
+    cmdAcceptFriend = 0x0001000C; // 接受好友
+
+    /** 输入：UserInfo
+     * 输出：UserInfo
+     */
+    cmdSetFriendInfo = 0x0001000D; // 设置好友资料
+    cmdGetFriendList = 0x0001000E; // 获取所有好友
+    cmdSetMyInfo = 0x0001000F; // 设置我的信息
+    cmdCreateTeam = 0x00010010; // 建群
+    cmdGetTeamList = 0x00010011; // 读群列表
+    cmdApplyTeam = 0x00010012; // 邀请或申请加入群
+
+    /** 获取可批准的加群列表：
+     * 输入：commonReq
+     * 输出：AppliedTeamList
+     */
+    cmdAppliedTeamList = 0x00010013; // 查询给我的群加入列表（可批准的，可接受的）
+    cmdAcceptTeam = 0x00010014; // 接受加入群
+    cmdGetMyInfo = 0x00010015; // 读取我的信息
+    cmdDeleteTeamMember = 0x00010016; // 删除一个群成员（仅群主和管理员有效）
+
+    /** 获取群成员列表
+     * 输入：AcceptTeam { teamID }
+     * 输出：TeamMemberList
+     */
+    cmdGetTeamMember = 0x00010017; // 获取一个群组的所有成员
+    cmdDismissTeam = 0x00010018; // 解散群（仅群主可以操作）
+    cmdSearchTeam = 0x00010019; // 查找群
+
+    /** 指定或取消群中的某一个管理员
+     * 输入消息体：AssignTeamAdmin{ teamid：群ID, phonenum: 成员手机号, admin: <0|1> }
+     * 输出消息体：AssignTeamAdmin
+     */
+    cmdAssignTeamAdmin = 0x0001001A; // 指定或取消群中的某一个管理员
+
+    /** 修改群信息
+     *  输入：TeamInfo
+     *  输出：CommonResp
+     */
+    cmdModifyTeamInfo = 0x0001001B;
+
+    /** 修改成员优先级
+     *  输入： TeamMember{teamID, userPhone, memberPriority}
+     *  输出： CommonResp
+     */
+    cmdModifyTeamMemberPriority = 0x0001001C;
+
+    /** 退群
+     * 输入：ApplyTeam
+     * 输出：CommonResp
+     */
+    cmdQuitTeam = 0x0001001D;
+
+    /** send 通用消息
+     * 输入 CommonMsg
+     * 输出: CommonMsg { msgID, msgTime, else:empty }(old: CommonResp)
+
+     * 当撤销消息时，CommonMsg.msgType =  mtCancel, CommonMsg.msgContent 为 原消息的msgID，
+     */
+    cmdCommonMsg = 0x0001001E;
+
+    /** 收到通用消息
+     * 输入：无
+     * 输出：CommonMsg
+     * 当撤销消息时，CommonMsg.msgType =  mtCancel, CommonMsg.msgContent 为 原消息的msgID，
+     */
+    cmdGotCommonMsg = 0x0001001F;
+
+    /** 查询所有的群成员
+     * 输入：无
+     * 输出：TeamMemberList
+     */
+    cmdGetAllTeamMember = 0x00010020;
+
+    /** 发起对讲
+     * 输入： StartVoiceMsg
+     * 输出： ChatRoomMsg
+     */
+    cmdStartVoice = 0x00010021;
+
+    /** 加入对讲的客户端接受指令
+     * 输入：AcceptVoice;
+     * 输出：ChatRoomMsg;
+     */
+    cmdAcceptVoice = 0x00010022;
+
+    /** 讲话/收听
+     * 输入： SpeakMsg
+     * 输出： CommonResp
+     */
+    cmdSpeakMsg = 0x00010023;
+
+    /**
+     获得语音消息, 废弃，改为通用消息
+     输入：无，即：不能发送
+     输出：SpeakMsg
+     */
+    cmdGotSpeakMsg = 0x00010024;
+
+    /** 开始讲话,
+        输入：CommonRequest -> msgSpeakBegin(2017-10-01)
+        输出：CommonResp
+    */
+    cmdSpeakBegin = 0x00010025;
+
+    /** 结束讲话
+        输入：CommonRequest,
+        输出：CommonResp
+    */
+
+    cmdSpeakEnd = 0x00010026;
+
+    /** 关闭房间
+     * 输入：无
+     * 输出：AcceptVoice { roomID }
+     */
+    cmdAutoCloseRoom = 0x00010027;
+
+    /** 设置我在群中的名称
+     * 输入：TeamInfo(teamID, myTeamName)
+     * 输出：CommonResp;
+     */
+    cmdChangeMyTeamName = 0x00010028;
+
+    /**
+     * 客户端收到消息以后的确认消息
+     * 发送：CommonMsgConfirm
+     * 应答：CommonResp
+     */
+    cmdMsgConfirm = 0x00010029;
+
+    /**
+     * 取历史未读消息
+     * 输入：CommonMsgRequest {afterMsgID};
+     * 返回：CommonMsgList;
+     */
+    cmdGetMsg = 0x0001002a;
+
+    /** 获取好友信息
+     * 输入： UserInfo{phoneNum}
+     * 输出： UserInfo;
+     */
+    cmdGetFriendInfo = 0x0001002b;
+
+    /** 强制下线（暂时放弃）
+     * 输入：无，由服务器主动发送
+     * 输出：commonResp;
+     */
+    cmdForceOffline = 0x0001002c;
+
+    /** 显示登出
+      * 输入：CommonRequest
+      * 输出：CommonResp
+      */
+    cmdLogout = 0x0001002d;
+
+    /** 查找本手机中的联系人哪些是系统已注册的用户
+     * 输入 自己手机中的所有号码，应先去除已经是好友的手机联系人： FriendList{phoneNum, nickName(手机通讯录中的名称)}
+     * 返回 不是好友且已注册的手机联系人：FriendList{phoneNum, nickName(手机通讯录中的名称), userName（系统中该用户注册的名称）, userPic}
+    */
+    cmdSearchPhoneContact = 0x0001002e;
+
+    /** 上传消息附件
+      request: MsgAttachment, 当 packNum = 0 时，上传附件 msgSum(sha256sum), 否则上传：packData
+      resp: MsgAttachment
+      */
+    cmdUploadAttachment = 0x0001002f;
+
+    /** 下载消息附件
+      request: MsgAttachment{ msgID, packNum}, 当请求packNum = 0 时，取消息总大小，检验字等
+      resp: MsgAttachment { 全部 } , 当packNum =0 时，返回 packSum, 其他返回 packData
+      */
+    cmdDownloadAttachment = 0x00010030;
+
+    /** 关闭对讲房间
+     * request: AcceptVoice{ roomID }
+     * resp: AcceptVoice{ roomtID }
+     */
+    cmdCloseChatRoom = 0x00010031;
+
+    /** 汇报位置
+     * request: LocationMsg
+     * resp: CommonResp
+     */
+    cmdReportLocation = 0x00010032;
+
+    /** 开始获取好友或团队位置
+     * request: LocationMsgList
+     * resp: LocationMsgList
+     */
+    cmdStartGetLocation = 0x00010033;
+
+    /** 停止获取好友或团队位置
+     * request commonRequest
+     * resp: commonResp
+     */
+    cmdStopGetLocation = 0x00010034;
+
+    /** 发送获取位置的心跳包
+     * 要求每分钟一次，如果超出两分钟，客户端没有发送此命令，则服务器将不再推送好友或团队位置。
+     * request commonRequest
+     * resp commonResp
+     */
+    cmdTouchGetLocation = 0x00010035;
+
+    /** 服务器推送好友位置
+     * request : 无
+     * resp: LocationMsg
+     */
+    cmdFriendLocationChanged = 0x00010036;
+
+    /** 视频对讲
+     * request startVoiceMsg ( 与发起对讲用同一个结构 ）
+     * resp: startVoiceMsg
+     * ----------------------------
+     * 接收方命令字：cmdNotify，类型为：
+     */
+    cmdLiveVideoCall = 0x00010037;
+
+    /** 接收到实时视频对讲
+     * request: 无
+     * resp: startVoiceMsg
+     */
+    //cmdGotLiveVideoCall = 0x00010038;
+
+    /** 请求TOKEN -> CarRegister*/
+    cmdCarRegister = 0x00010038;
+
+    /** 手机扫描二维码 -> CarRegister */
+    cmdScanCarCode = 0x00010039;
+
+    /** 解绑车机 -> CarRegister */
+    cmdUnbindCar = 0x0001003A;
+
+    /** 退出车机登录 commonRequst, commonResp */
+    cmdLogoutCar = 0x0001003B;
+
+    /** 接受或拒绝视频呼叫
+        in LiveVideoCallAns
+        out commonResp
+    */
+    cmdLiveCallAns = 0x0001003C;
+
+    /** 车机扫码成功，仅通知给车机，
+       in 无
+       out LoginResponse
+     */
+    cmdScanCarOk = 0x0001003D;
+
+    /**
+     * 在某个点的周围查找好友，
+       如果是车机系统，仅能查找车机，无法查找手机
+       in,out: MsgSearchAround
+     */
+    cmdSearchAround = 0x0001003E;
+
+    /**
+     * 根据地区车型车牌等查找
+     * 任何一项有填数据，则进行 条件And运算
+     * In: MsgSearchCar
+     * Out: MsgSearchCar
+     */
+    cmdSearchCar = 0x0001003F;
+
+    /** 查询用户2
+     * In: SearchUser
+     * Out: UserInfo;
+     */
+    cmdSearchUser2 = 0x00010040; // 查询用户
+
+    /** 添加删除 IMEI号
+     In: MsgRegImei
+     Out: MsgRegImei
+    */
+    cmdRegImei = 0x00010041; // 查询用户
+
+    /** 查询当前用户所添加的所有IMEI号
+     * In: CommonRequest
+     * Out: MsgImeiList
+     */
+    cmdGetImeiList = 0x00010042; // 查询所有
+
+    /** 重置密码
+     * 目前仅用于设置集团内受管辖的集团成员
+     * 可以设置自己的密码，或本集团成员的密码（需要调度员权限）
+     * In：MsgSetPassword
+     * Out:CommResp
+     */
+    cmdSetPassword = 0x00010043; // 重置本集团成员的密码
+
+    /** 请求一个登录服务器
+     * @deprecated 暂时不用
+     * In: UserLogin
+     * Out: MsgLoginServer
+     */
+    cmdQueryLoginServer = 0x00010044;
+
+    /** 获得所有好友在线状态
+    * In: CommonRequest
+    * Out: MsgFriendsStatus
+    */
+    cmdGetFriendsStatus = 0x00010045;
+
+    /** 查询轨迹记录
+     * In: MsgQueryLocation
+     * Out: MsgQueryLocation
+     */
+    cmdQueryLocations = 0x00010046;
+
+    /** 查询/修改删除/考勤记录
+    * In, Out: MsgKqData;
+    */
+    cmdKaoQinEdit = 0x00010047;
+
+    /** 考勤统计
+     * In, Out: MsgKqStatics
+     */
+    cmdKaoQinStatics = 0x00010048;
+
+    /** IICID 操作
+     * In, Out: MsgIccid
+     */
+    cmdIccidGetOrSet = 0x00010049;
+
+    /** 调度台设置帐号名称
+     * In, Out: MsgSetImeiName
+     */
+    cmdSetImeiName = 0x0001004A;
+
+    /** 遥控指令
+     *
+     * In, Out: MsgRemoteControl
+    */
+    cmdRemoteControl = 0x0001004B;
+
+    /** 接收到遥控指令
+     * In: MsgRemoteControl
+     * Out: 本条指令不回复，但需要回复一个CmdAnsRemoteControl的确认指令
+    */
+    cmdGotRemoteControl = 0x0001004C;
+
+    /** 应答遥控指令
+     * In: MsgRemoteControl
+     * out: MsgRemoteControl
+    */
+    cmdAnsRemoteControl = 0x0001004D;
+
+    /**
+     * 收到应答遥控指令
+     * In: MsgRemoteControl
+     * out: 不回复
+     */
+    cmdGotAnsRemoteControl = 0x0001004E;
+
+};
+
+/** 操作码 */
+enum OpCode {
+    opNone = 0;
+    opAdd = 1;
+    opDel = 2;
+    opDisable = 3; // TODO: 禁止登录
+    opEnableRecord = 4; // 设置是否启动服务器录音
+};
+
+/** 注册或删除 IMEI 号 */
+message MsgRegImei {
+    int32 errorCode = 1;
+    repeated string unused = 2; // 废弃, 用 msgImei 代替
+    int32 opCode = 3; // 1: 添加，2：删除
+    repeated bool result = 4; // 操作结果（每一个号码的操作）
+    repeated MsgImei imeis = 5;
+}
+
+message MsgImei {
+    string imei = 1;
+    int64 regDate = 2;
+    string desc = 3;
+    int32 enableRecord = 4;
+
+}
+
+message MsgImeiList {
+    int32 errorCode = 1;
+    repeated MsgImei imeis = 2;
+}
+
+message MsgSearchCar {
+    int32 errorCode = 1;
+    string prov = 2;
+    string city = 3;
+    string town = 4;
+
+    string car_type1 = 5;
+    string car_type2 = 6;
+    string car_type3 = 7;
+
+    int32 pos = 8; // 换一批，0从头搜索，非0：从上次搜索之后开始搜索。
+
+    FriendList search_result = 9;
+
+    int32 sex = 10;
+    string car_num = 11; // 最少输入3项
+
+}
+
+message MsgAttachment {
+    int32 errorCode = 1;
+    int64 msgID = 2;
+    int64 msgSize = 3; // 附件的字节数
+    int32 packSize = 4; // 暂时固定为 64K （即：64*1024个字节）
+    int32 packCnt = 5; // 总包数
+    int32 packNum = 6; // 上传时：包号： 范围 ： [0..packCnt], 当packNum = 0 时，仅设置 msgSum, 而不需要传递 packData,
+    // 服务器会返回上次成功的 packNum.
+    // 下载时：包号： 范围 ： [0..packCnt]
+    bytes msgSum = 7; // 校验字，仅当 packNum = 0 时发送， MD5SUM，
+    bytes packData = 8; // 当 packNum == [1.. packCnt] 时有效
+    int64 msgSN = 9; // 方便客户端使用
+}
+
+enum AppType {
+    appDefault = 0; // app
+    appWeb = 1; // 页面登录
+    appPocCenter = 2; // 调度中心
+    appCar = 3; // 车机
+};
+
+enum ErrorCode {
+    OK = 0;
+    UNKNOWN = 1;
+    SMS_CODE_FAILED = 1000;
+    SMS_CODE_NOT_GOT = 1001;
+    SMS_CODE_NOT_MATCH = 1002;
+    PASS_TOO_SHORT = 1003;
+    REG_DB_FAILED = 1004;
+    DATA_LEN_TOO_SHORT = 1005;
+    LOGIN_PHONE_OR_PASS_WRONG = 1006;
+    LOGIN_TOKEN_WRONG = 1007;
+    LOGIN_TOKEN_NOT_EXIST = 1008;
+    NOT_LOGIN = 1009;
+    PHONE_NOT_FOUND = 1010;
+    FRIEND_NOT_INVITIED = 1011; // 尚未被邀请
+    CHANGE_NOTHING = 1012; // 没有任何更改
+    NOT_MY_TEAM = 1013; // 不是我的群
+    CANNOT_APPLY_GROUP_TEAM = 1014; // 禁止加入集团群，仅由管理员后台加入和删除
+    TEAM_NOT_EXIST = 1015; // 群不存在
+    CURR_USER_WRONG = 1016; // 当前帐户用户ID异常
+    INNER_DB_ERROR = 1017; // 内部错误
+    NOT_TEAM_ADMIN = 1018; // 不是管理员，不能删除成员
+    CANNOT_DELETE_SELF = 1019; // 不能删除自己
+    CANNOT_DELETE_TEAM_OWNER = 1020; // 不能删除群主
+    NOT_TEAM_MEMBER = 1021; // 不是当前群的成员
+    NOT_TEAM_OWNER = 1022; // 不是群主
+    TEAM_NAME_TOO_SHORT = 1023; // 查询或保侟的群名字太短
+    CANNOT_ASSIGN_TEAM_ADMIN_SELF = 1024; // 不能指定自己为管理员
+    CANNOT_ASSIGN_TEAM_OWNER_ADMIN = 1025; // 不能删除群主
+    CANNOT_ADD_FRIEND_SELF = 1026; // 不能加自己为好友
+    NOT_FOUND_USER_ID = 1027; // 用户 ID没找到
+    DUPLICATED_APPLY_TEAM = 1028; // 不能重复加群（已经是该群成员了）
+    CANNOT_EXIT_TEAM_OWNER = 1029; // 不能退出自己创建的群
+    NOT_FRIEND = 1030; // 不是好友关系
+    CHAT_ROOM_INNER_ERROR = 1031; // 聊天室内部错误
+    ALREADY_IN_CHAT_ROOM = 1032; // 已经在对讲中，需要先挂断
+    CANNOT_GET_NEW_ROOM_NUM = 1033; // 服务器没有办法再申请房间号了。
+    NO_ANY_TEAM_MEMBER = 1034; // 群里没有任何成员
+    CANNOT_CALL_FRIEND = 1035; // 无法发起单呼
+    NOT_FOUND_THIS_ROOM = 1036; // 没有找到这个聊天室
+    NOT_FOUND_THIS_ROOM_USER = 1037; // 聊天室中没有找到此User
+
+    //ALREADY_ACCEPTED_THIS_ROOM = 1038; // 已经接收该聊天室的呼叫
+    //ALREADY_DENY_THIS_ROOM = 1039; // 已经拒绝该聊天室的呼叫
+
+    ENTER_CHAT_ROOM_FAILED = 1040; // 进入聊天室失败
+    NOT_IN_ANY_CHAT_ROOM = 1041; // 不在任何对讲聊天室
+    OTHER_SPEAKING_NOW = 1042; // 其他人在讲话中，未能抢占话权
+    INNER_ERROR = 1043; // 内部错误
+    DIDNOT_SPEAK_BEGIN = 1044; // 未执行开始讲话
+    NAME_TOO_SHORT = 1045; // 名称太短
+
+    TOO_MANY_TEAMS = 1046; // 建群数量过多
+    TEAM_OR_USER_WRONG = 1047; // 组ID或 UserID错误
+
+    NOT_FOUND_USER_NAME_OR_PHONE = 1048; // 没有找到用户名手机号
+    USER_NAME_EXIST = 1049; // 用户名已经存在
+
+    NOT_MY_MSG = 1050; // 不是我的消息，不能撤销等
+    MSG_ATTACHMENT_UPLOADED = 1051; // 消息的附件已经上传了
+    MSG_ATTACHMENT_UPLOAD_PARAM_ERROR = 1052; // 上传参数错误
+    MSG_ATTACHMENT_UPLOAD_FILE_ERROR = 1053; // 上传时服务器上的文件发生错误
+    MSG_ATTACHMENT_UPLOAD_SUM_ERROR = 1054; // 上传文件时校验字出错
+    MSG_ATTACHMENT_UPLOAD_UPDATE_ERROR = 1055; // 上传文件更新记录记录时失败
+    MSG_ATTACHMENT_DOWNLOAD_NO_ATTACHMENT = 1056; // 没有附件
+    MSG_ATTACHMENT_DOWNLOAD_NO_MSG_SUM = 1067; // 附件尚未上传完毕
+    MSG_ATTACHMENT_DOWNOAD_NO_EXISTS = 1068; // 附件已失效
+    MSG_ATTACHMENT_DOWNLOAD_PARAM_ERROR = 1069; // 下载参数错误（packNum过大，或<0）
+    MSG_ATTACHMENT_DOWNLOAD_READ_ERROR = 1070; // 下载文件出错
+    MSG_ATTACHMENT_UPLOAD_LEN_ERROR = 1071; // 上传文件的内容长度不符合要求
+
+    CHAT_NOT_FROM_MY_CALL = 1072; // 不是我发起的房间呼叫
+    USER_PHONE_EXIST = 1073; // 用户 已存在
+    TEAM_NAME_EXIST = 1074; // 群名已经存在
+
+    NOT_GROUP_ADMIN = 1075; // 不是调度员，无法登录
+    NO_GROUP_ID = 1076; // 是调度员，但未设置集团号
+    NO_GROUP_ADMIN_AD = 1077; // 集团成员登录APP，但是没有设置其调度员ID
+
+    NOT_CAR_SCAN_CODE = 1078; // 无效的车机扫描码
+    NOT_CAR_CONNECTED = 1079; // 车机未联网
+    NOT_MY_CAR = 1080; // 不是自己的车机，或已被别人绑定
+    NOT_VALID_CAR_ID = 1081; // 不是有效的车机号
+
+    NOT_HAS_ANY_CAR = 1082; // 没有任何车
+
+    CAR_NUM_TOO_SHORT = 1083; // 车牌号太短，不得少于4位
+    CAR_NUM_DUPLICATE = 1084; // 车牌号已经被注册
+    NOT_VALID_IMEI = 1085; // 无效的IMEI号
+    IMEI_TOO_SHORT = 1086; // IMEI号太短
+
+    UNKNOWN_OP_CODE = 1087; // 不认识的操作码
+
+    NOT_MY_SUB_USER = 1088; // 不是我的子用户（受控集团成员）
+    NOT_FRIEND_OR_SAME_TEAM = 1089; // 不是好友或者不是同群组。
+
+    NO_SESSION_SERVER = 1090; // 没找到会话服务器
+    NO_TEAM_OR_USER = 1091; // 请求中既没有指定 TEAM ID 也没有指定User ID
+    NO_CHAT_ROOM_SERVER = 1092; // 没有任何对讲服务器
+    CHAT_MAIN_TIMEOUT = 1093;
+    BAD_SERVER_TYPE = 1094;
+    NOT_FOUND_ROOM_SERVER = 1095; // 当加入一个指定的对讲服务器或群组，或单呼时，并没有找到其所在的RoomServer
+    LOCATION_SERVER_FAILED = 1096;
+    LOCATION_SERVER_TIMEOUT = 1097;
+    NO_MY_LOCATION = 1098; // 自己没有定到位
+    SEARCH_AROUND_FAILED = 1099;
+    NAME_TOO_LONG = 1100; // 名字太长
+    HDFS_OPEN_FAILED = 1101; // hdfs 没有启动
+    USER_DISABLE = 1102; // 帐户已禁用
+    SMS_CODE_TYPE_WRONG = 1103; // 验证码类型错误
+    PHONE_TOO_LONG = 1104;
+    VOICE_UNSUPPORTED = 1105; // 在其他App中使用语音对讲
+    PHONE_FORMAT_WRONG = 1106; // 输入的帐号格式不符合要求
+    ACCOUNT_PREFIX_WRONG = 1107; // 帐号前缀出错
+
+
+    KQ_NO_PARAM = 1108; // 考勤时没有输入参数
+    KQ_NO_ID = 1109; // NO KAOIN ID // 没有输入考勤 ID
+    KQ_ID_OR_PHONE_WRONG = 1110; // 考勤ID和电话错误
+    KQ_NOT_FOUND_ID = 1111;  // 没找到考勤ID
+
+    NOT_VALID_GROUP_ID = 1112; // 没有有效的集团号
+    TOO_MANY_TEAM_MEMBER = 1113; // 群组添加成员时超出限制
+    TOO_MANY_IMEI = 1114;   // 创建帐号时，帐号数量超出限制
+};
+
+/** 短信验证码请求，返回通用响应包 -> 改为返回与请求相同的数据 */
+message SmsCodeReq {
+    int32 errorCode = 1;
+    int32 codeType = 2;
+    string phoneNum = 3;
+    string code = 4; // 验证时使用
+}
+
+enum SmsCodeType {
+    smsCodeReg = 0;
+    smsCodeReset = 1;
+    smsCodeCheck = 2;
+}
+
+message CommonRequest {
+    bool reserved = 1;
+}
+
+/** 通用回复 */
+message CommonResp {
+    int32 errorCode = 1;
+}
+
+message CommonResp2 {
+    int32 errorCode = 1;
+    int32 serverType = 2;
+}
+
+/** 用户注册，返回通用响应包 */
+message UserReg {
+    int32 errorCode = 1;
+    string phoneNum = 2;
+    string password = 3;
+    string smsCode = 4;
+}
+
+/** 用户登录，返回 @link LoginResponse */
+message UserLogin {
+    int32 errorCode = 1;
+    string phoneNum = 2;
+    string password = 3;
+    string token = 4;
+    int32 appType = 5;
+    string carID = 6; // 车机登录时必须提供 carID
+    string imei = 7; // 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
+    string sessionIP = 8;
+    int32 sessionPort = 9;
+    int64 groupID = 10; // 集团号
+    /*
+    不加在调试台，加在Web管理台，由系统管理员来查看统计，而不是调度员
+    string appversion = 11; // 客户端版本号
+    string sysversion = 12; // 系统版本号
+    */
+}
+
+enum ServerType {
+    stSession = 0;
+    stRoot = 1;
+    stRoom = 2;
+    stOther = -1;
+}
+/** 登录响应包 */
+message LoginResponse {
+    int32 errorCode = 1;
+    string token = 2;
+    string phone = 3;
+    int32 appType = 4;
+    string sessionIP = 5;
+    int32 sessionPort = 6;
+    int32 serverType = 7;
+}
+
+/** 密码重置，返回通用响应包 */
+message ChangePasswordBySms {
+    int32 errorCode = 1;
+    string password = 2;
+    string smscode = 3;
+}
+
+/** 查询用户, 返回 SearchUser
+  * 如果没找到则返回两个“”，否则两个都会有值
+  */
+message SearchUser {
+    int32 errorCode = 1;
+    string phoneNum = 2;
+    string userName = 3;
+    bytes userPic = 4;
+    bool onlyPhoneNum = 5;
+};
+
+/** 申请加好友，返回通用响应包 */
+message ApplyFriend {
+    int32 errorCode = 1;
+    string friendPhoneNum = 2;
+    string applyInfo = 3; // 附加消息
+    string friendName = 4; // 要加的好友的名称，申请为空
+    string applyRemark = 5; // 备注名
+};
+
+/** 更改好友名称，返回通用响应包 */
+message ChangeFriendName {
+    int32 errorCode = 1;
+    string friendPhoneNum = 2;
+    string friendNewName = 3;
+    int32 starred = 4; // 星标，此时 friendNewName 要为空
+};
+
+enum AcceptType {
+    atAccept = 0; // 授受
+    atDeny = 1; // 拒绝
+}
+
+/** 接收加好友请求，返回通用回复 */
+message AcceptFriend {
+    string friendPhoneNum = 1;
+    int32 acceptType = 2; // @see AcceptType
+    string friendRemark = 3; // 设置备注名
+}
+
+/** 删除好友，返回通用回复 */
+message DeleteFriend {
+    string friendPhoneNum = 1;
+}
+
+enum EnterType {
+    Enter = 0;
+    Leave = 1;
+    PriorityChanged = 2; // 同组内的话权修改
+    DismissTeam = 3; // 解散群
+}
+/** 通知类消息 */
+message NotifyMsg {
+    int32 errorCode = 1;
+    int32 notifyType = 2;
+    string friendPhoneNum = 3;
+    string userName = 4;
+    string teamName = 5;
+    int64 teamID = 6;
+    int32 teamAdmin = 7;
+
+    int64 roomID = 8;
+    int32 chatStatus = 9; // ChatStatus
+    int32 enterType = 10; // 进入或退出
+    int32 applyType = 11; // 申请或邀请
+
+    int32 appTypeFrom = 12;
+    int32 appTypeTo = 13; // 通知到哪个应用中(-1全部, 不包含appTypeFrom)
+
+    string videoUrl = 14; // 通知URL
+    int32 serverType = 15;
+
+    bool online = 16; // 是否上线
+}
+
+/** 通知类型 */
+enum NotifyType {
+    NotifyDummy = 0;
+    NotifyApplyFriend = 1;
+    NotifyAcceptFriend = 2;
+    NotifyDeleteFriend = 3;
+
+    NotifyApplyTeam = 4;
+    NotifyAcceptTeam = 5;
+    NotifyDeleteTeamMember = 6;
+    NotifyDismissTeam = 7;
+    NotifyAssignTeamAdmin = 8;
+    NotifyModifyTeamInfo = 9;
+    NotifyQuitTeam = 10;
+
+    NotifyTeamCall = 11;
+    NotifySingleCall = 12;
+
+    NotifyChatStatus = 13;
+    NotifySaveVariable = 14; // 保存变量
+
+    NotifyCall = 15; // 发起呼叫
+    NotifyChangeTeamNick = 16; // 通知其他人我的群昵称改变
+
+
+    NotifyLiveVideoCall = 17; // 视频通话（被呼通知）
+    NotifyLiveVideoCallAns = 18; // 视频通话应答通知
+
+    NotifyFriendStatus = 19; // 好友是否上线
+}
+
+/** 修改用户信息，返回通用包 */
+message UserInfo {
+    int32 errorCode = 1;
+    string phoneNum = 2; // 手机号
+    string userName = 3; // 好友的名字
+    string nickName = 4; // 好友的备注名
+    bool friendStar = 5; // 是否星标
+    bytes userPic = 6; // 用户头像
+    int32 userSex = 7; // 性别
+    string applyInfo = 8; // 申请消息
+    string carID = 9; // 车机ID
+
+    string birthday = 10; // 生日改为 “yyyy-MM-dd"
+
+    string prov = 11;
+    string city = 12;
+    string town = 13;
+
+    string car_type1 = 14;
+    string car_type2 = 15;
+    string car_type3 = 16;
+
+    string car_num = 17; // 车牌号
+
+    int32 hide_field_0 = 18;  // 参照 UserHideField
+    int32 hide_field_1 = 19; // 参照 UserHideField
+    int32 hide_field_2 = 20; // 参照 UserHideField
+    int32 hide_field_3 = 21; // 参照 UserHideField
+    int32 hide_field_4 = 22; // 参照 UserHideField
+    int32 hide_field_5 = 23; // 参照 UserHideField
+    int32 hide_field_6 = 24; // 参照 UserHideField
+    int32 hide_field_7 = 25; // 参照 UserHideField
+    int32 hide_field_8 = 26; // 参照 UserHideField
+    int32 hide_field_9 = 27; // 参照 UserHideField
+
+}
+
+/** 对应每一个隐藏字段所要隐藏的内容 */
+enum UserHideField{
+    hfPhoneNum = 0;
+    hfUsername = 1;
+    hfUserSex = 2;
+    hfBirthday = 3;
+    hfAddrInfo = 4;
+    hfCarType = 5;
+    hfCarNum = 6;
+    hfGps = 7;
+    hfTeamRandom = 8; // 海聊群的开关
+    hfTeamRandomVideo = 9; // 海聊群时是否启用视频
+}
+
+message FriendList {
+    int32 errorCode = 1;
+    repeated UserInfo friends = 2;
+}
+
+/** 我在群中的角色 */
+enum TeamRole {
+    memberOnly = 0; // 成员
+    Manager = 1; // 被群主定义为管理员
+    Owner = 2; // 自己创建的群
+}
+
+/** 组类型
+ * 优先级依次增大
+ */
+enum TeamType {
+    teamPublic = 0; // 公开组，
+    teamTempo = 1; // 临时组，无需要应答，即自动加入。
+    teamPrivate = 2; // 私有组
+    teamInGroup = 3; // 集团组
+    teamRandom = 4;// 随机群（or 海聊群)（由系统自动分配，设置上限，满群后，自动切换新的海聊群，每人只能在一个海聊群中）
+    teamMapSelector = 5;// 地图框选群
+}
+
+/** 群信息(建群时的参数) */
+message TeamInfo {
+    int32 errorCode = 1;
+    int64 teamID = 2;
+    string teamName = 3;
+    string teamDesc = 4;
+    int32 teamType = 5;
+    int64 groupID = 6;
+    int32 memberRole = 7; // 我在群中的角色
+    int32 teamPriority = 8; // 群优先级
+    string myTeamName = 9; // 我在群中的名称
+}
+
+/** 群列表 */
+message TeamList {
+    int32 errorCode = 1;
+    repeated TeamInfo teams = 2;
+}
+
+/** 邀请或申请加入群 */
+message ApplyTeam {
+    int32 errorCode = 1;
+    int64 teamID = 2; // 申请或邀请都需要此参数
+    repeated string phoneList = 3; // 批量插入群成员, 仅邀请时需要
+}
+
+enum ApplyTeamType {
+    attInvite = 0; // 邀请加入
+    attApply = 1; // 申请加入
+}
+
+/** 邀请或申请加群的列表项 */
+message AppliedTeam {
+    int32 errorCode = 1;
+    string teamName = 2;
+    int64 teamID = 3;
+    string userPhone = 4; // 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
+    string userName = 5; // 申请加入时，为成员的名称；邀请加入时为请邀者的名称
+    int32 applyType = 6; // @see ApplyTeamType
+}
+
+/** 邀请或申请加群的列表 */
+message AppliedTeamList {
+    int32 errorCode = 1;
+    repeated AppliedTeam apply = 2;
+}
+
+/** 接受或拒绝加入群组，删除群成员 */
+message AcceptTeam {
+    int32 errorCode = 1;
+    string phoneNum = 2;
+    int64 teamID = 3;
+    int32 acceptType = 4; // 接爱或拒绝
+    int32 applyType = 5; // 申请或邀请
+    repeated string phoneList = 6; // 可同时添加或删除多人
+}
+
+message TeamMember {
+    int32 errorCode = 1;
+    string userPhone = 2;
+    string userName = 3;
+    string nickName = 4;
+    int32 role = 5;
+    int32 memberPriority = 6;
+    int64 teamID = 7;
+    int64 userID = 8;
+
+    UserInfo userInfo = 9;
+
+}
+
+enum RequestFlag {
+    rfAllMember = 0;
+    rfOne = 1; // 只查一个人
+}
+message TeamMemberList {
+    int32 errorCode = 1;
+    repeated TeamMember members = 2;
+    int64 teamID = 3;
+    int32 requestFlag = 4; // RequestFlag
+}
+
+message AssignTeamAdmin {
+    int32 errorCode = 1;
+    string phoneNum = 2;
+    int64 teamID = 3;
+    /** 0 撤销，1：授予 */
+    int32 admin = 4;
+
+}
+
+enum MsgType {
+    mtText = 0;
+    mtImage = 1;
+    mtVoice = 2; // 语音对讲消息
+    mtCancel = 3; // 消息内容为ID
+
+    mtEnterTeam = 4; // 进群， 当TeamID不为0时（即：群消息），msgContent = 进群者的手机号，否则 msgContent = 群ID
+    mtLeaveTeam = 5; // 退群, 同上
+
+    mtChangeHeadImage = 6; // 改变头像 msgContent 为对方手机号码， fromUserPhone 为自己
+
+    mtAcceptFriend = 7; // 已被加好友了 msgContent 为对方手机号码
+    mtDeleteFriend = 8; // 已被删除好友 msgContent 为对方手机号码
+
+    mtVideoFile = 9; // 视频文件
+    mtVoiceFile = 10; // 录音文件
+
+    mtVoiceShortFile = 11; // 短音频文件， 类似文字消息，直接在消息中。
+}
+
+/** 普通消息，非对讲 */
+message CommonMsg {
+    int32 errorCode = 1;
+    string fromUserPhone = 2;
+    string toUserPhone = 3;
+    int64 toTeamID = 4;
+    int32 msgType = 5;
+    //string msgText = 6;
+    //bytes msgImage = 7;
+    bytes msgContent = 6;
+    int64 msgID = 7;
+    int64 msgTime = 8;
+    int64 msgSN = 9; // 由发送端传来的数据。再返回给客户端，有助于客户端找回原来发送的记录
+    int64 msgSize = 10; // 附件真实大小
+    bytes msgSum = 11; // 附件校验字
+
+}
+
+message CommonMsgResp {
+    int32 errorCode = 1;
+    int64 msgID = 2;
+    int64 msgTime = 3;
+}
+
+/** 接收到的普通消息确认 */
+message CommonMsgConfirm {
+    repeated int64 msgIDs = 1;
+}
+
+message CommonMsgRequest {
+    int64 afterMsgID = 1; // 从哪条消息开始读
+}
+
+message CommonMsgList {
+    int32 errorCode = 1;
+    repeated CommonMsg msgList = 2;
+}
+
+message StartVoiceMsg {
+    int32 errorCode = 1;
+    string toUserPhone = 2; // 单呼对象
+    int64 teamID = 3;
+    int64 roomID = 4; // 后台生成，从1开始，到最大值，然后循环使用
+    string fromUserPhone = 5; //
+    AcceptType accept = 6; // 仅用于视频对讲
+}
+
+/** 聊天室成员状态 */
+enum ChatStatus {
+    csOffline = 0; // 离线
+    csNotIn = 1; // 未进入或退出或被抢占
+    csOk = 2; // 正在对讲
+    csSpeaking = 3; // 正在发言
+}
+
+message ChatRoomMemberMsg {
+    int32 errorCode = 1;
+    string phoneNum = 2;
+    int32 status = 3;
+}
+
+message ChatRoomMsg {
+    int32 errorCode = 1;
+    int64 roomID = 2;
+    int32 acceptType = 3;
+    int32 roomClosed = 4; // 当房间关闭后， roomClosed = 1; 其他时间为0
+    repeated ChatRoomMemberMsg members = 5;
+    int64 teamID = 6; // 组ID 单呼时为0
+    string phoneNum = 7; // 发起者的号码
+    string roomIP = 8; // 对讲服务器的IP
+    int32 roomPort = 9; // 对讲服务器的的Port
+    int32 serverType = 10; // 是哪个服务器的 响应，参照：ServerType
+    string toUserPhone = 11; // 单呼目标
+    string videoUrl = 12; // 保存房间的视频URL add by qhb at: 2018-03-19
+}
+
+message AcceptVoice {
+    int32 errorCode = 1;
+    int64 roomID = 2;
+    int32 acceptType = 3; // 接受或拒绝，当设置为免打扰的时候为拒绝
+    // added at 2017-12-21
+    int64 teamID = 4;
+    string phoneNum = 5; // 接收者的帐号
+    string friendPhoneNum = 6; // 其他人的帐号
+}
+
+message SpeakMsg {
+    int32 errorCode = 1;
+    bytes audioData = 2; // 音频数据
+}
+
+enum Sex {
+    noset = 0;
+    male = 1;
+    female = 2;
+}
+
+enum KqReportType {
+    krtAuto = 0;
+    krtKey = 1; // 按键上报
+    krtNfc = 2; // NFC上报
+}
+
+message LocationMsg {
+    int32 errorCode = 1;
+    double lat = 2;
+    double lng = 3;
+    int32 radius = 4; // 半径(米)
+    int32 isAccurate = 5; // 是否准确：1：准确， 0：模糊
+    int64 time = 6; // 位置时间
+    string phoneNum = 7; // 好友手机号
+    int32 latlngType = 8;   // 位置类型（0：高德，）
+    string userName = 9;    // 好友名称包括（陌生人）
+    bool hasLocation = 10;  // 是否有位置
+    int64 userID = 11;      // 仅限于服务器内部使用，客户端不应使用，
+    int32 reportType = 12; // 0 自动上报，1：按键打卡，2：NFC打卡
+    int32 reportFlag = 13; // 自定义标志，表示 上班或下班等，暂时不用
+}
+
+message LocationMsgList {
+    int32 errorCode = 1;
+    int64 teamID = 2;
+    string phoneNum = 3;
+    repeated LocationMsg locations = 4;
+}
+
+/**
+ 车机注册消息
+ 未登录车机向服务器发送此消息，进行注册，收到服务器消息（包含帐号及登录串）后，进行正式登录（CmdLogin）
+ 登录失败时： 超时->继续登录
+            错误码->回到车机注册过程。即：获取 tempToken，并显示二维码
+*/
+message CarRegister {
+    int32 errorCode = 1;
+    string carID = 2; // imei
+    string tempToken = 3; // 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[<carid>_<tempToken>]" 做为二维码内容）
+    string phoneNum = 4; // 返回手机号（即：帐号）
+    string carUrl = 5; // (此处可能有链接)...CARID=[<carid>_<tempToken>]
+
+
+    string sessionIP = 6;
+    int32 sessionPort = 7;
+    int32 serverType = 8;
+}
+
+/*
+ * 接受或拒绝陌生人/或好友视频请求
+*/
+message LiveVideoCallAns {
+    int32 errorCode = 1;
+    AcceptType accept = 2;
+    string phone = 3;
+    string videoUrl = 4; // add by qhb at 2018-03-20
+}
+
+message MsgSearchAround {
+    int32 errorCode = 1;
+    double lat = 2; // 中心点，纬度
+    double lng = 3; // 中心点，经度
+    int32 radius = 4; // 半径(米)
+    int32 pos = 5; // 批次：0,第一批，1第二批，...， 每次100个
+    repeated LocationMsg locations = 6; // 查到的结果，包含每个人手机号和名称，无头像。
+}
+
+message MsgSpeakBegin {
+    int32 errorCode = 1;
+    string videoUrl = 2;
+}
+
+// 目前仅用于设置集团成员密码
+message MsgSetPassword {
+    int32 errorCode = 1;
+    repeated string phoneList = 2; // 集团成员帐号；如果设置本人密码，则无需填写
+    string newPassword = 3; // 新密码
+}
+
+
+message MsgIpPort {
+    string ip = 1;
+    int32 port = 2;
+}
+
+message MsgLoginServer {
+    int32 errorCode = 1;
+    MsgIpPort ipport = 2;
+    int32 pullPort = 3;
+}
+
+/** Session服务器向root 服务器汇报 */
+message MsgSessionReport {
+    int32 errorCode = 1;
+    int32 cmd = 2;
+    MsgIpPort ipport = 3;
+}
+
+enum ReportType {
+    rtLogin = 0;
+    rtLogout = 1;
+    rtAlive = 2;
+    rtCarReg = 3;
+    rtMax = 4;
+}
+
+/** Session 服务器向 Indexer 汇报 */
+message MsgLoginReport {
+    int32 errorCode = 1;
+    int32 cmd = 2;
+    MsgIpPort ipport = 3;
+    int32 pullPort = 4;
+    string phonenum = 5;
+    int32 reportType = 6; //0 login, 1: logout, 2: report_alive
+    int64 userID = 7;
+    int32 appType = 8;
+    string carID = 9;
+    string tempToken = 10; // 车机的临时串
+}
+
+enum SessionPullType {
+    sptToClient = 0;
+    sptForceOffline = 1;
+    sptNotifyCarLogin = 2;
+}
+
+// 服务器之间的消息
+message MsgSessionPull {
+    int32 errorCode = 1;
+    int32 what = 2; // @ref sptToClient
+    string phone = 3;
+    int64 userID = 4;
+    int32 apptype = 5;
+    bytes msg = 6; // 发给客户端的消息
+    int64 userID2 = 7; //
+    string phone2 = 8;
+    string carID = 9;
+    string tempToken = 10; // 车机二维码临时token
+    string carLoginToken = 11; // 车机登录的Token
+}
+
+message MsgLoginAddr {
+    string ip = 1;
+    int32 port = 2;
+    int32 appType = 3;
+}
+
+enum CmdMsgSessionReq {
+    SessionGetUserSessionIP = 0;
+    SessionQueryWhoWatchMe = 1;
+}
+
+message UserAppType {
+    int64 userID = 1;
+    int32 appType = 2;
+}
+
+message WatcherList {
+    string ip = 1;
+    int32 port = 2;
+    repeated UserAppType users = 3;
+}
+
+enum MsgSessionReqWhat{
+    srwNormal = 0;
+    srwCarRegister = 1;
+}
+message MsgSessionReq {
+    int32 errorCode = 1;
+    int32 what = 2; // MsgSessionReqWhat
+    string phone = 3;
+    int64 userID = 4;
+    int32 appType = 5;
+
+    repeated MsgLoginAddr pullAddr = 6; // 登录服务器及端口，for return to other session;
+
+    repeated WatcherList watcherList = 7;
+
+    string carID = 8;
+    string tempToken = 9; // 车机二维码所使用的临时串
+}
+
+enum RoomCmd {
+    rcRoomReportAlive = 0;
+    rcStartVoice = 1;
+    rcAcceptVoice = 2;
+
+    rcCreateRoom = 3;
+    rcCloseRoom = 4;
+    rcTeamMemberChange = 5;
+}
+
+/** Session 或 Room向 RoomIndex服务器汇报或推送消息 */
+message MsgRoomIndexPull {
+    int32 errorCode = 1;
+    int32 what = 2; // 命令号
+    string roomip = 3;
+    int32 roomport = 4;
+
+    int64 userID = 5; // 发起者
+    int64 userID2 = 6; // 单呼目标
+    int64 teamID = 7; // 单呼是为0
+    int32 enterType = 8; // 对应 userID2
+    int32 memberPriority = 9; // 新的话权
+    string phoneNum2 = 10; // 和 userid2 对应的 phone
+
+
+}
+
+enum LocationCmd{
+    LOCATION_PUT = 0;
+    LOCATION_START = 1;
+    LOCATION_STOP = 2;
+    LOCATION_SEARCH = 3;
+}
+
+/** session -> location */
+message MsgSessionToLocation{
+    int32 errorCode = 1;
+    int32 what = 2;
+    int64 userID = 3;
+    LocationMsg location = 4;
+    repeated int64 watcherList = 5;
+    repeated LocationMsg result = 6;
+    MsgSearchAround search = 7;
+}
+
+message FriendStatus {
+    string phoneNum = 1;
+    bool online = 2;
+}
+message MsgFriendsStatus {
+    int32 errorCode = 1;
+    repeated FriendStatus friends = 2;
+}
+
+message MsgLocationStatics {
+    string phoneNum = 1;
+    int32 locationCnt = 2;
+
+}
+
+/** 查询位置历史记录 */
+message MsgQueryLocation {
+    int32 errorCode = 1;
+    int64 fromTime = 2;
+    int64 toTime = 3;
+    string phoneNum = 4; // 要查询谁，只能查询调度员管辖范围内的帐号
+    int32 accuracy = 5; // 精度，单位米
+    repeated LocationMsg result = 10;
+    repeated MsgLocationStatics statics = 11;
+}
+
+message KqPoint {
+    int32 sec = 1; // 距离0点的秒数
+    double lat = 2;
+    double lng = 3;
+    string addr = 4; // 地点名称
+    int32 reportType = 5;// 打卡类型
+}
+
+enum KqTimeType {
+    kttNone = 0;
+    kttWeek = 1;
+}
+
+message KqItem {
+    int64 kqID = 1;
+    string phoneNum = 2;
+    int32 timeType = 3;
+    int32 weekData = 4;
+    string timeDesc = 5;
+    repeated KqPoint kqPoints = 6;
+}
+
+message MsgKqData {
+    int32 errorCode = 1;
+    int32 opCode = 2; // 获得所有(opNone)/添加/删除/...
+    repeated KqItem data = 3; // 当 kqData.kqID <> 0 时表示修改，否则表示添加
+}
+
+message KqStaticsItem {
+    int64 kqTime = 1;
+    int64 location_id = 2;
+}
+
+message KqTimeStatics {
+    string phoneNum = 2;
+    repeated KqStaticsItem timeStatics = 3;
+}
+
+message MsgKqStatics {
+    int32 errorCode = 1;
+    int64 fromTime = 2;
+    int64 toTime = 3;
+    int32 timeError = 4; // 时间误差
+    int32 distError = 5; // 距离误差
+    repeated KqTimeStatics statics = 6;
+}
+
+enum EditCode {
+    ecGet = 0;
+    ecUpdate = 1;
+    ecDel = 2;
+}
+
+message MsgIccid {
+    int32 errorCode = 1;
+    int32 editCode = 2; // 操作码，参见 EditCode
+    string iccid = 3;
+}
+
+message MsgSetImeiName {
+    int32 errorCode = 1;
+    string imei = 2;
+    string desc = 3;
+}
+
+enum RemoteCmd {
+    rcNone = 0;
+    rcNavigate = 1; // 远程导航指令
+}
+
+/* 远程控制指令 */
+message MsgRemoteControl {
+    int32 errorCode = 1;
+    string fromPhone = 2;
+    string toPhone = 3;
+    int64 toTeamID = 4;
+    int32 fromAppType = 5; // 是从哪个应用里发出来的。
+    int32 toAppType = 6; // -1 表示全部
+    int32 remoteCmd = 7;
+    double lat = 8;
+    double lng = 9;
+    string cmdStr = 10;
+
+}

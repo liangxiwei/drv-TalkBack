@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/search"
+        android:title="@string/search"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/message_notification"
+        android:icon="@drawable/addgroup"
+        android:title="@string/message_notification"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/add_menu"
+        android:icon="@drawable/menu"
+        android:title="@string/create_team"
+        app:showAsAction="always" />
+</menu>

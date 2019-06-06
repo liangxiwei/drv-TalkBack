@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_page_background"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="@dimen/main_text_image_width"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/firstlayout"
+            android:layout_width="@dimen/main_text_image_width"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="horizontal" >
+
+            <com.luobin.dvr.view.ImageViewWithText
+                android:id="@+id/btn_preview"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.25"
+                ImageSrc="@drawable/backplay_mode"
+                Text="@string/preview" />
+
+            <com.luobin.dvr.view.ImageViewWithText
+                android:id="@+id/start_record"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.25"
+                ImageSrc="@drawable/settings"
+                Text="@string/preview"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondlayout"
+            android:layout_width="@dimen/main_text_image_width"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="horizontal" >
+
+            <com.luobin.dvr.view.ImageViewWithText
+                android:id="@+id/btn_settings"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.25"
+                ImageSrc="@drawable/settings"
+                Text="@string/settings" />
+
+            <com.luobin.dvr.view.ImageViewWithText
+                android:id="@+id/btn_files"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.25"
+                ImageSrc="@drawable/settings"
+                Text="@string/files"
+                android:visibility="gone" />
+            <!--
+        <Button
+            android:id="@+id/btn_preview"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/preview" />
+		
+        <Button
+            android:id="@+id/btn_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/settings" />
+
+        <Button
+            android:id="@+id/btn_files"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/files" />
+
+
+            -->
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/id_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </FrameLayout>
+
+</LinearLayout>

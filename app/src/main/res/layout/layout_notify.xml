@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+    <GridView
+        android:id="@+id/notify_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#A10808"
+        android:dividerHeight="1dp"
+        android:numColumns="3"
+        android:listSelector="@drawable/pop_focus_selector"/>
+
+    <TextView
+        android:id="@+id/time_count_down"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

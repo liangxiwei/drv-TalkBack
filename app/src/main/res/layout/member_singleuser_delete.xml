@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_nick_name"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_height="48dp">
+
+        <TextView
+            android:id="@+id/rl_nick_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:text="@string/my_team_nick_name"
+            android:textSize="@dimen/normal_text_size" />
+
+        <TextView
+            android:id="@+id/tv_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|right"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/rl_nick_name_text"
+            android:text="小明"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="@dimen/normal_text_size" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/look_map_layout"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="48dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/dvr_listview_background"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地图查看"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal_text_size" />
+
+
+        <ImageView
+            android:id="@+id/tv_other"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/to_right" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/btn_team_quit_or_dismiss"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_bg_change_team"
+        android:text="@string/team_delete_and_quit"
+        android:gravity="center"
+        android:clickable="true"
+        android:textSize="16sp"
+        android:visibility="visible"
+        android:textColor="@color/white" />
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="autorun_boot">
+        <item>开</item>
+        <item>关</item>
+    </string-array>
+    <string-array name="videosize">
+        <item>高</item>
+        <item>中</item>
+        <item>低</item>
+    </string-array>
+    <string-array name="videoduration">
+        <item>7分钟</item>
+        <item>5分钟</item>
+        <item>3分钟</item>
+    </string-array>
+    <string-array name="audio_enabled">
+        <item>开</item>
+        <item>关</item>
+    </string-array>
+    <string-array name="collision_sensitivity">
+        <item>高</item>
+        <item>中</item>
+        <item>低</item>
+    </string-array>
+
+</resources>

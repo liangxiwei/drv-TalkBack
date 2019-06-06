@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333333">
+
+    <VideoView
+        android:id="@+id/video_view_temp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/iv_temp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:scaleType="fitXY" />
+
+    <Button
+        android:id="@+id/player"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/player" />
+
+    <Button
+        android:id="@+id/buttonDownload"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="50dp"
+        android:background="#80000000"
+        android:text="@string/btn_download_image"
+        android:textColor="@color/gray" />
+
+
+</RelativeLayout>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:onClick="back"
+            android:visibility="gone"
+            android:scaleType="centerInside"
+            android:src="@drawable/top_bar_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_back"
+            android:text="附近车辆"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/dvr_title_colro"
+            android:textSize="@dimen/normal_title_size" />
+
+        <TextView
+            android:id="@+id/tv_set_location"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:scaleType="centerInside"
+            android:text="设置位置"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_select"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/title"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:textColor="@color/textColor"
+            android:layout_weight="1"
+            android:textSize="17dp"
+            android:text="地图" />
+
+        <Button
+            android:id="@+id/btn_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:layout_weight="1"
+            android:text="列表" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_select"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_map"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="@color/textColor"
+            android:layout_weight="1"
+             />
+
+        <TextView
+            android:id="@+id/tv_list"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="@color/textColor"
+            android:visibility="invisible"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <com.example.jrd48.chat.MyViewPager
+        android:id="@+id/viewpager"
+        android:layout_below="@+id/ll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ll_view"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/strangers_picture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ebebeb"
+             />
+
+        <TextView
+            android:id="@+id/tv_list_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="目前未找到更多附近车辆" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_below="@+id/ll_select">>
+
+        <com.amap.api.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.amap.api.maps.MapView>
+
+        <ImageView
+            android:id="@+id/img_location"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/location_isselector" />
+
+        <ImageView
+            android:id="@+id/img_other_batch"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/img_location"
+            android:background="@drawable/menu_selector"
+            android:scaleType="centerInside"
+            android:src="@drawable/renovate" />
+
+        <ImageView
+            android:id="@+id/img_clear_track"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/img_set_track"
+            android:background="@drawable/menu_selector"
+            android:scaleType="fitCenter"
+            android:src="@drawable/location_tail_cancel"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="180dp"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/btn_to_chat"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rotate"
+            android:paddingLeft="5dp"
+            android:text="消息"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+
+</RelativeLayout>
+

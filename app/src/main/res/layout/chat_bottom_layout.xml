@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom_layout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/bottom_layout_height"
+    android:layout_alignParentBottom="true"
+    android:gravity="center_vertical"
+    android:paddingTop="12dp"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingBottom="30dp"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal">
+
+    <!--<LinearLayout
+        android:id="@+id/switch_video_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/switch_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/switch_to_voice"
+            android:nextFocusDown="@+id/close"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_voice_selector"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/switch_video_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/normal_text_size"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:text="语音模式" />
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/video_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/button_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/chat_close"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_video_default_selector"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/video_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="视频模式"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal_text_size"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/voice_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/button_voice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/chat_close"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_voice_default_selector"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/voice_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="语音模式"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal_text_size"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/close_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/btn_endcall_default_selector"
+            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:nextFocusDown="@+id/ptt"
+            android:nextFocusUp="@+id/switch_video"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/chat_close" />
+
+
+        <TextView
+            android:id="@+id/close_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/normal_text_size"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:text="免打扰" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_weight="1">
+        <ImageButton
+            android:id="@+id/ptt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_ptt_selector"
+            android:textColor="@android:color/white"
+            android:nextFocusDown="@+id/switch_camera"
+            android:nextFocusUp="@+id/close"
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/chat_close" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_ptt_selector"
+            android:textColor="@android:color/white"
+            android:text="PTT"
+            android:textSize="26sp"
+            android:layout_centerInParent="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/chat_close" />
+    </RelativeLayout>
+    <ImageButton
+        android:id="@+id/switch_camera"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/btn_camera_selector"
+        android:textColor="@android:color/white"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:nextFocusUp="@+id/ptt"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/switch_camera" />
+</LinearLayout>

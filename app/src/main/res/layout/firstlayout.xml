@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.example.jrd48.chat.TitleLayout
+            android:id="@+id/title1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.example.jrd48.chat.TitleLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <com.example.jrd48.chat.MyViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/call_notify"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#aa000000"
+        android:visibility="gone"
+        android:clickable="true">
+        <TextView
+            android:id="@+id/temptv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="160dp"/>
+        <ImageView
+            android:id="@+id/tempiv"
+            android:layout_width="25dp"
+            android:layout_height="31dp"
+            android:src="@drawable/point"
+            android:layout_alignEnd="@id/temptv"
+            android:layout_marginEnd="37dp"
+            android:layout_alignBottom="@id/temptv"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开启对讲"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:paddingBottom="10dp"
+            android:layout_above="@+id/tempiv"
+            android:layout_alignEnd="@id/temptv" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/speak_notify"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#aa000000"
+        android:visibility="gone"
+        android:clickable="true">
+        <TextView
+            android:id="@+id/temptv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="160dp"/>
+        <ImageView
+            android:id="@+id/tempiv2"
+            android:layout_width="25dp"
+            android:layout_height="31dp"
+            android:src="@drawable/point"
+            android:layout_alignStart="@id/temptv2"
+            android:layout_marginStart="37dp"
+            android:layout_alignBottom="@id/temptv2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="按住说话"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:paddingBottom="10dp"
+            android:layout_above="@+id/tempiv2"
+            android:layout_alignStart="@id/temptv2" />
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/call"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="100dp"
+        android:src="@drawable/call"
+        app:backgroundTint="@color/call"
+        app:borderWidth="0dp"
+        app:elevation="0dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="0dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/hangup"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="100dp"
+        android:src="@drawable/_hungup"
+        android:visibility="gone"
+        app:backgroundTint="@color/hangup"
+        app:borderWidth="0dp"
+        app:elevation="0dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="0dp" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="80dp"
+        android:layout_marginStart="100dp"
+        android:src="@drawable/speak"
+        app:backgroundTint="@color/FloatingActionButton_false"
+        app:borderWidth="0dp"
+        app:elevation="0dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="0dp" />
+
+    <RelativeLayout
+        android:id="@+id/map_notify"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#aa000000"
+        android:visibility="gone"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/right_to_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/right_to_left"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="向左滑动,查看地图"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_below="@+id/right_to_left"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/back_notify"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#aa000000"
+        android:visibility="gone"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/left_to_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/left_to_right"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="从边缘"
+            android:textColor="@color/red"
+            android:textSize="25dp"
+            android:layout_below="@+id/left_to_right"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textView3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="向右滑动,查看消息"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_toEndOf="@+id/textView3" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/do_not_touch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="gone"></RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
+
+

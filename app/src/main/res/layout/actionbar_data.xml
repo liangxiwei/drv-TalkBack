@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00ffffff"
+    android:orientation="vertical"
+  >
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        >
+
+        <TextView android:id="@+id/time1"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/time_height"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:textSize="@dimen/time_text_size" />
+
+        <TextView android:id="@+id/time2"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/time_height"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:layout_marginLeft="@dimen/time_margin"
+            android:textSize="@dimen/time_text_size" />
+
+        <TextView android:id="@+id/time3"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/time_height"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:layout_marginLeft="@dimen/time_margin"
+            android:textSize="@dimen/time_text_size"  />
+
+        <TextView android:id="@+id/time4"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/time_height"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:layout_marginLeft="@dimen/time_margin"
+            android:textSize="@dimen/time_text_size"  />
+
+        <TextView android:id="@+id/time5"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/time_height"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:layout_marginLeft="@dimen/time_margin"
+            android:textSize="@dimen/time_text_size"  />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        >
+
+        <TextView android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+        <TextView android:id="@+id/week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="10dp"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/statusBar"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        >
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="14dp"
+                android:background="@drawable/icon_gps"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWirte"
+                android:textSize="@dimen/status_textsize"
+                android:text="GPS"
+                android:layout_marginLeft="2dp"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWirte"
+                android:textSize="@dimen/status_textsize"
+                android:text="4G"
+                />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="13dp"
+                android:background="@drawable/icon_4g"
+                android:layout_marginLeft="2dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="13dp"
+                android:background="@drawable/icon_wifi"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWirte"
+                android:textSize="@dimen/status_textsize"
+                android:text="WIFI"
+                android:layout_marginLeft="2dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

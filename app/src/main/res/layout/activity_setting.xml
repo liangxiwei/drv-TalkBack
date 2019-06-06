@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#002c70"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_panel_relative_layout">
+
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_panel_setting"
+            android:drawableLeft="@mipmap/setting_back_icon"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:text="返回"
+            android:textColor="@color/text_color_90white"
+            android:textSize="16sp" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp">
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <GridView
+        android:id="@+id/gvItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_panel_relative_layout"
+        android:numColumns="4"
+        android:paddingEnd="25dp"
+        android:paddingStart="25dp"
+        android:paddingTop="5dp" />
+
+</LinearLayout>

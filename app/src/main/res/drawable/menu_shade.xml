@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/textColor" />
+        </shape>
+    </item>
+    <item android:top="2px">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="@color/colorPrimaryDark"
+                android:centerColor="@color/colorAccent"
+                android:endColor="@color/textColor"
+                android:angle="90" />
+        </shape>
+    </item>
+    <!-- <item  android:top="1px">
+         <shape android:shape="rectangle">
+             &lt;!&ndash;<stroke&ndash;&gt;
+                 &lt;!&ndash;android:width="0.5dp"&ndash;&gt;
+                 &lt;!&ndash;android:color="#aa4F61d5"/>&ndash;&gt;
+             <gradient android:startColor="@color/textColor"
+                 android:centerColor="@color/colorPrimaryDark"
+                 android:endColor="@color/textColor"
+                 android:angle="90"   />
+         </shape>
+
+     </item>
+     <item  android:left="1px">
+         <shape android:shape="rectangle">
+             <gradient android:startColor="@color/textColor"
+                 android:centerColor="@color/colorPrimaryDark"
+                 android:endColor="@color/textColor"
+                 android:angle="0"   />
+         </shape>
+     </item>
+     <item  android:bottom="1px">
+         <shape android:shape="rectangle">
+             <gradient android:startColor="@color/textColor"
+             android:centerColor="@color/colorPrimaryDark"
+             android:endColor="@color/textColor"
+                 android:angle="90"   />
+         </shape>
+     </item>
+     <item  android:right="1px">
+         <shape android:shape="rectangle">
+             <gradient android:startColor="@color/textColor"
+                 android:centerColor="@color/colorPrimaryDark"
+                 android:endColor="@color/textColor"
+                 android:angle="0"   />
+         </shape>
+
+     </item>-->
+
+</layer-list>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="settings_left_text">18sp</dimen>
+	<dimen name="settings_item_height">48dp</dimen>
+	<dimen name="settings_left_padding">20dp</dimen>
+	<dimen name="settings_left_margin">20dp</dimen>
+	<dimen name="settings_right_padding">20dp</dimen>
+	<dimen name="settings_right_margin">20dp</dimen>
+	<dimen name="text_image_view">16dp</dimen>
+	<dimen name="main_text_image_width">200dp</dimen>
+
+	<!-- Default screen margins, per the Android Design guidelines. -->
+	<dimen name="nav_header_vertical_spacing">16dp</dimen>
+	<dimen name="nav_header_height">160dp</dimen>
+	<!-- Default screen margins, per the Android Design guidelines. -->
+	<dimen name="activity_horizontal_margin">16dp</dimen>
+	<dimen name="activity_vertical_margin">16dp</dimen>
+	<dimen name="fab_margin">16dp</dimen>
+	<item name="letter_to_tile_ratio" type="fraction">70%</item>
+	<item name="chinese_to_tile_ratio" type="fraction">60%</item>
+
+	<dimen name="dialog_size">20sp</dimen>
+	<dimen name="dialog_name_size">16sp</dimen>
+
+	<dimen name="notify_layout_height">200dp</dimen>
+
+	<dimen name="normal_title_size">30sp</dimen>
+	<dimen name="normal_text_size">24sp</dimen>
+
+	<dimen name="title_layout_height">80dp</dimen>
+	<dimen name="bottom_layout_height">170dp</dimen>
+
+	<dimen name="drawable_padding">8dp</dimen>
+
+	<dimen name="left_label_width">160dp</dimen>
+
+	<dimen name="time_width">32dp</dimen>
+	<dimen name="time_height">44dp</dimen>
+	<dimen name="time_text_size">36dp</dimen>
+
+	<dimen name="time_margin">4dp</dimen>
+
+	<dimen name="status_width">13dp</dimen>
+	<dimen name="status_height">14dp</dimen>
+	<dimen name="status_textsize">16dp</dimen>
+
+
+</resources>

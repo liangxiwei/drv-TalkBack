@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="autorun_boot">
+        <item>on</item>
+        <item>off</item>
+    </string-array>
+    <string-array name="autorun_boot_value" translatable="false" >
+        <item>true</item>
+        <item>false</item>
+    </string-array>
+    <string-array name="videosize">
+        <item>high</item>
+        <item>middle </item>
+        <item>low</item>
+    </string-array>
+    <string-array name="videosize_value" translatable="false" >
+        <item>1920x1080</item>
+        <item>1280x720</item>
+        <item>800x480</item>
+    </string-array>
+    <string-array name="videoduration">
+        <item>7 min</item>
+        <item>5 min</item>
+        <item>3 min</item>
+    </string-array>
+
+    <integer-array name="videoduration_value">
+        <item>420000</item>
+        <item>300000</item>
+        <item>180000</item>
+    </integer-array>
+
+    <string-array name="audio_enabled">
+        <item>on</item>
+        <item>off</item>
+    </string-array>
+    <string-array name="audio_enabled_value" translatable="false" >
+        <item>true</item>
+        <item>false</item>
+    </string-array>
+    <string-array name="collision_sensitivity">
+        <item>high</item>
+        <item>middle</item>
+        <item>low</item>
+    </string-array>
+    <!-- 碰撞检测加速度 -->
+    <integer-array name="collision_value">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </integer-array>
+
+
+    <string-array name="video_devs">
+        <item>/dev/video0</item>
+        <item>/dev/video1</item>
+        <item>/dev/video2</item>
+        <item>/dev/video3</item>
+        <item>/dev/video4</item>
+        <item>/dev/video5</item>
+        <item>/dev/video6</item>
+        <item>/dev/video7</item>
+        <item>/dev/video8</item>
+        <item>/dev/video9</item>
+    </string-array>
+</resources>

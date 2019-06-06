@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="brown">#3D3D3D</color>
+    <color name="grey">#777777</color>
+    <color name="red">#CC0000</color>
+    <color name="gren">#669900</color>
+    <color name="blue">#0099CC</color>
+    <color name="yellow">#FF8F1A</color>
+    <color name="grey_white">#F6F6F6</color>
+    <color name="settings_page_background_left">#FF282F3E</color>
+    <color name="settings_page_background_right">#FF242837</color>
+    <color name="settings_page_background_right_text">#FF1D1F2C</color>
+    <color name="settings_line">#FF4A525A</color>
+    <color name="settings_select_text">#00a8ff</color>
+    <color name="state_selected">#33B5E5</color>
+    <color name="state_pressed">#7BC7E1</color>
+    <color name="state_focused">#00BAFF</color>
+    <color name="main_page_background">#FF181C26</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#3F51B5</color>
+    <color name="textColor">#4F61d5</color>
+    <color name="call">#cc00aa00</color>
+    <color name="hangup">#bbff0000</color>
+    <color name="gray">#dddddd</color>
+    <color name="gray_text">#888888</color>
+    <color name="light">#ffffee</color>
+    <color name="temp">#66000000</color>
+    <color name="dialog_btn_bg">#EEEEEE</color>
+    <color name="photo_button_pressed">#FF7A7F81</color>
+    <color name="teamHeadBackColor">#DBDFE0</color>
+    <color name="noColor">#00ffffff</color>
+    <color name="search_bg">#EBEBEB</color>
+    <color name="search_input_bg">#80ffffff</color>
+    <color name="match_btn_bg">#00CC00</color>
+    <color name="match_btn_bg_press">#00ff00</color>
+    <color name="FloatingActionButton_false">#55ffffff</color>
+    <color name="FloatingActionButton_up">#cc00aa00</color>
+    <color name="FloatingActionButton_down">#80000000</color>
+    <color name="FloatingActionButton_focused">#8000BAFF</color>    <color name="search_color">#E066FF</color>
+    <array name="letter_tile_colors">
+        <item>#33b679</item>
+        <item>#536173</item>
+        <item>#df5948</item>
+        <item>#aeb857</item>
+        <item>#547bca</item>
+        <item>#ae6b23</item>
+        <item>#e5ae4f</item>
+        <item>#855e86</item>
+    </array>
+
+    <color name="notify_background_selected">#BB5F9EA0</color>
+    <color name="notify_background">#885F9EA0</color>
+    <color name="letter_tile_default_color">#cccccc</color>
+    <color name="letter_tile_font_color">#ffffff</color>
+
+    <color name="blue_normal">#1e90ff</color>
+
+    <color name="window_background_color">#FF000000</color>
+    <color name="letter_tile_default_color1">#bb000000</color>
+    <color name="select_item_color">#ff757575</color>
+
+    <color name="dvr_title_colro">#ffA7A7A7</color>
+    <color name="dvr_full_red">#FF0000</color>
+    <color name="dialog_button_bg">#66000000</color>
+
+    <color name="j_wheel_timebtn_nor">#54a3fa</color>
+    <color name="j_wheel_timebtn_pre">#CCCCCC</color>
+    <color name="search_friend">#8a8a8a</color>
+    <color name="background_listview">#f0f0f0</color>
+    <color name="greenyellow">#ADFF2F</color> <!-- 黄绿色 -->
+    <color name="gainsboro">#DCDCDC</color> <!-- 淡灰色 -->
+    <color name="text_color">#999999</color>
+
+
+    <color name="colorWirte">#ffffff</color>
+    <color name="border_color">#003175</color>
+    <color name="bg_icon">#0D62D5</color>
+
+    <color name="text_color_90white">#E6ffffff</color>
+    <color name="dialog_color_line">#0952B7</color>
+
+
+</resources>

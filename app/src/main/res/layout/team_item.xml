@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_bg"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    android:orientation="horizontal">
+        <com.example.jrd48.chat.wiget.PuzzleView
+            android:id="@+id/linkman_image_g"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_centerHorizontal="true"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/linkman_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:maxEms="13"
+                    android:maxLines="1"
+                    android:text="1号群"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/normal_text_size" />
+                <ImageView
+                    android:id="@+id/role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="13dp"
+                    android:maxWidth="13dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/linkman_name" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/linkman_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="不是这样的"
+                android:visibility="gone"
+                android:textColor="#999999"
+                android:textSize="22sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/call_click"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingEnd="15dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:layout_marginLeft="10dp"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="horizontal">
+            <com.example.jrd48.chat.CircleImageView
+                android:id="@+id/call_link"
+                android:clickable="true"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@drawable/btn_call"
+                android:focusable="true"
+                android:listSelector="@drawable/btn_call" />
+        </LinearLayout>
+</LinearLayout>

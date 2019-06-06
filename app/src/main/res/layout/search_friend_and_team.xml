@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/re_search_friend"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@drawable/btn_change"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_marginTop="5dp"
+    android:visibility="visible">
+
+    <ImageView
+        android:id="@+id/iv_find"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ar5" />
+
+    <TextView
+        android:id="@+id/tv_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:gravity="center"
+        android:layout_toRightOf="@id/iv_find"
+        android:text="在线搜索好友:"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_search_friend"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/tv_temp"
+        android:ellipsize="end"
+        android:text="12354681445"
+        android:maxLines="1"
+        android:textSize="15sp" />
+</RelativeLayout>

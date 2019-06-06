@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#D8D3D3" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#eeeeee"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/j_btnCancel"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/dvr_cancel_background"
+            android:nextFocusUp="@+id/j_btnSubmit"
+            android:nextFocusDown="@+id/j_btnSubmit"
+            android:focusable="true"
+            android:text="@string/j_pickerview_cancel"
+            android:textColor="@drawable/j_wheel_timebtn" />
+
+        <TextView
+            android:text="@string/j_pickerview_title"
+            android:textSize="20sp"
+            android:textColor="@drawable/j_wheel_timebtn"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/j_btnSubmit"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/dvr_cancel_background"
+            android:gravity="center"
+            android:nextFocusUp="@+id/j_btnCancel"
+            android:nextFocusDown="@+id/j_btnCancel"
+            android:text="@string/j_pickerview_submit"
+            android:textColor="@drawable/j_wheel_timebtn" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#D8D3D3" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.luobin.search.friends.city.picverview.CharacterPickerView
+            android:id="@+id/j_optionspicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/j_optionspicker"
+            android:layout_alignTop="@id/j_optionspicker"
+            android:background="@drawable/j_bg_above_timepicker" />
+    </RelativeLayout>
+
+</LinearLayout>

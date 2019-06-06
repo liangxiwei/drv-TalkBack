@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/my_documents"
+            android:icon="@drawable/ic_my_file"
+            android:visible="false"
+            android:title="我的文件" />
+        <item
+            android:id="@+id/add_friend"
+            android:icon="@drawable/location"
+            android:visible="false"
+            android:title="附近好友" />
+        <item
+            android:id="@+id/scan"
+            android:icon="@drawable/ic_menu_camera"
+            android:visible="false"
+            android:title="扫一扫" />
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="设置" />
+        <item
+            android:id="@+id/nav_update"
+            android:icon="@drawable/update"
+            android:title="检查更新" />
+    </group>
+
+    <!--<item android:title="通信">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="分享" />
+        </menu>
+    </item>-->
+
+    <item android:title="退出">
+        <menu>
+            <item
+                android:id="@+id/nav_loginout"
+                android:icon="@drawable/ic_menu_send"
+                android:title="登出" />
+            <item
+                android:id="@+id/nav_close"
+                android:icon="@drawable/ic_menu_close"
+                android:title="关闭" />
+        </menu>
+    </item>
+
+</menu>

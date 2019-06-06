@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+
+android {
+    useLibrary 'org.apache.http.legacy'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        applicationId "com.luobin.dvr"
+        minSdkVersion 21
+        targetSdkVersion 25
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters /*'armeabi', */ 'armeabi-v7a'//, 'arm64-v8a'//, 'x86_64', 'mips', 'mips64'
+            //...加入需要生成的文件夹
+        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+
+    }
+    buildTypes {
+        release {
+            //混淆
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            //混淆
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+//    sourceSets {
+//        main {
+//            java.srcDirs = ['src']
+//            aidl.srcDirs = ['src']
+//            res.srcDirs = ['res']
+//            assets.srcDirs = ['assets']
+//            jni.srcDirs = ['jni']
+//            jniLibs.srcDirs = ['libs']
+//            manifest.srcFile 'AndroidManifest.xml'
+//        }
+//    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/jni/Android.mk'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    dexOptions {
+        javaMaxHeapSize "2048m"
+    }
+}
+
+dependencies {
+   /* implementation fileTree(include: ['*.jar'], dir: 'libs')*/
+   /* compile 'com.android.support:appcompat-v7:25.3.1'*/
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:percent:25.3.1'
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.google.protobuf:protobuf-java:3.2.0'
+    compile 'cz.msebera.android:httpclient:4.4.1.2'
+    compile files('libs/AMap3DMap_5.3.0_AMapNavi_5.3.0_AMapSearch_5.3.1_AMapLocation_3.5.0_20170817.jar')
+    compile files('libs/zxing-core-3.3.3.jar')
+    compile files('libs/apache-commons-lang3-3.4.jar')
+    compile files('libs/gson-2.2.4.jar')
+    compile files('libs/jackson-all-1.7.6.jar')
+    compile 'cn.carbswang.android:NumberPickerView:1.0.2'
+    compile 'com.alibaba:fastjson:1.2.21'
+    compile project(':logCollector')
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.contrarywind:Android-PickerView:4.1.6'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    compile 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.kyleduo.switchbutton:library:2.0.0'
+    provided files('libs/framework.jar')
+    compile 'com.baoyz.pullrefreshlayout:library:1.2.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.14'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+}
+
+preBuild {
+    doLast {
+        def imlFile = file(project.name + ".iml")
+        println 'Change ' + project.name + '.iml order'
+        try {
+            def parsedXml = (new XmlParser()).parse(imlFile)
+            def jdkNode = parsedXml.component[1].orderEntry.find { it.'@type' == 'jdk' }
+            parsedXml.component[1].remove(jdkNode)
+            def sdkString = "Android API " + android.compileSdkVersion.substring("android-".length()) + " Platform"
+            new Node(parsedXml.component[1], 'orderEntry', ['type': 'jdk', 'jdkName': sdkString, 'jdkType': 'Android SDK'])
+            groovy.xml.XmlUtil.serialize(parsedXml, new FileOutputStream(imlFile))
+        } catch (FileNotFoundException e) {
+            // nop, iml not found
+        }
+    }
+}
+
+

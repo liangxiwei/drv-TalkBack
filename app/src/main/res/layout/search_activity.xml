@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:onClick="back"
+            android:visibility="gone"
+            android:scaleType="centerInside"
+            android:src="@drawable/top_bar_back" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@id/iv_back"
+            android:text="好友查找"
+            android:textColor="@color/dvr_title_colro"
+            android:textSize="@dimen/normal_title_size" />
+
+
+        <Button
+            android:id="@+id/btn_match_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/btn_show_color"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="匹配通讯录"
+            android:visibility="gone"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_search"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerVertical="true"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:visibility="gone"
+        >
+
+        <FrameLayout
+            android:id="@+id/fl_input"
+            android:layout_width="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/search_bg"
+            android:layout_marginLeft="5dp"
+            android:visibility="gone"
+            android:layout_toLeftOf="@+id/tv_cancel"
+            android:layout_height="52dp">
+
+            <com.luobin.search.friends.SearchFriendsEditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="@string/search_prompt"
+                android:maxLines="1"
+                android:layout_centerVertical="true"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:drawableLeft="@drawable/search_friend"
+                android:textColorHint="@color/search_friend"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:nextFocusUp="@+id/lv_search"
+                android:nextFocusDown="@+id/tv_cancel"
+                android:visibility="visible"
+                android:textSize="@dimen/normal_text_size" />
+
+            <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/search_friend" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="15dp"
+            android:text="@string/cancel"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:nextFocusUp="@+id/et_search"
+            android:nextFocusDown="@+id/lv_search"
+            android:background="@drawable/dvr_cancel_background"
+            android:textColor="@drawable/j_wheel_timebtn"
+            android:visibility="gone" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_show_title"
+        android:layout_height="58dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:background="@drawable/dvr_search_background"
+        android:focusable="true"
+        android:nextFocusUp="@+id/re_nearby_car"
+        android:nextFocusDown="@+id/re_search_friends"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:visibility="visible"
+            android:src="@drawable/ic_search_other" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:visibility="visible"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:textColorHint="@color/search_friend"
+            android:hint="@string/search_prompt"
+            android:textColor="#353535"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/re_match_phone"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_change"
+        android:clickable="true"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:visibility="gone">
+
+
+        <ImageView
+            android:id="@+id/iv_match_phone"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            android:src="@drawable/icon_phone" />
+
+        <TextView
+            android:id="@+id/tv_match_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/iv_match_phone"
+            android:textColor="#353535"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/to_right"
+            android:layout_alignBottom="@+id/tv_match_phone"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/re_search_friends"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/dvr_layout_background"
+        android:clickable="true"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:focusable="true"
+        android:nextFocusUp="@+id/rl_show_title"
+        android:nextFocusDown="@+id/re_nearby_car"
+        android:visibility="visible">
+
+
+        <ImageView
+            android:id="@+id/iv_search_friend"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            android:src="@mipmap/search" />
+
+        <TextView
+            android:id="@+id/tv_search_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/iv_search_friend"
+            android:text="@string/find_strangers_on_condition"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal_text_size" />
+
+        <ImageView
+            android:id="@+id/tv_other"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/to_right"
+            android:layout_alignBottom="@+id/tv_search_friend"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/re_nearby_car"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/dvr_layout_background"
+        android:clickable="true"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:focusable="true"
+        android:nextFocusUp="@+id/re_search_friends"
+        android:nextFocusDown="@+id/rl_show_title"
+        android:visibility="visible">
+
+
+        <ImageView
+            android:id="@+id/iv_nearby_car"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            android:src="@mipmap/location"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/iv_nearby_car"
+            android:text="@string/check_near_car"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal_text_size" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/to_right"
+
+            />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:visibility="visible"
+        android:drawSelectorOnTop="true"
+        android:nextFocusUp="@+id/et_search"
+        android:nextFocusDown="@+id/tv_cancel"
+        android:listSelector="@drawable/listview_item_change"></ListView>
+</LinearLayout>

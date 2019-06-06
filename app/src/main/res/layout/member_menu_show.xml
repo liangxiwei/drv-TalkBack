@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_member_priority"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="@drawable/btn_change"
+        android:text="设置话权"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:background="@color/gray"
+        android:visibility="gone"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:id="@+id/tv_remark"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:background="@drawable/btn_change"
+        android:visibility="gone"
+        android:text="设置昵称"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/view_line_one"
+        android:layout_width="match_parent"
+        android:background="@color/gray"
+        android:visibility="gone"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:id="@+id/tv_permission"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:background="@drawable/btn_change"
+        android:visibility="gone"
+        android:text="设置管理员"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/view_line_two"
+        android:layout_width="match_parent"
+        android:background="@color/gray"
+        android:visibility="gone"
+        android:layout_height="1dp" />
+    <TextView
+        android:id="@+id/tv_member_delete"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:background="@drawable/btn_change"
+        android:visibility="gone"
+        android:text="删除"
+        android:textSize="20sp" />
+</LinearLayout>

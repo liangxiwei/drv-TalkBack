@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            <TextView
+                android:id="@+id/custom_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:textColor="@color/dvr_title_colro"
+                android:textSize="@dimen/normal_title_size" />
+        </android.support.v7.widget.Toolbar>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"/>
+    </android.support.design.widget.AppBarLayout>
+
+    <TableRow
+        android:id="@+id/row1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="+86"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/phonenumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line_bg"
+                android:ems="10"
+                android:hint="请输入11位手机号"
+                android:inputType="phone"
+                android:paddingLeft="65dp">
+            <requestFocus />
+        </EditText>
+        </RelativeLayout>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/row2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="密码"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line_bg"
+                android:ems="10"
+                android:hint="请输入密码(至少4位)"
+                android:inputType="numberPassword"
+                android:paddingLeft="65dp"
+                android:paddingRight="35dp">
+            </EditText>
+
+            <Button
+                android:id="@+id/passwordsee"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/passwordsee1" />
+        </RelativeLayout>
+
+    </TableRow>
+
+    <TableRow>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingTop="30dp">
+
+            <Button
+                android:id="@+id/registration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+                android:background="@drawable/reg0"
+                android:listSelector="@drawable/btn_reg"
+                android:text="注册"
+                android:textColor="#ffffff"
+                android:textSize="16dp" />
+        </LinearLayout>
+    </TableRow>
+
+
+</TableLayout>

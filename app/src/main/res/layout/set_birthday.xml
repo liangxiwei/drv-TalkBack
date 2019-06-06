@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/birthday_cancel_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:focusable="true"
+                android:background="@drawable/dvr_cancel_background"
+                android:nextFocusUp="@+id/birthday_sure_btn"
+                android:nextFocusDown="@+id/birthday_sure_btn"
+                android:textColor="@drawable/j_wheel_timebtn"
+                android:text="@string/j_pickerview_cancel"
+                android:textSize="17sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/birthday_sure_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/j_pickerview_submit"
+                android:focusable="true"
+                android:background="@drawable/dvr_cancel_background"
+                android:nextFocusUp="@+id/birthday_cancel_btn"
+                android:nextFocusDown="@+id/birthday_cancel_btn"
+                android:textColor="@drawable/j_wheel_timebtn"
+                android:textSize="17sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/ll_btn"
+        android:background="#D8D3D3" />
+
+    <DatePicker
+        android:id="@+id/birthday_Picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_btn"
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+        android:calendarViewShown="false" />
+
+</RelativeLayout>

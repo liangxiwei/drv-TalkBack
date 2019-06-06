@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.video.VideoCallActivity">
+
+    <FrameLayout
+        android:id="@+id/single_video_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <include
+            android:id="@+id/other_layout"
+            layout="@layout/other_video_item" />
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/self_layout"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical"
+                app:layout_heightPercent="100%"
+                app:layout_widthPercent="100%">
+
+                <include layout="@layout/self_video_item" />
+            </RelativeLayout>
+        </android.support.percent.PercentRelativeLayout>
+    </FrameLayout>
+</FrameLayout>

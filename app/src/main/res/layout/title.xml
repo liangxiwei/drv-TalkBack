@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary">
+
+    <Button
+        android:id="@+id/title_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_back"
+        android:listSelector="@drawable/btn_back" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="6"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/num_man"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="8"
+            android:visibility="gone"
+            android:singleLine="true"
+            android:textColor="#99ffffff"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.example.jrd48.chat.CircleImageView
+        android:id="@+id/speakingimage"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/speakingname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dip"
+        android:gravity="start"
+        android:maxEms="5"
+        android:singleLine="true"
+        android:textColor="#ffffff"
+        android:textSize="13sp" />
+    <ImageView
+        android:id="@+id/speakingstate"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:id="@+id/video_call"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="10dp"
+        android:clickable="true"
+        android:background="@drawable/video_call_btn"
+        android:layout_gravity="center" />
+
+    <ImageView
+        android:id="@+id/speaking_menu"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="10dp"
+        android:clickable="true"
+        android:visibility="gone"
+        android:background="@drawable/chat_menu"
+        android:layout_gravity="center" />
+
+</LinearLayout>

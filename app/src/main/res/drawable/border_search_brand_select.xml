@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 按下去的颜色 -->
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="@color/gainsboro" />
+
+            <corners android:radius="10dp" />
+            <stroke android:width="2px" android:color="@color/call" />
+        </shape>
+    </item>
+    <!-- 无效颜色 -->
+    <item android:state_enabled="false">
+        <shape>
+            <corners android:radius="10dp" />
+
+            <solid android:color="@color/gainsboro" />
+
+            <stroke android:width="2px" android:color="@color/select_item_color" />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape>
+            <solid android:color="@color/gainsboro" />
+
+            <corners android:radius="10dp" />
+
+            <stroke android:width="2px" android:color="@color/call" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <corners android:radius="10dp" />
+
+            <solid android:color="@color/gainsboro" />
+
+            <stroke android:width="2px" android:color="@color/select_item_color" />
+        </shape>
+    </item>
+
+</selector>

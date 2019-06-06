@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_storage_path" translatable="false">/sdcard/dvr</string>
+    <!--<string name="default_videosize" translatable="false">1280x720</string>-->
+    <string name="default_videosize" translatable="false">640x360</string><!--避免缩放--><!--640x360 768x432 Thumbnail size is 256x144-->
+    <integer name="default_video_duration" translatable="false">300000</integer>
+    <bool name="default_audio_enabled" translatable="false">false</bool>
+    <integer name="default_collision_value" translatable="false">2</integer>
+    <bool name="default_auto_run_when_boot" translatable="false">true</bool>
+    <!--<string name="default_thumbnail_view_rect" translatable="false">-260,0,260,228</string>-->
+    <string name="default_thumbnail_view_rect" translatable="false">-220,0,220,154</string>
+    <integer name="default_pre_video_time" translatable="false">5</integer>
+    <integer name="default_video_bitrate" translatable="false">5000000</integer>
+    <!-- default zxing code size -->
+    <integer-array name="default_zxing_size">
+        <item>480</item>
+        <item>480</item>
+    </integer-array>
+</resources>

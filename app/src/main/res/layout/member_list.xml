@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="1dp"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="center_vertical"
+        android:text="选择跟踪"
+        android:textColor="@color/white"
+        android:textSize="25dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#ffcccccc" />
+
+    <ListView
+        android:id="@+id/ll_member_list"
+        android:layout_width="374dp"
+        android:dividerHeight="3dp"
+        android:focusable="true"
+        android:nextFocusUp="@+id/tv_cancel"
+        android:nextFocusDown="@+id/tv_cancel"
+        android:layout_height="226dp"></ListView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#ffcccccc" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:nextFocusUp="@+id/ll_member_list"
+        android:background="@drawable/tab_list_item_selector"
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        android:text="取消" />
+</LinearLayout>

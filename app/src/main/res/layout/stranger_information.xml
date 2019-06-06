@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pop_layout2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:fadingEdge="horizontal|vertical"
+    android:fadingEdgeLength="5dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_shap"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/FloatingActionButton_false"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/layout_clear_track"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.example.jrd48.chat.CircleImageView
+            android:id="@+id/iv_head"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:visibility="visible"
+            android:scaleType="fitCenter"
+            android:src="@drawable/man" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            style="@style/Base.DialogWindowTitle.AppCompat"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_line_one"
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/teamHeadBackColor"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/layout_look"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/simple_background_selector"
+        android:nextFocusUp="@+id/layout_add_friend"
+        android:nextFocusDown="@+id/layout_detailed"
+        android:focusable="true"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="fitCenter"
+            android:visibility="gone"
+            android:src="@drawable/addman" />
+
+        <TextView
+            android:id="@+id/tv_look"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="@string/road_inquiry"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_line_two"
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/teamHeadBackColor"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/layout_detailed"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@drawable/simple_background_selector"
+        android:nextFocusUp="@+id/layout_look"
+        android:nextFocusDown="@+id/layout_add_friend"
+        android:focusable="true"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="3dp"
+            android:visibility="gone"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ar5" />
+
+        <TextView
+            android:id="@+id/tv_detailed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/detailed_information"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_line_three"
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/teamHeadBackColor"
+        android:visibility="visible" />
+    <LinearLayout
+        android:id="@+id/layout_add_friend"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/simple_background_selector"
+        android:nextFocusUp="@+id/layout_detailed"
+        android:nextFocusDown="@+id/layout_look"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="3dp"
+            android:visibility="gone"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ar5" />
+
+        <TextView
+            android:id="@+id/tv_add_friend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/add_friend"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_exit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_bg"
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:padding="8dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/addgroup" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="15dip" />
+    </LinearLayout>
+
+</LinearLayout>

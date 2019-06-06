@@ -1,0 +1,66 @@
+����Ҫ��֤/sys/kernel/debug/msm_otg/mode   /sys/class/power_supply/usb/online    /sys/class/power_supply/usb/present ���޸�Ȩ��
+��usbcamera��
+chmod 777  /sys/class/power_supply/usb/present
+chmod 777 /sys/class/power_supply/usb/online
+echo 0 >  /sys/class/power_supply/usb/present
+echo 0 > /sys/class/power_supply/usb/online
+
+echo on > /sys/class/gpio_switch/hub_reset
+echo on > /sys/class/gpio_switch/hub_3v3
+echo off > /sys/class/gpio_switch/hub_reset
+
+echo none > /sys/kernel/debug/msm_otg/mode
+echo host > /sys/kernel/debug/msm_otg/mode
+
+
+chmod 666 /dev/video1
+�˳����л�adb:
+echo none > /sys/kernel/debug/msm_otg/mode
+echo off > /sys/class/gpio_switch/hub_3v3
+echo on > /sys/class/gpio_switch/hub_reset
+
+echo none > /sys/kernel/debug/msm_otg/mode
+echo off > /sys/class/gpio_switch/hub_3v3
+echo on > /sys/class/gpio_switch/hub_reset
+echo peripheral > /sys/kernel/debug/msm_otg/mode
+
+
+(1) ��֤�豸������ wifi
+     
+(2) �� adb shell ��ִ��
+ifconfig // �鿴 IP
+
+su //��ȡrootȨ��
+setprop service.adb.tcp.port 5555//���ü����Ķ˿ڣ��˿ڿ����Զ��壬��5554��5555��Ĭ�ϵ�
+
+ps |grep adbd // ��ʾ pid
+
+kill <pid>
+
+
+(3) ������ִ�У�adb connect <ip>
+
+am broadcast -a com.android.action.ptt --ei ptt_action 0
+
+
+am start -n com.luobin.dvr/com.example.jrd48.chat.WelcomeActivity
+
+am start -n com.luobin.dvr/com.luobin.dvr.ui.MainActivity
+
+am start -n com.erobbing.runtest/com.erobbing.runtest.MainActivity 
+
+adb reboot bootloader
+fastboot oem su
+fastboot flash system system.img
+fastboot reboot
+
+:
+关闭usb后，执行adb shell oems 17，等会出口后执行adb shell oems 1
+:
+重启就会记录log
+:
+重启后adb pull /data/media/0/log/
+:
+就可以拿到log
+:
+也要root先

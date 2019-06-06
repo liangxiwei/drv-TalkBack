@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:onClick="back"
+            android:visibility="gone"
+            android:scaleType="centerInside"
+            android:src="@drawable/top_bar_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_back"
+            android:layout_centerHorizontal="true"
+            android:text="位置查询"
+            android:textColor="@color/dvr_title_colro"
+            android:textSize="@dimen/normal_title_size" />
+
+    </RelativeLayout>
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/mapView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title"></com.amap.api.maps.MapView>
+
+    <ImageView
+        android:id="@+id/img_set_track"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_below="@+id/title"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/img_location"
+        android:background="@drawable/menu_selector"
+        android:focusable="true"
+        android:nextFocusUp="@+id/img_location"
+        android:nextFocusDown="@+id/img_location"
+        android:scaleType="fitCenter"
+        android:src="@drawable/location_tail" />
+    <ImageView
+        android:id="@+id/img_location"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/title"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:focusable="true"
+        android:nextFocusUp="@+id/img_set_track"
+        android:nextFocusDown="@+id/img_set_track"
+        android:background="@drawable/location_isselector" />
+
+    <ImageView
+        android:id="@+id/img_clear_track"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/img_set_track"
+        android:background="@drawable/menu_selector"
+        android:scaleType="fitCenter"
+        android:src="@drawable/location_tail_cancel"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="180dp"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/btn_to_chat"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rotate"
+            android:paddingLeft="5dp"
+            android:text="消息"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="#55dddddd"
+        android:textSize="22sp"
+        android:text="正在获取数据，请稍等..."
+        />
+
+</RelativeLayout>
+

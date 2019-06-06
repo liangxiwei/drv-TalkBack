@@ -1,0 +1,111 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/white">
+        <RelativeLayout
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center">
+            <com.example.jrd48.chat.CircleImageView
+                android:id="@+id/head_image_s"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+
+                android:padding="5dp" />
+
+            <com.example.jrd48.chat.wiget.PuzzleView
+                android:id="@+id/head_image_g"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:padding="5dp" />
+            <TextView
+                android:id="@+id/new_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/cir"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="9"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/group_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="1号群"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+            <TextView
+                android:id="@+id/recent_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Danny:不是这样的"
+                android:textColor="#999999"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/call_click"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:descendantFocusability="blocksDescendants"
+            android:paddingEnd="15dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:orientation="vertical"
+            android:paddingLeft="5dp">
+
+            <TextView
+                android:id="@+id/record_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:35"
+                android:textSize="11dp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/call_record"
+                    android:clickable="false"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="end"
+                    android:background="@drawable/btn_call"
+                    android:focusable="false"
+                    android:listSelector="@drawable/btn_call" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+</LinearLayout>

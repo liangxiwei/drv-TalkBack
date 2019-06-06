@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+
+    <ImageView
+        android:id="@+id/imgClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:src="@mipmap/close" />
+
+
+    <LinearLayout
+        android:layout_width="440dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/bg_panel_relative_layout"
+        android:minHeight="270dp"
+        android:weightSum="2">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/imgHead"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="20dp" />
+
+            <Button
+                android:id="@+id/btnMyEdit"
+                android:layout_width="32dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/bg_panel_btn"
+                android:text="修改"
+                android:textColor="@color/text_color_90white"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:id="@+id/llItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="85dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="20dp">
+
+                    <TextView
+                        android:id="@+id/tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="昵称："
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/tv1"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/sbtnName"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"
+                        android:textSize="6sp"
+                        app:kswTextOff="隐藏"
+                        app:kswTextOn="显示" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="20dp">
+
+                    <TextView
+                        android:id="@+id/tv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="个性签名："
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvSign"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/tv2"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/sbtnSign"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"
+                        android:textSize="6sp"
+                        app:kswTextOff="隐藏"
+                        app:kswTextOn="显示" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="20dp">
+
+                    <TextView
+                        android:id="@+id/tv3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="性别："
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvSex"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/tv3"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/sbtnSex"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"
+                        android:textSize="6sp"
+                        app:kswTextOff="隐藏"
+
+                        app:kswTextOn="显示" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="20dp">
+
+                    <TextView
+                        android:id="@+id/tv4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="手机号："
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/tv4"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/sbtnPhone"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"
+                        android:textSize="6sp"
+                        app:kswTextOff="隐藏"
+                        app:kswTextOn="显示" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="20dp">
+
+                    <TextView
+                        android:id="@+id/tv5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="车牌号："
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvCarNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/tv5"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/sbtnCarNo"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"
+                        android:textSize="6sp"
+
+                        app:kswTextOff="隐藏"
+                        app:kswTextOn="显示" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="20dp">
+
+                    <TextView
+                        android:id="@+id/tvGps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:singleLine="true"
+                        android:text="GPS"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/sbtnGps"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"
+                        android:textSize="6sp"
+                        app:kswTextOff="关"
+                        app:kswTextOn="开"
+                        app:kswThumbColor="@color/white" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvLine"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="85dp"
+            android:background="#FF75A7E6" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp">
+
+            <TextView
+                android:id="@+id/tvTextInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="68dp"
+                android:layout_marginTop="32dp"
+                android:text="选填信息"
+                android:textColor="@color/text_color_90white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/tvTextInfo"
+                android:layout_marginTop="60dp"
+                android:text="有助于认识车友"
+                android:textColor="@color/text_color_90white"
+                android:textSize="9sp" />
+
+            <Button
+                android:id="@+id/btnCarEdit"
+                android:layout_width="32dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/bg_panel_btn"
+                android:text="修改"
+                android:textColor="@color/text_color_90white"
+                android:textSize="10sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="85dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp">
+
+                    <TextView
+                        android:id="@+id/tv6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="车型："
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvCarModels"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/tv6"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+
+                    <Button
+                        android:id="@+id/btnCarModels"
+                        android:layout_width="32dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_panel_btn"
+                        android:text="选择"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="10sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp">
+
+                    <TextView
+                        android:id="@+id/tv7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="出生年月："
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvBirth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/tv7"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+
+                    <Button
+                        android:id="@+id/btnBirth"
+                        android:layout_width="32dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_panel_btn"
+                        android:text="选择"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="10sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp">
+
+                    <TextView
+                        android:id="@+id/tv8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="所在地："
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/tv8"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:id="@+id/btnLocation"
+                        android:layout_width="32dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_panel_btn"
+                        android:text="选择"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="10sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp">
+
+                    <TextView
+                        android:id="@+id/tv9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="家乡："
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/tv9"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:id="@+id/btnHome"
+                        android:layout_width="32dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_panel_btn"
+                        android:text="选择"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="10sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp">
+
+                    <TextView
+                        android:id="@+id/tv10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="行业："
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvIndustry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/tv10"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:id="@+id/btnIndustry"
+                        android:layout_width="32dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_panel_btn"
+                        android:text="选择"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="10sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp">
+
+                    <TextView
+                        android:id="@+id/tv11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="兴趣爱好："
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvInterest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/tv11"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:id="@+id/btnInterest"
+                        android:layout_width="32dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_panel_btn"
+                        android:text="选择"
+                        android:textColor="@color/text_color_90white"
+                        android:textSize="10sp" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><!--有点苗头了，fromDegrees为开始的角度，而toDegrees为结束后的角度, <span style="font-family: Arial, Helvetica, sans-serif;">背景的图片是个整体 ，</span><span style="font-family: Arial, Helvetica, sans-serif;">默认是它的左上角坐标</span><span style="font-family: Arial, Helvetica, sans-serif;">，</span>privotX为旋转点的x轴位置，pivotY是旋转点的y轴的坐标,比例是百分比（50% 50%代表将旋转点为图片的中心位置） drawable就是你要旋转的原图-->
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_page_switch"
+    android:fromDegrees="180"
+    android:toDegrees="180"
+    android:pivotX="50%"
+    android:pivotY="50%" />

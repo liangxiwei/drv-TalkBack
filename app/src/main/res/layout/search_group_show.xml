@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ebebeb"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAccent" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:onClick="back"
+            android:scaleType="centerInside"
+            android:src="@drawable/top_bar_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_back"
+            android:text="搜索到的群"
+            android:textColor="@color/dvr_title_colro"
+            android:textSize="@dimen/normal_title_size"  />
+
+        <ImageView
+            android:id="@+id/iv_detail"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_search_group_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#ffcccccc"
+        android:dividerHeight="1px"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+    </ListView>
+
+</LinearLayout>
