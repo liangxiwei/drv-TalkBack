@@ -1,5 +1,6 @@
 package com.example.jrd48.chat;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
@@ -26,6 +27,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +38,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.SQLite.MsgRecordHelper;
 import com.example.jrd48.chat.friend.AppliedFriends;
@@ -84,21 +87,20 @@ import java.util.TreeSet;
  */
 
 public class TabFragmentLinkmans extends BaseLazyFragment {
+
     final private static String[] indexStr = {"☆", "#", "A", "B", "C", "D", "E", "F", "G", "H",
             "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
             "V", "W", "X", "Y", "Z"};
+
     List<AppliedFriends> personsS = new ArrayList<AppliedFriends>();
     List<AppliedFriends> personsStar = new ArrayList<AppliedFriends>();
     List<ViewFriendsMsg> mFriend = new ArrayList<ViewFriendsMsg>();
     LinkmansAdapter adapter;
-    int friendStar;
     /**
      * 查看好友信息
      */
     ViewFriendsMsg mViewFriendsMsg;
-    private HashMap<String, Integer> selector;// 存放含有索引字母的位置
-    private LinearLayout layoutIndex;
-    private PullToRefreshListView mPullRefreshListView;
+    private PullRefreshLayout mPullRefreshView;
     private int MODIFY_FRIEND_STAR = 0;
     private int MODIFY_FRIEND_NICKNAME = 1;
     private int IS_FRIEND_STAR = 1;
@@ -130,9 +132,11 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
     private String TAG = "linkman";
     String myPhone;
     private boolean isGetFriendStatus;
-
+    private LinearLayout layoutIndex;
     //好友在线状态
     Set<String> onlineSet = new HashSet<String>();
+    private HashMap<String, Integer> selector;// 存放含有索引字母的位置
+    boolean isHasHeight = false;
 
     private BroadcastReceiver changgeImaReceiver = new BroadcastReceiver() {
         @Override
@@ -414,22 +418,27 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
 
     @Override
     protected void initData() {
+        layoutIndex.setBackgroundColor(Color.parseColor("#00ffffff"));
 //        loadFriendsListFromNet();
         onlineSet.clear();
         onlineSet = OnlineSetTool.getOnlineSet();
         initAdapterData();
-        //adapter = new LinkmansAdapter(getContext(), newPersonStar);
-        //listView.setAdapter(adapter);
+
+        ViewTreeObserver vto = layoutIndex.getViewTreeObserver();
+        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            public boolean onPreDraw() {
+                int height = layoutIndex.getMeasuredHeight();
+                if (height > 0 && !isHasHeight){
+                    isHasHeight = true;
+                    getIndexView(height);
+                }
+                return true;
+            }
+        });
+
         all.setVisibility(View.VISIBLE);
-//        tv_wait.setVisibility(View.GONE);
         initListViewClick();
-        getIndexView();
-//        mHandler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                loadFriendsListFromNet();
-//            }
-//        },300);
+
         initBroadcast();
         SharedPreferences preferences = getContext().getSharedPreferences("token", Context.MODE_PRIVATE);
         myPhone = preferences.getString("phone", "");
@@ -490,24 +499,22 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
         setData();
         String[] allNames = sortIndex(persons);
         sortList(allNames);
-
         selector = new HashMap<>();
-
         if (personsStar.size() > 0) {
-//            Linkmans link = new Linkmans("星标朋友", null, NOT_FRIEND_STAR, null, 0, null);
-//            newPersonStar.add(link);
+/*            Linkmans link = new Linkmans("星标朋友", null, NOT_FRIEND_STAR, null, 0, null);
+            newPersonStar.add(link);*/
             for (AppliedFriends af : personsStar) {
                 //int linkmanImage, String linkmanName, String linkmanPhone, int friendStar, byte[] userPic
                 Linkmans linkman = new Linkmans(af.getUserName(), af.getPhoneNum(), af.getFriendStar(), af.getUserPic(), af.getUserSex(), af.getNickName());
                 newPersonStar.add(linkman);
             }
-            selector.put(indexStr[0], 0);
+            //selector.put(indexStr[0], 0);
         }
 
         for (String anIndexStr : indexStr) {// 循环字母表，找出newPersons中对应字母的位置
             for (int t = 0; t < newPersons.size(); t++) {
-                if (newPersons.get(t).getLinkmanName().equals(anIndexStr)) {
-                    selector.put(anIndexStr, t + (personsStar.size() >= 1 ? (personsStar.size() + 1) : 0));
+                if (newPersons.get(t).getLinkmanName().equalsIgnoreCase(anIndexStr)) {
+                    selector.put(anIndexStr, t);
                     break;
                 }
             }
@@ -554,6 +561,7 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
     protected View initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.linkman_layout, container,
                 false);
+        layoutIndex = (LinearLayout) view.findViewById(R.id.layout);
         mWaitingProgressDialog = new ProgressDialog(mContext);
         mWaitingProgressDialog.setMessage(getResources().getString(R.string.waiting_progress_dialog_friends_msg));
         mWaitingProgressDialog.setCanceledOnTouchOutside(false);
@@ -562,13 +570,11 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
             mWaitingProgressDialog.show();
             SharedPreferencesUtils.put(mContext, "member_booting", false);
         }
-        layoutIndex = (LinearLayout) view.findViewById(R.id.layout);
 //        listView = (ListView) view.findViewById(R.id.listView);
         tv_show = (TextView) view.findViewById(R.id.tv);
         tv_wait = (TextView) view.findViewById(R.id.wait);
         all = (FrameLayout) view.findViewById(R.id.all);
-        mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_request_refresh_list);
-        listView = mPullRefreshListView.getRefreshableView();
+        listView = (ListView) view.findViewById(R.id.pull_request_refresh_list);
 
         adapter = new LinkmansAdapter(getContext(), newPersonStar);
         listView.setAdapter(adapter);
@@ -580,7 +586,7 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
                 Log.v("wsDvr", "position:" + position);
                 if (keyCode == KeyEvent.KEYCODE_F6 && event.getAction() == KeyEvent.ACTION_DOWN && position > 0) {
 
-                    final Linkmans linkmans = (Linkmans) adapter.getItem(position - 1);
+                    final Linkmans linkmans = (Linkmans) adapter.getItem(position);
                     if (linkmans != null) {
                         Intent intent = new Intent(mContext, FirstActivity.class);
                         intent.putExtra("data", 1);
@@ -601,15 +607,12 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
                 return false;
             }
         });
-        mPullRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
-
+        mPullRefreshView = (PullRefreshLayout) view.findViewById(R.id.pullRefreshLayout);
+        mPullRefreshView.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
-            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onRefresh() {
                 String label = DateUtils.formatDateTime(getContext(), System.currentTimeMillis(),
                         DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
-
-                refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
-
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -618,10 +621,9 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
                         refreshFriendsMenu();
                     }
                 });
-
-
             }
         });
+
         registerForContextMenu(listView);
         refreshFriendsMenu();
         return view;
@@ -714,61 +716,6 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
         }
     }
 
-    /**
-     * 绘制索引列表
-     */
-    public void getIndexView() {
-        height = layoutIndex.getMeasuredHeight() / indexStr.length;
-        Log.i(TAG, height + "");
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, height);
-        for (String anIndexStr : indexStr) {
-            final TextView tv = new TextView(getContext());
-            tv.setLayoutParams(params);
-            tv.setText(anIndexStr);
-            tv.setTextSize(11);
-            tv.setPadding(5, 0, 5, 0);
-            layoutIndex.addView(tv);
-        }
-        layoutIndex.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        layoutIndex.setBackgroundColor(Color
-                                .parseColor("#77000000"));
-                        if (getActivity() instanceof MainActivity) {
-                            ((MainActivity) getContext()).setNoScrollViewPager(false);
-                        }
-                        break;
-
-                    case MotionEvent.ACTION_MOVE:
-                        float y = event.getY();
-                        int index = (int) (y / height);
-                        if (index > -1 && index < indexStr.length) {// 防止越界
-                            String key = indexStr[index];
-                            if (selector.containsKey(key)) {
-                                int pos = selector.get(key);
-                                listView.setSelectionFromTop(// 防止ListView有标题栏
-                                        pos + listView.getHeaderViewsCount(), 0);
-                                tv_show.setVisibility(View.VISIBLE);
-                                tv_show.setText(indexStr[index]);
-                            }
-                        }
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        layoutIndex.setBackgroundColor(Color
-                                .parseColor("#00ffffff"));
-                        tv_show.setVisibility(View.GONE);
-                        if (getActivity() instanceof MainActivity) {
-                            ((MainActivity) getContext()).setNoScrollViewPager(true);
-                        }
-                        break;
-                }
-                return true;
-            }
-        });
-    }
 
     /**
      * 设置模拟数据
@@ -797,8 +744,8 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
         Button btnCancel = (Button) view.findViewById(R.id.btn_dialog_cancel);
         Button btnSend = (Button) view.findViewById(R.id.btn_dialog_send);
 
-        tvFriendName.setText(newPersonStar.get(position - 1).getLinkmanName());
-        imgFriendPic.setImageBitmap(GlobalImg.getImage(getContext(), newPersonStar.get(position - 1).getLinkmanPhone()));
+        tvFriendName.setText(newPersonStar.get(position).getLinkmanName());
+        imgFriendPic.setImageBitmap(GlobalImg.getImage(getContext(), newPersonStar.get(position).getLinkmanPhone()));
 
         final String image = FileUtils.getUriPath(getContext(), MainActivity.mUri);
 
@@ -888,7 +835,7 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
         SQLiteDatabase db = msgRecordHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("new_msg", 0);
-        db.update("Msg", values, "phone = ? and msg_from = ?", new String[]{newPersonStar.get(position - 1).getLinkmanPhone(), 0 + ""});
+        db.update("Msg", values, "phone = ? and msg_from = ?", new String[]{newPersonStar.get(position).getLinkmanPhone(), 0 + ""});
         db.close();
         NotificationManager nm = (NotificationManager) getContext().getSystemService(getContext().NOTIFICATION_SERVICE);
         nm.cancel(0);//消除对应ID的通知
@@ -913,7 +860,7 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
 //                afList.setAppliedFriends(list);
 //                Bundle bundle = new Bundle();
 //                bundle.putParcelable("friends_list", afList);
-        showFriendMsg(newPersonStar.get(position - 1).getLinkmanPhone());
+        showFriendMsg(newPersonStar.get(position).getLinkmanPhone());
 /*        Intent intent = new Intent(getContext(), FirstActivity.class);
         intent.putExtra("data", 0);
         intent.putExtra("uri", iamge);
@@ -1288,17 +1235,16 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
 
             @Override
             public void onTimeout() {
-                if (mPullRefreshListView != null)
-                    mPullRefreshListView.onRefreshComplete();
+                if (mPullRefreshView != null)
+                    mPullRefreshView.setRefreshing(false);
                 ToastR.setToast(getContext(), "连接超时");
             }
 
             @Override
             public void onGot(Intent i) {
 
-                if (mPullRefreshListView != null) {
-                    mPullRefreshListView.onRefreshComplete();
-                }
+                if (mPullRefreshView != null)
+                    mPullRefreshView.setRefreshing(false);
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
                     List<AppliedFriends> mList;
@@ -1318,9 +1264,8 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
 
                     } catch (Exception e) {
                         e.printStackTrace();
-                        if (mPullRefreshListView != null) {
-                            mPullRefreshListView.onRefreshComplete();
-                        }
+                        if (mPullRefreshView != null)
+                            mPullRefreshView.setRefreshing(false);
                     }
                     if (checkPullRefresh == true) {
                         ToastR.setToast(getContext(), "获取好友成功");
@@ -1456,6 +1401,67 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
                 }
             }
         }
+    }
+
+    /**
+     * 绘制索引列表
+     */
+    @SuppressLint("ClickableViewAccessibility")
+    public void getIndexView(int layoutHeight) {
+        height = layoutHeight / indexStr.length;
+        int size = 13;
+        if (height >= 40 ){
+            size = 13;
+        } else if (height >= 25 && height < 40){
+            size = 11;
+        } else if (height >= 10 && height < 25){
+            size = 9;
+        } else {
+            size = 7;
+        }
+//        ToastR.setToastLong(getActivity(),height+"  "+size);
+//        Log.i("jmh","height:"+height + " size:"+size);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, height);
+        for (String anIndexStr : indexStr) {
+            final TextView tv = new TextView(getContext());
+            tv.setLayoutParams(params);
+            tv.setText(anIndexStr);
+            tv.setTextSize(size);
+            tv.setPadding(5, 0, 5, 0);
+            layoutIndex.addView(tv);
+        }
+        layoutIndex.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        layoutIndex.setBackgroundColor(Color
+                                .parseColor("#77000000"));
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        float y = event.getY();
+                        int index = (int) (y / height);
+                        if (index > -1 && index < indexStr.length) {// 防止越界
+                            String key = indexStr[index];
+                            if (selector.containsKey(key)) {
+                                int pos = selector.get(key);
+                                listView.setSelectionFromTop(// 防止ListView有标题栏
+                                        pos + listView.getHeaderViewsCount(), 0);
+                                tv_show.setVisibility(View.VISIBLE);
+                                tv_show.setText(indexStr[index]);
+                            }
+                        }
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        layoutIndex.setBackgroundColor(Color
+                                .parseColor("#00ffffff"));
+                        tv_show.setVisibility(View.GONE);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     class ViewFriendsMsg {

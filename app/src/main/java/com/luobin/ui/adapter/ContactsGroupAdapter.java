@@ -82,7 +82,7 @@ public class ContactsGroupAdapter extends BaseAdapter {
         holder.groupName.setText(list.get(position).getLinkmanName());
 
         List<TeamMemberInfo> memberInfos = allMemberList.get(list.get(position).getTeamID());
-        if (memberInfos != null)
+
         initIcon(holder.groupIcon,memberInfos);
 
         return view;
@@ -90,19 +90,21 @@ public class ContactsGroupAdapter extends BaseAdapter {
 
     private void initIcon(LinearLayout groupIcon,List<TeamMemberInfo> memberInfos){
         groupIcon.removeAllViews();
-        int memberSize = memberInfos.size();
-        if (memberSize > 8)
-            memberSize = 8;
-        for (int i = 0; i < memberSize; i++){
-            TeamMemberInfo memberInfo = memberInfos.get(i);
-            Bitmap bitmap = GlobalImg.getImage(context, memberInfo.getUserPhone());
-            CircleImageView  icon = new CircleImageView(context);
-            icon.setScaleType(ImageView.ScaleType.FIT_XY);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ScreenUtils.Dp2Px(context,30), ScreenUtils.Dp2Px(context,30));
-            params.rightMargin = 20;
-            icon.setLayoutParams(params);
-            icon.setImageBitmap(bitmap);
-            groupIcon.addView(icon);
+        if (memberInfos != null){
+            int memberSize = memberInfos.size();
+            if (memberSize > 8)
+                memberSize = 8;
+            for (int i = 0; i < memberSize; i++){
+                TeamMemberInfo memberInfo = memberInfos.get(i);
+                Bitmap bitmap = GlobalImg.getImage(context, memberInfo.getUserPhone());
+                CircleImageView  icon = new CircleImageView(context);
+                icon.setScaleType(ImageView.ScaleType.FIT_XY);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ScreenUtils.Dp2Px(context,30), ScreenUtils.Dp2Px(context,30));
+                params.rightMargin = 20;
+                icon.setLayoutParams(params);
+                icon.setImageBitmap(bitmap);
+                groupIcon.addView(icon);
+            }
         }
     }
 

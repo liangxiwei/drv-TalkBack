@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import com.example.jrd48.PolyphonePinYin;
 import com.example.jrd48.chat.BaseActivity;
 import com.example.jrd48.chat.TabFragmentLinkGroup;
+import com.example.jrd48.chat.TabFragmentLinkmans;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.permission.PermissionUtil;
 import com.example.jrd48.service.protocol.root.NotifyProcesser;
@@ -33,8 +34,12 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
 
     private Context context;
     protected PermissionUtil mPermissionUtil;
-    LinearLayout actionbarMessage;
-
+    private LinearLayout actionbarMessage;
+    private TabFragmentLinkGroup tabFragmentLinkGroup;
+    private TabFragmentLinkmans tabFragmentLinkmans;
+    public static final int FRAGMENT_POSITION_GROUP = 0;
+    public static final int FRAGMENT_POSITION_MANS =1;
+    private int fragmentPostion = FRAGMENT_POSITION_GROUP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,15 +56,14 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
 
 
         //TODO 在这添加数据 个人信息
-//        MyInforTool myInforTool = new MyInforTool(DvrMainActivity.this, true);
-//        Log.i("myInforTool", myInforTool.toString());
-//        if (myInforTool.getUserName() == null || "".equals(myInforTool.getUserName())||myInforTool.getUserName().equals(myInforTool.getPhone())) {
-//            startActivity(new Intent(DvrMainActivity.this, RegisterInfoActivity.class));
-//          
-//        }
+        MyInforTool myInforTool = new MyInforTool(DvrMainActivity.this, true);
+        Log.i("myInforTool", myInforTool.toString());
+        if (myInforTool.getUserName() == null || "".equals(myInforTool.getUserName())||myInforTool.getUserName().equals(myInforTool.getPhone())) {
+            startActivity(new Intent(DvrMainActivity.this, RegisterInfoActivity.class));
+        }
 
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts, new TabFragmentLinkGroup())
+        tabFragmentLinkGroup = new TabFragmentLinkGroup();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts,tabFragmentLinkGroup )
                 .commitAllowingStateLoss();
 
 
@@ -107,6 +111,42 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void onPermissionFail(String failType) {
         ToastR.setToast(DvrMainActivity.this, "权限设置失败");
+    }
+
+    /**
+     * 通讯录按钮
+     * @param view
+     */
+    public void gotoMailList(View view){
+        if (tabFragmentLinkGroup != null){
+            if (tabFragmentLinkGroup.isPullRefresh()){
+                return;
+            }
+        }
+
+        if (fragmentPostion == FRAGMENT_POSITION_GROUP){
+            fragmentPostion = FRAGMENT_POSITION_MANS;
+            if (tabFragmentLinkmans == null){
+                tabFragmentLinkmans = new TabFragmentLinkmans();
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts,tabFragmentLinkmans )
+                    .commitAllowingStateLoss();
+        }
+    }
+
+    /**
+     * 群组按钮
+     * @param view
+     */
+    public void gotoReturn(View view){
+       if (fragmentPostion == FRAGMENT_POSITION_MANS){
+           fragmentPostion = FRAGMENT_POSITION_GROUP;
+           if (tabFragmentLinkGroup == null){
+               tabFragmentLinkGroup = new TabFragmentLinkGroup();
+           }
+           getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts,tabFragmentLinkGroup )
+                   .commitAllowingStateLoss();
+       }
     }
 
     @Override

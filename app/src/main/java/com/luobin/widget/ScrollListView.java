@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class ScrollListView extends ListView implements AbsListView.OnScrollListener {
-    boolean bl_down = false;
+    boolean bl_down = true;
     public ScrollListView(Context context) {
         super(context);
         this.setOnScrollListener(this);

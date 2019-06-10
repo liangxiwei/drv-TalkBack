@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.example.jrd48.GlobalStatus;
@@ -211,6 +212,24 @@ class LinkmansAdapter extends BaseAdapter {
         }
         return bmp;
 
+    }
+
+    public int getPinYinPosition(String letter){
+        if (letter.contains("#")){
+             return 0;
+        }else{
+            for (int i = 0; i < list.size();i++){
+                Linkmans linkmans = list.get(i);
+                Log.d("pangtao","pinyin = " +linkmans.getLinkmanNamePinYin());
+                if (linkmans.getLinkmanNamePinYin() != null && linkmans.getLinkmanNamePinYin().length() > 0){
+                    if (linkmans.getLinkmanNamePinYin().substring(0).equalsIgnoreCase(letter)){
+                        return i;
+                    }
+                }
+
+            }
+        }
+        return 0;
     }
 
     private class ViewHolder {
