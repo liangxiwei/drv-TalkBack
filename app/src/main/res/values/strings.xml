@@ -34,7 +34,8 @@
     <string name="permission_message">Set permissions</string>
     <string name="download_version_update_description">versionDesc</string>
     <string name="buffering">Disconnected</string>
-    <string name="connecting">Connecting</string>    <string name="add_link_man">Add Friends</string>
+    <string name="connecting">Connecting</string>
+    <string name="add_link_man">Add Friends</string>
     <string name="contain">包含：</string>
     <string name="download_already_latest">已经是最新版本.</string>
     <string name="download_btn_later">稍后再说</string>
@@ -201,7 +202,6 @@
     <string name="address_show">当前地址：%s</string>
 
     <string name="manual_input">manual input</string>
-
 
 
 </resources>

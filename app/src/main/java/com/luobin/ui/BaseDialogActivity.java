@@ -1,5 +1,6 @@
 package com.luobin.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -24,6 +25,7 @@ public class BaseDialogActivity extends Activity{
         /*Intent intent = new Intent(this, MyService.class);
         intent.putExtra("heart", true);
 		startService(intent);*/
+        getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         ActivityCollector.addAct(this);
         if (false) {
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()

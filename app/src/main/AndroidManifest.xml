@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:name="android.support.multidex.MultiDexApplication"
@@ -18,7 +19,7 @@
     <uses-permission
         android:name="android.permission.DEVICE_POWER"
         tools:ignore="ProtectedPermissions" />
-    <!--for upload rtmp-->
+    <!-- for upload rtmp -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
@@ -37,9 +38,8 @@
     <!-- //定位包、导航包需要的额外权限（注：基础权限也需要） -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <!--<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />-->
+    <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission
@@ -63,7 +63,7 @@
         android:persistent="true"
         android:theme="@style/AppTheme.NoActionBar">
         <service
-            android:name="com.luobin.dvr.DvrService"
+            android:name=".DvrService"
             android:exported="true"
             android:process=":DvrServiceProc">
             <intent-filter>
@@ -84,13 +84,12 @@
         </activity>
 
         <receiver
-            android:name="DvrReceiver"
+            android:name=".DvrReceiver"
             android:process=":DvrServiceProc">
             <intent-filter android:priority="2147483647">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
         <receiver android:name="com.example.jrd48.chat.receiver.ToastReceiver">
             <intent-filter>
                 <action android:name="com.luobin.dvr.TOAST_ACTION" />
@@ -115,6 +114,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data android:mimeType="image/*" />
@@ -172,7 +172,7 @@
             android:name="com.luobin.search.friends.car.SelectTypeActivity"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar"
-            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name="com.luobin.search.friends.ShowStrangerMsgActivity"
             android:screenOrientation="landscape"
@@ -246,13 +246,11 @@
                 <action android:name="com.erobbing.NetworkPolicyManagerService" />
             </intent-filter>
         </receiver>
-
         <receiver android:name="com.example.jrd48.chat.receiver.LauncherBroadcastReceiver">
             <intent-filter>
                 <action android:name="com.erobbing.gallery_launcher_started" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name="com.example.jrd48.chat.ForceOfflineReceiver"
             android:exported="false">
@@ -295,7 +293,6 @@
             android:label="@string/title_activity_show_photo"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name="com.example.jrd48.chat.group.ShowAllTeamMemberActivity"
             android:screenOrientation="landscape"
@@ -304,17 +301,14 @@
             android:name="com.example.jrd48.chat.group.GroupMemberDetailsActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name="com.example.jrd48.chat.friend.FriendsDetailsActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name="com.luobin.search.friends.map.TeamMemberLocationActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name="com.example.jrd48.chat.DocumentAllActivity"
             android:screenOrientation="landscape"
@@ -334,34 +328,31 @@
             android:name="com.amap.api.v2.apikey"
             android:value="c0161ca8acda117a3816fc4c40098f2b" />
 
-        <!-- hanjiming key 测试版-->
-        <!-- <meta-data
+        <!-- hanjiming key 测试版 -->
+        <!--
+         <meta-data
          android:name="com.amap.api.v2.apikey"
          android:value="b3fd53d5c7c400e05fd273482b061712"
-         />-->
+         />
+        -->
 
         <service android:name="com.amap.api.location.APSService" />
 
-        <!--wangsheng add for video start-->
+        <!-- wangsheng add for video start -->
 
         <activity
             android:name="com.video.VideoInvitedActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
-            android:theme="@style/InviteDialogActivityTheme">
-
-        </activity>
-
+            android:theme="@style/InviteDialogActivityTheme"></activity>
         <activity
             android:name="com.video.VideoCallActivity"
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="true"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <receiver
             android:name="com.qiniu.android.dns.NetworkReceiver"
@@ -377,26 +368,21 @@
             android:hardwareAccelerated="true"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name="com.luobin.ui.GroupActivity"
             android:hardwareAccelerated="true"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name="com.luobin.ui.ContactsActivity"
             android:hardwareAccelerated="true"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name="com.luobin.ui.OtherVideoSetting"
             android:hardwareAccelerated="true"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
         <activity
             android:name="com.luobin.myinfor.MyInforActivity"
             android:launchMode="singleInstance"
@@ -406,18 +392,15 @@
             android:name="com.luobin.ui.RegisterInfoActivity"
             android:screenOrientation="landscape"
             android:theme="@style/MyDialogStyleBottom" />
-
         <activity
             android:name="com.luobin.ui.RegisterAndForGetActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name="com.luobin.ui.LoginActivity"
             android:screenOrientation="landscape"
             android:theme="@style/MyDialogStyleBottom" />
-
         <activity
             android:name="com.luobin.ui.SettingActivity"
             android:screenOrientation="landscape"
@@ -429,7 +412,10 @@
                 <action android:name="com.luobin.dvr.action.ACTION_GROUP_DOWN" />
             </intent-filter>
         </receiver>
+
+        <activity android:name="com.luobin.ui.TalkbackSearchActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom"/>
     </application>
 
 </manifest>
-
