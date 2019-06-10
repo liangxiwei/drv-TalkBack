@@ -66,6 +66,7 @@ import com.example.jrd48.service.protocol.root.ReceiverProcesser;
 import com.example.jrd48.service.protocol.root.UserInfoProcesser;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.luobin.myinfor.MyInforActivity;
+import com.luobin.ui.LoginActivity;
 
 import org.json.JSONObject;
 

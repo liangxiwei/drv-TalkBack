@@ -1,6 +1,8 @@
 package com.luobin.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,19 +11,28 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.jrd48.chat.CircleImageView;
+import com.example.jrd48.chat.GlobalImg;
 import com.example.jrd48.chat.Team;
+import com.example.jrd48.chat.TeamMemberInfo;
 import com.luobin.dvr.R;
+import com.luobin.ui.ScreenUtils;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ContactsGroupAdapter extends BaseAdapter {
 
     List<Team> list ;
     Context context;
+    HashMap<Long,List<TeamMemberInfo>> allMemberList;
 
-    public ContactsGroupAdapter(List<Team> list, Context context) {
+    public ContactsGroupAdapter(List<Team> list,HashMap<Long,List<TeamMemberInfo>> allMemberList, Context context) {
+        Log.d("pangtao","allMemberList = " + allMemberList.size());
+        Log.d("pangtao","list = " + list.size());
         this.list = list;
         this.context = context;
+        this.allMemberList = allMemberList;
     }
 
 
@@ -57,19 +68,28 @@ public class ContactsGroupAdapter extends BaseAdapter {
         }
 
         holder.groupName.setText(list.get(position).getLinkmanName());
-        initIcon(holder.groupIcon);
+
+        List<TeamMemberInfo> memberInfos = allMemberList.get(list.get(position).getTeamID());
+        if (memberInfos != null)
+        initIcon(holder.groupIcon,memberInfos);
 
         return view;
     }
 
-    private void initIcon(LinearLayout groupIcon){
+    private void initIcon(LinearLayout groupIcon,List<TeamMemberInfo> memberInfos){
         groupIcon.removeAllViews();
-        for (int i = 0; i < 6; i++){
-            ImageView icon = new ImageView(context);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int memberSize = memberInfos.size();
+        if (memberSize > 8)
+            memberSize = 8;
+        for (int i = 0; i < memberSize; i++){
+            TeamMemberInfo memberInfo = memberInfos.get(i);
+            Bitmap bitmap = GlobalImg.getImage(context, memberInfo.getUserPhone());
+            CircleImageView  icon = new CircleImageView(context);
+            icon.setScaleType(ImageView.ScaleType.FIT_XY);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ScreenUtils.Dp2Px(context,30), ScreenUtils.Dp2Px(context,30));
             params.rightMargin = 20;
             icon.setLayoutParams(params);
-          //  icon.setBackgroundResource(R.drawable.icon);
+            icon.setImageBitmap(bitmap);
             groupIcon.addView(icon);
         }
     }

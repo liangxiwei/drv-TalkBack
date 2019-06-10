@@ -396,11 +396,6 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
-            android:name="com.example.jrd48.chat.LoginActivity"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"
-            tools:ignore="DuplicateActivity" />
 
         <activity
             android:name="com.luobin.myinfor.MyInforActivity"

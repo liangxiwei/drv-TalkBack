@@ -18,7 +18,7 @@
     <LinearLayout
         android:id="@+id/groutIcon"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="30dp"
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
         />

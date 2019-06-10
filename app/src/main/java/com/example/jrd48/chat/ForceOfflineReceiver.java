@@ -11,7 +11,7 @@ import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.service.MyService;
 import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.luobin.dvr.DvrService;
-import com.luobin.ui.CodeLoginActivity;
+import com.luobin.ui.LoginActivity;
 
 import me.lake.librestreaming.client.RESClient;
 
@@ -51,7 +51,7 @@ public class ForceOfflineReceiver extends BroadcastReceiver{
 		ActivityCollector.finishAct();
 		GlobalStatus.clearChatRoomMsg();
 		GlobalStatus.setOldChat(0,"",0);
-		Intent i= new Intent(context, CodeLoginActivity.class);
+		Intent i= new Intent(context, LoginActivity.class);
 		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(i);
 		if(intent.getBooleanExtra("toast",true)) {

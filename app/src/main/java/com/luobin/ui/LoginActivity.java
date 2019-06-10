@@ -232,7 +232,7 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode,  String[] permissions,  int[] grantResults) {
         mPermissionUtil.requestResult(this, permissions, grantResults, this, PermissionUtil.TYPE);
     }
 

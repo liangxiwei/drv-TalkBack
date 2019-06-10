@@ -6,13 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.example.jrd48.service.MyService;
 import com.luobin.dvr.R;
-import com.luobin.ui.CodeLoginActivity;
 import com.luobin.ui.DvrMainActivity;
+import com.luobin.ui.LoginActivity;
 
 /**
  * Created by jrd48 on 2016/11/18.
@@ -61,7 +59,7 @@ public class WelcomeActivity extends BaseActivity implements Animation.Animation
         SharedPreferences preferences=getSharedPreferences("token", Context.MODE_PRIVATE);
         String token=preferences.getString("token","");
         if(token.equals("")){
-            Intent intent = new Intent(WelcomeActivity.this, CodeLoginActivity.class);
+            Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             overridePendingTransition(R.anim.fade, R.anim.hold);

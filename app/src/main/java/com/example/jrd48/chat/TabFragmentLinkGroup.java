@@ -19,6 +19,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -67,6 +68,7 @@ import com.luobin.ui.adapter.ContactsMemberAdapter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -84,8 +86,6 @@ import io.reactivex.disposables.Disposable;
 
 public class TabFragmentLinkGroup extends BaseLazyFragment {
     private static final String TAG = "TabFragmentLinkGroup";
-    private static int QUIT_TEAM = 0;
-    private static int DELETE_TEAM = 1;
     int i;
     private ListView groupListView;
     private ListView memberListView;
@@ -100,32 +100,35 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
     private IntentFilter filterRoom;
     private CloseRoomReceiiver closeRoomReceiiver;
-    private boolean checkPullRefresh = false;
     private boolean run = false;
     private long deletTeamID = -1;
     String myPhone;
     private long TIME_GET_MEMBERS_DELAY = 5 * 1000L;
     private static final int MSG_GET_MEMBERS = 2000;
+    private static final int UPDATE_UI = 0;
 
+    int repeat = 0;
+    int index = 0;
+    HashMap<Long,List<TeamMemberInfo> > allMemberMap = new HashMap();
 
     @SuppressLint("HandlerLeak")
-    private Handler mHandler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            Log.d(TAG, "mHandler what = " + msg.what);
-            switch (msg.what) {
-                case MSG_GET_MEMBERS:
-                    mHandler.removeMessages(MSG_GET_MEMBERS);
-                    DBManagerTeamList db = new DBManagerTeamList(getContext(), true, DBTableName.getTableName(getContext(), DBHelperTeamList.NAME));
-                    List<TeamInfo> mTeamInfo = db.getTeams();
-                    db.closeDB();
-                    getMembersData(mTeamInfo);
-                    break;
-                default:
+    Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case UPDATE_UI:
+                    if (groupAdapter == null){
+                        groupAdapter = new ContactsGroupAdapter(groupList,allMemberMap,mContext);
+                        groupListView.setAdapter(groupAdapter);
+                    }else{
+                        groupAdapter.seteData(groupList);
+                        groupAdapter.notifyDataSetChanged();
+                    }
                     break;
             }
         }
     };
-
 
     private ChatStatusReceiver chatStatusReceiver;
 
@@ -293,7 +296,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
                         ToastR.setToast(getContext(), "获取群组成功");
-                        checkPullRefresh = false;
                     TeamInfoList list = i.getParcelableExtra("get_group_list");
                     SharedPreferencesUtils.put(getContext(), "data_init", true);
                     convertViewGroupList(list.getmTeamInfo());
@@ -488,11 +490,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         AllTeamPinyinComparator comparator = new AllTeamPinyinComparator(timeList);
         Collections.sort(groupList, comparator);
 
-       /* if (mHandler != null) {
-            mHandler.sendEmptyMessageDelayed(MSG_GET_MEMBERS, TIME_GET_MEMBERS_DELAY);
-        }*/
-
-
+        getMembersData(groupList);
 
     }
 
@@ -514,64 +512,37 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     private void showTeamInfoDilog(List<TeamInfo> allTeamInfos, int id) {
         new ShowTeamInfoPrompt().dialogSTeamInfo(getMyActivity(), allTeamInfos.get(id));
     }
-    int repeat = 0;
-    int index = 0;
-    List<List<TeamMemberInfo>> allMemberList = new ArrayList<>();
-    private void getMembersData(final List<TeamInfo> mTeamInfo) {
-        repeat = mTeamInfo.size()-1;
 
 
-        Observer<List<TeamMemberInfo>> observer = new Observer<List<TeamMemberInfo>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                allMemberList.clear();
-            }
+    private void getMembersData(final List<Team> mTeamInfo) {
 
-            @Override
-            public void onNext(List<TeamMemberInfo> teamMemberInfo) {
-                Log.d("pangtao","teamMemberInfo =" + teamMemberInfo.size());
-                allMemberList.add(teamMemberInfo);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-               Log.d("getMembersData","onError e =" + e.toString());
-            }
-
-            @Override
-            public void onComplete() {
-                if (groupAdapter == null){
-                    groupAdapter = new ContactsGroupAdapter(groupList,mContext);
-                    groupListView.setAdapter(groupAdapter);
-                }else{
-                    groupAdapter.seteData(groupList);
-                    groupAdapter.notifyDataSetChanged();
-                }
-            }
-        };
-
-
-        //观察者
+        //观察者  循环获取所有群成员列表
         Observable<List<TeamMemberInfo>> observable = Observable.create(new ObservableOnSubscribe<List<TeamMemberInfo>>() {
             @Override
             public void subscribe(final ObservableEmitter<List<TeamMemberInfo>> emitter) throws Exception {
-                Observable.interval(100, TimeUnit.SECONDS).subscribe(new Observer<Long>() {
+                Observable.interval(1, TimeUnit.SECONDS).subscribe(new Observer<Long>() {
+                    Disposable disposable;
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        Log.d(TAG,"Observable onSubscribe");
+                        disposable = d;
+                        repeat = mTeamInfo.size();
+                        index = 0;
+                        allMemberMap.clear();
                     }
 
                     @Override
                     public void onNext(Long aLong) {
-                        Log.d("pangtao","aLong = " + aLong.intValue());
-                        if (aLong > repeat){
+                        Log.d(TAG,"Observable onNext");
+                        if (index >= repeat){
                             emitter.onComplete();
+                            disposable.dispose();
                         }else{
-                            index = aLong.intValue();
-                            TeamInfo teamInfo = mTeamInfo.get(index);
+                            Team teamInfo = mTeamInfo.get(index);
+                            index++;
                             TeamMemberHelper teamMemberHelper = new TeamMemberHelper(getContext(), teamInfo.getTeamID() + "TeamMember.dp", null);
                             SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
-                            Cursor cursor = db.query("LinkmanMember", null, null, null, null, null, null);
+                            final Cursor cursor = db.query("LinkmanMember", null, null, null, null, null, null);
                             Log.d("searchTeamMember", "cursor=" + cursor.getCount());
                             if (cursor == null || cursor.getCount() == 0) {
                                 ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
@@ -587,18 +558,62 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                                     }
                                     @Override
                                     public void onGot(Intent i) {
-                                        Log.d("group", "getGroupMan onGot ");
+                                        Log.d(TAG, "getGroupMan onGot ");
                                         int code = i.getIntExtra("error_code", -1);
                                         if (code ==
                                                 ProtoMessage.ErrorCode.OK.getNumber()) {
-                                            List<TeamMemberInfo> memberInfos = i.getParcelableArrayListExtra("mTeamInfo");
-                                            emitter.onNext(memberInfos);
+                                            if(cursor!=null){
+                                                List<TeamMemberInfo> memberInfos = new ArrayList<>();
+                                                if (cursor.moveToFirst()){
+                                                    do{
+                                                        String  user_phone = cursor.getString(cursor.getColumnIndex("user_phone"));
+                                                        String  user_name = cursor.getString(cursor.getColumnIndex("user_name"));
+                                                        String  nick_name = cursor.getString(cursor.getColumnIndex("nick_name"));
+                                                        int  role = cursor.getInt(cursor.getColumnIndex("role"));
+                                                        int  member_priority = cursor.getInt(cursor.getColumnIndex("member_priority"));
+
+                                                        TeamMemberInfo memberInfo = new TeamMemberInfo();
+                                                        memberInfo.setUserPhone(user_phone);
+                                                        memberInfo.setUserName(user_name);
+                                                        memberInfo.setNickName(nick_name);
+                                                        memberInfo.setRole(role);
+                                                        memberInfo.setMemberPriority(member_priority);
+                                                        memberInfos.add(memberInfo);
+                                                    }while(cursor.moveToNext());
+                                                }
+                                                emitter.onNext(memberInfos);
+                                            }
+
                                         } else {
-                                            Log.e("group", "getGroupMan groupMan code:" + code);
+                                            Log.e(TAG, "getGroupMan groupMan code:" + code);
                                             new ResponseErrorProcesser(mContext, code);
                                         }
                                     }
                                 });
+                            }else{
+                                if(cursor!=null){
+                                    List<TeamMemberInfo> memberInfos = new ArrayList<>();
+
+                                    if (cursor.moveToFirst()){
+                                        do{
+                                            String  user_phone = cursor.getString(cursor.getColumnIndex("user_phone"));
+                                            String  user_name = cursor.getString(cursor.getColumnIndex("user_name"));
+                                            String  nick_name = cursor.getString(cursor.getColumnIndex("nick_name"));
+                                            int  role = cursor.getInt(cursor.getColumnIndex("role"));
+                                            int  member_priority = cursor.getInt(cursor.getColumnIndex("member_priority"));
+
+                                            TeamMemberInfo memberInfo = new TeamMemberInfo();
+                                            memberInfo.setUserPhone(user_phone);
+                                            memberInfo.setUserName(user_name);
+                                            memberInfo.setNickName(nick_name);
+                                            memberInfo.setRole(role);
+                                            memberInfo.setMemberPriority(member_priority);
+                                            memberInfos.add(memberInfo);
+                                        }while(cursor.moveToNext());
+                                        emitter.onNext(memberInfos);
+                                    }
+
+                                }
                             }
 
                         }
@@ -607,100 +622,52 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     @Override
                     public void onError(Throwable e) {
                         emitter.onError(e);
+                        if (disposable != null)
+                            disposable.dispose();
                     }
 
                     @Override
                     public void onComplete() {
-
+                        if (disposable != null)
+                        disposable.dispose();
                     }
                 });
 
             }
         });
+
+        Observer<List<TeamMemberInfo>> observer = new Observer<List<TeamMemberInfo>>() {
+            Disposable disposable;
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG,"Observer onNext");
+                disposable = d;
+            }
+
+            @Override
+            public void onNext(List<TeamMemberInfo> teamMemberInfo) {
+                Log.d(TAG,"teamMemberInfo =" + teamMemberInfo.size());
+                allMemberMap.put(mTeamInfo.get(index).getTeamID(),teamMemberInfo);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG,"onError e =" + e.toString());
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG,"onComplete");
+                if (mHandler!= null){
+                    mHandler.sendEmptyMessage(UPDATE_UI);
+                }
+                if (disposable!= null){
+                    disposable.dispose();
+                }
+            }
+        };
         observable.subscribe(observer);
-
-
     }
-
-    public class AsyncFetchTeamMemeberTask extends AsyncTask<List<TeamInfo>, Integer, String> {
-        public static final String TAG = "AsyncFetchTeamMemeberTask";
-        private ISimStatusListener mListener;
-
-        public AsyncFetchTeamMemeberTask() {
-
-        }
-
-        @Override
-        protected String doInBackground(List<TeamInfo>... params) {
-            if (params != null && params.length > 0) {
-                List<TeamInfo> list = params[0];
-                try {
-                    searchTeamMember(list);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-        }
-    }
-
-    public void searchTeamMember(List<TeamInfo> list) {
-        for (TeamInfo in : list) {
-            TeamMemberHelper teamMemberHelper = new TeamMemberHelper(getContext(), in.getTeamID() + "TeamMember.dp", null);
-            SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
-            Cursor cursor = db.query("LinkmanMember", null, null, null, null, null, null);
-            Log.d("searchTeamMember", "cursor=" + cursor.getCount());
-            if (cursor == null || cursor.getCount() == 0) {
-                getGroupMan(in.getTeamID());
-                break;
-            }
-        }
-        mWaitingProgressDialog.hide();
-    }
-
-    public void getGroupMan(final long id) {
-
-        ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
-        builder.setTeamID(id);
-        MyService.start(mContext, ProtoMessage.Cmd.cmdGetTeamMember.getNumber(), builder.build());
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(TeamMemberProcesser.ACTION);
-        final TimeoutBroadcast b = new TimeoutBroadcast(mContext, filter, getBroadcastManager());
-        b.startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
-
-            @Override
-            public void onTimeout() {
-
-                //ToastR.setToast(mContext, "连接超时");
-            }
-
-            @Override
-            public void onGot(Intent i) {
-                Log.d("group", "getGroupMan onGot ");
-                int code = i.getIntExtra("error_code", -1);
-                if (code ==
-                        ProtoMessage.ErrorCode.OK.getNumber()) {
-                    List<TeamMemberInfo> memberInfos = i.getParcelableArrayListExtra("mTeamInfo");
-                    Log.d("pangtao","memberInfos = " + memberInfos.size());
-                    /*if (adapter3 != null) {
-                        adapter3.notifyDataSetChanged();
-                    }*/
-                } else {
-                    Log.e("group", "getGroupMan groupMan code:" + code);
-                    new ResponseErrorProcesser(mContext, code);
-                }
-            }
-        });
-    }
-
-
 
     class CloseRoomReceiiver extends BroadcastReceiver {
         @Override

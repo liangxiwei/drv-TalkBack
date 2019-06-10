@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class ScrollListView extends ListView implements AbsListView.OnScrollListener {
-    boolean bl_down = true;
+    boolean bl_down = false;
     public ScrollListView(Context context) {
         super(context);
         this.setOnScrollListener(this);
@@ -29,7 +29,7 @@ public class ScrollListView extends ListView implements AbsListView.OnScrollList
     //重写这个方法，并且在方法里面请求所有的父控件都不要拦截他的事件
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-       // getParent().requestDisallowInterceptTouchEvent(!bl_down);
+        getParent().requestDisallowInterceptTouchEvent(!bl_down);
         return super.dispatchTouchEvent(ev);
     }
 

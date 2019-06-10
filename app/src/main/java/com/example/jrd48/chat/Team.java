@@ -7,6 +7,8 @@ package com.example.jrd48.chat;
 public class Team {
     private String linkmanName;
     private String linkmanDesc;
+
+
     private long teamID;
     private int memberRole;
     private boolean top;
@@ -25,7 +27,12 @@ public class Team {
         return memberRole;
     }
 
-    long getTeamID() {
+    public void setTeamID(long teamID) {
+        this.teamID = teamID;
+    }
+
+
+    public long getTeamID() {
         return teamID;
     }
    public String getLinkmanName(){ return linkmanName; }
