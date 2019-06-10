@@ -1,2 +1,0 @@
-process_begin: CreateProcess(NULL, "", ...) failed.
-F:/sdk/ndk-bundle/build//../build/core/init.mk:494: *** Android NDK: Aborting...    .  Stop.
