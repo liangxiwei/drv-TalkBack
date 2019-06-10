@@ -2,6 +2,7 @@ package com.luobin.ui;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -19,7 +20,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
+
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -463,12 +464,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                     return;
                 }
                 sexDialog();
-                break;
-            case R.id.tvPhone:
-                if (!checkNetWork()) {
-                    return;
-                }
-                inputDialog("手机号", PHONE, InputTextDialog.Type.NUMBER);
                 break;
             case R.id.tvCarNo:
                 if (!checkNetWork()) {
@@ -1066,9 +1061,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                             case SIGN:
                                 tvSign.setText(password);
                                 break;
-                            case PHONE:
-                                tvPhone.setText(password);
-                                break;
                             case CAR_NO:
 
                                 tvCarNo.setText(password);
@@ -1531,10 +1523,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         } else if (TextUtils.isEmpty(tvSex.getText()) || tvSex.getText().equals(NOT_SET)) {
             ToastR.setToast(mContext, "请选择性别");
             isEmpty = true;
-        } else if (TextUtils.isEmpty(tvPhone.getText()) || tvPhone.getText().equals(NOT_SET)) {
-            ToastR.setToast(mContext, "请输入手机号");
-            isEmpty = true;
-        } else if (TextUtils.isEmpty(tvCarNo.getText()) || tvCarNo.getText().equals(NOT_SET)) {
+        }  else if (TextUtils.isEmpty(tvCarNo.getText()) || tvCarNo.getText().equals(NOT_SET)) {
             ToastR.setToast(mContext, "请输入车牌号");
             isEmpty = true;
         }

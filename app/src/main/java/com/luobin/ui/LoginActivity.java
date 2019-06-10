@@ -455,14 +455,9 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
                         carListDB.closeDB();
                     }
 
-                    MyInforTool  myInforTool = new MyInforTool(LoginActivity.this, true);
-                    if (myInforTool.getUserName() == null || "".equals(myInforTool.getUserName())) {
-                        Intent intent = new Intent(LoginActivity.this, RegisterInfoActivity.class);
-                        startActivity(intent);
-                    }else{
 
-                    }
-
+                    Intent intent = new Intent(LoginActivity.this, DvrMainActivity.class);
+                    startActivity(intent);
                     overridePendingTransition(R.anim.scale, R.anim.scale2);
                     finish();
                 } else {
