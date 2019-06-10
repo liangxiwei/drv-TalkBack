@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.example.jrd48.PolyphonePinYin;
@@ -34,21 +35,26 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
 
     private Context context;
     protected PermissionUtil mPermissionUtil;
-    private LinearLayout actionbarMessage;
+    private LinearLayout actionbarMessage,actionbarAdd,actionbarSearch;
     private TabFragmentLinkGroup tabFragmentLinkGroup;
     private TabFragmentLinkmans tabFragmentLinkmans;
     public static final int FRAGMENT_POSITION_GROUP = 0;
     public static final int FRAGMENT_POSITION_MANS =1;
     private int fragmentPostion = FRAGMENT_POSITION_GROUP;
+    Button btnChange;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
         setContentView(R.layout.activity_dvr_main);
-
-
         actionbarMessage = (LinearLayout) findViewById(R.id.actionbar_message);
         actionbarMessage.setOnClickListener(this);
+        btnChange = (Button) findViewById(R.id.btn_change);
+        btnChange.setOnClickListener(this);
+        actionbarAdd = (LinearLayout) findViewById(R.id.actionbar_add);
+        actionbarAdd.setOnClickListener(this);
+        actionbarSearch = (LinearLayout) findViewById(R.id.actionbar_search);
+        actionbarSearch.setOnClickListener(this);
         PolyphonePinYin.initPinyin();
         requestAllPermisson();
         initBroadCast();
@@ -113,51 +119,61 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         ToastR.setToast(DvrMainActivity.this, "权限设置失败");
     }
 
-    /**
+  /*  *//**
      * 通讯录按钮
      * @param view
-     */
+     *//*
     public void gotoMailList(View view){
-        if (tabFragmentLinkGroup != null){
-            if (tabFragmentLinkGroup.isPullRefresh()){
-                return;
-            }
-        }
 
-        if (fragmentPostion == FRAGMENT_POSITION_GROUP){
-            fragmentPostion = FRAGMENT_POSITION_MANS;
-            if (tabFragmentLinkmans == null){
-                tabFragmentLinkmans = new TabFragmentLinkmans();
-            }
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts,tabFragmentLinkmans )
-                    .commitAllowingStateLoss();
-        }
-    }
+    }*/
 
     /**
      * 群组按钮
      * @param view
      */
     public void gotoReturn(View view){
-       if (fragmentPostion == FRAGMENT_POSITION_MANS){
-           fragmentPostion = FRAGMENT_POSITION_GROUP;
-           if (tabFragmentLinkGroup == null){
-               tabFragmentLinkGroup = new TabFragmentLinkGroup();
-           }
-           getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts,tabFragmentLinkGroup )
-                   .commitAllowingStateLoss();
-       }
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.actionbar_message: {
+            case R.id.actionbar_message:
                 logoutDialog(context);
                 break;
-            }
+            case R.id.actionbar_add:
+                //TODO 添加群组
+                break;
 
-            default:
+            case R.id.actionbar_search:
+                //TODO 搜索
+                break;
+
+            case R.id.btn_change:
+                if (fragmentPostion == FRAGMENT_POSITION_MANS){
+                    fragmentPostion = FRAGMENT_POSITION_GROUP;
+                    btnChange.setText("群组");
+                    if (tabFragmentLinkGroup == null){
+                        tabFragmentLinkGroup = new TabFragmentLinkGroup();
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts,tabFragmentLinkGroup )
+                            .commitAllowingStateLoss();
+                }else{
+                    if (tabFragmentLinkGroup != null){
+                        if (tabFragmentLinkGroup.isPullRefresh()){
+                            return;
+                        }
+                    }
+                    if (fragmentPostion == FRAGMENT_POSITION_GROUP){
+                        fragmentPostion = FRAGMENT_POSITION_MANS;
+                        btnChange.setText("通讯录");
+                        if (tabFragmentLinkmans == null){
+                            tabFragmentLinkmans = new TabFragmentLinkmans();
+                        }
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts,tabFragmentLinkmans )
+                                .commitAllowingStateLoss();
+                    }
+                }
                 break;
         }
     }

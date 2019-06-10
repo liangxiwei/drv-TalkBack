@@ -1,5 +1,6 @@
 package com.example.jrd48.chat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,6 +23,13 @@ public abstract class BaseLazyFragment extends Fragment {
     protected boolean isVisible;
     private boolean isPrepared;
     private boolean isFirst = true;
+    Context context;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
 
     private TimeoutBroadcastManager mTimeoutBroadcastManager = new TimeoutBroadcastManager();
 

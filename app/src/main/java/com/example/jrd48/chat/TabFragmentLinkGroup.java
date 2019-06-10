@@ -57,6 +57,7 @@ import com.example.jrd48.service.TimeoutBroadcast;
 import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.example.jrd48.service.protocol.ResponseErrorProcesser;
 import com.example.jrd48.service.protocol.root.AutoCloseProcesser;
+import com.example.jrd48.service.protocol.root.DismissTeamProcesser;
 import com.example.jrd48.service.protocol.root.GroupsListProcesser;
 import com.example.jrd48.service.protocol.root.ReceiverProcesser;
 import com.example.jrd48.service.protocol.root.SearchFriendProcesser;
@@ -69,6 +70,7 @@ import com.luobin.ui.VideoOrVoiceDialog;
 import com.luobin.ui.adapter.ContactsGroupAdapter;
 import com.luobin.ui.adapter.ContactsMemberAdapter;
 import com.luobin.widget.LoadingDialog;
+import com.luobin.widget.PromptDialog;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -110,6 +112,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     String myPhone;
     private long TIME_GET_MEMBERS_DELAY = 5 * 1000L;
     private static final int MSG_GET_MEMBERS = 2000;
+    private static final int QUIT_TEAM = 0;
+    private static final int DELETE_TEAM = 1;
     private static final int UPDATE_UI = 0;
 
     int repeat = 0;
@@ -131,7 +135,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what){
-                case UPDATE_UI:
+                case UPDATE_UI: //刷新UI
                     isPullRefresh = false;
                     if (pullRefreshLayout != null)
                         pullRefreshLayout.setRefreshing(false);
@@ -139,16 +143,31 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     if (!isVisible)
                         return;
                     if (groupAdapter == null){
-                        groupAdapter = new ContactsGroupAdapter(groupList,allMemberMap,selectGroupPosition,mContext);
-                        groupListView.setAdapter(groupAdapter);
-                        memberAdapter = new ContactsMemberAdapter(allMemberMap.get(groupList.get(selectGroupPosition).getTeamID()),mContext);
-                        memberListView.setAdapter(memberAdapter);
-                        tvGroupName.setText(groupList.get(selectGroupPosition).getLinkmanName());
+                        if (groupList.size() > 0){
+                            groupAdapter = new ContactsGroupAdapter(groupList,allMemberMap,selectGroupPosition,mContext);
+                            groupListView.setAdapter(groupAdapter);
+                            memberAdapter = new ContactsMemberAdapter(allMemberMap.get(groupList.get(selectGroupPosition).getTeamID()),mContext);
+                            memberListView.setAdapter(memberAdapter);
+                            tvGroupName.setText(groupList.get(selectGroupPosition).getLinkmanName());
+                        }
                     }else{
                         groupAdapter.seteData(groupList);
                         groupAdapter.notifyDataSetChanged();
-                        memberAdapter.setData(allMemberMap.get(groupList.get(selectGroupPosition).getTeamID()));
-                        memberAdapter.notifyDataSetChanged();
+                        if (selectGroupPosition >= groupList.size()){
+                            selectGroupPosition = groupList.size() -1;
+                            if (selectGroupPosition < 0){
+                                selectGroupPosition = 0;
+                            }
+                        }
+                        if ( groupList.size() > 0){
+                            memberAdapter.setData(allMemberMap.get(groupList.get(selectGroupPosition).getTeamID()));
+                            memberAdapter.notifyDataSetChanged();
+                        }else{//如果当前没有群组，清空群成员列表
+                            memberAdapter.setData(new ArrayList<TeamMemberInfo>());
+                            memberAdapter.notifyDataSetChanged();
+                        }
+
+
                     }
                     break;
             }
@@ -292,7 +311,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         pullRefreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                isPullRefresh = true;
                 loadTeamListFromNet(false);
             }
         });
@@ -315,7 +333,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     memberListView.setAdapter(memberAdapter);
                 }
 
-                Team msg = groupList.get(position);
+              /*  Team msg = groupList.get(position);
 
                 Intent intent = new Intent(getContext(), FirstActivity.class);
                 intent.putExtra("data", 1);
@@ -331,10 +349,31 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 intent.putExtra("type", msg.getMemberRole());
                 intent.putExtra("group_name", msg.getLinkmanName());
                 VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(getContext(), intent);
-                dialog.show();
+                dialog.show();*/
 
             }
         });
+
+
+        groupListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Team team = groupList.get(position);
+
+               if (team.getMemberRole() == ProtoMessage.TeamRole.Owner_VALUE){
+                   //如果是群主，解散群
+                   deleteTeamDialog(team.getTeamID(),DELETE_TEAM,team.getLinkmanName());
+               }else{
+                   //不是群主，退出群
+                   deleteTeamDialog(team.getTeamID(),QUIT_TEAM,team.getLinkmanName());
+               }
+
+
+                return true;
+            }
+        });
+
+
         return view;
     }
 
@@ -379,6 +418,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
      * 获取群组
      */
     private void loadTeamListFromNet() {
+        isPullRefresh = true;
         ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
         MyService.start(getContext(), ProtoMessage.Cmd.cmdGetTeamList.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
@@ -396,7 +436,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             public void onGot(Intent i) {
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
-                    ToastR.setToast(getContext(), "获取群组成功");
+                    //ToastR.setToast(getContext(), "获取群组成功");
                     TeamInfoList list = i.getParcelableExtra("get_group_list");
                     SharedPreferencesUtils.put(getContext(), "data_init", true);
                     convertViewGroupList(list.getmTeamInfo());
@@ -427,12 +467,35 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     /**
      * 退群或者解散群提示框
      */
-   /* public void deleteTeamDialog(final long teamId, final int type, final String teamName) {
+    public void deleteTeamDialog(final long teamId, final int type, final String teamName) {
         String str = "退出";
         if (type == DELETE_TEAM) {
             str = "解散";
         }
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext()); // 先得到构造器
+
+        PromptDialog promptDialog = new PromptDialog(getContext());
+        promptDialog.show();
+        promptDialog.setTitle("提示：");
+        promptDialog.setMessage("确定要" + str + " " + teamName + " 群组？");
+        promptDialog.setOkListener(str, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (type == DELETE_TEAM) {
+                    groupDelete(teamId);
+                } else {
+                    groupQuit(teamId);
+                }
+                dialog.dismiss();
+            }
+        });
+        promptDialog.setCancelListener("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+      /*  AlertDialog.Builder builder = new AlertDialog.Builder(getContext()); // 先得到构造器
         builder.setMessage("确定要" + str + " " + teamName + " 群组？").setTitle("提示：").setPositiveButton("确定", new AlertDialog.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -450,14 +513,14 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
-        }).create().show();
+        }).create().show();*/
 
-    }*/
+    }
 
     /**
      * 退出群组
      */
-   /* private void groupQuit(final long teamId) {
+    private void groupQuit(final long teamId) {
         deletTeamID = teamId;
         ProtoMessage.ApplyTeam.Builder builder = ProtoMessage.ApplyTeam.newBuilder();
         builder.setTeamID(teamId);
@@ -482,10 +545,74 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 }
             }
         });
-    }*/
+    }
+
+    /**
+     * 删除/解散群组
+     */
+    private void groupDelete(final long l) {
+        deletTeamID = l;
+        ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
+        builder.setTeamID(l);
+        MyService.start(getContext(), ProtoMessage.Cmd.cmdDismissTeam.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(DismissTeamProcesser.ACTION);
+        new TimeoutBroadcast(getContext(), filter, getBroadcastManager()).startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                ToastR.setToast(getContext(), "连接超时");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+                if (i.getIntExtra("error_code", -1) ==
+                        ProtoMessage.ErrorCode.OK.getNumber()) {
+                    deleteSQLite();
+                    refreshLocalData(l);
+                    ToastR.setToast(getContext(), "删除群组成功");
+                } else {
+                    fail(i.getIntExtra("error_code", -1));
+                }
+            }
+        });
+    }
+
+    private void refreshLocalData(long l) {
+        Team team;
+        for (int i = 0; i < groupList.size();i++){
+             team  = groupList.get(i);
+            if (team.getTeamID() == l){
+                groupList.remove(team);
+                if (selectGroupPosition > groupList.size() -1){
+                    selectGroupPosition = groupList.size() -1;
+                    if (selectGroupPosition < 0 ){
+                        selectGroupPosition = 0;
+                    }
+                }
+
+               if (groupAdapter != null){
+                   groupAdapter.seteData(groupList);
+                   groupAdapter.notifyDataSetChanged();
+               }
+
+                if (allMemberMap.containsKey(l)){
+                    allMemberMap.remove(l);
+                    memberAdapter.setData(allMemberMap.get(groupList.get(selectGroupPosition)));
+                }
+               break;
+            }
+        }
 
 
+
+
+    }
+
+    /**
+     * 数据库有数据，送数据库取，否则从网络取
+     */
     private void getDBMsg() {
+        isPullRefresh = true;
         try {
             DBManagerTeamList db = new DBManagerTeamList(getContext(), true, DBTableName.getTableName(getContext(), DBHelperTeamList.NAME));
             List<TeamInfo> mTeamInfo = db.getTeams();
@@ -518,52 +645,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
     }
 
-    /**
-     * 删除/解散群组
-     */
-  /*  private void groupDelete(final long l) {
-        deletTeamID = l;
-        ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
-        builder.setTeamID(l);
-        MyService.start(getContext(), ProtoMessage.Cmd.cmdDismissTeam.getNumber(), builder.build());
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(DismissTeamProcesser.ACTION);
-        new TimeoutBroadcast(getContext(), filter, getBroadcastManager()).startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
-            @Override
-            public void onTimeout() {
-                ToastR.setToast(getContext(), "连接超时");
-            }
 
-            @Override
-            public void onGot(Intent i) {
-                if (i.getIntExtra("error_code", -1) ==
-                        ProtoMessage.ErrorCode.OK.getNumber()) {
-                    deleteSQLite();
-                    refreshLocalData(l);
-                    ToastR.setToast(getContext(), "删除群组成功");
-                } else {
-                    fail(i.getIntExtra("error_code", -1));
-                }
-            }
-        });
-    }*/
-
-  /*  private void refreshLocalData(long l) {
-        int k = -1;
-        int i = -1;
-        for (TeamInfo mte : allTeamInfos) {
-            ++i;
-            if (mte.getTeamID() == l) {
-                k = i;
-                break;
-            }
-        }
-        if (k >= 0) {
-            allTeamInfos.remove(k);
-            msgList3.remove(k);
-        }
-        adapter3.notifyDataSetChanged();
-    }*/
 
     private void deleteSQLite() {
         MsgTool.deleteTeamMsg(getContext(), deletTeamID);
@@ -636,13 +718,12 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     @Override
                     public void onNext(Long aLong) {
                         Log.d(TAG,"Observable onNext index = " + index);
-                        if (index >= repeat ){
+                        if (index > repeat ){
                             Log.d(TAG,"index == repeat onComplete" );
                             emitter.onComplete();
                             observableDisposable.dispose();
                         }else{
                             final Team teamInfo = mTeamInfo.get(index);
-                            index++;
                             TeamMemberHelper teamMemberHelper = new TeamMemberHelper(getContext(), teamInfo.getTeamID() + "TeamMember.dp", null);
                             SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
                             final Cursor cursor = db.query("LinkmanMember", null, null, null, null, null, null);
@@ -754,6 +835,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             public void onNext(List<TeamMemberInfo> teamMemberInfo) {
                 Log.d(TAG,"teamMemberInfo =" + teamMemberInfo.size());
                 allMemberMap.put(mTeamInfo.get(index).getTeamID(),teamMemberInfo);
+                index++;
             }
 
             @Override
@@ -773,6 +855,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 if (observerDisposable!= null){
                     observerDisposable.dispose();
                 }
+                index = 0;
             }
         };
         observable.subscribe(observer);

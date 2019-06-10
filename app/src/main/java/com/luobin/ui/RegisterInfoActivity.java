@@ -2,6 +2,7 @@ package com.luobin.ui;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -19,7 +20,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
+
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -310,6 +311,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         waitDialog();
         initView();
         initData();
+
 
         new Thread() {
             @Override
@@ -1014,7 +1016,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         sexdefualt = sexdatashow;
 
         tvPhone.setText(myPhone);
-        tvPhone.setClickable(false);
         tvSex.setText(sexItems[sexdata] + "");
 
         //TODO 天坑
@@ -1059,9 +1060,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                                 break;
                             case SIGN:
                                 tvSign.setText(password);
-                                break;
-                            case PHONE:
-                                tvPhone.setText(password);
                                 break;
                             case CAR_NO:
 
@@ -1271,13 +1269,11 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     @Override
     public void onItemClick(List<InterestBean> interestBeans) {
 
-
         //TODO 设置兴趣爱好
         String interestName = "";
         for (int a = 0; a < interestBeans.size(); a++) {
             if (interestBeans.get(a).isChecked()) {
                 interestName += interestBeans.get(a).getName() + ",";
-                Log.i("interestBeans",interestBeans.get(a).getName());
             }
 
         }
@@ -1494,7 +1490,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
         SelectInterestDialog selectInterestDialog = new SelectInterestDialog(this
                 , interestList);
-        selectInterestDialog.getAdapter().setOnItemClickListener(this);
         selectInterestDialog.show();
 
     }
@@ -1528,7 +1523,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         } else if (TextUtils.isEmpty(tvSex.getText()) || tvSex.getText().equals(NOT_SET)) {
             ToastR.setToast(mContext, "请选择性别");
             isEmpty = true;
-        } else if (TextUtils.isEmpty(tvCarNo.getText()) || tvCarNo.getText().equals(NOT_SET)) {
+        }  else if (TextUtils.isEmpty(tvCarNo.getText()) || tvCarNo.getText().equals(NOT_SET)) {
             ToastR.setToast(mContext, "请输入车牌号");
             isEmpty = true;
         }

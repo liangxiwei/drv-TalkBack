@@ -124,7 +124,7 @@
             >
             
             <Button
-                android:id="@+id/btn_return"
+                android:id="@+id/btn_change"
                 android:layout_width="80dp"
                 android:layout_height="45dp"
                 android:layout_alignParentRight="true"
@@ -132,25 +132,10 @@
                 android:layout_marginRight="10dp"
                 android:background="@mipmap/bg_button"
                 android:textSize="16dp"
-                android:onClick="gotoReturn"
-                android:gravity="center"
-                android:text="群组"
-                />
-
-            <Button
-                android:id="@+id/btn_mailList"
-                android:layout_width="80dp"
-                android:layout_height="45dp"
-                android:layout_toLeftOf="@id/btn_return"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
-                android:background="@mipmap/bg_button"
-                android:textSize="16dp"
-                android:onClick="gotoMailList"
                 android:gravity="center"
                 android:text="通讯录"
                 />
-            
+
         </RelativeLayout>
     </LinearLayout>
 

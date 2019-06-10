@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.jrd48.chat.GlobalImg;
 import com.example.jrd48.chat.TeamMemberInfo;
 import com.luobin.dvr.R;
-
+import com.example.jrd48.service.proto_gen.ProtoMessage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,14 +58,24 @@ public class ContactsMemberAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.memberIcon = (ImageView) view.findViewById(R.id.memberIcon);
             holder.memberName = (TextView) view.findViewById(R.id.memberName);
+            holder.memberRole = (TextView) view.findViewById(R.id.memberRole);
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
         }
-
-        holder.memberName.setText(list.get(position).getUserName());
-        Bitmap bitmap = GlobalImg.getImage(context, list.get(position).getUserPhone());
+        TeamMemberInfo memberInfo = list.get(position);
+        holder.memberName.setText(memberInfo.getUserName());
+        Bitmap bitmap = GlobalImg.getImage(context, memberInfo.getUserPhone());
         holder.memberIcon.setImageBitmap(bitmap);
+
+        if (memberInfo.getRole() == ProtoMessage.TeamRole.Owner_VALUE) {
+            holder.memberRole.setText( "群主 (" + memberInfo.getMemberPriority() + ")");
+        } else if (memberInfo.getRole() == ProtoMessage.TeamRole.Manager_VALUE) {
+            holder.memberRole.setText( "管理员 (" + memberInfo.getMemberPriority() + ")");
+        } else {
+            holder.memberRole.setText( "群成员 (" + memberInfo.getMemberPriority() + ")");
+        }
+
 
         return view;
     }
@@ -73,7 +83,7 @@ public class ContactsMemberAdapter extends BaseAdapter {
 
 
     class ViewHolder{
-        TextView memberName;
+        TextView memberName,memberRole;
         ImageView memberIcon;
 
     }

@@ -1,6 +1,5 @@
 package com.luobin.ui;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.jrd48.chat.ToastR;
 import com.luobin.dvr.R;
+import com.luobin.widget.BaseDialog;
 
 
 public class InputTextDialog extends BaseDialog {

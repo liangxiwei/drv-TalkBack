@@ -10,13 +10,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.GridLayout;
-import android.widget.TextView;
 
-import com.hp.hpl.sparta.Text;
 import com.luobin.dvr.R;
+import com.luobin.widget.BaseDialog;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SelectInterestDialog extends BaseDialog {
