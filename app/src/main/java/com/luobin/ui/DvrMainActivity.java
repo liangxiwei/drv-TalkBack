@@ -1,12 +1,16 @@
 package com.luobin.ui;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
+
 import com.example.jrd48.PolyphonePinYin;
 import com.example.jrd48.chat.BaseActivity;
 import com.example.jrd48.chat.TabFragmentLinkGroup;
@@ -27,13 +31,17 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
 
     private Context context;
     protected PermissionUtil mPermissionUtil;
+    LinearLayout actionbarMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         context = this;
         setContentView(R.layout.activity_dvr_main);
+
+
+        actionbarMessage = (LinearLayout) findViewById(R.id.actionbar_message);
+        actionbarMessage.setOnClickListener(this);
         PolyphonePinYin.initPinyin();
         requestAllPermisson();
         initBroadCast();
@@ -89,45 +97,15 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-       /* switch (v.getId()) {
-            case R.id.group: {
-                Intent intent = new Intent(context, GroupActivity.class);
-                startActivity(intent);
+        switch (v.getId()) {
+            case R.id.actionbar_message: {
+               logoutDialog(context);
                 break;
             }
-            case R.id.contacts: {
-                Intent intent = new Intent(context, ContactsActivity.class);
-                startActivity(intent);
-                break;
-            }
-            case R.id.self: {
-                Intent intent = new Intent(context, MyInforActivity.class);
-                startActivity(intent);
-                break;
-            }
-            case R.id.road_share: {
-                Intent intent = new Intent(context, OtherVideoSetting.class);
-                startActivity(intent);
-                break;
-            }
-            case R.id.search: {
-                Intent intent = new Intent(context, SearchActivity.class);
-                startActivity(intent);
-                break;
-            }
-            case R.id.notice: {
-                Intent intent = new Intent(context, NotificationActivity.class);
-                startActivity(intent);
-                break;
-            }
-            case R.id.road_setting: {
-                Intent intent = new Intent(context, SettingActivity.class);
-                startActivity(intent);
-                break;
-            }
+
             default:
                 break;
-        }*/
+        }
     }
 
 
@@ -160,4 +138,36 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         }
         super.onDestroy();
     }
+
+    AlertDialog simplelistdialog = null;
+
+    private void logoutDialog(Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(context.getResources().getString(R.string.toast_tip));
+        builder.setMessage(context.getResources().getString(R.string.toast_logout));
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Intent intent = new Intent("com.example.jrd48.chat.FORCE_OFFLINE");
+                intent.putExtra("toast", false);
+                sendBroadcast(intent);
+                finish();
+            }
+        });
+
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        if (simplelistdialog != null && simplelistdialog.isShowing()) {
+            simplelistdialog.dismiss();
+        }
+        simplelistdialog = builder.create();
+        simplelistdialog.show();
+    }
+
 }

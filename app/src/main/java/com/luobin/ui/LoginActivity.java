@@ -37,6 +37,7 @@ import com.luobin.dvr.R;
 import com.luobin.model.CarBrands;
 import com.luobin.search.friends.car.CheckAndUpdateCarTypeThread;
 import com.luobin.search.friends.car.DBManagerCarList;
+import com.luobin.tool.MyInforTool;
 
 
 import java.util.ArrayList;
@@ -454,10 +455,13 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
                         carListDB.closeDB();
                     }
 
-                    //TODO 登录成功跳转 检测如果没有 昵称则跳转 RegisterInfoActivity 否则则在MainActivity
+                    MyInforTool  myInforTool = new MyInforTool(LoginActivity.this, true);
+                    if (myInforTool.getUserName() == null || "".equals(myInforTool.getUserName())) {
+                        Intent intent = new Intent(LoginActivity.this, RegisterInfoActivity.class);
+                        startActivity(intent);
+                    }else{
 
-                    Intent intent = new Intent(LoginActivity.this, RegisterInfoActivity.class);
-                    startActivity(intent);
+                    }
 
                     overridePendingTransition(R.anim.scale, R.anim.scale2);
                     finish();

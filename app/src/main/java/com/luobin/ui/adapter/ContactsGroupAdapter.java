@@ -27,12 +27,20 @@ public class ContactsGroupAdapter extends BaseAdapter {
     Context context;
     HashMap<Long,List<TeamMemberInfo>> allMemberList;
 
-    public ContactsGroupAdapter(List<Team> list,HashMap<Long,List<TeamMemberInfo>> allMemberList, Context context) {
-        Log.d("pangtao","allMemberList = " + allMemberList.size());
-        Log.d("pangtao","list = " + list.size());
+    public int getSelectGroupPosition() {
+        return selectGroupPosition;
+    }
+
+    public void setSelectGroupPosition(int selectGroupPosition) {
+        this.selectGroupPosition = selectGroupPosition;
+    }
+
+    int selectGroupPosition = 0;
+    public ContactsGroupAdapter(List<Team> list,HashMap<Long,List<TeamMemberInfo>> allMemberList,int selectGroupPosition, Context context) {
         this.list = list;
         this.context = context;
         this.allMemberList = allMemberList;
+        this.selectGroupPosition = selectGroupPosition;
     }
 
 
@@ -66,7 +74,11 @@ public class ContactsGroupAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) view.getTag();
         }
-
+        if (position == selectGroupPosition){
+            view.setBackgroundResource(R.drawable.bg_select_stroke);
+        }else{
+            view.setBackgroundResource(R.drawable.bg_no_select_stroke);
+        }
         holder.groupName.setText(list.get(position).getLinkmanName());
 
         List<TeamMemberInfo> memberInfos = allMemberList.get(list.get(position).getTeamID());

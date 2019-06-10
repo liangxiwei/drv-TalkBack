@@ -61,6 +61,8 @@ import com.example.jrd48.service.protocol.root.GroupsListProcesser;
 import com.example.jrd48.service.protocol.root.ReceiverProcesser;
 import com.example.jrd48.service.protocol.root.SearchFriendProcesser;
 import com.example.jrd48.service.protocol.root.TeamMemberProcesser;
+import com.ldoublem.loadingviewlib.view.LVCircularRing;
+import com.ldoublem.loadingviewlib.view.LVEatBeans;
 import com.luobin.dvr.R;
 import com.luobin.ui.adapter.ContactsGroupAdapter;
 import com.luobin.ui.adapter.ContactsMemberAdapter;
@@ -91,12 +93,10 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     private ListView memberListView;
     private ContactsGroupAdapter groupAdapter;
     private ContactsMemberAdapter memberAdapter;
+    TextView tvGroupName;
 
     private PullRefreshLayout pullRefreshLayout;
     private List<Team> groupList = new ArrayList<>();
-
-    private TextView tv_wait;
-    private ProgressDialog mWaitingProgressDialog;
 
     private IntentFilter filterRoom;
     private CloseRoomReceiiver closeRoomReceiiver;
@@ -109,6 +109,10 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
     int repeat = 0;
     int index = 0;
+    int selectGroupPosition = 0;
+
+    View loadView;
+
     HashMap<Long,List<TeamMemberInfo> > allMemberMap = new HashMap();
 
     @SuppressLint("HandlerLeak")
@@ -118,12 +122,18 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             super.handleMessage(msg);
             switch (msg.what){
                 case UPDATE_UI:
+                    loadView.setVisibility(View.GONE);
                     if (groupAdapter == null){
-                        groupAdapter = new ContactsGroupAdapter(groupList,allMemberMap,mContext);
+                        groupAdapter = new ContactsGroupAdapter(groupList,allMemberMap,selectGroupPosition,mContext);
                         groupListView.setAdapter(groupAdapter);
+                        memberAdapter = new ContactsMemberAdapter(allMemberMap.get(groupList.get(selectGroupPosition).getTeamID()),mContext);
+                        memberListView.setAdapter(memberAdapter);
+                        tvGroupName.setText(groupList.get(selectGroupPosition).getLinkmanName());
                     }else{
                         groupAdapter.seteData(groupList);
                         groupAdapter.notifyDataSetChanged();
+                        memberAdapter.setData(allMemberMap.get(groupList.get(selectGroupPosition).getTeamID()));
+                        memberAdapter.notifyDataSetChanged();
                     }
                     break;
             }
@@ -219,9 +229,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
     @Override
     protected void initData() {
-
-
-        tv_wait.setVisibility(View.GONE);
         filterRoom = new IntentFilter();
         closeRoomReceiiver = new CloseRoomReceiiver();
         filterRoom.addAction(AutoCloseProcesser.ACTION);
@@ -247,16 +254,12 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     protected View initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.demolayout, container,
                 false);
-        mWaitingProgressDialog = new ProgressDialog(mContext);
-        mWaitingProgressDialog.setMessage(getResources().getString(R.string.waiting_progress_dialog_group_msg));
-        mWaitingProgressDialog.setCanceledOnTouchOutside(false);
-        mWaitingProgressDialog.setCancelable(false);
+        loadView = view.findViewById(R.id.loading_view);
+        tvGroupName = (TextView) view.findViewById(R.id.group_name);
         if ((boolean) SharedPreferencesUtils.get(mContext, "group_booting", false)) {
-            mWaitingProgressDialog.show();
             SharedPreferencesUtils.put(mContext, "group_booting", false);
         }
         pullRefreshLayout = (PullRefreshLayout) view.findViewById(R.id.refresh_layout);
-        tv_wait = (TextView) view.findViewById(R.id.wait);
         pullRefreshLayout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -267,6 +270,23 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         groupListView = (ListView) view.findViewById(R.id.lv_group);
         memberListView = (ListView) view.findViewById(R.id.lv_member);
 
+        groupListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectGroupPosition = position;
+                groupAdapter.setSelectGroupPosition(position);
+                groupAdapter.notifyDataSetChanged();
+                tvGroupName.setText(groupList.get(selectGroupPosition).getLinkmanName());
+                if (memberAdapter != null){
+                    memberAdapter.setData(allMemberMap.get(groupList.get(selectGroupPosition).getTeamID()));
+                    memberAdapter.notifyDataSetChanged();
+                }else{
+                    memberAdapter = new ContactsMemberAdapter(allMemberMap.get(groupList.get(selectGroupPosition).getTeamID()),mContext);
+                    memberListView.setAdapter(memberAdapter);
+                }
+
+            }
+        });
         return view;
     }
 
@@ -274,12 +294,12 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
      * 获取群组
      */
     private void loadTeamListFromNet() {
+        loadView.setVisibility(View.VISIBLE);
         ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
         MyService.start(getContext(), ProtoMessage.Cmd.cmdGetTeamList.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
         filter.addAction(GroupsListProcesser.ACTION);
         new TimeoutBroadcast(getContext(), filter, getBroadcastManager()).startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
-
             @Override
             public void onTimeout() {
                 if (pullRefreshLayout != null)
@@ -384,6 +404,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
 
     private void getDBMsg() {
+        loadView.setVisibility(View.VISIBLE);
         try {
             DBManagerTeamList db = new DBManagerTeamList(getContext(), true, DBTableName.getTableName(getContext(), DBHelperTeamList.NAME));
             List<TeamInfo> mTeamInfo = db.getTeams();
@@ -526,7 +547,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     public void onSubscribe(Disposable d) {
                         Log.d(TAG,"Observable onSubscribe");
                         disposable = d;
-                        repeat = mTeamInfo.size();
+                        repeat = mTeamInfo.size()-1;
                         index = 0;
                         allMemberMap.clear();
                     }

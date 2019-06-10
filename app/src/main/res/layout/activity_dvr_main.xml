@@ -28,16 +28,15 @@
             >
 
             <LinearLayout
+                android:id="@+id/actionbar_message"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-
                 >
 
                 <ImageView
-                    android:id="@+id/actionbar_message"
                     android:layout_width="42dp"
                     android:layout_height="44dp"
                     android:background="@drawable/message_icon"
@@ -57,6 +56,7 @@
 
 
             <LinearLayout
+                android:id="@+id/actionbar_add"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -66,7 +66,6 @@
                 >
 
                 <ImageView
-                    android:id="@+id/actionbar_add"
                     android:layout_width="42dp"
                     android:layout_height="44dp"
                     android:background="@drawable/add_icon"
@@ -86,6 +85,7 @@
 
 
             <LinearLayout
+                android:id="@+id/actionbar_search"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -95,7 +95,6 @@
                 >
 
                 <ImageView
-                    android:id="@+id/actionbar_search"
                     android:layout_width="42dp"
                     android:layout_height="44dp"
                     android:background="@drawable/search_icon"

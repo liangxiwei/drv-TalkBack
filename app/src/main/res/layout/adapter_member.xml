@@ -7,10 +7,11 @@
     android:orientation="horizontal"
     >
 
-    <ImageView
+    <com.example.jrd48.chat.CircleImageView
         android:id="@+id/memberIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitXY"
         />
 
     <TextView
@@ -20,7 +21,6 @@
         android:textColor="@color/colorWirte"
         android:textSize="16dp"
         android:layout_marginLeft="5dp"
-        android:text="全智贤"
         />
     
 
