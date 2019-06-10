@@ -1,0 +1,6 @@
+drv.iml
+local.properties
+.gradle/4.10.1/gc.properties
+.gradle/
+.idea/
+build/
