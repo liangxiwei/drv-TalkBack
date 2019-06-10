@@ -22,16 +22,6 @@ import java.util.List;
 public class SelectInterestDialog extends BaseDialog {
     private Context context = null;
     private List<InterestBean> data = new ArrayList<>();
-    private   SelectInterestAdapter adapter = null;
-
-    public SelectInterestAdapter getAdapter() {
-        return adapter;
-    }
-
-    public void setAdapter(SelectInterestAdapter adapter) {
-        this.adapter = adapter;
-    }
-
 
 
 
@@ -39,7 +29,6 @@ public class SelectInterestDialog extends BaseDialog {
         super(context);
         this.context = context;
         this.data = data;
-        adapter = new SelectInterestAdapter(context, data);
     }
 
     public SelectInterestDialog(Context context) {
@@ -76,17 +65,10 @@ public class SelectInterestDialog extends BaseDialog {
         gridLayoutManager.setOrientation(GridLayout.VERTICAL);
         //设置布局管理器， 参数gridLayoutManager对象
         recyclerView.setLayoutManager(gridLayoutManager);
-
+        SelectInterestAdapter adapter = new SelectInterestAdapter(context, data);
         recyclerView.setAdapter(adapter);
-        btnSure.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
 
-            }
-        });
         return view;
     }
-
 
 }

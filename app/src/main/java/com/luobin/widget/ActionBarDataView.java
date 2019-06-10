@@ -1,10 +1,9 @@
 package com.luobin.widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,22 +32,22 @@ public class ActionBarDataView extends FrameLayout {
         }
     };
 
-    public ActionBarDataView(@NonNull Context context) {
+    public ActionBarDataView(Context context) {
         super(context);
         init(context);
     }
 
-    public ActionBarDataView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public ActionBarDataView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public ActionBarDataView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public ActionBarDataView(Context context,AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
-    public ActionBarDataView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ActionBarDataView( Context context,  AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
@@ -74,18 +73,18 @@ public class ActionBarDataView extends FrameLayout {
         second = calendar.get(Calendar.SECOND);
         handler.sendMessageDelayed(handler.obtainMessage(),
                 (60 - second) * 1000);
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Settings.ACTION_DATE_SETTINGS);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     public void init() {
-        String value = Settings.System.getString(mContext.getContentResolver(), Settings.System.TIME_12_24);
         SimpleDateFormat timeFormat;
-        // if ("24".equals(value)) {
         timeFormat = new SimpleDateFormat("HH:mm");
-        /*} else {
-            timeFormat = new SimpleDateFormat("hh:mm");
-            mAmPm.setVisibility(View.VISIBLE);
-            mAmPm.setText(new SimpleDateFormat("a").format(new Date()).toString());
-        }*/
         String time = timeFormat.format(new Date()).toString();
         if (time.length() == 5){
             mTime1.setText(time.charAt(0)+"");

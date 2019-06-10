@@ -262,34 +262,5 @@ public class MyInforTool {
         return;
     }
 
-    @Override
-    public String toString() {
-        return "MyInforTool{" +
-                "mContext=" + mContext +
-                ", myPhone='" + myPhone + '\'' +
-                ", userName='" + userName + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", userSex=" + userSex +
-                ", carID='" + carID + '\'' +
-                ", city='" + city + '\'' +
-                ", prov='" + prov + '\'' +
-                ", town='" + town + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", carNum='" + carNum + '\'' +
-                ", carBand='" + carBand + '\'' +
-                ", carType2='" + carType2 + '\'' +
-                ", carType3='" + carType3 + '\'' +
-                ", applyInfo='" + applyInfo + '\'' +
-                ", phone='" + phone + '\'' +
-                ", switchNickName=" + switchNickName +
-                ", switchSex=" + switchSex +
-                ", switchPhoneNumber=" + switchPhoneNumber +
-                ", switchCarNumber=" + switchCarNumber +
-                ", switchCarBrand=" + switchCarBrand +
-                ", switchCarType=" + switchCarType +
-                ", switchLocationUpload=" + switchLocationUpload +
-                ", startSeaChatGroup=" + startSeaChatGroup +
-                ", startSeaChatGroupVideo=" + startSeaChatGroupVideo +
-                '}';
-    }
+
 }

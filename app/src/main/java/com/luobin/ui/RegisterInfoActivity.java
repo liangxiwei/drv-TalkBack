@@ -311,6 +311,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         initView();
         initData();
 
+
         new Thread() {
             @Override
             public void run() {
@@ -462,6 +463,12 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                     return;
                 }
                 sexDialog();
+                break;
+            case R.id.tvPhone:
+                if (!checkNetWork()) {
+                    return;
+                }
+                inputDialog("手机号", PHONE, InputTextDialog.Type.NUMBER);
                 break;
             case R.id.tvCarNo:
                 if (!checkNetWork()) {
@@ -1014,7 +1021,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         sexdefualt = sexdatashow;
 
         tvPhone.setText(myPhone);
-        tvPhone.setClickable(false);
         tvSex.setText(sexItems[sexdata] + "");
 
         //TODO 天坑
@@ -1271,13 +1277,11 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     @Override
     public void onItemClick(List<InterestBean> interestBeans) {
 
-
         //TODO 设置兴趣爱好
         String interestName = "";
         for (int a = 0; a < interestBeans.size(); a++) {
             if (interestBeans.get(a).isChecked()) {
                 interestName += interestBeans.get(a).getName() + ",";
-                Log.i("interestBeans",interestBeans.get(a).getName());
             }
 
         }
@@ -1494,7 +1498,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
         SelectInterestDialog selectInterestDialog = new SelectInterestDialog(this
                 , interestList);
-        selectInterestDialog.getAdapter().setOnItemClickListener(this);
         selectInterestDialog.show();
 
     }
@@ -1527,6 +1530,9 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             isEmpty = true;
         } else if (TextUtils.isEmpty(tvSex.getText()) || tvSex.getText().equals(NOT_SET)) {
             ToastR.setToast(mContext, "请选择性别");
+            isEmpty = true;
+        } else if (TextUtils.isEmpty(tvPhone.getText()) || tvPhone.getText().equals(NOT_SET)) {
+            ToastR.setToast(mContext, "请输入手机号");
             isEmpty = true;
         } else if (TextUtils.isEmpty(tvCarNo.getText()) || tvCarNo.getText().equals(NOT_SET)) {
             ToastR.setToast(mContext, "请输入车牌号");

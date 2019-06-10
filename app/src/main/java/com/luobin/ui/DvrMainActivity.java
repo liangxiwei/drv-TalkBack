@@ -18,9 +18,7 @@ import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.permission.PermissionUtil;
 import com.example.jrd48.service.protocol.root.NotifyProcesser;
 import com.luobin.dvr.R;
-import com.luobin.tool.MyInforTool;
 import com.luobin.tool.OnlineSetTool;
-
 import java.util.List;
 
 import uk.co.senab.photoview.log.Logger;
@@ -48,20 +46,8 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         requestAllPermisson();
         initBroadCast();
 
-
-
-        //TODO 在这添加数据 个人信息
-//        MyInforTool myInforTool = new MyInforTool(DvrMainActivity.this, true);
-//        Log.i("myInforTool", myInforTool.toString());
-//        if (myInforTool.getUserName() == null || "".equals(myInforTool.getUserName())||myInforTool.getUserName().equals(myInforTool.getPhone())) {
-//            startActivity(new Intent(DvrMainActivity.this, RegisterInfoActivity.class));
-//          
-//        }
-
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts, new TabFragmentLinkGroup())
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts,new TabFragmentLinkGroup())
                 .commitAllowingStateLoss();
-
 
     }
 
@@ -113,7 +99,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.actionbar_message: {
-                logoutDialog(context);
+               logoutDialog(context);
                 break;
             }
 
