@@ -25,6 +25,8 @@ import com.example.jrd48.service.protocol.root.SearchFriendProcesser;
 import com.luobin.dvr.R;
 import com.luobin.model.SearchStrangers;
 import com.luobin.search.friends.SearchReturnActivity;
+import com.luobin.ui.InterestBean;
+import com.luobin.ui.SelectInterestAdapter;
 import com.luobin.ui.TalkBackSearch.ClickInterFace;
 
 import java.util.ArrayList;
@@ -131,6 +133,20 @@ public class TSConditionPersionAdapter extends BaseAdapter {
     }
 
     ClickInterFace clickInterFace = null;
+
+
+    public interface OnRecyclerViewItemClickListener {
+        /**
+         * 列表点击
+         */
+        void onItemClick(List<InterestBean> interestBeans);
+    }
+
+    private SelectInterestAdapter.OnRecyclerViewItemClickListener mOnItemClickListener = null;
+
+    public void setOnItemClickListener(SelectInterestAdapter.OnRecyclerViewItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
 
 
 }
