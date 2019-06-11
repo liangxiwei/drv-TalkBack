@@ -152,21 +152,28 @@ public class TalkbackSearchActivity extends BaseDialogActivity {
         });
         //********************************************弹窗设置***********************
 
+
     }
 
 
     private void initView() {
 
 
+        edContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSoftInputFromWindow();
+            }
+        });
         edContent.setOnFocusChangeListener(new View.
                 OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
                     // 此处为得到焦点时的处理内容
-                    showSoftInputFromWindow();
                     Log.d("jim", "获取焦点");
                     edContent.requestFocus();
+                    showSoftInputFromWindow();
                 } else {
                     // 此处为失去焦点时的处理内容
                     Log.d("jim", "没有焦点");

@@ -152,7 +152,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:background="@drawable/bg_panel_btn"
-                    android:text="选择|left"
+                    android:text="选择"
                     android:textColor="@color/text_color_90white"
                     android:textSize="10dp" />
 

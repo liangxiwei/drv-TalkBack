@@ -200,6 +200,7 @@ public class TSConditionActivity extends BaseDialogActivity implements
                 break;
             case R.id.btnSearch:
                 //TODO 搜索
+                searchFriends();
                 break;
             default:
                 break;
@@ -293,7 +294,7 @@ public class TSConditionActivity extends BaseDialogActivity implements
                         ToastR.setToast(context, "你选择了：" + sexShow[sexdefualt]);
                         sexdata = sexdefualt + 1;
                         sexdatashow = sexdefualt;
-                        btnSex.setText(sexShow[sexdefualt]);
+                        tvSex.setText(sexShow[sexdefualt]);
                         sexdata = (sexdata == 3 ? 0 : sexdata);
                         searchFriendsCondition.setmSex(sexdata);
                     }
