@@ -214,23 +214,7 @@ class LinkmansAdapter extends BaseAdapter {
 
     }
 
-    public int getPinYinPosition(String letter){
-        if (letter.contains("#")){
-             return 0;
-        }else{
-            for (int i = 0; i < list.size();i++){
-                Linkmans linkmans = list.get(i);
-                Log.d("pangtao","pinyin = " +linkmans.getLinkmanNamePinYin());
-                if (linkmans.getLinkmanNamePinYin() != null && linkmans.getLinkmanNamePinYin().length() > 0){
-                    if (linkmans.getLinkmanNamePinYin().substring(0).equalsIgnoreCase(letter)){
-                        return i;
-                    }
-                }
 
-            }
-        }
-        return 0;
-    }
 
     private class ViewHolder {
         ImageView linkmanImages;

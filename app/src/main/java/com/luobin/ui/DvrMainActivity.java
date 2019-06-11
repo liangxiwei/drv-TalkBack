@@ -17,6 +17,7 @@ import com.example.jrd48.chat.BaseActivity;
 import com.example.jrd48.chat.TabFragmentLinkGroup;
 import com.example.jrd48.chat.TabFragmentLinkmans;
 import com.example.jrd48.chat.ToastR;
+import com.example.jrd48.chat.group.InviteJoinGroupActivity;
 import com.example.jrd48.chat.permission.PermissionUtil;
 import com.example.jrd48.service.protocol.root.NotifyProcesser;
 import com.luobin.dvr.R;
@@ -119,21 +120,6 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         ToastR.setToast(DvrMainActivity.this, "权限设置失败");
     }
 
-  /*  *//**
-     * 通讯录按钮
-     * @param view
-     *//*
-    public void gotoMailList(View view){
-
-    }*/
-
-    /**
-     * 群组按钮
-     * @param view
-     */
-    public void gotoReturn(View view){
-
-    }
 
     @Override
     public void onClick(View v) {
@@ -143,6 +129,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.actionbar_add:
                 //TODO 添加群组
+
                 break;
 
             case R.id.actionbar_search:
@@ -152,7 +139,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
             case R.id.btn_change:
                 if (fragmentPostion == FRAGMENT_POSITION_MANS){
                     fragmentPostion = FRAGMENT_POSITION_GROUP;
-                    btnChange.setText("群组");
+                    btnChange.setText("通讯录");
                     if (tabFragmentLinkGroup == null){
                         tabFragmentLinkGroup = new TabFragmentLinkGroup();
                     }
@@ -166,7 +153,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
                     }
                     if (fragmentPostion == FRAGMENT_POSITION_GROUP){
                         fragmentPostion = FRAGMENT_POSITION_MANS;
-                        btnChange.setText("通讯录");
+                        btnChange.setText("群组");
                         if (tabFragmentLinkmans == null){
                             tabFragmentLinkmans = new TabFragmentLinkmans();
                         }

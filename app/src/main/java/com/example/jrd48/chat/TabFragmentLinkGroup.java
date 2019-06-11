@@ -333,8 +333,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     memberListView.setAdapter(memberAdapter);
                 }
 
-              /*  Team msg = groupList.get(position);
-
+                Team msg = groupList.get(position);
                 Intent intent = new Intent(getContext(), FirstActivity.class);
                 intent.putExtra("data", 1);
                 CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + msg.getTeamID());
@@ -349,7 +348,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 intent.putExtra("type", msg.getMemberRole());
                 intent.putExtra("group_name", msg.getLinkmanName());
                 VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(getContext(), intent);
-                dialog.show();*/
+                dialog.show();
 
             }
         });

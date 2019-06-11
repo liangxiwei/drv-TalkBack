@@ -121,10 +121,7 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.jrd48.chat.LoginActivity"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name="com.example.jrd48.chat.RegistrationActivity"
             android:screenOrientation="landscape"
@@ -416,6 +413,11 @@
         <activity android:name="com.luobin.ui.TalkbackSearchActivity"
             android:screenOrientation="landscape"
             android:theme="@style/MyDialogStyleBottom"/>
+
+        <activity android:name="com.luobin.ui.SelectMemberActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom"
+            />
     </application>
 
 </manifest>

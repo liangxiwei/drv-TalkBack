@@ -120,7 +120,7 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
 
         ButterKnife.bind(this);
         initData();
@@ -402,7 +402,7 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
         ProtoMessage.UserLogin.Builder builder = ProtoMessage.UserLogin.newBuilder();
         builder.setPhoneNum(edName.getText().toString());
         builder.setPassword(edPass.getText().toString());
-
+        builder.setAppType(ProtoMessage.AppType.appCar_VALUE);
 
         MyService.start(LoginActivity.this, ProtoMessage.Cmd.cmdLogin.getNumber(), builder.build());
 
