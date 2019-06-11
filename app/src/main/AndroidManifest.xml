@@ -18,8 +18,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission
         android:name="android.permission.DEVICE_POWER"
-        tools:ignore="ProtectedPermissions" />
-    <!-- for upload rtmp -->
+        tools:ignore="ProtectedPermissions" /> <!-- for upload rtmp -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
@@ -30,15 +29,11 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-    <!-- //地图包、搜索包需要的基础权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- //地图包、搜索包需要的基础权限 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- //定位包、导航包需要的额外权限（注：基础权限也需要） -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- //定位包、导航包需要的额外权限（注：基础权限也需要） -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -47,8 +42,7 @@
         tools:ignore="ProtectedPermissions" />
     <uses-permission
         android:name="android.permission.STOP_APP_SWITCHES"
-        tools:ignore="ProtectedPermissions" />
-    <!-- 运行接收开机启动广播权限 -->
+        tools:ignore="ProtectedPermissions" /> <!-- 运行接收开机启动广播权限 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission
         android:name="android.permission.PACKAGE_USAGE_STATS"
@@ -319,37 +313,30 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider>
-        <!-- wangsheng key -->
+        </provider> <!-- wangsheng key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="c0161ca8acda117a3816fc4c40098f2b" />
-
-        <!-- hanjiming key 测试版 -->
+            android:value="c0161ca8acda117a3816fc4c40098f2b" /> <!-- hanjiming key 测试版 -->
         <!--
          <meta-data
          android:name="com.amap.api.v2.apikey"
          android:value="b3fd53d5c7c400e05fd273482b061712"
          />
         -->
-
-        <service android:name="com.amap.api.location.APSService" />
-
-        <!-- wangsheng add for video start -->
-
+        <service android:name="com.amap.api.location.APSService" /> <!-- wangsheng add for video start -->
         <activity
             android:name="com.video.VideoInvitedActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
-            android:theme="@style/InviteDialogActivityTheme"></activity>
+            android:theme="@style/InviteDialogActivityTheme" />
         <activity
             android:name="com.video.VideoCallActivity"
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="true"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver
             android:name="com.qiniu.android.dns.NetworkReceiver"
@@ -410,9 +397,23 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="com.luobin.ui.TalkbackSearchActivity"
+        <activity
+            android:name="com.luobin.ui.TalkBackSearch.TalkbackSearchActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/MyDialogStyleBottom"/>
+            android:theme="@style/MyDialogStyleBottom" />
+
+        <activity
+            android:name="com.luobin.ui.TalkBackSearch.TSConditionPersonActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom" />
+        <activity
+            android:name="com.luobin.ui.TalkBackSearch.TSCarMapActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom" />
+        <activity
+            android:name="com.luobin.ui.TalkBackSearch.TSConditionActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom" />
 
         <activity android:name="com.luobin.ui.SelectMemberActivity"
             android:screenOrientation="landscape"
