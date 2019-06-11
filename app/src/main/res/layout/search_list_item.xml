@@ -6,8 +6,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="#00000000"
-        android:layout_height="48dp">
+        android:layout_height="48dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#00000000">
 
         <com.example.jrd48.chat.CircleImageView
             android:id="@+id/search_image"
@@ -40,9 +42,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:maxLines="1"
-                android:ellipsize="end"
                 android:text="Tx"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -58,15 +60,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/contain"
-                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
                 <TextView
                     android:id="@+id/search_member_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Te"
                     android:layout_marginRight="5dp"
+                    android:text="Te"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textSize="12sp" />
 
@@ -74,10 +77,10 @@
                     android:id="@+id/search_left_brackets"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     android:text="("
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/search_phone"
@@ -91,10 +94,10 @@
                     android:id="@+id/search_right_brackets"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     android:text=")"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
