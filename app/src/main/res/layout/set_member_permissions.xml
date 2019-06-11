@@ -9,7 +9,6 @@
         android:id="@+id/radioGroup"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_set"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="80dp"

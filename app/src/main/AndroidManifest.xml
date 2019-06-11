@@ -197,10 +197,6 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.jrd48.chat.group.CreateGroupActivity"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="com.example.jrd48.chat.group.InviteJoinGroupActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -430,10 +426,12 @@
             android:theme="@style/AppTheme.NoActionBar"
             />
 
-        <activity android:name="com.luobin.ui.TalkRoomActivity"
+        <activity
+            android:name="com.example.jrd48.chat.group.CreateGroupActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:launchMode="singleTask"
+            android:theme="@style/MyDialogStyleBottom" />
+
     </application>
 
 </manifest>

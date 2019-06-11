@@ -1,199 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="#ffffff"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+  <ImageView
+        android:id="@+id/imgClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:src="@mipmap/close" />
+
+    <RelativeLayout
+        android:layout_width="440dp"
+        android:layout_height="270dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_panel_relative_layout">
 
         <RelativeLayout
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorAccent" >
-
-            <ImageView
-                android:id="@+id/iv_back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dip"
-                android:layout_marginRight="15dip"
-                android:onClick="onOkBack"
-                android:scaleType="centerInside"
-                android:src="@drawable/top_bar_back" />
-
-
-            <TextView
-                android:id="@+id/tv_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/iv_back"
-                android:text="创建群组"
-                android:textColor="@color/dvr_title_colro"
-                android:textSize="@dimen/normal_title_size"  />
-        </RelativeLayout>
+            android:id="@+id/editView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
 
             <RelativeLayout
-                android:id="@+id/rl_car_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="40dp" >
+                android:id="@+id/rlName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tvText"
+                android:gravity="center">
 
                 <TextView
-                    android:id="@+id/tv_group_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="20dp"
+                    android:id="@+id/tvName"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:text="群名"
-                    android:textSize="17sp" />
+                    android:textColor="#ffffffff"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/et_group_name"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="80dp"
-                    android:gravity="center_horizontal"
-                    android:maxLines="1"
-                    android:inputType="text"
-                    android:singleLine="true"
-                    android:paddingLeft="10dp" />
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/tvName"
+                    android:background="@drawable/bg_panel_edittext"
+                    android:textColor="@color/white" />
             </RelativeLayout>
-           <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp" >
-
-            <TextView
-                android:id="@+id/tv_priority"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="20dp"
-                android:text="优先级"
-                android:textSize="17sp" />
-
-            <EditText
-                android:id="@+id/et_priority"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="80dp"
-                android:focusable="false"
-                android:gravity="center_horizontal"
-                android:hint="选择优先级"
-                android:inputType="none"
-                android:maxLines="1"
-                android:paddingLeft="10dp"
-                android:textSize="16dp" />
-            </RelativeLayout>
-
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp" >
+                android:id="@+id/rlDescribe"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/rlName"
+                android:layout_marginTop="15dp"
+                android:gravity="center">
+
                 <TextView
-                    android:id="@+id/tv_msg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="20dp"
+                    android:id="@+id/tvPass"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:text="群描述"
-                    android:textSize="17sp" />
+                    android:textColor="#ffffffff"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/et_group_describe"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="80dp"
-                    android:gravity="center_horizontal"
-                    android:maxLines="1"
-                    android:paddingLeft="10dp" />
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/tvPass"
+                    android:background="@drawable/bg_panel_edittext"
+                    android:textColor="@color/white" />
             </RelativeLayout>
+        </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rl_defualt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp" >
-
-                <TextView
-                    android:id="@+id/tv_set"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="20dp"
-                    android:text="类型"
-                    android:textSize="17sp" />
-
-                <RadioGroup
-                    android:id="@+id/radioGroup"
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="60dp"
-                    android:orientation="horizontal" >
-
-                    <RadioButton
-                        android:id="@+id/radio_temporary"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:paddingLeft="2dp"
-                        android:text="临时" />
-                    <RadioButton
-                        android:id="@+id/radio_public"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="2dp"
-                        android:text="公开" />
-
-                    <RadioButton
-                        android:id="@+id/radio_private"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="2dp"
-                        android:text="私有" />
-                </RadioGroup>
-            </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp" >
-
-
-                <Button
-                    android:id="@+id/btn_create_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginTop="32dp"
-                    android:background="@drawable/btn_change_color"
-                    android:paddingBottom="7dp"
-                    android:paddingTop="7dp"
-                    android:text="确定"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+            <Button
+                android:id="@+id/btn_create_group"
+                android:layout_width="80dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/editView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="15dp"
+                android:background="@mipmap/bg_button"
+                android:text="确认"
+                android:textColor="@color/text_color_90white"
+                android:textSize="16sp" />
 
         </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>
+

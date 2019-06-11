@@ -524,7 +524,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         bottomLayoutManager = new BottomLayoutManager(this);
         initViewPager();
         initView1();
-        rearCamera.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
+        voice.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
         if (!ConnUtil.isConnected(this)) {
             ToastR.setToast(this, "连接服务器失败，请检查网络连接");
             finish();
@@ -4029,7 +4029,6 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             new TimeoutBroadcast(FirstActivity.this, filter, getBroadcastManager()).startReceiver(10, new ITimeoutBroadcast() {
                 @Override
                 public void onTimeout() {
-
                 }
 
                 @Override
@@ -4989,13 +4988,11 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 pictureInPicture.setTextColor(getResources().getColor(R.color.white));
                 voice.setTextColor(getResources().getColor(R.color.white));
                 doNotDisturb.setTextColor(getResources().getColor(R.color.white));
-
-
                 //按下操作
-                if (record == 0) {
-                    SharedPreferencesUtils.put(mContext, "pttKeyDown", true);
-                        pttKeyDownSent();
-                }
+
+                SharedPreferencesUtils.put(mContext, "pttKeyDown", true);
+                pttKeyDownSent();
+
 
                 break;
             case R.id.picture_in_picture:
@@ -5009,7 +5006,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
 
                 //抬起操作
                 SharedPreferencesUtils.put(mContext, "pttKeyDown", false);
-                btnUp();
+                pttKeyUpSent();
                 break;
             case R.id.voice:
                 //语音对讲

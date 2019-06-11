@@ -142,6 +142,11 @@ public class SelectMemberActivity extends BaseDialogActivity {
     }
 
     private void applyMember(final List<AppliedFriends> friend) {
+
+        for (AppliedFriends appliedFriends : friend){
+            Log.d("applyMember","name = " + appliedFriends.getPhoneNum());
+        }
+
         ProtoMessage.ApplyTeam.Builder builder = ProtoMessage.ApplyTeam.newBuilder();
         builder.setTeamID(teamID);
         for (int i = 0; i < friend.size(); i++) {

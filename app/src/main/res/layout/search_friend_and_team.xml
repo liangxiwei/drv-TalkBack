@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:background="@drawable/btn_change"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
     android:descendantFocusability="blocksDescendants"
     android:layout_marginTop="5dp"
     android:visibility="visible">
@@ -16,7 +16,7 @@
         android:layout_height="28dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:src="@mipmap/icon_search" />
+        android:src="@drawable/ar5" />
 
     <TextView
         android:id="@+id/tv_temp"

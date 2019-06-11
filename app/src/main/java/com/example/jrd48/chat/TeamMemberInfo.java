@@ -32,6 +32,16 @@ public class TeamMemberInfo implements Parcelable{
     private int role;
     private int memberPriority;
 
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
+    }
+
+    private boolean isSelect = false;
+
     public String getUserPhone() {
         return userPhone;
     }

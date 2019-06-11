@@ -18,6 +18,7 @@ import com.example.jrd48.chat.TeamMemberInfo;
 import com.luobin.dvr.R;
 import com.luobin.ui.ScreenUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,21 +27,11 @@ public class ContactsGroupAdapter extends BaseAdapter {
     List<Team> list ;
     Context context;
     HashMap<Long,List<TeamMemberInfo>> allMemberList;
-    int selectGroupPosition = 0;
 
-    public int getSelectGroupPosition() {
-        return selectGroupPosition;
-    }
-
-    public void setSelectGroupPosition(int selectGroupPosition) {
-        this.selectGroupPosition = selectGroupPosition;
-    }
-
-    public ContactsGroupAdapter(List<Team> list,HashMap<Long,List<TeamMemberInfo>> allMemberList,int selectGroupPosition, Context context) {
+    public ContactsGroupAdapter(List<Team> list,HashMap<Long,List<TeamMemberInfo>> allMemberList,Context context) {
         this.list = list;
         this.context = context;
         this.allMemberList = allMemberList;
-        this.selectGroupPosition = selectGroupPosition;
     }
 
 
@@ -74,7 +65,7 @@ public class ContactsGroupAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) view.getTag();
         }
-        if (position == selectGroupPosition){
+        if (list.get(position).isSelect()){
             view.setBackgroundResource(R.drawable.bg_select_stroke);
         }else{
             view.setBackgroundResource(R.drawable.bg_no_select_stroke);

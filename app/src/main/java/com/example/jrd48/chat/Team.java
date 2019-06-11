@@ -14,6 +14,16 @@ public class Team {
     private boolean top;
     private int teamType;
 
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
+    }
+
+    private boolean isSelect = false;
+
     Team(String linkmanName, String linkmanDesc, long teamID, int memberRole, boolean top, int teamType) {
         this.linkmanName = linkmanName;
         this.linkmanDesc = linkmanDesc;

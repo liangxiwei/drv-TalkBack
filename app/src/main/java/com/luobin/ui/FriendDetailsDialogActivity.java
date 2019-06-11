@@ -48,6 +48,7 @@ import com.example.jrd48.service.protocol.root.DeleteFriendProcesser;
 import com.example.jrd48.service.protocol.root.FriendsListProcesser;
 import com.example.jrd48.service.protocol.root.SetFriendInfoProcesser;
 import com.luobin.dvr.R;
+import com.luobin.model.SearchStrangers;
 import com.luobin.myinfor.MyInforActivity;
 import com.luobin.utils.ButtonUtils;
 import com.luobin.widget.PromptDialog;
@@ -93,9 +94,10 @@ public class FriendDetailsDialogActivity extends BaseActivity {
     Button btnDeteleFriend;
     private String myPhone;
     private String userName;
-    private long teamID;
+    private long teamID = -1;
     private AppliedFriends appliedFriend;
     private List<AppliedFriends> listMembersCache;
+    SearchStrangers mSearchStrangers;
     ProtoMessage.UserInfo userInfo;
     boolean isFriends = false;
 
@@ -186,8 +188,33 @@ public class FriendDetailsDialogActivity extends BaseActivity {
                     tvPlateNumber.setText("车牌：" + userInfo.getCarNum() + "");
                 }
                 setMyLocalMsg(userInfo.getProv(), userInfo.getCity(), userInfo.getTown());
-            }
+            }else if (mSearchStrangers != null){
 
+                userName = mSearchStrangers.getUserName();
+                if (TextUtils.isEmpty(userName)) {
+                    userName = "未设置";
+                }
+                tvUserName.setText(userName);
+
+                Bitmap bmp = FriendFaceUtill.getUserFace(mContext, userPhone);
+                ivHead.setImageBitmap(bmp);
+
+                if (mSearchStrangers.getUserSex() == ProtoMessage.Sex.male_VALUE) {
+                    tvSex.setText("<男 " + userPhone + ">");
+                } else if (mSearchStrangers.getUserSex() == ProtoMessage.Sex.female_VALUE) {
+                    tvSex.setText("<女 " + userPhone + ">");
+                } else {
+                    tvSex.setText("<未设置 " + userPhone + ">");
+                }
+
+                if (TextUtils.isEmpty(mSearchStrangers.getCarNum())) {
+                    tvPlateNumber.setText("车牌：未绑定");
+                } else {
+                    tvPlateNumber.setText("车牌：" + mSearchStrangers.getCarNum() + "");
+                }
+                setMyLocalMsg(mSearchStrangers.getProv(), mSearchStrangers.getCity(), mSearchStrangers.getTown());
+
+            }
             btnAddFriend.setVisibility(View.VISIBLE);
             btnDeteleFriend.setVisibility(View.GONE);
 
@@ -401,12 +428,16 @@ public class FriendDetailsDialogActivity extends BaseActivity {
         Intent intent = getIntent();
         userPhone = intent.getStringExtra("userPhone");
         userName = intent.getStringExtra("userName");
-        teamID = intent.getLongExtra("teamID", 0);
+        teamID = intent.getLongExtra("teamID", -1);
         appliedFriend = intent.getParcelableExtra("appliedFriends");
+        mSearchStrangers = (SearchStrangers) intent.getSerializableExtra("user_msg");
         SharedPreferences preferences = getSharedPreferences("token", mContext.MODE_PRIVATE);
         myPhone = preferences.getString("phone", "");
 
         if (appliedFriend == null) {
+            if (teamID < 0){
+                return;
+            }
             TeamMemberHelper teamMemberHelper = new TeamMemberHelper(mContext, teamID + "TeamMember.dp", null);
             SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
             String selection = "user_phone = ? ";

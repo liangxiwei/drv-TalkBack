@@ -1,5 +1,6 @@
 package com.example.jrd48.chat.group;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -24,20 +26,18 @@ import com.example.jrd48.service.TimeoutBroadcast;
 import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.example.jrd48.service.protocol.ResponseErrorProcesser;
 import com.example.jrd48.service.protocol.root.CreateGroupProcesser;
+import com.luobin.ui.BaseDialogActivity;
 
 /**
  * Created by Administrator on 2016/12/8.
  */
 
-public class CreateGroupActivity extends BaseActivity {
+public class CreateGroupActivity extends BaseDialogActivity {
     private Button mBtnCreate;
     private EditText mEtGroupName;
     private EditText mEtGroupDescribe;
-    private EditText mEtPriority;
     private RadioGroup mRadioGroup;
-    private RadioButton mRadioTempo;
-    private RadioButton mRadioPublic;
-    private RadioButton mRadioPrivate;
+    private ImageView imgClose;
     private static int defualtData = 0;
     private ProgressDialog m_pDialog;
     boolean checkDialog = true;
@@ -47,6 +47,7 @@ public class CreateGroupActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_group);
+        getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         initView();
     }
 
@@ -59,31 +60,10 @@ public class CreateGroupActivity extends BaseActivity {
             }
         });
         mEtGroupName = (EditText) findViewById(R.id.et_group_name);
-        mEtPriority = (EditText) findViewById(R.id.et_priority);
-        mEtPriority.setText("0");
-        mEtPriority.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                show();
-            }
-        });
         mEtGroupDescribe = (EditText) findViewById(R.id.et_group_describe);
         mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        mRadioPublic = (RadioButton) findViewById(R.id.radio_public);
-        mRadioPrivate = (RadioButton) findViewById(R.id.radio_private);
-        mRadioTempo = (RadioButton) findViewById(R.id.radio_temporary);
-        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == mRadioPublic.getId()) {
-                    teamType = ProtoMessage.TeamType.teamPublic_VALUE;
-                } else if (i == mRadioPrivate.getId()) {
-                    teamType = ProtoMessage.TeamType.teamPrivate_VALUE;
-                } else {
-                    teamType = ProtoMessage.TeamType.teamTempo_VALUE;
-                }
-            }
-        });
+
+
 
 
         //********************************************弹窗设置****************************************************
@@ -107,14 +87,25 @@ public class CreateGroupActivity extends BaseActivity {
             }
         });
         //********************************************弹窗设置****************************************************
+        imgClose = (ImageView) findViewById(R.id.imgClose);
+        imgClose.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                m_pDialog.cancel();
+//            startActivity(new Intent(CreateGroupActivity.this, AddGroupActivity.class));
+                Intent intent = new Intent();
+                intent.putExtra("data", 0);
+                setResult(RESULT_OK, intent);
+                finish();
 
+            }
+        });
 
     }
 
     private void checkCreateGroupMsg() {
         String groupName = mEtGroupName.getText().toString();
         String groupDescribe = mEtGroupDescribe.getText().toString();
-        String groupPriority = mEtPriority.getText().toString();
         if (groupName.length() <= 0) {
             ToastR.setToastLong(this, "请输入群名");
             return;
@@ -130,18 +121,13 @@ public class CreateGroupActivity extends BaseActivity {
 //            ToastR.setToast(this, "请输入群描述信息");
 //            return;
 //        }
-        uploadCreateGroupMsg(groupName, groupDescribe, groupPriority);
+        uploadCreateGroupMsg(groupName, groupDescribe);
     }
 
-    private void uploadCreateGroupMsg(String groupName, String groupDescribe, String groupPriority) {
+    private void uploadCreateGroupMsg(String groupName, String groupDescribe) {
         int a = 0;
         checkDialog = true;
         m_pDialog.show();
-        try {
-            a = Integer.parseInt(groupPriority);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
         ProtoMessage.TeamInfo.Builder builder = ProtoMessage.TeamInfo.newBuilder();
         builder.setTeamName(groupName);
         builder.setTeamDesc(groupDescribe);
@@ -189,19 +175,7 @@ public class CreateGroupActivity extends BaseActivity {
         new ResponseErrorProcesser(CreateGroupActivity.this, i);
     }
 
-    /**
-     * 按钮onClick事件重写
-     *
-     * @param view
-     */
-    public void onOkBack(View view) {
-        m_pDialog.cancel();
-//        startActivity(new Intent(CreateGroupActivity.this, AddGroupActivity.class));
-        Intent intent = new Intent();
-        intent.putExtra("data", 0);
-        setResult(RESULT_OK, intent);
-        finish();
-    }
+
 
     /**
      * 重写返回键功能
@@ -227,39 +201,9 @@ public class CreateGroupActivity extends BaseActivity {
             @Override
             public void onOk(int data) {
                 defualtData = data;
-                mEtPriority.setText(String.valueOf(data)); //set the value to textview
-                mEtPriority.setSelection(mEtPriority.length());
             }
         });
-//        final AlertDialog dlg = new AlertDialog.Builder(this).create();
-//        dlg.setCancelable(true);
-//        dlg.show();
-//        Window window = dlg.getWindow();
-//        window.setContentView(R.layout.dialog);
-//        Button b1 = (Button) window.findViewById(R.id.button1);
-//        Button b2 = (Button) window.findViewById(R.id.button2);
-//        final NumberPicker np = (NumberPicker) window.findViewById(R.id.numberPicker1);
-//        np.setMaxValue(15); // max value 100
-//        np.setMinValue(1);   // min value 0
-//        np.setValue(defualtData);
-//        np.setWrapSelectorWheel(false);
-//        b1.setOnClickListener(new OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v) {
-//                defualtData = np.getValue();
-//                mEtPriority.setText(String.valueOf(np.getValue())); //set the value to textview
-//                mEtPriority.setSelection(mEtPriority.length());
-//                dlg.cancel();
-//            }
-//        });
-//        b2.setOnClickListener(new OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v) {
-//                dlg.cancel();
-//            }
-//        });
+
     }
 
     @Override

@@ -21,6 +21,7 @@ public class ContactsMemberAdapter extends BaseAdapter {
     List<TeamMemberInfo> list ;
     Context context;
 
+
     public ContactsMemberAdapter(List<TeamMemberInfo> list, Context context) {
         if (list == null){
             list = new ArrayList<>();
@@ -69,10 +70,17 @@ public class ContactsMemberAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) view.getTag();
         }
+
         TeamMemberInfo memberInfo = list.get(position);
         holder.memberName.setText(memberInfo.getUserName());
         Bitmap bitmap = GlobalImg.getImage(context, memberInfo.getUserPhone());
         holder.memberIcon.setImageBitmap(bitmap);
+
+        if (memberInfo.isSelect()){
+            view.setBackgroundResource(R.drawable.bg_select_stroke);
+        }else{
+            view.setBackgroundResource(R.drawable.bg_no_select_stroke);
+        }
 
         if (memberInfo.getRole() == ProtoMessage.TeamRole.Owner_VALUE) {
             holder.memberRole.setText( "群主 (" + memberInfo.getMemberPriority() + ")");

@@ -72,13 +72,11 @@ public class TSSearchAdapter extends BaseAdapter {
         return i;
     }
 
-
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         SearchFriends af = list.get(i);
         ViewHolder viewHolder = null;
         ViewHolderNew viewHolderNew = null;
-        ViewHolderNewTwo viewHolderNewTwo =null;
 //        if (view == null) {
 //            view = LayoutInflater.from(context).inflate(R.layout.adapter_search_item, null);
 //            viewHolder = new ViewHolder(view);
@@ -87,16 +85,8 @@ public class TSSearchAdapter extends BaseAdapter {
 //            viewHolder = (ViewHolder) view.getTag();
 //        }
 
-        if (af.getSearchType().equals(SearchActivity.linkSearch)) {
-            view = inflater.inflate(R.layout.search_friend_and_team, null);
-            viewHolderNewTwo =  new ViewHolderNewTwo(view);
-            viewHolderNewTwo.searchMsg.setText(af.getUserName());
-            if (af.getType() != null && af.getType().equals(SearchActivity.linkSearch)) {
-                viewHolderNewTwo.searchTemp.setText("在线搜索群组:");
-            } else {
-                viewHolderNewTwo.searchTemp.setText("在线搜索好友:");
-            }
-        }else if (af.getSearchType().equals(SearchActivity.linkTitle)) {
+
+        if (af.getSearchType().equals(SearchActivity.linkTitle)) {
             view = LayoutInflater.from(context).inflate(R.layout.index, null);
 //            view.setBackgroundColor(context.getResources().getColor(R.color.search_bg));
             view.setFocusable(false);
@@ -172,14 +162,14 @@ public class TSSearchAdapter extends BaseAdapter {
                     int index = teamName.indexOf(result);
                     SpannableString span = new SpannableString(teamName);
                     if (index >= 0) {
-                        span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.white)), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                         span.setSpan(new StyleSpan(Typeface.BOLD), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                         viewHolderNew.userName.setText(span);
                     } else {
                         if (af.getKeyword() != null && af.getKeyword().length() > 0) {
                             index = teamName.indexOf(af.getKeyword());
                             if (index >= 0) {
-                                span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.white)), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                                 span.setSpan(new StyleSpan(Typeface.BOLD), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                                 viewHolderNew.userName.setText(span);
                             } else {
@@ -201,14 +191,14 @@ public class TSSearchAdapter extends BaseAdapter {
                     if (af.getType().equals(SearchActivity.strName)) {
                         viewHolderNew.mobile.setText(af.getPhoneNum());
                         if (index >= 0) {
-                            span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.white)), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                             span.setSpan(new StyleSpan(Typeface.BOLD), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                             viewHolderNew.searchMemberName.setText(span);
                         } else {
                             if (af.getKeyword() != null && af.getKeyword().length() > 0) {
                                 index = name.indexOf(af.getKeyword());
                                 if (index >= 0) {
-                                    span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.white)), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                    span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                                     span.setSpan(new StyleSpan(Typeface.BOLD), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                                     viewHolderNew.searchMemberName.setText(span);
                                 } else {
@@ -229,7 +219,7 @@ public class TSSearchAdapter extends BaseAdapter {
                         style.setSpan(new ForegroundColorSpan(Color.BLUE), 0, friendsMsg.getUserName().length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE); //设置指定位置文字的
                         style.setSpan(new StyleSpan(Typeface.BOLD), 0, friendsMsg.getUserName().length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE); //设置指定位置文字的背景颜色
                              */
-                            ss.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.white)), t, t + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            ss.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), t, t + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                             ss.setSpan(new StyleSpan(Typeface.BOLD), t, t + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                             viewHolderNew.mobile.setText(ss);
                         } else {
@@ -263,16 +253,6 @@ public class TSSearchAdapter extends BaseAdapter {
         }
     }
 
-    static class ViewHolderNewTwo {
-        @BindView(R.id.tv_search_friend)
-        TextView searchMsg;
-        @BindView(R.id.tv_temp)
-        TextView searchTemp;
-
-        ViewHolderNewTwo(View view) {
-            ButterKnife.bind(this, view);
-        }
-    }
 
     static class ViewHolderNew {
         @BindView(R.id.search_image)

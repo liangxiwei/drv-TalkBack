@@ -1,26 +1,36 @@
 package com.luobin.ui;
 
 import android.app.AlertDialog;
+import android.app.Instrumentation;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.jrd48.PolyphonePinYin;
+import com.example.jrd48.chat.BadgeView;
 import com.example.jrd48.chat.BaseActivity;
 import com.example.jrd48.chat.TabFragmentLinkGroup;
 import com.example.jrd48.chat.TabFragmentLinkmans;
 import com.example.jrd48.chat.ToastR;
+import com.example.jrd48.chat.group.CreateGroupActivity;
 import com.example.jrd48.chat.group.InviteJoinGroupActivity;
 import com.example.jrd48.chat.permission.PermissionUtil;
+import com.example.jrd48.chat.receiver.NotifyFriendBroadcast;
+import com.example.jrd48.service.MyBroadcastReceiver;
 import com.example.jrd48.service.protocol.root.NotifyProcesser;
 import com.luobin.dvr.R;
+import com.luobin.notice.NotificationActivity;
 import com.luobin.tool.MyInforTool;
 import com.luobin.tool.OnlineSetTool;
 import com.luobin.ui.TalkBackSearch.TalkbackSearchActivity;
@@ -44,6 +54,8 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     public static final int FRAGMENT_POSITION_MANS = 1;
     private int fragmentPostion = FRAGMENT_POSITION_GROUP;
     Button btnChange;
+    BadgeView  badgeView;
+    NotifyFriendBroadcast mNotifyFriendBroadcast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +94,16 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         IntentFilter filterStatus = new IntentFilter();
         filterStatus.addAction(NotifyProcesser.FRIEND_STATUS_ACTION);
         registerReceiver(friendStatus, filterStatus);
+
+        //注册获取申请加好友广播
+        mNotifyFriendBroadcast = new NotifyFriendBroadcast(mContext);
+        mNotifyFriendBroadcast.setReceiver(new MyBroadcastReceiver() {
+            @Override
+            protected void onReceiveParam(String str) {
+
+            }
+        });
+        mNotifyFriendBroadcast.start();
 
     }
 
@@ -126,17 +148,24 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.actionbar_message:
-                logoutDialog(context);
+
+                Intent messageIntent = new Intent();
+                messageIntent.setClass(mContext, NotificationActivity.class);
+                startActivity(messageIntent);
+
+
+               // logoutDialog(context);
                 break;
             case R.id.actionbar_add:
                 //TODO 添加群组
+                Intent addIntent = new Intent(context, CreateGroupActivity.class);
+                startActivity(addIntent);
 
                 break;
 
             case R.id.actionbar_search:
                 //TODO 搜索
                 startActivity(new Intent(this, TalkbackSearchActivity.class));
-
                 break;
 
             case R.id.btn_change:
@@ -169,6 +198,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     }
 
 
+
     private BroadcastReceiver friendStatus = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -193,6 +223,11 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
             if (friendStatus != null) {
                 unregisterReceiver(friendStatus);
             }
+
+            if (mNotifyFriendBroadcast != null) {
+                mNotifyFriendBroadcast.stop();
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -228,6 +263,52 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         }
         simplelistdialog = builder.create();
         simplelistdialog.show();
+    }
+
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        int action = event.getAction();
+        if (action == KeyEvent.ACTION_DOWN) {
+            switch (event.getKeyCode()) {
+                case KeyEvent.KEYCODE_DPAD_LEFT:
+                   if (fragmentPostion == FRAGMENT_POSITION_GROUP){
+                        tabFragmentLinkGroup.moveLeft();
+                       return true;
+                   }
+                    return super.dispatchKeyEvent(event);
+                case KeyEvent.KEYCODE_DPAD_RIGHT:
+                    if (fragmentPostion == FRAGMENT_POSITION_GROUP){
+                        tabFragmentLinkGroup.moveRight();
+                        return true;
+                    }
+                    return super.dispatchKeyEvent(event);
+                case KeyEvent.KEYCODE_DPAD_UP:
+                    if (fragmentPostion == FRAGMENT_POSITION_GROUP){
+                        tabFragmentLinkGroup.moveUp();
+                        return true;
+                    }
+                    return super.dispatchKeyEvent(event);
+                case KeyEvent.KEYCODE_DPAD_DOWN:
+                    if (fragmentPostion == FRAGMENT_POSITION_GROUP){
+                        tabFragmentLinkGroup.moveDown();
+                        return true;
+                    }
+                    return super.dispatchKeyEvent(event);
+                case KeyEvent.KEYCODE_ENTER:
+                case KeyEvent.KEYCODE_DPAD_CENTER:
+
+                    return super.dispatchKeyEvent(event);
+                case KeyEvent.KEYCODE_BACK:
+                    finish();
+                    return true;
+                case KeyEvent.KEYCODE_F6:
+
+                    return super.dispatchKeyEvent(event);
+
+            }
+        }
+        return super.dispatchKeyEvent(event);
     }
 
 }

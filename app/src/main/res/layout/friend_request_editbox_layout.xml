@@ -2,15 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tv_title"
+        android:padding="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dialog_btn_bg"
+        android:textColor="#69c5e6"
+        android:textSize="20sp"
+        android:text="好友备注修改" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#69c5e6"
+        />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:paddingLeft="5dp"
-        android:paddingRight="5dp" >
+        android:paddingRight="5dp">
 
         <TextView
             android:id="@+id/tv_remark_name"
@@ -21,19 +35,17 @@
             android:layout_marginRight="5dp"
             android:gravity="right"
             android:text="备注"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <EditText
+        <com.luobin.view.ContainsEmojiEditText
             android:id="@+id/remark_editText"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/tv_remark_name"
             android:maxLines="1"
             android:singleLine="true"
-            android:imeOptions="actionDone"
-            android:nextFocusDown="@+id/msg_editText"
-            android:textColorHint="@color/grey_white"
+            android:textColorHint="#DDDDDD"
             android:textSize="16sp" />
     </RelativeLayout>
 
@@ -44,7 +56,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:paddingLeft="5dp"
-        android:paddingRight="5dp" >
+        android:paddingRight="5dp">
 
         <TextView
             android:id="@+id/tv_msg"
@@ -55,19 +67,50 @@
             android:layout_marginRight="5dp"
             android:gravity="right"
             android:text="验证信息"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <EditText
+        <com.luobin.view.ContainsEmojiEditText
             android:id="@+id/msg_editText"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/tv_msg"
-            android:nextFocusUp="@+id/remark_editText"
-            android:textColorHint="@color/grey_white"
-            android:imeOptions="actionDone"
+            android:textColorHint="#DDDDDD"
             android:textSize="16sp" />
-
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tv_prompt">
 
+        <Button
+            android:id="@+id/button_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_btn_change"
+            android:text="取消" />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:background="@color/gray" />
+
+        <Button
+            android:id="@+id/button_sure"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dialog_btn_change"
+            android:text="确定" />
+    </LinearLayout>
 </LinearLayout>
