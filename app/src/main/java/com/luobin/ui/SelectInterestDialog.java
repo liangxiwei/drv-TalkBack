@@ -20,7 +20,7 @@ import java.util.List;
 public class SelectInterestDialog extends BaseDialog {
     private Context context = null;
     private List<InterestBean> data = new ArrayList<>();
-    private   SelectInterestAdapter adapter = null;
+    private SelectInterestAdapter adapter = null;
 
     public SelectInterestAdapter getAdapter() {
         return adapter;
@@ -31,13 +31,13 @@ public class SelectInterestDialog extends BaseDialog {
     }
 
 
-
-
     public SelectInterestDialog(Context context, List<InterestBean> data) {
         super(context);
         this.context = context;
+        this.context = context;
         this.data = data;
         adapter = new SelectInterestAdapter(context, data);
+
     }
 
     public SelectInterestDialog(Context context) {

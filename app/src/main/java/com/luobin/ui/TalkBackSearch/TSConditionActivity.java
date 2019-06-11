@@ -41,7 +41,6 @@ import com.luobin.ui.BaseDialogActivity;
 import com.luobin.ui.CarInfoBean_New;
 import com.luobin.ui.InputTextDialog;
 import com.luobin.ui.InterestBean;
-import com.luobin.ui.RegisterInfoActivity;
 import com.luobin.ui.SelectInterestAdapter;
 import com.luobin.ui.SelectInterestDialog;
 import com.luobin.ui.TalkBackSearch.adapter.TSConditionPersionAdapter;
@@ -59,8 +58,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static com.luobin.ui.SelectInterestAdapter.*;
 
 /**
  * @author wangjunjie
@@ -304,6 +301,7 @@ public class TSConditionActivity extends BaseDialogActivity implements
 
     @Override
     public void onItemClick(List<InterestBean> interestBeans) {
+        Log.i("aihao","shujju");
         //TODO 设置兴趣爱好
         String interestName = "";
         for (int a = 0; a < interestBeans.size(); a++) {
@@ -324,7 +322,6 @@ public class TSConditionActivity extends BaseDialogActivity implements
         ADDRESS,
         //行业
         INDUSTRY,
-
     }
 
     private DIALOG_TYPE type;
@@ -528,6 +525,7 @@ public class TSConditionActivity extends BaseDialogActivity implements
 
         SelectInterestDialog selectInterestDialog = new SelectInterestDialog(this
                 , interestList);
+        selectInterestDialog.getAdapter().setOnItemClickListener(this);
         selectInterestDialog.show();
 
     }

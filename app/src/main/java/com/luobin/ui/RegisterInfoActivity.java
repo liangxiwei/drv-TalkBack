@@ -308,6 +308,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
         mContext = this;
 
+
         waitDialog();
         initView();
         initData();
@@ -1490,6 +1491,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
         SelectInterestDialog selectInterestDialog = new SelectInterestDialog(this
                 , interestList);
+
         selectInterestDialog.show();
 
     }

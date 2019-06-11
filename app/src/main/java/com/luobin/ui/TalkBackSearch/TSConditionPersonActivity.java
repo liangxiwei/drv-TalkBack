@@ -94,6 +94,7 @@ public class TSConditionPersonActivity extends BaseDialogActivity implements
         listView = list.getRefreshableView();
         adapter = new TSConditionPersionAdapter(this, userInfoList);
         listView.setAdapter(adapter);
+        adapter.setClickInterFace(this);
         getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
 
         list.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {

@@ -121,7 +121,7 @@ public class TSConditionPersionAdapter extends BaseAdapter {
         @BindView(R.id.tvName)
         TextView tvName;
         @BindView(R.id.tvAdd)
-        Button tvAdd;
+        TextView tvAdd;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
@@ -134,13 +134,6 @@ public class TSConditionPersionAdapter extends BaseAdapter {
 
     ClickInterFace clickInterFace = null;
 
-
-    public interface OnRecyclerViewItemClickListener {
-        /**
-         * 列表点击
-         */
-        void onItemClick(List<InterestBean> interestBeans);
-    }
 
 
 }
