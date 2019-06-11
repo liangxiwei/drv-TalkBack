@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -23,18 +24,24 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.example.jrd48.chat.ChineseToHanYuPYTest;
+import com.example.jrd48.chat.FirstActivity;
 import com.example.jrd48.chat.SQLite.TeamMemberHelper;
 import com.example.jrd48.chat.TeamMemberInfo;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.friend.AppliedFriends;
 import com.example.jrd48.chat.friend.DBHelperFriendsList;
 import com.example.jrd48.chat.friend.DBManagerFriendsList;
+import com.example.jrd48.chat.friend.FriendsDetailsActivity;
 import com.example.jrd48.chat.friend.ShowFriendMsgActivity;
 import com.example.jrd48.chat.group.DBHelperTeamList;
 import com.example.jrd48.chat.group.DBManagerTeamList;
+import com.example.jrd48.chat.group.ShowAllTeamMemberActivity;
+import com.example.jrd48.chat.group.ShowSearchGroupActivity;
 import com.example.jrd48.chat.group.TeamInfo;
+import com.example.jrd48.chat.group.TeamInfoList;
 import com.example.jrd48.chat.group.cache.DBTableName;
 import com.example.jrd48.chat.search.NameMatchPinYing;
+import com.example.jrd48.chat.search.SearchActivity;
 import com.example.jrd48.chat.search.SearchFriends;
 import com.example.jrd48.chat.search.SearchListItemAdapter;
 import com.example.jrd48.service.ITimeoutBroadcast;
@@ -42,11 +49,13 @@ import com.example.jrd48.service.MyService;
 import com.example.jrd48.service.TimeoutBroadcast;
 import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.example.jrd48.service.protocol.ResponseErrorProcesser;
+import com.example.jrd48.service.protocol.root.SearchGroupProcesser;
 import com.example.jrd48.service.protocol.root.SearchStrangerProcesser;
 import com.luobin.dvr.R;
 import com.luobin.model.SearchStrangers;
 import com.luobin.search.friends.AmapSearchActivity;
 import com.luobin.ui.BaseDialogActivity;
+import com.luobin.ui.FriendDetailsDialogActivity;
 import com.luobin.ui.TalkBackSearch.adapter.TSSearchAdapter;
 import com.luobin.utils.ButtonUtils;
 
@@ -114,6 +123,9 @@ public class TalkbackSearchActivity extends BaseDialogActivity {
 
     private Context context = null;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +138,82 @@ public class TalkbackSearchActivity extends BaseDialogActivity {
         getTeamDBMsg();
         initDialog();
         initView();
+
+        listLinkman.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                if (!mNewList.get(position).getSearchType().equals(linkTitle)) {
+                    if (mNewList.get(position).getSearchType().equals(linkMan)) {
+                        AppliedFriends appliedFriends = null;
+                        try {
+                            DBManagerFriendsList db = new DBManagerFriendsList(context, DBTableName.getTableName(context, DBHelperFriendsList.NAME));
+                            appliedFriends = db.getFriend(mNewList.get(position).getPhoneNum());
+                            db.closeDB();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        if (appliedFriends == null){
+                          //  Log.e(TAG,"appliedFriends is null");
+                            return;
+                        }
+                        Intent intent = new Intent(context, FriendDetailsDialogActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelable("appliedFriends", appliedFriends);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
+                    } else if (mNewList.get(position).getSearchType().equals(linkTeam)) {
+
+                        Intent intent = new Intent(context, ShowAllTeamMemberActivity.class);
+                        TeamInfo teamInfo = null;
+                        for (TeamInfo info : mTeamInfo) {
+                            if (mNewList.get(position).getTeamID().equals(info.getTeamID())) {
+                                teamInfo = info;
+                                break;
+                            }
+                        }
+
+                        Bundle mBundle = new Bundle();
+                        mBundle.putParcelable("team_desc", teamInfo);
+                        intent.putExtras(mBundle);
+                        startActivity(intent);
+
+
+//                        SharedPreferences preferences = getSharedPreferences("token", Context.MODE_PRIVATE);
+//                        String myPhone = preferences.getString("phone", "");
+//                        MsgRecordHelper msgRecordHelper = new MsgRecordHelper(mContext, myPhone + "MsgShow.dp", null);
+//                        SQLiteDatabase db = msgRecordHelper.getWritableDatabase();
+//                        ContentValues values = new ContentValues();
+//                        values.put("new_msg", 0);
+//                        db.update("Msg", values, "group_id = ?", new String[]{mNewList.get(position).getTeamID() + ""});
+//                        db.close();
+//
+//                        NotificationManager nm = (NotificationManager) getSystemService(mContext.NOTIFICATION_SERVICE);
+//                        nm.cancel(0);//消除对应ID的通知
+//
+//                        new InitDataBroadcast(mContext).sendBroadcast("");
+//                        Intent intent = new Intent(mContext, FirstActivity.class);
+//                        intent.putExtra("data", 0);
+//                        intent.putExtra("group", mNewList.get(position).getTeamID());
+//                        intent.putExtra("type", mNewList.get(position).getMemberRole());
+//                        String name = mNewList.get(position).getTeamName();
+//                        intent.putExtra("group_name", name);
+//                        startActivity(intent);
+                    } else if (mNewList.get(position).getSearchType().equals(SearchActivity.linkSearch)) {
+                        if (mNewList.get(position).getType() != null && mNewList.get(position).getType().equals(SearchActivity.linkSearch)) {
+                            searchGroup();
+                        } else {
+                            String phoneOrName = edContent.getText().toString().trim();
+                            searchFriend(phoneOrName);
+                        }
+                    }
+                }else {
+
+                }
+            }
+        });
+
     }
 
 
@@ -181,6 +269,7 @@ public class TalkbackSearchActivity extends BaseDialogActivity {
             public void afterTextChanged(Editable s) {
 
                 Editable edit = edContent.getText();
+
                 checkUserByChinese(edit.toString());
             }
 
@@ -308,9 +397,9 @@ public class TalkbackSearchActivity extends BaseDialogActivity {
      * @param aply
      */
     public void successFreindBack(SearchStrangers aply) {
-        Intent i = new Intent(context, ShowFriendMsgActivity.class);
+        Intent i = new Intent(context, FriendDetailsDialogActivity.class);
         i.putExtra("user_msg", aply);
-        i.putExtra("activity", "new");
+        i.putExtra("userPhone", aply.getPhoneNum());
         startActivityForResult(i, 2);
     }
 
@@ -726,6 +815,60 @@ public class TalkbackSearchActivity extends BaseDialogActivity {
         super.onPause();
         hideSoftInputFromWindow();
     }
+
+
+
+    private void searchGroup() {
+        String msg = edContent.getText().toString().trim();
+        if (msg.length() <= 0) {
+            ToastR.setToast(context, "请输入数据");
+            return;
+        }
+        checkDialog = true;
+        m_pDialog.show();
+        ProtoMessage.TeamInfo.Builder builder = ProtoMessage.TeamInfo.newBuilder();
+        builder.setTeamName(msg);
+        MyService.start(context, ProtoMessage.Cmd.cmdSearchTeam.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SearchGroupProcesser.ACTION);
+        new TimeoutBroadcast(context, filter, getBroadcastManager()).startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                checkDialog = false;
+                m_pDialog.dismiss();
+                ToastR.setToast(context, "连接超时");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+                checkDialog = false;
+                m_pDialog.dismiss();
+                if (i.getIntExtra("error_code", -1) ==
+                        ProtoMessage.ErrorCode.OK.getNumber()) {
+                    TeamInfoList teList = i.getParcelableExtra("get_seach_group_list");
+                    if (teList != null) {
+                        searchTeamSuccess(teList);
+                        ToastR.setToast(context, "搜索群组成功");
+                    } else {
+                        ToastR.setToast(context, "未找到相关群组");
+                    }
+                } else {
+                    new ResponseErrorProcesser(context, i.getIntExtra("error_code", -1));
+                }
+            }
+        });
+
+    }
+
+    private void searchTeamSuccess(TeamInfoList teList) {
+        Intent i = new Intent(context, ShowSearchGroupActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("intent_seach_group_list", teList);
+        i.putExtras(bundle);
+        startActivityForResult(i, 3);
+    }
+
+
 
 
 }

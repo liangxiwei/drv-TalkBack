@@ -2,29 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#00000000"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp" >
 
-        
         <ImageView
             android:id="@+id/request_in_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="15dp"
-            android:gravity="center"
-            android:scaleType="fitXY"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_centerVertical="true"
             android:src="@drawable/group"
              />
 
         <LinearLayout
+            android:layout_toRightOf="@+id/request_in_image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
-            android:layout_weight="99"
+            android:layout_marginStart="10dp"
             android:orientation="vertical" >
 
             <TextView
@@ -34,8 +36,8 @@
                 android:layout_weight="2"
                 android:gravity="center_vertical"
                 android:text="Tx"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp" />
+                android:textColor="@color/white"
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/tv_search_group_describle"
@@ -44,8 +46,8 @@
                 android:layout_weight="1"
                 android:text="te"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
+                android:textColor="@color/white"
+                android:textSize="12dp" />
         </LinearLayout>
 
         <RelativeLayout
@@ -53,7 +55,9 @@
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
             android:gravity="center_vertical"
-            android:visibility="gone">
+            android:layout_alignParentEnd="true"
+            android:visibility="gone"
+            >
 
             <Button
                 android:id="@+id/request_in_accept"
@@ -63,7 +67,7 @@
                 android:background="@drawable/btn_change_color1"
                 android:text="接收"
                 android:textColor="#ffffff"
-                android:textSize="20sp" />
+                android:textSize="16dp" />
 
             <Button
                 android:id="@+id/request_in_refuse"
@@ -75,9 +79,15 @@
                 android:background="@drawable/photo_delete_button"
                 android:text="拒绝"
                 android:textColor="#ffffff"
-                android:textSize="20sp" />
+                android:textSize="16dp" />
 
         </RelativeLayout>
+    </RelativeLayout>
+        
+        <TextView
+            android:layout_marginStart="62dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
     </LinearLayout>
-
 </LinearLayout>

@@ -17,7 +17,7 @@
             android:layout_width="313dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/bg_panel_edittext">
 
 
@@ -60,7 +60,7 @@
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/bg_panel_setting"
             android:text="搜索"
             android:textColor="@color/text_color_90white"
@@ -71,7 +71,7 @@
             android:id="@+id/rlbtnIsShow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp">
+            android:layout_marginTop="60dp">
 
             <Button
                 android:id="@+id/btnSearchPerson"

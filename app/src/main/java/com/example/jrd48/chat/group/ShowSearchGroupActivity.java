@@ -1,5 +1,6 @@
 package com.example.jrd48.chat.group;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -30,26 +31,32 @@ import com.example.jrd48.service.TimeoutBroadcast;
 import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.example.jrd48.service.protocol.ResponseErrorProcesser;
 import com.example.jrd48.service.protocol.root.ApplyGroupProcesser;
+import com.luobin.ui.BaseDialogActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowSearchGroupActivity extends BaseActivity {
+public class ShowSearchGroupActivity extends BaseDialogActivity {
 
     private GroupRequestAdapter adapter;
     private ListView lvSearchGroup;
     TeamInfoList teamInfoList;
     List<TeamInfo> teamInfo = new ArrayList<TeamInfo>();
 
+    ImageView imageView ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_group_show);
+        getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         initControl();
         getMsg();
         adapter = new GroupRequestAdapter(this, teamInfo);
         lvSearchGroup.setAdapter(adapter);
+
+
     }
 
 
@@ -58,7 +65,13 @@ public class ShowSearchGroupActivity extends BaseActivity {
      */
     private void initControl() {
         lvSearchGroup = (ListView) findViewById(R.id.lv_search_group_show);
-
+        imageView = (ImageView) findViewById(R.id.imgClose);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         lvSearchGroup.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

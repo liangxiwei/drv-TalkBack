@@ -124,6 +124,7 @@ public class FriendDetailsDialogActivity extends BaseActivity {
 
     private void refreshUI() {
         if (isFriends) { // 如果是好友
+            userName = appliedFriend.getUserName();
             if (appliedFriend != null) {
                 if (TextUtils.isEmpty(userName)) {
                     userName = "未设置";
@@ -144,7 +145,7 @@ public class FriendDetailsDialogActivity extends BaseActivity {
                     ivHead.setImageBitmap(bmp1);
                 }
 
-
+                userPhone = appliedFriend.getPhoneNum();
                 if (appliedFriend.getUserSex() == ProtoMessage.Sex.male_VALUE) {
                     tvSex.setText("<男 " + userPhone + ">");
                 } else if (appliedFriend.getUserSex() == ProtoMessage.Sex.female_VALUE) {
@@ -449,7 +450,6 @@ public class FriendDetailsDialogActivity extends BaseActivity {
                 c.moveToFirst();
                 ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
                 builder.setPhoneNum(myPhone);
-
                 builder.setCarID(CommonUtil.makeNotNull(c.getString(c.getColumnIndex(DBHelperFriendsList.CAR_ID))));//String
                 builder.setUserSex(c.getInt(c.getColumnIndex("userSex")));
                 builder.setCity(CommonUtil.makeNotNull(c.getString(c.getColumnIndex(DBHelperFriendsList.CITY))));//String

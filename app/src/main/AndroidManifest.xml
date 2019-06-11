@@ -195,7 +195,7 @@
         <activity
             android:name="com.example.jrd48.chat.group.ShowSearchGroupActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/MyDialogStyleBottom" />
         <activity
             android:name="com.example.jrd48.chat.group.InviteJoinGroupActivity"
             android:screenOrientation="landscape"
