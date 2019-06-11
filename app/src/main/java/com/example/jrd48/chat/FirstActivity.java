@@ -62,7 +62,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -78,6 +77,7 @@ import com.example.jrd48.chat.SQLite.MsgRecordHelper;
 import com.example.jrd48.chat.SQLite.SQLiteTool;
 import com.example.jrd48.chat.SQLite.TeamMemberHelper;
 import com.example.jrd48.chat.SQLite.TeamRecordHelper;
+import com.example.jrd48.chat.crash.MyApplication;
 import com.example.jrd48.chat.friend.AppliedFriends;
 import com.example.jrd48.chat.friend.AppliedFriendsList;
 import com.example.jrd48.chat.friend.DBHelperFriendsList;
@@ -125,11 +125,14 @@ import com.example.jrd48.service.protocol.root.SpeakerEndProcesser;
 import com.example.jrd48.service.protocol.root.TeamMemberProcesser;
 import com.example.jrd48.service.protocol.root.VoiceAcceptProcesser;
 import com.example.jrd48.service.protocol.root.VoiceStartProcesser;
+import com.google.protobuf.ByteString;
 import com.luobin.dvr.DvrConfig;
 import com.luobin.dvr.DvrService;
 import com.luobin.dvr.R;
 import com.luobin.model.CallState;
 import com.luobin.timer.ChatManager;
+import com.luobin.ui.FriendDetailsDialogActivity;
+import com.luobin.ui.SelectMemberActivity;
 import com.luobin.voice.AudioInitailFailedBroadcast;
 import com.luobin.voice.AudioRecordStatusBroadcast;
 import com.luobin.voice.VoiceHandler;
@@ -150,7 +153,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.lake.librestreaming.client.RESClient;
+
 import static android.provider.Settings.System.NAVIGATION_BAR_CTRL;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -161,6 +168,20 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         , Animation.AnimationListener {
 
     public static final int SWITCH_BTN_ALPHA = 200;
+    @BindView(R.id.btn_return)
+    Button btnReturn;
+    @BindView(R.id.prefix_camera)
+    Button prefixCamera;
+    @BindView(R.id.rear_camera)
+    Button rearCamera;
+    @BindView(R.id.picture_in_picture)
+    Button pictureInPicture;
+    @BindView(R.id.voice)
+    Button voice;
+    @BindView(R.id.goto_map)
+    Button gotoMap;
+    @BindView(R.id.do_not_disturb)
+    Button doNotDisturb;
     private volatile boolean showScreenOnce = true;
     private Cursor tempCursorUser;
     private boolean once = true;
@@ -230,7 +251,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
     private String changeType = "Group";
     private boolean up_down = false;
     private ProtoMessage.ChatRoomMsg r;
-    private GridView gridview;
+    private ListView memberListView;
     private FloatingActionButton button;
     private Button btn_sent_msg;
     private Button addition;
@@ -246,7 +267,6 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
     private final String deleteLinkMan = "deleteLinkMan";
     //    private ImageView speakingimage;
     private ImageView showSpeakMan;
-    private ImageView singleMan;
     private TextView groupNullHint;
     private TextView speakingname;
     private ImageView speakingstate;
@@ -271,7 +291,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 case 2:
                     if (r != null) {
                         name.setText(groupName);
-                        sta_num.setText("在线:" + nowMansNum + " 人数:" + mansNum);
+                        sta_num.setText( nowMansNum + "/" + mansNum);
                         r = null;
                     } else {
                         name.setText(groupName);
@@ -288,7 +308,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
 //                    mMap.onResume();
                     mapInitIs = true;
                     if (bottomLayoutManager != null) {
-                        bottomLayoutManager.show(false);
+                        // bottomLayoutManager.show(false);
                     }
                     _OnResume();
                     initNotifyUser();
@@ -497,12 +517,14 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         w.addFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
         this.savedInstanceState = savedInstanceState;
         setContentView(R.layout.activity_chat);
+        ButterKnife.bind(this);
 //        mMap = new MapHandler(this);
         //
         checkRandomChat();
         bottomLayoutManager = new BottomLayoutManager(this);
         initViewPager();
         initView1();
+        rearCamera.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
         if (!ConnUtil.isConnected(this)) {
             ToastR.setToast(this, "连接服务器失败，请检查网络连接");
             finish();
@@ -520,11 +542,11 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
 
     private void checkRandomChat() {
         group = getIntent().getLongExtra("group", 0);
-        Log.d("chatJrd","group = "+group);
+        Log.d("chatJrd", "group = " + group);
         if (group == 0) {
             //Log.d("chatJrd","setIsRandomChat 520");
             //GlobalStatus.setIsRandomChat(false);
-        }else{
+        } else {
             TeamInfo teamInfo = getTeamInfo();
             /*if (teamInfo != null && teamInfo.getTeamType() == ProtoMessage.TeamType.teamRandom.getNumber()) {
                 //Log.d("chatJrd","setIsRandomChat 525");
@@ -663,7 +685,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 public boolean onTouch(View v, MotionEvent event) {
                     Log.e("wsDvr", "videoLayout onTouch");
                     if (bottomLayoutManager != null) {
-                        bottomLayoutManager.show(true);
+                        //   bottomLayoutManager.show(true);
                     }
                     return false;
                 }
@@ -672,7 +694,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
 //            speakingimage = (ImageView) view1.findViewById(R.id.speakingimage);
             showSpeakMan = (ImageView) findViewById(R.id.show_speakman);
             groupNullHint = (TextView) findViewById(R.id.null_Text);
-            singleMan = (ImageView) findViewById(R.id.single_other_man);
+            //  singleMan = (ImageView) findViewById(R.id.single_other_man);
             speakingname = (TextView) findViewById(R.id.speakingname);
             speakingstate = (ImageView) findViewById(R.id.speakingstate);
             speakingMenu = (ImageView) findViewById(R.id.speaking_menu);
@@ -725,25 +747,25 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
                         //当手指按下的时候
                         listH = list_layout.getHeight();
-                        gridviewH = gridview.getHeight();
+                        gridviewH = memberListView.getHeight();
                         x1 = event.getRawX();
                         y1 = event.getRawY();
                     }
 
                     if (event.getAction() == MotionEvent.ACTION_UP) {
                         listH = list_layout.getHeight();
-                        gridviewH = gridview.getHeight();
+                        gridviewH = memberListView.getHeight();
                         if (Math.abs(event.getRawX() - x1) < 3 &&
                                 Math.abs(event.getRawY() - y1) < 3) {
-                            if (gridview.getHeight() > singleH) {
+                            if (memberListView.getHeight() > singleH) {
                                 list_layout.setLayoutParams(new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.MATCH_PARENT, 0, 1));
-                                gridview.setLayoutParams(new LinearLayout.LayoutParams(
+                                memberListView.setLayoutParams(new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.MATCH_PARENT, (int) (singleH + 0.5f), 0));
                             } else {
                                 list_layout.setLayoutParams(new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.MATCH_PARENT, (int) (minListH + 0.5f), 0));
-                                gridview.setLayoutParams(new LinearLayout.LayoutParams(
+                                memberListView.setLayoutParams(new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.MATCH_PARENT, 0, 1));
                             }
                         }
@@ -760,19 +782,19 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                             if (tempGH < singleH) {
                                 list_layout.setLayoutParams(new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.MATCH_PARENT, 0, 1));
-                                gridview.setLayoutParams(new LinearLayout.LayoutParams(
+                                memberListView.setLayoutParams(new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.MATCH_PARENT, (int) (singleH + 0.5f), 0));
                                 //Log.i("chatjrd","在第一个if里面  "+tempLH+"  "+tempGH);
                             } else if (tempLH < minListH) {
                                 list_layout.setLayoutParams(new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.MATCH_PARENT, (int) (minListH + 0.5f), 0));
-                                gridview.setLayoutParams(new LinearLayout.LayoutParams(
+                                memberListView.setLayoutParams(new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.MATCH_PARENT, 0, 1));
                                 //Log.i("chatjrd","在第二个if里面  "+tempLH+"  "+tempGH);
                             } else {
                                 list_layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                                         (int) (singleH + 0.5f), (int) (tempLH - singleH + 0.5f)));
-                                gridview.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                                memberListView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                                         (int) (singleH + 0.5f), (int) (tempGH - singleH + 0.5f)));
                                 //Log.i("chatjrd","在第三个if里面  "+tempLH+"  "+tempGH);
                             }
@@ -827,6 +849,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         }
     }
 
+
     private void dataInit() {
         group = 0;
         groupName = "";
@@ -868,17 +891,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 temp_exist = true;
                 videoLayout.showVideo(FirstActivity.this);
 //                videoLayout.showSingle(FirstActivity.this, linkmanPhone);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        singleMan.setImageBitmap(GlobalImg.getImage(FirstActivity.this, linkmanPhone));
-                        if (GlobalStatus.isVideo()) {
-                            singleMan.setVisibility(GONE);
-                        } else {
-                            singleMan.setVisibility(GONE);
-                        }
-                    }
-                });
+
             }
 
             SharedPreferencesUtils.put(this, ReceiverProcesser.UPDATE_KEY, linkmanPhone);
@@ -904,12 +917,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             refreshHandler.sendMessage(message);
             getGroupMan(group);
             single = false;
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    singleMan.setVisibility(GONE);
-                }
-            });
+
             if (GlobalStatus.equalTeamID(group)) {
                 call_hungon = 1;
                 temp_exist = true;
@@ -917,14 +925,14 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             }
         }
 
-        if(single){
-            if(!GlobalStatus.equalPhone(linkmanPhone)){
+        if (single) {
+            if (!GlobalStatus.equalPhone(linkmanPhone)) {
                 Intent service = new Intent(this, MyService.class);
                 service.putExtra("ptt_key_action", false);
                 this.startService(service);
             }
         } else {
-            if(!GlobalStatus.equalTeamID(group)){
+            if (!GlobalStatus.equalTeamID(group)) {
                 Intent service = new Intent(this, MyService.class);
                 service.putExtra("ptt_key_action", false);
                 this.startService(service);
@@ -992,7 +1000,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             //button.setBackgroundResource(R.drawable.speaker_3);
         } else if (call_hungon == 1) {
             Log.i("chatjrd", roomId + "");
-        /*if (roomId == -1) {*/
+            /*if (roomId == -1) {*/
             hangup.setVisibility(GONE);
             call.setVisibility(VISIBLE);
             call_hungon = 0;
@@ -1021,8 +1029,8 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         builder.setAcceptType(ProtoMessage.AcceptType.atDeny_VALUE);
         MyService.start(FirstActivity.this, ProtoMessage.Cmd.cmdAcceptVoice.getNumber(), builder.build());
 //        IntentFilter filter = new IntentFilter();
-        VoiceHandler.doVoiceAction(mContext,false);
-        GlobalStatus.setOldChat(0,"",0);
+        VoiceHandler.doVoiceAction(mContext, false);
+        GlobalStatus.setOldChat(0, "", 0);
         GlobalStatus.clearChatRoomMsg();
         finish();
 //        filter.addAction(VoiceAcceptProcesser.ACTION);
@@ -1154,7 +1162,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                     }
                 });
                 return;
-            } else if(GlobalStatus.getChatRoomMsg() != null && (GlobalStatus.equalPhone(linkmanPhone) || GlobalStatus.equalTeamID(group))){
+            } else if (GlobalStatus.getChatRoomMsg() != null && (GlobalStatus.equalPhone(linkmanPhone) || GlobalStatus.equalTeamID(group))) {
                 call_hungon = 1;
                 roomId = GlobalStatus.getRoomID();
                 r = GlobalStatus.getChatRoomMsg();
@@ -1219,9 +1227,9 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         } else {
             hostOk = false;
         }
-        Log.v("wsDvr","GlobalStatus.isPttBroadCast():" + GlobalStatus.isPttBroadCast());
-        Log.v("wsDvr","GlobalStatus.isPttKeyDown():" + GlobalStatus.isPttKeyDown());
-        if(GlobalStatus.isPttBroadCast() && !GlobalStatus.isPttKeyDown()){
+        Log.v("wsDvr", "GlobalStatus.isPttBroadCast():" + GlobalStatus.isPttBroadCast());
+        Log.v("wsDvr", "GlobalStatus.isPttKeyDown():" + GlobalStatus.isPttKeyDown());
+        if (GlobalStatus.isPttBroadCast() && !GlobalStatus.isPttKeyDown()) {
             Intent service = new Intent(this, MyService.class);
             service.putExtra("ptt_key_action", true);
             startService(service);
@@ -1238,12 +1246,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
 //            GlobalStatus.setChatRoomMsg(r, linkmanPhone);
 //                        videoLayout.showSingle(FirstActivity.this, linkmanPhone);
             videoLayout.showVideo(FirstActivity.this);
-            singleMan.setImageBitmap(GlobalImg.getImage(FirstActivity.this, linkmanPhone));
-            if (GlobalStatus.isVideo()) {
-                singleMan.setVisibility(GONE);
-            } else {
-                singleMan.setVisibility(GONE);
-            }
+
             int status;
             if (r.getMembersList().get(0).getPhoneNum().equals(myPhone)) {
                 status = r.getMembersList().get(1).getStatus();
@@ -1288,7 +1291,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             ChatManager.getInstance().showChatInfo(videoLayout);
         }
         if (bottomLayoutManager != null) {
-            bottomLayoutManager.show(false);
+            //   bottomLayoutManager.show(false);
         }
         hangup.setVisibility(VISIBLE);
         call.setVisibility(GONE);
@@ -1409,14 +1412,14 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 Log.i(BluetoothMonitor.TAG, "bluetooth: " + keyDown);
                 button.setEnabled(keyDown ? false : true);
             } else if (intent.getAction().equalsIgnoreCase(BottomLayoutManager.ACTION_VIDEO_CONTROL_SHOW) && bottomLayoutManager != null && !pauseIs) {
-                bottomLayoutManager.show(true);
-            } else if(intent.getAction().equalsIgnoreCase(RESClient.ACTION_VIDEO_VOIDE_SWITCH) && bottomLayoutManager != null ){
-                boolean isVideo = intent.getBooleanExtra("isVideo",false);
-                if(!GlobalStatus.IsRandomChat()){
+                // bottomLayoutManager.show(true);
+            } else if (intent.getAction().equalsIgnoreCase(RESClient.ACTION_VIDEO_VOIDE_SWITCH) && bottomLayoutManager != null) {
+                boolean isVideo = intent.getBooleanExtra("isVideo", false);
+                if (!GlobalStatus.IsRandomChat()) {
                     bottomLayoutManager.switchVoiceOrVideo(isVideo);
                 }
                 bottomLayoutManager.updateChatModeSelection();
-            } else if(intent.getAction().equalsIgnoreCase(RESClient.ACTION_VIDEO_VOIDE_UPDATE) && bottomLayoutManager != null){
+            } else if (intent.getAction().equalsIgnoreCase(RESClient.ACTION_VIDEO_VOIDE_UPDATE) && bottomLayoutManager != null) {
                 //bottomLayoutManager.updateSwitchText();
                 bottomLayoutManager.updateChatModeSelection();
             }
@@ -1691,7 +1694,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         Log.i("pocdemo", " first activity finish");
         ChatManager.getInstance().setIsFinishing(true);
         ChatManager.getInstance().hideView();
-        if(bottomLayoutManager != null) {
+        if (bottomLayoutManager != null) {
             bottomLayoutManager.removeView();
         }
         super.finish();
@@ -1741,7 +1744,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             bottomLayoutManager.removeView();
         }
 
-        if(ChatManager.getInstance().isIsFinishing()){
+        if (ChatManager.getInstance().isIsFinishing()) {
             ChatManager.getInstance().hideView();
         }
         GlobalStatus.setFirstCreating(false);
@@ -1751,15 +1754,15 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
 
     //***********************设置GridView显示*******************************
     public void setGridView() {
-        gridview = (GridView) view1.findViewById(R.id.gridView);
+        memberListView = (ListView) findViewById(R.id.member_list);
         adapterU = new UserAdapter(FirstActivity.this, R.layout.singleuser, userList);
         //initGridView();//初始化GridView
-        gridview.setAdapter(adapterU);
+        memberListView.setAdapter(adapterU);
         setGridViewClick(false);
     }
 
     private void setGridViewClick(final boolean check) {
-        gridview.setOnItemClickListener(new OnItemClickListener() {
+        memberListView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
@@ -1780,7 +1783,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             }
         });
         if (check) {
-            gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            memberListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                     if (position == (userList.size() - 1)) {
@@ -1790,7 +1793,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                     return false;
                 }
             });
-            gridview.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            memberListView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
                 public void onCreateContextMenu(ContextMenu menu, View v,
                                                 ContextMenu.ContextMenuInfo menuInfo) {
                     menu.add(0, 10, 0, getName(phone));
@@ -1870,7 +1873,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         editRemark.setSelection(editRemark.length());// 将光标追踪到内容的最后
         new AlertDialog.Builder(mContext, AlertDialog.THEME_HOLO_LIGHT).setTitle(str)// 提示框标题
                 .setView(view).setPositiveButton("确定", // 提示框的两个按钮
-                new android.content.DialogInterface.OnClickListener() {
+                new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -2134,7 +2137,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
     }
 
     private void CancelMsg(long sn, int position) {
-/*      */
+        /*      */
         ProtoMessage.CommonMsg.Builder builder = ProtoMessage.CommonMsg.newBuilder();
         long id = -1;
         if (single) {
@@ -2155,7 +2158,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             builder.setToTeamID(group);
         }
         builder.setMsgSN(sn);
-        builder.setMsgContent(com.google.protobuf.ByteString.copyFromUtf8(id + ""));
+        builder.setMsgContent(ByteString.copyFromUtf8(id + ""));
         builder.setMsgType(ProtoMessage.MsgType.mtCancel_VALUE);
         MyService.start(FirstActivity.this, ProtoMessage.Cmd.cmdCommonMsg.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
@@ -2327,17 +2330,17 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         etMsg.setText("我是" + userNameMe + ",请求加您为好友，谢谢。");
         new AlertDialog.Builder(mContext, AlertDialog.THEME_HOLO_LIGHT)// 提示框标题
                 .setView(view).setPositiveButton("确定", // 提示框的两个按钮
-                new android.content.DialogInterface.OnClickListener() {
+                new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                         String msg = etMsg.getText().toString().trim();
                         String remark = nickName.getText().toString().trim();
-                        if (remark.length()<= 0){
+                        if (remark.length() <= 0) {
                             ToastR.setToast(mContext, "备注输入不能为空");
                             return;
                         }
-                        if (msg.length() <= 0){
+                        if (msg.length() <= 0) {
                             ToastR.setToast(mContext, "验证信息输入不能为空");
                             return;
                         }
@@ -2502,24 +2505,15 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
     /*
         显示成员详情信息弹框
      */
-    private void showInformationDilog(final TeamMemberInfo tm) {
+    private void showInformationDilog(final TeamMemberInfo teamMemberInfo) {
         //TODO DDDD
-        Intent intent = new Intent(mContext, GroupMemberDetailsActivity.class);
+        Intent intent = new Intent(mContext, FriendDetailsDialogActivity.class);
         Bundle bundle = new Bundle();
-        for (User user : userList) {
-            if (tm.getUserPhone().equals(user.getPhone())) {
-                tm.setNickName(user.getName());
-                break;
-            }
-        }
-        bundle.putParcelable("team_detail", tm);
-        intent.putExtra("type", REFRESH_TEAM_REMARK);
-        intent.putExtra("my_phone", myPhone);
-        intent.putExtra("teamID", group);
-        intent.putExtra("role", type);
+        bundle.putString("userPhone", teamMemberInfo.getUserPhone());
+        bundle.putString("userName", teamMemberInfo.getUserName());
+        intent.putExtra("teamID",group);
         intent.putExtras(bundle);
-        startActivityForResult(intent, REFRESH_TEAM_REMARK);
-
+        startActivity(intent);
     }
 
     //邀请加为好友
@@ -2556,7 +2550,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                             dialog.dismiss();
                         }
 
-                    }).setNegativeButton("取消", new android.content.DialogInterface.OnClickListener() {
+                    }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
@@ -2669,7 +2663,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         }
         new AlertDialog.Builder(FirstActivity.this, AlertDialog.THEME_HOLO_LIGHT).setTitle("提示：")// 提示框标题
                 .setMessage("确定要删除" + msg + "?").setPositiveButton("确定", // 提示框的两个按钮
-                new android.content.DialogInterface.OnClickListener() {
+                new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -2757,7 +2751,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
 
         new AlertDialog.Builder(FirstActivity.this, AlertDialog.THEME_HOLO_LIGHT).setTitle("设置管理员")// 提示框标题
                 .setView(view).setPositiveButton("确定", // 提示框的两个按钮
-                new android.content.DialogInterface.OnClickListener() {
+                new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (radioMember.isChecked()) {
@@ -2769,7 +2763,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                         dialog.dismiss();
                     }
 
-                }).setNegativeButton("取消", new android.content.DialogInterface.OnClickListener() {
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -2882,7 +2876,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                     refreshHandler.sendMessage(message2);
                 }
 //                mMap.refreshMapLocalData(userList, call_hungon == 1);
-            }  finally {
+            } finally {
                 tempCursorUser.close();
             }
         } finally {
@@ -2949,7 +2943,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         message.what = 2;
         refreshHandler.sendMessage(message);
 
-        userT(User.ADD, 0, "", 0);
+      //  userT(User.ADD, 0, "", 0);
 
         mTMInfo.clear();
         for (TeamMemberInfo te : allTeamMemberInfos) {
@@ -2980,7 +2974,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             }
         }
         setGridViewClick(true);
-        rankList(1);
+        rankList(0);
 
         //adapterU.notifyDataSetChanged();
 
@@ -3063,8 +3057,8 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                         adapterU.notifyDataSetChanged();
                     }
                 } else {
-                    Log.e("jim","firstactivity userFace  code:"+i.getIntExtra("error_code", -1));
-                   // fail(i.getIntExtra("error_code", -1));
+                    Log.e("jim", "firstactivity userFace  code:" + i.getIntExtra("error_code", -1));
+                    // fail(i.getIntExtra("error_code", -1));
                 }
             }
         });
@@ -3074,6 +3068,10 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
     @Override
     public void onBackPressed() {
         Log.i("pocdemo", "first activit onBackPress:" + additionType);
+
+        if (GlobalStatus.isVideo()){
+            HungupClick();
+        }else
         if (additionType == 1) {
             additionLayout.setVisibility(GONE);
             additionType = 0;
@@ -3090,7 +3088,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
 
     //正在对讲
     private void notification() {
-        if(GlobalStatus.getChatRoomMsg() != null) {
+        if (GlobalStatus.getChatRoomMsg() != null) {
             Intent notificationIntent = new Intent(FirstActivity.this, FirstActivity.class);
             notificationIntent.putExtra("callType", 0);
             String titleMsg;
@@ -3169,6 +3167,8 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                     //speakingUser.setImage(userList.get(i).getImage());
                     String time = saveMsgRemind(userList.get(i).getName() + "在话权中");
                     msgList.add(new Msg(userList.get(i).getName() + "在话权中", Msg.TYPE_MSG_RECORD, time, 0, 0, changephone, 0, 0));
+                    userList.add(0,userList.get(i));
+                    userList.remove(i+1);
                 }
             }
             if (changephone.equals(this.myPhone)) {
@@ -3196,7 +3196,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                     break;
                 }
             }
-            if(!GlobalStatus.getStatusList().contains(ProtoMessage.ChatStatus.csSpeaking_VALUE)){
+            if (!GlobalStatus.getStatusList().contains(ProtoMessage.ChatStatus.csSpeaking_VALUE)) {
                 speakingUser.setName("");
                 speakingUser.setPhone("");
             }
@@ -3221,7 +3221,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 sta_num.setText(online[nowMansNum]);
             } else {
                 name.setText(groupName);
-                sta_num.setText("在线:" + nowMansNum + " 人数:" + mansNum);
+                sta_num.setText( nowMansNum + "/" + mansNum);
             }
             //  mMap.refreshMapLocalData(userList);
         }
@@ -3786,7 +3786,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 } else {
                     Dialog dialog = new AlertDialog.Builder(mContext, AlertDialog.THEME_HOLO_LIGHT).setTitle("提示：")
                             .setMessage(getString(R.string.video_not_wifi)).setPositiveButton("确定",
-                                    new android.content.DialogInterface.OnClickListener() {
+                                    new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
@@ -3813,7 +3813,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
 
     GroupPopWindow groupPopWindow;
 
-    private View.OnClickListener itemsOnClick = new View.OnClickListener() {
+    private OnClickListener itemsOnClick = new OnClickListener() {
         public void onClick(View v) {
             groupPopWindow.dismiss();
             switch (v.getId()) {
@@ -4150,7 +4150,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         }
         builder.setMsgSN(l);
         builder.setMsgType(ProtoMessage.MsgType.mtText.getNumber());
-        builder.setMsgContent(com.google.protobuf.ByteString.copyFromUtf8(str));
+        builder.setMsgContent(ByteString.copyFromUtf8(str));
         MyService.start(FirstActivity.this, ProtoMessage.Cmd.cmdCommonMsg.getNumber(), builder.build());
         intentFilter(l, "");
     }
@@ -4200,7 +4200,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         }
         //builder.setMsgType(ProtoMessage.MsgType.mtImage.getNumber());
         builder.setMsgSN(l);
-        builder.setMsgContent(com.google.protobuf.ByteString.copyFrom(bitmapByte));
+        builder.setMsgContent(ByteString.copyFrom(bitmapByte));
         MyService.start(FirstActivity.this, ProtoMessage.Cmd.cmdCommonMsg.getNumber(), builder.build());
         intentFilter(l, picAddress);
     }
@@ -4834,7 +4834,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (bottomLayoutManager != null && keyCode != KeyEvent.KEYCODE_BACK && keyCode != KeyEvent.KEYCODE_F6 && !pauseIs) {
-            bottomLayoutManager.show(false);
+            //  bottomLayoutManager.show(false);
         }
 
 //        if (keyCode == KeyEvent.KEYCODE_F6) {
@@ -4885,7 +4885,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         new AlertDialog.Builder(mContext, AlertDialog.THEME_HOLO_LIGHT).setTitle("提示")// 提示框标题
                 .setMessage(msg)
                 .setPositiveButton("确定", // 提示框的两个按钮
-                        new android.content.DialogInterface.OnClickListener() {
+                        new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 if (type.equals(deleteLinkMan)) {
@@ -4958,6 +4958,92 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             }
         } else {
             ToastR.setToast(this, "不是房间呼起人！");
+        }
+    }
+
+    @OnClick({R.id.voice,R.id.btn_return, R.id.prefix_camera, R.id.rear_camera, R.id.picture_in_picture, R.id.goto_map, R.id.do_not_disturb,R.id.btn_add})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_return:
+                finish();
+                break;
+            case R.id.prefix_camera:
+                //前置对讲
+                prefixCamera.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
+                rearCamera.setTextColor(getResources().getColor(R.color.white));
+                pictureInPicture.setTextColor(getResources().getColor(R.color.white));
+                voice.setTextColor(getResources().getColor(R.color.white));
+                doNotDisturb.setTextColor(getResources().getColor(R.color.white));
+
+                GlobalStatus.setIsVideo(true);
+                GlobalStatus.changeChatStatusInfo();
+                changeTitle();
+                if (GlobalStatus.checkSpeakPhone(getMyPhone(), getRoomId())) {
+                    VoiceHandler.startRTMP(mContext, GlobalStatus.getCurRtmpAddr());
+                }
+                break;
+            case R.id.rear_camera:
+                //后置对讲
+                prefixCamera.setTextColor(getResources().getColor(R.color.white));
+                rearCamera.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
+                pictureInPicture.setTextColor(getResources().getColor(R.color.white));
+                voice.setTextColor(getResources().getColor(R.color.white));
+                doNotDisturb.setTextColor(getResources().getColor(R.color.white));
+
+
+                //按下操作
+                if (record == 0) {
+                    SharedPreferencesUtils.put(mContext, "pttKeyDown", true);
+                        pttKeyDownSent();
+                }
+
+                break;
+            case R.id.picture_in_picture:
+                //画中画对讲
+                prefixCamera.setTextColor(getResources().getColor(R.color.white));
+                rearCamera.setTextColor(getResources().getColor(R.color.white));
+                pictureInPicture.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
+                voice.setTextColor(getResources().getColor(R.color.white));
+                doNotDisturb.setTextColor(getResources().getColor(R.color.white));
+
+
+                //抬起操作
+                SharedPreferencesUtils.put(mContext, "pttKeyDown", false);
+                btnUp();
+                break;
+            case R.id.voice:
+                //语音对讲
+                prefixCamera.setTextColor(getResources().getColor(R.color.white));
+                rearCamera.setTextColor(getResources().getColor(R.color.white));
+                pictureInPicture.setTextColor(getResources().getColor(R.color.white));
+                voice.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
+                doNotDisturb.setTextColor(getResources().getColor(R.color.white));
+
+
+                GlobalStatus.setIsVideo(false);
+                changeTitle();
+                DvrService.start(MyApplication.getContext(), RESClient.ACTION_STOP_RTMP, null);
+                DvrService.start(MyApplication.getContext(), RESClient.ACTION_STOP_PLAY, null);
+                break;
+            case R.id.goto_map:
+                // 地图查看
+                break;
+            case R.id.do_not_disturb:
+                //免打扰
+                prefixCamera.setTextColor(getResources().getColor(R.color.white));
+                rearCamera.setTextColor(getResources().getColor(R.color.white));
+                pictureInPicture.setTextColor(getResources().getColor(R.color.white));
+                voice.setTextColor(getResources().getColor(R.color.white));
+                doNotDisturb.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
+
+                HungupClick();
+                break;
+            case R.id.btn_add:
+                //添加好友
+                Intent intent = new Intent(mContext, SelectMemberActivity.class);
+                startActivity(intent);
+                break;
+
         }
     }
 
@@ -5225,8 +5311,8 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         return roomId;
     }
 
-    public String getChatName(){
-        if(single){
+    public String getChatName() {
+        if (single) {
             return linkman;
         } else {
             return groupName;
@@ -5238,10 +5324,13 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         sendBroadcast(intent);*/
         Settings.System.putInt(mContext.getContentResolver(), NAVIGATION_BAR_CTRL, 0);
     }
+
     private void showSystemNaviBar() {
         /*Intent intent = new Intent(RESClient.ACTION_SHOW_NAVI_BAR);
         sendBroadcast(intent);*/
         Settings.System.putInt(mContext.getContentResolver(), NAVIGATION_BAR_CTRL, 1);
     }
+
+
 
 }

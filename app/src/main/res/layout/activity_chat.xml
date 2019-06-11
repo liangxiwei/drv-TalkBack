@@ -4,15 +4,10 @@
     android:background="@color/window_background_color"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <RelativeLayout
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+          >
             <com.example.jrd48.chat.CircleImageView
                 android:id="@+id/show_speakman"
                 android:layout_width="200dp"
@@ -47,18 +42,15 @@
             </com.example.jrd48.chat.wiget.VideoLayout>
 
         </RelativeLayout>
-    </LinearLayout>
+
+
+    <include
+        layout="@layout/activity_talk_room"
+        android:visibility="visible"
+        />
 
     <include
         layout="@layout/firstlayout"
         android:visibility="gone" />
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ppt"
-        android:onClick="ppt"
-        />
 
 </RelativeLayout>

@@ -183,7 +183,7 @@ public class FriendDetailsDialogActivity extends BaseActivity {
                 if (TextUtils.isEmpty(userInfo.getCarNum())) {
                     tvPlateNumber.setText("车牌：未绑定");
                 } else {
-                    tvPlateNumber.setText("车牌：" + appliedFriend.getCarID() + "");
+                    tvPlateNumber.setText("车牌：" + userInfo.getCarNum() + "");
                 }
                 setMyLocalMsg(userInfo.getProv(), userInfo.getCity(), userInfo.getTown());
             }

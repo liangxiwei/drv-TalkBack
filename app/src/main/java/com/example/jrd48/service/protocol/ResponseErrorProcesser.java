@@ -107,6 +107,9 @@ public class ResponseErrorProcesser {
                 case ProtoMessage.ErrorCode.NO_ANY_TEAM_MEMBER_VALUE:
                     ToastR.setToast(context, "呼叫失败，群里没有其他成员");
                     break;
+                case 1015:
+                    ToastR.setToast(context, "添加失败，已经是群成员了");
+                    break;
                 default:
                     ToastR.setToast(context, "操作失败：" + errCode);
                     break;

@@ -125,7 +125,7 @@ public class ChatManager {
         } else {
             if(chatRoomMsg != null) {
                 onlineView.setText("在线:" + GlobalStatus.getOnlineCount() + "/" + chatRoomMsg.getMembersCount());
-                onlineView.setVisibility(View.VISIBLE);
+                onlineView.setVisibility(View.GONE);
             } else {
                 onlineView.setVisibility(View.GONE);
             }

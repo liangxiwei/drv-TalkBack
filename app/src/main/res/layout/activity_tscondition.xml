@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.luobin.ui.TalkBackSearch.TSConditionActivity">
+
+
+    <ImageView
+        android:id="@+id/imgClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:src="@mipmap/close" />
+
+    <RelativeLayout
+        android:layout_width="440dp"
+        android:layout_height="270dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/bg_panel_relative_layout"
+        android:minHeight="270dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:paddingStart="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="性别"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+                <Button
+                    android:id="@+id/btnSex"
+                    android:layout_width="32dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_panel_btn"
+                    android:text="选择"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/tvSex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@id/btnSex"
+                    android:layout_toEndOf="@+id/sex"
+                    android:gravity="center|left"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:paddingStart="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/car"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="车型"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+
+                <Button
+                    android:id="@+id/btnCar"
+                    android:layout_width="32dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_panel_btn"
+                    android:text="选择"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="10dp" />
+
+
+                <TextView
+                    android:id="@+id/tvCar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@id/btnCar"
+                    android:layout_toEndOf="@+id/car"
+                    android:gravity="center|left"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:paddingStart="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="年纪"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+                <Button
+                    android:id="@+id/btnAge"
+                    android:layout_width="32dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_panel_btn"
+                    android:text="选择"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/tvAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@id/btnAge"
+                    android:layout_toEndOf="@+id/age"
+                    android:gravity="center|left"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:paddingStart="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="地区"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+                <Button
+                    android:id="@+id/btnAddress"
+                    android:layout_width="32dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_panel_btn"
+                    android:text="选择"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@id/btnAddress"
+                    android:layout_toEndOf="@+id/address"
+                    android:gravity="center|left"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:paddingStart="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/industry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="行业"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tvIndustry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@id/btnIndustry"
+                    android:layout_toEndOf="@+id/industry"
+                    android:gravity="center|left"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+
+                <Button
+                    android:id="@+id/btnIndustry"
+                    android:layout_width="32dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_panel_btn"
+                    android:text="选择"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="10dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:paddingStart="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/likeGood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="爱好"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+                <Button
+                    android:id="@+id/btnLikeGood"
+                    android:layout_width="32dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_panel_btn"
+                    android:text="选择"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/tvLikeGood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@id/btnLikeGood"
+                    android:layout_toEndOf="@+id/likeGood"
+                    android:gravity="center|left"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="13dp" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_panel_btn"
+            android:text="搜索"
+            android:textColor="@color/text_color_90white"
+            android:textSize="16dp" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
+

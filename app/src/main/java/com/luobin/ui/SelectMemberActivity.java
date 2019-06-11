@@ -9,8 +9,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.example.jrd48.chat.BaseActivity;
 import com.example.jrd48.chat.GlobalImg;
 import com.example.jrd48.chat.TabFragmentLinkmans;
 import com.example.jrd48.chat.ToastR;
@@ -42,6 +44,7 @@ public class SelectMemberActivity extends BaseDialogActivity {
     Context context;
     List<AppliedFriends> selectMemberList = new ArrayList<>();
     SelectMemberAdapter adapter;
+    ImageView imgClose;
     long teamID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +59,20 @@ public class SelectMemberActivity extends BaseDialogActivity {
 
     private void initView(){
         selectMemberListView = (ListView) findViewById(R.id.member_select_listview);
+        imgClose = (ImageView) findViewById(R.id.imgClose);
+        imgClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         ok = (Button) findViewById(R.id.btn_ok);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                if (adapter != null){
+                    applyMember(adapter.getSelect());
+                }
             }
         });
     }
@@ -127,7 +139,6 @@ public class SelectMemberActivity extends BaseDialogActivity {
                 }
             }
         });
-
     }
 
     private void applyMember(final List<AppliedFriends> friend) {
@@ -154,7 +165,7 @@ public class SelectMemberActivity extends BaseDialogActivity {
                 int errorCode = intent.getIntExtra("error_code", -1);
                 if (errorCode == ProtoMessage.ErrorCode.OK.getNumber()) {
                     ToastR.setToast(context, "邀请成功");
-
+                    finish();
                 } else {
                     fail(intent.getIntExtra("error_code", -1));
                 }

@@ -8,6 +8,7 @@ import android.os.Parcelable;
  */
 
 public class TeamMemberInfo implements Parcelable{
+
     public static final Creator<TeamMemberInfo> CREATOR = new Creator<TeamMemberInfo>() {
         @Override
         public TeamMemberInfo createFromParcel(Parcel in) {

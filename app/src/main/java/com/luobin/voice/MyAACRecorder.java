@@ -9,6 +9,7 @@ import android.media.MediaCodecInfo;
 import android.media.MediaFormat;
 import android.media.MediaRecorder;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
@@ -24,6 +25,9 @@ import com.luobin.dvr.R;
 import com.luobin.log.DBMyLogHelper;
 import com.luobin.log.LogCode;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 
 import me.lake.librestreaming.client.RESClient;
@@ -109,8 +113,8 @@ public class MyAACRecorder implements Runnable {
                     SettingRW config = new SettingRW(mContext);
                     config.load();
 
-                    mRecorder = new AudioRecord(config.getMicWay() == 0 ?
-                            MediaRecorder.AudioSource.VOICE_COMMUNICATION : MediaRecorder.AudioSource.MIC
+                    mRecorder = new AudioRecord(/*config.getMicWay() == 0 ?
+                            MediaRecorder.AudioSource.VOICE_COMMUNICATION :*/ MediaRecorder.AudioSource.MIC
                             , sampleRate, channelConfig,
                             audioFormat, minBufferSize);
                     int audioRecordState = mRecorder.getState();
@@ -227,15 +231,20 @@ public class MyAACRecorder implements Runnable {
 //                    addADTStoPacket(temp, temp.length);
 //                    fos.write(temp);
 
-
+                            Log.d(TAG,"mInfo.size =" + mInfo.size);
                             if (mInfo.size != 2) {
                                 buffer.get(mBufferCache, mBufferOffset, mInfo.size);
                                 mBufferOffset += mInfo.size;
 
                                 if(mBufferOffset >= DefaultSetting.CACHE_BUFFER_SIZE_FIRST_TIME){
                                     if ((Boolean) SharedPreferencesUtils.get(mContext, "pttKeyDown", false)) {
+                                       Log.d(TAG,"send_cached_buffer_to_socket");
                                         send_cached_buffer_to_socket();
+                                    }else{
+                                        Log.d(TAG,"not send_cached_buffer_to_socket");
                                     }
+                                }else{
+                                    Log.d(TAG,"mBufferOffset < CACHE_BUFFER_SIZE_FIRST_TIME");
                                 }
 //                                if (mFirstSend) {
 //                                    if (mBufferOffset > DefaultSetting.CACHE_BUFFER_SIZE_FIRST_TIME) {
@@ -319,6 +328,32 @@ public class MyAACRecorder implements Runnable {
     }
 
 
+    private File createFile(String name) {
+
+        String dirPath = Environment.getExternalStorageDirectory().getPath() + "/AudioRecord/";
+        File file = new File(dirPath);
+
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+
+        String filePath = dirPath + name;
+        File objFile = new File(filePath);
+        if (!objFile.exists()) {
+            try {
+                objFile.createNewFile();
+                return objFile;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+
+
+    }
+
+
     private int count = 0;
     private long lastClickTime = 0;
     private void send_cached_buffer_to_socket() {
@@ -330,18 +365,26 @@ public class MyAACRecorder implements Runnable {
             count = 0;
         }
 
+        String tmpName = System.currentTimeMillis() + "_"  + "aaa";
+        final File tmpFile = createFile(tmpName + ".aac");
+
         try {
             //byte[] bb = Arrays.copyOf(mBufferCache.array(), mBufferCache.position());
+            FileOutputStream outputStream = new FileOutputStream(tmpFile.getAbsoluteFile());
             if (mBufferOffset > 0) {
+                outputStream.write(mBufferOffset);
                 ProtoMessage.SpeakMsg.Builder builder = ProtoMessage.SpeakMsg.newBuilder();
                 builder.setAudioData(ByteString.copyFrom(mBufferCache, 0, mBufferOffset));
                 ProtoMessage.SpeakMsg msg = builder.build();
                 MyService.start(mContext, ProtoMessage.Cmd.cmdSpeakMsg_VALUE, msg);
 //                Log.i(TAG, "发送语音数据字节数: " + mBufferOffset);
                 mBufferOffset = 0;
+            }else{
+                Log.d(TAG,"mBufferOffset = 0");
             }
 
         } catch (Exception e) {
+            Log.e(TAG,"Exception = " + e.toString());
             e.printStackTrace();
         }
     }

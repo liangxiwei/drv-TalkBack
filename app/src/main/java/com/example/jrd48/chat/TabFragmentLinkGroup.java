@@ -111,6 +111,7 @@ public class  TabFragmentLinkGroup extends BaseLazyFragment {
     private IntentFilter filterRoom;
     private CloseRoomReceiiver closeRoomReceiiver;
     private boolean run = false;
+    private boolean isPullRefresh = false;
     private long deletTeamID = -1;
     String myPhone;
     private long TIME_GET_MEMBERS_DELAY = 5 * 1000L;
@@ -128,7 +129,7 @@ public class  TabFragmentLinkGroup extends BaseLazyFragment {
         return isPullRefresh;
     }
 
-    private boolean isPullRefresh = false;
+
 
     HashMap<Long,List<TeamMemberInfo> > allMemberMap = new HashMap();
 
@@ -334,8 +335,9 @@ public class  TabFragmentLinkGroup extends BaseLazyFragment {
                     memberAdapter = new ContactsMemberAdapter(allMemberMap.get(groupList.get(selectGroupPosition).getTeamID()),mContext);
                     memberListView.setAdapter(memberAdapter);
                 }
-
-               /* Intent intent = new Intent(context,TalkRoomActivity.class);
+              /*  ArrayList<TeamMemberInfo> memberList = (ArrayList<TeamMemberInfo>) allMemberMap.get(groupList.get(selectGroupPosition).getTeamID());
+                Log.d(TAG,"click memberList = " + memberList.size());
+                Intent intent = new Intent(context,TalkRoomActivity.class);
                 intent.putParcelableArrayListExtra("memberList",memberList);
                 intent.putExtra("group_name",groupList.get(position).getLinkmanName());
                 intent.putExtra("team_id", groupList.get(position).getTeamID());
@@ -349,11 +351,11 @@ public class  TabFragmentLinkGroup extends BaseLazyFragment {
                 } else {
                     intent.putExtra("callType", 2);
                 }
-                startActivity(intent);*/
+                mContext.startActivity(intent);*/
 
 
 
-              /*  Team msg = groupList.get(position);
+                Team msg = groupList.get(position);
                 Intent intent = new Intent(getContext(), FirstActivity.class);
                 intent.putExtra("data", 1);
                 CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + msg.getTeamID());
@@ -368,7 +370,7 @@ public class  TabFragmentLinkGroup extends BaseLazyFragment {
                 intent.putExtra("type", msg.getMemberRole());
                 intent.putExtra("group_name", msg.getLinkmanName());
                 VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(getContext(), intent);
-                dialog.show();*/
+                dialog.show();
             }
         });
 
@@ -385,7 +387,6 @@ public class  TabFragmentLinkGroup extends BaseLazyFragment {
                    //不是群主，退出群
                    deleteTeamDialog(team.getTeamID(),QUIT_TEAM,team.getLinkmanName());
                }
-
 
                 return true;
             }
@@ -416,6 +417,7 @@ public class  TabFragmentLinkGroup extends BaseLazyFragment {
      * 获取群组
      */
     private void loadTeamListFromNet(boolean isLoad) {
+        isPullRefresh = true;
         if (isLoad){
             showLoading();
         }
@@ -494,6 +496,9 @@ public class  TabFragmentLinkGroup extends BaseLazyFragment {
     }
 
     public void fail(int i) {
+        isPullRefresh = true;
+        if (pullRefreshLayout != null)
+            pullRefreshLayout.setRefreshing(false);
         new ResponseErrorProcesser(getContext(), i);
     }
 
@@ -696,11 +701,11 @@ public class  TabFragmentLinkGroup extends BaseLazyFragment {
             int i = in.getMemberRole();
             typedesc = in.getTeamDesc();
             name = in.getTeamName();
-            boolean top = isTop(in);
+            //过滤掉海聊群
             if (in.getTeamType() == ProtoMessage.TeamType.teamRandom.getNumber()) {
-                top = true;
+              continue;
             }
-            Team msg = new Team(name, typedesc, in.getTeamID(), in.getMemberRole(), top, in.getTeamType());
+            Team msg = new Team(name, typedesc, in.getTeamID(), in.getMemberRole(), false, in.getTeamType());
             groupList.add(msg);
         }
 
@@ -760,6 +765,10 @@ public class  TabFragmentLinkGroup extends BaseLazyFragment {
                             observableDisposable.dispose();
                         }else{
                             final Team teamInfo = mTeamInfo.get(index);
+                            if (getContext()  == null){
+                                emitter.onComplete();
+                                observableDisposable.dispose();
+                            }
                             TeamMemberHelper teamMemberHelper = new TeamMemberHelper(getContext(), teamInfo.getTeamID() + "TeamMember.dp", null);
                             SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
                             final Cursor cursor = db.query("LinkmanMember", null, null, null, null, null, null);
@@ -870,8 +879,10 @@ public class  TabFragmentLinkGroup extends BaseLazyFragment {
             @Override
             public void onNext(List<TeamMemberInfo> teamMemberInfo) {
                 Log.d(TAG,"teamMemberInfo =" + teamMemberInfo.size());
-                allMemberMap.put(mTeamInfo.get(index).getTeamID(),teamMemberInfo);
-                index++;
+                if (mTeamInfo.size() > index){
+                    allMemberMap.put(mTeamInfo.get(index).getTeamID(),teamMemberInfo);
+                    index++;
+                }
             }
 
             @Override

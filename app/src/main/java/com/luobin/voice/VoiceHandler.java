@@ -148,12 +148,12 @@ public class VoiceHandler {
 
     public static void speakBeginAndRecording(final Context context) {
         UUID uuid = UUID.randomUUID();
-        final String radom = uuid.toString();
-        ProtoMessage.ChatRoomMsg chatRoomMsg = GlobalStatus.getChatRoomMsg();
-        if (chatRoomMsg != null) {
-            if (!Utils.getTopActivity(context)) {
-                context.sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP));
-            }
+            final String radom = uuid.toString();
+            ProtoMessage.ChatRoomMsg chatRoomMsg = GlobalStatus.getChatRoomMsg();
+            if (chatRoomMsg != null) {
+                if (!Utils.getTopActivity(context)) {
+                    context.sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP));
+                }
         }
         doVoiceAction(context, true);
         GlobalStatus.setCurRtmpAddr(radom);
@@ -173,6 +173,7 @@ public class VoiceHandler {
                 public void onGot(Intent i) {
                     if (i.getIntExtra("error_code", -1) ==
                             ProtoMessage.ErrorCode.OK.getNumber()) {
+
                     } else {
                         Log.i("poc demo", "呼叫失败错误码" + i.getIntExtra("error_code", -1));
 //                        ToastR.setToast(context, "呼叫错误");
@@ -205,26 +206,6 @@ public class VoiceHandler {
             ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
             MyService.start(context, ProtoMessage.Cmd.cmdSpeakEnd.getNumber(), builder.build());
 
-
-//            IntentFilter filter = new IntentFilter();
-//            filter.addAction(SpeakerEndProcesser.ACTION);
-//            new TimeoutBroadcast(context, filter).startReceiver(10, new ITimeoutBroadcast() {
-//                @Override
-//                public void onTimeout() {
-//
-//                }
-//
-//                @Override
-//                public void onGot(Intent i) {
-//                    if (i.getIntExtra("error_code", -1) ==
-//                            ProtoMessage.ErrorCode.OK.getNumber()) {
-//                        Log.i("pocdemo", "结束讲话成功");
-//                    } else {
-//                        //fail(i.getIntExtra("error_code", -1));
-//                        Log.w("pocdemo", "结束讲话失败：" + i.getIntExtra("error_code", -1));
-//                    }
-//                }
-//            });
         } catch (Exception e) {
             e.printStackTrace();
         }

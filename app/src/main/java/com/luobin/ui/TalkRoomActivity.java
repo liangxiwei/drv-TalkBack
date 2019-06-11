@@ -38,7 +38,7 @@ import me.lake.librestreaming.client.RESClient;
 
 public class TalkRoomActivity extends BaseActivity {
 
-    @BindView(R.id.btn_return)
+  /*  @BindView(R.id.btn_return)
     Button btnReturn;
     @BindView(R.id.prefix_camera)
     Button prefixCamera;
@@ -206,8 +206,9 @@ public class TalkRoomActivity extends BaseActivity {
                 }
                 break;
             case R.id.btn_add:
-
+                Intent intent = new Intent(mContext,SelectMemberActivity.class);
+                startActivity(intent);
                 break;
         }
-    }
+    }*/
 }
