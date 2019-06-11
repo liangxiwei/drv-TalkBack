@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.luobin.ui.TalkbackSearchActivity">
+
+    <RelativeLayout android:layout_width="440dp" android:layout_height="274dp"
+        android:layout_centerHorizontal="true" android:layout_centerVertical="true"
+        android:background="@drawable/bg_panel_relative_layout">
+
+        <RelativeLayout android:id="@+id/rlEdit" android:layout_width="313dp"
+            android:layout_height="40dp" android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp" android:background="@drawable/bg_panel_edittext">
+
+
+            <ImageView android:id="@+id/img1" android:layout_width="30dp"
+                android:layout_height="30dp" android:layout_centerVertical="true"
+                android:layout_marginStart="10dp" />
+
+            <EditText android:id="@+id/edContent" android:layout_width="wrap_content"
+                android:layout_height="match_parent" android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/img1" android:layout_toStartOf="@+id/imgDel"
+                android:background="@null" android:gravity="center|left"
+                android:hint="名称/群号/手机号/车牌号" android:maxLines="1" android:singleLine="true"
+                android:textSize="15dp" />
+
+            <ImageView android:id="@+id/imgSearchDel" android:layout_width="25dp"
+                android:layout_height="20dp" android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true" android:layout_marginEnd="10dp" />
+
+            <Button android:id="@+id/btnSearch" android:layout_width="80dp"
+                android:layout_height="38dp" android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true" android:layout_marginEnd="10dp" />
+
+        </RelativeLayout>
+
+        <Button android:id="@+id/btnSearchPerson" android:layout_width="80dp"
+            android:layout_height="38dp" android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" android:layout_marginEnd="10dp" />
+        <Button android:id="@+id/btnSearchCar" android:layout_width="80dp"
+            android:layout_height="38dp" android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" android:layout_marginEnd="10dp" />
+
+    </RelativeLayout>
+
+    <ImageButton android:id="@+id/imgDel" android:layout_width="40dp" android:layout_height="40dp"
+        android:layout_alignParentEnd="true" android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp" android:background="@mipmap/close" />
+
+
+</RelativeLayout>
