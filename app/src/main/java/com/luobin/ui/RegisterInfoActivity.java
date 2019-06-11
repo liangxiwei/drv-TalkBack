@@ -302,12 +302,10 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_info);
-        getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
 
         ButterKnife.bind(this);
 
         mContext = this;
-
 
         waitDialog();
         initView();
@@ -1491,7 +1489,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
         SelectInterestDialog selectInterestDialog = new SelectInterestDialog(this
                 , interestList);
-
         selectInterestDialog.show();
 
     }

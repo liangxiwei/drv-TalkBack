@@ -50,7 +50,6 @@ public class ScrollListView extends ListView implements AbsListView.OnScrollList
                 // 未滑动到顶部不让下拉刷新
                 bl_down = false;
             }
-            Log.d("pangtao","bl_down = "+bl_down);
         }
     }
 }

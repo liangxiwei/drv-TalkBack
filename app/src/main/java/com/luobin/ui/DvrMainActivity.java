@@ -23,7 +23,6 @@ import com.example.jrd48.service.protocol.root.NotifyProcesser;
 import com.luobin.dvr.R;
 import com.luobin.tool.MyInforTool;
 import com.luobin.tool.OnlineSetTool;
-import com.luobin.ui.TalkBackSearch.TalkbackSearchActivity;
 
 import java.util.List;
 
@@ -37,14 +36,13 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
 
     private Context context;
     protected PermissionUtil mPermissionUtil;
-    private LinearLayout actionbarMessage, actionbarAdd, actionbarSearch;
+    private LinearLayout actionbarMessage,actionbarAdd,actionbarSearch;
     private TabFragmentLinkGroup tabFragmentLinkGroup;
     private TabFragmentLinkmans tabFragmentLinkmans;
     public static final int FRAGMENT_POSITION_GROUP = 0;
-    public static final int FRAGMENT_POSITION_MANS = 1;
+    public static final int FRAGMENT_POSITION_MANS =1;
     private int fragmentPostion = FRAGMENT_POSITION_GROUP;
     Button btnChange;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,15 +61,16 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         initBroadCast();
 
 
+
         //TODO 在这添加数据 个人信息
         MyInforTool myInforTool = new MyInforTool(DvrMainActivity.this, true);
         Log.i("myInforTool", myInforTool.toString());
-        if (myInforTool.getUserName() == null || "".equals(myInforTool.getUserName()) || myInforTool.getUserName().equals(myInforTool.getPhone())) {
+        if (myInforTool.getUserName() == null || "".equals(myInforTool.getUserName())||myInforTool.getUserName().equals(myInforTool.getPhone())) {
             startActivity(new Intent(DvrMainActivity.this, RegisterInfoActivity.class));
         }
 
         tabFragmentLinkGroup = new TabFragmentLinkGroup();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts, tabFragmentLinkGroup)
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts,tabFragmentLinkGroup )
                 .commitAllowingStateLoss();
 
 
@@ -135,32 +134,30 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
 
             case R.id.actionbar_search:
                 //TODO 搜索
-                startActivity(new Intent(this, TalkbackSearchActivity.class));
-
                 break;
 
             case R.id.btn_change:
-                if (fragmentPostion == FRAGMENT_POSITION_MANS) {
+                if (fragmentPostion == FRAGMENT_POSITION_MANS){
                     fragmentPostion = FRAGMENT_POSITION_GROUP;
                     btnChange.setText("通讯录");
-                    if (tabFragmentLinkGroup == null) {
+                    if (tabFragmentLinkGroup == null){
                         tabFragmentLinkGroup = new TabFragmentLinkGroup();
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts, tabFragmentLinkGroup)
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts,tabFragmentLinkGroup )
                             .commitAllowingStateLoss();
-                } else {
-                    if (tabFragmentLinkGroup != null) {
-                        if (tabFragmentLinkGroup.isPullRefresh()) {
+                }else{
+                    if (tabFragmentLinkGroup != null){
+                        if (tabFragmentLinkGroup.isPullRefresh()){
                             return;
                         }
                     }
-                    if (fragmentPostion == FRAGMENT_POSITION_GROUP) {
+                    if (fragmentPostion == FRAGMENT_POSITION_GROUP){
                         fragmentPostion = FRAGMENT_POSITION_MANS;
                         btnChange.setText("群组");
-                        if (tabFragmentLinkmans == null) {
+                        if (tabFragmentLinkmans == null){
                             tabFragmentLinkmans = new TabFragmentLinkmans();
                         }
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts, tabFragmentLinkmans)
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts,tabFragmentLinkmans )
                                 .commitAllowingStateLoss();
                     }
                 }

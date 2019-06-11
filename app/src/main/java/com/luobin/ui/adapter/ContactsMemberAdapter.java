@@ -35,6 +35,12 @@ public class ContactsMemberAdapter extends BaseAdapter {
         }
         this.list = list;
     }
+
+    public List<TeamMemberInfo> getData(){
+        return list;
+    }
+
+
     @Override
     public int getCount() {
         return list.size();

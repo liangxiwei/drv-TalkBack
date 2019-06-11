@@ -69,6 +69,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.luobin.dvr.R;
 import com.luobin.model.CallState;
 import com.luobin.tool.OnlineSetTool;
+import com.luobin.ui.FriendDetailsDialogActivity;
 import com.luobin.ui.VideoOrVoiceDialog;
 
 import java.util.ArrayList;
@@ -844,33 +845,8 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
             ((MainActivity) getContext()).upDataMsg();
         }
 
-//                AppliedFriendsList afList = new AppliedFriendsList();
-//                List<AppliedFriends> list = new ArrayList<AppliedFriends>();
-//                for (ViewFriendsMsg vf : mFriend) {
-//                    AppliedFriends af = new AppliedFriends();
-//                    af.setApplyInfo(vf.friends.getApplyInfo());
-//                    af.setFriendStar(vf.friends.getFriendStar());
-//                    af.setNickName(vf.friends.getNickName());
-//                    af.setUserName(vf.friends.getUserName());
-//                    af.setPhoneNum(vf.friends.getPhoneNum());
-//                    af.setUserPic(vf.friends.getUserPic());
-//                    af.setUserSex(vf.friends.getUserSex());
-//                    list.add(af);
-//                }
-//                afList.setAppliedFriends(list);
-//                Bundle bundle = new Bundle();
-//                bundle.putParcelable("friends_list", afList);
         showFriendMsg(newPersonStar.get(position).getLinkmanPhone());
-/*        Intent intent = new Intent(getContext(), FirstActivity.class);
-        intent.putExtra("data", 0);
-        intent.putExtra("uri", iamge);
-        intent.putExtra("text", text);
-        intent.putExtra("maction", MainActivity.mAction);
-//                intent.putExtras(bundle);
-        intent.putExtra("linkmanSex", newPersonStar.get(position - 1).getLinkmanSex());
-        intent.putExtra("linkmanName", newPersonStar.get(position - 1).getLinkmanName());
-        intent.putExtra("linkmanPhone", newPersonStar.get(position - 1).getLinkmanPhone());
-        startActivity(intent);*/
+
     }
 
     //AppliedFriends mAppliedFriends;
@@ -921,78 +897,11 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
                 break;
             }
         }
-        Intent intent = new Intent(getContext(), FriendsDetailsActivity.class);
+        Intent intent = new Intent(getContext(), FriendDetailsDialogActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putParcelable("friend_detail", mViewFriendsMsg.friends);
-        intent.putExtra("type", 2);
+        bundle.putParcelable("appliedFriends", mViewFriendsMsg.friends);
         intent.putExtras(bundle);
         startActivity(intent);
-     /*   final AlertDialog dlg = new AlertDialog.Builder(mContext).create();
-        dlg.setCancelable(true);
-        dlg.show();
-        Window window = dlg.getWindow();
-        window.setContentView(R.layout.friend_information_show);
-        final TextView userName = (TextView) window.findViewById(R.id.user_name);
-        final TextView userPhone = (TextView) window.findViewById(R.id.user_phone);
-        final TextView nickName = (TextView) window.findViewById(R.id.nick_name);
-        final TextView friendStar = (TextView) window.findViewById(R.id.friend_star);
-        final TextView friendSex = (TextView) window.findViewById(R.id.friend_sex);
-        final ImageView imageView = (ImageView) window.findViewById(R.id.iv_show_icon);
-
-        Bitmap bmp = FriendFaceUtill.getUserFace(mContext, mViewFriendsMsg.friends.getPhoneNum());
-        if (bmp != null) {
-            imageView.setImageBitmap(bmp);
-        } else {
-            if (mViewFriendsMsg.friends.getUserSex() == ProtoMessage.Sex.female_VALUE) {
-                imageView.setImageResource(R.drawable.woman);
-            } else {
-                imageView.setImageResource(R.drawable.man);
-            }
-        }
-
-        if (mViewFriendsMsg.friends.getUserName() != null && !mViewFriendsMsg.friends.getUserName().equals("")) {
-            userName.setText(mViewFriendsMsg.friends.getUserName());
-        } else {
-            userName.setText(noSet);
-        }
-        if (mViewFriendsMsg.friends.getNickName() != null && !mViewFriendsMsg.friends.getNickName().equals("")) {
-            nickName.setText(mViewFriendsMsg.friends.getNickName());
-        } else {
-            nickName.setText(noSet);
-        }
-        if (mViewFriendsMsg.friends.getPhoneNum() != null && !mViewFriendsMsg.friends.getPhoneNum().equals("")) {
-            userPhone.setText(mViewFriendsMsg.friends.getPhoneNum());
-        } else {
-            userPhone.setText(noSet);
-        }
-        if (mViewFriendsMsg.friends.getFriendStar() == SET_FRIEND_STAR) {
-            friendStar.setText("是");
-        } else {
-            friendStar.setText("否");
-        }
-        if (mViewFriendsMsg.friends.getUserSex() == ProtoMessage.Sex.male_VALUE) {
-            friendSex.setText("男");
-        } else if (mViewFriendsMsg.friends.getUserSex() == ProtoMessage.Sex.female_VALUE) {
-            friendSex.setText("女");
-        } else {
-            friendSex.setText(noSet);
-        }
-        final Button cancel = (Button) window.findViewById(R.id.btn_cancel);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dlg.cancel();
-            }
-        });
-        final Button change = (Button) window.findViewById(R.id.btn_change);
-        change.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showSetFriendInfoDialog(mViewFriendsMsg.friends, MODIFY_FRIEND_NICKNAME);
-                dlg.cancel();
-            }
-        });*/
-
     }
 
     private void showSetFriendInfoDialog(final AppliedFriends af, final int type) {

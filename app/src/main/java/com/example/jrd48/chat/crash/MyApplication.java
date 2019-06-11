@@ -243,7 +243,4 @@ public class MyApplication extends Application {
         }
         return "none";
     }
-
-
-
 }

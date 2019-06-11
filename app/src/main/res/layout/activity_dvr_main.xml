@@ -15,7 +15,7 @@
 
         <com.luobin.widget.ActionBarDataView
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_gravity="center_horizontal"
             />

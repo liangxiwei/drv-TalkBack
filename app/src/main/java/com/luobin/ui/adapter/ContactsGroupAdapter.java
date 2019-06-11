@@ -26,6 +26,7 @@ public class ContactsGroupAdapter extends BaseAdapter {
     List<Team> list ;
     Context context;
     HashMap<Long,List<TeamMemberInfo>> allMemberList;
+    int selectGroupPosition = 0;
 
     public int getSelectGroupPosition() {
         return selectGroupPosition;
@@ -35,7 +36,6 @@ public class ContactsGroupAdapter extends BaseAdapter {
         this.selectGroupPosition = selectGroupPosition;
     }
 
-    int selectGroupPosition = 0;
     public ContactsGroupAdapter(List<Team> list,HashMap<Long,List<TeamMemberInfo>> allMemberList,int selectGroupPosition, Context context) {
         this.list = list;
         this.context = context;

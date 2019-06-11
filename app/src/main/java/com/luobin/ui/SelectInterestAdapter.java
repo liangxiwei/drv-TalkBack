@@ -2,7 +2,6 @@ package com.luobin.ui;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -27,7 +26,6 @@ public class SelectInterestAdapter extends
     public SelectInterestAdapter(Context context, List<InterestBean> dataList) {
         this.context = context;
         this.dataList = dataList;
-
 
     }
 
@@ -56,7 +54,6 @@ public class SelectInterestAdapter extends
                     //注意这里使用getTag方法获取数据
 
                     dataList.get(position).setChecked(isChecked);
-                    Log.i("aihao","shujju>");
                     mOnItemClickListener.onItemClick(dataList);
                 }
 

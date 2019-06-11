@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_pressed="true" android:drawable="@drawable/submenu_default">
+    <item android:state_pressed="true" android:drawable="@drawable/bg_select_stroke">
     </item>
-    <item android:state_focused="true" android:drawable="@drawable/submenu_default">
+    <item android:state_focused="true" android:drawable="@drawable/bg_select_stroke">
     </item>
-    <item android:state_selected="true" android:drawable="@drawable/submenu_default">
+    <item android:state_selected="true" android:drawable="@drawable/bg_select_stroke">
     </item>
     <item>
         <shape>
-            <solid android:color="@android:color/transparent" />
+            <solid android:drawable="@drawable/bg_no_select_stroke" />
         </shape>
     </item>
 

@@ -1,5 +1,6 @@
 package com.example.jrd48.chat;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,7 @@ public class BaseActivity extends AppCompatActivity {
 
 	public static final int REQUEST_TIME_OUT = 15;
 	private TimeoutBroadcastManager mTimeoutBroadcastManager = new TimeoutBroadcastManager();
-
+	protected Context mContext;
 	public TimeoutBroadcastManager getBroadcastManager() {
 		return mTimeoutBroadcastManager;
 	}
@@ -21,6 +22,7 @@ public class BaseActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		mContext = this;
 		String className = this.getPackageName();
 		Log.d("BaseActivity",className);
 		ActivityCollector.addAct(this);

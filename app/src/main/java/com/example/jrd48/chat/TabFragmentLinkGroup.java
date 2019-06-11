@@ -42,6 +42,7 @@ import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.SQLite.TeamMemberHelper;
 import com.example.jrd48.chat.group.DBHelperTeamList;
 import com.example.jrd48.chat.group.DBManagerTeamList;
+import com.example.jrd48.chat.group.GroupMemberDetailsActivity;
 import com.example.jrd48.chat.group.MsgTool;
 import com.example.jrd48.chat.group.ShowTeamInfoPrompt;
 import com.example.jrd48.chat.group.TeamInfo;
@@ -66,6 +67,8 @@ import com.ldoublem.loadingviewlib.view.LVCircularRing;
 import com.ldoublem.loadingviewlib.view.LVEatBeans;
 import com.luobin.dvr.R;
 import com.luobin.model.CallState;
+import com.luobin.ui.FriendDetailsDialogActivity;
+import com.luobin.ui.TalkRoomActivity;
 import com.luobin.ui.VideoOrVoiceDialog;
 import com.luobin.ui.adapter.ContactsGroupAdapter;
 import com.luobin.ui.adapter.ContactsMemberAdapter;
@@ -93,7 +96,7 @@ import static com.example.jrd48.chat.crash.MyApplication.getContext;
  * Created by jrd48
  */
 
-public class TabFragmentLinkGroup extends BaseLazyFragment {
+public class  TabFragmentLinkGroup extends BaseLazyFragment {
     private static final String TAG = "TabFragmentLinkGroup";
     int i;
     private ListView groupListView;
@@ -317,7 +320,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
         groupListView = (ListView) view.findViewById(R.id.lv_group);
         memberListView = (ListView) view.findViewById(R.id.lv_member);
-
         groupListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -333,7 +335,25 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     memberListView.setAdapter(memberAdapter);
                 }
 
-                Team msg = groupList.get(position);
+               /* Intent intent = new Intent(context,TalkRoomActivity.class);
+                intent.putParcelableArrayListExtra("memberList",memberList);
+                intent.putExtra("group_name",groupList.get(position).getLinkmanName());
+                intent.putExtra("team_id", groupList.get(position).getTeamID());
+                intent.putExtra("type", groupList.get(position).getMemberRole());
+
+                CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + groupList.get(position).getTeamID());
+                if (GlobalStatus.equalTeamID(groupList.get(position).getTeamID())) {
+                    intent.putExtra("callType", 0);
+                } else if (callState != null && callState.getState() == GlobalStatus.STATE_CALL) {
+                    intent.putExtra("callType", 1);
+                } else {
+                    intent.putExtra("callType", 2);
+                }
+                startActivity(intent);*/
+
+
+
+              /*  Team msg = groupList.get(position);
                 Intent intent = new Intent(getContext(), FirstActivity.class);
                 intent.putExtra("data", 1);
                 CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + msg.getTeamID());
@@ -348,8 +368,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 intent.putExtra("type", msg.getMemberRole());
                 intent.putExtra("group_name", msg.getLinkmanName());
                 VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(getContext(), intent);
-                dialog.show();
-
+                dialog.show();*/
             }
         });
 
@@ -369,6 +388,21 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
 
                 return true;
+            }
+        });
+
+        memberListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(mContext, FriendDetailsDialogActivity.class);
+                Bundle bundle = new Bundle();
+                List<TeamMemberInfo> teamMemberInfos = memberAdapter.getData();
+                TeamMemberInfo teamMemberInfo = teamMemberInfos.get(position);
+                bundle.putString("userPhone", teamMemberInfo.getUserPhone());
+                bundle.putString("userName", teamMemberInfo.getUserName());
+                intent.putExtra("teamID",groupList.get(selectGroupPosition).getTeamID());
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 
@@ -697,7 +731,10 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         new ShowTeamInfoPrompt().dialogSTeamInfo(getMyActivity(), allTeamInfos.get(id));
     }
 
-
+    /**
+     * 获取所有群成员
+     * @param mTeamInfo
+     */
     private void getMembersData(final List<Team> mTeamInfo) {
         repeat = mTeamInfo.size()-1;
         index = 0;

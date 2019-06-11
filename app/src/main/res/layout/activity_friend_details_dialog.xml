@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stroke_talk"
+   >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="21dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            >
+
+            <com.luobin.widget.ActionBarDataView
+                android:id="@+id/dataView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btn_return"
+                        android:layout_width="80dp"
+                        android:layout_height="45dp"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:text="返回"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/bg_button"
+                        android:drawableLeft="@drawable/icon_return"
+                        android:paddingLeft="13dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        />
+
+                </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/border_color"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+
+            >
+
+            <com.example.jrd48.chat.CircleImageView
+                android:id="@+id/iv_head"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="fitXY"
+                />
+
+            <LinearLayout
+                android:id="@+id/ll_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@id/iv_head"
+                android:layout_marginLeft="10dp"
+                >
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="迷城"
+                    android:textColor="#ffffffff"
+                    android:textSize="18sp"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="3.0"
+                    android:shadowColor="#45000000"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="男 13900000001"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="3.0"
+                    android:shadowColor="#45000000"
+                    android:layout_marginLeft="11dp"
+                    />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/tv_autograph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="路越远，心越远"
+                android:textColor="#ffffffff"
+                android:textSize="9sp"
+                android:shadowDx="0"
+                android:shadowDy="1"
+                android:shadowRadius="3.0"
+                android:shadowColor="#45000000"
+                android:layout_toRightOf="@id/iv_head"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/ll_name"
+                android:layout_marginTop="12dp"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_plate_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="车牌：京A0001"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:shadowDx="0"
+            android:shadowDy="1"
+            android:shadowRadius="3.0"
+            android:shadowColor="#45000000"
+            android:layout_marginTop="10dp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所在地：北京"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:shadowDx="0"
+            android:shadowDy="1"
+            android:shadowRadius="3.0"
+            android:shadowColor="#45000000"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="家乡：湖南长沙"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:shadowDx="0"
+            android:shadowDy="1"
+            android:shadowRadius="3.0"
+            android:shadowColor="#45000000"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_industry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="行业：警察"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:shadowDx="0"
+            android:shadowDy="1"
+            android:shadowRadius="3.0"
+            android:shadowColor="#45000000"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_hobby"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="兴趣爱好：汽车 / 旅游 / 时尚 / 音乐 / 美食 / 宠物 / 公益 /"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:shadowDx="0"
+            android:shadowDy="1"
+            android:shadowRadius="3.0"
+            android:shadowColor="#45000000"
+            android:layout_marginTop="10dp"
+            />
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="11dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <Button
+                android:id="@+id/btn_map"
+                android:layout_width="80dp"
+                android:layout_height="38dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:text="地图查看"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_button"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                />
+
+            <Button
+                android:id="@+id/btn_trail"
+                android:layout_width="80dp"
+                android:layout_height="38dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:text="历史轨迹"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_button"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                />
+            <RelativeLayout
+                android:layout_width="80dp"
+                android:layout_height="38dp">
+
+                <Button
+                    android:id="@+id/btn_add_friend"
+                    android:layout_width="80dp"
+                    android:layout_height="38dp"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:text="加为好友"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_button"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    />
+
+                <Button
+                    android:id="@+id/btn_delete_friend"
+                    android:layout_width="80dp"
+                    android:layout_height="38dp"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:text="删除好友"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_button"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_icon"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        >
+
+        <com.luobin.widget.ActionBarDataView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            
+            <Button
+                android:id="@+id/btn_return"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:text="返回"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_button"
+                android:drawableLeft="@drawable/icon_return"
+                android:paddingLeft="13dp"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/border_color"
+        />
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+            <ImageView
+                android:layout_width="61dp"
+                android:layout_height="97dp"
+                android:layout_marginTop="51dp"
+                android:background="@drawable/icon_mac"
+                android:layout_marginLeft="49dp"
+                />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/prefix_camera"
+                    android:layout_width="120dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_button"
+                    android:textSize="16dp"
+                    android:text="前摄对讲"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <Button
+                    android:id="@+id/rear_camera"
+                    android:layout_width="120dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_button"
+                    android:textSize="16dp"
+                    android:text="后摄对讲"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <Button
+                    android:id="@+id/picture_in_picture"
+                    android:layout_width="120dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_button"
+                    android:textSize="16dp"
+                    android:text="画中画对讲"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <Button
+                    android:id="@+id/voice"
+                    android:layout_width="120dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_button"
+                    android:textSize="16dp"
+                    android:text="语音对讲"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                >
+
+                <Button
+                    android:id="@+id/goto_map"
+                    android:layout_width="80dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/bg_button"
+                    android:textSize="16dp"
+                    android:text="地图查看"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="10dp"
+                    />
+
+                <Button
+                    android:id="@+id/do_not_disturb"
+                    android:layout_width="80dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/bg_button"
+                    android:textSize="16dp"
+                    android:text="免打扰"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="16dp"
+                    />
+
+                <TextView
+                    android:id="@+id/member_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:gravity="right|center_vertical"
+                    android:text="15/80"
+                    android:textSize="16dp"
+                    android:textColor="@color/white"
+                    />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginTop="11dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/group_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    />
+
+
+                <Button
+                    android:id="@+id/btn_add"
+                    android:layout_width="32dp"
+                    android:layout_height="15dp"
+                    android:textSize="10dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/bg_button"
+                    android:textColor="@color/white"
+                    android:text="添加"
+                    />
+
+
+                <Button
+                    android:layout_width="32dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/bg_button"
+                    android:textColor="@color/white"
+                    android:textSize="10dp"
+                    android:text="删除"
+                    android:layout_toLeftOf="@id/btn_add"
+                    android:layout_marginRight="10dp"
+                    />
+
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/lv_member"
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
