@@ -142,11 +142,5 @@ public class TSConditionPersionAdapter extends BaseAdapter {
         void onItemClick(List<InterestBean> interestBeans);
     }
 
-    private SelectInterestAdapter.OnRecyclerViewItemClickListener mOnItemClickListener = null;
-
-    public void setOnItemClickListener(SelectInterestAdapter.OnRecyclerViewItemClickListener listener) {
-        this.mOnItemClickListener = listener;
-    }
-
 
 }

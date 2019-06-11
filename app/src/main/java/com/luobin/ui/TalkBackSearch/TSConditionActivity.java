@@ -66,7 +66,7 @@ import static com.luobin.ui.SelectInterestAdapter.*;
  * @author wangjunjie
  */
 public class TSConditionActivity extends BaseDialogActivity implements
-        TSConditionPersionAdapter.OnRecyclerViewItemClickListener {
+        SelectInterestAdapter.OnRecyclerViewItemClickListener {
 
     @BindView(R.id.imgClose)
     ImageView imgClose;
