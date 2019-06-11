@@ -65,11 +65,11 @@ public class ContactsGroupAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) view.getTag();
         }
-        if (list.get(position).isSelect()){
+       /* if (list.get(position).isSelect()){
             view.setBackgroundResource(R.drawable.bg_select_stroke);
         }else{
             view.setBackgroundResource(R.drawable.bg_no_select_stroke);
-        }
+        }*/
         holder.groupName.setText(list.get(position).getLinkmanName());
 
         List<TeamMemberInfo> memberInfos = allMemberList.get(list.get(position).getTeamID());

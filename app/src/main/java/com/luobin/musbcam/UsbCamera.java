@@ -99,6 +99,7 @@ public class UsbCamera {
             mFrameCount++;
             if (mLastMillis / (mLogInternal * 1000) != t / (mLogInternal * 1000)) {
                 Log.d(TAG, dev + " preview fps = " + mFrameCount / mLogInternal);
+                Log.d("====", dev + " preview fps = " + mFrameCount / mLogInternal);
                 mFrameCount = 0;
                 mLastMillis = t;
             }
@@ -122,6 +123,7 @@ public class UsbCamera {
     public boolean open(String dev, int reqsize[]) {
         Log.e(TAG, "open " + dev);
         mDev = new String(dev);
+        Log.e("====", "========open " + dev);
         mReqSize = new int[2];
         if (reqsize != null) {
             mReqSize[0] = reqsize[0];
@@ -135,6 +137,7 @@ public class UsbCamera {
 //            Intent intent = new Intent(ToastReceiver.TOAST_ACTION);
 //            intent.putExtra(ToastReceiver.TOAST_CONTENT, mDev + MyApplication.getContext().getString(R.string.usb_open_failed));
 //            MyApplication.getContext().sendBroadcast(intent);
+            Log.e("====", "=============UsbCamera=!nativeOpen");
             return false;
         }
 

@@ -71,6 +71,7 @@ import com.luobin.tool.FileUtils;
 import com.luobin.tool.GlobalImg;
 import com.luobin.tool.MyCarBrands;
 import com.luobin.tool.MyInforTool;
+import com.luobin.widget.SexSelectDialog;
 
 
 import java.io.BufferedReader;
@@ -352,7 +353,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         myInforTool = new MyInforTool(mContext, true);
 
         //初始化
-        setInfor();
+      // setInfor();
         //获取个人信息
         getInfor();
         initView();
@@ -858,7 +859,11 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
      * 设置性别弹窗
      */
     public void sexDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        SexSelectDialog sexSelectDialog = new SexSelectDialog(this);
+        sexSelectDialog.show();
+
+        /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("设置性别");
         //设置单选列表项，默认选中第二项
         builder.setSingleChoiceItems(sexShow, sexdatashow, new DialogInterface.OnClickListener() {
@@ -884,7 +889,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             }
         });
         AlertDialog simplechoicedialog = builder.create();
-        simplechoicedialog.show();
+        simplechoicedialog.show();*/
     }
 
 
@@ -1031,13 +1036,18 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
      */
     private void setInfor() {
         //TODO 设置个人数据 从服务器上拉取的
-
-
-        if (TextUtils.isEmpty(myInforTool.getBirthday()) || myInforTool.getBirthday().compareTo("1900-01-01") <= 0) {
+        if (TextUtils.isEmpty(myInforTool.getSignature()) ) {
             tvSign.setText("未设置");
         } else {
-            tvSign.setText(myInforTool.getBirthday());
+            tvSign.setText(myInforTool.getSignature());
         }
+
+        if (!TextUtils.isEmpty(myInforTool.getCarNum())){
+            tvCarNo.setText(myInforTool.getCarNum());
+        }
+
+
+
         // myPhone 18909980686
         Bitmap bmp = GlobalImg.getImage(RegisterInfoActivity.this, myPhone);
         imgHead.setImageBitmap(getUserFace(bmp, myInforTool.getUserName() + ""));

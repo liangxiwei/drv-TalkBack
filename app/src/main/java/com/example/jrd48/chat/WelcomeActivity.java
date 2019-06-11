@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 
 import com.luobin.dvr.R;
+import com.luobin.ui.BBSActivity;
 import com.luobin.ui.DvrMainActivity;
 import com.luobin.ui.LoginActivity;
 
@@ -19,11 +20,17 @@ import com.luobin.ui.LoginActivity;
 public class WelcomeActivity extends BaseActivity implements Animation.AnimationListener {
     private ImageView imageView = null;
     private Animation alphaAnimation = null;
+    String className = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
+        if (getIntent() != null){
+            className = getIntent().getStringExtra("className");
+        }
+
         SharedPreferences preferences=getSharedPreferences("token", Context.MODE_PRIVATE);
         String token=preferences.getString("token","");
         if(token.equals("")){
@@ -33,7 +40,12 @@ public class WelcomeActivity extends BaseActivity implements Animation.Animation
 //            overridePendingTransition(R.anim.fade, R.anim.hold);
             WelcomeActivity.this.finish();
         }else {
-            Intent intent = new Intent(WelcomeActivity.this, DvrMainActivity.class);
+            Intent intent ;
+            if ("bbs".equals(className)){
+                intent = new Intent(this, BBSActivity.class);
+            }else{
+                intent = new Intent(WelcomeActivity.this, DvrMainActivity.class);
+            }
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
 //            overridePendingTransition(R.anim.fade, R.anim.hold);

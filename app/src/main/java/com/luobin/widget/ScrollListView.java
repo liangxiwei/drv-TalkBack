@@ -1,6 +1,7 @@
 package com.luobin.widget;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -11,6 +12,12 @@ import android.widget.Toast;
 
 public class ScrollListView extends ListView implements AbsListView.OnScrollListener {
     boolean bl_down = true;
+
+    public void setNoNearby(boolean noNearby) {
+        this.noNearby = noNearby;
+    }
+
+    boolean noNearby = false;
     public ScrollListView(Context context) {
         super(context);
         this.setOnScrollListener(this);
@@ -36,6 +43,22 @@ public class ScrollListView extends ListView implements AbsListView.OnScrollList
 
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+    }
+
+    @Override
+    protected void onFocusChanged(boolean gainFocus, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
+        int selectPosition = getSelectedItemPosition();
+        if (noNearby){
+            if (gainFocus){
+                setSelection(selectPosition);
+            }
+        }else{
+            if (gainFocus){
+                setSelection(0);
+            }
+        }
 
     }
 

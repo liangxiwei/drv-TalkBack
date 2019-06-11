@@ -13,10 +13,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +60,8 @@ import com.luobin.ui.adapter.ContactsGroupAdapter;
 import com.luobin.ui.adapter.ContactsMemberAdapter;
 import com.luobin.widget.LoadingDialog;
 import com.luobin.widget.PromptDialog;
+import com.luobin.widget.ScrollListView;
+import com.qihoo.linker.logcollector.utils.LogCollectorUtility;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -81,9 +85,9 @@ import static com.luobin.ui.SelectMemberActivity.APPLYTEAM;
  */
 
 public class TabFragmentLinkGroup extends BaseLazyFragment {
-    private static final String TAG = "TabFragmentLinkGroup";
+    private static final String TAG = "pangtao";
     int i;
-    private ListView groupListView;
+    private ScrollListView groupListView;
     private ListView memberListView;
     private ContactsGroupAdapter groupAdapter;
     private ContactsMemberAdapter memberAdapter;
@@ -108,10 +112,12 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     public static final int MOVE_GROUP_LIST = 0;
     public static final int MOVE_MEMBER_LIST = 1;
 
-    private static int groupSelectPosition = 0;
-    private static int memberSelectPosition = 0;
+    private  int groupSelectPosition = 0;
+    private int preGroupSelectPosition = -1; // 用来解决listview.getSelectedPosition 不准确
+    private  int memberSelectPosition = 0;
     private static int moveList = MOVE_GROUP_LIST;
 
+    public static boolean isVisiable = true;
 
     public boolean isPullRefresh() {
         return isPullRefresh;
@@ -131,21 +137,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     if (pullRefreshLayout != null)
                         pullRefreshLayout.setRefreshing(false);
                     dissmissLoading();
-
-                    if (moveList == MOVE_GROUP_LIST) {
-                        groupList.get(groupSelectPosition).setSelect(true);
-                    } else {
-                        List<TeamMemberInfo> memberInfos = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-
-                        if (memberSelectPosition >= memberInfos.size()) {
-                            memberSelectPosition = memberInfos.size() - 1;
-                            if (memberSelectPosition < 0) {
-                                memberSelectPosition = 0;
-                            }
-                        }
-                        memberInfos.get(memberSelectPosition).setSelect(true);
-                    }
-
 
                     if (groupAdapter == null) {
                         if (groupList.size() > 0) {
@@ -177,6 +168,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
                     }
                     break;
+                default:
+                    break;
             }
         }
     };
@@ -202,7 +195,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     private BroadcastReceiver refreshTeamReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.d("pangtao","refreshTeamReceiver");
             loadTeamListFromNet();
         }
 
@@ -253,6 +245,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     @Override
     public void onResume() {
         super.onResume();
+        Log.d("pangtao","groupPosition = " +groupSelectPosition);
        /* if (run) {
             getDBMsg();
         }*/
@@ -302,8 +295,9 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     }
 
     private void dissmissLoading() {
-        if (loadingDialog != null)
+        if (loadingDialog != null) {
             loadingDialog.dismiss();
+        }
     }
 
     @Override
@@ -323,8 +317,96 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             }
         });
 
-        groupListView = (ListView) view.findViewById(R.id.lv_group);
+        groupListView = (ScrollListView) view.findViewById(R.id.lv_group);
+        groupListView.setSelector(R.drawable.tab_list_item_selector);
+        groupListView.setNoNearby(true);
+        groupListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                groupSelectPosition = position;
+                Log.d("pangtao","groupSelectPosition = " +groupSelectPosition);
+                List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
+
+                memberAdapter.setData(memberList);
+                memberAdapter.notifyDataSetChanged();
+                tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        groupListView.setOnKeyListener(new View.OnKeyListener() {
+
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+
+                if (!groupListView.isFocusable()){
+                   return false;
+                }
+
+                if (groupListView.getSelectedItemPosition() != -1){
+                    groupSelectPosition = groupListView.getSelectedItemPosition();
+                }
+                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyEvent.getKeyCode()) {
+                        case KeyEvent.KEYCODE_F6:
+                            if (isVisible){
+                                Team msg = groupList.get(groupSelectPosition);
+                                Intent intent = new Intent(getContext(), FirstActivity.class);
+                                intent.putExtra("data", 1);
+                                CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + msg.getTeamID());
+                                if (GlobalStatus.equalTeamID(msg.getTeamID())) {
+                                    intent.putExtra("callType", 0);
+                                } else if (callState != null && callState.getState() == GlobalStatus.STATE_CALL) {
+                                    intent.putExtra("callType", 1);
+                                } else {
+                                    intent.putExtra("callType", 2);
+                                }
+                                intent.putExtra("group", msg.getTeamID());
+                                intent.putExtra("type", msg.getMemberRole());
+                                intent.putExtra("group_name", msg.getLinkmanName());
+                                intent.putParcelableArrayListExtra("memberList", (ArrayList<? extends Parcelable>) allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));
+                                VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(getContext(), intent);
+                                dialog.show();
+                            }
+                            break;
+                        default:
+                            break;
+
+                    }
+                }
+                return false;
+            }
+        });
+
+        groupListView.requestFocus();
         memberListView = (ListView) view.findViewById(R.id.lv_member);
+        memberListView.setSelector(R.drawable.tab_list_item_selector);
+        memberListView.setFocusable(true);
+        memberListView.setFocusableInTouchMode(true);
+        memberListView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyEvent.getKeyCode()) {
+
+                        default:
+                            break;
+
+                    }
+                }
+
+
+                return false;
+            }
+        });
+
+        groupListView.setNextFocusRightId(R.id.lv_member);
+        memberListView.setNextFocusLeftId(R.id.lv_group);
+
         groupListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -337,13 +419,12 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
                 List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
                 memberList.get(memberSelectPosition).setSelect(false);
-                memberSelectPosition =0;
+                memberSelectPosition = 0;
                 memberAdapter.setData(memberList);
                 memberAdapter.notifyDataSetChanged();
 
             }
         });
-
 
         groupListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -379,8 +460,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 memberAdapter.notifyDataSetChanged();
 
 
-
-
                 Intent intent = new Intent(mContext, FriendDetailsDialogActivity.class);
                 Bundle bundle = new Bundle();
                 List<TeamMemberInfo> teamMemberInfos = memberAdapter.getData();
@@ -398,7 +477,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, SelectMemberActivity.class);
-                Log.d("pangtao","teamID = " +groupList.get(groupSelectPosition).getTeamID());
                 intent.putExtra("teamID", groupList.get(groupSelectPosition).getTeamID());
                 startActivityForResult(intent, 0);
             }
@@ -416,6 +494,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         if (isLoad) {
             showLoading();
         }
+
         ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
         MyService.start(getContext(), ProtoMessage.Cmd.cmdGetTeamList.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
@@ -737,66 +816,84 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     private void getMembersData(final List<Team> mTeamInfo) {
         allMemberMap.clear();
         for (final Team teamInfo : mTeamInfo) {
-           /* TeamMemberHelper teamMemberHelper = new TeamMemberHelper(getContext(), teamInfo.getTeamID() + "TeamMember.dp", null);
-            SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
-            final Cursor cursor = db.query("LinkmanMember", null, null, null, null, null, null);
-            Log.d(TAG, "cursor=" + cursor.getCount());
-            if (cursor != null && cursor.getCount() > 0) { // 如果数据库里有，从数据库里取出群成员
-                List<TeamMemberInfo> memberInfos = new ArrayList<>();
-                if (cursor.moveToFirst()) {
-                    do {
-                        String user_phone = cursor.getString(cursor.getColumnIndex("user_phone"));
-                        String user_name = cursor.getString(cursor.getColumnIndex("user_name"));
-                        String nick_name = cursor.getString(cursor.getColumnIndex("nick_name"));
-                        int role = cursor.getInt(cursor.getColumnIndex("role"));
-                        int member_priority = cursor.getInt(cursor.getColumnIndex("member_priority"));
+            // 如果数据库中没有，从网络获取群成员
+            ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
+            builder.setTeamID(teamInfo.getTeamID());
+            MyService.start(mContext, ProtoMessage.Cmd.cmdGetTeamMember.getNumber(), builder.build());
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(TeamMemberProcesser.ACTION);
+            final TimeoutBroadcast b = new TimeoutBroadcast(mContext, filter, getBroadcastManager());
+            b.startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
+                @Override
+                public void onTimeout() {
+                    //ToastR.setToast(mContext, "连接超时");
+                    Log.d(TAG, "onTimeout Cmd.cmdGetTeamMember teamId = " + teamInfo.getTeamID());
+                    //网络超时，从数据库中获取
+                    TeamMemberHelper teamMemberHelper = new TeamMemberHelper(getContext(), teamInfo.getTeamID() + "TeamMember.dp", null);
+                    SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
+                    final Cursor cursor = db.query("LinkmanMember", null, null, null, null, null, null);
+                    Log.d(TAG, "cursor=" + cursor.getCount());
+                    if (cursor != null && cursor.getCount() > 0) { // 如果数据库里有，从数据库里取出群成员
+                        List<TeamMemberInfo> memberInfos = new ArrayList<>();
+                        if (cursor.moveToFirst()) {
+                            do {
+                                String user_phone = cursor.getString(cursor.getColumnIndex("user_phone"));
+                                String user_name = cursor.getString(cursor.getColumnIndex("user_name"));
+                                String nick_name = cursor.getString(cursor.getColumnIndex("nick_name"));
+                                int role = cursor.getInt(cursor.getColumnIndex("role"));
+                                int member_priority = cursor.getInt(cursor.getColumnIndex("member_priority"));
 
-                        TeamMemberInfo memberInfo = new TeamMemberInfo();
-                        memberInfo.setUserPhone(user_phone);
-                        memberInfo.setUserName(user_name);
-                        memberInfo.setNickName(nick_name);
-                        memberInfo.setRole(role);
-                        memberInfo.setMemberPriority(member_priority);
-                        memberInfos.add(memberInfo);
-                    } while (cursor.moveToNext());
-                    allMemberMap.put(teamInfo.getTeamID(), memberInfos);
-                    Log.d(TAG, "allMemberMap.size() = " + allMemberMap.size());
-                    Log.d(TAG, "mTeamInfo.size() = " + mTeamInfo.size());
-                    if (allMemberMap.size() == mTeamInfo.size()) {
-                        if (mHandler != null) {
-                            mHandler.sendEmptyMessage(UPDATE_UI);
+                                TeamMemberInfo memberInfo = new TeamMemberInfo();
+                                memberInfo.setUserPhone(user_phone);
+                                memberInfo.setUserName(user_name);
+                                memberInfo.setNickName(nick_name);
+                                memberInfo.setRole(role);
+                                memberInfo.setMemberPriority(member_priority);
+                                memberInfos.add(memberInfo);
+                            } while (cursor.moveToNext());
+                            allMemberMap.put(teamInfo.getTeamID(), memberInfos);
+                            Log.d(TAG, "allMemberMap.size() = " + allMemberMap.size());
+                            Log.d(TAG, "mTeamInfo.size() = " + mTeamInfo.size());
+                            if (allMemberMap.size() == mTeamInfo.size()) {
+                                if (mHandler != null) {
+                                    mHandler.sendEmptyMessage(UPDATE_UI);
+                                }
+                            }
+                        } else {
+                            Log.d(TAG, "cursor.moveToFirst() = false");
+                        }
+                    } else {
+                        //数据库中没有，放入空联系人
+                        allMemberMap.put(teamInfo.getTeamID(), new ArrayList<TeamMemberInfo>());
+                        Log.d(TAG, "allMemberMap.size() = " + allMemberMap.size());
+                        Log.d(TAG, "mTeamInfo.size() = " + mTeamInfo.size());
+                        if (allMemberMap.size() == mTeamInfo.size()) {
+                            if (mHandler != null) {
+                                mHandler.sendEmptyMessage(UPDATE_UI);
+                            }
                         }
                     }
-                } else {
-                    Log.d(TAG, "cursor.moveToFirst() = false");
                 }
-            } else {*/
-                // 如果数据库中没有，从网络获取群成员
-                ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
-                builder.setTeamID(teamInfo.getTeamID());
-                MyService.start(mContext, ProtoMessage.Cmd.cmdGetTeamMember.getNumber(), builder.build());
-                IntentFilter filter = new IntentFilter();
-                filter.addAction(TeamMemberProcesser.ACTION);
-                final TimeoutBroadcast b = new TimeoutBroadcast(mContext, filter, getBroadcastManager());
-                b.startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
-                    @Override
-                    public void onTimeout() {
-                        //ToastR.setToast(mContext, "连接超时");
-                        Log.d(TAG, "onTimeout Cmd.cmdGetTeamMember teamId = " + teamInfo.getTeamID());
-                        //网络超时，从数据库中获取
+
+                @Override
+                public void onGot(Intent i) {
+                    Log.d(TAG, "getGroupMan onGot ");
+                    int code = i.getIntExtra("error_code", -1);
+                    Log.d(TAG, "code = " + code);
+                    if (code ==
+                            ProtoMessage.ErrorCode.OK.getNumber()) {
                         TeamMemberHelper teamMemberHelper = new TeamMemberHelper(getContext(), teamInfo.getTeamID() + "TeamMember.dp", null);
                         SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
-                        final Cursor cursor = db.query("LinkmanMember", null, null, null, null, null, null);
-                        Log.d(TAG, "cursor=" + cursor.getCount());
-                        if (cursor != null && cursor.getCount() > 0) { // 如果数据库里有，从数据库里取出群成员
+                        final Cursor mCursor = db.query("LinkmanMember", null, null, null, null, null, null);
+                        if (mCursor != null) {
                             List<TeamMemberInfo> memberInfos = new ArrayList<>();
-                            if (cursor.moveToFirst()) {
+                            if (mCursor.moveToFirst()) {
                                 do {
-                                    String user_phone = cursor.getString(cursor.getColumnIndex("user_phone"));
-                                    String user_name = cursor.getString(cursor.getColumnIndex("user_name"));
-                                    String nick_name = cursor.getString(cursor.getColumnIndex("nick_name"));
-                                    int role = cursor.getInt(cursor.getColumnIndex("role"));
-                                    int member_priority = cursor.getInt(cursor.getColumnIndex("member_priority"));
+                                    String user_phone = mCursor.getString(mCursor.getColumnIndex("user_phone"));
+                                    String user_name = mCursor.getString(mCursor.getColumnIndex("user_name"));
+                                    String nick_name = mCursor.getString(mCursor.getColumnIndex("nick_name"));
+                                    int role = mCursor.getInt(mCursor.getColumnIndex("role"));
+                                    int member_priority = mCursor.getInt(mCursor.getColumnIndex("member_priority"));
 
                                     TeamMemberInfo memberInfo = new TeamMemberInfo();
                                     memberInfo.setUserPhone(user_phone);
@@ -805,21 +902,9 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                                     memberInfo.setRole(role);
                                     memberInfo.setMemberPriority(member_priority);
                                     memberInfos.add(memberInfo);
-                                } while (cursor.moveToNext());
-                                allMemberMap.put(teamInfo.getTeamID(), memberInfos);
-                                Log.d(TAG, "allMemberMap.size() = " + allMemberMap.size());
-                                Log.d(TAG, "mTeamInfo.size() = " + mTeamInfo.size());
-                                if (allMemberMap.size() == mTeamInfo.size()) {
-                                    if (mHandler != null) {
-                                        mHandler.sendEmptyMessage(UPDATE_UI);
-                                    }
-                                }
-                            } else {
-                                Log.d(TAG, "cursor.moveToFirst() = false");
+                                } while (mCursor.moveToNext());
                             }
-                        }else{
-                            //数据库中没有，放入空联系人
-                            allMemberMap.put(teamInfo.getTeamID(), new ArrayList<TeamMemberInfo>());
+                            allMemberMap.put(teamInfo.getTeamID(), memberInfos);
                             Log.d(TAG, "allMemberMap.size() = " + allMemberMap.size());
                             Log.d(TAG, "mTeamInfo.size() = " + mTeamInfo.size());
                             if (allMemberMap.size() == mTeamInfo.size()) {
@@ -827,61 +912,21 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                                     mHandler.sendEmptyMessage(UPDATE_UI);
                                 }
                             }
-                        }
-                    }
-
-                    @Override
-                    public void onGot(Intent i) {
-                        Log.d(TAG, "getGroupMan onGot ");
-                        int code = i.getIntExtra("error_code", -1);
-                        Log.d(TAG, "code = " + code);
-                        if (code ==
-                                ProtoMessage.ErrorCode.OK.getNumber()) {
-                            TeamMemberHelper teamMemberHelper = new TeamMemberHelper(getContext(), teamInfo.getTeamID() + "TeamMember.dp", null);
-                            SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
-                            final Cursor mCursor = db.query("LinkmanMember", null, null, null, null, null, null);
-                            if (mCursor != null) {
-                                List<TeamMemberInfo> memberInfos = new ArrayList<>();
-                                if (mCursor.moveToFirst()) {
-                                    do {
-                                        String user_phone = mCursor.getString(mCursor.getColumnIndex("user_phone"));
-                                        String user_name = mCursor.getString(mCursor.getColumnIndex("user_name"));
-                                        String nick_name = mCursor.getString(mCursor.getColumnIndex("nick_name"));
-                                        int role = mCursor.getInt(mCursor.getColumnIndex("role"));
-                                        int member_priority = mCursor.getInt(mCursor.getColumnIndex("member_priority"));
-
-                                        TeamMemberInfo memberInfo = new TeamMemberInfo();
-                                        memberInfo.setUserPhone(user_phone);
-                                        memberInfo.setUserName(user_name);
-                                        memberInfo.setNickName(nick_name);
-                                        memberInfo.setRole(role);
-                                        memberInfo.setMemberPriority(member_priority);
-                                        memberInfos.add(memberInfo);
-                                    } while (mCursor.moveToNext());
-                                }
-                                allMemberMap.put(teamInfo.getTeamID(), memberInfos);
-                                Log.d(TAG, "allMemberMap.size() = " + allMemberMap.size());
-                                Log.d(TAG, "mTeamInfo.size() = " + mTeamInfo.size());
-                                if (allMemberMap.size() == mTeamInfo.size()) {
-                                    if (mHandler != null) {
-                                        mHandler.sendEmptyMessage(UPDATE_UI);
-                                    }
-                                }
-                            } else {
-                                mHandler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        getMembersData(mTeamInfo);
-                                    }
-                                }, 1000);
-                            }
                         } else {
-                            Log.e(TAG, "getGroupMan groupMan code:" + code);
-                            new ResponseErrorProcesser(mContext, code);
+                            mHandler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    getMembersData(mTeamInfo);
+                                }
+                            }, 1000);
                         }
+                    } else {
+                        Log.e(TAG, "getGroupMan groupMan code:" + code);
+                        new ResponseErrorProcesser(mContext, code);
                     }
-                });
-           // }
+                }
+            });
+            // }
         }
 
     }
@@ -949,121 +994,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         }
     }
 
-    public void moveLeft() {
-        Log.d(TAG, "moveLeft");
-        if (moveList == MOVE_MEMBER_LIST) {
-            List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-            memberList.get(memberSelectPosition).setSelect(false);
-            memberSelectPosition = 0;
-            memberAdapter.setData(memberList);
-            memberAdapter.notifyDataSetChanged();
-            groupList.get(groupSelectPosition).setSelect(true);
-            groupAdapter.notifyDataSetChanged();
-            moveList = MOVE_GROUP_LIST;
-        }
-    }
-
-    public void moveRight() {
-        Log.d(TAG, "moveRight");
-        if (moveList == MOVE_GROUP_LIST) {
-            groupList.get(groupSelectPosition).setSelect(false);
-            groupAdapter.notifyDataSetChanged();
-
-            List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-            memberSelectPosition = 0;
-            memberList.get(memberSelectPosition).setSelect(true);
-            memberAdapter.setData(memberList);
-            memberAdapter.notifyDataSetChanged();
-
-            moveList = MOVE_MEMBER_LIST;
-        }
-    }
-
-
-    public void moveUp() {
-        Log.d(TAG, "moveUp");
-        if (moveList == MOVE_GROUP_LIST) {
-            if (groupSelectPosition > 0) {
-                groupList.get(groupSelectPosition).setSelect(false);
-                groupSelectPosition--;
-                groupList.get(groupSelectPosition).setSelect(true);
-                groupAdapter.seteData(groupList);
-                groupAdapter.notifyDataSetChanged();
-                List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-                memberAdapter.setData(memberList);
-                memberAdapter.notifyDataSetChanged();
-            }
-        } else {
-            List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-            if (memberSelectPosition > 0) {
-                memberList.get(memberSelectPosition).setSelect(false);
-                memberSelectPosition--;
-                memberList.get(memberSelectPosition).setSelect(true);
-                memberAdapter.setData(memberList);
-                memberAdapter.notifyDataSetChanged();
-            }
-        }
-
-    }
-
-    public void moveDown() {
-        Log.d(TAG, "moveDown");
-        if (moveList == MOVE_GROUP_LIST) {
-            if (groupSelectPosition < groupList.size() - 1) {
-                groupList.get(groupSelectPosition).setSelect(false);
-                groupSelectPosition++;
-                groupList.get(groupSelectPosition).setSelect(true);
-                groupAdapter.seteData(groupList);
-                groupAdapter.notifyDataSetChanged();
-                List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-                memberAdapter.setData(memberList);
-                memberAdapter.notifyDataSetChanged();
-            }
-        } else {
-            List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-            if (memberSelectPosition < memberList.size() - 1) {
-                memberList.get(memberSelectPosition).setSelect(false);
-                memberSelectPosition++;
-                memberList.get(memberSelectPosition).setSelect(true);
-                memberAdapter.setData(memberList);
-                memberAdapter.notifyDataSetChanged();
-            }
-        }
-    }
-
-    public void clickPTT(){
-                if (moveList == MOVE_GROUP_LIST){
-                    Team msg = groupList.get(groupSelectPosition);
-                    Intent intent = new Intent(getContext(), FirstActivity.class);
-                    intent.putExtra("data", 1);
-                    CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + msg.getTeamID());
-                    if (GlobalStatus.equalTeamID(msg.getTeamID())) {
-                        intent.putExtra("callType", 0);
-                    } else if (callState != null && callState.getState() == GlobalStatus.STATE_CALL) {
-                        intent.putExtra("callType", 1);
-                    } else {
-                        intent.putExtra("callType", 2);
-                    }
-                    intent.putExtra("group", msg.getTeamID());
-                    intent.putExtra("type", msg.getMemberRole());
-                    intent.putExtra("group_name", msg.getLinkmanName());
-                    VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(getContext(), intent);
-                    dialog.show();
-                }
-    }
-
-    public void clickCenter(){
-        memberListView.performItemClick(memberListView,memberSelectPosition,R.id.lv_member);
-    }
-
-/*    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == APPLYTEAM){
-            loadTeamListFromNet();
-        }
-
-    }*/
 
     @Override
     public void onStop() {

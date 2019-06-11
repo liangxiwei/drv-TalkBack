@@ -31,6 +31,7 @@ import com.example.jrd48.chat.PicTool.LetterTileDrawable;
 import com.example.jrd48.chat.SQLite.CommonUtil;
 import com.example.jrd48.chat.SQLite.TeamMemberHelper;
 import com.example.jrd48.chat.SharedPreferencesUtils;
+import com.example.jrd48.chat.TabFragmentLinkGroup;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.friend.AppliedFriends;
 import com.example.jrd48.chat.friend.DBHelperFriendsList;
@@ -122,6 +123,18 @@ public class FriendDetailsDialogActivity extends BaseActivity {
         getIntentMsg();
         initData();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TabFragmentLinkGroup.isVisiable = false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        TabFragmentLinkGroup.isVisiable = true;
     }
 
     private void refreshUI() {

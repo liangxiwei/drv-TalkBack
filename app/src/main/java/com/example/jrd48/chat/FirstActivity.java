@@ -287,6 +287,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
+                    Log.d("pangtao","userList33 = " + userList.size());
                     adapterU.notifyDataSetChanged();
                     break;
                 case 1:
@@ -529,7 +530,6 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         bottomLayoutManager = new BottomLayoutManager(this);
         initViewPager();
         initView1();
-        voice.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
         if (!ConnUtil.isConnected(this)) {
             ToastR.setToast(this, "连接服务器失败，请检查网络连接");
             finish();
@@ -543,9 +543,10 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         }
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         dataInit();
+        voice.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
         List<View>  selectViews = new ArrayList<>();
         selectViews.add(prefixCamera);
-        selectViews.add(rearCamera);
+       // selectViews.add(rearCamera);
         selectViews.add(pictureInPicture);
         selectViews.add(voice);
         selectViews.add(gotoMap);
@@ -889,10 +890,12 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         uri = intent.getExtras().getString("uri");
         mText = intent.getExtras().getString("text");
         maction = intent.getExtras().getString("maction");
+        allTeamMemberInfos = intent.getParcelableArrayListExtra("memberList");
         if (group == 0) {
             Bitmap bitmap = GlobalImg.getImage(FirstActivity.this, linkmanPhone);
             int sex = intent.getIntExtra("linkmanSex", 0);
             userT(linkman, ProtoMessage.ChatStatus.csOk_VALUE, linkmanPhone, sex);
+
             Message message = new Message();
             message.what = 0;
             refreshHandler.sendMessage(message);
@@ -942,13 +945,13 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         if (single) {
             if (!GlobalStatus.equalPhone(linkmanPhone)) {
                 Intent service = new Intent(this, MyService.class);
-                service.putExtra("ptt_key_action", false);
+                service.putExtra("ptt_key_action", true);
                 this.startService(service);
             }
         } else {
             if (!GlobalStatus.equalTeamID(group)) {
                 Intent service = new Intent(this, MyService.class);
-                service.putExtra("ptt_key_action", false);
+                service.putExtra("ptt_key_action", true);
                 this.startService(service);
             }
         }
@@ -2921,7 +2924,8 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     }
 
     public void getGroupMan(final long id) {
-        readSql();
+        convertViewTeamMember(allTeamMemberInfos);
+        /*readSql();
         mansNum = userList.size();
 
         ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
@@ -2954,7 +2958,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                     fail(i.getIntExtra("error_code", -1));
                 }
             }
-        });
+        });*/
     }
     //*****************通过系统图库选择图片发送********************
 
@@ -2993,7 +2997,8 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                     message2.what = 5;
                     refreshHandler.sendMessage(message2);
                 }
-//                mMap.refreshMapLocalData(userList, call_hungon == 1);
+
+             //   mMap.refreshMapLocalData(userList, call_hungon == 1);
             } finally {
                 tempCursorUser.close();
             }
@@ -3006,6 +3011,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
     //*****************************************设置群成员显示********************************************
     private void convertViewTeamMember(List<TeamMemberInfo> teamMemberInfos) {
+        Log.d("pangtao","teamMemberInfos = " + teamMemberInfos.size());
         nowMansNum = 0;
         userList.clear();
         allTeamMemberInfos = teamMemberInfos;//保存群成员列表
@@ -3091,9 +3097,9 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 mTMInfoNew.add(te);
             }
         }
+        Log.d("pangtao","userList 22 = " + userList.size());
         setGridViewClick(true);
         rankList(0);
-
         //adapterU.notifyDataSetChanged();
 
     }
@@ -3143,7 +3149,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             userList.add(userTemp);
         }
         */
-
+        Log.d("pangtao","userList = " + userList.size());
         Message message = new Message();
         message.what = 0;
         refreshHandler.sendMessage(message);

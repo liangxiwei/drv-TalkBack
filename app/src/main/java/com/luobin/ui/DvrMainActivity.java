@@ -54,7 +54,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     public static final int FRAGMENT_POSITION_MANS = 1;
     private int fragmentPostion = FRAGMENT_POSITION_GROUP;
     Button btnChange;
-    BadgeView  badgeView;
+    BadgeView badgeView;
     NotifyFriendBroadcast mNotifyFriendBroadcast;
 
     @Override
@@ -154,7 +154,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
                 startActivity(messageIntent);
 
 
-               // logoutDialog(context);
+                // logoutDialog(context);
                 break;
             case R.id.actionbar_add:
                 //TODO 添加群组
@@ -194,9 +194,10 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
                     }
                 }
                 break;
+                default:
+                    break;
         }
     }
-
 
 
     private BroadcastReceiver friendStatus = new BroadcastReceiver() {
@@ -263,52 +264,6 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         }
         simplelistdialog = builder.create();
         simplelistdialog.show();
-    }
-
-
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        int action = event.getAction();
-        if (action == KeyEvent.ACTION_DOWN) {
-            switch (event.getKeyCode()) {
-                case KeyEvent.KEYCODE_DPAD_LEFT:
-                   if (fragmentPostion == FRAGMENT_POSITION_GROUP){
-                        tabFragmentLinkGroup.moveLeft();
-                       return true;
-                   }
-                    return super.dispatchKeyEvent(event);
-                case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    if (fragmentPostion == FRAGMENT_POSITION_GROUP){
-                        tabFragmentLinkGroup.moveRight();
-                        return true;
-                    }
-                    return super.dispatchKeyEvent(event);
-                case KeyEvent.KEYCODE_DPAD_UP:
-                    if (fragmentPostion == FRAGMENT_POSITION_GROUP){
-                        tabFragmentLinkGroup.moveUp();
-                        return true;
-                    }
-                    return super.dispatchKeyEvent(event);
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    if (fragmentPostion == FRAGMENT_POSITION_GROUP){
-                        tabFragmentLinkGroup.moveDown();
-                        return true;
-                    }
-                    return super.dispatchKeyEvent(event);
-                case KeyEvent.KEYCODE_ENTER:
-                case KeyEvent.KEYCODE_DPAD_CENTER:
-                    tabFragmentLinkGroup.clickCenter();
-                    return super.dispatchKeyEvent(event);
-                case KeyEvent.KEYCODE_BACK:
-                    finish();
-                    return true;
-                case KeyEvent.KEYCODE_F6:
-                    tabFragmentLinkGroup.clickPTT();
-                    return super.dispatchKeyEvent(event);
-
-            }
-        }
-        return super.dispatchKeyEvent(event);
     }
 
 }

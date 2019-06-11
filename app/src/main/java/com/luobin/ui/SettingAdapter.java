@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.luobin.dvr.R;
 
@@ -66,7 +67,7 @@ public class SettingAdapter extends BaseAdapter {
 
     class ViewHolder {
         @BindView(R.id.btnSure)
-        Button btnSure;
+        TextView btnSure;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

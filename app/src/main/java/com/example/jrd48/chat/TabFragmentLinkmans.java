@@ -568,7 +568,7 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
         mWaitingProgressDialog.setCanceledOnTouchOutside(false);
         mWaitingProgressDialog.setCancelable(false);
         if ((boolean) SharedPreferencesUtils.get(mContext, "member_booting", false)) {
-            mWaitingProgressDialog.show();
+           // mWaitingProgressDialog.show();
             SharedPreferencesUtils.put(mContext, "member_booting", false);
         }
 //        listView = (ListView) view.findViewById(R.id.listView);

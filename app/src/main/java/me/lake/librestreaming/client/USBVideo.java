@@ -109,7 +109,7 @@ public class USBVideo extends VideoBase implements SurfaceHolder.Callback, UsbCa
         if (usbCamera != null) {
             Log.v(TAG,"camera already initialized");
         }
-        String dev = getResources().getStringArray(R.array.video_devs)[1];
+        String dev = getResources().getStringArray(R.array.video_devs)[3];
         String product = Build.PRODUCT;
         if (product != null && product.equals("LB1728V4")) {
             dev = getResources().getStringArray(R.array.video_devs)[3];

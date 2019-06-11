@@ -49,15 +49,7 @@ public class BaseActivity extends AppCompatActivity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if(event.getAction() == KeyEvent.ACTION_DOWN) {
-			if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
-				ButtonUtils.changeLeftOrRight(true);
-				return true;
-			} else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-				ButtonUtils.changeLeftOrRight(false);
-				return true;
-			}
-		}
+
 		return super.onKeyDown(keyCode, event);
 	}
 }

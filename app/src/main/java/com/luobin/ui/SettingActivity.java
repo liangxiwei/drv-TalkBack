@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -49,6 +50,7 @@ public class SettingActivity extends BaseActivity {
         ButterKnife.bind(this);
         adapter = new SettingAdapter(this, Arrays.asList(data));
         gvItem.setAdapter(adapter);
+
     }
 
 

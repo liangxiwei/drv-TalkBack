@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.jrd48.chat.ToastR;
@@ -57,7 +58,7 @@ public class InputTextDialog extends BaseDialog {
     public View initView(final Context context) {
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_password, null);
         this.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
-        setSize(ScreenUtils.Dp2Px(context, 300), ScreenUtils.Dp2Px(context, 200));
+        setSize(ScreenUtils.Dp2Px(context, 300), LinearLayout.LayoutParams.WRAP_CONTENT);
         unClickDissmiss();
 
         tvTitleName = (TextView) view.findViewById(R.id.tvTitleName);
@@ -83,7 +84,7 @@ public class InputTextDialog extends BaseDialog {
             }
         });
 
-        tvTitleName.setText(titleName);
+        tvTitleName.setText("设置"+titleName);
 
         passwordSure = (TextView) view.findViewById(R.id.password_sure);
         passwordSure.setOnClickListener(new View.OnClickListener() {

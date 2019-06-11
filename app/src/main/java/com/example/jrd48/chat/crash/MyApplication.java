@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.os.Process;
 import android.provider.Settings;
 import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -35,8 +36,7 @@ import com.qihoo.linker.logcollector.LogCollector;
 import com.qihoo.linker.logcollector.upload.HttpParameters;
 
 import me.lake.librestreaming.client.RESClient;
-
-public class MyApplication extends Application {
+public class MyApplication extends MultiDexApplication {
     CrashHandler mHander = null;
     private ShutDownObserver shutDownObserver;
     private static String videoPhone = null;

@@ -54,8 +54,16 @@ import me.lake.librestreaming.client.GlobalMediaCodec;
 import me.lake.librestreaming.client.RESClient;
 import me.lake.librestreaming.model.RESConfig;
 
+import android.graphics.ImageFormat;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.hardware.Camera;
+import android.hardware.Camera.Size;
+
+import me.lake.librestreaming.client.CameraVideo;
+
+
 public class DvrImpl extends DvrImplBase
-        implements Callback, UsbCamera.UsbCameraListener {
+        implements Callback, UsbCamera.UsbCameraListener, OnFrameAvailableListener {
 
     private final String TAG = com.luobin.dvr.DvrService.TAG;
     private static final boolean VERBOSE = false;
@@ -66,7 +74,8 @@ public class DvrImpl extends DvrImplBase
     private WindowManager.LayoutParams mCamViewParams = null;
     private boolean curNoDrawing = false;
 
-    //    private Camera mCamera;
+    private Camera mCamera;
+    private CameraVideo mCameraVideo;
     private UsbCamera usbCamera;
     private int mCameraPreviewThousandFps;
     private int mCamPrevWidth = 1280;
@@ -213,13 +222,14 @@ public class DvrImpl extends DvrImplBase
     }
 
     private boolean isHiden = false;
+
     @Override
     public boolean show(final int x, final int y, final int w, final int h) {
-        Log.d(TAG, "show enter ,x="+x+",y="+y+",w="+w+",h="+h);
+        Log.d(TAG, "show enter ,x=" + x + ",y=" + y + ",w=" + w + ",h=" + h);
         int[] rect = new int[4];
         DvrConfig.getThumbnailViewRect(rect);
-        if(w == rect[2] && RESClient.getInstance().getOldSelf()){
-            show(rect[0],rect[1],1,1);
+        if (w == rect[2] && RESClient.getInstance().getOldSelf()) {
+            show(rect[0], rect[1], 1, 1);
             return true;
         }
         if (mCamViewParams != null && w != mCamViewParams.width) {
@@ -249,7 +259,7 @@ public class DvrImpl extends DvrImplBase
                 };
                 RESClient.getInstance().runOnUiThread(r);
             }
-        } else if(!isHiden){
+        } else if (!isHiden) {
             mPreviewRect = new Rect(x, y, x + w, y + h);
             if (mCamViewParams != null) {
                 mCamViewParams.x = x;
@@ -267,7 +277,7 @@ public class DvrImpl extends DvrImplBase
                                     .getSystemService(Context.WINDOW_SERVICE);
                             Log.d(TAG, "mCamViewParams：264" + mCamViewParams.toString());
                             wm.updateViewLayout(mCamView, mCamViewParams);
-                        } catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
@@ -328,7 +338,7 @@ public class DvrImpl extends DvrImplBase
 //                        }
                         mHandler.removeMessages(MSG_FRAME_AVAILABLE_TIMEOUT);
                         openCamera(mCamPrevWidth, mCamPrevHeight, RESConfig.FPS);
-                        if(!isOpen){
+                        if (!isOpen) {
                             return;
                         }
                         usbThreadOn = true;
@@ -417,7 +427,7 @@ public class DvrImpl extends DvrImplBase
             }
         }
 
-        if(mCamViewParams != null) {
+        if (mCamViewParams != null) {
             show(mCamViewParams.x, mCamViewParams.y, mCamViewParams.width, mCamViewParams.height);
         }
         Log.d(TAG, "startPreview return");
@@ -433,6 +443,7 @@ public class DvrImpl extends DvrImplBase
 
     private String nowName = "";
     private String lastName = "";
+
     @Override
     public boolean startRecord(String file, boolean withBufferedVideo) {
         if (mCamView == null) {
@@ -449,20 +460,20 @@ public class DvrImpl extends DvrImplBase
         lastName = nowName;
         nowName = file;
         mLastStartRecordingTime = SystemClock.elapsedRealtime();
-        if(mLastStartRecordingTime - mLastCollisionTime < COLLISION_DURATION){
+        if (mLastStartRecordingTime - mLastCollisionTime < COLLISION_DURATION) {
             file = file.replace(".mp4", DvrService.LOCK + ".mp4");
         }
         Log.d(TAG, "DvrImpl startRecord " + file + " withBufferedVideo=" + withBufferedVideo);
         Log.d(TAG, "DvrImpl USB_H264_CAM =" + USB_H264_CAM);
         if (USB_H264_CAM) {
             if (mUsbVideoRecorder == null) {
-                String  dev = mContext.getResources().getStringArray(R.array.video_devs)[3];
+                String dev = mContext.getResources().getStringArray(R.array.video_devs)[1];
                 String product = Build.PRODUCT;
                 if (product != null && product.equals("LB1728V4")) {
-                    dev = mContext.getResources().getStringArray(R.array.video_devs)[2];
+                    dev = mContext.getResources().getStringArray(R.array.video_devs)[1];
                 }
                 mUsbVideoRecorder = new UsbVideoRecorder();
-                boolean res = mUsbVideoRecorder.start(dev,RESConfig.VIDEO_WIDTH_BIG, RESConfig.VIDEO_HEIGHT_BIG,file);
+                boolean res = mUsbVideoRecorder.start(dev, RESConfig.VIDEO_WIDTH_BIG, RESConfig.VIDEO_HEIGHT_BIG, file);
                 if (!res) {
                     Log.e(TAG, "mUsbVideoRecorder.start return false");
                     mUsbVideoRecorder = null;
@@ -475,7 +486,7 @@ public class DvrImpl extends DvrImplBase
             mDvrEncoder.saveFile(file, withBufferedVideo);
 
         }
-        if(!mSavingFile) {
+        if (!mSavingFile) {
             mSavingFile = true;
             startCollisionDetector();
         }
@@ -488,7 +499,7 @@ public class DvrImpl extends DvrImplBase
             mUsbVideoRecorder.stop();
             mUsbVideoRecorder = null;
         }
-        if(!USB_H264_CAM){
+        if (!USB_H264_CAM) {
             if (mDvrEncoder == null) {
                 Log.e(TAG, "stopRecord null mDvrEncoder");
                 return false;
@@ -510,19 +521,19 @@ public class DvrImpl extends DvrImplBase
         if (usbCamera != null) {
             throw new RuntimeException("camera already initialized");
         }
-        String dev = mContext.getResources().getStringArray(R.array.video_devs)[2];
+        String dev = mContext.getResources().getStringArray(R.array.video_devs)[1];
         String product = Build.PRODUCT;
         if (product != null && (product.equals("LB1728V4") || product.equals("LB1822"))) {
             dev = mContext.getResources().getStringArray(R.array.video_devs)[1];
         }
         File file = new File(dev);
-        if(!file.exists()){
+        if (!file.exists()) {
             ToastR.setToast(mContext, dev + MyApplication.getContext().getString(R.string.camera_node_not_exist));
-            Log.v(TAG,dev+" is not exist");
+            Log.v(TAG, dev + " is not exist");
             return;
         }
 
-        if(GlobalStatus.getUsbVideo2() != null){
+        if (GlobalStatus.getUsbVideo2() != null) {
             usbCamera = GlobalStatus.getUsbVideo2();
             usbCamera.start(this);
             isOpen = true;
@@ -568,17 +579,19 @@ public class DvrImpl extends DvrImplBase
      * Stops camera preview, and releases the camera to the system.
      */
     private void releaseCamera() {
-//        if (mCamera != null) {
-//            mCamera.stopPreview();
-//            mCamera.release();
-//            mCamera = null;
-//            Log.d(TAG, "releaseCamera -- done");
-//        }
+        if (mCamera != null) {
+            mCamera.stopPreview();
+            mCamera.release();
+            mCamera = null;
+            Log.d(TAG, "releaseCamera -- done");
+        }
     }
-    public void setNoDrawing(boolean isDrawing){
-        Log.v(TAG,"setNoDrawing:" + isDrawing);
+
+    public void setNoDrawing(boolean isDrawing) {
+        Log.v(TAG, "setNoDrawing:" + isDrawing);
         this.curNoDrawing = isDrawing;
     }
+
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         Log.d(TAG, "surfaceCreated holder=" + holder);
@@ -592,7 +605,7 @@ public class DvrImpl extends DvrImplBase
         // use for video, use the same EGL context.
         GlobalStatus.setIsDvrCamShow(true);
         mEglCore = GlobalStatus.getEglCore();
-        if(mEglCore == null) {
+        if (mEglCore == null) {
             mEglCore = new EglCore(null, EglCore.FLAG_RECORDABLE);
             GlobalStatus.setEglCore(mEglCore);
         }
@@ -625,13 +638,13 @@ public class DvrImpl extends DvrImplBase
         //       (can we guarantee that camera preview size is compatible with AVC video encoder?)
         // zhouyuhuan modify : allow user to set value 20170410
         int bitrate = mCamPrevHeight < 500 ? 2000000 :
-                      mCamPrevHeight < 800 ? 5000000 :
-                      mCamPrevHeight < 1200 ? 10000000 : 10000000;
-       /* int bitrate = DvrConfig.getVideoBitrate();*/
+                mCamPrevHeight < 800 ? 5000000 :
+                        mCamPrevHeight < 1200 ? 10000000 : 10000000;
+        /* int bitrate = DvrConfig.getVideoBitrate();*/
 //        if (mAudioEnabled) {
 //            bitrate += SAMPLE_RATE*16*1; // audio sample rate * bit depth * channel
 //        }
-        if(!USB_H264_CAM){
+        if (!USB_H264_CAM) {
             //get pre video time
             int time = DvrConfig.getPreVideoTime();
             try {
@@ -664,27 +677,27 @@ public class DvrImpl extends DvrImplBase
             mAudioRecordThread.start();
         }
 
-        if(GlobalStatus.getUsbVideo2() != null){
+        if (GlobalStatus.getUsbVideo2() != null) {
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     RESClient.getInstance().createSurfaceView();
                 }
-            },3000);
+            }, 3000);
         }
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width,
                                int height) {
-        Log.v(TAG,"surfaceChanged: w="+width + ",h="+height);
+        Log.v(TAG, "surfaceChanged: w=" + width + ",h=" + height);
         setNoDrawing(true);
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 setNoDrawing(false);
             }
-        },200);
+        }, 200);
 
     }
 
@@ -737,17 +750,17 @@ public class DvrImpl extends DvrImplBase
     }
 
     private void setWaterMarkViewport(int viewWidth, int viewHeight) {
-        int width,height;
+        int width, height;
         int x = (mWaterMarkGravity & Gravity.RIGHT) == Gravity.RIGHT ? (viewWidth - mWaterMarkWidth) :
                 (mWaterMarkGravity & Gravity.LEFT) == Gravity.LEFT ? 0 : (viewWidth - mWaterMarkWidth) / 2;
         int y = (mWaterMarkGravity & Gravity.BOTTOM) == Gravity.BOTTOM ? 0 :
                 (mWaterMarkGravity & Gravity.TOP) == Gravity.TOP ? (viewHeight - mWaterMarkHeight) :
                         (viewHeight - mWaterMarkHeight) / 2;
 
-        width = x < 0 ? viewWidth:mWaterMarkWidth;
-        x = x < 0 ? 0 : x ;
-        height = y < 0 ? viewHeight:mWaterMarkHeight;
-        y =y < 0 ? 0 : y ;
+        width = x < 0 ? viewWidth : mWaterMarkWidth;
+        x = x < 0 ? 0 : x;
+        height = y < 0 ? viewHeight : mWaterMarkHeight;
+        y = y < 0 ? 0 : y;
         //Log.d(TAG, "viewWidth="+viewWidth+",viewHeight="+viewHeight+",width="+width+", height="+height+",x="+x+",y="+y);
         GLES20.glViewport(x, y, width, height);
     }
@@ -812,7 +825,7 @@ public class DvrImpl extends DvrImplBase
                 mWaterMarkBlit.drawFrame(mWaterMarkTextureId, mTmpMatrix);
             }
 
-            if (isRecording() && (mFrameCount%(2*mRecordingFlagFlashRate) < mRecordingFlagFlashRate)) {
+            if (isRecording() && (mFrameCount % (2 * mRecordingFlagFlashRate) < mRecordingFlagFlashRate)) {
                 //drawBox(viewWidth - 40, viewHeight - 40, 20, 20, isCollided());
                 drawRound1(isCollided());
             }
@@ -820,7 +833,7 @@ public class DvrImpl extends DvrImplBase
 
         mDisplaySurface.swapBuffers();
 
-        if(!USB_H264_CAM){
+        if (!USB_H264_CAM) {
             // Send it to the video encoder.
             mEncoderSurface.makeCurrent();
             GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
@@ -1018,7 +1031,7 @@ public class DvrImpl extends DvrImplBase
                             GlobalStatus.getUsbVideo1().close();
                             GlobalStatus.setUsbVideo1(null);
                         }
-                        if(GlobalStatus.getCamera() != null){
+                        if (GlobalStatus.getCamera() != null) {
                             GlobalStatus.getCamera().stopPreview();
                             GlobalStatus.getCamera().release();
                             GlobalStatus.setCamera(null);
@@ -1219,6 +1232,20 @@ public class DvrImpl extends DvrImplBase
         }
     }
 
+    @Override
+    public void onFrameAvailable(SurfaceTexture surfaceTexture) {
+        synchronized (mLock) {
+            if (mWaitingForPreview) {
+                mHandler.removeMessages(MSG_FRAME_AVAILABLE_TIMEOUT);
+                mWaitingForPreview = false;
+                Log.d(TAG, "mWaitingForPreview notify ");
+                mLock.notifyAll();
+            }
+        }
+        updateTimeStampBmpIfNeeded();
+        mHandler.sendEmptyMessage(MSG_FRAME_AVAILABLE);
+    }
+
 
     public class DecoderThread extends Thread {
         @Override
@@ -1250,11 +1277,12 @@ public class DvrImpl extends DvrImplBase
     private int mRound1TableLen = 0;
     private int mRound1Table2[][] = null;
     private int mRound1TableLen2 = 0;
+
     private void drawRound1(boolean collided) {
-        if(mCamView != null){
+        if (mCamView != null) {
             int viewWidth = mCamView.getWidth();
-            int viewHeight = mCamView.getHeight() ;
-            if(viewWidth < 500){
+            int viewHeight = mCamView.getHeight();
+            if (viewWidth < 500) {
 
                 if (mRound1Table == null) {
                     int r = 10;
@@ -1262,20 +1290,20 @@ public class DvrImpl extends DvrImplBase
                     DvrConfig.getThumbnailViewRect(rect);
                     int x = rect[2] - r - 10;
                     int y = rect[3] - r - 10;
-                    mRound1Table = new int[r*2][3];
-                    for (int i=0; i<r; i++) {
-                        mRound1Table[2*i][0] = x - (int)(Math.sqrt(r*r - i*i)+0.5); // line left
-                        mRound1Table[2*i][1] = y + i;                                 // line top
-                        mRound1Table[2*i][2] = 2*(x - mRound1Table[2*i][0]) - 1;          // line len
+                    mRound1Table = new int[r * 2][3];
+                    for (int i = 0; i < r; i++) {
+                        mRound1Table[2 * i][0] = x - (int) (Math.sqrt(r * r - i * i) + 0.5); // line left
+                        mRound1Table[2 * i][1] = y + i;                                 // line top
+                        mRound1Table[2 * i][2] = 2 * (x - mRound1Table[2 * i][0]) - 1;          // line len
 
-                        mRound1Table[2*i+1][0] = x - (int)(Math.sqrt(r*r - i*i)+0.5); // line left
-                        mRound1Table[2*i+1][1] = y - i;                                 // line top
-                        mRound1Table[2*i+1][2] = 2*(x - mRound1Table[2*i+1][0]) - 1;          // line len
+                        mRound1Table[2 * i + 1][0] = x - (int) (Math.sqrt(r * r - i * i) + 0.5); // line left
+                        mRound1Table[2 * i + 1][1] = y - i;                                 // line top
+                        mRound1Table[2 * i + 1][2] = 2 * (x - mRound1Table[2 * i + 1][0]) - 1;          // line len
                     }
-                    mRound1TableLen = 2*r;
+                    mRound1TableLen = 2 * r;
                 }
                 GLES20.glEnable(GLES20.GL_SCISSOR_TEST);
-                for (int i=0; i<mRound1TableLen; i++) {
+                for (int i = 0; i < mRound1TableLen; i++) {
                     int left = mRound1Table[i][0];
                     int top = mRound1Table[i][1];
                     int width = mRound1Table[i][2];
@@ -1290,8 +1318,8 @@ public class DvrImpl extends DvrImplBase
                 }
                 GLES20.glDisable(GLES20.GL_SCISSOR_TEST);
             } else {
-                if(oldWidth == 0 || oldWidth != viewWidth){
-                    Log.v(TAG,"drawFrame viewWidth=" + viewWidth+",viewHeight="+viewHeight);
+                if (oldWidth == 0 || oldWidth != viewWidth) {
+                    Log.v(TAG, "drawFrame viewWidth=" + viewWidth + ",viewHeight=" + viewHeight);
                     oldWidth = viewWidth;
                     mRound1Table2 = null;
                 }
@@ -1300,20 +1328,20 @@ public class DvrImpl extends DvrImplBase
                     int r = 10;
                     int x = mCamView.getWidth() - r - 20;
                     int y = mCamView.getHeight() - r - 20;
-                    mRound1Table2 = new int[r*2][3];
-                    for (int i=0; i<r; i++) {
-                        mRound1Table2[2*i][0] = x - (int)(Math.sqrt(r*r - i*i)+0.5); // line left
-                        mRound1Table2[2*i][1] = y + i;                                 // line top
-                        mRound1Table2[2*i][2] = 2*(x - mRound1Table2[2*i][0]) - 1;          // line len
+                    mRound1Table2 = new int[r * 2][3];
+                    for (int i = 0; i < r; i++) {
+                        mRound1Table2[2 * i][0] = x - (int) (Math.sqrt(r * r - i * i) + 0.5); // line left
+                        mRound1Table2[2 * i][1] = y + i;                                 // line top
+                        mRound1Table2[2 * i][2] = 2 * (x - mRound1Table2[2 * i][0]) - 1;          // line len
 
-                        mRound1Table2[2*i+1][0] = x - (int)(Math.sqrt(r*r - i*i)+0.5); // line left
-                        mRound1Table2[2*i+1][1] = y - i;                                 // line top
-                        mRound1Table2[2*i+1][2] = 2*(x - mRound1Table2[2*i+1][0]) - 1;          // line len
+                        mRound1Table2[2 * i + 1][0] = x - (int) (Math.sqrt(r * r - i * i) + 0.5); // line left
+                        mRound1Table2[2 * i + 1][1] = y - i;                                 // line top
+                        mRound1Table2[2 * i + 1][2] = 2 * (x - mRound1Table2[2 * i + 1][0]) - 1;          // line len
                     }
-                    mRound1TableLen2 = 2*r;
+                    mRound1TableLen2 = 2 * r;
                 }
                 GLES20.glEnable(GLES20.GL_SCISSOR_TEST);
-                for (int i=0; i<mRound1TableLen2; i++) {
+                for (int i = 0; i < mRound1TableLen2; i++) {
                     int left = mRound1Table2[i][0];
                     int top = mRound1Table2[i][1];
                     int width = mRound1Table2[i][2];
@@ -1333,27 +1361,27 @@ public class DvrImpl extends DvrImplBase
 
     private long mLastStartRecordingTime = -1;
     private long mLastCollisionTime = -1;
-    private static final long COLLISION_DURATION = 15*1000;
+    private static final long COLLISION_DURATION = 15 * 1000;
     private CollisionDetector mCollisionDetector = null;
     private CollisionDetector.CollisionListener mCollisionListener = new CollisionDetector.CollisionListener() {
         @Override
         public void onCollide() {
             mLastCollisionTime = SystemClock.elapsedRealtime();
             Log.d(TAG, "==== onCollide ==== at " + mLastCollisionTime);
-            if(mLastCollisionTime - mLastStartRecordingTime < COLLISION_DURATION){
+            if (mLastCollisionTime - mLastStartRecordingTime < COLLISION_DURATION) {
                 //TODO lock last
-                if(!TextUtils.isEmpty(lastName)){
+                if (!TextUtils.isEmpty(lastName)) {
                     File file = new File(lastName);
-                    if(file.exists()){
-                        boolean isSuccess = file.renameTo( new File(lastName.replace(".mp4",DvrService.LOCK + ".mp4")));
+                    if (file.exists()) {
+                        boolean isSuccess = file.renameTo(new File(lastName.replace(".mp4", DvrService.LOCK + ".mp4")));
                         Log.d(TAG, "==== rename ==== " + isSuccess);
                     }
                 }
             }
-            if(mDvrEncoder != null){
+            if (mDvrEncoder != null) {
                 mDvrEncoder.setLockNow(true);
             }
-            if(mUsbVideoRecorder!=null){
+            if (mUsbVideoRecorder != null) {
                 mUsbVideoRecorder.setLock(true);
             }
             //TODO lock now

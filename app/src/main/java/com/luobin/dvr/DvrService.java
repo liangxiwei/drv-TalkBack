@@ -63,7 +63,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import me.lake.librestreaming.client.CameraVideo;
 import me.lake.librestreaming.client.RESClient;
 public class DvrService extends Service {
     
@@ -1201,7 +1201,7 @@ public class DvrService extends Service {
             return true;
         } else {
             usbCamera = new UsbCamera();
-            String dev = getResources().getStringArray(R.array.video_devs)[2];
+            String dev = getResources().getStringArray(R.array.video_devs)[1];
             String product = Build.PRODUCT;
             if (product != null && product.equals("LB1728V4")) {
                 dev = getResources().getStringArray(R.array.video_devs)[1];

@@ -68,7 +68,7 @@
             <ImageView
                 android:layout_width="61dp"
                 android:layout_height="97dp"
-                android:layout_marginTop="51dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/icon_mac"
                 android:layout_marginLeft="49dp"
                 />
@@ -87,7 +87,7 @@
                     android:layout_height="32dp"
                     android:background="@drawable/bg_button"
                     android:textSize="16dp"
-                    android:text="前摄对讲"
+                    android:text="视频对讲"
                     android:textColor="@color/white"
                     android:layout_marginTop="20dp"
                     />
@@ -101,6 +101,7 @@
                     android:text="后摄对讲"
                     android:textColor="@color/white"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     />
 
                 <Button
@@ -201,12 +202,12 @@
                     android:id="@+id/btn_add"
                     android:layout_width="47dp"
                     android:layout_height="22dp"
-                    android:textSize="12dp"
                     android:layout_alignParentRight="true"
+                    android:layout_marginBottom="0dp"
                     android:background="@drawable/bg_button"
-                    android:textColor="@color/white"
                     android:text="添加"
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
 
 
               <!--  <Button

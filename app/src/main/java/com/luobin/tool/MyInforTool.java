@@ -37,6 +37,31 @@ public class MyInforTool {
 
     private String interest;// 兴趣
     private String career;//行业
+
+    public String getInterest() {
+        return interest;
+    }
+
+    public void setInterest(String interest) {
+        this.interest = interest;
+    }
+
+    public String getCareer() {
+        return career;
+    }
+
+    public void setCareer(String career) {
+        this.career = career;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
     private String signature;//签名
 
     public boolean isStartSeaChatGroup() {

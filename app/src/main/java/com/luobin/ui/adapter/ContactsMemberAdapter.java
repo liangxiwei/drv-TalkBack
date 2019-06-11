@@ -76,11 +76,11 @@ public class ContactsMemberAdapter extends BaseAdapter {
         Bitmap bitmap = GlobalImg.getImage(context, memberInfo.getUserPhone());
         holder.memberIcon.setImageBitmap(bitmap);
 
-        if (memberInfo.isSelect()){
+       /* if (memberInfo.isSelect()){
             view.setBackgroundResource(R.drawable.bg_select_stroke);
         }else{
             view.setBackgroundResource(R.drawable.bg_no_select_stroke);
-        }
+        }*/
 
         if (memberInfo.getRole() == ProtoMessage.TeamRole.Owner_VALUE) {
             holder.memberRole.setText( "群主 (" + memberInfo.getMemberPriority() + ")");
