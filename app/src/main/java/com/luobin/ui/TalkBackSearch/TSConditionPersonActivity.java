@@ -233,7 +233,6 @@ public class TSConditionPersonActivity extends BaseDialogActivity implements
         builder.setCarType2(searchFriendsCondition.getCarType1());
         builder.setCarType3(searchFriendsCondition.getCarType2());
         builder.setSex(searchFriendsCondition.getmSex());
-
         if (searchFriendsCondition.getCarPlateNumber().equals(SearchFriendsByConditionActivity.NOT_SET)) {
             builder.setCarNum("");
         } else {
