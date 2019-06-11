@@ -281,6 +281,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     private TeamRecordHelper teamRecordHelper;
     private SQLiteDatabase dbMsg;
     private List<TeamMemberInfo> allTeamMemberInfos;
+    boolean isBBS = false;
 
     private Handler refreshHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -882,7 +883,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         groupDesc = intent.getStringExtra("desc");
         groupPriority = intent.getIntExtra("priority", 0);
         groupID = intent.getLongExtra("group_id", 0);
-
+        isBBS = intent.getBooleanExtra("isBBS",false);
         r = (ProtoMessage.ChatRoomMsg) intent.getSerializableExtra("member");
         call_hungon = intent.getExtras().getInt("data");
         uri = intent.getExtras().getString("uri");
@@ -1761,6 +1762,11 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             ChatManager.getInstance().hideView();
         }
         GlobalStatus.setFirstCreating(false);
+
+        if (isBBS){
+            // 如果是海聊群，退出群
+            groupQuit();
+        }
         super.onDestroy();
 
     }
@@ -2293,8 +2299,10 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                         ProtoMessage.ErrorCode.OK.getNumber()) {
 //                    deleteDBitem(group);
                     MsgTool.deleteTeamMsg(mContext, group);
-                    ToastR.setToast(mContext, "退出群组成功");
-                    finish();
+                    if (!isBBS){
+                        ToastR.setToast(mContext, "退出群组成功");
+                        finish();
+                    }
                 } else {
                     fail(i.getIntExtra("error_code", -1));
                 }

@@ -512,7 +512,7 @@ public class DvrImpl extends DvrImplBase
         }
         String dev = mContext.getResources().getStringArray(R.array.video_devs)[2];
         String product = Build.PRODUCT;
-        if (product != null && product.equals("LB1728V4")) {
+        if (product != null && (product.equals("LB1728V4") || product.equals("LB1822"))) {
             dev = mContext.getResources().getStringArray(R.array.video_devs)[1];
         }
         File file = new File(dev);

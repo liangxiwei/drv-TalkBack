@@ -41,6 +41,7 @@ public class BBSAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
         if (convertView == null){
+            viewHolder = new ViewHolder();
             convertView = LayoutInflater.from(context).inflate(R.layout.adapter_bbs,null);
             viewHolder.name = (TextView) convertView.findViewById(R.id.bbs_name);
             viewHolder.theme = (TextView) convertView.findViewById(R.id.bbs_theme);

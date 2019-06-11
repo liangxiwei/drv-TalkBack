@@ -329,13 +329,11 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 moveList = MOVE_GROUP_LIST;
-
                 groupList.get(groupSelectPosition).setSelect(false);
                 groupSelectPosition = position;
                 groupList.get(groupSelectPosition).setSelect(true);
                 groupAdapter.seteData(groupList);
                 groupAdapter.notifyDataSetChanged();
-
 
                 List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
                 memberList.get(memberSelectPosition).setSelect(false);

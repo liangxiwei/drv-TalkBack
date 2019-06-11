@@ -100,6 +100,7 @@ import com.example.jrd48.service.protocol.root.SpeakerEndProcesser;
 import com.example.jrd48.service.protocol.root.SpeakerMsgProcesser;
 import com.example.jrd48.service.protocol.root.StopGetLocationProcesser;
 import com.example.jrd48.service.protocol.root.TeamMemberProcesser;
+import com.example.jrd48.service.protocol.root.TrackListProcesser;
 import com.example.jrd48.service.protocol.root.TypeSearchFriendsProcesser;
 import com.example.jrd48.service.protocol.root.UploadProcesser;
 import com.example.jrd48.service.protocol.root.UserInfoProcesser;
@@ -186,6 +187,8 @@ public class MyService extends Service {
             put(ProtoMessage.Cmd.cmdAcceptTeam.getNumber(), new AcceptGroupProcesser(MyService.this));  // 接受加入群
             put(ProtoMessage.Cmd.cmdGetTeamList.getNumber(), new GroupsListProcesser(MyService.this));  // 读群列表
             put(ProtoMessage.Cmd.cmdGetBBSList.getNumber(), new BBSListProcesser(MyService.this));  // 读群海聊列表
+            put(ProtoMessage.Cmd.cmdGetTrackList.getNumber(), new TrackListProcesser(MyService.this));  // 读群轨迹列表
+
             put(ProtoMessage.Cmd.cmdAssignTeamAdmin.getNumber(), new AssignTeamAdminProcesser(MyService.this));  // 指定或取消群中的某一个管理员
             put(ProtoMessage.Cmd.cmdDismissTeam.getNumber(), new DismissTeamProcesser(MyService.this));  // 解散群（仅群主可以操作）
             put(ProtoMessage.Cmd.cmdQuitTeam.getNumber(), new DismissTeamProcesser(MyService.this));  // 退出群

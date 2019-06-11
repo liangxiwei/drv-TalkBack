@@ -19,11 +19,11 @@ import java.util.List;
  * Created by Administrator on 2016/12/5.
  */
 
-public class BBSListProcesser extends CommonProcesser {
-    public final static String ACTION = "ACTION.BBSListProcesser";
+public class TrackListProcesser extends CommonProcesser {
+    public final static String ACTION = "ACTION.TrackListProcesser";
     private Context mContext;
 
-    public BBSListProcesser(Context context) {
+    public TrackListProcesser(Context context) {
         super(context);
         mContext = context;
     }
@@ -33,7 +33,7 @@ public class BBSListProcesser extends CommonProcesser {
         Intent i = new Intent(ACTION);
         try {
             Log.d("pangtao","onGot");
-            ProtoMessage.TeamList re = ProtoMessage.TeamList.parseFrom(ArrayUtils.subarray(data, 4, data.length));
+            ProtoMessage.MsgTrackQuery re = ProtoMessage.MsgTrackQuery.parseFrom(ArrayUtils.subarray(data, 4, data.length));
             if (re == null) {
                 Log.d("pangtao","re == null");
 //                ProtoMessage.CommonResp resp = ProtoMessage.CommonResp.parseFrom(ArrayUtils.subarray(data, 4, data.length));
@@ -43,9 +43,9 @@ public class BBSListProcesser extends CommonProcesser {
                 i.putExtra("error_code", re.getErrorCode());
                 Log.d("pangtao","re.getErrorCode() = "+ re.getErrorCode());
                 if (re.getErrorCode() == ProtoMessage.ErrorCode.OK_VALUE) {
-                    Log.i("chat", "获得群列表正确应答");
                     // TODO: 这里处理添加 其他正确的数据
-                    List<ProtoMessage.TeamInfo> team = re.getTeamsList();
+                    Log.d("pangtao","team = " +re.getTracksList().size());
+                  /*  List<ProtoMessage.TeamInfo> team = re.getTeamsList();
                     Log.d("pangtao","team = " + team.size());
                     TeamInfoList afList = new TeamInfoList();
                     List<TeamInfo> list = new ArrayList<TeamInfo>();
@@ -62,9 +62,10 @@ public class BBSListProcesser extends CommonProcesser {
                     }
                     afList.setmTeamInfo(list);
 
+
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("get_bbs_list", afList);
-                    i.putExtras(bundle);
+                    i.putExtras(bundle);*/
                 } else {
                     Log.i("chat", "获得群列表错误码: " + re.getErrorCode());
                 }

@@ -780,6 +780,48 @@ public final class ProtoMessage {
      * <code>cmdGotAnsRemoteControl = 65614;</code>
      */
     cmdGotAnsRemoteControl(65614),
+    /**
+     * <pre>
+     **
+     * 上传轨迹
+     * in, MsgTrack
+     * out, MsgTrack.id
+     * </pre>
+     *
+     * <code>cmdUploadTrack = 65629;</code>
+     */
+    cmdUploadTrack(65629),
+    /**
+     * <pre>
+     **
+     * 获取轨迹列表,仅取标题和图片，不含点位
+     * in, out, MsgTrackQuery
+     * </pre>
+     *
+     * <code>cmdGetTrackList = 65630;</code>
+     */
+    cmdGetTrackList(65630),
+    /**
+     * <pre>
+     **
+     * 获取某几个轨迹的点位详情
+     * 可多选后传入ID列表，统一下载保存到本地。
+     * in, out: MsgTrackQuery
+     * </pre>
+     *
+     * <code>cmdDownloadTrack = 65631;</code>
+     */
+    cmdDownloadTrack(65631),
+    /**
+     * <pre>
+     **
+     * 删除或隐藏我的某一条轨迹
+     * in, out: MsgTrackModify
+     * </pre>
+     *
+     * <code>cmdModifyTrack = 65632;</code>
+     */
+    cmdModifyTrack(65632),
     UNRECOGNIZED(-1),
     ;
 
@@ -1544,6 +1586,48 @@ public final class ProtoMessage {
      * <code>cmdGotAnsRemoteControl = 65614;</code>
      */
     public static final int cmdGotAnsRemoteControl_VALUE = 65614;
+    /**
+     * <pre>
+     **
+     * 上传轨迹
+     * in, MsgTrack
+     * out, MsgTrack.id
+     * </pre>
+     *
+     * <code>cmdUploadTrack = 65629;</code>
+     */
+    public static final int cmdUploadTrack_VALUE = 65629;
+    /**
+     * <pre>
+     **
+     * 获取轨迹列表,仅取标题和图片，不含点位
+     * in, out, MsgTrackQuery
+     * </pre>
+     *
+     * <code>cmdGetTrackList = 65630;</code>
+     */
+    public static final int cmdGetTrackList_VALUE = 65630;
+    /**
+     * <pre>
+     **
+     * 获取某几个轨迹的点位详情
+     * 可多选后传入ID列表，统一下载保存到本地。
+     * in, out: MsgTrackQuery
+     * </pre>
+     *
+     * <code>cmdDownloadTrack = 65631;</code>
+     */
+    public static final int cmdDownloadTrack_VALUE = 65631;
+    /**
+     * <pre>
+     **
+     * 删除或隐藏我的某一条轨迹
+     * in, out: MsgTrackModify
+     * </pre>
+     *
+     * <code>cmdModifyTrack = 65632;</code>
+     */
+    public static final int cmdModifyTrack_VALUE = 65632;
 
 
     public final int getNumber() {
@@ -1645,6 +1729,10 @@ public final class ProtoMessage {
         case 65612: return cmdGotRemoteControl;
         case 65613: return cmdAnsRemoteControl;
         case 65614: return cmdGotAnsRemoteControl;
+        case 65629: return cmdUploadTrack;
+        case 65630: return cmdGetTrackList;
+        case 65631: return cmdDownloadTrack;
+        case 65632: return cmdModifyTrack;
         default: return null;
       }
     }
@@ -6853,6 +6941,139 @@ public final class ProtoMessage {
     }
 
     // @@protoc_insertion_point(enum_scope:RemoteCmd)
+  }
+
+  /**
+   * Protobuf enum {@code TrackModifyCode}
+   */
+  public enum TrackModifyCode
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>_trackDummy = 0;</code>
+     */
+    _trackDummy(0),
+    /**
+     * <pre>
+     * 只能Modify title 和 desc
+     * </pre>
+     *
+     * <code>trackModify = 1;</code>
+     */
+    trackModify(1),
+    /**
+     * <code>trackVisible = 2;</code>
+     */
+    trackVisible(2),
+    /**
+     * <code>trackHide = 3;</code>
+     */
+    trackHide(3),
+    /**
+     * <code>trackDelete = 4;</code>
+     */
+    trackDelete(4),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>_trackDummy = 0;</code>
+     */
+    public static final int _trackDummy_VALUE = 0;
+    /**
+     * <pre>
+     * 只能Modify title 和 desc
+     * </pre>
+     *
+     * <code>trackModify = 1;</code>
+     */
+    public static final int trackModify_VALUE = 1;
+    /**
+     * <code>trackVisible = 2;</code>
+     */
+    public static final int trackVisible_VALUE = 2;
+    /**
+     * <code>trackHide = 3;</code>
+     */
+    public static final int trackHide_VALUE = 3;
+    /**
+     * <code>trackDelete = 4;</code>
+     */
+    public static final int trackDelete_VALUE = 4;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static TrackModifyCode valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static TrackModifyCode forNumber(int value) {
+      switch (value) {
+        case 0: return _trackDummy;
+        case 1: return trackModify;
+        case 2: return trackVisible;
+        case 3: return trackHide;
+        case 4: return trackDelete;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<TrackModifyCode>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        TrackModifyCode> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<TrackModifyCode>() {
+            public TrackModifyCode findValueByNumber(int number) {
+              return TrackModifyCode.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.example.jrd48.service.proto_gen.ProtoMessage.getDescriptor().getEnumTypes().get(27);
+    }
+
+    private static final TrackModifyCode[] VALUES = values();
+
+    public static TrackModifyCode valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private TrackModifyCode(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:TrackModifyCode)
   }
 
   public interface MsgRegImeiOrBuilder extends
@@ -78039,6 +78260,5451 @@ public final class ProtoMessage {
 
   }
 
+  public interface TrackPointOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:TrackPoint)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int64 time = 1;</code>
+     */
+    long getTime();
+
+    /**
+     * <code>double lat = 2;</code>
+     */
+    double getLat();
+
+    /**
+     * <code>double Ing = 3;</code>
+     */
+    double getIng();
+  }
+  /**
+   * <pre>
+   *轨迹坐标
+   * </pre>
+   *
+   * Protobuf type {@code TrackPoint}
+   */
+  public  static final class TrackPoint extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:TrackPoint)
+      TrackPointOrBuilder {
+    // Use TrackPoint.newBuilder() to construct.
+    private TrackPoint(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TrackPoint() {
+      time_ = 0L;
+      lat_ = 0D;
+      ing_ = 0D;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private TrackPoint(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              time_ = input.readInt64();
+              break;
+            }
+            case 17: {
+
+              lat_ = input.readDouble();
+              break;
+            }
+            case 25: {
+
+              ing_ = input.readDouble();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_TrackPoint_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_TrackPoint_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.class, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder.class);
+    }
+
+    public static final int TIME_FIELD_NUMBER = 1;
+    private long time_;
+    /**
+     * <code>int64 time = 1;</code>
+     */
+    public long getTime() {
+      return time_;
+    }
+
+    public static final int LAT_FIELD_NUMBER = 2;
+    private double lat_;
+    /**
+     * <code>double lat = 2;</code>
+     */
+    public double getLat() {
+      return lat_;
+    }
+
+    public static final int ING_FIELD_NUMBER = 3;
+    private double ing_;
+    /**
+     * <code>double Ing = 3;</code>
+     */
+    public double getIng() {
+      return ing_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (time_ != 0L) {
+        output.writeInt64(1, time_);
+      }
+      if (lat_ != 0D) {
+        output.writeDouble(2, lat_);
+      }
+      if (ing_ != 0D) {
+        output.writeDouble(3, ing_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (time_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, time_);
+      }
+      if (lat_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, lat_);
+      }
+      if (ing_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(3, ing_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint)) {
+        return super.equals(obj);
+      }
+      com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint other = (com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint) obj;
+
+      boolean result = true;
+      result = result && (getTime()
+          == other.getTime());
+      result = result && (
+          java.lang.Double.doubleToLongBits(getLat())
+          == java.lang.Double.doubleToLongBits(
+              other.getLat()));
+      result = result && (
+          java.lang.Double.doubleToLongBits(getIng())
+          == java.lang.Double.doubleToLongBits(
+              other.getIng()));
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTime());
+      hash = (37 * hash) + LAT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getLat()));
+      hash = (37 * hash) + ING_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getIng()));
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *轨迹坐标
+     * </pre>
+     *
+     * Protobuf type {@code TrackPoint}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:TrackPoint)
+        com.example.jrd48.service.proto_gen.ProtoMessage.TrackPointOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_TrackPoint_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_TrackPoint_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.class, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder.class);
+      }
+
+      // Construct using com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        time_ = 0L;
+
+        lat_ = 0D;
+
+        ing_ = 0D;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_TrackPoint_descriptor;
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint getDefaultInstanceForType() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.getDefaultInstance();
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint build() {
+        com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint buildPartial() {
+        com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint result = new com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint(this);
+        result.time_ = time_;
+        result.lat_ = lat_;
+        result.ing_ = ing_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint) {
+          return mergeFrom((com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint other) {
+        if (other == com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.getDefaultInstance()) return this;
+        if (other.getTime() != 0L) {
+          setTime(other.getTime());
+        }
+        if (other.getLat() != 0D) {
+          setLat(other.getLat());
+        }
+        if (other.getIng() != 0D) {
+          setIng(other.getIng());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private long time_ ;
+      /**
+       * <code>int64 time = 1;</code>
+       */
+      public long getTime() {
+        return time_;
+      }
+      /**
+       * <code>int64 time = 1;</code>
+       */
+      public Builder setTime(long value) {
+        
+        time_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 time = 1;</code>
+       */
+      public Builder clearTime() {
+        
+        time_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private double lat_ ;
+      /**
+       * <code>double lat = 2;</code>
+       */
+      public double getLat() {
+        return lat_;
+      }
+      /**
+       * <code>double lat = 2;</code>
+       */
+      public Builder setLat(double value) {
+        
+        lat_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double lat = 2;</code>
+       */
+      public Builder clearLat() {
+        
+        lat_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double ing_ ;
+      /**
+       * <code>double Ing = 3;</code>
+       */
+      public double getIng() {
+        return ing_;
+      }
+      /**
+       * <code>double Ing = 3;</code>
+       */
+      public Builder setIng(double value) {
+        
+        ing_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double Ing = 3;</code>
+       */
+      public Builder clearIng() {
+        
+        ing_ = 0D;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:TrackPoint)
+    }
+
+    // @@protoc_insertion_point(class_scope:TrackPoint)
+    private static final com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint();
+    }
+
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TrackPoint>
+        PARSER = new com.google.protobuf.AbstractParser<TrackPoint>() {
+      public TrackPoint parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new TrackPoint(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TrackPoint> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TrackPoint> getParserForType() {
+      return PARSER;
+    }
+
+    public com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MsgTrackOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MsgTrack)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 errorCode = 1;</code>
+     */
+    int getErrorCode();
+
+    /**
+     * <code>int64 track_id = 2;</code>
+     */
+    long getTrackId();
+
+    /**
+     * <code>string title = 3;</code>
+     */
+    java.lang.String getTitle();
+    /**
+     * <code>string title = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getTitleBytes();
+
+    /**
+     * <code>string desc = 4;</code>
+     */
+    java.lang.String getDesc();
+    /**
+     * <code>string desc = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getDescBytes();
+
+    /**
+     * <pre>
+     *轨迹开始时间
+     * </pre>
+     *
+     * <code>int64 time = 5;</code>
+     */
+    long getTime();
+
+    /**
+     * <pre>
+     *轨迹上传时间
+     * </pre>
+     *
+     * <code>int64 systime = 6;</code>
+     */
+    long getSystime();
+
+    /**
+     * <pre>
+     *是否公开
+     * </pre>
+     *
+     * <code>int32 visible = 7;</code>
+     */
+    int getVisible();
+
+    /**
+     * <pre>
+     *图片统一为JPG或PNG
+     * </pre>
+     *
+     * <code>bytes img = 8;</code>
+     */
+    com.google.protobuf.ByteString getImg();
+
+    /**
+     * <code>repeated .TrackPoint points = 9;</code>
+     */
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint> 
+        getPointsList();
+    /**
+     * <code>repeated .TrackPoint points = 9;</code>
+     */
+    com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint getPoints(int index);
+    /**
+     * <code>repeated .TrackPoint points = 9;</code>
+     */
+    int getPointsCount();
+    /**
+     * <code>repeated .TrackPoint points = 9;</code>
+     */
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TrackPointOrBuilder> 
+        getPointsOrBuilderList();
+    /**
+     * <code>repeated .TrackPoint points = 9;</code>
+     */
+    com.example.jrd48.service.proto_gen.ProtoMessage.TrackPointOrBuilder getPointsOrBuilder(
+        int index);
+
+    /**
+     * <pre>
+     * 上传者账号
+     * </pre>
+     *
+     * <code>string userPhone = 10;</code>
+     */
+    java.lang.String getUserPhone();
+    /**
+     * <pre>
+     * 上传者账号
+     * </pre>
+     *
+     * <code>string userPhone = 10;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserPhoneBytes();
+
+    /**
+     * <pre>
+     * 上传者的名称
+     * </pre>
+     *
+     * <code>string userName = 11;</code>
+     */
+    java.lang.String getUserName();
+    /**
+     * <pre>
+     * 上传者的名称
+     * </pre>
+     *
+     * <code>string userName = 11;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserNameBytes();
+  }
+  /**
+   * <pre>
+   *轨迹
+   * </pre>
+   *
+   * Protobuf type {@code MsgTrack}
+   */
+  public  static final class MsgTrack extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:MsgTrack)
+      MsgTrackOrBuilder {
+    // Use MsgTrack.newBuilder() to construct.
+    private MsgTrack(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MsgTrack() {
+      errorCode_ = 0;
+      trackId_ = 0L;
+      title_ = "";
+      desc_ = "";
+      time_ = 0L;
+      systime_ = 0L;
+      visible_ = 0;
+      img_ = com.google.protobuf.ByteString.EMPTY;
+      points_ = java.util.Collections.emptyList();
+      userPhone_ = "";
+      userName_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private MsgTrack(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              errorCode_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              trackId_ = input.readInt64();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              title_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              desc_ = s;
+              break;
+            }
+            case 40: {
+
+              time_ = input.readInt64();
+              break;
+            }
+            case 48: {
+
+              systime_ = input.readInt64();
+              break;
+            }
+            case 56: {
+
+              visible_ = input.readInt32();
+              break;
+            }
+            case 66: {
+
+              img_ = input.readBytes();
+              break;
+            }
+            case 74: {
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+                points_ = new java.util.ArrayList<com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint>();
+                mutable_bitField0_ |= 0x00000100;
+              }
+              points_.add(
+                  input.readMessage(com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.parser(), extensionRegistry));
+              break;
+            }
+            case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userPhone_ = s;
+              break;
+            }
+            case 90: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userName_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+          points_ = java.util.Collections.unmodifiableList(points_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrack_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrack_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.class, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ERRORCODE_FIELD_NUMBER = 1;
+    private int errorCode_;
+    /**
+     * <code>int32 errorCode = 1;</code>
+     */
+    public int getErrorCode() {
+      return errorCode_;
+    }
+
+    public static final int TRACK_ID_FIELD_NUMBER = 2;
+    private long trackId_;
+    /**
+     * <code>int64 track_id = 2;</code>
+     */
+    public long getTrackId() {
+      return trackId_;
+    }
+
+    public static final int TITLE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object title_;
+    /**
+     * <code>string title = 3;</code>
+     */
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        title_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string title = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESC_FIELD_NUMBER = 4;
+    private volatile java.lang.Object desc_;
+    /**
+     * <code>string desc = 4;</code>
+     */
+    public java.lang.String getDesc() {
+      java.lang.Object ref = desc_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        desc_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string desc = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDescBytes() {
+      java.lang.Object ref = desc_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        desc_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIME_FIELD_NUMBER = 5;
+    private long time_;
+    /**
+     * <pre>
+     *轨迹开始时间
+     * </pre>
+     *
+     * <code>int64 time = 5;</code>
+     */
+    public long getTime() {
+      return time_;
+    }
+
+    public static final int SYSTIME_FIELD_NUMBER = 6;
+    private long systime_;
+    /**
+     * <pre>
+     *轨迹上传时间
+     * </pre>
+     *
+     * <code>int64 systime = 6;</code>
+     */
+    public long getSystime() {
+      return systime_;
+    }
+
+    public static final int VISIBLE_FIELD_NUMBER = 7;
+    private int visible_;
+    /**
+     * <pre>
+     *是否公开
+     * </pre>
+     *
+     * <code>int32 visible = 7;</code>
+     */
+    public int getVisible() {
+      return visible_;
+    }
+
+    public static final int IMG_FIELD_NUMBER = 8;
+    private com.google.protobuf.ByteString img_;
+    /**
+     * <pre>
+     *图片统一为JPG或PNG
+     * </pre>
+     *
+     * <code>bytes img = 8;</code>
+     */
+    public com.google.protobuf.ByteString getImg() {
+      return img_;
+    }
+
+    public static final int POINTS_FIELD_NUMBER = 9;
+    private java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint> points_;
+    /**
+     * <code>repeated .TrackPoint points = 9;</code>
+     */
+    public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint> getPointsList() {
+      return points_;
+    }
+    /**
+     * <code>repeated .TrackPoint points = 9;</code>
+     */
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TrackPointOrBuilder> 
+        getPointsOrBuilderList() {
+      return points_;
+    }
+    /**
+     * <code>repeated .TrackPoint points = 9;</code>
+     */
+    public int getPointsCount() {
+      return points_.size();
+    }
+    /**
+     * <code>repeated .TrackPoint points = 9;</code>
+     */
+    public com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint getPoints(int index) {
+      return points_.get(index);
+    }
+    /**
+     * <code>repeated .TrackPoint points = 9;</code>
+     */
+    public com.example.jrd48.service.proto_gen.ProtoMessage.TrackPointOrBuilder getPointsOrBuilder(
+        int index) {
+      return points_.get(index);
+    }
+
+    public static final int USERPHONE_FIELD_NUMBER = 10;
+    private volatile java.lang.Object userPhone_;
+    /**
+     * <pre>
+     * 上传者账号
+     * </pre>
+     *
+     * <code>string userPhone = 10;</code>
+     */
+    public java.lang.String getUserPhone() {
+      java.lang.Object ref = userPhone_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userPhone_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 上传者账号
+     * </pre>
+     *
+     * <code>string userPhone = 10;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserPhoneBytes() {
+      java.lang.Object ref = userPhone_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userPhone_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int USERNAME_FIELD_NUMBER = 11;
+    private volatile java.lang.Object userName_;
+    /**
+     * <pre>
+     * 上传者的名称
+     * </pre>
+     *
+     * <code>string userName = 11;</code>
+     */
+    public java.lang.String getUserName() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 上传者的名称
+     * </pre>
+     *
+     * <code>string userName = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserNameBytes() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (errorCode_ != 0) {
+        output.writeInt32(1, errorCode_);
+      }
+      if (trackId_ != 0L) {
+        output.writeInt64(2, trackId_);
+      }
+      if (!getTitleBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, title_);
+      }
+      if (!getDescBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, desc_);
+      }
+      if (time_ != 0L) {
+        output.writeInt64(5, time_);
+      }
+      if (systime_ != 0L) {
+        output.writeInt64(6, systime_);
+      }
+      if (visible_ != 0) {
+        output.writeInt32(7, visible_);
+      }
+      if (!img_.isEmpty()) {
+        output.writeBytes(8, img_);
+      }
+      for (int i = 0; i < points_.size(); i++) {
+        output.writeMessage(9, points_.get(i));
+      }
+      if (!getUserPhoneBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, userPhone_);
+      }
+      if (!getUserNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, userName_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (errorCode_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, errorCode_);
+      }
+      if (trackId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, trackId_);
+      }
+      if (!getTitleBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, title_);
+      }
+      if (!getDescBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, desc_);
+      }
+      if (time_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, time_);
+      }
+      if (systime_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(6, systime_);
+      }
+      if (visible_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, visible_);
+      }
+      if (!img_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(8, img_);
+      }
+      for (int i = 0; i < points_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, points_.get(i));
+      }
+      if (!getUserPhoneBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, userPhone_);
+      }
+      if (!getUserNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, userName_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack)) {
+        return super.equals(obj);
+      }
+      com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack other = (com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack) obj;
+
+      boolean result = true;
+      result = result && (getErrorCode()
+          == other.getErrorCode());
+      result = result && (getTrackId()
+          == other.getTrackId());
+      result = result && getTitle()
+          .equals(other.getTitle());
+      result = result && getDesc()
+          .equals(other.getDesc());
+      result = result && (getTime()
+          == other.getTime());
+      result = result && (getSystime()
+          == other.getSystime());
+      result = result && (getVisible()
+          == other.getVisible());
+      result = result && getImg()
+          .equals(other.getImg());
+      result = result && getPointsList()
+          .equals(other.getPointsList());
+      result = result && getUserPhone()
+          .equals(other.getUserPhone());
+      result = result && getUserName()
+          .equals(other.getUserName());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
+      hash = (53 * hash) + getErrorCode();
+      hash = (37 * hash) + TRACK_ID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTrackId());
+      hash = (37 * hash) + TITLE_FIELD_NUMBER;
+      hash = (53 * hash) + getTitle().hashCode();
+      hash = (37 * hash) + DESC_FIELD_NUMBER;
+      hash = (53 * hash) + getDesc().hashCode();
+      hash = (37 * hash) + TIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTime());
+      hash = (37 * hash) + SYSTIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getSystime());
+      hash = (37 * hash) + VISIBLE_FIELD_NUMBER;
+      hash = (53 * hash) + getVisible();
+      hash = (37 * hash) + IMG_FIELD_NUMBER;
+      hash = (53 * hash) + getImg().hashCode();
+      if (getPointsCount() > 0) {
+        hash = (37 * hash) + POINTS_FIELD_NUMBER;
+        hash = (53 * hash) + getPointsList().hashCode();
+      }
+      hash = (37 * hash) + USERPHONE_FIELD_NUMBER;
+      hash = (53 * hash) + getUserPhone().hashCode();
+      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUserName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *轨迹
+     * </pre>
+     *
+     * Protobuf type {@code MsgTrack}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MsgTrack)
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrack_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrack_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.class, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder.class);
+      }
+
+      // Construct using com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getPointsFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        errorCode_ = 0;
+
+        trackId_ = 0L;
+
+        title_ = "";
+
+        desc_ = "";
+
+        time_ = 0L;
+
+        systime_ = 0L;
+
+        visible_ = 0;
+
+        img_ = com.google.protobuf.ByteString.EMPTY;
+
+        if (pointsBuilder_ == null) {
+          points_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000100);
+        } else {
+          pointsBuilder_.clear();
+        }
+        userPhone_ = "";
+
+        userName_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrack_descriptor;
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack getDefaultInstanceForType() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.getDefaultInstance();
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack build() {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack buildPartial() {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack result = new com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.errorCode_ = errorCode_;
+        result.trackId_ = trackId_;
+        result.title_ = title_;
+        result.desc_ = desc_;
+        result.time_ = time_;
+        result.systime_ = systime_;
+        result.visible_ = visible_;
+        result.img_ = img_;
+        if (pointsBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) == 0x00000100)) {
+            points_ = java.util.Collections.unmodifiableList(points_);
+            bitField0_ = (bitField0_ & ~0x00000100);
+          }
+          result.points_ = points_;
+        } else {
+          result.points_ = pointsBuilder_.build();
+        }
+        result.userPhone_ = userPhone_;
+        result.userName_ = userName_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack) {
+          return mergeFrom((com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack other) {
+        if (other == com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.getDefaultInstance()) return this;
+        if (other.getErrorCode() != 0) {
+          setErrorCode(other.getErrorCode());
+        }
+        if (other.getTrackId() != 0L) {
+          setTrackId(other.getTrackId());
+        }
+        if (!other.getTitle().isEmpty()) {
+          title_ = other.title_;
+          onChanged();
+        }
+        if (!other.getDesc().isEmpty()) {
+          desc_ = other.desc_;
+          onChanged();
+        }
+        if (other.getTime() != 0L) {
+          setTime(other.getTime());
+        }
+        if (other.getSystime() != 0L) {
+          setSystime(other.getSystime());
+        }
+        if (other.getVisible() != 0) {
+          setVisible(other.getVisible());
+        }
+        if (other.getImg() != com.google.protobuf.ByteString.EMPTY) {
+          setImg(other.getImg());
+        }
+        if (pointsBuilder_ == null) {
+          if (!other.points_.isEmpty()) {
+            if (points_.isEmpty()) {
+              points_ = other.points_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+            } else {
+              ensurePointsIsMutable();
+              points_.addAll(other.points_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.points_.isEmpty()) {
+            if (pointsBuilder_.isEmpty()) {
+              pointsBuilder_.dispose();
+              pointsBuilder_ = null;
+              points_ = other.points_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+              pointsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getPointsFieldBuilder() : null;
+            } else {
+              pointsBuilder_.addAllMessages(other.points_);
+            }
+          }
+        }
+        if (!other.getUserPhone().isEmpty()) {
+          userPhone_ = other.userPhone_;
+          onChanged();
+        }
+        if (!other.getUserName().isEmpty()) {
+          userName_ = other.userName_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int errorCode_ ;
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public int getErrorCode() {
+        return errorCode_;
+      }
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public Builder setErrorCode(int value) {
+        
+        errorCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public Builder clearErrorCode() {
+        
+        errorCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long trackId_ ;
+      /**
+       * <code>int64 track_id = 2;</code>
+       */
+      public long getTrackId() {
+        return trackId_;
+      }
+      /**
+       * <code>int64 track_id = 2;</code>
+       */
+      public Builder setTrackId(long value) {
+        
+        trackId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 track_id = 2;</code>
+       */
+      public Builder clearTrackId() {
+        
+        trackId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object title_ = "";
+      /**
+       * <code>string title = 3;</code>
+       */
+      public java.lang.String getTitle() {
+        java.lang.Object ref = title_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          title_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string title = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTitleBytes() {
+        java.lang.Object ref = title_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          title_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string title = 3;</code>
+       */
+      public Builder setTitle(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        title_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string title = 3;</code>
+       */
+      public Builder clearTitle() {
+        
+        title_ = getDefaultInstance().getTitle();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string title = 3;</code>
+       */
+      public Builder setTitleBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        title_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object desc_ = "";
+      /**
+       * <code>string desc = 4;</code>
+       */
+      public java.lang.String getDesc() {
+        java.lang.Object ref = desc_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          desc_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string desc = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDescBytes() {
+        java.lang.Object ref = desc_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          desc_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string desc = 4;</code>
+       */
+      public Builder setDesc(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        desc_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string desc = 4;</code>
+       */
+      public Builder clearDesc() {
+        
+        desc_ = getDefaultInstance().getDesc();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string desc = 4;</code>
+       */
+      public Builder setDescBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        desc_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long time_ ;
+      /**
+       * <pre>
+       *轨迹开始时间
+       * </pre>
+       *
+       * <code>int64 time = 5;</code>
+       */
+      public long getTime() {
+        return time_;
+      }
+      /**
+       * <pre>
+       *轨迹开始时间
+       * </pre>
+       *
+       * <code>int64 time = 5;</code>
+       */
+      public Builder setTime(long value) {
+        
+        time_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *轨迹开始时间
+       * </pre>
+       *
+       * <code>int64 time = 5;</code>
+       */
+      public Builder clearTime() {
+        
+        time_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long systime_ ;
+      /**
+       * <pre>
+       *轨迹上传时间
+       * </pre>
+       *
+       * <code>int64 systime = 6;</code>
+       */
+      public long getSystime() {
+        return systime_;
+      }
+      /**
+       * <pre>
+       *轨迹上传时间
+       * </pre>
+       *
+       * <code>int64 systime = 6;</code>
+       */
+      public Builder setSystime(long value) {
+        
+        systime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *轨迹上传时间
+       * </pre>
+       *
+       * <code>int64 systime = 6;</code>
+       */
+      public Builder clearSystime() {
+        
+        systime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int visible_ ;
+      /**
+       * <pre>
+       *是否公开
+       * </pre>
+       *
+       * <code>int32 visible = 7;</code>
+       */
+      public int getVisible() {
+        return visible_;
+      }
+      /**
+       * <pre>
+       *是否公开
+       * </pre>
+       *
+       * <code>int32 visible = 7;</code>
+       */
+      public Builder setVisible(int value) {
+        
+        visible_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *是否公开
+       * </pre>
+       *
+       * <code>int32 visible = 7;</code>
+       */
+      public Builder clearVisible() {
+        
+        visible_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString img_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       *图片统一为JPG或PNG
+       * </pre>
+       *
+       * <code>bytes img = 8;</code>
+       */
+      public com.google.protobuf.ByteString getImg() {
+        return img_;
+      }
+      /**
+       * <pre>
+       *图片统一为JPG或PNG
+       * </pre>
+       *
+       * <code>bytes img = 8;</code>
+       */
+      public Builder setImg(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        img_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *图片统一为JPG或PNG
+       * </pre>
+       *
+       * <code>bytes img = 8;</code>
+       */
+      public Builder clearImg() {
+        
+        img_ = getDefaultInstance().getImg();
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint> points_ =
+        java.util.Collections.emptyList();
+      private void ensurePointsIsMutable() {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+          points_ = new java.util.ArrayList<com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint>(points_);
+          bitField0_ |= 0x00000100;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPointOrBuilder> pointsBuilder_;
+
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint> getPointsList() {
+        if (pointsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(points_);
+        } else {
+          return pointsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public int getPointsCount() {
+        if (pointsBuilder_ == null) {
+          return points_.size();
+        } else {
+          return pointsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint getPoints(int index) {
+        if (pointsBuilder_ == null) {
+          return points_.get(index);
+        } else {
+          return pointsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public Builder setPoints(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint value) {
+        if (pointsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePointsIsMutable();
+          points_.set(index, value);
+          onChanged();
+        } else {
+          pointsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public Builder setPoints(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder builderForValue) {
+        if (pointsBuilder_ == null) {
+          ensurePointsIsMutable();
+          points_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          pointsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public Builder addPoints(com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint value) {
+        if (pointsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePointsIsMutable();
+          points_.add(value);
+          onChanged();
+        } else {
+          pointsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public Builder addPoints(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint value) {
+        if (pointsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePointsIsMutable();
+          points_.add(index, value);
+          onChanged();
+        } else {
+          pointsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public Builder addPoints(
+          com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder builderForValue) {
+        if (pointsBuilder_ == null) {
+          ensurePointsIsMutable();
+          points_.add(builderForValue.build());
+          onChanged();
+        } else {
+          pointsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public Builder addPoints(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder builderForValue) {
+        if (pointsBuilder_ == null) {
+          ensurePointsIsMutable();
+          points_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          pointsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public Builder addAllPoints(
+          java.lang.Iterable<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint> values) {
+        if (pointsBuilder_ == null) {
+          ensurePointsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, points_);
+          onChanged();
+        } else {
+          pointsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public Builder clearPoints() {
+        if (pointsBuilder_ == null) {
+          points_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000100);
+          onChanged();
+        } else {
+          pointsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public Builder removePoints(int index) {
+        if (pointsBuilder_ == null) {
+          ensurePointsIsMutable();
+          points_.remove(index);
+          onChanged();
+        } else {
+          pointsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder getPointsBuilder(
+          int index) {
+        return getPointsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.TrackPointOrBuilder getPointsOrBuilder(
+          int index) {
+        if (pointsBuilder_ == null) {
+          return points_.get(index);  } else {
+          return pointsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TrackPointOrBuilder> 
+           getPointsOrBuilderList() {
+        if (pointsBuilder_ != null) {
+          return pointsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(points_);
+        }
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder addPointsBuilder() {
+        return getPointsFieldBuilder().addBuilder(
+            com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder addPointsBuilder(
+          int index) {
+        return getPointsFieldBuilder().addBuilder(
+            index, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .TrackPoint points = 9;</code>
+       */
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder> 
+           getPointsBuilderList() {
+        return getPointsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPointOrBuilder> 
+          getPointsFieldBuilder() {
+        if (pointsBuilder_ == null) {
+          pointsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPoint.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.TrackPointOrBuilder>(
+                  points_,
+                  ((bitField0_ & 0x00000100) == 0x00000100),
+                  getParentForChildren(),
+                  isClean());
+          points_ = null;
+        }
+        return pointsBuilder_;
+      }
+
+      private java.lang.Object userPhone_ = "";
+      /**
+       * <pre>
+       * 上传者账号
+       * </pre>
+       *
+       * <code>string userPhone = 10;</code>
+       */
+      public java.lang.String getUserPhone() {
+        java.lang.Object ref = userPhone_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userPhone_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 上传者账号
+       * </pre>
+       *
+       * <code>string userPhone = 10;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserPhoneBytes() {
+        java.lang.Object ref = userPhone_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userPhone_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 上传者账号
+       * </pre>
+       *
+       * <code>string userPhone = 10;</code>
+       */
+      public Builder setUserPhone(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        userPhone_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 上传者账号
+       * </pre>
+       *
+       * <code>string userPhone = 10;</code>
+       */
+      public Builder clearUserPhone() {
+        
+        userPhone_ = getDefaultInstance().getUserPhone();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 上传者账号
+       * </pre>
+       *
+       * <code>string userPhone = 10;</code>
+       */
+      public Builder setUserPhoneBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        userPhone_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object userName_ = "";
+      /**
+       * <pre>
+       * 上传者的名称
+       * </pre>
+       *
+       * <code>string userName = 11;</code>
+       */
+      public java.lang.String getUserName() {
+        java.lang.Object ref = userName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 上传者的名称
+       * </pre>
+       *
+       * <code>string userName = 11;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserNameBytes() {
+        java.lang.Object ref = userName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 上传者的名称
+       * </pre>
+       *
+       * <code>string userName = 11;</code>
+       */
+      public Builder setUserName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 上传者的名称
+       * </pre>
+       *
+       * <code>string userName = 11;</code>
+       */
+      public Builder clearUserName() {
+        
+        userName_ = getDefaultInstance().getUserName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 上传者的名称
+       * </pre>
+       *
+       * <code>string userName = 11;</code>
+       */
+      public Builder setUserNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:MsgTrack)
+    }
+
+    // @@protoc_insertion_point(class_scope:MsgTrack)
+    private static final com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack();
+    }
+
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MsgTrack>
+        PARSER = new com.google.protobuf.AbstractParser<MsgTrack>() {
+      public MsgTrack parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new MsgTrack(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MsgTrack> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MsgTrack> getParserForType() {
+      return PARSER;
+    }
+
+    public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MsgTrackListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MsgTrackList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 errorCode = 1;</code>
+     */
+    int getErrorCode();
+
+    /**
+     * <code>repeated .MsgTrack tracks = 2;</code>
+     */
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> 
+        getTracksList();
+    /**
+     * <code>repeated .MsgTrack tracks = 2;</code>
+     */
+    com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack getTracks(int index);
+    /**
+     * <code>repeated .MsgTrack tracks = 2;</code>
+     */
+    int getTracksCount();
+    /**
+     * <code>repeated .MsgTrack tracks = 2;</code>
+     */
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder> 
+        getTracksOrBuilderList();
+    /**
+     * <code>repeated .MsgTrack tracks = 2;</code>
+     */
+    com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder getTracksOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code MsgTrackList}
+   */
+  public  static final class MsgTrackList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:MsgTrackList)
+      MsgTrackListOrBuilder {
+    // Use MsgTrackList.newBuilder() to construct.
+    private MsgTrackList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MsgTrackList() {
+      errorCode_ = 0;
+      tracks_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private MsgTrackList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              errorCode_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                tracks_ = new java.util.ArrayList<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              tracks_.add(
+                  input.readMessage(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.parser(), extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          tracks_ = java.util.Collections.unmodifiableList(tracks_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList.class, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ERRORCODE_FIELD_NUMBER = 1;
+    private int errorCode_;
+    /**
+     * <code>int32 errorCode = 1;</code>
+     */
+    public int getErrorCode() {
+      return errorCode_;
+    }
+
+    public static final int TRACKS_FIELD_NUMBER = 2;
+    private java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> tracks_;
+    /**
+     * <code>repeated .MsgTrack tracks = 2;</code>
+     */
+    public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> getTracksList() {
+      return tracks_;
+    }
+    /**
+     * <code>repeated .MsgTrack tracks = 2;</code>
+     */
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder> 
+        getTracksOrBuilderList() {
+      return tracks_;
+    }
+    /**
+     * <code>repeated .MsgTrack tracks = 2;</code>
+     */
+    public int getTracksCount() {
+      return tracks_.size();
+    }
+    /**
+     * <code>repeated .MsgTrack tracks = 2;</code>
+     */
+    public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack getTracks(int index) {
+      return tracks_.get(index);
+    }
+    /**
+     * <code>repeated .MsgTrack tracks = 2;</code>
+     */
+    public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder getTracksOrBuilder(
+        int index) {
+      return tracks_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (errorCode_ != 0) {
+        output.writeInt32(1, errorCode_);
+      }
+      for (int i = 0; i < tracks_.size(); i++) {
+        output.writeMessage(2, tracks_.get(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (errorCode_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, errorCode_);
+      }
+      for (int i = 0; i < tracks_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, tracks_.get(i));
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList)) {
+        return super.equals(obj);
+      }
+      com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList other = (com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList) obj;
+
+      boolean result = true;
+      result = result && (getErrorCode()
+          == other.getErrorCode());
+      result = result && getTracksList()
+          .equals(other.getTracksList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
+      hash = (53 * hash) + getErrorCode();
+      if (getTracksCount() > 0) {
+        hash = (37 * hash) + TRACKS_FIELD_NUMBER;
+        hash = (53 * hash) + getTracksList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MsgTrackList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MsgTrackList)
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList.class, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList.Builder.class);
+      }
+
+      // Construct using com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getTracksFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        errorCode_ = 0;
+
+        if (tracksBuilder_ == null) {
+          tracks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          tracksBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackList_descriptor;
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList getDefaultInstanceForType() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList.getDefaultInstance();
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList build() {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList buildPartial() {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList result = new com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.errorCode_ = errorCode_;
+        if (tracksBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            tracks_ = java.util.Collections.unmodifiableList(tracks_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.tracks_ = tracks_;
+        } else {
+          result.tracks_ = tracksBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList) {
+          return mergeFrom((com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList other) {
+        if (other == com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList.getDefaultInstance()) return this;
+        if (other.getErrorCode() != 0) {
+          setErrorCode(other.getErrorCode());
+        }
+        if (tracksBuilder_ == null) {
+          if (!other.tracks_.isEmpty()) {
+            if (tracks_.isEmpty()) {
+              tracks_ = other.tracks_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureTracksIsMutable();
+              tracks_.addAll(other.tracks_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.tracks_.isEmpty()) {
+            if (tracksBuilder_.isEmpty()) {
+              tracksBuilder_.dispose();
+              tracksBuilder_ = null;
+              tracks_ = other.tracks_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              tracksBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getTracksFieldBuilder() : null;
+            } else {
+              tracksBuilder_.addAllMessages(other.tracks_);
+            }
+          }
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int errorCode_ ;
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public int getErrorCode() {
+        return errorCode_;
+      }
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public Builder setErrorCode(int value) {
+        
+        errorCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public Builder clearErrorCode() {
+        
+        errorCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> tracks_ =
+        java.util.Collections.emptyList();
+      private void ensureTracksIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          tracks_ = new java.util.ArrayList<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack>(tracks_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder> tracksBuilder_;
+
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> getTracksList() {
+        if (tracksBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(tracks_);
+        } else {
+          return tracksBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public int getTracksCount() {
+        if (tracksBuilder_ == null) {
+          return tracks_.size();
+        } else {
+          return tracksBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack getTracks(int index) {
+        if (tracksBuilder_ == null) {
+          return tracks_.get(index);
+        } else {
+          return tracksBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public Builder setTracks(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack value) {
+        if (tracksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTracksIsMutable();
+          tracks_.set(index, value);
+          onChanged();
+        } else {
+          tracksBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public Builder setTracks(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder builderForValue) {
+        if (tracksBuilder_ == null) {
+          ensureTracksIsMutable();
+          tracks_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          tracksBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public Builder addTracks(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack value) {
+        if (tracksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTracksIsMutable();
+          tracks_.add(value);
+          onChanged();
+        } else {
+          tracksBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public Builder addTracks(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack value) {
+        if (tracksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTracksIsMutable();
+          tracks_.add(index, value);
+          onChanged();
+        } else {
+          tracksBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public Builder addTracks(
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder builderForValue) {
+        if (tracksBuilder_ == null) {
+          ensureTracksIsMutable();
+          tracks_.add(builderForValue.build());
+          onChanged();
+        } else {
+          tracksBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public Builder addTracks(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder builderForValue) {
+        if (tracksBuilder_ == null) {
+          ensureTracksIsMutable();
+          tracks_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          tracksBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public Builder addAllTracks(
+          java.lang.Iterable<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> values) {
+        if (tracksBuilder_ == null) {
+          ensureTracksIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, tracks_);
+          onChanged();
+        } else {
+          tracksBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public Builder clearTracks() {
+        if (tracksBuilder_ == null) {
+          tracks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          tracksBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public Builder removeTracks(int index) {
+        if (tracksBuilder_ == null) {
+          ensureTracksIsMutable();
+          tracks_.remove(index);
+          onChanged();
+        } else {
+          tracksBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder getTracksBuilder(
+          int index) {
+        return getTracksFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder getTracksOrBuilder(
+          int index) {
+        if (tracksBuilder_ == null) {
+          return tracks_.get(index);  } else {
+          return tracksBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder> 
+           getTracksOrBuilderList() {
+        if (tracksBuilder_ != null) {
+          return tracksBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(tracks_);
+        }
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder addTracksBuilder() {
+        return getTracksFieldBuilder().addBuilder(
+            com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder addTracksBuilder(
+          int index) {
+        return getTracksFieldBuilder().addBuilder(
+            index, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .MsgTrack tracks = 2;</code>
+       */
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder> 
+           getTracksBuilderList() {
+        return getTracksFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder> 
+          getTracksFieldBuilder() {
+        if (tracksBuilder_ == null) {
+          tracksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder>(
+                  tracks_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          tracks_ = null;
+        }
+        return tracksBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:MsgTrackList)
+    }
+
+    // @@protoc_insertion_point(class_scope:MsgTrackList)
+    private static final com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList();
+    }
+
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MsgTrackList>
+        PARSER = new com.google.protobuf.AbstractParser<MsgTrackList>() {
+      public MsgTrackList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new MsgTrackList(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MsgTrackList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MsgTrackList> getParserForType() {
+      return PARSER;
+    }
+
+    public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MsgTrackQueryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MsgTrackQuery)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 errorCode = 1;</code>
+     */
+    int getErrorCode();
+
+    /**
+     * <code>int64 fromTrackID = 2;</code>
+     */
+    long getFromTrackID();
+
+    /**
+     * <pre>
+     * 查询 某个人的轨迹
+     * </pre>
+     *
+     * <code>string userPhone = 3;</code>
+     */
+    java.lang.String getUserPhone();
+    /**
+     * <pre>
+     * 查询 某个人的轨迹
+     * </pre>
+     *
+     * <code>string userPhone = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserPhoneBytes();
+
+    /**
+     * <pre>
+     * 查询某一些track_ID的轨迹
+     * </pre>
+     *
+     * <code>repeated int64 trackIDs = 4;</code>
+     */
+    java.util.List<java.lang.Long> getTrackIDsList();
+    /**
+     * <pre>
+     * 查询某一些track_ID的轨迹
+     * </pre>
+     *
+     * <code>repeated int64 trackIDs = 4;</code>
+     */
+    int getTrackIDsCount();
+    /**
+     * <pre>
+     * 查询某一些track_ID的轨迹
+     * </pre>
+     *
+     * <code>repeated int64 trackIDs = 4;</code>
+     */
+    long getTrackIDs(int index);
+
+    /**
+     * <pre>
+     * 以下为返回数据
+     * </pre>
+     *
+     * <code>repeated .MsgTrack tracks = 5;</code>
+     */
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> 
+        getTracksList();
+    /**
+     * <pre>
+     * 以下为返回数据
+     * </pre>
+     *
+     * <code>repeated .MsgTrack tracks = 5;</code>
+     */
+    com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack getTracks(int index);
+    /**
+     * <pre>
+     * 以下为返回数据
+     * </pre>
+     *
+     * <code>repeated .MsgTrack tracks = 5;</code>
+     */
+    int getTracksCount();
+    /**
+     * <pre>
+     * 以下为返回数据
+     * </pre>
+     *
+     * <code>repeated .MsgTrack tracks = 5;</code>
+     */
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder> 
+        getTracksOrBuilderList();
+    /**
+     * <pre>
+     * 以下为返回数据
+     * </pre>
+     *
+     * <code>repeated .MsgTrack tracks = 5;</code>
+     */
+    com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder getTracksOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code MsgTrackQuery}
+   */
+  public  static final class MsgTrackQuery extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:MsgTrackQuery)
+      MsgTrackQueryOrBuilder {
+    // Use MsgTrackQuery.newBuilder() to construct.
+    private MsgTrackQuery(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MsgTrackQuery() {
+      errorCode_ = 0;
+      fromTrackID_ = 0L;
+      userPhone_ = "";
+      trackIDs_ = java.util.Collections.emptyList();
+      tracks_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private MsgTrackQuery(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              errorCode_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              fromTrackID_ = input.readInt64();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userPhone_ = s;
+              break;
+            }
+            case 32: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                trackIDs_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              trackIDs_.add(input.readInt64());
+              break;
+            }
+            case 34: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+                trackIDs_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                trackIDs_.add(input.readInt64());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                tracks_ = new java.util.ArrayList<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              tracks_.add(
+                  input.readMessage(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.parser(), extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          trackIDs_ = java.util.Collections.unmodifiableList(trackIDs_);
+        }
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          tracks_ = java.util.Collections.unmodifiableList(tracks_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackQuery_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackQuery_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery.class, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ERRORCODE_FIELD_NUMBER = 1;
+    private int errorCode_;
+    /**
+     * <code>int32 errorCode = 1;</code>
+     */
+    public int getErrorCode() {
+      return errorCode_;
+    }
+
+    public static final int FROMTRACKID_FIELD_NUMBER = 2;
+    private long fromTrackID_;
+    /**
+     * <code>int64 fromTrackID = 2;</code>
+     */
+    public long getFromTrackID() {
+      return fromTrackID_;
+    }
+
+    public static final int USERPHONE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object userPhone_;
+    /**
+     * <pre>
+     * 查询 某个人的轨迹
+     * </pre>
+     *
+     * <code>string userPhone = 3;</code>
+     */
+    public java.lang.String getUserPhone() {
+      java.lang.Object ref = userPhone_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userPhone_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 查询 某个人的轨迹
+     * </pre>
+     *
+     * <code>string userPhone = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserPhoneBytes() {
+      java.lang.Object ref = userPhone_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userPhone_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TRACKIDS_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Long> trackIDs_;
+    /**
+     * <pre>
+     * 查询某一些track_ID的轨迹
+     * </pre>
+     *
+     * <code>repeated int64 trackIDs = 4;</code>
+     */
+    public java.util.List<java.lang.Long>
+        getTrackIDsList() {
+      return trackIDs_;
+    }
+    /**
+     * <pre>
+     * 查询某一些track_ID的轨迹
+     * </pre>
+     *
+     * <code>repeated int64 trackIDs = 4;</code>
+     */
+    public int getTrackIDsCount() {
+      return trackIDs_.size();
+    }
+    /**
+     * <pre>
+     * 查询某一些track_ID的轨迹
+     * </pre>
+     *
+     * <code>repeated int64 trackIDs = 4;</code>
+     */
+    public long getTrackIDs(int index) {
+      return trackIDs_.get(index);
+    }
+    private int trackIDsMemoizedSerializedSize = -1;
+
+    public static final int TRACKS_FIELD_NUMBER = 5;
+    private java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> tracks_;
+    /**
+     * <pre>
+     * 以下为返回数据
+     * </pre>
+     *
+     * <code>repeated .MsgTrack tracks = 5;</code>
+     */
+    public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> getTracksList() {
+      return tracks_;
+    }
+    /**
+     * <pre>
+     * 以下为返回数据
+     * </pre>
+     *
+     * <code>repeated .MsgTrack tracks = 5;</code>
+     */
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder> 
+        getTracksOrBuilderList() {
+      return tracks_;
+    }
+    /**
+     * <pre>
+     * 以下为返回数据
+     * </pre>
+     *
+     * <code>repeated .MsgTrack tracks = 5;</code>
+     */
+    public int getTracksCount() {
+      return tracks_.size();
+    }
+    /**
+     * <pre>
+     * 以下为返回数据
+     * </pre>
+     *
+     * <code>repeated .MsgTrack tracks = 5;</code>
+     */
+    public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack getTracks(int index) {
+      return tracks_.get(index);
+    }
+    /**
+     * <pre>
+     * 以下为返回数据
+     * </pre>
+     *
+     * <code>repeated .MsgTrack tracks = 5;</code>
+     */
+    public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder getTracksOrBuilder(
+        int index) {
+      return tracks_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (errorCode_ != 0) {
+        output.writeInt32(1, errorCode_);
+      }
+      if (fromTrackID_ != 0L) {
+        output.writeInt64(2, fromTrackID_);
+      }
+      if (!getUserPhoneBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, userPhone_);
+      }
+      if (getTrackIDsList().size() > 0) {
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(trackIDsMemoizedSerializedSize);
+      }
+      for (int i = 0; i < trackIDs_.size(); i++) {
+        output.writeInt64NoTag(trackIDs_.get(i));
+      }
+      for (int i = 0; i < tracks_.size(); i++) {
+        output.writeMessage(5, tracks_.get(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (errorCode_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, errorCode_);
+      }
+      if (fromTrackID_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, fromTrackID_);
+      }
+      if (!getUserPhoneBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, userPhone_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < trackIDs_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt64SizeNoTag(trackIDs_.get(i));
+        }
+        size += dataSize;
+        if (!getTrackIDsList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        trackIDsMemoizedSerializedSize = dataSize;
+      }
+      for (int i = 0; i < tracks_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, tracks_.get(i));
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery)) {
+        return super.equals(obj);
+      }
+      com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery other = (com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery) obj;
+
+      boolean result = true;
+      result = result && (getErrorCode()
+          == other.getErrorCode());
+      result = result && (getFromTrackID()
+          == other.getFromTrackID());
+      result = result && getUserPhone()
+          .equals(other.getUserPhone());
+      result = result && getTrackIDsList()
+          .equals(other.getTrackIDsList());
+      result = result && getTracksList()
+          .equals(other.getTracksList());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
+      hash = (53 * hash) + getErrorCode();
+      hash = (37 * hash) + FROMTRACKID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getFromTrackID());
+      hash = (37 * hash) + USERPHONE_FIELD_NUMBER;
+      hash = (53 * hash) + getUserPhone().hashCode();
+      if (getTrackIDsCount() > 0) {
+        hash = (37 * hash) + TRACKIDS_FIELD_NUMBER;
+        hash = (53 * hash) + getTrackIDsList().hashCode();
+      }
+      if (getTracksCount() > 0) {
+        hash = (37 * hash) + TRACKS_FIELD_NUMBER;
+        hash = (53 * hash) + getTracksList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MsgTrackQuery}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MsgTrackQuery)
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQueryOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackQuery_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackQuery_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery.class, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery.Builder.class);
+      }
+
+      // Construct using com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getTracksFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        errorCode_ = 0;
+
+        fromTrackID_ = 0L;
+
+        userPhone_ = "";
+
+        trackIDs_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        if (tracksBuilder_ == null) {
+          tracks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          tracksBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackQuery_descriptor;
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery getDefaultInstanceForType() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery.getDefaultInstance();
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery build() {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery buildPartial() {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery result = new com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.errorCode_ = errorCode_;
+        result.fromTrackID_ = fromTrackID_;
+        result.userPhone_ = userPhone_;
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          trackIDs_ = java.util.Collections.unmodifiableList(trackIDs_);
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.trackIDs_ = trackIDs_;
+        if (tracksBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            tracks_ = java.util.Collections.unmodifiableList(tracks_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.tracks_ = tracks_;
+        } else {
+          result.tracks_ = tracksBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery) {
+          return mergeFrom((com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery other) {
+        if (other == com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery.getDefaultInstance()) return this;
+        if (other.getErrorCode() != 0) {
+          setErrorCode(other.getErrorCode());
+        }
+        if (other.getFromTrackID() != 0L) {
+          setFromTrackID(other.getFromTrackID());
+        }
+        if (!other.getUserPhone().isEmpty()) {
+          userPhone_ = other.userPhone_;
+          onChanged();
+        }
+        if (!other.trackIDs_.isEmpty()) {
+          if (trackIDs_.isEmpty()) {
+            trackIDs_ = other.trackIDs_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureTrackIDsIsMutable();
+            trackIDs_.addAll(other.trackIDs_);
+          }
+          onChanged();
+        }
+        if (tracksBuilder_ == null) {
+          if (!other.tracks_.isEmpty()) {
+            if (tracks_.isEmpty()) {
+              tracks_ = other.tracks_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureTracksIsMutable();
+              tracks_.addAll(other.tracks_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.tracks_.isEmpty()) {
+            if (tracksBuilder_.isEmpty()) {
+              tracksBuilder_.dispose();
+              tracksBuilder_ = null;
+              tracks_ = other.tracks_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              tracksBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getTracksFieldBuilder() : null;
+            } else {
+              tracksBuilder_.addAllMessages(other.tracks_);
+            }
+          }
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int errorCode_ ;
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public int getErrorCode() {
+        return errorCode_;
+      }
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public Builder setErrorCode(int value) {
+        
+        errorCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public Builder clearErrorCode() {
+        
+        errorCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long fromTrackID_ ;
+      /**
+       * <code>int64 fromTrackID = 2;</code>
+       */
+      public long getFromTrackID() {
+        return fromTrackID_;
+      }
+      /**
+       * <code>int64 fromTrackID = 2;</code>
+       */
+      public Builder setFromTrackID(long value) {
+        
+        fromTrackID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 fromTrackID = 2;</code>
+       */
+      public Builder clearFromTrackID() {
+        
+        fromTrackID_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object userPhone_ = "";
+      /**
+       * <pre>
+       * 查询 某个人的轨迹
+       * </pre>
+       *
+       * <code>string userPhone = 3;</code>
+       */
+      public java.lang.String getUserPhone() {
+        java.lang.Object ref = userPhone_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userPhone_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 查询 某个人的轨迹
+       * </pre>
+       *
+       * <code>string userPhone = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserPhoneBytes() {
+        java.lang.Object ref = userPhone_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userPhone_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 查询 某个人的轨迹
+       * </pre>
+       *
+       * <code>string userPhone = 3;</code>
+       */
+      public Builder setUserPhone(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        userPhone_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 查询 某个人的轨迹
+       * </pre>
+       *
+       * <code>string userPhone = 3;</code>
+       */
+      public Builder clearUserPhone() {
+        
+        userPhone_ = getDefaultInstance().getUserPhone();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 查询 某个人的轨迹
+       * </pre>
+       *
+       * <code>string userPhone = 3;</code>
+       */
+      public Builder setUserPhoneBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        userPhone_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Long> trackIDs_ = java.util.Collections.emptyList();
+      private void ensureTrackIDsIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          trackIDs_ = new java.util.ArrayList<java.lang.Long>(trackIDs_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      /**
+       * <pre>
+       * 查询某一些track_ID的轨迹
+       * </pre>
+       *
+       * <code>repeated int64 trackIDs = 4;</code>
+       */
+      public java.util.List<java.lang.Long>
+          getTrackIDsList() {
+        return java.util.Collections.unmodifiableList(trackIDs_);
+      }
+      /**
+       * <pre>
+       * 查询某一些track_ID的轨迹
+       * </pre>
+       *
+       * <code>repeated int64 trackIDs = 4;</code>
+       */
+      public int getTrackIDsCount() {
+        return trackIDs_.size();
+      }
+      /**
+       * <pre>
+       * 查询某一些track_ID的轨迹
+       * </pre>
+       *
+       * <code>repeated int64 trackIDs = 4;</code>
+       */
+      public long getTrackIDs(int index) {
+        return trackIDs_.get(index);
+      }
+      /**
+       * <pre>
+       * 查询某一些track_ID的轨迹
+       * </pre>
+       *
+       * <code>repeated int64 trackIDs = 4;</code>
+       */
+      public Builder setTrackIDs(
+          int index, long value) {
+        ensureTrackIDsIsMutable();
+        trackIDs_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 查询某一些track_ID的轨迹
+       * </pre>
+       *
+       * <code>repeated int64 trackIDs = 4;</code>
+       */
+      public Builder addTrackIDs(long value) {
+        ensureTrackIDsIsMutable();
+        trackIDs_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 查询某一些track_ID的轨迹
+       * </pre>
+       *
+       * <code>repeated int64 trackIDs = 4;</code>
+       */
+      public Builder addAllTrackIDs(
+          java.lang.Iterable<? extends java.lang.Long> values) {
+        ensureTrackIDsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, trackIDs_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 查询某一些track_ID的轨迹
+       * </pre>
+       *
+       * <code>repeated int64 trackIDs = 4;</code>
+       */
+      public Builder clearTrackIDs() {
+        trackIDs_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> tracks_ =
+        java.util.Collections.emptyList();
+      private void ensureTracksIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          tracks_ = new java.util.ArrayList<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack>(tracks_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder> tracksBuilder_;
+
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> getTracksList() {
+        if (tracksBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(tracks_);
+        } else {
+          return tracksBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public int getTracksCount() {
+        if (tracksBuilder_ == null) {
+          return tracks_.size();
+        } else {
+          return tracksBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack getTracks(int index) {
+        if (tracksBuilder_ == null) {
+          return tracks_.get(index);
+        } else {
+          return tracksBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public Builder setTracks(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack value) {
+        if (tracksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTracksIsMutable();
+          tracks_.set(index, value);
+          onChanged();
+        } else {
+          tracksBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public Builder setTracks(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder builderForValue) {
+        if (tracksBuilder_ == null) {
+          ensureTracksIsMutable();
+          tracks_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          tracksBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public Builder addTracks(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack value) {
+        if (tracksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTracksIsMutable();
+          tracks_.add(value);
+          onChanged();
+        } else {
+          tracksBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public Builder addTracks(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack value) {
+        if (tracksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTracksIsMutable();
+          tracks_.add(index, value);
+          onChanged();
+        } else {
+          tracksBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public Builder addTracks(
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder builderForValue) {
+        if (tracksBuilder_ == null) {
+          ensureTracksIsMutable();
+          tracks_.add(builderForValue.build());
+          onChanged();
+        } else {
+          tracksBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public Builder addTracks(
+          int index, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder builderForValue) {
+        if (tracksBuilder_ == null) {
+          ensureTracksIsMutable();
+          tracks_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          tracksBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public Builder addAllTracks(
+          java.lang.Iterable<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack> values) {
+        if (tracksBuilder_ == null) {
+          ensureTracksIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, tracks_);
+          onChanged();
+        } else {
+          tracksBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public Builder clearTracks() {
+        if (tracksBuilder_ == null) {
+          tracks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          tracksBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public Builder removeTracks(int index) {
+        if (tracksBuilder_ == null) {
+          ensureTracksIsMutable();
+          tracks_.remove(index);
+          onChanged();
+        } else {
+          tracksBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder getTracksBuilder(
+          int index) {
+        return getTracksFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder getTracksOrBuilder(
+          int index) {
+        if (tracksBuilder_ == null) {
+          return tracks_.get(index);  } else {
+          return tracksBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder> 
+           getTracksOrBuilderList() {
+        if (tracksBuilder_ != null) {
+          return tracksBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(tracks_);
+        }
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder addTracksBuilder() {
+        return getTracksFieldBuilder().addBuilder(
+            com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder addTracksBuilder(
+          int index) {
+        return getTracksFieldBuilder().addBuilder(
+            index, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * 以下为返回数据
+       * </pre>
+       *
+       * <code>repeated .MsgTrack tracks = 5;</code>
+       */
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder> 
+           getTracksBuilderList() {
+        return getTracksFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder> 
+          getTracksFieldBuilder() {
+        if (tracksBuilder_ == null) {
+          tracksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrack.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackOrBuilder>(
+                  tracks_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          tracks_ = null;
+        }
+        return tracksBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:MsgTrackQuery)
+    }
+
+    // @@protoc_insertion_point(class_scope:MsgTrackQuery)
+    private static final com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery();
+    }
+
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MsgTrackQuery>
+        PARSER = new com.google.protobuf.AbstractParser<MsgTrackQuery>() {
+      public MsgTrackQuery parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new MsgTrackQuery(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MsgTrackQuery> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MsgTrackQuery> getParserForType() {
+      return PARSER;
+    }
+
+    public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackQuery getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MsgTrackModifyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MsgTrackModify)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 errorCode = 1;</code>
+     */
+    int getErrorCode();
+
+    /**
+     * <pre>
+     * 需要修改的的TrackID，只能是自己的
+     * </pre>
+     *
+     * <code>int64 trackID = 2;</code>
+     */
+    long getTrackID();
+
+    /**
+     * <pre>
+     * &#64;link TrackModifyCode
+     * </pre>
+     *
+     * <code>int32 modifyCode = 3;</code>
+     */
+    int getModifyCode();
+
+    /**
+     * <code>string title = 4;</code>
+     */
+    java.lang.String getTitle();
+    /**
+     * <code>string title = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getTitleBytes();
+
+    /**
+     * <code>string desc = 5;</code>
+     */
+    java.lang.String getDesc();
+    /**
+     * <code>string desc = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getDescBytes();
+  }
+  /**
+   * Protobuf type {@code MsgTrackModify}
+   */
+  public  static final class MsgTrackModify extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:MsgTrackModify)
+      MsgTrackModifyOrBuilder {
+    // Use MsgTrackModify.newBuilder() to construct.
+    private MsgTrackModify(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MsgTrackModify() {
+      errorCode_ = 0;
+      trackID_ = 0L;
+      modifyCode_ = 0;
+      title_ = "";
+      desc_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private MsgTrackModify(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              errorCode_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              trackID_ = input.readInt64();
+              break;
+            }
+            case 24: {
+
+              modifyCode_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              title_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              desc_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackModify_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackModify_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify.class, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify.Builder.class);
+    }
+
+    public static final int ERRORCODE_FIELD_NUMBER = 1;
+    private int errorCode_;
+    /**
+     * <code>int32 errorCode = 1;</code>
+     */
+    public int getErrorCode() {
+      return errorCode_;
+    }
+
+    public static final int TRACKID_FIELD_NUMBER = 2;
+    private long trackID_;
+    /**
+     * <pre>
+     * 需要修改的的TrackID，只能是自己的
+     * </pre>
+     *
+     * <code>int64 trackID = 2;</code>
+     */
+    public long getTrackID() {
+      return trackID_;
+    }
+
+    public static final int MODIFYCODE_FIELD_NUMBER = 3;
+    private int modifyCode_;
+    /**
+     * <pre>
+     * &#64;link TrackModifyCode
+     * </pre>
+     *
+     * <code>int32 modifyCode = 3;</code>
+     */
+    public int getModifyCode() {
+      return modifyCode_;
+    }
+
+    public static final int TITLE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object title_;
+    /**
+     * <code>string title = 4;</code>
+     */
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        title_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string title = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESC_FIELD_NUMBER = 5;
+    private volatile java.lang.Object desc_;
+    /**
+     * <code>string desc = 5;</code>
+     */
+    public java.lang.String getDesc() {
+      java.lang.Object ref = desc_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        desc_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string desc = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDescBytes() {
+      java.lang.Object ref = desc_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        desc_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (errorCode_ != 0) {
+        output.writeInt32(1, errorCode_);
+      }
+      if (trackID_ != 0L) {
+        output.writeInt64(2, trackID_);
+      }
+      if (modifyCode_ != 0) {
+        output.writeInt32(3, modifyCode_);
+      }
+      if (!getTitleBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, title_);
+      }
+      if (!getDescBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, desc_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (errorCode_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, errorCode_);
+      }
+      if (trackID_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, trackID_);
+      }
+      if (modifyCode_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, modifyCode_);
+      }
+      if (!getTitleBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, title_);
+      }
+      if (!getDescBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, desc_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify)) {
+        return super.equals(obj);
+      }
+      com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify other = (com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify) obj;
+
+      boolean result = true;
+      result = result && (getErrorCode()
+          == other.getErrorCode());
+      result = result && (getTrackID()
+          == other.getTrackID());
+      result = result && (getModifyCode()
+          == other.getModifyCode());
+      result = result && getTitle()
+          .equals(other.getTitle());
+      result = result && getDesc()
+          .equals(other.getDesc());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
+      hash = (53 * hash) + getErrorCode();
+      hash = (37 * hash) + TRACKID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTrackID());
+      hash = (37 * hash) + MODIFYCODE_FIELD_NUMBER;
+      hash = (53 * hash) + getModifyCode();
+      hash = (37 * hash) + TITLE_FIELD_NUMBER;
+      hash = (53 * hash) + getTitle().hashCode();
+      hash = (37 * hash) + DESC_FIELD_NUMBER;
+      hash = (53 * hash) + getDesc().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MsgTrackModify}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MsgTrackModify)
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModifyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackModify_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackModify_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify.class, com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify.Builder.class);
+      }
+
+      // Construct using com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        errorCode_ = 0;
+
+        trackID_ = 0L;
+
+        modifyCode_ = 0;
+
+        title_ = "";
+
+        desc_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.internal_static_MsgTrackModify_descriptor;
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify getDefaultInstanceForType() {
+        return com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify.getDefaultInstance();
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify build() {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify buildPartial() {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify result = new com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify(this);
+        result.errorCode_ = errorCode_;
+        result.trackID_ = trackID_;
+        result.modifyCode_ = modifyCode_;
+        result.title_ = title_;
+        result.desc_ = desc_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify) {
+          return mergeFrom((com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify other) {
+        if (other == com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify.getDefaultInstance()) return this;
+        if (other.getErrorCode() != 0) {
+          setErrorCode(other.getErrorCode());
+        }
+        if (other.getTrackID() != 0L) {
+          setTrackID(other.getTrackID());
+        }
+        if (other.getModifyCode() != 0) {
+          setModifyCode(other.getModifyCode());
+        }
+        if (!other.getTitle().isEmpty()) {
+          title_ = other.title_;
+          onChanged();
+        }
+        if (!other.getDesc().isEmpty()) {
+          desc_ = other.desc_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int errorCode_ ;
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public int getErrorCode() {
+        return errorCode_;
+      }
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public Builder setErrorCode(int value) {
+        
+        errorCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 errorCode = 1;</code>
+       */
+      public Builder clearErrorCode() {
+        
+        errorCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long trackID_ ;
+      /**
+       * <pre>
+       * 需要修改的的TrackID，只能是自己的
+       * </pre>
+       *
+       * <code>int64 trackID = 2;</code>
+       */
+      public long getTrackID() {
+        return trackID_;
+      }
+      /**
+       * <pre>
+       * 需要修改的的TrackID，只能是自己的
+       * </pre>
+       *
+       * <code>int64 trackID = 2;</code>
+       */
+      public Builder setTrackID(long value) {
+        
+        trackID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 需要修改的的TrackID，只能是自己的
+       * </pre>
+       *
+       * <code>int64 trackID = 2;</code>
+       */
+      public Builder clearTrackID() {
+        
+        trackID_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int modifyCode_ ;
+      /**
+       * <pre>
+       * &#64;link TrackModifyCode
+       * </pre>
+       *
+       * <code>int32 modifyCode = 3;</code>
+       */
+      public int getModifyCode() {
+        return modifyCode_;
+      }
+      /**
+       * <pre>
+       * &#64;link TrackModifyCode
+       * </pre>
+       *
+       * <code>int32 modifyCode = 3;</code>
+       */
+      public Builder setModifyCode(int value) {
+        
+        modifyCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &#64;link TrackModifyCode
+       * </pre>
+       *
+       * <code>int32 modifyCode = 3;</code>
+       */
+      public Builder clearModifyCode() {
+        
+        modifyCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object title_ = "";
+      /**
+       * <code>string title = 4;</code>
+       */
+      public java.lang.String getTitle() {
+        java.lang.Object ref = title_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          title_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string title = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTitleBytes() {
+        java.lang.Object ref = title_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          title_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string title = 4;</code>
+       */
+      public Builder setTitle(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        title_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string title = 4;</code>
+       */
+      public Builder clearTitle() {
+        
+        title_ = getDefaultInstance().getTitle();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string title = 4;</code>
+       */
+      public Builder setTitleBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        title_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object desc_ = "";
+      /**
+       * <code>string desc = 5;</code>
+       */
+      public java.lang.String getDesc() {
+        java.lang.Object ref = desc_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          desc_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string desc = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDescBytes() {
+        java.lang.Object ref = desc_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          desc_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string desc = 5;</code>
+       */
+      public Builder setDesc(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        desc_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string desc = 5;</code>
+       */
+      public Builder clearDesc() {
+        
+        desc_ = getDefaultInstance().getDesc();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string desc = 5;</code>
+       */
+      public Builder setDescBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        desc_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:MsgTrackModify)
+    }
+
+    // @@protoc_insertion_point(class_scope:MsgTrackModify)
+    private static final com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify();
+    }
+
+    public static com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MsgTrackModify>
+        PARSER = new com.google.protobuf.AbstractParser<MsgTrackModify>() {
+      public MsgTrackModify parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new MsgTrackModify(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MsgTrackModify> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MsgTrackModify> getParserForType() {
+      return PARSER;
+    }
+
+    public com.example.jrd48.service.proto_gen.ProtoMessage.MsgTrackModify getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgRegImei_descriptor;
   private static final 
@@ -78394,6 +84060,31 @@ public final class ProtoMessage {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgRemoteControl_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_TrackPoint_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_TrackPoint_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MsgTrack_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MsgTrack_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MsgTrackList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MsgTrackList_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MsgTrackQuery_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MsgTrackQuery_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MsgTrackModify_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MsgTrackModify_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -78610,180 +84301,199 @@ public final class ProtoMessage {
       "\t\022\017\n\007toPhone\030\003 \001(\t\022\020\n\010toTeamID\030\004 \001(\003\022\023\n\013" +
       "fromAppType\030\005 \001(\005\022\021\n\ttoAppType\030\006 \001(\005\022\021\n\t" +
       "remoteCmd\030\007 \001(\005\022\013\n\003lat\030\010 \001(\001\022\013\n\003lng\030\t \001(" +
-      "\001\022\016\n\006cmdStr\030\n \001(\t*\272\016\n\003Cmd\022\014\n\010cmdDummy\020\000\022" +
-      "\022\n\014cmdHeartbeat\020\200\200\004\022\020\n\ncmdSmsCode\020\201\200\004\022\014\n" +
-      "\006cmdReg\020\202\200\004\022\016\n\010cmdLogin\020\203\200\004\022\021\n\013cmdSendTe",
-      "xt\020\204\200\004\022\022\n\014cmdSendVoice\020\205\200\004\022\034\n\026cmdChangeP" +
-      "asswordBySms\020\206\200\004\022\023\n\rcmdSearchUser\020\207\200\004\022\024\n" +
-      "\016cmdApplyFriend\020\210\200\004\022\017\n\tcmdNotify\020\211\200\004\022\024\n\016" +
-      "cmdAppliedList\020\212\200\004\022\025\n\017cmdDeleteFriend\020\213\200" +
-      "\004\022\025\n\017cmdAcceptFriend\020\214\200\004\022\026\n\020cmdSetFriend" +
-      "Info\020\215\200\004\022\026\n\020cmdGetFriendList\020\216\200\004\022\022\n\014cmdS" +
-      "etMyInfo\020\217\200\004\022\023\n\rcmdCreateTeam\020\220\200\004\022\024\n\016cmd" +
-      "GetTeamList\020\221\200\004\022\022\n\014cmdApplyTeam\020\222\200\004\022\030\n\022c" +
-      "mdAppliedTeamList\020\223\200\004\022\023\n\rcmdAcceptTeam\020\224" +
-      "\200\004\022\022\n\014cmdGetMyInfo\020\225\200\004\022\031\n\023cmdDeleteTeamM",
-      "ember\020\226\200\004\022\023\n\rcmdGetBBSList\020\334\200\004\022\026\n\020cmdGet" +
-      "TeamMember\020\227\200\004\022\024\n\016cmdDismissTeam\020\230\200\004\022\023\n\r" +
-      "cmdSearchTeam\020\231\200\004\022\030\n\022cmdAssignTeamAdmin\020" +
-      "\232\200\004\022\027\n\021cmdModifyTeamInfo\020\233\200\004\022!\n\033cmdModif" +
-      "yTeamMemberPriority\020\234\200\004\022\021\n\013cmdQuitTeam\020\235" +
-      "\200\004\022\022\n\014cmdCommonMsg\020\236\200\004\022\025\n\017cmdGotCommonMs" +
-      "g\020\237\200\004\022\031\n\023cmdGetAllTeamMember\020\240\200\004\022\023\n\rcmdS" +
-      "tartVoice\020\241\200\004\022\024\n\016cmdAcceptVoice\020\242\200\004\022\021\n\013c" +
-      "mdSpeakMsg\020\243\200\004\022\024\n\016cmdGotSpeakMsg\020\244\200\004\022\023\n\r" +
-      "cmdSpeakBegin\020\245\200\004\022\021\n\013cmdSpeakEnd\020\246\200\004\022\026\n\020",
-      "cmdAutoCloseRoom\020\247\200\004\022\031\n\023cmdChangeMyTeamN" +
-      "ame\020\250\200\004\022\023\n\rcmdMsgConfirm\020\251\200\004\022\017\n\tcmdGetMs" +
-      "g\020\252\200\004\022\026\n\020cmdGetFriendInfo\020\253\200\004\022\025\n\017cmdForc" +
-      "eOffline\020\254\200\004\022\017\n\tcmdLogout\020\255\200\004\022\033\n\025cmdSear" +
-      "chPhoneContact\020\256\200\004\022\031\n\023cmdUploadAttachmen" +
-      "t\020\257\200\004\022\033\n\025cmdDownloadAttachment\020\260\200\004\022\026\n\020cm" +
-      "dCloseChatRoom\020\261\200\004\022\027\n\021cmdReportLocation\020" +
-      "\262\200\004\022\031\n\023cmdStartGetLocation\020\263\200\004\022\030\n\022cmdSto" +
-      "pGetLocation\020\264\200\004\022\031\n\023cmdTouchGetLocation\020" +
-      "\265\200\004\022\036\n\030cmdFriendLocationChanged\020\266\200\004\022\026\n\020c",
-      "mdLiveVideoCall\020\267\200\004\022\024\n\016cmdCarRegister\020\270\200" +
-      "\004\022\024\n\016cmdScanCarCode\020\271\200\004\022\022\n\014cmdUnbindCar\020" +
-      "\272\200\004\022\022\n\014cmdLogoutCar\020\273\200\004\022\024\n\016cmdLiveCallAn" +
-      "s\020\274\200\004\022\022\n\014cmdScanCarOk\020\275\200\004\022\025\n\017cmdSearchAr" +
-      "ound\020\276\200\004\022\022\n\014cmdSearchCar\020\277\200\004\022\024\n\016cmdSearc" +
-      "hUser2\020\300\200\004\022\020\n\ncmdRegImei\020\301\200\004\022\024\n\016cmdGetIm" +
-      "eiList\020\302\200\004\022\024\n\016cmdSetPassword\020\303\200\004\022\031\n\023cmdQ" +
-      "ueryLoginServer\020\304\200\004\022\031\n\023cmdGetFriendsStat" +
-      "us\020\305\200\004\022\027\n\021cmdQueryLocations\020\306\200\004\022\023\n\rcmdKa" +
-      "oQinEdit\020\307\200\004\022\026\n\020cmdKaoQinStatics\020\310\200\004\022\026\n\020",
-      "cmdIccidGetOrSet\020\311\200\004\022\024\n\016cmdSetImeiName\020\312" +
-      "\200\004\022\026\n\020cmdRemoteControl\020\313\200\004\022\031\n\023cmdGotRemo" +
-      "teControl\020\314\200\004\022\031\n\023cmdAnsRemoteControl\020\315\200\004" +
-      "\022\034\n\026cmdGotAnsRemoteControl\020\316\200\004*M\n\006OpCode" +
-      "\022\n\n\006opNone\020\000\022\t\n\005opAdd\020\001\022\t\n\005opDel\020\002\022\r\n\top" +
-      "Disable\020\003\022\022\n\016opEnableRecord\020\004*C\n\007AppType" +
-      "\022\016\n\nappDefault\020\000\022\n\n\006appWeb\020\001\022\020\n\014appPocCe" +
-      "nter\020\002\022\n\n\006appCar\020\003*\200\025\n\tErrorCode\022\006\n\002OK\020\000" +
-      "\022\013\n\007UNKNOWN\020\001\022\024\n\017SMS_CODE_FAILED\020\350\007\022\025\n\020S" +
-      "MS_CODE_NOT_GOT\020\351\007\022\027\n\022SMS_CODE_NOT_MATCH",
-      "\020\352\007\022\023\n\016PASS_TOO_SHORT\020\353\007\022\022\n\rREG_DB_FAILE" +
-      "D\020\354\007\022\027\n\022DATA_LEN_TOO_SHORT\020\355\007\022\036\n\031LOGIN_P" +
-      "HONE_OR_PASS_WRONG\020\356\007\022\026\n\021LOGIN_TOKEN_WRO" +
-      "NG\020\357\007\022\032\n\025LOGIN_TOKEN_NOT_EXIST\020\360\007\022\016\n\tNOT" +
-      "_LOGIN\020\361\007\022\024\n\017PHONE_NOT_FOUND\020\362\007\022\030\n\023FRIEN" +
-      "D_NOT_INVITIED\020\363\007\022\023\n\016CHANGE_NOTHING\020\364\007\022\020" +
-      "\n\013NOT_MY_TEAM\020\365\007\022\034\n\027CANNOT_APPLY_GROUP_T" +
-      "EAM\020\366\007\022\023\n\016TEAM_NOT_EXIST\020\367\007\022\024\n\017CURR_USER" +
-      "_WRONG\020\370\007\022\023\n\016INNER_DB_ERROR\020\371\007\022\023\n\016NOT_TE" +
-      "AM_ADMIN\020\372\007\022\027\n\022CANNOT_DELETE_SELF\020\373\007\022\035\n\030",
-      "CANNOT_DELETE_TEAM_OWNER\020\374\007\022\024\n\017NOT_TEAM_" +
-      "MEMBER\020\375\007\022\023\n\016NOT_TEAM_OWNER\020\376\007\022\030\n\023TEAM_N" +
-      "AME_TOO_SHORT\020\377\007\022\"\n\035CANNOT_ASSIGN_TEAM_A" +
-      "DMIN_SELF\020\200\010\022#\n\036CANNOT_ASSIGN_TEAM_OWNER" +
-      "_ADMIN\020\201\010\022\033\n\026CANNOT_ADD_FRIEND_SELF\020\202\010\022\026" +
-      "\n\021NOT_FOUND_USER_ID\020\203\010\022\032\n\025DUPLICATED_APP" +
-      "LY_TEAM\020\204\010\022\033\n\026CANNOT_EXIT_TEAM_OWNER\020\205\010\022" +
-      "\017\n\nNOT_FRIEND\020\206\010\022\032\n\025CHAT_ROOM_INNER_ERRO" +
-      "R\020\207\010\022\031\n\024ALREADY_IN_CHAT_ROOM\020\210\010\022\034\n\027CANNO" +
-      "T_GET_NEW_ROOM_NUM\020\211\010\022\027\n\022NO_ANY_TEAM_MEM",
-      "BER\020\212\010\022\027\n\022CANNOT_CALL_FRIEND\020\213\010\022\030\n\023NOT_F" +
-      "OUND_THIS_ROOM\020\214\010\022\035\n\030NOT_FOUND_THIS_ROOM" +
-      "_USER\020\215\010\022\033\n\026ENTER_CHAT_ROOM_FAILED\020\220\010\022\031\n" +
-      "\024NOT_IN_ANY_CHAT_ROOM\020\221\010\022\027\n\022OTHER_SPEAKI" +
-      "NG_NOW\020\222\010\022\020\n\013INNER_ERROR\020\223\010\022\027\n\022DIDNOT_SP" +
-      "EAK_BEGIN\020\224\010\022\023\n\016NAME_TOO_SHORT\020\225\010\022\023\n\016TOO" +
-      "_MANY_TEAMS\020\226\010\022\027\n\022TEAM_OR_USER_WRONG\020\227\010\022" +
-      "!\n\034NOT_FOUND_USER_NAME_OR_PHONE\020\230\010\022\024\n\017US" +
-      "ER_NAME_EXIST\020\231\010\022\017\n\nNOT_MY_MSG\020\232\010\022\034\n\027MSG" +
-      "_ATTACHMENT_UPLOADED\020\233\010\022&\n!MSG_ATTACHMEN",
-      "T_UPLOAD_PARAM_ERROR\020\234\010\022%\n MSG_ATTACHMEN" +
-      "T_UPLOAD_FILE_ERROR\020\235\010\022$\n\037MSG_ATTACHMENT" +
-      "_UPLOAD_SUM_ERROR\020\236\010\022\'\n\"MSG_ATTACHMENT_U" +
-      "PLOAD_UPDATE_ERROR\020\237\010\022*\n%MSG_ATTACHMENT_" +
-      "DOWNLOAD_NO_ATTACHMENT\020\240\010\022\'\n\"MSG_ATTACHM" +
-      "ENT_DOWNLOAD_NO_MSG_SUM\020\253\010\022%\n MSG_ATTACH" +
-      "MENT_DOWNOAD_NO_EXISTS\020\254\010\022(\n#MSG_ATTACHM" +
-      "ENT_DOWNLOAD_PARAM_ERROR\020\255\010\022\'\n\"MSG_ATTAC" +
-      "HMENT_DOWNLOAD_READ_ERROR\020\256\010\022$\n\037MSG_ATTA" +
-      "CHMENT_UPLOAD_LEN_ERROR\020\257\010\022\032\n\025CHAT_NOT_F",
-      "ROM_MY_CALL\020\260\010\022\025\n\020USER_PHONE_EXIST\020\261\010\022\024\n" +
-      "\017TEAM_NAME_EXIST\020\262\010\022\024\n\017NOT_GROUP_ADMIN\020\263" +
-      "\010\022\020\n\013NO_GROUP_ID\020\264\010\022\026\n\021NO_GROUP_ADMIN_AD" +
-      "\020\265\010\022\026\n\021NOT_CAR_SCAN_CODE\020\266\010\022\026\n\021NOT_CAR_C" +
-      "ONNECTED\020\267\010\022\017\n\nNOT_MY_CAR\020\270\010\022\025\n\020NOT_VALI" +
-      "D_CAR_ID\020\271\010\022\024\n\017NOT_HAS_ANY_CAR\020\272\010\022\026\n\021CAR" +
-      "_NUM_TOO_SHORT\020\273\010\022\026\n\021CAR_NUM_DUPLICATE\020\274" +
-      "\010\022\023\n\016NOT_VALID_IMEI\020\275\010\022\023\n\016IMEI_TOO_SHORT" +
-      "\020\276\010\022\024\n\017UNKNOWN_OP_CODE\020\277\010\022\024\n\017NOT_MY_SUB_" +
-      "USER\020\300\010\022\034\n\027NOT_FRIEND_OR_SAME_TEAM\020\301\010\022\026\n",
-      "\021NO_SESSION_SERVER\020\302\010\022\024\n\017NO_TEAM_OR_USER" +
-      "\020\303\010\022\030\n\023NO_CHAT_ROOM_SERVER\020\304\010\022\026\n\021CHAT_MA" +
-      "IN_TIMEOUT\020\305\010\022\024\n\017BAD_SERVER_TYPE\020\306\010\022\032\n\025N" +
-      "OT_FOUND_ROOM_SERVER\020\307\010\022\033\n\026LOCATION_SERV" +
-      "ER_FAILED\020\310\010\022\034\n\027LOCATION_SERVER_TIMEOUT\020" +
-      "\311\010\022\023\n\016NO_MY_LOCATION\020\312\010\022\031\n\024SEARCH_AROUND" +
-      "_FAILED\020\313\010\022\022\n\rNAME_TOO_LONG\020\314\010\022\025\n\020HDFS_O" +
-      "PEN_FAILED\020\315\010\022\021\n\014USER_DISABLE\020\316\010\022\030\n\023SMS_" +
-      "CODE_TYPE_WRONG\020\317\010\022\023\n\016PHONE_TOO_LONG\020\320\010\022" +
-      "\026\n\021VOICE_UNSUPPORTED\020\321\010\022\027\n\022PHONE_FORMAT_",
-      "WRONG\020\322\010\022\031\n\024ACCOUNT_PREFIX_WRONG\020\323\010\022\020\n\013K" +
-      "Q_NO_PARAM\020\324\010\022\r\n\010KQ_NO_ID\020\325\010\022\031\n\024KQ_ID_OR" +
-      "_PHONE_WRONG\020\326\010\022\024\n\017KQ_NOT_FOUND_ID\020\327\010\022\027\n" +
-      "\022NOT_VALID_GROUP_ID\020\330\010\022\031\n\024TOO_MANY_TEAM_" +
-      "MEMBER\020\331\010\022\022\n\rTOO_MANY_IMEI\020\332\010*A\n\013SmsCode" +
-      "Type\022\016\n\nsmsCodeReg\020\000\022\020\n\014smsCodeReset\020\001\022\020" +
-      "\n\014smsCodeCheck\020\002*I\n\nServerType\022\r\n\tstSess" +
-      "ion\020\000\022\n\n\006stRoot\020\001\022\n\n\006stRoom\020\002\022\024\n\007stOther" +
-      "\020\377\377\377\377\377\377\377\377\377\001*&\n\nAcceptType\022\014\n\010atAccept\020\000\022" +
-      "\n\n\006atDeny\020\001*G\n\tEnterType\022\t\n\005Enter\020\000\022\t\n\005L",
-      "eave\020\001\022\023\n\017PriorityChanged\020\002\022\017\n\013DismissTe" +
-      "am\020\003*\332\003\n\nNotifyType\022\017\n\013NotifyDummy\020\000\022\025\n\021" +
-      "NotifyApplyFriend\020\001\022\026\n\022NotifyAcceptFrien" +
-      "d\020\002\022\026\n\022NotifyDeleteFriend\020\003\022\023\n\017NotifyApp" +
-      "lyTeam\020\004\022\024\n\020NotifyAcceptTeam\020\005\022\032\n\026Notify" +
-      "DeleteTeamMember\020\006\022\025\n\021NotifyDismissTeam\020" +
-      "\007\022\031\n\025NotifyAssignTeamAdmin\020\010\022\030\n\024NotifyMo" +
-      "difyTeamInfo\020\t\022\022\n\016NotifyQuitTeam\020\n\022\022\n\016No" +
-      "tifyTeamCall\020\013\022\024\n\020NotifySingleCall\020\014\022\024\n\020" +
-      "NotifyChatStatus\020\r\022\026\n\022NotifySaveVariable",
-      "\020\016\022\016\n\nNotifyCall\020\017\022\030\n\024NotifyChangeTeamNi" +
-      "ck\020\020\022\027\n\023NotifyLiveVideoCall\020\021\022\032\n\026NotifyL" +
-      "iveVideoCallAns\020\022\022\026\n\022NotifyFriendStatus\020" +
-      "\023*\257\001\n\rUserHideField\022\016\n\nhfPhoneNum\020\000\022\016\n\nh" +
-      "fUsername\020\001\022\r\n\thfUserSex\020\002\022\016\n\nhfBirthday" +
-      "\020\003\022\016\n\nhfAddrInfo\020\004\022\r\n\thfCarType\020\005\022\014\n\010hfC" +
-      "arNum\020\006\022\t\n\005hfGps\020\007\022\020\n\014hfTeamRandom\020\010\022\025\n\021" +
-      "hfTeamRandomVideo\020\t*2\n\010TeamRole\022\016\n\nmembe" +
-      "rOnly\020\000\022\013\n\007Manager\020\001\022\t\n\005Owner\020\002*p\n\010TeamT" +
-      "ype\022\016\n\nteamPublic\020\000\022\r\n\tteamTempo\020\001\022\017\n\013te",
-      "amPrivate\020\002\022\017\n\013teamInGroup\020\003\022\016\n\nteamRand" +
-      "om\020\004\022\023\n\017teamMapSelector\020\005*,\n\rApplyTeamTy" +
-      "pe\022\r\n\tattInvite\020\000\022\014\n\010attApply\020\001*)\n\013Reque" +
-      "stFlag\022\017\n\013rfAllMember\020\000\022\t\n\005rfOne\020\001*\326\001\n\007M" +
-      "sgType\022\n\n\006mtText\020\000\022\013\n\007mtImage\020\001\022\013\n\007mtVoi" +
-      "ce\020\002\022\014\n\010mtCancel\020\003\022\017\n\013mtEnterTeam\020\004\022\017\n\013m" +
-      "tLeaveTeam\020\005\022\025\n\021mtChangeHeadImage\020\006\022\022\n\016m" +
-      "tAcceptFriend\020\007\022\022\n\016mtDeleteFriend\020\010\022\017\n\013m" +
-      "tVideoFile\020\t\022\017\n\013mtVoiceFile\020\n\022\024\n\020mtVoice" +
-      "ShortFile\020\013*B\n\nChatStatus\022\r\n\tcsOffline\020\000",
-      "\022\013\n\007csNotIn\020\001\022\010\n\004csOk\020\002\022\016\n\ncsSpeaking\020\003*" +
-      "&\n\003Sex\022\t\n\005noset\020\000\022\010\n\004male\020\001\022\n\n\006female\020\002*" +
-      "3\n\014KqReportType\022\013\n\007krtAuto\020\000\022\n\n\006krtKey\020\001" +
-      "\022\n\n\006krtNfc\020\002*M\n\nReportType\022\013\n\007rtLogin\020\000\022" +
-      "\014\n\010rtLogout\020\001\022\013\n\007rtAlive\020\002\022\014\n\010rtCarReg\020\003" +
-      "\022\t\n\005rtMax\020\004*N\n\017SessionPullType\022\017\n\013sptToC" +
-      "lient\020\000\022\023\n\017sptForceOffline\020\001\022\025\n\021sptNotif" +
-      "yCarLogin\020\002*K\n\020CmdMsgSessionReq\022\033\n\027Sessi" +
-      "onGetUserSessionIP\020\000\022\032\n\026SessionQueryWhoW" +
-      "atchMe\020\001*6\n\021MsgSessionReqWhat\022\r\n\tsrwNorm",
-      "al\020\000\022\022\n\016srwCarRegister\020\001*\200\001\n\007RoomCmd\022\025\n\021" +
-      "rcRoomReportAlive\020\000\022\020\n\014rcStartVoice\020\001\022\021\n" +
-      "\rrcAcceptVoice\020\002\022\020\n\014rcCreateRoom\020\003\022\017\n\013rc" +
-      "CloseRoom\020\004\022\026\n\022rcTeamMemberChange\020\005*[\n\013L" +
-      "ocationCmd\022\020\n\014LOCATION_PUT\020\000\022\022\n\016LOCATION" +
-      "_START\020\001\022\021\n\rLOCATION_STOP\020\002\022\023\n\017LOCATION_" +
-      "SEARCH\020\003*&\n\nKqTimeType\022\013\n\007kttNone\020\000\022\013\n\007k" +
-      "ttWeek\020\001*.\n\010EditCode\022\t\n\005ecGet\020\000\022\014\n\010ecUpd" +
-      "ate\020\001\022\t\n\005ecDel\020\002*\'\n\tRemoteCmd\022\n\n\006rcNone\020" +
-      "\000\022\016\n\nrcNavigate\020\001B%\n#com.example.jrd48.s",
-      "ervice.proto_genb\006proto3"
+      "\001\022\016\n\006cmdStr\030\n \001(\t\"4\n\nTrackPoint\022\014\n\004time\030" +
+      "\001 \001(\003\022\013\n\003lat\030\002 \001(\001\022\013\n\003Ing\030\003 \001(\001\"\313\001\n\010MsgT" +
+      "rack\022\021\n\terrorCode\030\001 \001(\005\022\020\n\010track_id\030\002 \001(",
+      "\003\022\r\n\005title\030\003 \001(\t\022\014\n\004desc\030\004 \001(\t\022\014\n\004time\030\005" +
+      " \001(\003\022\017\n\007systime\030\006 \001(\003\022\017\n\007visible\030\007 \001(\005\022\013" +
+      "\n\003img\030\010 \001(\014\022\033\n\006points\030\t \003(\0132\013.TrackPoint" +
+      "\022\021\n\tuserPhone\030\n \001(\t\022\020\n\010userName\030\013 \001(\t\"<\n" +
+      "\014MsgTrackList\022\021\n\terrorCode\030\001 \001(\005\022\031\n\006trac" +
+      "ks\030\002 \003(\0132\t.MsgTrack\"w\n\rMsgTrackQuery\022\021\n\t" +
+      "errorCode\030\001 \001(\005\022\023\n\013fromTrackID\030\002 \001(\003\022\021\n\t" +
+      "userPhone\030\003 \001(\t\022\020\n\010trackIDs\030\004 \003(\003\022\031\n\006tra" +
+      "cks\030\005 \003(\0132\t.MsgTrack\"e\n\016MsgTrackModify\022\021" +
+      "\n\terrorCode\030\001 \001(\005\022\017\n\007trackID\030\002 \001(\003\022\022\n\nmo",
+      "difyCode\030\003 \001(\005\022\r\n\005title\030\004 \001(\t\022\014\n\004desc\030\005 " +
+      "\001(\t*\225\017\n\003Cmd\022\014\n\010cmdDummy\020\000\022\022\n\014cmdHeartbea" +
+      "t\020\200\200\004\022\020\n\ncmdSmsCode\020\201\200\004\022\014\n\006cmdReg\020\202\200\004\022\016\n" +
+      "\010cmdLogin\020\203\200\004\022\021\n\013cmdSendText\020\204\200\004\022\022\n\014cmdS" +
+      "endVoice\020\205\200\004\022\034\n\026cmdChangePasswordBySms\020\206" +
+      "\200\004\022\023\n\rcmdSearchUser\020\207\200\004\022\024\n\016cmdApplyFrien" +
+      "d\020\210\200\004\022\017\n\tcmdNotify\020\211\200\004\022\024\n\016cmdAppliedList" +
+      "\020\212\200\004\022\025\n\017cmdDeleteFriend\020\213\200\004\022\025\n\017cmdAccept" +
+      "Friend\020\214\200\004\022\026\n\020cmdSetFriendInfo\020\215\200\004\022\026\n\020cm" +
+      "dGetFriendList\020\216\200\004\022\022\n\014cmdSetMyInfo\020\217\200\004\022\023",
+      "\n\rcmdCreateTeam\020\220\200\004\022\024\n\016cmdGetTeamList\020\221\200" +
+      "\004\022\022\n\014cmdApplyTeam\020\222\200\004\022\030\n\022cmdAppliedTeamL" +
+      "ist\020\223\200\004\022\023\n\rcmdAcceptTeam\020\224\200\004\022\022\n\014cmdGetMy" +
+      "Info\020\225\200\004\022\031\n\023cmdDeleteTeamMember\020\226\200\004\022\023\n\rc" +
+      "mdGetBBSList\020\334\200\004\022\026\n\020cmdGetTeamMember\020\227\200\004" +
+      "\022\024\n\016cmdDismissTeam\020\230\200\004\022\023\n\rcmdSearchTeam\020" +
+      "\231\200\004\022\030\n\022cmdAssignTeamAdmin\020\232\200\004\022\027\n\021cmdModi" +
+      "fyTeamInfo\020\233\200\004\022!\n\033cmdModifyTeamMemberPri" +
+      "ority\020\234\200\004\022\021\n\013cmdQuitTeam\020\235\200\004\022\022\n\014cmdCommo" +
+      "nMsg\020\236\200\004\022\025\n\017cmdGotCommonMsg\020\237\200\004\022\031\n\023cmdGe",
+      "tAllTeamMember\020\240\200\004\022\023\n\rcmdStartVoice\020\241\200\004\022" +
+      "\024\n\016cmdAcceptVoice\020\242\200\004\022\021\n\013cmdSpeakMsg\020\243\200\004" +
+      "\022\024\n\016cmdGotSpeakMsg\020\244\200\004\022\023\n\rcmdSpeakBegin\020" +
+      "\245\200\004\022\021\n\013cmdSpeakEnd\020\246\200\004\022\026\n\020cmdAutoCloseRo" +
+      "om\020\247\200\004\022\031\n\023cmdChangeMyTeamName\020\250\200\004\022\023\n\rcmd" +
+      "MsgConfirm\020\251\200\004\022\017\n\tcmdGetMsg\020\252\200\004\022\026\n\020cmdGe" +
+      "tFriendInfo\020\253\200\004\022\025\n\017cmdForceOffline\020\254\200\004\022\017" +
+      "\n\tcmdLogout\020\255\200\004\022\033\n\025cmdSearchPhoneContact" +
+      "\020\256\200\004\022\031\n\023cmdUploadAttachment\020\257\200\004\022\033\n\025cmdDo" +
+      "wnloadAttachment\020\260\200\004\022\026\n\020cmdCloseChatRoom",
+      "\020\261\200\004\022\027\n\021cmdReportLocation\020\262\200\004\022\031\n\023cmdStar" +
+      "tGetLocation\020\263\200\004\022\030\n\022cmdStopGetLocation\020\264" +
+      "\200\004\022\031\n\023cmdTouchGetLocation\020\265\200\004\022\036\n\030cmdFrie" +
+      "ndLocationChanged\020\266\200\004\022\026\n\020cmdLiveVideoCal" +
+      "l\020\267\200\004\022\024\n\016cmdCarRegister\020\270\200\004\022\024\n\016cmdScanCa" +
+      "rCode\020\271\200\004\022\022\n\014cmdUnbindCar\020\272\200\004\022\022\n\014cmdLogo" +
+      "utCar\020\273\200\004\022\024\n\016cmdLiveCallAns\020\274\200\004\022\022\n\014cmdSc" +
+      "anCarOk\020\275\200\004\022\025\n\017cmdSearchAround\020\276\200\004\022\022\n\014cm" +
+      "dSearchCar\020\277\200\004\022\024\n\016cmdSearchUser2\020\300\200\004\022\020\n\n" +
+      "cmdRegImei\020\301\200\004\022\024\n\016cmdGetImeiList\020\302\200\004\022\024\n\016",
+      "cmdSetPassword\020\303\200\004\022\031\n\023cmdQueryLoginServe" +
+      "r\020\304\200\004\022\031\n\023cmdGetFriendsStatus\020\305\200\004\022\027\n\021cmdQ" +
+      "ueryLocations\020\306\200\004\022\023\n\rcmdKaoQinEdit\020\307\200\004\022\026" +
+      "\n\020cmdKaoQinStatics\020\310\200\004\022\026\n\020cmdIccidGetOrS" +
+      "et\020\311\200\004\022\024\n\016cmdSetImeiName\020\312\200\004\022\026\n\020cmdRemot" +
+      "eControl\020\313\200\004\022\031\n\023cmdGotRemoteControl\020\314\200\004\022" +
+      "\031\n\023cmdAnsRemoteControl\020\315\200\004\022\034\n\026cmdGotAnsR" +
+      "emoteControl\020\316\200\004\022\024\n\016cmdUploadTrack\020\335\200\004\022\025" +
+      "\n\017cmdGetTrackList\020\336\200\004\022\026\n\020cmdDownloadTrac" +
+      "k\020\337\200\004\022\024\n\016cmdModifyTrack\020\340\200\004*M\n\006OpCode\022\n\n",
+      "\006opNone\020\000\022\t\n\005opAdd\020\001\022\t\n\005opDel\020\002\022\r\n\topDis" +
+      "able\020\003\022\022\n\016opEnableRecord\020\004*C\n\007AppType\022\016\n" +
+      "\nappDefault\020\000\022\n\n\006appWeb\020\001\022\020\n\014appPocCente" +
+      "r\020\002\022\n\n\006appCar\020\003*\200\025\n\tErrorCode\022\006\n\002OK\020\000\022\013\n" +
+      "\007UNKNOWN\020\001\022\024\n\017SMS_CODE_FAILED\020\350\007\022\025\n\020SMS_" +
+      "CODE_NOT_GOT\020\351\007\022\027\n\022SMS_CODE_NOT_MATCH\020\352\007" +
+      "\022\023\n\016PASS_TOO_SHORT\020\353\007\022\022\n\rREG_DB_FAILED\020\354" +
+      "\007\022\027\n\022DATA_LEN_TOO_SHORT\020\355\007\022\036\n\031LOGIN_PHON" +
+      "E_OR_PASS_WRONG\020\356\007\022\026\n\021LOGIN_TOKEN_WRONG\020" +
+      "\357\007\022\032\n\025LOGIN_TOKEN_NOT_EXIST\020\360\007\022\016\n\tNOT_LO",
+      "GIN\020\361\007\022\024\n\017PHONE_NOT_FOUND\020\362\007\022\030\n\023FRIEND_N" +
+      "OT_INVITIED\020\363\007\022\023\n\016CHANGE_NOTHING\020\364\007\022\020\n\013N" +
+      "OT_MY_TEAM\020\365\007\022\034\n\027CANNOT_APPLY_GROUP_TEAM" +
+      "\020\366\007\022\023\n\016TEAM_NOT_EXIST\020\367\007\022\024\n\017CURR_USER_WR" +
+      "ONG\020\370\007\022\023\n\016INNER_DB_ERROR\020\371\007\022\023\n\016NOT_TEAM_" +
+      "ADMIN\020\372\007\022\027\n\022CANNOT_DELETE_SELF\020\373\007\022\035\n\030CAN" +
+      "NOT_DELETE_TEAM_OWNER\020\374\007\022\024\n\017NOT_TEAM_MEM" +
+      "BER\020\375\007\022\023\n\016NOT_TEAM_OWNER\020\376\007\022\030\n\023TEAM_NAME" +
+      "_TOO_SHORT\020\377\007\022\"\n\035CANNOT_ASSIGN_TEAM_ADMI" +
+      "N_SELF\020\200\010\022#\n\036CANNOT_ASSIGN_TEAM_OWNER_AD",
+      "MIN\020\201\010\022\033\n\026CANNOT_ADD_FRIEND_SELF\020\202\010\022\026\n\021N" +
+      "OT_FOUND_USER_ID\020\203\010\022\032\n\025DUPLICATED_APPLY_" +
+      "TEAM\020\204\010\022\033\n\026CANNOT_EXIT_TEAM_OWNER\020\205\010\022\017\n\n" +
+      "NOT_FRIEND\020\206\010\022\032\n\025CHAT_ROOM_INNER_ERROR\020\207" +
+      "\010\022\031\n\024ALREADY_IN_CHAT_ROOM\020\210\010\022\034\n\027CANNOT_G" +
+      "ET_NEW_ROOM_NUM\020\211\010\022\027\n\022NO_ANY_TEAM_MEMBER" +
+      "\020\212\010\022\027\n\022CANNOT_CALL_FRIEND\020\213\010\022\030\n\023NOT_FOUN" +
+      "D_THIS_ROOM\020\214\010\022\035\n\030NOT_FOUND_THIS_ROOM_US" +
+      "ER\020\215\010\022\033\n\026ENTER_CHAT_ROOM_FAILED\020\220\010\022\031\n\024NO" +
+      "T_IN_ANY_CHAT_ROOM\020\221\010\022\027\n\022OTHER_SPEAKING_",
+      "NOW\020\222\010\022\020\n\013INNER_ERROR\020\223\010\022\027\n\022DIDNOT_SPEAK" +
+      "_BEGIN\020\224\010\022\023\n\016NAME_TOO_SHORT\020\225\010\022\023\n\016TOO_MA" +
+      "NY_TEAMS\020\226\010\022\027\n\022TEAM_OR_USER_WRONG\020\227\010\022!\n\034" +
+      "NOT_FOUND_USER_NAME_OR_PHONE\020\230\010\022\024\n\017USER_" +
+      "NAME_EXIST\020\231\010\022\017\n\nNOT_MY_MSG\020\232\010\022\034\n\027MSG_AT" +
+      "TACHMENT_UPLOADED\020\233\010\022&\n!MSG_ATTACHMENT_U" +
+      "PLOAD_PARAM_ERROR\020\234\010\022%\n MSG_ATTACHMENT_U" +
+      "PLOAD_FILE_ERROR\020\235\010\022$\n\037MSG_ATTACHMENT_UP" +
+      "LOAD_SUM_ERROR\020\236\010\022\'\n\"MSG_ATTACHMENT_UPLO" +
+      "AD_UPDATE_ERROR\020\237\010\022*\n%MSG_ATTACHMENT_DOW",
+      "NLOAD_NO_ATTACHMENT\020\240\010\022\'\n\"MSG_ATTACHMENT" +
+      "_DOWNLOAD_NO_MSG_SUM\020\253\010\022%\n MSG_ATTACHMEN" +
+      "T_DOWNOAD_NO_EXISTS\020\254\010\022(\n#MSG_ATTACHMENT" +
+      "_DOWNLOAD_PARAM_ERROR\020\255\010\022\'\n\"MSG_ATTACHME" +
+      "NT_DOWNLOAD_READ_ERROR\020\256\010\022$\n\037MSG_ATTACHM" +
+      "ENT_UPLOAD_LEN_ERROR\020\257\010\022\032\n\025CHAT_NOT_FROM" +
+      "_MY_CALL\020\260\010\022\025\n\020USER_PHONE_EXIST\020\261\010\022\024\n\017TE" +
+      "AM_NAME_EXIST\020\262\010\022\024\n\017NOT_GROUP_ADMIN\020\263\010\022\020" +
+      "\n\013NO_GROUP_ID\020\264\010\022\026\n\021NO_GROUP_ADMIN_AD\020\265\010" +
+      "\022\026\n\021NOT_CAR_SCAN_CODE\020\266\010\022\026\n\021NOT_CAR_CONN",
+      "ECTED\020\267\010\022\017\n\nNOT_MY_CAR\020\270\010\022\025\n\020NOT_VALID_C" +
+      "AR_ID\020\271\010\022\024\n\017NOT_HAS_ANY_CAR\020\272\010\022\026\n\021CAR_NU" +
+      "M_TOO_SHORT\020\273\010\022\026\n\021CAR_NUM_DUPLICATE\020\274\010\022\023" +
+      "\n\016NOT_VALID_IMEI\020\275\010\022\023\n\016IMEI_TOO_SHORT\020\276\010" +
+      "\022\024\n\017UNKNOWN_OP_CODE\020\277\010\022\024\n\017NOT_MY_SUB_USE" +
+      "R\020\300\010\022\034\n\027NOT_FRIEND_OR_SAME_TEAM\020\301\010\022\026\n\021NO" +
+      "_SESSION_SERVER\020\302\010\022\024\n\017NO_TEAM_OR_USER\020\303\010" +
+      "\022\030\n\023NO_CHAT_ROOM_SERVER\020\304\010\022\026\n\021CHAT_MAIN_" +
+      "TIMEOUT\020\305\010\022\024\n\017BAD_SERVER_TYPE\020\306\010\022\032\n\025NOT_" +
+      "FOUND_ROOM_SERVER\020\307\010\022\033\n\026LOCATION_SERVER_",
+      "FAILED\020\310\010\022\034\n\027LOCATION_SERVER_TIMEOUT\020\311\010\022" +
+      "\023\n\016NO_MY_LOCATION\020\312\010\022\031\n\024SEARCH_AROUND_FA" +
+      "ILED\020\313\010\022\022\n\rNAME_TOO_LONG\020\314\010\022\025\n\020HDFS_OPEN" +
+      "_FAILED\020\315\010\022\021\n\014USER_DISABLE\020\316\010\022\030\n\023SMS_COD" +
+      "E_TYPE_WRONG\020\317\010\022\023\n\016PHONE_TOO_LONG\020\320\010\022\026\n\021" +
+      "VOICE_UNSUPPORTED\020\321\010\022\027\n\022PHONE_FORMAT_WRO" +
+      "NG\020\322\010\022\031\n\024ACCOUNT_PREFIX_WRONG\020\323\010\022\020\n\013KQ_N" +
+      "O_PARAM\020\324\010\022\r\n\010KQ_NO_ID\020\325\010\022\031\n\024KQ_ID_OR_PH" +
+      "ONE_WRONG\020\326\010\022\024\n\017KQ_NOT_FOUND_ID\020\327\010\022\027\n\022NO" +
+      "T_VALID_GROUP_ID\020\330\010\022\031\n\024TOO_MANY_TEAM_MEM",
+      "BER\020\331\010\022\022\n\rTOO_MANY_IMEI\020\332\010*A\n\013SmsCodeTyp" +
+      "e\022\016\n\nsmsCodeReg\020\000\022\020\n\014smsCodeReset\020\001\022\020\n\014s" +
+      "msCodeCheck\020\002*I\n\nServerType\022\r\n\tstSession" +
+      "\020\000\022\n\n\006stRoot\020\001\022\n\n\006stRoom\020\002\022\024\n\007stOther\020\377\377" +
+      "\377\377\377\377\377\377\377\001*&\n\nAcceptType\022\014\n\010atAccept\020\000\022\n\n\006" +
+      "atDeny\020\001*G\n\tEnterType\022\t\n\005Enter\020\000\022\t\n\005Leav" +
+      "e\020\001\022\023\n\017PriorityChanged\020\002\022\017\n\013DismissTeam\020" +
+      "\003*\332\003\n\nNotifyType\022\017\n\013NotifyDummy\020\000\022\025\n\021Not" +
+      "ifyApplyFriend\020\001\022\026\n\022NotifyAcceptFriend\020\002" +
+      "\022\026\n\022NotifyDeleteFriend\020\003\022\023\n\017NotifyApplyT",
+      "eam\020\004\022\024\n\020NotifyAcceptTeam\020\005\022\032\n\026NotifyDel" +
+      "eteTeamMember\020\006\022\025\n\021NotifyDismissTeam\020\007\022\031" +
+      "\n\025NotifyAssignTeamAdmin\020\010\022\030\n\024NotifyModif" +
+      "yTeamInfo\020\t\022\022\n\016NotifyQuitTeam\020\n\022\022\n\016Notif" +
+      "yTeamCall\020\013\022\024\n\020NotifySingleCall\020\014\022\024\n\020Not" +
+      "ifyChatStatus\020\r\022\026\n\022NotifySaveVariable\020\016\022" +
+      "\016\n\nNotifyCall\020\017\022\030\n\024NotifyChangeTeamNick\020" +
+      "\020\022\027\n\023NotifyLiveVideoCall\020\021\022\032\n\026NotifyLive" +
+      "VideoCallAns\020\022\022\026\n\022NotifyFriendStatus\020\023*\257" +
+      "\001\n\rUserHideField\022\016\n\nhfPhoneNum\020\000\022\016\n\nhfUs",
+      "ername\020\001\022\r\n\thfUserSex\020\002\022\016\n\nhfBirthday\020\003\022" +
+      "\016\n\nhfAddrInfo\020\004\022\r\n\thfCarType\020\005\022\014\n\010hfCarN" +
+      "um\020\006\022\t\n\005hfGps\020\007\022\020\n\014hfTeamRandom\020\010\022\025\n\021hfT" +
+      "eamRandomVideo\020\t*2\n\010TeamRole\022\016\n\nmemberOn" +
+      "ly\020\000\022\013\n\007Manager\020\001\022\t\n\005Owner\020\002*p\n\010TeamType" +
+      "\022\016\n\nteamPublic\020\000\022\r\n\tteamTempo\020\001\022\017\n\013teamP" +
+      "rivate\020\002\022\017\n\013teamInGroup\020\003\022\016\n\nteamRandom\020" +
+      "\004\022\023\n\017teamMapSelector\020\005*,\n\rApplyTeamType\022" +
+      "\r\n\tattInvite\020\000\022\014\n\010attApply\020\001*)\n\013RequestF" +
+      "lag\022\017\n\013rfAllMember\020\000\022\t\n\005rfOne\020\001*\326\001\n\007MsgT",
+      "ype\022\n\n\006mtText\020\000\022\013\n\007mtImage\020\001\022\013\n\007mtVoice\020" +
+      "\002\022\014\n\010mtCancel\020\003\022\017\n\013mtEnterTeam\020\004\022\017\n\013mtLe" +
+      "aveTeam\020\005\022\025\n\021mtChangeHeadImage\020\006\022\022\n\016mtAc" +
+      "ceptFriend\020\007\022\022\n\016mtDeleteFriend\020\010\022\017\n\013mtVi" +
+      "deoFile\020\t\022\017\n\013mtVoiceFile\020\n\022\024\n\020mtVoiceSho" +
+      "rtFile\020\013*B\n\nChatStatus\022\r\n\tcsOffline\020\000\022\013\n" +
+      "\007csNotIn\020\001\022\010\n\004csOk\020\002\022\016\n\ncsSpeaking\020\003*&\n\003" +
+      "Sex\022\t\n\005noset\020\000\022\010\n\004male\020\001\022\n\n\006female\020\002*3\n\014" +
+      "KqReportType\022\013\n\007krtAuto\020\000\022\n\n\006krtKey\020\001\022\n\n" +
+      "\006krtNfc\020\002*M\n\nReportType\022\013\n\007rtLogin\020\000\022\014\n\010",
+      "rtLogout\020\001\022\013\n\007rtAlive\020\002\022\014\n\010rtCarReg\020\003\022\t\n" +
+      "\005rtMax\020\004*N\n\017SessionPullType\022\017\n\013sptToClie" +
+      "nt\020\000\022\023\n\017sptForceOffline\020\001\022\025\n\021sptNotifyCa" +
+      "rLogin\020\002*K\n\020CmdMsgSessionReq\022\033\n\027SessionG" +
+      "etUserSessionIP\020\000\022\032\n\026SessionQueryWhoWatc" +
+      "hMe\020\001*6\n\021MsgSessionReqWhat\022\r\n\tsrwNormal\020" +
+      "\000\022\022\n\016srwCarRegister\020\001*\200\001\n\007RoomCmd\022\025\n\021rcR" +
+      "oomReportAlive\020\000\022\020\n\014rcStartVoice\020\001\022\021\n\rrc" +
+      "AcceptVoice\020\002\022\020\n\014rcCreateRoom\020\003\022\017\n\013rcClo" +
+      "seRoom\020\004\022\026\n\022rcTeamMemberChange\020\005*[\n\013Loca",
+      "tionCmd\022\020\n\014LOCATION_PUT\020\000\022\022\n\016LOCATION_ST" +
+      "ART\020\001\022\021\n\rLOCATION_STOP\020\002\022\023\n\017LOCATION_SEA" +
+      "RCH\020\003*&\n\nKqTimeType\022\013\n\007kttNone\020\000\022\013\n\007kttW" +
+      "eek\020\001*.\n\010EditCode\022\t\n\005ecGet\020\000\022\014\n\010ecUpdate" +
+      "\020\001\022\t\n\005ecDel\020\002*\'\n\tRemoteCmd\022\n\n\006rcNone\020\000\022\016" +
+      "\n\nrcNavigate\020\001*e\n\017TrackModifyCode\022\017\n\013_tr" +
+      "ackDummy\020\000\022\017\n\013trackModify\020\001\022\020\n\014trackVisi" +
+      "ble\020\002\022\r\n\ttrackHide\020\003\022\017\n\013trackDelete\020\004B%\n" +
+      "#com.example.jrd48.service.proto_genb\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -79223,6 +84933,36 @@ public final class ProtoMessage {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MsgRemoteControl_descriptor,
         new java.lang.String[] { "ErrorCode", "FromPhone", "ToPhone", "ToTeamID", "FromAppType", "ToAppType", "RemoteCmd", "Lat", "Lng", "CmdStr", });
+    internal_static_TrackPoint_descriptor =
+      getDescriptor().getMessageTypes().get(71);
+    internal_static_TrackPoint_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_TrackPoint_descriptor,
+        new java.lang.String[] { "Time", "Lat", "Ing", });
+    internal_static_MsgTrack_descriptor =
+      getDescriptor().getMessageTypes().get(72);
+    internal_static_MsgTrack_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MsgTrack_descriptor,
+        new java.lang.String[] { "ErrorCode", "TrackId", "Title", "Desc", "Time", "Systime", "Visible", "Img", "Points", "UserPhone", "UserName", });
+    internal_static_MsgTrackList_descriptor =
+      getDescriptor().getMessageTypes().get(73);
+    internal_static_MsgTrackList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MsgTrackList_descriptor,
+        new java.lang.String[] { "ErrorCode", "Tracks", });
+    internal_static_MsgTrackQuery_descriptor =
+      getDescriptor().getMessageTypes().get(74);
+    internal_static_MsgTrackQuery_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MsgTrackQuery_descriptor,
+        new java.lang.String[] { "ErrorCode", "FromTrackID", "UserPhone", "TrackIDs", "Tracks", });
+    internal_static_MsgTrackModify_descriptor =
+      getDescriptor().getMessageTypes().get(75);
+    internal_static_MsgTrackModify_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MsgTrackModify_descriptor,
+        new java.lang.String[] { "ErrorCode", "TrackID", "ModifyCode", "Title", "Desc", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

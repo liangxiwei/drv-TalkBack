@@ -1,6 +1,8 @@
 package com.luobin.ui;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -57,8 +59,10 @@ public class SettingActivity extends BaseActivity {
             //账号
             case 0:
                 if (checkLogin()) {
-                    startActivity(new Intent(this, RegisterInfoActivity.class));
-
+                    Intent intent = new Intent(this, RegisterInfoActivity.class);
+                    intent.putExtra("tuichu","set");
+                    startActivity(intent);
+                    //startActivity(new Intent(this, RegisterInfoActivity.class));class
                 } else {
                     startActivity(new Intent(this, LoginActivity.class));
                 }
@@ -105,5 +109,39 @@ public class SettingActivity extends BaseActivity {
         }
         return true;
     }
+
+
+    AlertDialog simplelistdialog = null;
+
+    private void logoutDialog(Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(context.getResources().getString(R.string.toast_tip));
+        builder.setMessage(context.getResources().getString(R.string.toast_logout));
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Intent intent = new Intent("com.example.jrd48.chat.FORCE_OFFLINE");
+                intent.putExtra("toast", false);
+                sendBroadcast(intent);
+                finish();
+            }
+        });
+
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        if (simplelistdialog != null && simplelistdialog.isShowing()) {
+            simplelistdialog.dismiss();
+        }
+        simplelistdialog = builder.create();
+        simplelistdialog.show();
+    }
+
+
 
 }

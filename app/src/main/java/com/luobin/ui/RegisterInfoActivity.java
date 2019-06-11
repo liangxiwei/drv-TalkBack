@@ -248,9 +248,11 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     /**
      * 关闭
      */
+    @BindView(R.id.btnExit)
+    Button btnExit;
+
     @BindView(R.id.imgClose)
     ImageView imgClose;
-
 
     /**
      * 选填的修改
@@ -297,6 +299,8 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
     private int sexdatashow = 0;
 
+    String  tuichu ="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -307,6 +311,24 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         ButterKnife.bind(this);
 
         mContext = this;
+
+        tuichu =getIntent().getStringExtra("tuichu");
+
+        if (tuichu==null||"".equals(tuichu)){
+            //TODO 推出按钮的展示
+            btnExit.setVisibility(View.GONE);
+        }else{
+            btnExit.setVisibility(View.VISIBLE);
+            btnExit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    logoutDialog(mContext);
+                }
+            });
+        }
+
+
+
 
 
         waitDialog();
@@ -512,6 +534,16 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             openCamera();
         }
     }
+    @Override
+    protected void onPause() {
+
+        if (simplelistdialog != null && simplelistdialog.isShowing()) {
+            simplelistdialog.dismiss();
+        }
+        super.onPause();
+    }
+
+
 
     @Override
     public void onPermissionReject(String strMessage) {
@@ -862,6 +894,9 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     private void setSex(final int sexdata, final int sexdefual) {
         ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
         builder.setUserSex(sexdata);
+      /*  builder.setInterest("兴趣");
+        builder.setCareer("行业");
+        builder.setSignature("备注");*/
         MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdSetMyInfo.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
         filter.addAction(SetUserInfoProcesser.ACTION);
@@ -1547,6 +1582,35 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     private void initItemX() {
 
     }
+
+    AlertDialog simplelistdialog;
+    private void logoutDialog(Context context){
+       AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(context.getResources().getString(R.string.toast_tip));
+        builder.setMessage(context.getResources().getString(R.string.toast_logout));
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Intent intent = new Intent("com.example.jrd48.chat.FORCE_OFFLINE");//强制下线功能
+                intent.putExtra("toast", false);
+                sendBroadcast(intent);
+            }
+        });
+
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        if (simplelistdialog != null && simplelistdialog.isShowing()) {
+            simplelistdialog.dismiss();
+        }
+        simplelistdialog = builder.create();
+        simplelistdialog.show();
+    }
+
 
 
 }

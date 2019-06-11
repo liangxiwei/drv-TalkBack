@@ -401,6 +401,9 @@ public class TalkbackSearchActivity extends BaseDialogActivity {
         i.putExtra("user_msg", aply);
         i.putExtra("userPhone", aply.getPhoneNum());
         startActivityForResult(i, 2);
+
+
+
     }
 
     StringBuffer sb = new StringBuffer();

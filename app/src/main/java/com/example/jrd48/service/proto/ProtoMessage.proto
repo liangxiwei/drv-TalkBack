@@ -65,7 +65,6 @@ enum Cmd {
       */
     cmdGetBBSList = 0x0001005C; //获取海聊群
 
-
     /** 获取群成员列表
      * 输入：AcceptTeam { teamID }
      * 输出：TeamMemberList
@@ -399,6 +398,32 @@ enum Cmd {
      */
     cmdGotAnsRemoteControl = 0x0001004E;
 
+    /**
+    * 上传轨迹
+    * in, MsgTrack
+    * out, MsgTrack.id
+    */
+    cmdUploadTrack = 0x0001005D;
+
+    /**
+    * 获取轨迹列表,仅取标题和图片，不含点位
+    * in, out, MsgTrackQuery
+    */
+    cmdGetTrackList = 0x0001005E;
+
+    /**
+    * 获取某几个轨迹的点位详情
+    * 可多选后传入ID列表，统一下载保存到本地。
+    * in, out: MsgTrackQuery
+    */
+    cmdDownloadTrack = 0x0001005F;
+
+    /**
+    * 删除或隐藏我的某一条轨迹
+    * in, out: MsgTrackModify
+    */
+    cmdModifyTrack = 0x00010060;
+
 };
 
 /** 操作码 */
@@ -591,11 +616,11 @@ enum ErrorCode {
     KQ_NO_PARAM = 1108; // 考勤时没有输入参数
     KQ_NO_ID = 1109; // NO KAOIN ID // 没有输入考勤 ID
     KQ_ID_OR_PHONE_WRONG = 1110; // 考勤ID和电话错误
-    KQ_NOT_FOUND_ID = 1111;  // 没找到考勤ID
+    KQ_NOT_FOUND_ID = 1111; // 没找到考勤ID
 
     NOT_VALID_GROUP_ID = 1112; // 没有有效的集团号
     TOO_MANY_TEAM_MEMBER = 1113; // 群组添加成员时超出限制
-    TOO_MANY_IMEI = 1114;   // 创建帐号时，帐号数量超出限制
+    TOO_MANY_IMEI = 1114; // 创建帐号时，帐号数量超出限制
 };
 
 /** 短信验证码请求，返回通用响应包 -> 改为返回与请求相同的数据 */
@@ -807,7 +832,7 @@ message UserInfo {
 
     string car_num = 17; // 车牌号
 
-    int32 hide_field_0 = 18;  // 参照 UserHideField
+    int32 hide_field_0 = 18; // 参照 UserHideField
     int32 hide_field_1 = 19; // 参照 UserHideField
     int32 hide_field_2 = 20; // 参照 UserHideField
     int32 hide_field_3 = 21; // 参照 UserHideField
@@ -818,14 +843,14 @@ message UserInfo {
     int32 hide_field_8 = 26; // 参照 UserHideField
     int32 hide_field_9 = 27; // 参照 UserHideField
 
-    string interest = 36;//兴趣
-    string career = 37;//行业
-    string signature = 38;//个性签名
+    string interest = 36; //兴趣
+    string career = 37; //行业
+    string signature = 38; //个性签名
 
 }
 
 /** 对应每一个隐藏字段所要隐藏的内容 */
-enum UserHideField{
+enum UserHideField {
     hfPhoneNum = 0;
     hfUsername = 1;
     hfUserSex = 2;
@@ -858,8 +883,8 @@ enum TeamType {
     teamTempo = 1; // 临时组，无需要应答，即自动加入。
     teamPrivate = 2; // 私有组
     teamInGroup = 3; // 集团组
-    teamRandom = 4;// 随机群（or 海聊群)（由系统自动分配，设置上限，满群后，自动切换新的海聊群，每人只能在一个海聊群中）
-    teamMapSelector = 5;// 地图框选群
+    teamRandom = 4; // 随机群（or 海聊群)（由系统自动分配，设置上限，满群后，自动切换新的海聊群，每人只能在一个海聊群中）
+    teamMapSelector = 5; // 地图框选群
 }
 
 /** 群信息(建群时的参数) */
@@ -1084,10 +1109,10 @@ message LocationMsg {
     int32 isAccurate = 5; // 是否准确：1：准确， 0：模糊
     int64 time = 6; // 位置时间
     string phoneNum = 7; // 好友手机号
-    int32 latlngType = 8;   // 位置类型（0：高德，）
-    string userName = 9;    // 好友名称包括（陌生人）
-    bool hasLocation = 10;  // 是否有位置
-    int64 userID = 11;      // 仅限于服务器内部使用，客户端不应使用，
+    int32 latlngType = 8; // 位置类型（0：高德，）
+    string userName = 9; // 好友名称包括（陌生人）
+    bool hasLocation = 10; // 是否有位置
+    int64 userID = 11; // 仅限于服务器内部使用，客户端不应使用，
     int32 reportType = 12; // 0 自动上报，1：按键打卡，2：NFC打卡
     int32 reportFlag = 13; // 自定义标志，表示 上班或下班等，暂时不用
 }
@@ -1233,7 +1258,7 @@ message WatcherList {
     repeated UserAppType users = 3;
 }
 
-enum MsgSessionReqWhat{
+enum MsgSessionReqWhat {
     srwNormal = 0;
     srwCarRegister = 1;
 }
@@ -1279,7 +1304,7 @@ message MsgRoomIndexPull {
 
 }
 
-enum LocationCmd{
+enum LocationCmd {
     LOCATION_PUT = 0;
     LOCATION_START = 1;
     LOCATION_STOP = 2;
@@ -1287,7 +1312,7 @@ enum LocationCmd{
 }
 
 /** session -> location */
-message MsgSessionToLocation{
+message MsgSessionToLocation {
     int32 errorCode = 1;
     int32 what = 2;
     int64 userID = 3;
@@ -1328,7 +1353,7 @@ message KqPoint {
     double lat = 2;
     double lng = 3;
     string addr = 4; // 地点名称
-    int32 reportType = 5;// 打卡类型
+    int32 reportType = 5; // 打卡类型
 }
 
 enum KqTimeType {
@@ -1407,3 +1432,57 @@ message MsgRemoteControl {
     string cmdStr = 10;
 
 }
+
+/*轨迹坐标*/
+message TrackPoint {
+    int64 time = 1;
+    double lat = 2;
+    double Ing = 3;
+}
+
+/*轨迹*/
+message MsgTrack {
+    int32 errorCode = 1;
+    int64 track_id = 2;
+    string title = 3;
+    string desc = 4;
+    int64 time = 5; //轨迹开始时间
+    int64 systime = 6; //轨迹上传时间
+    int32 visible = 7; //是否公开
+    bytes img = 8; //图片统一为JPG或PNG
+    repeated TrackPoint points = 9;
+    string userPhone = 10; // 上传者账号
+    string userName = 11; // 上传者的名称
+}
+
+message MsgTrackList {
+    int32 errorCode = 1;
+    repeated MsgTrack tracks = 2;
+}
+
+message MsgTrackQuery {
+    int32 errorCode = 1;
+    int64 fromTrackID = 2;
+    string userPhone = 3; // 查询 某个人的轨迹
+    repeated int64 trackIDs = 4; // 查询某一些track_ID的轨迹
+    // 以下为返回数据
+    repeated MsgTrack tracks = 5;
+}
+
+enum TrackModifyCode {
+    _trackDummy = 0;
+    trackModify = 1; // 只能Modify title 和 desc
+    trackVisible = 2;
+    trackHide = 3;
+    trackDelete = 4;
+
+}
+
+message MsgTrackModify {
+    int32 errorCode = 1;
+    int64 trackID = 2; // 需要修改的的TrackID，只能是自己的
+    int32 modifyCode = 3; // @link TrackModifyCode
+    string title = 4;
+    string desc = 5;
+}
+
