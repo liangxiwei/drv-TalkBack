@@ -1064,6 +1064,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
             @Override
             public void onGot(Intent intent) {
                 int errorCode = intent.getIntExtra("error_code", -1);
+                Log.d("pangtao","errorCode =" +errorCode);
                 if (errorCode == ProtoMessage.ErrorCode.OK.getNumber()) {
                     friendLocationStatusesList = intent.getParcelableArrayListExtra("location");
                     addMarkersToMap();

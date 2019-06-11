@@ -220,6 +220,16 @@ public final class ProtoMessage {
     cmdDeleteTeamMember(65558),
     /**
      * <pre>
+     **
+     * 输入：无
+     * 输出：TeamMemberList
+     * </pre>
+     *
+     * <code>cmdGetBBSList = 65628;</code>
+     */
+    cmdGetBBSList(65628),
+    /**
+     * <pre>
      ** 获取群成员列表
      * 输入：AcceptTeam { teamID }
      * 输出：TeamMemberList
@@ -556,7 +566,7 @@ public final class ProtoMessage {
     cmdCarRegister(65592),
     /**
      * <pre>
-     ** 手机扫描二维码 -&gt; CarRegister
+     ** 手机扫描二维码 -&gt; CarRegister 
      * </pre>
      *
      * <code>cmdScanCarCode = 65593;</code>
@@ -564,7 +574,7 @@ public final class ProtoMessage {
     cmdScanCarCode(65593),
     /**
      * <pre>
-     ** 解绑车机 -&gt; CarRegister
+     ** 解绑车机 -&gt; CarRegister 
      * </pre>
      *
      * <code>cmdUnbindCar = 65594;</code>
@@ -572,7 +582,7 @@ public final class ProtoMessage {
     cmdUnbindCar(65594),
     /**
      * <pre>
-     ** 退出车机登录 commonRequst, commonResp
+     ** 退出车机登录 commonRequst, commonResp 
      * </pre>
      *
      * <code>cmdLogoutCar = 65595;</code>
@@ -974,6 +984,16 @@ public final class ProtoMessage {
     public static final int cmdDeleteTeamMember_VALUE = 65558;
     /**
      * <pre>
+     **
+     * 输入：无
+     * 输出：TeamMemberList
+     * </pre>
+     *
+     * <code>cmdGetBBSList = 65628;</code>
+     */
+    public static final int cmdGetBBSList_VALUE = 65628;
+    /**
+     * <pre>
      ** 获取群成员列表
      * 输入：AcceptTeam { teamID }
      * 输出：TeamMemberList
@@ -1310,7 +1330,7 @@ public final class ProtoMessage {
     public static final int cmdCarRegister_VALUE = 65592;
     /**
      * <pre>
-     ** 手机扫描二维码 -&gt; CarRegister
+     ** 手机扫描二维码 -&gt; CarRegister 
      * </pre>
      *
      * <code>cmdScanCarCode = 65593;</code>
@@ -1318,7 +1338,7 @@ public final class ProtoMessage {
     public static final int cmdScanCarCode_VALUE = 65593;
     /**
      * <pre>
-     ** 解绑车机 -&gt; CarRegister
+     ** 解绑车机 -&gt; CarRegister 
      * </pre>
      *
      * <code>cmdUnbindCar = 65594;</code>
@@ -1326,7 +1346,7 @@ public final class ProtoMessage {
     public static final int cmdUnbindCar_VALUE = 65594;
     /**
      * <pre>
-     ** 退出车机登录 commonRequst, commonResp
+     ** 退出车机登录 commonRequst, commonResp 
      * </pre>
      *
      * <code>cmdLogoutCar = 65595;</code>
@@ -1568,6 +1588,7 @@ public final class ProtoMessage {
         case 65556: return cmdAcceptTeam;
         case 65557: return cmdGetMyInfo;
         case 65558: return cmdDeleteTeamMember;
+        case 65628: return cmdGetBBSList;
         case 65559: return cmdGetTeamMember;
         case 65560: return cmdDismissTeam;
         case 65561: return cmdSearchTeam;
@@ -1678,7 +1699,7 @@ public final class ProtoMessage {
 
   /**
    * <pre>
-   ** 操作码
+   ** 操作码 
    * </pre>
    *
    * Protobuf enum {@code OpCode}
@@ -4153,7 +4174,7 @@ public final class ProtoMessage {
 
   /**
    * <pre>
-   ** 通知类型
+   ** 通知类型 
    * </pre>
    *
    * Protobuf enum {@code NotifyType}
@@ -4465,7 +4486,7 @@ public final class ProtoMessage {
 
   /**
    * <pre>
-   ** 对应每一个隐藏字段所要隐藏的内容
+   ** 对应每一个隐藏字段所要隐藏的内容 
    * </pre>
    *
    * Protobuf enum {@code UserHideField}
@@ -4655,7 +4676,7 @@ public final class ProtoMessage {
 
   /**
    * <pre>
-   ** 我在群中的角色
+   ** 我在群中的角色 
    * </pre>
    *
    * Protobuf enum {@code TeamRole}
@@ -5465,7 +5486,7 @@ public final class ProtoMessage {
 
   /**
    * <pre>
-   ** 聊天室成员状态
+   ** 聊天室成员状态 
    * </pre>
    *
    * Protobuf enum {@code ChatStatus}
@@ -6839,7 +6860,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -6883,7 +6904,7 @@ public final class ProtoMessage {
      * 1: 添加，2：删除
      * </pre>
      *
-     * <code>optional int32 opCode = 3;</code>
+     * <code>int32 opCode = 3;</code>
      */
     int getOpCode();
 
@@ -6915,7 +6936,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .MsgImei imeis = 5;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei> 
         getImeisList();
     /**
      * <code>repeated .MsgImei imeis = 5;</code>
@@ -6928,7 +6949,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .MsgImei imeis = 5;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder> 
         getImeisOrBuilderList();
     /**
      * <code>repeated .MsgImei imeis = 5;</code>
@@ -6938,7 +6959,7 @@ public final class ProtoMessage {
   }
   /**
    * <pre>
-   ** 注册或删除 IMEI 号
+   ** 注册或删除 IMEI 号 
    * </pre>
    *
    * Protobuf type {@code MsgRegImei}
@@ -7069,7 +7090,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -7127,7 +7148,7 @@ public final class ProtoMessage {
      * 1: 添加，2：删除
      * </pre>
      *
-     * <code>optional int32 opCode = 3;</code>
+     * <code>int32 opCode = 3;</code>
      */
     public int getOpCode() {
       return opCode_;
@@ -7179,7 +7200,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .MsgImei imeis = 5;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder> 
         getImeisOrBuilderList() {
       return imeis_;
     }
@@ -7308,7 +7329,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getUnusedCount() > 0) {
@@ -7409,7 +7430,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 注册或删除 IMEI 号
+     ** 注册或删除 IMEI 号 
      * </pre>
      *
      * Protobuf type {@code MsgRegImei}
@@ -7593,7 +7614,7 @@ public final class ProtoMessage {
               imeisBuilder_ = null;
               imeis_ = other.imeis_;
               bitField0_ = (bitField0_ & ~0x00000010);
-              imeisBuilder_ =
+              imeisBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getImeisFieldBuilder() : null;
             } else {
@@ -7630,25 +7651,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -7790,7 +7811,7 @@ public final class ProtoMessage {
        * 1: 添加，2：删除
        * </pre>
        *
-       * <code>optional int32 opCode = 3;</code>
+       * <code>int32 opCode = 3;</code>
        */
       public int getOpCode() {
         return opCode_;
@@ -7800,10 +7821,10 @@ public final class ProtoMessage {
        * 1: 添加，2：删除
        * </pre>
        *
-       * <code>optional int32 opCode = 3;</code>
+       * <code>int32 opCode = 3;</code>
        */
       public Builder setOpCode(int value) {
-
+        
         opCode_ = value;
         onChanged();
         return this;
@@ -7813,10 +7834,10 @@ public final class ProtoMessage {
        * 1: 添加，2：删除
        * </pre>
        *
-       * <code>optional int32 opCode = 3;</code>
+       * <code>int32 opCode = 3;</code>
        */
       public Builder clearOpCode() {
-
+        
         opCode_ = 0;
         onChanged();
         return this;
@@ -8111,7 +8132,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .MsgImei imeis = 5;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder> 
            getImeisOrBuilderList() {
         if (imeisBuilder_ != null) {
           return imeisBuilder_.getMessageOrBuilderList();
@@ -8137,12 +8158,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .MsgImei imeis = 5;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei.Builder> 
            getImeisBuilderList() {
         return getImeisFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei, com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei, com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder> 
           getImeisFieldBuilder() {
         if (imeisBuilder_ == null) {
           imeisBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -8209,32 +8230,32 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string imei = 1;</code>
+     * <code>string imei = 1;</code>
      */
     java.lang.String getImei();
     /**
-     * <code>optional string imei = 1;</code>
+     * <code>string imei = 1;</code>
      */
     com.google.protobuf.ByteString
         getImeiBytes();
 
     /**
-     * <code>optional int64 regDate = 2;</code>
+     * <code>int64 regDate = 2;</code>
      */
     long getRegDate();
 
     /**
-     * <code>optional string desc = 3;</code>
+     * <code>string desc = 3;</code>
      */
     java.lang.String getDesc();
     /**
-     * <code>optional string desc = 3;</code>
+     * <code>string desc = 3;</code>
      */
     com.google.protobuf.ByteString
         getDescBytes();
 
     /**
-     * <code>optional int32 enableRecord = 4;</code>
+     * <code>int32 enableRecord = 4;</code>
      */
     int getEnableRecord();
   }
@@ -8329,14 +8350,14 @@ public final class ProtoMessage {
     public static final int IMEI_FIELD_NUMBER = 1;
     private volatile java.lang.Object imei_;
     /**
-     * <code>optional string imei = 1;</code>
+     * <code>string imei = 1;</code>
      */
     public java.lang.String getImei() {
       java.lang.Object ref = imei_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         imei_ = s;
@@ -8344,13 +8365,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string imei = 1;</code>
+     * <code>string imei = 1;</code>
      */
     public com.google.protobuf.ByteString
         getImeiBytes() {
       java.lang.Object ref = imei_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         imei_ = b;
@@ -8363,7 +8384,7 @@ public final class ProtoMessage {
     public static final int REGDATE_FIELD_NUMBER = 2;
     private long regDate_;
     /**
-     * <code>optional int64 regDate = 2;</code>
+     * <code>int64 regDate = 2;</code>
      */
     public long getRegDate() {
       return regDate_;
@@ -8372,14 +8393,14 @@ public final class ProtoMessage {
     public static final int DESC_FIELD_NUMBER = 3;
     private volatile java.lang.Object desc_;
     /**
-     * <code>optional string desc = 3;</code>
+     * <code>string desc = 3;</code>
      */
     public java.lang.String getDesc() {
       java.lang.Object ref = desc_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         desc_ = s;
@@ -8387,13 +8408,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string desc = 3;</code>
+     * <code>string desc = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDescBytes() {
       java.lang.Object ref = desc_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         desc_ = b;
@@ -8406,7 +8427,7 @@ public final class ProtoMessage {
     public static final int ENABLERECORD_FIELD_NUMBER = 4;
     private int enableRecord_;
     /**
-     * <code>optional int32 enableRecord = 4;</code>
+     * <code>int32 enableRecord = 4;</code>
      */
     public int getEnableRecord() {
       return enableRecord_;
@@ -8490,7 +8511,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + IMEI_FIELD_NUMBER;
       hash = (53 * hash) + getImei().hashCode();
       hash = (37 * hash) + REGDATE_FIELD_NUMBER;
@@ -8735,7 +8756,7 @@ public final class ProtoMessage {
 
       private java.lang.Object imei_ = "";
       /**
-       * <code>optional string imei = 1;</code>
+       * <code>string imei = 1;</code>
        */
       public java.lang.String getImei() {
         java.lang.Object ref = imei_;
@@ -8750,13 +8771,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string imei = 1;</code>
+       * <code>string imei = 1;</code>
        */
       public com.google.protobuf.ByteString
           getImeiBytes() {
         java.lang.Object ref = imei_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           imei_ = b;
@@ -8766,29 +8787,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string imei = 1;</code>
+       * <code>string imei = 1;</code>
        */
       public Builder setImei(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         imei_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string imei = 1;</code>
+       * <code>string imei = 1;</code>
        */
       public Builder clearImei() {
-
+        
         imei_ = getDefaultInstance().getImei();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string imei = 1;</code>
+       * <code>string imei = 1;</code>
        */
       public Builder setImeiBytes(
           com.google.protobuf.ByteString value) {
@@ -8796,7 +8817,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         imei_ = value;
         onChanged();
         return this;
@@ -8804,25 +8825,25 @@ public final class ProtoMessage {
 
       private long regDate_ ;
       /**
-       * <code>optional int64 regDate = 2;</code>
+       * <code>int64 regDate = 2;</code>
        */
       public long getRegDate() {
         return regDate_;
       }
       /**
-       * <code>optional int64 regDate = 2;</code>
+       * <code>int64 regDate = 2;</code>
        */
       public Builder setRegDate(long value) {
-
+        
         regDate_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 regDate = 2;</code>
+       * <code>int64 regDate = 2;</code>
        */
       public Builder clearRegDate() {
-
+        
         regDate_ = 0L;
         onChanged();
         return this;
@@ -8830,7 +8851,7 @@ public final class ProtoMessage {
 
       private java.lang.Object desc_ = "";
       /**
-       * <code>optional string desc = 3;</code>
+       * <code>string desc = 3;</code>
        */
       public java.lang.String getDesc() {
         java.lang.Object ref = desc_;
@@ -8845,13 +8866,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string desc = 3;</code>
+       * <code>string desc = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDescBytes() {
         java.lang.Object ref = desc_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           desc_ = b;
@@ -8861,29 +8882,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string desc = 3;</code>
+       * <code>string desc = 3;</code>
        */
       public Builder setDesc(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         desc_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string desc = 3;</code>
+       * <code>string desc = 3;</code>
        */
       public Builder clearDesc() {
-
+        
         desc_ = getDefaultInstance().getDesc();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string desc = 3;</code>
+       * <code>string desc = 3;</code>
        */
       public Builder setDescBytes(
           com.google.protobuf.ByteString value) {
@@ -8891,7 +8912,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         desc_ = value;
         onChanged();
         return this;
@@ -8899,25 +8920,25 @@ public final class ProtoMessage {
 
       private int enableRecord_ ;
       /**
-       * <code>optional int32 enableRecord = 4;</code>
+       * <code>int32 enableRecord = 4;</code>
        */
       public int getEnableRecord() {
         return enableRecord_;
       }
       /**
-       * <code>optional int32 enableRecord = 4;</code>
+       * <code>int32 enableRecord = 4;</code>
        */
       public Builder setEnableRecord(int value) {
-
+        
         enableRecord_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 enableRecord = 4;</code>
+       * <code>int32 enableRecord = 4;</code>
        */
       public Builder clearEnableRecord() {
-
+        
         enableRecord_ = 0;
         onChanged();
         return this;
@@ -8976,14 +8997,14 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
      * <code>repeated .MsgImei imeis = 2;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei> 
         getImeisList();
     /**
      * <code>repeated .MsgImei imeis = 2;</code>
@@ -8996,7 +9017,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .MsgImei imeis = 2;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder> 
         getImeisOrBuilderList();
     /**
      * <code>repeated .MsgImei imeis = 2;</code>
@@ -9089,7 +9110,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -9106,7 +9127,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .MsgImei imeis = 2;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder> 
         getImeisOrBuilderList() {
       return imeis_;
     }
@@ -9192,7 +9213,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getImeisCount() > 0) {
@@ -9423,7 +9444,7 @@ public final class ProtoMessage {
               imeisBuilder_ = null;
               imeis_ = other.imeis_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              imeisBuilder_ =
+              imeisBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getImeisFieldBuilder() : null;
             } else {
@@ -9460,25 +9481,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -9679,7 +9700,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .MsgImei imeis = 2;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder> 
            getImeisOrBuilderList() {
         if (imeisBuilder_ != null) {
           return imeisBuilder_.getMessageOrBuilderList();
@@ -9705,12 +9726,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .MsgImei imeis = 2;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei.Builder> 
            getImeisBuilderList() {
         return getImeisFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei, com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei, com.example.jrd48.service.proto_gen.ProtoMessage.MsgImei.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgImeiOrBuilder> 
           getImeisFieldBuilder() {
         if (imeisBuilder_ == null) {
           imeisBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -9777,66 +9798,66 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string prov = 2;</code>
+     * <code>string prov = 2;</code>
      */
     java.lang.String getProv();
     /**
-     * <code>optional string prov = 2;</code>
+     * <code>string prov = 2;</code>
      */
     com.google.protobuf.ByteString
         getProvBytes();
 
     /**
-     * <code>optional string city = 3;</code>
+     * <code>string city = 3;</code>
      */
     java.lang.String getCity();
     /**
-     * <code>optional string city = 3;</code>
+     * <code>string city = 3;</code>
      */
     com.google.protobuf.ByteString
         getCityBytes();
 
     /**
-     * <code>optional string town = 4;</code>
+     * <code>string town = 4;</code>
      */
     java.lang.String getTown();
     /**
-     * <code>optional string town = 4;</code>
+     * <code>string town = 4;</code>
      */
     com.google.protobuf.ByteString
         getTownBytes();
 
     /**
-     * <code>optional string car_type1 = 5;</code>
+     * <code>string car_type1 = 5;</code>
      */
     java.lang.String getCarType1();
     /**
-     * <code>optional string car_type1 = 5;</code>
+     * <code>string car_type1 = 5;</code>
      */
     com.google.protobuf.ByteString
         getCarType1Bytes();
 
     /**
-     * <code>optional string car_type2 = 6;</code>
+     * <code>string car_type2 = 6;</code>
      */
     java.lang.String getCarType2();
     /**
-     * <code>optional string car_type2 = 6;</code>
+     * <code>string car_type2 = 6;</code>
      */
     com.google.protobuf.ByteString
         getCarType2Bytes();
 
     /**
-     * <code>optional string car_type3 = 7;</code>
+     * <code>string car_type3 = 7;</code>
      */
     java.lang.String getCarType3();
     /**
-     * <code>optional string car_type3 = 7;</code>
+     * <code>string car_type3 = 7;</code>
      */
     com.google.protobuf.ByteString
         getCarType3Bytes();
@@ -9846,25 +9867,25 @@ public final class ProtoMessage {
      * 换一批，0从头搜索，非0：从上次搜索之后开始搜索。
      * </pre>
      *
-     * <code>optional int32 pos = 8;</code>
+     * <code>int32 pos = 8;</code>
      */
     int getPos();
 
     /**
-     * <code>optional .FriendList search_result = 9;</code>
+     * <code>.FriendList search_result = 9;</code>
      */
     boolean hasSearchResult();
     /**
-     * <code>optional .FriendList search_result = 9;</code>
+     * <code>.FriendList search_result = 9;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.FriendList getSearchResult();
     /**
-     * <code>optional .FriendList search_result = 9;</code>
+     * <code>.FriendList search_result = 9;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.FriendListOrBuilder getSearchResultOrBuilder();
 
     /**
-     * <code>optional int32 sex = 10;</code>
+     * <code>int32 sex = 10;</code>
      */
     int getSex();
 
@@ -9873,7 +9894,7 @@ public final class ProtoMessage {
      * 最少输入3项
      * </pre>
      *
-     * <code>optional string car_num = 11;</code>
+     * <code>string car_num = 11;</code>
      */
     java.lang.String getCarNum();
     /**
@@ -9881,7 +9902,7 @@ public final class ProtoMessage {
      * 最少输入3项
      * </pre>
      *
-     * <code>optional string car_num = 11;</code>
+     * <code>string car_num = 11;</code>
      */
     com.google.protobuf.ByteString
         getCarNumBytes();
@@ -10031,7 +10052,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -10040,14 +10061,14 @@ public final class ProtoMessage {
     public static final int PROV_FIELD_NUMBER = 2;
     private volatile java.lang.Object prov_;
     /**
-     * <code>optional string prov = 2;</code>
+     * <code>string prov = 2;</code>
      */
     public java.lang.String getProv() {
       java.lang.Object ref = prov_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         prov_ = s;
@@ -10055,13 +10076,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string prov = 2;</code>
+     * <code>string prov = 2;</code>
      */
     public com.google.protobuf.ByteString
         getProvBytes() {
       java.lang.Object ref = prov_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         prov_ = b;
@@ -10074,14 +10095,14 @@ public final class ProtoMessage {
     public static final int CITY_FIELD_NUMBER = 3;
     private volatile java.lang.Object city_;
     /**
-     * <code>optional string city = 3;</code>
+     * <code>string city = 3;</code>
      */
     public java.lang.String getCity() {
       java.lang.Object ref = city_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         city_ = s;
@@ -10089,13 +10110,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string city = 3;</code>
+     * <code>string city = 3;</code>
      */
     public com.google.protobuf.ByteString
         getCityBytes() {
       java.lang.Object ref = city_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         city_ = b;
@@ -10108,14 +10129,14 @@ public final class ProtoMessage {
     public static final int TOWN_FIELD_NUMBER = 4;
     private volatile java.lang.Object town_;
     /**
-     * <code>optional string town = 4;</code>
+     * <code>string town = 4;</code>
      */
     public java.lang.String getTown() {
       java.lang.Object ref = town_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         town_ = s;
@@ -10123,13 +10144,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string town = 4;</code>
+     * <code>string town = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTownBytes() {
       java.lang.Object ref = town_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         town_ = b;
@@ -10142,14 +10163,14 @@ public final class ProtoMessage {
     public static final int CAR_TYPE1_FIELD_NUMBER = 5;
     private volatile java.lang.Object carType1_;
     /**
-     * <code>optional string car_type1 = 5;</code>
+     * <code>string car_type1 = 5;</code>
      */
     public java.lang.String getCarType1() {
       java.lang.Object ref = carType1_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carType1_ = s;
@@ -10157,13 +10178,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string car_type1 = 5;</code>
+     * <code>string car_type1 = 5;</code>
      */
     public com.google.protobuf.ByteString
         getCarType1Bytes() {
       java.lang.Object ref = carType1_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carType1_ = b;
@@ -10176,14 +10197,14 @@ public final class ProtoMessage {
     public static final int CAR_TYPE2_FIELD_NUMBER = 6;
     private volatile java.lang.Object carType2_;
     /**
-     * <code>optional string car_type2 = 6;</code>
+     * <code>string car_type2 = 6;</code>
      */
     public java.lang.String getCarType2() {
       java.lang.Object ref = carType2_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carType2_ = s;
@@ -10191,13 +10212,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string car_type2 = 6;</code>
+     * <code>string car_type2 = 6;</code>
      */
     public com.google.protobuf.ByteString
         getCarType2Bytes() {
       java.lang.Object ref = carType2_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carType2_ = b;
@@ -10210,14 +10231,14 @@ public final class ProtoMessage {
     public static final int CAR_TYPE3_FIELD_NUMBER = 7;
     private volatile java.lang.Object carType3_;
     /**
-     * <code>optional string car_type3 = 7;</code>
+     * <code>string car_type3 = 7;</code>
      */
     public java.lang.String getCarType3() {
       java.lang.Object ref = carType3_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carType3_ = s;
@@ -10225,13 +10246,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string car_type3 = 7;</code>
+     * <code>string car_type3 = 7;</code>
      */
     public com.google.protobuf.ByteString
         getCarType3Bytes() {
       java.lang.Object ref = carType3_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carType3_ = b;
@@ -10248,7 +10269,7 @@ public final class ProtoMessage {
      * 换一批，0从头搜索，非0：从上次搜索之后开始搜索。
      * </pre>
      *
-     * <code>optional int32 pos = 8;</code>
+     * <code>int32 pos = 8;</code>
      */
     public int getPos() {
       return pos_;
@@ -10257,19 +10278,19 @@ public final class ProtoMessage {
     public static final int SEARCH_RESULT_FIELD_NUMBER = 9;
     private com.example.jrd48.service.proto_gen.ProtoMessage.FriendList searchResult_;
     /**
-     * <code>optional .FriendList search_result = 9;</code>
+     * <code>.FriendList search_result = 9;</code>
      */
     public boolean hasSearchResult() {
       return searchResult_ != null;
     }
     /**
-     * <code>optional .FriendList search_result = 9;</code>
+     * <code>.FriendList search_result = 9;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.FriendList getSearchResult() {
       return searchResult_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.FriendList.getDefaultInstance() : searchResult_;
     }
     /**
-     * <code>optional .FriendList search_result = 9;</code>
+     * <code>.FriendList search_result = 9;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.FriendListOrBuilder getSearchResultOrBuilder() {
       return getSearchResult();
@@ -10278,7 +10299,7 @@ public final class ProtoMessage {
     public static final int SEX_FIELD_NUMBER = 10;
     private int sex_;
     /**
-     * <code>optional int32 sex = 10;</code>
+     * <code>int32 sex = 10;</code>
      */
     public int getSex() {
       return sex_;
@@ -10291,14 +10312,14 @@ public final class ProtoMessage {
      * 最少输入3项
      * </pre>
      *
-     * <code>optional string car_num = 11;</code>
+     * <code>string car_num = 11;</code>
      */
     public java.lang.String getCarNum() {
       java.lang.Object ref = carNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carNum_ = s;
@@ -10310,13 +10331,13 @@ public final class ProtoMessage {
      * 最少输入3项
      * </pre>
      *
-     * <code>optional string car_num = 11;</code>
+     * <code>string car_num = 11;</code>
      */
     public com.google.protobuf.ByteString
         getCarNumBytes() {
       java.lang.Object ref = carNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carNum_ = b;
@@ -10465,7 +10486,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PROV_FIELD_NUMBER;
@@ -10780,25 +10801,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -10806,7 +10827,7 @@ public final class ProtoMessage {
 
       private java.lang.Object prov_ = "";
       /**
-       * <code>optional string prov = 2;</code>
+       * <code>string prov = 2;</code>
        */
       public java.lang.String getProv() {
         java.lang.Object ref = prov_;
@@ -10821,13 +10842,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string prov = 2;</code>
+       * <code>string prov = 2;</code>
        */
       public com.google.protobuf.ByteString
           getProvBytes() {
         java.lang.Object ref = prov_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           prov_ = b;
@@ -10837,29 +10858,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string prov = 2;</code>
+       * <code>string prov = 2;</code>
        */
       public Builder setProv(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         prov_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string prov = 2;</code>
+       * <code>string prov = 2;</code>
        */
       public Builder clearProv() {
-
+        
         prov_ = getDefaultInstance().getProv();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string prov = 2;</code>
+       * <code>string prov = 2;</code>
        */
       public Builder setProvBytes(
           com.google.protobuf.ByteString value) {
@@ -10867,7 +10888,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         prov_ = value;
         onChanged();
         return this;
@@ -10875,7 +10896,7 @@ public final class ProtoMessage {
 
       private java.lang.Object city_ = "";
       /**
-       * <code>optional string city = 3;</code>
+       * <code>string city = 3;</code>
        */
       public java.lang.String getCity() {
         java.lang.Object ref = city_;
@@ -10890,13 +10911,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string city = 3;</code>
+       * <code>string city = 3;</code>
        */
       public com.google.protobuf.ByteString
           getCityBytes() {
         java.lang.Object ref = city_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           city_ = b;
@@ -10906,29 +10927,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string city = 3;</code>
+       * <code>string city = 3;</code>
        */
       public Builder setCity(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         city_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string city = 3;</code>
+       * <code>string city = 3;</code>
        */
       public Builder clearCity() {
-
+        
         city_ = getDefaultInstance().getCity();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string city = 3;</code>
+       * <code>string city = 3;</code>
        */
       public Builder setCityBytes(
           com.google.protobuf.ByteString value) {
@@ -10936,7 +10957,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         city_ = value;
         onChanged();
         return this;
@@ -10944,7 +10965,7 @@ public final class ProtoMessage {
 
       private java.lang.Object town_ = "";
       /**
-       * <code>optional string town = 4;</code>
+       * <code>string town = 4;</code>
        */
       public java.lang.String getTown() {
         java.lang.Object ref = town_;
@@ -10959,13 +10980,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string town = 4;</code>
+       * <code>string town = 4;</code>
        */
       public com.google.protobuf.ByteString
           getTownBytes() {
         java.lang.Object ref = town_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           town_ = b;
@@ -10975,29 +10996,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string town = 4;</code>
+       * <code>string town = 4;</code>
        */
       public Builder setTown(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         town_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string town = 4;</code>
+       * <code>string town = 4;</code>
        */
       public Builder clearTown() {
-
+        
         town_ = getDefaultInstance().getTown();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string town = 4;</code>
+       * <code>string town = 4;</code>
        */
       public Builder setTownBytes(
           com.google.protobuf.ByteString value) {
@@ -11005,7 +11026,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         town_ = value;
         onChanged();
         return this;
@@ -11013,7 +11034,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType1_ = "";
       /**
-       * <code>optional string car_type1 = 5;</code>
+       * <code>string car_type1 = 5;</code>
        */
       public java.lang.String getCarType1() {
         java.lang.Object ref = carType1_;
@@ -11028,13 +11049,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type1 = 5;</code>
+       * <code>string car_type1 = 5;</code>
        */
       public com.google.protobuf.ByteString
           getCarType1Bytes() {
         java.lang.Object ref = carType1_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carType1_ = b;
@@ -11044,29 +11065,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type1 = 5;</code>
+       * <code>string car_type1 = 5;</code>
        */
       public Builder setCarType1(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carType1_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type1 = 5;</code>
+       * <code>string car_type1 = 5;</code>
        */
       public Builder clearCarType1() {
-
+        
         carType1_ = getDefaultInstance().getCarType1();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type1 = 5;</code>
+       * <code>string car_type1 = 5;</code>
        */
       public Builder setCarType1Bytes(
           com.google.protobuf.ByteString value) {
@@ -11074,7 +11095,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carType1_ = value;
         onChanged();
         return this;
@@ -11082,7 +11103,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType2_ = "";
       /**
-       * <code>optional string car_type2 = 6;</code>
+       * <code>string car_type2 = 6;</code>
        */
       public java.lang.String getCarType2() {
         java.lang.Object ref = carType2_;
@@ -11097,13 +11118,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type2 = 6;</code>
+       * <code>string car_type2 = 6;</code>
        */
       public com.google.protobuf.ByteString
           getCarType2Bytes() {
         java.lang.Object ref = carType2_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carType2_ = b;
@@ -11113,29 +11134,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type2 = 6;</code>
+       * <code>string car_type2 = 6;</code>
        */
       public Builder setCarType2(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carType2_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type2 = 6;</code>
+       * <code>string car_type2 = 6;</code>
        */
       public Builder clearCarType2() {
-
+        
         carType2_ = getDefaultInstance().getCarType2();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type2 = 6;</code>
+       * <code>string car_type2 = 6;</code>
        */
       public Builder setCarType2Bytes(
           com.google.protobuf.ByteString value) {
@@ -11143,7 +11164,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carType2_ = value;
         onChanged();
         return this;
@@ -11151,7 +11172,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType3_ = "";
       /**
-       * <code>optional string car_type3 = 7;</code>
+       * <code>string car_type3 = 7;</code>
        */
       public java.lang.String getCarType3() {
         java.lang.Object ref = carType3_;
@@ -11166,13 +11187,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type3 = 7;</code>
+       * <code>string car_type3 = 7;</code>
        */
       public com.google.protobuf.ByteString
           getCarType3Bytes() {
         java.lang.Object ref = carType3_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carType3_ = b;
@@ -11182,29 +11203,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type3 = 7;</code>
+       * <code>string car_type3 = 7;</code>
        */
       public Builder setCarType3(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carType3_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type3 = 7;</code>
+       * <code>string car_type3 = 7;</code>
        */
       public Builder clearCarType3() {
-
+        
         carType3_ = getDefaultInstance().getCarType3();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type3 = 7;</code>
+       * <code>string car_type3 = 7;</code>
        */
       public Builder setCarType3Bytes(
           com.google.protobuf.ByteString value) {
@@ -11212,7 +11233,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carType3_ = value;
         onChanged();
         return this;
@@ -11224,7 +11245,7 @@ public final class ProtoMessage {
        * 换一批，0从头搜索，非0：从上次搜索之后开始搜索。
        * </pre>
        *
-       * <code>optional int32 pos = 8;</code>
+       * <code>int32 pos = 8;</code>
        */
       public int getPos() {
         return pos_;
@@ -11234,10 +11255,10 @@ public final class ProtoMessage {
        * 换一批，0从头搜索，非0：从上次搜索之后开始搜索。
        * </pre>
        *
-       * <code>optional int32 pos = 8;</code>
+       * <code>int32 pos = 8;</code>
        */
       public Builder setPos(int value) {
-
+        
         pos_ = value;
         onChanged();
         return this;
@@ -11247,10 +11268,10 @@ public final class ProtoMessage {
        * 换一批，0从头搜索，非0：从上次搜索之后开始搜索。
        * </pre>
        *
-       * <code>optional int32 pos = 8;</code>
+       * <code>int32 pos = 8;</code>
        */
       public Builder clearPos() {
-
+        
         pos_ = 0;
         onChanged();
         return this;
@@ -11260,13 +11281,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.FriendList, com.example.jrd48.service.proto_gen.ProtoMessage.FriendList.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.FriendListOrBuilder> searchResultBuilder_;
       /**
-       * <code>optional .FriendList search_result = 9;</code>
+       * <code>.FriendList search_result = 9;</code>
        */
       public boolean hasSearchResult() {
         return searchResultBuilder_ != null || searchResult_ != null;
       }
       /**
-       * <code>optional .FriendList search_result = 9;</code>
+       * <code>.FriendList search_result = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.FriendList getSearchResult() {
         if (searchResultBuilder_ == null) {
@@ -11276,7 +11297,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .FriendList search_result = 9;</code>
+       * <code>.FriendList search_result = 9;</code>
        */
       public Builder setSearchResult(com.example.jrd48.service.proto_gen.ProtoMessage.FriendList value) {
         if (searchResultBuilder_ == null) {
@@ -11292,7 +11313,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .FriendList search_result = 9;</code>
+       * <code>.FriendList search_result = 9;</code>
        */
       public Builder setSearchResult(
           com.example.jrd48.service.proto_gen.ProtoMessage.FriendList.Builder builderForValue) {
@@ -11306,7 +11327,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .FriendList search_result = 9;</code>
+       * <code>.FriendList search_result = 9;</code>
        */
       public Builder mergeSearchResult(com.example.jrd48.service.proto_gen.ProtoMessage.FriendList value) {
         if (searchResultBuilder_ == null) {
@@ -11324,7 +11345,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .FriendList search_result = 9;</code>
+       * <code>.FriendList search_result = 9;</code>
        */
       public Builder clearSearchResult() {
         if (searchResultBuilder_ == null) {
@@ -11338,15 +11359,15 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .FriendList search_result = 9;</code>
+       * <code>.FriendList search_result = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.FriendList.Builder getSearchResultBuilder() {
-
+        
         onChanged();
         return getSearchResultFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .FriendList search_result = 9;</code>
+       * <code>.FriendList search_result = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.FriendListOrBuilder getSearchResultOrBuilder() {
         if (searchResultBuilder_ != null) {
@@ -11357,10 +11378,10 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .FriendList search_result = 9;</code>
+       * <code>.FriendList search_result = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.FriendList, com.example.jrd48.service.proto_gen.ProtoMessage.FriendList.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.FriendListOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.FriendList, com.example.jrd48.service.proto_gen.ProtoMessage.FriendList.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.FriendListOrBuilder> 
           getSearchResultFieldBuilder() {
         if (searchResultBuilder_ == null) {
           searchResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -11375,25 +11396,25 @@ public final class ProtoMessage {
 
       private int sex_ ;
       /**
-       * <code>optional int32 sex = 10;</code>
+       * <code>int32 sex = 10;</code>
        */
       public int getSex() {
         return sex_;
       }
       /**
-       * <code>optional int32 sex = 10;</code>
+       * <code>int32 sex = 10;</code>
        */
       public Builder setSex(int value) {
-
+        
         sex_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 sex = 10;</code>
+       * <code>int32 sex = 10;</code>
        */
       public Builder clearSex() {
-
+        
         sex_ = 0;
         onChanged();
         return this;
@@ -11405,7 +11426,7 @@ public final class ProtoMessage {
        * 最少输入3项
        * </pre>
        *
-       * <code>optional string car_num = 11;</code>
+       * <code>string car_num = 11;</code>
        */
       public java.lang.String getCarNum() {
         java.lang.Object ref = carNum_;
@@ -11424,13 +11445,13 @@ public final class ProtoMessage {
        * 最少输入3项
        * </pre>
        *
-       * <code>optional string car_num = 11;</code>
+       * <code>string car_num = 11;</code>
        */
       public com.google.protobuf.ByteString
           getCarNumBytes() {
         java.lang.Object ref = carNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carNum_ = b;
@@ -11444,14 +11465,14 @@ public final class ProtoMessage {
        * 最少输入3项
        * </pre>
        *
-       * <code>optional string car_num = 11;</code>
+       * <code>string car_num = 11;</code>
        */
       public Builder setCarNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carNum_ = value;
         onChanged();
         return this;
@@ -11461,10 +11482,10 @@ public final class ProtoMessage {
        * 最少输入3项
        * </pre>
        *
-       * <code>optional string car_num = 11;</code>
+       * <code>string car_num = 11;</code>
        */
       public Builder clearCarNum() {
-
+        
         carNum_ = getDefaultInstance().getCarNum();
         onChanged();
         return this;
@@ -11474,7 +11495,7 @@ public final class ProtoMessage {
        * 最少输入3项
        * </pre>
        *
-       * <code>optional string car_num = 11;</code>
+       * <code>string car_num = 11;</code>
        */
       public Builder setCarNumBytes(
           com.google.protobuf.ByteString value) {
@@ -11482,7 +11503,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carNum_ = value;
         onChanged();
         return this;
@@ -11541,12 +11562,12 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int64 msgID = 2;</code>
+     * <code>int64 msgID = 2;</code>
      */
     long getMsgID();
 
@@ -11555,7 +11576,7 @@ public final class ProtoMessage {
      * 附件的字节数
      * </pre>
      *
-     * <code>optional int64 msgSize = 3;</code>
+     * <code>int64 msgSize = 3;</code>
      */
     long getMsgSize();
 
@@ -11564,7 +11585,7 @@ public final class ProtoMessage {
      * 暂时固定为 64K （即：64*1024个字节）
      * </pre>
      *
-     * <code>optional int32 packSize = 4;</code>
+     * <code>int32 packSize = 4;</code>
      */
     int getPackSize();
 
@@ -11573,7 +11594,7 @@ public final class ProtoMessage {
      * 总包数
      * </pre>
      *
-     * <code>optional int32 packCnt = 5;</code>
+     * <code>int32 packCnt = 5;</code>
      */
     int getPackCnt();
 
@@ -11582,7 +11603,7 @@ public final class ProtoMessage {
      * 上传时：包号： 范围 ： [0..packCnt], 当packNum = 0 时，仅设置 msgSum, 而不需要传递 packData,
      * </pre>
      *
-     * <code>optional int32 packNum = 6;</code>
+     * <code>int32 packNum = 6;</code>
      */
     int getPackNum();
 
@@ -11592,7 +11613,7 @@ public final class ProtoMessage {
      * 下载时：包号： 范围 ： [0..packCnt]
      * </pre>
      *
-     * <code>optional bytes msgSum = 7;</code>
+     * <code>bytes msgSum = 7;</code>
      */
     com.google.protobuf.ByteString getMsgSum();
 
@@ -11601,7 +11622,7 @@ public final class ProtoMessage {
      * 当 packNum == [1.. packCnt] 时有效
      * </pre>
      *
-     * <code>optional bytes packData = 8;</code>
+     * <code>bytes packData = 8;</code>
      */
     com.google.protobuf.ByteString getPackData();
 
@@ -11610,7 +11631,7 @@ public final class ProtoMessage {
      * 方便客户端使用
      * </pre>
      *
-     * <code>optional int64 msgSN = 9;</code>
+     * <code>int64 msgSN = 9;</code>
      */
     long getMsgSN();
   }
@@ -11733,7 +11754,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -11742,7 +11763,7 @@ public final class ProtoMessage {
     public static final int MSGID_FIELD_NUMBER = 2;
     private long msgID_;
     /**
-     * <code>optional int64 msgID = 2;</code>
+     * <code>int64 msgID = 2;</code>
      */
     public long getMsgID() {
       return msgID_;
@@ -11755,7 +11776,7 @@ public final class ProtoMessage {
      * 附件的字节数
      * </pre>
      *
-     * <code>optional int64 msgSize = 3;</code>
+     * <code>int64 msgSize = 3;</code>
      */
     public long getMsgSize() {
       return msgSize_;
@@ -11768,7 +11789,7 @@ public final class ProtoMessage {
      * 暂时固定为 64K （即：64*1024个字节）
      * </pre>
      *
-     * <code>optional int32 packSize = 4;</code>
+     * <code>int32 packSize = 4;</code>
      */
     public int getPackSize() {
       return packSize_;
@@ -11781,7 +11802,7 @@ public final class ProtoMessage {
      * 总包数
      * </pre>
      *
-     * <code>optional int32 packCnt = 5;</code>
+     * <code>int32 packCnt = 5;</code>
      */
     public int getPackCnt() {
       return packCnt_;
@@ -11794,7 +11815,7 @@ public final class ProtoMessage {
      * 上传时：包号： 范围 ： [0..packCnt], 当packNum = 0 时，仅设置 msgSum, 而不需要传递 packData,
      * </pre>
      *
-     * <code>optional int32 packNum = 6;</code>
+     * <code>int32 packNum = 6;</code>
      */
     public int getPackNum() {
       return packNum_;
@@ -11808,7 +11829,7 @@ public final class ProtoMessage {
      * 下载时：包号： 范围 ： [0..packCnt]
      * </pre>
      *
-     * <code>optional bytes msgSum = 7;</code>
+     * <code>bytes msgSum = 7;</code>
      */
     public com.google.protobuf.ByteString getMsgSum() {
       return msgSum_;
@@ -11821,7 +11842,7 @@ public final class ProtoMessage {
      * 当 packNum == [1.. packCnt] 时有效
      * </pre>
      *
-     * <code>optional bytes packData = 8;</code>
+     * <code>bytes packData = 8;</code>
      */
     public com.google.protobuf.ByteString getPackData() {
       return packData_;
@@ -11834,7 +11855,7 @@ public final class ProtoMessage {
      * 方便客户端使用
      * </pre>
      *
-     * <code>optional int64 msgSN = 9;</code>
+     * <code>int64 msgSN = 9;</code>
      */
     public long getMsgSN() {
       return msgSN_;
@@ -11965,7 +11986,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + MSGID_FIELD_NUMBER;
@@ -12250,25 +12271,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -12276,25 +12297,25 @@ public final class ProtoMessage {
 
       private long msgID_ ;
       /**
-       * <code>optional int64 msgID = 2;</code>
+       * <code>int64 msgID = 2;</code>
        */
       public long getMsgID() {
         return msgID_;
       }
       /**
-       * <code>optional int64 msgID = 2;</code>
+       * <code>int64 msgID = 2;</code>
        */
       public Builder setMsgID(long value) {
-
+        
         msgID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 msgID = 2;</code>
+       * <code>int64 msgID = 2;</code>
        */
       public Builder clearMsgID() {
-
+        
         msgID_ = 0L;
         onChanged();
         return this;
@@ -12306,7 +12327,7 @@ public final class ProtoMessage {
        * 附件的字节数
        * </pre>
        *
-       * <code>optional int64 msgSize = 3;</code>
+       * <code>int64 msgSize = 3;</code>
        */
       public long getMsgSize() {
         return msgSize_;
@@ -12316,10 +12337,10 @@ public final class ProtoMessage {
        * 附件的字节数
        * </pre>
        *
-       * <code>optional int64 msgSize = 3;</code>
+       * <code>int64 msgSize = 3;</code>
        */
       public Builder setMsgSize(long value) {
-
+        
         msgSize_ = value;
         onChanged();
         return this;
@@ -12329,10 +12350,10 @@ public final class ProtoMessage {
        * 附件的字节数
        * </pre>
        *
-       * <code>optional int64 msgSize = 3;</code>
+       * <code>int64 msgSize = 3;</code>
        */
       public Builder clearMsgSize() {
-
+        
         msgSize_ = 0L;
         onChanged();
         return this;
@@ -12344,7 +12365,7 @@ public final class ProtoMessage {
        * 暂时固定为 64K （即：64*1024个字节）
        * </pre>
        *
-       * <code>optional int32 packSize = 4;</code>
+       * <code>int32 packSize = 4;</code>
        */
       public int getPackSize() {
         return packSize_;
@@ -12354,10 +12375,10 @@ public final class ProtoMessage {
        * 暂时固定为 64K （即：64*1024个字节）
        * </pre>
        *
-       * <code>optional int32 packSize = 4;</code>
+       * <code>int32 packSize = 4;</code>
        */
       public Builder setPackSize(int value) {
-
+        
         packSize_ = value;
         onChanged();
         return this;
@@ -12367,10 +12388,10 @@ public final class ProtoMessage {
        * 暂时固定为 64K （即：64*1024个字节）
        * </pre>
        *
-       * <code>optional int32 packSize = 4;</code>
+       * <code>int32 packSize = 4;</code>
        */
       public Builder clearPackSize() {
-
+        
         packSize_ = 0;
         onChanged();
         return this;
@@ -12382,7 +12403,7 @@ public final class ProtoMessage {
        * 总包数
        * </pre>
        *
-       * <code>optional int32 packCnt = 5;</code>
+       * <code>int32 packCnt = 5;</code>
        */
       public int getPackCnt() {
         return packCnt_;
@@ -12392,10 +12413,10 @@ public final class ProtoMessage {
        * 总包数
        * </pre>
        *
-       * <code>optional int32 packCnt = 5;</code>
+       * <code>int32 packCnt = 5;</code>
        */
       public Builder setPackCnt(int value) {
-
+        
         packCnt_ = value;
         onChanged();
         return this;
@@ -12405,10 +12426,10 @@ public final class ProtoMessage {
        * 总包数
        * </pre>
        *
-       * <code>optional int32 packCnt = 5;</code>
+       * <code>int32 packCnt = 5;</code>
        */
       public Builder clearPackCnt() {
-
+        
         packCnt_ = 0;
         onChanged();
         return this;
@@ -12420,7 +12441,7 @@ public final class ProtoMessage {
        * 上传时：包号： 范围 ： [0..packCnt], 当packNum = 0 时，仅设置 msgSum, 而不需要传递 packData,
        * </pre>
        *
-       * <code>optional int32 packNum = 6;</code>
+       * <code>int32 packNum = 6;</code>
        */
       public int getPackNum() {
         return packNum_;
@@ -12430,10 +12451,10 @@ public final class ProtoMessage {
        * 上传时：包号： 范围 ： [0..packCnt], 当packNum = 0 时，仅设置 msgSum, 而不需要传递 packData,
        * </pre>
        *
-       * <code>optional int32 packNum = 6;</code>
+       * <code>int32 packNum = 6;</code>
        */
       public Builder setPackNum(int value) {
-
+        
         packNum_ = value;
         onChanged();
         return this;
@@ -12443,10 +12464,10 @@ public final class ProtoMessage {
        * 上传时：包号： 范围 ： [0..packCnt], 当packNum = 0 时，仅设置 msgSum, 而不需要传递 packData,
        * </pre>
        *
-       * <code>optional int32 packNum = 6;</code>
+       * <code>int32 packNum = 6;</code>
        */
       public Builder clearPackNum() {
-
+        
         packNum_ = 0;
         onChanged();
         return this;
@@ -12459,7 +12480,7 @@ public final class ProtoMessage {
        * 下载时：包号： 范围 ： [0..packCnt]
        * </pre>
        *
-       * <code>optional bytes msgSum = 7;</code>
+       * <code>bytes msgSum = 7;</code>
        */
       public com.google.protobuf.ByteString getMsgSum() {
         return msgSum_;
@@ -12470,13 +12491,13 @@ public final class ProtoMessage {
        * 下载时：包号： 范围 ： [0..packCnt]
        * </pre>
        *
-       * <code>optional bytes msgSum = 7;</code>
+       * <code>bytes msgSum = 7;</code>
        */
       public Builder setMsgSum(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         msgSum_ = value;
         onChanged();
         return this;
@@ -12487,10 +12508,10 @@ public final class ProtoMessage {
        * 下载时：包号： 范围 ： [0..packCnt]
        * </pre>
        *
-       * <code>optional bytes msgSum = 7;</code>
+       * <code>bytes msgSum = 7;</code>
        */
       public Builder clearMsgSum() {
-
+        
         msgSum_ = getDefaultInstance().getMsgSum();
         onChanged();
         return this;
@@ -12502,7 +12523,7 @@ public final class ProtoMessage {
        * 当 packNum == [1.. packCnt] 时有效
        * </pre>
        *
-       * <code>optional bytes packData = 8;</code>
+       * <code>bytes packData = 8;</code>
        */
       public com.google.protobuf.ByteString getPackData() {
         return packData_;
@@ -12512,13 +12533,13 @@ public final class ProtoMessage {
        * 当 packNum == [1.. packCnt] 时有效
        * </pre>
        *
-       * <code>optional bytes packData = 8;</code>
+       * <code>bytes packData = 8;</code>
        */
       public Builder setPackData(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         packData_ = value;
         onChanged();
         return this;
@@ -12528,10 +12549,10 @@ public final class ProtoMessage {
        * 当 packNum == [1.. packCnt] 时有效
        * </pre>
        *
-       * <code>optional bytes packData = 8;</code>
+       * <code>bytes packData = 8;</code>
        */
       public Builder clearPackData() {
-
+        
         packData_ = getDefaultInstance().getPackData();
         onChanged();
         return this;
@@ -12543,7 +12564,7 @@ public final class ProtoMessage {
        * 方便客户端使用
        * </pre>
        *
-       * <code>optional int64 msgSN = 9;</code>
+       * <code>int64 msgSN = 9;</code>
        */
       public long getMsgSN() {
         return msgSN_;
@@ -12553,10 +12574,10 @@ public final class ProtoMessage {
        * 方便客户端使用
        * </pre>
        *
-       * <code>optional int64 msgSN = 9;</code>
+       * <code>int64 msgSN = 9;</code>
        */
       public Builder setMsgSN(long value) {
-
+        
         msgSN_ = value;
         onChanged();
         return this;
@@ -12566,10 +12587,10 @@ public final class ProtoMessage {
        * 方便客户端使用
        * </pre>
        *
-       * <code>optional int64 msgSN = 9;</code>
+       * <code>int64 msgSN = 9;</code>
        */
       public Builder clearMsgSN() {
-
+        
         msgSN_ = 0L;
         onChanged();
         return this;
@@ -12628,21 +12649,21 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int32 codeType = 2;</code>
+     * <code>int32 codeType = 2;</code>
      */
     int getCodeType();
 
     /**
-     * <code>optional string phoneNum = 3;</code>
+     * <code>string phoneNum = 3;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 3;</code>
+     * <code>string phoneNum = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -12652,7 +12673,7 @@ public final class ProtoMessage {
      * 验证时使用
      * </pre>
      *
-     * <code>optional string code = 4;</code>
+     * <code>string code = 4;</code>
      */
     java.lang.String getCode();
     /**
@@ -12660,14 +12681,14 @@ public final class ProtoMessage {
      * 验证时使用
      * </pre>
      *
-     * <code>optional string code = 4;</code>
+     * <code>string code = 4;</code>
      */
     com.google.protobuf.ByteString
         getCodeBytes();
   }
   /**
    * <pre>
-   ** 短信验证码请求，返回通用响应包 -&gt; 改为返回与请求相同的数据
+   ** 短信验证码请求，返回通用响应包 -&gt; 改为返回与请求相同的数据 
    * </pre>
    *
    * Protobuf type {@code SmsCodeReq}
@@ -12760,7 +12781,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -12769,7 +12790,7 @@ public final class ProtoMessage {
     public static final int CODETYPE_FIELD_NUMBER = 2;
     private int codeType_;
     /**
-     * <code>optional int32 codeType = 2;</code>
+     * <code>int32 codeType = 2;</code>
      */
     public int getCodeType() {
       return codeType_;
@@ -12778,14 +12799,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 3;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 3;</code>
+     * <code>string phoneNum = 3;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -12793,13 +12814,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 3;</code>
+     * <code>string phoneNum = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -12816,14 +12837,14 @@ public final class ProtoMessage {
      * 验证时使用
      * </pre>
      *
-     * <code>optional string code = 4;</code>
+     * <code>string code = 4;</code>
      */
     public java.lang.String getCode() {
       java.lang.Object ref = code_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         code_ = s;
@@ -12835,13 +12856,13 @@ public final class ProtoMessage {
      * 验证时使用
      * </pre>
      *
-     * <code>optional string code = 4;</code>
+     * <code>string code = 4;</code>
      */
     public com.google.protobuf.ByteString
         getCodeBytes() {
       java.lang.Object ref = code_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         code_ = b;
@@ -12929,7 +12950,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + CODETYPE_FIELD_NUMBER;
@@ -13022,7 +13043,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 短信验证码请求，返回通用响应包 -&gt; 改为返回与请求相同的数据
+     ** 短信验证码请求，返回通用响应包 -&gt; 改为返回与请求相同的数据 
      * </pre>
      *
      * Protobuf type {@code SmsCodeReq}
@@ -13177,25 +13198,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -13203,25 +13224,25 @@ public final class ProtoMessage {
 
       private int codeType_ ;
       /**
-       * <code>optional int32 codeType = 2;</code>
+       * <code>int32 codeType = 2;</code>
        */
       public int getCodeType() {
         return codeType_;
       }
       /**
-       * <code>optional int32 codeType = 2;</code>
+       * <code>int32 codeType = 2;</code>
        */
       public Builder setCodeType(int value) {
-
+        
         codeType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 codeType = 2;</code>
+       * <code>int32 codeType = 2;</code>
        */
       public Builder clearCodeType() {
-
+        
         codeType_ = 0;
         onChanged();
         return this;
@@ -13229,7 +13250,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 3;</code>
+       * <code>string phoneNum = 3;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -13244,13 +13265,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 3;</code>
+       * <code>string phoneNum = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -13260,29 +13281,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 3;</code>
+       * <code>string phoneNum = 3;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 3;</code>
+       * <code>string phoneNum = 3;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 3;</code>
+       * <code>string phoneNum = 3;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -13290,7 +13311,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -13302,7 +13323,7 @@ public final class ProtoMessage {
        * 验证时使用
        * </pre>
        *
-       * <code>optional string code = 4;</code>
+       * <code>string code = 4;</code>
        */
       public java.lang.String getCode() {
         java.lang.Object ref = code_;
@@ -13321,13 +13342,13 @@ public final class ProtoMessage {
        * 验证时使用
        * </pre>
        *
-       * <code>optional string code = 4;</code>
+       * <code>string code = 4;</code>
        */
       public com.google.protobuf.ByteString
           getCodeBytes() {
         java.lang.Object ref = code_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           code_ = b;
@@ -13341,14 +13362,14 @@ public final class ProtoMessage {
        * 验证时使用
        * </pre>
        *
-       * <code>optional string code = 4;</code>
+       * <code>string code = 4;</code>
        */
       public Builder setCode(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         code_ = value;
         onChanged();
         return this;
@@ -13358,10 +13379,10 @@ public final class ProtoMessage {
        * 验证时使用
        * </pre>
        *
-       * <code>optional string code = 4;</code>
+       * <code>string code = 4;</code>
        */
       public Builder clearCode() {
-
+        
         code_ = getDefaultInstance().getCode();
         onChanged();
         return this;
@@ -13371,7 +13392,7 @@ public final class ProtoMessage {
        * 验证时使用
        * </pre>
        *
-       * <code>optional string code = 4;</code>
+       * <code>string code = 4;</code>
        */
       public Builder setCodeBytes(
           com.google.protobuf.ByteString value) {
@@ -13379,7 +13400,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         code_ = value;
         onChanged();
         return this;
@@ -13438,7 +13459,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bool reserved = 1;</code>
+     * <code>bool reserved = 1;</code>
      */
     boolean getReserved();
   }
@@ -13513,7 +13534,7 @@ public final class ProtoMessage {
     public static final int RESERVED_FIELD_NUMBER = 1;
     private boolean reserved_;
     /**
-     * <code>optional bool reserved = 1;</code>
+     * <code>bool reserved = 1;</code>
      */
     public boolean getReserved() {
       return reserved_;
@@ -13572,7 +13593,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + RESERVED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getReserved());
@@ -13791,25 +13812,25 @@ public final class ProtoMessage {
 
       private boolean reserved_ ;
       /**
-       * <code>optional bool reserved = 1;</code>
+       * <code>bool reserved = 1;</code>
        */
       public boolean getReserved() {
         return reserved_;
       }
       /**
-       * <code>optional bool reserved = 1;</code>
+       * <code>bool reserved = 1;</code>
        */
       public Builder setReserved(boolean value) {
-
+        
         reserved_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bool reserved = 1;</code>
+       * <code>bool reserved = 1;</code>
        */
       public Builder clearReserved() {
-
+        
         reserved_ = false;
         onChanged();
         return this;
@@ -13868,13 +13889,13 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
   }
   /**
    * <pre>
-   ** 通用回复
+   ** 通用回复 
    * </pre>
    *
    * Protobuf type {@code CommonResp}
@@ -13947,7 +13968,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -14006,7 +14027,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -14093,7 +14114,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 通用回复
+     ** 通用回复 
      * </pre>
      *
      * Protobuf type {@code CommonResp}
@@ -14228,25 +14249,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -14305,12 +14326,12 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int32 serverType = 2;</code>
+     * <code>int32 serverType = 2;</code>
      */
     int getServerType();
   }
@@ -14391,7 +14412,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -14400,7 +14421,7 @@ public final class ProtoMessage {
     public static final int SERVERTYPE_FIELD_NUMBER = 2;
     private int serverType_;
     /**
-     * <code>optional int32 serverType = 2;</code>
+     * <code>int32 serverType = 2;</code>
      */
     public int getServerType() {
       return serverType_;
@@ -14468,7 +14489,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + SERVERTYPE_FIELD_NUMBER;
@@ -14694,25 +14715,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -14720,25 +14741,25 @@ public final class ProtoMessage {
 
       private int serverType_ ;
       /**
-       * <code>optional int32 serverType = 2;</code>
+       * <code>int32 serverType = 2;</code>
        */
       public int getServerType() {
         return serverType_;
       }
       /**
-       * <code>optional int32 serverType = 2;</code>
+       * <code>int32 serverType = 2;</code>
        */
       public Builder setServerType(int value) {
-
+        
         serverType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 serverType = 2;</code>
+       * <code>int32 serverType = 2;</code>
        */
       public Builder clearServerType() {
-
+        
         serverType_ = 0;
         onChanged();
         return this;
@@ -14797,43 +14818,43 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     java.lang.String getPassword();
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
 
     /**
-     * <code>optional string smsCode = 4;</code>
+     * <code>string smsCode = 4;</code>
      */
     java.lang.String getSmsCode();
     /**
-     * <code>optional string smsCode = 4;</code>
+     * <code>string smsCode = 4;</code>
      */
     com.google.protobuf.ByteString
         getSmsCodeBytes();
   }
   /**
    * <pre>
-   ** 用户注册，返回通用响应包
+   ** 用户注册，返回通用响应包 
    * </pre>
    *
    * Protobuf type {@code UserReg}
@@ -14927,7 +14948,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -14936,14 +14957,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -14951,13 +14972,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -14970,14 +14991,14 @@ public final class ProtoMessage {
     public static final int PASSWORD_FIELD_NUMBER = 3;
     private volatile java.lang.Object password_;
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         password_ = s;
@@ -14985,13 +15006,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPasswordBytes() {
       java.lang.Object ref = password_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         password_ = b;
@@ -15004,14 +15025,14 @@ public final class ProtoMessage {
     public static final int SMSCODE_FIELD_NUMBER = 4;
     private volatile java.lang.Object smsCode_;
     /**
-     * <code>optional string smsCode = 4;</code>
+     * <code>string smsCode = 4;</code>
      */
     public java.lang.String getSmsCode() {
       java.lang.Object ref = smsCode_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         smsCode_ = s;
@@ -15019,13 +15040,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string smsCode = 4;</code>
+     * <code>string smsCode = 4;</code>
      */
     public com.google.protobuf.ByteString
         getSmsCodeBytes() {
       java.lang.Object ref = smsCode_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         smsCode_ = b;
@@ -15112,7 +15133,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -15205,7 +15226,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 用户注册，返回通用响应包
+     ** 用户注册，返回通用响应包 
      * </pre>
      *
      * Protobuf type {@code UserReg}
@@ -15361,25 +15382,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -15387,7 +15408,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -15402,13 +15423,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -15418,29 +15439,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -15448,7 +15469,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -15456,7 +15477,7 @@ public final class ProtoMessage {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public java.lang.String getPassword() {
         java.lang.Object ref = password_;
@@ -15471,13 +15492,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPasswordBytes() {
         java.lang.Object ref = password_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           password_ = b;
@@ -15487,29 +15508,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public Builder setPassword(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         password_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public Builder clearPassword() {
-
+        
         password_ = getDefaultInstance().getPassword();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public Builder setPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -15517,7 +15538,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         password_ = value;
         onChanged();
         return this;
@@ -15525,7 +15546,7 @@ public final class ProtoMessage {
 
       private java.lang.Object smsCode_ = "";
       /**
-       * <code>optional string smsCode = 4;</code>
+       * <code>string smsCode = 4;</code>
        */
       public java.lang.String getSmsCode() {
         java.lang.Object ref = smsCode_;
@@ -15540,13 +15561,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string smsCode = 4;</code>
+       * <code>string smsCode = 4;</code>
        */
       public com.google.protobuf.ByteString
           getSmsCodeBytes() {
         java.lang.Object ref = smsCode_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           smsCode_ = b;
@@ -15556,29 +15577,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string smsCode = 4;</code>
+       * <code>string smsCode = 4;</code>
        */
       public Builder setSmsCode(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         smsCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string smsCode = 4;</code>
+       * <code>string smsCode = 4;</code>
        */
       public Builder clearSmsCode() {
-
+        
         smsCode_ = getDefaultInstance().getSmsCode();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string smsCode = 4;</code>
+       * <code>string smsCode = 4;</code>
        */
       public Builder setSmsCodeBytes(
           com.google.protobuf.ByteString value) {
@@ -15586,7 +15607,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         smsCode_ = value;
         onChanged();
         return this;
@@ -15645,42 +15666,42 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     java.lang.String getPassword();
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
 
     /**
-     * <code>optional string token = 4;</code>
+     * <code>string token = 4;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>optional string token = 4;</code>
+     * <code>string token = 4;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>optional int32 appType = 5;</code>
+     * <code>int32 appType = 5;</code>
      */
     int getAppType();
 
@@ -15689,7 +15710,7 @@ public final class ProtoMessage {
      * 车机登录时必须提供 carID
      * </pre>
      *
-     * <code>optional string carID = 6;</code>
+     * <code>string carID = 6;</code>
      */
     java.lang.String getCarID();
     /**
@@ -15697,7 +15718,7 @@ public final class ProtoMessage {
      * 车机登录时必须提供 carID
      * </pre>
      *
-     * <code>optional string carID = 6;</code>
+     * <code>string carID = 6;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -15707,7 +15728,7 @@ public final class ProtoMessage {
      * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
      * </pre>
      *
-     * <code>optional string imei = 7;</code>
+     * <code>string imei = 7;</code>
      */
     java.lang.String getImei();
     /**
@@ -15715,23 +15736,23 @@ public final class ProtoMessage {
      * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
      * </pre>
      *
-     * <code>optional string imei = 7;</code>
+     * <code>string imei = 7;</code>
      */
     com.google.protobuf.ByteString
         getImeiBytes();
 
     /**
-     * <code>optional string sessionIP = 8;</code>
+     * <code>string sessionIP = 8;</code>
      */
     java.lang.String getSessionIP();
     /**
-     * <code>optional string sessionIP = 8;</code>
+     * <code>string sessionIP = 8;</code>
      */
     com.google.protobuf.ByteString
         getSessionIPBytes();
 
     /**
-     * <code>optional int32 sessionPort = 9;</code>
+     * <code>int32 sessionPort = 9;</code>
      */
     int getSessionPort();
 
@@ -15740,13 +15761,13 @@ public final class ProtoMessage {
      * 集团号
      * </pre>
      *
-     * <code>optional int64 groupID = 10;</code>
+     * <code>int64 groupID = 10;</code>
      */
     long getGroupID();
   }
   /**
    * <pre>
-   ** 用户登录，返回 &#64;link LoginResponse
+   ** 用户登录，返回 &#64;link LoginResponse 
    * </pre>
    *
    * Protobuf type {@code UserLogin}
@@ -15879,7 +15900,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -15888,14 +15909,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -15903,13 +15924,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -15922,14 +15943,14 @@ public final class ProtoMessage {
     public static final int PASSWORD_FIELD_NUMBER = 3;
     private volatile java.lang.Object password_;
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         password_ = s;
@@ -15937,13 +15958,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string password = 3;</code>
+     * <code>string password = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPasswordBytes() {
       java.lang.Object ref = password_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         password_ = b;
@@ -15956,14 +15977,14 @@ public final class ProtoMessage {
     public static final int TOKEN_FIELD_NUMBER = 4;
     private volatile java.lang.Object token_;
     /**
-     * <code>optional string token = 4;</code>
+     * <code>string token = 4;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         token_ = s;
@@ -15971,13 +15992,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string token = 4;</code>
+     * <code>string token = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
       java.lang.Object ref = token_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         token_ = b;
@@ -15990,7 +16011,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 5;
     private int appType_;
     /**
-     * <code>optional int32 appType = 5;</code>
+     * <code>int32 appType = 5;</code>
      */
     public int getAppType() {
       return appType_;
@@ -16003,14 +16024,14 @@ public final class ProtoMessage {
      * 车机登录时必须提供 carID
      * </pre>
      *
-     * <code>optional string carID = 6;</code>
+     * <code>string carID = 6;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carID_ = s;
@@ -16022,13 +16043,13 @@ public final class ProtoMessage {
      * 车机登录时必须提供 carID
      * </pre>
      *
-     * <code>optional string carID = 6;</code>
+     * <code>string carID = 6;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carID_ = b;
@@ -16045,14 +16066,14 @@ public final class ProtoMessage {
      * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
      * </pre>
      *
-     * <code>optional string imei = 7;</code>
+     * <code>string imei = 7;</code>
      */
     public java.lang.String getImei() {
       java.lang.Object ref = imei_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         imei_ = s;
@@ -16064,13 +16085,13 @@ public final class ProtoMessage {
      * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
      * </pre>
      *
-     * <code>optional string imei = 7;</code>
+     * <code>string imei = 7;</code>
      */
     public com.google.protobuf.ByteString
         getImeiBytes() {
       java.lang.Object ref = imei_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         imei_ = b;
@@ -16083,14 +16104,14 @@ public final class ProtoMessage {
     public static final int SESSIONIP_FIELD_NUMBER = 8;
     private volatile java.lang.Object sessionIP_;
     /**
-     * <code>optional string sessionIP = 8;</code>
+     * <code>string sessionIP = 8;</code>
      */
     public java.lang.String getSessionIP() {
       java.lang.Object ref = sessionIP_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         sessionIP_ = s;
@@ -16098,13 +16119,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string sessionIP = 8;</code>
+     * <code>string sessionIP = 8;</code>
      */
     public com.google.protobuf.ByteString
         getSessionIPBytes() {
       java.lang.Object ref = sessionIP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         sessionIP_ = b;
@@ -16117,7 +16138,7 @@ public final class ProtoMessage {
     public static final int SESSIONPORT_FIELD_NUMBER = 9;
     private int sessionPort_;
     /**
-     * <code>optional int32 sessionPort = 9;</code>
+     * <code>int32 sessionPort = 9;</code>
      */
     public int getSessionPort() {
       return sessionPort_;
@@ -16130,7 +16151,7 @@ public final class ProtoMessage {
      * 集团号
      * </pre>
      *
-     * <code>optional int64 groupID = 10;</code>
+     * <code>int64 groupID = 10;</code>
      */
     public long getGroupID() {
       return groupID_;
@@ -16264,7 +16285,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -16370,7 +16391,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 用户登录，返回 &#64;link LoginResponse
+     ** 用户登录，返回 &#64;link LoginResponse 
      * </pre>
      *
      * Protobuf type {@code UserLogin}
@@ -16565,25 +16586,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -16591,7 +16612,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -16606,13 +16627,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -16622,29 +16643,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -16652,7 +16673,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -16660,7 +16681,7 @@ public final class ProtoMessage {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public java.lang.String getPassword() {
         java.lang.Object ref = password_;
@@ -16675,13 +16696,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPasswordBytes() {
         java.lang.Object ref = password_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           password_ = b;
@@ -16691,29 +16712,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public Builder setPassword(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         password_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public Builder clearPassword() {
-
+        
         password_ = getDefaultInstance().getPassword();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string password = 3;</code>
+       * <code>string password = 3;</code>
        */
       public Builder setPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -16721,7 +16742,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         password_ = value;
         onChanged();
         return this;
@@ -16729,7 +16750,7 @@ public final class ProtoMessage {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>optional string token = 4;</code>
+       * <code>string token = 4;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -16744,13 +16765,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string token = 4;</code>
+       * <code>string token = 4;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
         java.lang.Object ref = token_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           token_ = b;
@@ -16760,29 +16781,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string token = 4;</code>
+       * <code>string token = 4;</code>
        */
       public Builder setToken(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         token_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string token = 4;</code>
+       * <code>string token = 4;</code>
        */
       public Builder clearToken() {
-
+        
         token_ = getDefaultInstance().getToken();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string token = 4;</code>
+       * <code>string token = 4;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -16790,7 +16811,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         token_ = value;
         onChanged();
         return this;
@@ -16798,25 +16819,25 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>optional int32 appType = 5;</code>
+       * <code>int32 appType = 5;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>optional int32 appType = 5;</code>
+       * <code>int32 appType = 5;</code>
        */
       public Builder setAppType(int value) {
-
+        
         appType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 appType = 5;</code>
+       * <code>int32 appType = 5;</code>
        */
       public Builder clearAppType() {
-
+        
         appType_ = 0;
         onChanged();
         return this;
@@ -16828,7 +16849,7 @@ public final class ProtoMessage {
        * 车机登录时必须提供 carID
        * </pre>
        *
-       * <code>optional string carID = 6;</code>
+       * <code>string carID = 6;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -16847,13 +16868,13 @@ public final class ProtoMessage {
        * 车机登录时必须提供 carID
        * </pre>
        *
-       * <code>optional string carID = 6;</code>
+       * <code>string carID = 6;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
         java.lang.Object ref = carID_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carID_ = b;
@@ -16867,14 +16888,14 @@ public final class ProtoMessage {
        * 车机登录时必须提供 carID
        * </pre>
        *
-       * <code>optional string carID = 6;</code>
+       * <code>string carID = 6;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carID_ = value;
         onChanged();
         return this;
@@ -16884,10 +16905,10 @@ public final class ProtoMessage {
        * 车机登录时必须提供 carID
        * </pre>
        *
-       * <code>optional string carID = 6;</code>
+       * <code>string carID = 6;</code>
        */
       public Builder clearCarID() {
-
+        
         carID_ = getDefaultInstance().getCarID();
         onChanged();
         return this;
@@ -16897,7 +16918,7 @@ public final class ProtoMessage {
        * 车机登录时必须提供 carID
        * </pre>
        *
-       * <code>optional string carID = 6;</code>
+       * <code>string carID = 6;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -16905,7 +16926,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carID_ = value;
         onChanged();
         return this;
@@ -16917,7 +16938,7 @@ public final class ProtoMessage {
        * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
        * </pre>
        *
-       * <code>optional string imei = 7;</code>
+       * <code>string imei = 7;</code>
        */
       public java.lang.String getImei() {
         java.lang.Object ref = imei_;
@@ -16936,13 +16957,13 @@ public final class ProtoMessage {
        * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
        * </pre>
        *
-       * <code>optional string imei = 7;</code>
+       * <code>string imei = 7;</code>
        */
       public com.google.protobuf.ByteString
           getImeiBytes() {
         java.lang.Object ref = imei_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           imei_ = b;
@@ -16956,14 +16977,14 @@ public final class ProtoMessage {
        * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
        * </pre>
        *
-       * <code>optional string imei = 7;</code>
+       * <code>string imei = 7;</code>
        */
       public Builder setImei(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         imei_ = value;
         onChanged();
         return this;
@@ -16973,10 +16994,10 @@ public final class ProtoMessage {
        * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
        * </pre>
        *
-       * <code>optional string imei = 7;</code>
+       * <code>string imei = 7;</code>
        */
       public Builder clearImei() {
-
+        
         imei_ = getDefaultInstance().getImei();
         onChanged();
         return this;
@@ -16986,7 +17007,7 @@ public final class ProtoMessage {
        * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
        * </pre>
        *
-       * <code>optional string imei = 7;</code>
+       * <code>string imei = 7;</code>
        */
       public Builder setImeiBytes(
           com.google.protobuf.ByteString value) {
@@ -16994,7 +17015,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         imei_ = value;
         onChanged();
         return this;
@@ -17002,7 +17023,7 @@ public final class ProtoMessage {
 
       private java.lang.Object sessionIP_ = "";
       /**
-       * <code>optional string sessionIP = 8;</code>
+       * <code>string sessionIP = 8;</code>
        */
       public java.lang.String getSessionIP() {
         java.lang.Object ref = sessionIP_;
@@ -17017,13 +17038,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string sessionIP = 8;</code>
+       * <code>string sessionIP = 8;</code>
        */
       public com.google.protobuf.ByteString
           getSessionIPBytes() {
         java.lang.Object ref = sessionIP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           sessionIP_ = b;
@@ -17033,29 +17054,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string sessionIP = 8;</code>
+       * <code>string sessionIP = 8;</code>
        */
       public Builder setSessionIP(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         sessionIP_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string sessionIP = 8;</code>
+       * <code>string sessionIP = 8;</code>
        */
       public Builder clearSessionIP() {
-
+        
         sessionIP_ = getDefaultInstance().getSessionIP();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string sessionIP = 8;</code>
+       * <code>string sessionIP = 8;</code>
        */
       public Builder setSessionIPBytes(
           com.google.protobuf.ByteString value) {
@@ -17063,7 +17084,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         sessionIP_ = value;
         onChanged();
         return this;
@@ -17071,25 +17092,25 @@ public final class ProtoMessage {
 
       private int sessionPort_ ;
       /**
-       * <code>optional int32 sessionPort = 9;</code>
+       * <code>int32 sessionPort = 9;</code>
        */
       public int getSessionPort() {
         return sessionPort_;
       }
       /**
-       * <code>optional int32 sessionPort = 9;</code>
+       * <code>int32 sessionPort = 9;</code>
        */
       public Builder setSessionPort(int value) {
-
+        
         sessionPort_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 sessionPort = 9;</code>
+       * <code>int32 sessionPort = 9;</code>
        */
       public Builder clearSessionPort() {
-
+        
         sessionPort_ = 0;
         onChanged();
         return this;
@@ -17101,7 +17122,7 @@ public final class ProtoMessage {
        * 集团号
        * </pre>
        *
-       * <code>optional int64 groupID = 10;</code>
+       * <code>int64 groupID = 10;</code>
        */
       public long getGroupID() {
         return groupID_;
@@ -17111,10 +17132,10 @@ public final class ProtoMessage {
        * 集团号
        * </pre>
        *
-       * <code>optional int64 groupID = 10;</code>
+       * <code>int64 groupID = 10;</code>
        */
       public Builder setGroupID(long value) {
-
+        
         groupID_ = value;
         onChanged();
         return this;
@@ -17124,10 +17145,10 @@ public final class ProtoMessage {
        * 集团号
        * </pre>
        *
-       * <code>optional int64 groupID = 10;</code>
+       * <code>int64 groupID = 10;</code>
        */
       public Builder clearGroupID() {
-
+        
         groupID_ = 0L;
         onChanged();
         return this;
@@ -17186,58 +17207,58 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string token = 2;</code>
+     * <code>string token = 2;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>optional string token = 2;</code>
+     * <code>string token = 2;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     java.lang.String getPhone();
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneBytes();
 
     /**
-     * <code>optional int32 appType = 4;</code>
+     * <code>int32 appType = 4;</code>
      */
     int getAppType();
 
     /**
-     * <code>optional string sessionIP = 5;</code>
+     * <code>string sessionIP = 5;</code>
      */
     java.lang.String getSessionIP();
     /**
-     * <code>optional string sessionIP = 5;</code>
+     * <code>string sessionIP = 5;</code>
      */
     com.google.protobuf.ByteString
         getSessionIPBytes();
 
     /**
-     * <code>optional int32 sessionPort = 6;</code>
+     * <code>int32 sessionPort = 6;</code>
      */
     int getSessionPort();
 
     /**
-     * <code>optional int32 serverType = 7;</code>
+     * <code>int32 serverType = 7;</code>
      */
     int getServerType();
   }
   /**
    * <pre>
-   ** 登录响应包
+   ** 登录响应包 
    * </pre>
    *
    * Protobuf type {@code LoginResponse}
@@ -17349,7 +17370,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -17358,14 +17379,14 @@ public final class ProtoMessage {
     public static final int TOKEN_FIELD_NUMBER = 2;
     private volatile java.lang.Object token_;
     /**
-     * <code>optional string token = 2;</code>
+     * <code>string token = 2;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         token_ = s;
@@ -17373,13 +17394,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string token = 2;</code>
+     * <code>string token = 2;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
       java.lang.Object ref = token_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         token_ = b;
@@ -17392,14 +17413,14 @@ public final class ProtoMessage {
     public static final int PHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object phone_;
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     public java.lang.String getPhone() {
       java.lang.Object ref = phone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phone_ = s;
@@ -17407,13 +17428,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneBytes() {
       java.lang.Object ref = phone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phone_ = b;
@@ -17426,7 +17447,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 4;
     private int appType_;
     /**
-     * <code>optional int32 appType = 4;</code>
+     * <code>int32 appType = 4;</code>
      */
     public int getAppType() {
       return appType_;
@@ -17435,14 +17456,14 @@ public final class ProtoMessage {
     public static final int SESSIONIP_FIELD_NUMBER = 5;
     private volatile java.lang.Object sessionIP_;
     /**
-     * <code>optional string sessionIP = 5;</code>
+     * <code>string sessionIP = 5;</code>
      */
     public java.lang.String getSessionIP() {
       java.lang.Object ref = sessionIP_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         sessionIP_ = s;
@@ -17450,13 +17471,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string sessionIP = 5;</code>
+     * <code>string sessionIP = 5;</code>
      */
     public com.google.protobuf.ByteString
         getSessionIPBytes() {
       java.lang.Object ref = sessionIP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         sessionIP_ = b;
@@ -17469,7 +17490,7 @@ public final class ProtoMessage {
     public static final int SESSIONPORT_FIELD_NUMBER = 6;
     private int sessionPort_;
     /**
-     * <code>optional int32 sessionPort = 6;</code>
+     * <code>int32 sessionPort = 6;</code>
      */
     public int getSessionPort() {
       return sessionPort_;
@@ -17478,7 +17499,7 @@ public final class ProtoMessage {
     public static final int SERVERTYPE_FIELD_NUMBER = 7;
     private int serverType_;
     /**
-     * <code>optional int32 serverType = 7;</code>
+     * <code>int32 serverType = 7;</code>
      */
     public int getServerType() {
       return serverType_;
@@ -17588,7 +17609,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
@@ -17687,7 +17708,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 登录响应包
+     ** 登录响应包 
      * </pre>
      *
      * Protobuf type {@code LoginResponse}
@@ -17861,25 +17882,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -17887,7 +17908,7 @@ public final class ProtoMessage {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>optional string token = 2;</code>
+       * <code>string token = 2;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -17902,13 +17923,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string token = 2;</code>
+       * <code>string token = 2;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
         java.lang.Object ref = token_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           token_ = b;
@@ -17918,29 +17939,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string token = 2;</code>
+       * <code>string token = 2;</code>
        */
       public Builder setToken(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         token_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string token = 2;</code>
+       * <code>string token = 2;</code>
        */
       public Builder clearToken() {
-
+        
         token_ = getDefaultInstance().getToken();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string token = 2;</code>
+       * <code>string token = 2;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -17948,7 +17969,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         token_ = value;
         onChanged();
         return this;
@@ -17956,7 +17977,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phone_ = "";
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public java.lang.String getPhone() {
         java.lang.Object ref = phone_;
@@ -17971,13 +17992,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneBytes() {
         java.lang.Object ref = phone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phone_ = b;
@@ -17987,29 +18008,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder setPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phone_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder clearPhone() {
-
+        
         phone_ = getDefaultInstance().getPhone();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder setPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -18017,7 +18038,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phone_ = value;
         onChanged();
         return this;
@@ -18025,25 +18046,25 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>optional int32 appType = 4;</code>
+       * <code>int32 appType = 4;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>optional int32 appType = 4;</code>
+       * <code>int32 appType = 4;</code>
        */
       public Builder setAppType(int value) {
-
+        
         appType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 appType = 4;</code>
+       * <code>int32 appType = 4;</code>
        */
       public Builder clearAppType() {
-
+        
         appType_ = 0;
         onChanged();
         return this;
@@ -18051,7 +18072,7 @@ public final class ProtoMessage {
 
       private java.lang.Object sessionIP_ = "";
       /**
-       * <code>optional string sessionIP = 5;</code>
+       * <code>string sessionIP = 5;</code>
        */
       public java.lang.String getSessionIP() {
         java.lang.Object ref = sessionIP_;
@@ -18066,13 +18087,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string sessionIP = 5;</code>
+       * <code>string sessionIP = 5;</code>
        */
       public com.google.protobuf.ByteString
           getSessionIPBytes() {
         java.lang.Object ref = sessionIP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           sessionIP_ = b;
@@ -18082,29 +18103,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string sessionIP = 5;</code>
+       * <code>string sessionIP = 5;</code>
        */
       public Builder setSessionIP(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         sessionIP_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string sessionIP = 5;</code>
+       * <code>string sessionIP = 5;</code>
        */
       public Builder clearSessionIP() {
-
+        
         sessionIP_ = getDefaultInstance().getSessionIP();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string sessionIP = 5;</code>
+       * <code>string sessionIP = 5;</code>
        */
       public Builder setSessionIPBytes(
           com.google.protobuf.ByteString value) {
@@ -18112,7 +18133,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         sessionIP_ = value;
         onChanged();
         return this;
@@ -18120,25 +18141,25 @@ public final class ProtoMessage {
 
       private int sessionPort_ ;
       /**
-       * <code>optional int32 sessionPort = 6;</code>
+       * <code>int32 sessionPort = 6;</code>
        */
       public int getSessionPort() {
         return sessionPort_;
       }
       /**
-       * <code>optional int32 sessionPort = 6;</code>
+       * <code>int32 sessionPort = 6;</code>
        */
       public Builder setSessionPort(int value) {
-
+        
         sessionPort_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 sessionPort = 6;</code>
+       * <code>int32 sessionPort = 6;</code>
        */
       public Builder clearSessionPort() {
-
+        
         sessionPort_ = 0;
         onChanged();
         return this;
@@ -18146,25 +18167,25 @@ public final class ProtoMessage {
 
       private int serverType_ ;
       /**
-       * <code>optional int32 serverType = 7;</code>
+       * <code>int32 serverType = 7;</code>
        */
       public int getServerType() {
         return serverType_;
       }
       /**
-       * <code>optional int32 serverType = 7;</code>
+       * <code>int32 serverType = 7;</code>
        */
       public Builder setServerType(int value) {
-
+        
         serverType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 serverType = 7;</code>
+       * <code>int32 serverType = 7;</code>
        */
       public Builder clearServerType() {
-
+        
         serverType_ = 0;
         onChanged();
         return this;
@@ -18223,33 +18244,33 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string password = 2;</code>
+     * <code>string password = 2;</code>
      */
     java.lang.String getPassword();
     /**
-     * <code>optional string password = 2;</code>
+     * <code>string password = 2;</code>
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
 
     /**
-     * <code>optional string smscode = 3;</code>
+     * <code>string smscode = 3;</code>
      */
     java.lang.String getSmscode();
     /**
-     * <code>optional string smscode = 3;</code>
+     * <code>string smscode = 3;</code>
      */
     com.google.protobuf.ByteString
         getSmscodeBytes();
   }
   /**
    * <pre>
-   ** 密码重置，返回通用响应包
+   ** 密码重置，返回通用响应包 
    * </pre>
    *
    * Protobuf type {@code ChangePasswordBySms}
@@ -18336,7 +18357,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -18345,14 +18366,14 @@ public final class ProtoMessage {
     public static final int PASSWORD_FIELD_NUMBER = 2;
     private volatile java.lang.Object password_;
     /**
-     * <code>optional string password = 2;</code>
+     * <code>string password = 2;</code>
      */
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         password_ = s;
@@ -18360,13 +18381,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string password = 2;</code>
+     * <code>string password = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPasswordBytes() {
       java.lang.Object ref = password_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         password_ = b;
@@ -18379,14 +18400,14 @@ public final class ProtoMessage {
     public static final int SMSCODE_FIELD_NUMBER = 3;
     private volatile java.lang.Object smscode_;
     /**
-     * <code>optional string smscode = 3;</code>
+     * <code>string smscode = 3;</code>
      */
     public java.lang.String getSmscode() {
       java.lang.Object ref = smscode_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         smscode_ = s;
@@ -18394,13 +18415,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string smscode = 3;</code>
+     * <code>string smscode = 3;</code>
      */
     public com.google.protobuf.ByteString
         getSmscodeBytes() {
       java.lang.Object ref = smscode_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         smscode_ = b;
@@ -18479,7 +18500,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
@@ -18570,7 +18591,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 密码重置，返回通用响应包
+     ** 密码重置，返回通用响应包 
      * </pre>
      *
      * Protobuf type {@code ChangePasswordBySms}
@@ -18719,25 +18740,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -18745,7 +18766,7 @@ public final class ProtoMessage {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>optional string password = 2;</code>
+       * <code>string password = 2;</code>
        */
       public java.lang.String getPassword() {
         java.lang.Object ref = password_;
@@ -18760,13 +18781,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string password = 2;</code>
+       * <code>string password = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPasswordBytes() {
         java.lang.Object ref = password_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           password_ = b;
@@ -18776,29 +18797,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string password = 2;</code>
+       * <code>string password = 2;</code>
        */
       public Builder setPassword(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         password_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string password = 2;</code>
+       * <code>string password = 2;</code>
        */
       public Builder clearPassword() {
-
+        
         password_ = getDefaultInstance().getPassword();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string password = 2;</code>
+       * <code>string password = 2;</code>
        */
       public Builder setPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -18806,7 +18827,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         password_ = value;
         onChanged();
         return this;
@@ -18814,7 +18835,7 @@ public final class ProtoMessage {
 
       private java.lang.Object smscode_ = "";
       /**
-       * <code>optional string smscode = 3;</code>
+       * <code>string smscode = 3;</code>
        */
       public java.lang.String getSmscode() {
         java.lang.Object ref = smscode_;
@@ -18829,13 +18850,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string smscode = 3;</code>
+       * <code>string smscode = 3;</code>
        */
       public com.google.protobuf.ByteString
           getSmscodeBytes() {
         java.lang.Object ref = smscode_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           smscode_ = b;
@@ -18845,29 +18866,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string smscode = 3;</code>
+       * <code>string smscode = 3;</code>
        */
       public Builder setSmscode(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         smscode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string smscode = 3;</code>
+       * <code>string smscode = 3;</code>
        */
       public Builder clearSmscode() {
-
+        
         smscode_ = getDefaultInstance().getSmscode();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string smscode = 3;</code>
+       * <code>string smscode = 3;</code>
        */
       public Builder setSmscodeBytes(
           com.google.protobuf.ByteString value) {
@@ -18875,7 +18896,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         smscode_ = value;
         onChanged();
         return this;
@@ -18934,37 +18955,37 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     java.lang.String getUserName();
     /**
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
 
     /**
-     * <code>optional bytes userPic = 4;</code>
+     * <code>bytes userPic = 4;</code>
      */
     com.google.protobuf.ByteString getUserPic();
 
     /**
-     * <code>optional bool onlyPhoneNum = 5;</code>
+     * <code>bool onlyPhoneNum = 5;</code>
      */
     boolean getOnlyPhoneNum();
   }
@@ -19070,7 +19091,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -19079,14 +19100,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -19094,13 +19115,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -19113,14 +19134,14 @@ public final class ProtoMessage {
     public static final int USERNAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object userName_;
     /**
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         userName_ = s;
@@ -19128,13 +19149,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         userName_ = b;
@@ -19147,7 +19168,7 @@ public final class ProtoMessage {
     public static final int USERPIC_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString userPic_;
     /**
-     * <code>optional bytes userPic = 4;</code>
+     * <code>bytes userPic = 4;</code>
      */
     public com.google.protobuf.ByteString getUserPic() {
       return userPic_;
@@ -19156,7 +19177,7 @@ public final class ProtoMessage {
     public static final int ONLYPHONENUM_FIELD_NUMBER = 5;
     private boolean onlyPhoneNum_;
     /**
-     * <code>optional bool onlyPhoneNum = 5;</code>
+     * <code>bool onlyPhoneNum = 5;</code>
      */
     public boolean getOnlyPhoneNum() {
       return onlyPhoneNum_;
@@ -19249,7 +19270,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -19507,25 +19528,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -19533,7 +19554,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -19548,13 +19569,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -19564,29 +19585,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -19594,7 +19615,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -19602,7 +19623,7 @@ public final class ProtoMessage {
 
       private java.lang.Object userName_ = "";
       /**
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -19617,13 +19638,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
         java.lang.Object ref = userName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           userName_ = b;
@@ -19633,29 +19654,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         userName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public Builder clearUserName() {
-
+        
         userName_ = getDefaultInstance().getUserName();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -19663,7 +19684,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         userName_ = value;
         onChanged();
         return this;
@@ -19671,28 +19692,28 @@ public final class ProtoMessage {
 
       private com.google.protobuf.ByteString userPic_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes userPic = 4;</code>
+       * <code>bytes userPic = 4;</code>
        */
       public com.google.protobuf.ByteString getUserPic() {
         return userPic_;
       }
       /**
-       * <code>optional bytes userPic = 4;</code>
+       * <code>bytes userPic = 4;</code>
        */
       public Builder setUserPic(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         userPic_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bytes userPic = 4;</code>
+       * <code>bytes userPic = 4;</code>
        */
       public Builder clearUserPic() {
-
+        
         userPic_ = getDefaultInstance().getUserPic();
         onChanged();
         return this;
@@ -19700,25 +19721,25 @@ public final class ProtoMessage {
 
       private boolean onlyPhoneNum_ ;
       /**
-       * <code>optional bool onlyPhoneNum = 5;</code>
+       * <code>bool onlyPhoneNum = 5;</code>
        */
       public boolean getOnlyPhoneNum() {
         return onlyPhoneNum_;
       }
       /**
-       * <code>optional bool onlyPhoneNum = 5;</code>
+       * <code>bool onlyPhoneNum = 5;</code>
        */
       public Builder setOnlyPhoneNum(boolean value) {
-
+        
         onlyPhoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bool onlyPhoneNum = 5;</code>
+       * <code>bool onlyPhoneNum = 5;</code>
        */
       public Builder clearOnlyPhoneNum() {
-
+        
         onlyPhoneNum_ = false;
         onChanged();
         return this;
@@ -19777,16 +19798,16 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string friendPhoneNum = 2;</code>
+     * <code>string friendPhoneNum = 2;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
-     * <code>optional string friendPhoneNum = 2;</code>
+     * <code>string friendPhoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
@@ -19796,7 +19817,7 @@ public final class ProtoMessage {
      * 附加消息
      * </pre>
      *
-     * <code>optional string applyInfo = 3;</code>
+     * <code>string applyInfo = 3;</code>
      */
     java.lang.String getApplyInfo();
     /**
@@ -19804,7 +19825,7 @@ public final class ProtoMessage {
      * 附加消息
      * </pre>
      *
-     * <code>optional string applyInfo = 3;</code>
+     * <code>string applyInfo = 3;</code>
      */
     com.google.protobuf.ByteString
         getApplyInfoBytes();
@@ -19814,7 +19835,7 @@ public final class ProtoMessage {
      * 要加的好友的名称，申请为空
      * </pre>
      *
-     * <code>optional string friendName = 4;</code>
+     * <code>string friendName = 4;</code>
      */
     java.lang.String getFriendName();
     /**
@@ -19822,7 +19843,7 @@ public final class ProtoMessage {
      * 要加的好友的名称，申请为空
      * </pre>
      *
-     * <code>optional string friendName = 4;</code>
+     * <code>string friendName = 4;</code>
      */
     com.google.protobuf.ByteString
         getFriendNameBytes();
@@ -19832,7 +19853,7 @@ public final class ProtoMessage {
      * 备注名
      * </pre>
      *
-     * <code>optional string applyRemark = 5;</code>
+     * <code>string applyRemark = 5;</code>
      */
     java.lang.String getApplyRemark();
     /**
@@ -19840,14 +19861,14 @@ public final class ProtoMessage {
      * 备注名
      * </pre>
      *
-     * <code>optional string applyRemark = 5;</code>
+     * <code>string applyRemark = 5;</code>
      */
     com.google.protobuf.ByteString
         getApplyRemarkBytes();
   }
   /**
    * <pre>
-   ** 申请加好友，返回通用响应包
+   ** 申请加好友，返回通用响应包 
    * </pre>
    *
    * Protobuf type {@code ApplyFriend}
@@ -19948,7 +19969,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -19957,14 +19978,14 @@ public final class ProtoMessage {
     public static final int FRIENDPHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object friendPhoneNum_;
     /**
-     * <code>optional string friendPhoneNum = 2;</code>
+     * <code>string friendPhoneNum = 2;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         friendPhoneNum_ = s;
@@ -19972,13 +19993,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string friendPhoneNum = 2;</code>
+     * <code>string friendPhoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         friendPhoneNum_ = b;
@@ -19995,14 +20016,14 @@ public final class ProtoMessage {
      * 附加消息
      * </pre>
      *
-     * <code>optional string applyInfo = 3;</code>
+     * <code>string applyInfo = 3;</code>
      */
     public java.lang.String getApplyInfo() {
       java.lang.Object ref = applyInfo_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         applyInfo_ = s;
@@ -20014,13 +20035,13 @@ public final class ProtoMessage {
      * 附加消息
      * </pre>
      *
-     * <code>optional string applyInfo = 3;</code>
+     * <code>string applyInfo = 3;</code>
      */
     public com.google.protobuf.ByteString
         getApplyInfoBytes() {
       java.lang.Object ref = applyInfo_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         applyInfo_ = b;
@@ -20037,14 +20058,14 @@ public final class ProtoMessage {
      * 要加的好友的名称，申请为空
      * </pre>
      *
-     * <code>optional string friendName = 4;</code>
+     * <code>string friendName = 4;</code>
      */
     public java.lang.String getFriendName() {
       java.lang.Object ref = friendName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         friendName_ = s;
@@ -20056,13 +20077,13 @@ public final class ProtoMessage {
      * 要加的好友的名称，申请为空
      * </pre>
      *
-     * <code>optional string friendName = 4;</code>
+     * <code>string friendName = 4;</code>
      */
     public com.google.protobuf.ByteString
         getFriendNameBytes() {
       java.lang.Object ref = friendName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         friendName_ = b;
@@ -20079,14 +20100,14 @@ public final class ProtoMessage {
      * 备注名
      * </pre>
      *
-     * <code>optional string applyRemark = 5;</code>
+     * <code>string applyRemark = 5;</code>
      */
     public java.lang.String getApplyRemark() {
       java.lang.Object ref = applyRemark_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         applyRemark_ = s;
@@ -20098,13 +20119,13 @@ public final class ProtoMessage {
      * 备注名
      * </pre>
      *
-     * <code>optional string applyRemark = 5;</code>
+     * <code>string applyRemark = 5;</code>
      */
     public com.google.protobuf.ByteString
         getApplyRemarkBytes() {
       java.lang.Object ref = applyRemark_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         applyRemark_ = b;
@@ -20199,7 +20220,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FRIENDPHONENUM_FIELD_NUMBER;
@@ -20294,7 +20315,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 申请加好友，返回通用响应包
+     ** 申请加好友，返回通用响应包 
      * </pre>
      *
      * Protobuf type {@code ApplyFriend}
@@ -20457,25 +20478,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -20483,7 +20504,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendPhoneNum_ = "";
       /**
-       * <code>optional string friendPhoneNum = 2;</code>
+       * <code>string friendPhoneNum = 2;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -20498,13 +20519,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendPhoneNum = 2;</code>
+       * <code>string friendPhoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
         java.lang.Object ref = friendPhoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           friendPhoneNum_ = b;
@@ -20514,29 +20535,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendPhoneNum = 2;</code>
+       * <code>string friendPhoneNum = 2;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         friendPhoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendPhoneNum = 2;</code>
+       * <code>string friendPhoneNum = 2;</code>
        */
       public Builder clearFriendPhoneNum() {
-
+        
         friendPhoneNum_ = getDefaultInstance().getFriendPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendPhoneNum = 2;</code>
+       * <code>string friendPhoneNum = 2;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -20544,7 +20565,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         friendPhoneNum_ = value;
         onChanged();
         return this;
@@ -20556,7 +20577,7 @@ public final class ProtoMessage {
        * 附加消息
        * </pre>
        *
-       * <code>optional string applyInfo = 3;</code>
+       * <code>string applyInfo = 3;</code>
        */
       public java.lang.String getApplyInfo() {
         java.lang.Object ref = applyInfo_;
@@ -20575,13 +20596,13 @@ public final class ProtoMessage {
        * 附加消息
        * </pre>
        *
-       * <code>optional string applyInfo = 3;</code>
+       * <code>string applyInfo = 3;</code>
        */
       public com.google.protobuf.ByteString
           getApplyInfoBytes() {
         java.lang.Object ref = applyInfo_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           applyInfo_ = b;
@@ -20595,14 +20616,14 @@ public final class ProtoMessage {
        * 附加消息
        * </pre>
        *
-       * <code>optional string applyInfo = 3;</code>
+       * <code>string applyInfo = 3;</code>
        */
       public Builder setApplyInfo(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         applyInfo_ = value;
         onChanged();
         return this;
@@ -20612,10 +20633,10 @@ public final class ProtoMessage {
        * 附加消息
        * </pre>
        *
-       * <code>optional string applyInfo = 3;</code>
+       * <code>string applyInfo = 3;</code>
        */
       public Builder clearApplyInfo() {
-
+        
         applyInfo_ = getDefaultInstance().getApplyInfo();
         onChanged();
         return this;
@@ -20625,7 +20646,7 @@ public final class ProtoMessage {
        * 附加消息
        * </pre>
        *
-       * <code>optional string applyInfo = 3;</code>
+       * <code>string applyInfo = 3;</code>
        */
       public Builder setApplyInfoBytes(
           com.google.protobuf.ByteString value) {
@@ -20633,7 +20654,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         applyInfo_ = value;
         onChanged();
         return this;
@@ -20645,7 +20666,7 @@ public final class ProtoMessage {
        * 要加的好友的名称，申请为空
        * </pre>
        *
-       * <code>optional string friendName = 4;</code>
+       * <code>string friendName = 4;</code>
        */
       public java.lang.String getFriendName() {
         java.lang.Object ref = friendName_;
@@ -20664,13 +20685,13 @@ public final class ProtoMessage {
        * 要加的好友的名称，申请为空
        * </pre>
        *
-       * <code>optional string friendName = 4;</code>
+       * <code>string friendName = 4;</code>
        */
       public com.google.protobuf.ByteString
           getFriendNameBytes() {
         java.lang.Object ref = friendName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           friendName_ = b;
@@ -20684,14 +20705,14 @@ public final class ProtoMessage {
        * 要加的好友的名称，申请为空
        * </pre>
        *
-       * <code>optional string friendName = 4;</code>
+       * <code>string friendName = 4;</code>
        */
       public Builder setFriendName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         friendName_ = value;
         onChanged();
         return this;
@@ -20701,10 +20722,10 @@ public final class ProtoMessage {
        * 要加的好友的名称，申请为空
        * </pre>
        *
-       * <code>optional string friendName = 4;</code>
+       * <code>string friendName = 4;</code>
        */
       public Builder clearFriendName() {
-
+        
         friendName_ = getDefaultInstance().getFriendName();
         onChanged();
         return this;
@@ -20714,7 +20735,7 @@ public final class ProtoMessage {
        * 要加的好友的名称，申请为空
        * </pre>
        *
-       * <code>optional string friendName = 4;</code>
+       * <code>string friendName = 4;</code>
        */
       public Builder setFriendNameBytes(
           com.google.protobuf.ByteString value) {
@@ -20722,7 +20743,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         friendName_ = value;
         onChanged();
         return this;
@@ -20734,7 +20755,7 @@ public final class ProtoMessage {
        * 备注名
        * </pre>
        *
-       * <code>optional string applyRemark = 5;</code>
+       * <code>string applyRemark = 5;</code>
        */
       public java.lang.String getApplyRemark() {
         java.lang.Object ref = applyRemark_;
@@ -20753,13 +20774,13 @@ public final class ProtoMessage {
        * 备注名
        * </pre>
        *
-       * <code>optional string applyRemark = 5;</code>
+       * <code>string applyRemark = 5;</code>
        */
       public com.google.protobuf.ByteString
           getApplyRemarkBytes() {
         java.lang.Object ref = applyRemark_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           applyRemark_ = b;
@@ -20773,14 +20794,14 @@ public final class ProtoMessage {
        * 备注名
        * </pre>
        *
-       * <code>optional string applyRemark = 5;</code>
+       * <code>string applyRemark = 5;</code>
        */
       public Builder setApplyRemark(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         applyRemark_ = value;
         onChanged();
         return this;
@@ -20790,10 +20811,10 @@ public final class ProtoMessage {
        * 备注名
        * </pre>
        *
-       * <code>optional string applyRemark = 5;</code>
+       * <code>string applyRemark = 5;</code>
        */
       public Builder clearApplyRemark() {
-
+        
         applyRemark_ = getDefaultInstance().getApplyRemark();
         onChanged();
         return this;
@@ -20803,7 +20824,7 @@ public final class ProtoMessage {
        * 备注名
        * </pre>
        *
-       * <code>optional string applyRemark = 5;</code>
+       * <code>string applyRemark = 5;</code>
        */
       public Builder setApplyRemarkBytes(
           com.google.protobuf.ByteString value) {
@@ -20811,7 +20832,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         applyRemark_ = value;
         onChanged();
         return this;
@@ -20870,26 +20891,26 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string friendPhoneNum = 2;</code>
+     * <code>string friendPhoneNum = 2;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
-     * <code>optional string friendPhoneNum = 2;</code>
+     * <code>string friendPhoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
 
     /**
-     * <code>optional string friendNewName = 3;</code>
+     * <code>string friendNewName = 3;</code>
      */
     java.lang.String getFriendNewName();
     /**
-     * <code>optional string friendNewName = 3;</code>
+     * <code>string friendNewName = 3;</code>
      */
     com.google.protobuf.ByteString
         getFriendNewNameBytes();
@@ -20899,13 +20920,13 @@ public final class ProtoMessage {
      * 星标，此时 friendNewName 要为空
      * </pre>
      *
-     * <code>optional int32 starred = 4;</code>
+     * <code>int32 starred = 4;</code>
      */
     int getStarred();
   }
   /**
    * <pre>
-   ** 更改好友名称，返回通用响应包
+   ** 更改好友名称，返回通用响应包 
    * </pre>
    *
    * Protobuf type {@code ChangeFriendName}
@@ -20998,7 +21019,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -21007,14 +21028,14 @@ public final class ProtoMessage {
     public static final int FRIENDPHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object friendPhoneNum_;
     /**
-     * <code>optional string friendPhoneNum = 2;</code>
+     * <code>string friendPhoneNum = 2;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         friendPhoneNum_ = s;
@@ -21022,13 +21043,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string friendPhoneNum = 2;</code>
+     * <code>string friendPhoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         friendPhoneNum_ = b;
@@ -21041,14 +21062,14 @@ public final class ProtoMessage {
     public static final int FRIENDNEWNAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object friendNewName_;
     /**
-     * <code>optional string friendNewName = 3;</code>
+     * <code>string friendNewName = 3;</code>
      */
     public java.lang.String getFriendNewName() {
       java.lang.Object ref = friendNewName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         friendNewName_ = s;
@@ -21056,13 +21077,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string friendNewName = 3;</code>
+     * <code>string friendNewName = 3;</code>
      */
     public com.google.protobuf.ByteString
         getFriendNewNameBytes() {
       java.lang.Object ref = friendNewName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         friendNewName_ = b;
@@ -21079,7 +21100,7 @@ public final class ProtoMessage {
      * 星标，此时 friendNewName 要为空
      * </pre>
      *
-     * <code>optional int32 starred = 4;</code>
+     * <code>int32 starred = 4;</code>
      */
     public int getStarred() {
       return starred_;
@@ -21163,7 +21184,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FRIENDPHONENUM_FIELD_NUMBER;
@@ -21256,7 +21277,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 更改好友名称，返回通用响应包
+     ** 更改好友名称，返回通用响应包 
      * </pre>
      *
      * Protobuf type {@code ChangeFriendName}
@@ -21411,25 +21432,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -21437,7 +21458,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendPhoneNum_ = "";
       /**
-       * <code>optional string friendPhoneNum = 2;</code>
+       * <code>string friendPhoneNum = 2;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -21452,13 +21473,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendPhoneNum = 2;</code>
+       * <code>string friendPhoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
         java.lang.Object ref = friendPhoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           friendPhoneNum_ = b;
@@ -21468,29 +21489,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendPhoneNum = 2;</code>
+       * <code>string friendPhoneNum = 2;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         friendPhoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendPhoneNum = 2;</code>
+       * <code>string friendPhoneNum = 2;</code>
        */
       public Builder clearFriendPhoneNum() {
-
+        
         friendPhoneNum_ = getDefaultInstance().getFriendPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendPhoneNum = 2;</code>
+       * <code>string friendPhoneNum = 2;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -21498,7 +21519,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         friendPhoneNum_ = value;
         onChanged();
         return this;
@@ -21506,7 +21527,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendNewName_ = "";
       /**
-       * <code>optional string friendNewName = 3;</code>
+       * <code>string friendNewName = 3;</code>
        */
       public java.lang.String getFriendNewName() {
         java.lang.Object ref = friendNewName_;
@@ -21521,13 +21542,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendNewName = 3;</code>
+       * <code>string friendNewName = 3;</code>
        */
       public com.google.protobuf.ByteString
           getFriendNewNameBytes() {
         java.lang.Object ref = friendNewName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           friendNewName_ = b;
@@ -21537,29 +21558,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendNewName = 3;</code>
+       * <code>string friendNewName = 3;</code>
        */
       public Builder setFriendNewName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         friendNewName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendNewName = 3;</code>
+       * <code>string friendNewName = 3;</code>
        */
       public Builder clearFriendNewName() {
-
+        
         friendNewName_ = getDefaultInstance().getFriendNewName();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendNewName = 3;</code>
+       * <code>string friendNewName = 3;</code>
        */
       public Builder setFriendNewNameBytes(
           com.google.protobuf.ByteString value) {
@@ -21567,7 +21588,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         friendNewName_ = value;
         onChanged();
         return this;
@@ -21579,7 +21600,7 @@ public final class ProtoMessage {
        * 星标，此时 friendNewName 要为空
        * </pre>
        *
-       * <code>optional int32 starred = 4;</code>
+       * <code>int32 starred = 4;</code>
        */
       public int getStarred() {
         return starred_;
@@ -21589,10 +21610,10 @@ public final class ProtoMessage {
        * 星标，此时 friendNewName 要为空
        * </pre>
        *
-       * <code>optional int32 starred = 4;</code>
+       * <code>int32 starred = 4;</code>
        */
       public Builder setStarred(int value) {
-
+        
         starred_ = value;
         onChanged();
         return this;
@@ -21602,10 +21623,10 @@ public final class ProtoMessage {
        * 星标，此时 friendNewName 要为空
        * </pre>
        *
-       * <code>optional int32 starred = 4;</code>
+       * <code>int32 starred = 4;</code>
        */
       public Builder clearStarred() {
-
+        
         starred_ = 0;
         onChanged();
         return this;
@@ -21664,11 +21685,11 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string friendPhoneNum = 1;</code>
+     * <code>string friendPhoneNum = 1;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
-     * <code>optional string friendPhoneNum = 1;</code>
+     * <code>string friendPhoneNum = 1;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
@@ -21678,7 +21699,7 @@ public final class ProtoMessage {
      * &#64;see AcceptType
      * </pre>
      *
-     * <code>optional int32 acceptType = 2;</code>
+     * <code>int32 acceptType = 2;</code>
      */
     int getAcceptType();
 
@@ -21687,7 +21708,7 @@ public final class ProtoMessage {
      * 设置备注名
      * </pre>
      *
-     * <code>optional string friendRemark = 3;</code>
+     * <code>string friendRemark = 3;</code>
      */
     java.lang.String getFriendRemark();
     /**
@@ -21695,14 +21716,14 @@ public final class ProtoMessage {
      * 设置备注名
      * </pre>
      *
-     * <code>optional string friendRemark = 3;</code>
+     * <code>string friendRemark = 3;</code>
      */
     com.google.protobuf.ByteString
         getFriendRemarkBytes();
   }
   /**
    * <pre>
-   ** 接收加好友请求，返回通用回复
+   ** 接收加好友请求，返回通用回复 
    * </pre>
    *
    * Protobuf type {@code AcceptFriend}
@@ -21789,14 +21810,14 @@ public final class ProtoMessage {
     public static final int FRIENDPHONENUM_FIELD_NUMBER = 1;
     private volatile java.lang.Object friendPhoneNum_;
     /**
-     * <code>optional string friendPhoneNum = 1;</code>
+     * <code>string friendPhoneNum = 1;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         friendPhoneNum_ = s;
@@ -21804,13 +21825,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string friendPhoneNum = 1;</code>
+     * <code>string friendPhoneNum = 1;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         friendPhoneNum_ = b;
@@ -21827,7 +21848,7 @@ public final class ProtoMessage {
      * &#64;see AcceptType
      * </pre>
      *
-     * <code>optional int32 acceptType = 2;</code>
+     * <code>int32 acceptType = 2;</code>
      */
     public int getAcceptType() {
       return acceptType_;
@@ -21840,14 +21861,14 @@ public final class ProtoMessage {
      * 设置备注名
      * </pre>
      *
-     * <code>optional string friendRemark = 3;</code>
+     * <code>string friendRemark = 3;</code>
      */
     public java.lang.String getFriendRemark() {
       java.lang.Object ref = friendRemark_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         friendRemark_ = s;
@@ -21859,13 +21880,13 @@ public final class ProtoMessage {
      * 设置备注名
      * </pre>
      *
-     * <code>optional string friendRemark = 3;</code>
+     * <code>string friendRemark = 3;</code>
      */
     public com.google.protobuf.ByteString
         getFriendRemarkBytes() {
       java.lang.Object ref = friendRemark_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         friendRemark_ = b;
@@ -21944,7 +21965,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + FRIENDPHONENUM_FIELD_NUMBER;
       hash = (53 * hash) + getFriendPhoneNum().hashCode();
       hash = (37 * hash) + ACCEPTTYPE_FIELD_NUMBER;
@@ -22035,7 +22056,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 接收加好友请求，返回通用回复
+     ** 接收加好友请求，返回通用回复 
      * </pre>
      *
      * Protobuf type {@code AcceptFriend}
@@ -22184,7 +22205,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendPhoneNum_ = "";
       /**
-       * <code>optional string friendPhoneNum = 1;</code>
+       * <code>string friendPhoneNum = 1;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -22199,13 +22220,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendPhoneNum = 1;</code>
+       * <code>string friendPhoneNum = 1;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
         java.lang.Object ref = friendPhoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           friendPhoneNum_ = b;
@@ -22215,29 +22236,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendPhoneNum = 1;</code>
+       * <code>string friendPhoneNum = 1;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         friendPhoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendPhoneNum = 1;</code>
+       * <code>string friendPhoneNum = 1;</code>
        */
       public Builder clearFriendPhoneNum() {
-
+        
         friendPhoneNum_ = getDefaultInstance().getFriendPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendPhoneNum = 1;</code>
+       * <code>string friendPhoneNum = 1;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -22245,7 +22266,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         friendPhoneNum_ = value;
         onChanged();
         return this;
@@ -22257,7 +22278,7 @@ public final class ProtoMessage {
        * &#64;see AcceptType
        * </pre>
        *
-       * <code>optional int32 acceptType = 2;</code>
+       * <code>int32 acceptType = 2;</code>
        */
       public int getAcceptType() {
         return acceptType_;
@@ -22267,10 +22288,10 @@ public final class ProtoMessage {
        * &#64;see AcceptType
        * </pre>
        *
-       * <code>optional int32 acceptType = 2;</code>
+       * <code>int32 acceptType = 2;</code>
        */
       public Builder setAcceptType(int value) {
-
+        
         acceptType_ = value;
         onChanged();
         return this;
@@ -22280,10 +22301,10 @@ public final class ProtoMessage {
        * &#64;see AcceptType
        * </pre>
        *
-       * <code>optional int32 acceptType = 2;</code>
+       * <code>int32 acceptType = 2;</code>
        */
       public Builder clearAcceptType() {
-
+        
         acceptType_ = 0;
         onChanged();
         return this;
@@ -22295,7 +22316,7 @@ public final class ProtoMessage {
        * 设置备注名
        * </pre>
        *
-       * <code>optional string friendRemark = 3;</code>
+       * <code>string friendRemark = 3;</code>
        */
       public java.lang.String getFriendRemark() {
         java.lang.Object ref = friendRemark_;
@@ -22314,13 +22335,13 @@ public final class ProtoMessage {
        * 设置备注名
        * </pre>
        *
-       * <code>optional string friendRemark = 3;</code>
+       * <code>string friendRemark = 3;</code>
        */
       public com.google.protobuf.ByteString
           getFriendRemarkBytes() {
         java.lang.Object ref = friendRemark_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           friendRemark_ = b;
@@ -22334,14 +22355,14 @@ public final class ProtoMessage {
        * 设置备注名
        * </pre>
        *
-       * <code>optional string friendRemark = 3;</code>
+       * <code>string friendRemark = 3;</code>
        */
       public Builder setFriendRemark(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         friendRemark_ = value;
         onChanged();
         return this;
@@ -22351,10 +22372,10 @@ public final class ProtoMessage {
        * 设置备注名
        * </pre>
        *
-       * <code>optional string friendRemark = 3;</code>
+       * <code>string friendRemark = 3;</code>
        */
       public Builder clearFriendRemark() {
-
+        
         friendRemark_ = getDefaultInstance().getFriendRemark();
         onChanged();
         return this;
@@ -22364,7 +22385,7 @@ public final class ProtoMessage {
        * 设置备注名
        * </pre>
        *
-       * <code>optional string friendRemark = 3;</code>
+       * <code>string friendRemark = 3;</code>
        */
       public Builder setFriendRemarkBytes(
           com.google.protobuf.ByteString value) {
@@ -22372,7 +22393,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         friendRemark_ = value;
         onChanged();
         return this;
@@ -22431,18 +22452,18 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string friendPhoneNum = 1;</code>
+     * <code>string friendPhoneNum = 1;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
-     * <code>optional string friendPhoneNum = 1;</code>
+     * <code>string friendPhoneNum = 1;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
   }
   /**
    * <pre>
-   ** 删除好友，返回通用回复
+   ** 删除好友，返回通用回复 
    * </pre>
    *
    * Protobuf type {@code DeleteFriend}
@@ -22516,14 +22537,14 @@ public final class ProtoMessage {
     public static final int FRIENDPHONENUM_FIELD_NUMBER = 1;
     private volatile java.lang.Object friendPhoneNum_;
     /**
-     * <code>optional string friendPhoneNum = 1;</code>
+     * <code>string friendPhoneNum = 1;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         friendPhoneNum_ = s;
@@ -22531,13 +22552,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string friendPhoneNum = 1;</code>
+     * <code>string friendPhoneNum = 1;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         friendPhoneNum_ = b;
@@ -22599,7 +22620,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + FRIENDPHONENUM_FIELD_NUMBER;
       hash = (53 * hash) + getFriendPhoneNum().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -22686,7 +22707,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 删除好友，返回通用回复
+     ** 删除好友，返回通用回复 
      * </pre>
      *
      * Protobuf type {@code DeleteFriend}
@@ -22822,7 +22843,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendPhoneNum_ = "";
       /**
-       * <code>optional string friendPhoneNum = 1;</code>
+       * <code>string friendPhoneNum = 1;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -22837,13 +22858,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendPhoneNum = 1;</code>
+       * <code>string friendPhoneNum = 1;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
         java.lang.Object ref = friendPhoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           friendPhoneNum_ = b;
@@ -22853,29 +22874,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendPhoneNum = 1;</code>
+       * <code>string friendPhoneNum = 1;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         friendPhoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendPhoneNum = 1;</code>
+       * <code>string friendPhoneNum = 1;</code>
        */
       public Builder clearFriendPhoneNum() {
-
+        
         friendPhoneNum_ = getDefaultInstance().getFriendPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendPhoneNum = 1;</code>
+       * <code>string friendPhoneNum = 1;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -22883,7 +22904,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         friendPhoneNum_ = value;
         onChanged();
         return this;
@@ -22942,57 +22963,57 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int32 notifyType = 2;</code>
+     * <code>int32 notifyType = 2;</code>
      */
     int getNotifyType();
 
     /**
-     * <code>optional string friendPhoneNum = 3;</code>
+     * <code>string friendPhoneNum = 3;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
-     * <code>optional string friendPhoneNum = 3;</code>
+     * <code>string friendPhoneNum = 3;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
 
     /**
-     * <code>optional string userName = 4;</code>
+     * <code>string userName = 4;</code>
      */
     java.lang.String getUserName();
     /**
-     * <code>optional string userName = 4;</code>
+     * <code>string userName = 4;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
 
     /**
-     * <code>optional string teamName = 5;</code>
+     * <code>string teamName = 5;</code>
      */
     java.lang.String getTeamName();
     /**
-     * <code>optional string teamName = 5;</code>
+     * <code>string teamName = 5;</code>
      */
     com.google.protobuf.ByteString
         getTeamNameBytes();
 
     /**
-     * <code>optional int64 teamID = 6;</code>
+     * <code>int64 teamID = 6;</code>
      */
     long getTeamID();
 
     /**
-     * <code>optional int32 teamAdmin = 7;</code>
+     * <code>int32 teamAdmin = 7;</code>
      */
     int getTeamAdmin();
 
     /**
-     * <code>optional int64 roomID = 8;</code>
+     * <code>int64 roomID = 8;</code>
      */
     long getRoomID();
 
@@ -23001,7 +23022,7 @@ public final class ProtoMessage {
      * ChatStatus
      * </pre>
      *
-     * <code>optional int32 chatStatus = 9;</code>
+     * <code>int32 chatStatus = 9;</code>
      */
     int getChatStatus();
 
@@ -23010,7 +23031,7 @@ public final class ProtoMessage {
      * 进入或退出
      * </pre>
      *
-     * <code>optional int32 enterType = 10;</code>
+     * <code>int32 enterType = 10;</code>
      */
     int getEnterType();
 
@@ -23019,12 +23040,12 @@ public final class ProtoMessage {
      * 申请或邀请
      * </pre>
      *
-     * <code>optional int32 applyType = 11;</code>
+     * <code>int32 applyType = 11;</code>
      */
     int getApplyType();
 
     /**
-     * <code>optional int32 appTypeFrom = 12;</code>
+     * <code>int32 appTypeFrom = 12;</code>
      */
     int getAppTypeFrom();
 
@@ -23033,7 +23054,7 @@ public final class ProtoMessage {
      * 通知到哪个应用中(-1全部, 不包含appTypeFrom)
      * </pre>
      *
-     * <code>optional int32 appTypeTo = 13;</code>
+     * <code>int32 appTypeTo = 13;</code>
      */
     int getAppTypeTo();
 
@@ -23042,7 +23063,7 @@ public final class ProtoMessage {
      * 通知URL
      * </pre>
      *
-     * <code>optional string videoUrl = 14;</code>
+     * <code>string videoUrl = 14;</code>
      */
     java.lang.String getVideoUrl();
     /**
@@ -23050,13 +23071,13 @@ public final class ProtoMessage {
      * 通知URL
      * </pre>
      *
-     * <code>optional string videoUrl = 14;</code>
+     * <code>string videoUrl = 14;</code>
      */
     com.google.protobuf.ByteString
         getVideoUrlBytes();
 
     /**
-     * <code>optional int32 serverType = 15;</code>
+     * <code>int32 serverType = 15;</code>
      */
     int getServerType();
 
@@ -23065,13 +23086,13 @@ public final class ProtoMessage {
      * 是否上线
      * </pre>
      *
-     * <code>optional bool online = 16;</code>
+     * <code>bool online = 16;</code>
      */
     boolean getOnline();
   }
   /**
    * <pre>
-   ** 通知类消息
+   ** 通知类消息 
    * </pre>
    *
    * Protobuf type {@code NotifyMsg}
@@ -23238,7 +23259,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -23247,7 +23268,7 @@ public final class ProtoMessage {
     public static final int NOTIFYTYPE_FIELD_NUMBER = 2;
     private int notifyType_;
     /**
-     * <code>optional int32 notifyType = 2;</code>
+     * <code>int32 notifyType = 2;</code>
      */
     public int getNotifyType() {
       return notifyType_;
@@ -23256,14 +23277,14 @@ public final class ProtoMessage {
     public static final int FRIENDPHONENUM_FIELD_NUMBER = 3;
     private volatile java.lang.Object friendPhoneNum_;
     /**
-     * <code>optional string friendPhoneNum = 3;</code>
+     * <code>string friendPhoneNum = 3;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         friendPhoneNum_ = s;
@@ -23271,13 +23292,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string friendPhoneNum = 3;</code>
+     * <code>string friendPhoneNum = 3;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         friendPhoneNum_ = b;
@@ -23290,14 +23311,14 @@ public final class ProtoMessage {
     public static final int USERNAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object userName_;
     /**
-     * <code>optional string userName = 4;</code>
+     * <code>string userName = 4;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         userName_ = s;
@@ -23305,13 +23326,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string userName = 4;</code>
+     * <code>string userName = 4;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         userName_ = b;
@@ -23324,14 +23345,14 @@ public final class ProtoMessage {
     public static final int TEAMNAME_FIELD_NUMBER = 5;
     private volatile java.lang.Object teamName_;
     /**
-     * <code>optional string teamName = 5;</code>
+     * <code>string teamName = 5;</code>
      */
     public java.lang.String getTeamName() {
       java.lang.Object ref = teamName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         teamName_ = s;
@@ -23339,13 +23360,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string teamName = 5;</code>
+     * <code>string teamName = 5;</code>
      */
     public com.google.protobuf.ByteString
         getTeamNameBytes() {
       java.lang.Object ref = teamName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         teamName_ = b;
@@ -23358,7 +23379,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 6;
     private long teamID_;
     /**
-     * <code>optional int64 teamID = 6;</code>
+     * <code>int64 teamID = 6;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -23367,7 +23388,7 @@ public final class ProtoMessage {
     public static final int TEAMADMIN_FIELD_NUMBER = 7;
     private int teamAdmin_;
     /**
-     * <code>optional int32 teamAdmin = 7;</code>
+     * <code>int32 teamAdmin = 7;</code>
      */
     public int getTeamAdmin() {
       return teamAdmin_;
@@ -23376,7 +23397,7 @@ public final class ProtoMessage {
     public static final int ROOMID_FIELD_NUMBER = 8;
     private long roomID_;
     /**
-     * <code>optional int64 roomID = 8;</code>
+     * <code>int64 roomID = 8;</code>
      */
     public long getRoomID() {
       return roomID_;
@@ -23389,7 +23410,7 @@ public final class ProtoMessage {
      * ChatStatus
      * </pre>
      *
-     * <code>optional int32 chatStatus = 9;</code>
+     * <code>int32 chatStatus = 9;</code>
      */
     public int getChatStatus() {
       return chatStatus_;
@@ -23402,7 +23423,7 @@ public final class ProtoMessage {
      * 进入或退出
      * </pre>
      *
-     * <code>optional int32 enterType = 10;</code>
+     * <code>int32 enterType = 10;</code>
      */
     public int getEnterType() {
       return enterType_;
@@ -23415,7 +23436,7 @@ public final class ProtoMessage {
      * 申请或邀请
      * </pre>
      *
-     * <code>optional int32 applyType = 11;</code>
+     * <code>int32 applyType = 11;</code>
      */
     public int getApplyType() {
       return applyType_;
@@ -23424,7 +23445,7 @@ public final class ProtoMessage {
     public static final int APPTYPEFROM_FIELD_NUMBER = 12;
     private int appTypeFrom_;
     /**
-     * <code>optional int32 appTypeFrom = 12;</code>
+     * <code>int32 appTypeFrom = 12;</code>
      */
     public int getAppTypeFrom() {
       return appTypeFrom_;
@@ -23437,7 +23458,7 @@ public final class ProtoMessage {
      * 通知到哪个应用中(-1全部, 不包含appTypeFrom)
      * </pre>
      *
-     * <code>optional int32 appTypeTo = 13;</code>
+     * <code>int32 appTypeTo = 13;</code>
      */
     public int getAppTypeTo() {
       return appTypeTo_;
@@ -23450,14 +23471,14 @@ public final class ProtoMessage {
      * 通知URL
      * </pre>
      *
-     * <code>optional string videoUrl = 14;</code>
+     * <code>string videoUrl = 14;</code>
      */
     public java.lang.String getVideoUrl() {
       java.lang.Object ref = videoUrl_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         videoUrl_ = s;
@@ -23469,13 +23490,13 @@ public final class ProtoMessage {
      * 通知URL
      * </pre>
      *
-     * <code>optional string videoUrl = 14;</code>
+     * <code>string videoUrl = 14;</code>
      */
     public com.google.protobuf.ByteString
         getVideoUrlBytes() {
       java.lang.Object ref = videoUrl_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         videoUrl_ = b;
@@ -23488,7 +23509,7 @@ public final class ProtoMessage {
     public static final int SERVERTYPE_FIELD_NUMBER = 15;
     private int serverType_;
     /**
-     * <code>optional int32 serverType = 15;</code>
+     * <code>int32 serverType = 15;</code>
      */
     public int getServerType() {
       return serverType_;
@@ -23501,7 +23522,7 @@ public final class ProtoMessage {
      * 是否上线
      * </pre>
      *
-     * <code>optional bool online = 16;</code>
+     * <code>bool online = 16;</code>
      */
     public boolean getOnline() {
       return online_;
@@ -23691,7 +23712,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + NOTIFYTYPE_FIELD_NUMBER;
@@ -23811,7 +23832,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 通知类消息
+     ** 通知类消息 
      * </pre>
      *
      * Protobuf type {@code NotifyMsg}
@@ -24040,25 +24061,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -24066,25 +24087,25 @@ public final class ProtoMessage {
 
       private int notifyType_ ;
       /**
-       * <code>optional int32 notifyType = 2;</code>
+       * <code>int32 notifyType = 2;</code>
        */
       public int getNotifyType() {
         return notifyType_;
       }
       /**
-       * <code>optional int32 notifyType = 2;</code>
+       * <code>int32 notifyType = 2;</code>
        */
       public Builder setNotifyType(int value) {
-
+        
         notifyType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 notifyType = 2;</code>
+       * <code>int32 notifyType = 2;</code>
        */
       public Builder clearNotifyType() {
-
+        
         notifyType_ = 0;
         onChanged();
         return this;
@@ -24092,7 +24113,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendPhoneNum_ = "";
       /**
-       * <code>optional string friendPhoneNum = 3;</code>
+       * <code>string friendPhoneNum = 3;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -24107,13 +24128,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendPhoneNum = 3;</code>
+       * <code>string friendPhoneNum = 3;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
         java.lang.Object ref = friendPhoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           friendPhoneNum_ = b;
@@ -24123,29 +24144,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string friendPhoneNum = 3;</code>
+       * <code>string friendPhoneNum = 3;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         friendPhoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendPhoneNum = 3;</code>
+       * <code>string friendPhoneNum = 3;</code>
        */
       public Builder clearFriendPhoneNum() {
-
+        
         friendPhoneNum_ = getDefaultInstance().getFriendPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string friendPhoneNum = 3;</code>
+       * <code>string friendPhoneNum = 3;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -24153,7 +24174,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         friendPhoneNum_ = value;
         onChanged();
         return this;
@@ -24161,7 +24182,7 @@ public final class ProtoMessage {
 
       private java.lang.Object userName_ = "";
       /**
-       * <code>optional string userName = 4;</code>
+       * <code>string userName = 4;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -24176,13 +24197,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string userName = 4;</code>
+       * <code>string userName = 4;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
         java.lang.Object ref = userName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           userName_ = b;
@@ -24192,29 +24213,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string userName = 4;</code>
+       * <code>string userName = 4;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         userName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string userName = 4;</code>
+       * <code>string userName = 4;</code>
        */
       public Builder clearUserName() {
-
+        
         userName_ = getDefaultInstance().getUserName();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string userName = 4;</code>
+       * <code>string userName = 4;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -24222,7 +24243,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         userName_ = value;
         onChanged();
         return this;
@@ -24230,7 +24251,7 @@ public final class ProtoMessage {
 
       private java.lang.Object teamName_ = "";
       /**
-       * <code>optional string teamName = 5;</code>
+       * <code>string teamName = 5;</code>
        */
       public java.lang.String getTeamName() {
         java.lang.Object ref = teamName_;
@@ -24245,13 +24266,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string teamName = 5;</code>
+       * <code>string teamName = 5;</code>
        */
       public com.google.protobuf.ByteString
           getTeamNameBytes() {
         java.lang.Object ref = teamName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           teamName_ = b;
@@ -24261,29 +24282,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string teamName = 5;</code>
+       * <code>string teamName = 5;</code>
        */
       public Builder setTeamName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         teamName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string teamName = 5;</code>
+       * <code>string teamName = 5;</code>
        */
       public Builder clearTeamName() {
-
+        
         teamName_ = getDefaultInstance().getTeamName();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string teamName = 5;</code>
+       * <code>string teamName = 5;</code>
        */
       public Builder setTeamNameBytes(
           com.google.protobuf.ByteString value) {
@@ -24291,7 +24312,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         teamName_ = value;
         onChanged();
         return this;
@@ -24299,25 +24320,25 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>optional int64 teamID = 6;</code>
+       * <code>int64 teamID = 6;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>optional int64 teamID = 6;</code>
+       * <code>int64 teamID = 6;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 teamID = 6;</code>
+       * <code>int64 teamID = 6;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -24325,25 +24346,25 @@ public final class ProtoMessage {
 
       private int teamAdmin_ ;
       /**
-       * <code>optional int32 teamAdmin = 7;</code>
+       * <code>int32 teamAdmin = 7;</code>
        */
       public int getTeamAdmin() {
         return teamAdmin_;
       }
       /**
-       * <code>optional int32 teamAdmin = 7;</code>
+       * <code>int32 teamAdmin = 7;</code>
        */
       public Builder setTeamAdmin(int value) {
-
+        
         teamAdmin_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 teamAdmin = 7;</code>
+       * <code>int32 teamAdmin = 7;</code>
        */
       public Builder clearTeamAdmin() {
-
+        
         teamAdmin_ = 0;
         onChanged();
         return this;
@@ -24351,25 +24372,25 @@ public final class ProtoMessage {
 
       private long roomID_ ;
       /**
-       * <code>optional int64 roomID = 8;</code>
+       * <code>int64 roomID = 8;</code>
        */
       public long getRoomID() {
         return roomID_;
       }
       /**
-       * <code>optional int64 roomID = 8;</code>
+       * <code>int64 roomID = 8;</code>
        */
       public Builder setRoomID(long value) {
-
+        
         roomID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 roomID = 8;</code>
+       * <code>int64 roomID = 8;</code>
        */
       public Builder clearRoomID() {
-
+        
         roomID_ = 0L;
         onChanged();
         return this;
@@ -24381,7 +24402,7 @@ public final class ProtoMessage {
        * ChatStatus
        * </pre>
        *
-       * <code>optional int32 chatStatus = 9;</code>
+       * <code>int32 chatStatus = 9;</code>
        */
       public int getChatStatus() {
         return chatStatus_;
@@ -24391,10 +24412,10 @@ public final class ProtoMessage {
        * ChatStatus
        * </pre>
        *
-       * <code>optional int32 chatStatus = 9;</code>
+       * <code>int32 chatStatus = 9;</code>
        */
       public Builder setChatStatus(int value) {
-
+        
         chatStatus_ = value;
         onChanged();
         return this;
@@ -24404,10 +24425,10 @@ public final class ProtoMessage {
        * ChatStatus
        * </pre>
        *
-       * <code>optional int32 chatStatus = 9;</code>
+       * <code>int32 chatStatus = 9;</code>
        */
       public Builder clearChatStatus() {
-
+        
         chatStatus_ = 0;
         onChanged();
         return this;
@@ -24419,7 +24440,7 @@ public final class ProtoMessage {
        * 进入或退出
        * </pre>
        *
-       * <code>optional int32 enterType = 10;</code>
+       * <code>int32 enterType = 10;</code>
        */
       public int getEnterType() {
         return enterType_;
@@ -24429,10 +24450,10 @@ public final class ProtoMessage {
        * 进入或退出
        * </pre>
        *
-       * <code>optional int32 enterType = 10;</code>
+       * <code>int32 enterType = 10;</code>
        */
       public Builder setEnterType(int value) {
-
+        
         enterType_ = value;
         onChanged();
         return this;
@@ -24442,10 +24463,10 @@ public final class ProtoMessage {
        * 进入或退出
        * </pre>
        *
-       * <code>optional int32 enterType = 10;</code>
+       * <code>int32 enterType = 10;</code>
        */
       public Builder clearEnterType() {
-
+        
         enterType_ = 0;
         onChanged();
         return this;
@@ -24457,7 +24478,7 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>optional int32 applyType = 11;</code>
+       * <code>int32 applyType = 11;</code>
        */
       public int getApplyType() {
         return applyType_;
@@ -24467,10 +24488,10 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>optional int32 applyType = 11;</code>
+       * <code>int32 applyType = 11;</code>
        */
       public Builder setApplyType(int value) {
-
+        
         applyType_ = value;
         onChanged();
         return this;
@@ -24480,10 +24501,10 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>optional int32 applyType = 11;</code>
+       * <code>int32 applyType = 11;</code>
        */
       public Builder clearApplyType() {
-
+        
         applyType_ = 0;
         onChanged();
         return this;
@@ -24491,25 +24512,25 @@ public final class ProtoMessage {
 
       private int appTypeFrom_ ;
       /**
-       * <code>optional int32 appTypeFrom = 12;</code>
+       * <code>int32 appTypeFrom = 12;</code>
        */
       public int getAppTypeFrom() {
         return appTypeFrom_;
       }
       /**
-       * <code>optional int32 appTypeFrom = 12;</code>
+       * <code>int32 appTypeFrom = 12;</code>
        */
       public Builder setAppTypeFrom(int value) {
-
+        
         appTypeFrom_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 appTypeFrom = 12;</code>
+       * <code>int32 appTypeFrom = 12;</code>
        */
       public Builder clearAppTypeFrom() {
-
+        
         appTypeFrom_ = 0;
         onChanged();
         return this;
@@ -24521,7 +24542,7 @@ public final class ProtoMessage {
        * 通知到哪个应用中(-1全部, 不包含appTypeFrom)
        * </pre>
        *
-       * <code>optional int32 appTypeTo = 13;</code>
+       * <code>int32 appTypeTo = 13;</code>
        */
       public int getAppTypeTo() {
         return appTypeTo_;
@@ -24531,10 +24552,10 @@ public final class ProtoMessage {
        * 通知到哪个应用中(-1全部, 不包含appTypeFrom)
        * </pre>
        *
-       * <code>optional int32 appTypeTo = 13;</code>
+       * <code>int32 appTypeTo = 13;</code>
        */
       public Builder setAppTypeTo(int value) {
-
+        
         appTypeTo_ = value;
         onChanged();
         return this;
@@ -24544,10 +24565,10 @@ public final class ProtoMessage {
        * 通知到哪个应用中(-1全部, 不包含appTypeFrom)
        * </pre>
        *
-       * <code>optional int32 appTypeTo = 13;</code>
+       * <code>int32 appTypeTo = 13;</code>
        */
       public Builder clearAppTypeTo() {
-
+        
         appTypeTo_ = 0;
         onChanged();
         return this;
@@ -24559,7 +24580,7 @@ public final class ProtoMessage {
        * 通知URL
        * </pre>
        *
-       * <code>optional string videoUrl = 14;</code>
+       * <code>string videoUrl = 14;</code>
        */
       public java.lang.String getVideoUrl() {
         java.lang.Object ref = videoUrl_;
@@ -24578,13 +24599,13 @@ public final class ProtoMessage {
        * 通知URL
        * </pre>
        *
-       * <code>optional string videoUrl = 14;</code>
+       * <code>string videoUrl = 14;</code>
        */
       public com.google.protobuf.ByteString
           getVideoUrlBytes() {
         java.lang.Object ref = videoUrl_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           videoUrl_ = b;
@@ -24598,14 +24619,14 @@ public final class ProtoMessage {
        * 通知URL
        * </pre>
        *
-       * <code>optional string videoUrl = 14;</code>
+       * <code>string videoUrl = 14;</code>
        */
       public Builder setVideoUrl(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         videoUrl_ = value;
         onChanged();
         return this;
@@ -24615,10 +24636,10 @@ public final class ProtoMessage {
        * 通知URL
        * </pre>
        *
-       * <code>optional string videoUrl = 14;</code>
+       * <code>string videoUrl = 14;</code>
        */
       public Builder clearVideoUrl() {
-
+        
         videoUrl_ = getDefaultInstance().getVideoUrl();
         onChanged();
         return this;
@@ -24628,7 +24649,7 @@ public final class ProtoMessage {
        * 通知URL
        * </pre>
        *
-       * <code>optional string videoUrl = 14;</code>
+       * <code>string videoUrl = 14;</code>
        */
       public Builder setVideoUrlBytes(
           com.google.protobuf.ByteString value) {
@@ -24636,7 +24657,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         videoUrl_ = value;
         onChanged();
         return this;
@@ -24644,25 +24665,25 @@ public final class ProtoMessage {
 
       private int serverType_ ;
       /**
-       * <code>optional int32 serverType = 15;</code>
+       * <code>int32 serverType = 15;</code>
        */
       public int getServerType() {
         return serverType_;
       }
       /**
-       * <code>optional int32 serverType = 15;</code>
+       * <code>int32 serverType = 15;</code>
        */
       public Builder setServerType(int value) {
-
+        
         serverType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 serverType = 15;</code>
+       * <code>int32 serverType = 15;</code>
        */
       public Builder clearServerType() {
-
+        
         serverType_ = 0;
         onChanged();
         return this;
@@ -24674,7 +24695,7 @@ public final class ProtoMessage {
        * 是否上线
        * </pre>
        *
-       * <code>optional bool online = 16;</code>
+       * <code>bool online = 16;</code>
        */
       public boolean getOnline() {
         return online_;
@@ -24684,10 +24705,10 @@ public final class ProtoMessage {
        * 是否上线
        * </pre>
        *
-       * <code>optional bool online = 16;</code>
+       * <code>bool online = 16;</code>
        */
       public Builder setOnline(boolean value) {
-
+        
         online_ = value;
         onChanged();
         return this;
@@ -24697,10 +24718,10 @@ public final class ProtoMessage {
        * 是否上线
        * </pre>
        *
-       * <code>optional bool online = 16;</code>
+       * <code>bool online = 16;</code>
        */
       public Builder clearOnline() {
-
+        
         online_ = false;
         onChanged();
         return this;
@@ -24759,7 +24780,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -24768,7 +24789,7 @@ public final class ProtoMessage {
      * 手机号
      * </pre>
      *
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -24776,7 +24797,7 @@ public final class ProtoMessage {
      * 手机号
      * </pre>
      *
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -24786,7 +24807,7 @@ public final class ProtoMessage {
      * 好友的名字
      * </pre>
      *
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     java.lang.String getUserName();
     /**
@@ -24794,7 +24815,7 @@ public final class ProtoMessage {
      * 好友的名字
      * </pre>
      *
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
@@ -24804,7 +24825,7 @@ public final class ProtoMessage {
      * 好友的备注名
      * </pre>
      *
-     * <code>optional string nickName = 4;</code>
+     * <code>string nickName = 4;</code>
      */
     java.lang.String getNickName();
     /**
@@ -24812,7 +24833,7 @@ public final class ProtoMessage {
      * 好友的备注名
      * </pre>
      *
-     * <code>optional string nickName = 4;</code>
+     * <code>string nickName = 4;</code>
      */
     com.google.protobuf.ByteString
         getNickNameBytes();
@@ -24822,7 +24843,7 @@ public final class ProtoMessage {
      * 是否星标
      * </pre>
      *
-     * <code>optional bool friendStar = 5;</code>
+     * <code>bool friendStar = 5;</code>
      */
     boolean getFriendStar();
 
@@ -24831,7 +24852,7 @@ public final class ProtoMessage {
      * 用户头像
      * </pre>
      *
-     * <code>optional bytes userPic = 6;</code>
+     * <code>bytes userPic = 6;</code>
      */
     com.google.protobuf.ByteString getUserPic();
 
@@ -24840,7 +24861,7 @@ public final class ProtoMessage {
      * 性别
      * </pre>
      *
-     * <code>optional int32 userSex = 7;</code>
+     * <code>int32 userSex = 7;</code>
      */
     int getUserSex();
 
@@ -24849,7 +24870,7 @@ public final class ProtoMessage {
      * 申请消息
      * </pre>
      *
-     * <code>optional string applyInfo = 8;</code>
+     * <code>string applyInfo = 8;</code>
      */
     java.lang.String getApplyInfo();
     /**
@@ -24857,7 +24878,7 @@ public final class ProtoMessage {
      * 申请消息
      * </pre>
      *
-     * <code>optional string applyInfo = 8;</code>
+     * <code>string applyInfo = 8;</code>
      */
     com.google.protobuf.ByteString
         getApplyInfoBytes();
@@ -24867,7 +24888,7 @@ public final class ProtoMessage {
      * 车机ID
      * </pre>
      *
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     java.lang.String getCarID();
     /**
@@ -24875,7 +24896,7 @@ public final class ProtoMessage {
      * 车机ID
      * </pre>
      *
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -24885,7 +24906,7 @@ public final class ProtoMessage {
      * 生日改为 “yyyy-MM-dd"
      * </pre>
      *
-     * <code>optional string birthday = 10;</code>
+     * <code>string birthday = 10;</code>
      */
     java.lang.String getBirthday();
     /**
@@ -24893,67 +24914,67 @@ public final class ProtoMessage {
      * 生日改为 “yyyy-MM-dd"
      * </pre>
      *
-     * <code>optional string birthday = 10;</code>
+     * <code>string birthday = 10;</code>
      */
     com.google.protobuf.ByteString
         getBirthdayBytes();
 
     /**
-     * <code>optional string prov = 11;</code>
+     * <code>string prov = 11;</code>
      */
     java.lang.String getProv();
     /**
-     * <code>optional string prov = 11;</code>
+     * <code>string prov = 11;</code>
      */
     com.google.protobuf.ByteString
         getProvBytes();
 
     /**
-     * <code>optional string city = 12;</code>
+     * <code>string city = 12;</code>
      */
     java.lang.String getCity();
     /**
-     * <code>optional string city = 12;</code>
+     * <code>string city = 12;</code>
      */
     com.google.protobuf.ByteString
         getCityBytes();
 
     /**
-     * <code>optional string town = 13;</code>
+     * <code>string town = 13;</code>
      */
     java.lang.String getTown();
     /**
-     * <code>optional string town = 13;</code>
+     * <code>string town = 13;</code>
      */
     com.google.protobuf.ByteString
         getTownBytes();
 
     /**
-     * <code>optional string car_type1 = 14;</code>
+     * <code>string car_type1 = 14;</code>
      */
     java.lang.String getCarType1();
     /**
-     * <code>optional string car_type1 = 14;</code>
+     * <code>string car_type1 = 14;</code>
      */
     com.google.protobuf.ByteString
         getCarType1Bytes();
 
     /**
-     * <code>optional string car_type2 = 15;</code>
+     * <code>string car_type2 = 15;</code>
      */
     java.lang.String getCarType2();
     /**
-     * <code>optional string car_type2 = 15;</code>
+     * <code>string car_type2 = 15;</code>
      */
     com.google.protobuf.ByteString
         getCarType2Bytes();
 
     /**
-     * <code>optional string car_type3 = 16;</code>
+     * <code>string car_type3 = 16;</code>
      */
     java.lang.String getCarType3();
     /**
-     * <code>optional string car_type3 = 16;</code>
+     * <code>string car_type3 = 16;</code>
      */
     com.google.protobuf.ByteString
         getCarType3Bytes();
@@ -24963,7 +24984,7 @@ public final class ProtoMessage {
      * 车牌号
      * </pre>
      *
-     * <code>optional string car_num = 17;</code>
+     * <code>string car_num = 17;</code>
      */
     java.lang.String getCarNum();
     /**
@@ -24971,7 +24992,7 @@ public final class ProtoMessage {
      * 车牌号
      * </pre>
      *
-     * <code>optional string car_num = 17;</code>
+     * <code>string car_num = 17;</code>
      */
     com.google.protobuf.ByteString
         getCarNumBytes();
@@ -24981,7 +25002,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_0 = 18;</code>
+     * <code>int32 hide_field_0 = 18;</code>
      */
     int getHideField0();
 
@@ -24990,7 +25011,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_1 = 19;</code>
+     * <code>int32 hide_field_1 = 19;</code>
      */
     int getHideField1();
 
@@ -24999,7 +25020,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_2 = 20;</code>
+     * <code>int32 hide_field_2 = 20;</code>
      */
     int getHideField2();
 
@@ -25008,7 +25029,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_3 = 21;</code>
+     * <code>int32 hide_field_3 = 21;</code>
      */
     int getHideField3();
 
@@ -25017,7 +25038,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_4 = 22;</code>
+     * <code>int32 hide_field_4 = 22;</code>
      */
     int getHideField4();
 
@@ -25026,7 +25047,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_5 = 23;</code>
+     * <code>int32 hide_field_5 = 23;</code>
      */
     int getHideField5();
 
@@ -25035,7 +25056,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_6 = 24;</code>
+     * <code>int32 hide_field_6 = 24;</code>
      */
     int getHideField6();
 
@@ -25044,7 +25065,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_7 = 25;</code>
+     * <code>int32 hide_field_7 = 25;</code>
      */
     int getHideField7();
 
@@ -25053,7 +25074,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_8 = 26;</code>
+     * <code>int32 hide_field_8 = 26;</code>
      */
     int getHideField8();
 
@@ -25062,13 +25083,67 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_9 = 27;</code>
+     * <code>int32 hide_field_9 = 27;</code>
      */
     int getHideField9();
+
+    /**
+     * <pre>
+     *兴趣
+     * </pre>
+     *
+     * <code>string interest = 36;</code>
+     */
+    java.lang.String getInterest();
+    /**
+     * <pre>
+     *兴趣
+     * </pre>
+     *
+     * <code>string interest = 36;</code>
+     */
+    com.google.protobuf.ByteString
+        getInterestBytes();
+
+    /**
+     * <pre>
+     *行业
+     * </pre>
+     *
+     * <code>string career = 37;</code>
+     */
+    java.lang.String getCareer();
+    /**
+     * <pre>
+     *行业
+     * </pre>
+     *
+     * <code>string career = 37;</code>
+     */
+    com.google.protobuf.ByteString
+        getCareerBytes();
+
+    /**
+     * <pre>
+     *个性签名
+     * </pre>
+     *
+     * <code>string signature = 38;</code>
+     */
+    java.lang.String getSignature();
+    /**
+     * <pre>
+     *个性签名
+     * </pre>
+     *
+     * <code>string signature = 38;</code>
+     */
+    com.google.protobuf.ByteString
+        getSignatureBytes();
   }
   /**
    * <pre>
-   ** 修改用户信息，返回通用包
+   ** 修改用户信息，返回通用包 
    * </pre>
    *
    * Protobuf type {@code UserInfo}
@@ -25109,6 +25184,9 @@ public final class ProtoMessage {
       hideField7_ = 0;
       hideField8_ = 0;
       hideField9_ = 0;
+      interest_ = "";
+      career_ = "";
+      signature_ = "";
     }
 
     @java.lang.Override
@@ -25284,6 +25362,24 @@ public final class ProtoMessage {
               hideField9_ = input.readInt32();
               break;
             }
+            case 290: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              interest_ = s;
+              break;
+            }
+            case 298: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              career_ = s;
+              break;
+            }
+            case 306: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              signature_ = s;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -25310,7 +25406,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -25323,14 +25419,14 @@ public final class ProtoMessage {
      * 手机号
      * </pre>
      *
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -25342,13 +25438,13 @@ public final class ProtoMessage {
      * 手机号
      * </pre>
      *
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -25365,14 +25461,14 @@ public final class ProtoMessage {
      * 好友的名字
      * </pre>
      *
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         userName_ = s;
@@ -25384,13 +25480,13 @@ public final class ProtoMessage {
      * 好友的名字
      * </pre>
      *
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         userName_ = b;
@@ -25407,14 +25503,14 @@ public final class ProtoMessage {
      * 好友的备注名
      * </pre>
      *
-     * <code>optional string nickName = 4;</code>
+     * <code>string nickName = 4;</code>
      */
     public java.lang.String getNickName() {
       java.lang.Object ref = nickName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         nickName_ = s;
@@ -25426,13 +25522,13 @@ public final class ProtoMessage {
      * 好友的备注名
      * </pre>
      *
-     * <code>optional string nickName = 4;</code>
+     * <code>string nickName = 4;</code>
      */
     public com.google.protobuf.ByteString
         getNickNameBytes() {
       java.lang.Object ref = nickName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nickName_ = b;
@@ -25449,7 +25545,7 @@ public final class ProtoMessage {
      * 是否星标
      * </pre>
      *
-     * <code>optional bool friendStar = 5;</code>
+     * <code>bool friendStar = 5;</code>
      */
     public boolean getFriendStar() {
       return friendStar_;
@@ -25462,7 +25558,7 @@ public final class ProtoMessage {
      * 用户头像
      * </pre>
      *
-     * <code>optional bytes userPic = 6;</code>
+     * <code>bytes userPic = 6;</code>
      */
     public com.google.protobuf.ByteString getUserPic() {
       return userPic_;
@@ -25475,7 +25571,7 @@ public final class ProtoMessage {
      * 性别
      * </pre>
      *
-     * <code>optional int32 userSex = 7;</code>
+     * <code>int32 userSex = 7;</code>
      */
     public int getUserSex() {
       return userSex_;
@@ -25488,14 +25584,14 @@ public final class ProtoMessage {
      * 申请消息
      * </pre>
      *
-     * <code>optional string applyInfo = 8;</code>
+     * <code>string applyInfo = 8;</code>
      */
     public java.lang.String getApplyInfo() {
       java.lang.Object ref = applyInfo_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         applyInfo_ = s;
@@ -25507,13 +25603,13 @@ public final class ProtoMessage {
      * 申请消息
      * </pre>
      *
-     * <code>optional string applyInfo = 8;</code>
+     * <code>string applyInfo = 8;</code>
      */
     public com.google.protobuf.ByteString
         getApplyInfoBytes() {
       java.lang.Object ref = applyInfo_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         applyInfo_ = b;
@@ -25530,14 +25626,14 @@ public final class ProtoMessage {
      * 车机ID
      * </pre>
      *
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carID_ = s;
@@ -25549,13 +25645,13 @@ public final class ProtoMessage {
      * 车机ID
      * </pre>
      *
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carID_ = b;
@@ -25572,14 +25668,14 @@ public final class ProtoMessage {
      * 生日改为 “yyyy-MM-dd"
      * </pre>
      *
-     * <code>optional string birthday = 10;</code>
+     * <code>string birthday = 10;</code>
      */
     public java.lang.String getBirthday() {
       java.lang.Object ref = birthday_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         birthday_ = s;
@@ -25591,13 +25687,13 @@ public final class ProtoMessage {
      * 生日改为 “yyyy-MM-dd"
      * </pre>
      *
-     * <code>optional string birthday = 10;</code>
+     * <code>string birthday = 10;</code>
      */
     public com.google.protobuf.ByteString
         getBirthdayBytes() {
       java.lang.Object ref = birthday_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         birthday_ = b;
@@ -25610,14 +25706,14 @@ public final class ProtoMessage {
     public static final int PROV_FIELD_NUMBER = 11;
     private volatile java.lang.Object prov_;
     /**
-     * <code>optional string prov = 11;</code>
+     * <code>string prov = 11;</code>
      */
     public java.lang.String getProv() {
       java.lang.Object ref = prov_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         prov_ = s;
@@ -25625,13 +25721,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string prov = 11;</code>
+     * <code>string prov = 11;</code>
      */
     public com.google.protobuf.ByteString
         getProvBytes() {
       java.lang.Object ref = prov_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         prov_ = b;
@@ -25644,14 +25740,14 @@ public final class ProtoMessage {
     public static final int CITY_FIELD_NUMBER = 12;
     private volatile java.lang.Object city_;
     /**
-     * <code>optional string city = 12;</code>
+     * <code>string city = 12;</code>
      */
     public java.lang.String getCity() {
       java.lang.Object ref = city_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         city_ = s;
@@ -25659,13 +25755,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string city = 12;</code>
+     * <code>string city = 12;</code>
      */
     public com.google.protobuf.ByteString
         getCityBytes() {
       java.lang.Object ref = city_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         city_ = b;
@@ -25678,14 +25774,14 @@ public final class ProtoMessage {
     public static final int TOWN_FIELD_NUMBER = 13;
     private volatile java.lang.Object town_;
     /**
-     * <code>optional string town = 13;</code>
+     * <code>string town = 13;</code>
      */
     public java.lang.String getTown() {
       java.lang.Object ref = town_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         town_ = s;
@@ -25693,13 +25789,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string town = 13;</code>
+     * <code>string town = 13;</code>
      */
     public com.google.protobuf.ByteString
         getTownBytes() {
       java.lang.Object ref = town_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         town_ = b;
@@ -25712,14 +25808,14 @@ public final class ProtoMessage {
     public static final int CAR_TYPE1_FIELD_NUMBER = 14;
     private volatile java.lang.Object carType1_;
     /**
-     * <code>optional string car_type1 = 14;</code>
+     * <code>string car_type1 = 14;</code>
      */
     public java.lang.String getCarType1() {
       java.lang.Object ref = carType1_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carType1_ = s;
@@ -25727,13 +25823,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string car_type1 = 14;</code>
+     * <code>string car_type1 = 14;</code>
      */
     public com.google.protobuf.ByteString
         getCarType1Bytes() {
       java.lang.Object ref = carType1_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carType1_ = b;
@@ -25746,14 +25842,14 @@ public final class ProtoMessage {
     public static final int CAR_TYPE2_FIELD_NUMBER = 15;
     private volatile java.lang.Object carType2_;
     /**
-     * <code>optional string car_type2 = 15;</code>
+     * <code>string car_type2 = 15;</code>
      */
     public java.lang.String getCarType2() {
       java.lang.Object ref = carType2_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carType2_ = s;
@@ -25761,13 +25857,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string car_type2 = 15;</code>
+     * <code>string car_type2 = 15;</code>
      */
     public com.google.protobuf.ByteString
         getCarType2Bytes() {
       java.lang.Object ref = carType2_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carType2_ = b;
@@ -25780,14 +25876,14 @@ public final class ProtoMessage {
     public static final int CAR_TYPE3_FIELD_NUMBER = 16;
     private volatile java.lang.Object carType3_;
     /**
-     * <code>optional string car_type3 = 16;</code>
+     * <code>string car_type3 = 16;</code>
      */
     public java.lang.String getCarType3() {
       java.lang.Object ref = carType3_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carType3_ = s;
@@ -25795,13 +25891,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string car_type3 = 16;</code>
+     * <code>string car_type3 = 16;</code>
      */
     public com.google.protobuf.ByteString
         getCarType3Bytes() {
       java.lang.Object ref = carType3_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carType3_ = b;
@@ -25818,14 +25914,14 @@ public final class ProtoMessage {
      * 车牌号
      * </pre>
      *
-     * <code>optional string car_num = 17;</code>
+     * <code>string car_num = 17;</code>
      */
     public java.lang.String getCarNum() {
       java.lang.Object ref = carNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carNum_ = s;
@@ -25837,13 +25933,13 @@ public final class ProtoMessage {
      * 车牌号
      * </pre>
      *
-     * <code>optional string car_num = 17;</code>
+     * <code>string car_num = 17;</code>
      */
     public com.google.protobuf.ByteString
         getCarNumBytes() {
       java.lang.Object ref = carNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carNum_ = b;
@@ -25860,7 +25956,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_0 = 18;</code>
+     * <code>int32 hide_field_0 = 18;</code>
      */
     public int getHideField0() {
       return hideField0_;
@@ -25873,7 +25969,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_1 = 19;</code>
+     * <code>int32 hide_field_1 = 19;</code>
      */
     public int getHideField1() {
       return hideField1_;
@@ -25886,7 +25982,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_2 = 20;</code>
+     * <code>int32 hide_field_2 = 20;</code>
      */
     public int getHideField2() {
       return hideField2_;
@@ -25899,7 +25995,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_3 = 21;</code>
+     * <code>int32 hide_field_3 = 21;</code>
      */
     public int getHideField3() {
       return hideField3_;
@@ -25912,7 +26008,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_4 = 22;</code>
+     * <code>int32 hide_field_4 = 22;</code>
      */
     public int getHideField4() {
       return hideField4_;
@@ -25925,7 +26021,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_5 = 23;</code>
+     * <code>int32 hide_field_5 = 23;</code>
      */
     public int getHideField5() {
       return hideField5_;
@@ -25938,7 +26034,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_6 = 24;</code>
+     * <code>int32 hide_field_6 = 24;</code>
      */
     public int getHideField6() {
       return hideField6_;
@@ -25951,7 +26047,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_7 = 25;</code>
+     * <code>int32 hide_field_7 = 25;</code>
      */
     public int getHideField7() {
       return hideField7_;
@@ -25964,7 +26060,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_8 = 26;</code>
+     * <code>int32 hide_field_8 = 26;</code>
      */
     public int getHideField8() {
       return hideField8_;
@@ -25977,10 +26073,136 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>optional int32 hide_field_9 = 27;</code>
+     * <code>int32 hide_field_9 = 27;</code>
      */
     public int getHideField9() {
       return hideField9_;
+    }
+
+    public static final int INTEREST_FIELD_NUMBER = 36;
+    private volatile java.lang.Object interest_;
+    /**
+     * <pre>
+     *兴趣
+     * </pre>
+     *
+     * <code>string interest = 36;</code>
+     */
+    public java.lang.String getInterest() {
+      java.lang.Object ref = interest_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        interest_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *兴趣
+     * </pre>
+     *
+     * <code>string interest = 36;</code>
+     */
+    public com.google.protobuf.ByteString
+        getInterestBytes() {
+      java.lang.Object ref = interest_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        interest_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CAREER_FIELD_NUMBER = 37;
+    private volatile java.lang.Object career_;
+    /**
+     * <pre>
+     *行业
+     * </pre>
+     *
+     * <code>string career = 37;</code>
+     */
+    public java.lang.String getCareer() {
+      java.lang.Object ref = career_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        career_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *行业
+     * </pre>
+     *
+     * <code>string career = 37;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCareerBytes() {
+      java.lang.Object ref = career_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        career_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SIGNATURE_FIELD_NUMBER = 38;
+    private volatile java.lang.Object signature_;
+    /**
+     * <pre>
+     *个性签名
+     * </pre>
+     *
+     * <code>string signature = 38;</code>
+     */
+    public java.lang.String getSignature() {
+      java.lang.Object ref = signature_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        signature_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *个性签名
+     * </pre>
+     *
+     * <code>string signature = 38;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSignatureBytes() {
+      java.lang.Object ref = signature_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        signature_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -26075,6 +26297,15 @@ public final class ProtoMessage {
       }
       if (hideField9_ != 0) {
         output.writeInt32(27, hideField9_);
+      }
+      if (!getInterestBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 36, interest_);
+      }
+      if (!getCareerBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 37, career_);
+      }
+      if (!getSignatureBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 38, signature_);
       }
     }
 
@@ -26178,6 +26409,15 @@ public final class ProtoMessage {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(27, hideField9_);
       }
+      if (!getInterestBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(36, interest_);
+      }
+      if (!getCareerBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(37, career_);
+      }
+      if (!getSignatureBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(38, signature_);
+      }
       memoizedSize = size;
       return size;
     }
@@ -26248,6 +26488,12 @@ public final class ProtoMessage {
           == other.getHideField8());
       result = result && (getHideField9()
           == other.getHideField9());
+      result = result && getInterest()
+          .equals(other.getInterest());
+      result = result && getCareer()
+          .equals(other.getCareer());
+      result = result && getSignature()
+          .equals(other.getSignature());
       return result;
     }
 
@@ -26257,7 +26503,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -26313,6 +26559,12 @@ public final class ProtoMessage {
       hash = (53 * hash) + getHideField8();
       hash = (37 * hash) + HIDE_FIELD_9_FIELD_NUMBER;
       hash = (53 * hash) + getHideField9();
+      hash = (37 * hash) + INTEREST_FIELD_NUMBER;
+      hash = (53 * hash) + getInterest().hashCode();
+      hash = (37 * hash) + CAREER_FIELD_NUMBER;
+      hash = (53 * hash) + getCareer().hashCode();
+      hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
+      hash = (53 * hash) + getSignature().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -26397,7 +26649,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 修改用户信息，返回通用包
+     ** 修改用户信息，返回通用包 
      * </pre>
      *
      * Protobuf type {@code UserInfo}
@@ -26489,6 +26741,12 @@ public final class ProtoMessage {
 
         hideField9_ = 0;
 
+        interest_ = "";
+
+        career_ = "";
+
+        signature_ = "";
+
         return this;
       }
 
@@ -26538,6 +26796,9 @@ public final class ProtoMessage {
         result.hideField7_ = hideField7_;
         result.hideField8_ = hideField8_;
         result.hideField9_ = hideField9_;
+        result.interest_ = interest_;
+        result.career_ = career_;
+        result.signature_ = signature_;
         onBuilt();
         return result;
       }
@@ -26673,6 +26934,18 @@ public final class ProtoMessage {
         if (other.getHideField9() != 0) {
           setHideField9(other.getHideField9());
         }
+        if (!other.getInterest().isEmpty()) {
+          interest_ = other.interest_;
+          onChanged();
+        }
+        if (!other.getCareer().isEmpty()) {
+          career_ = other.career_;
+          onChanged();
+        }
+        if (!other.getSignature().isEmpty()) {
+          signature_ = other.signature_;
+          onChanged();
+        }
         onChanged();
         return this;
       }
@@ -26701,25 +26974,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -26731,7 +27004,7 @@ public final class ProtoMessage {
        * 手机号
        * </pre>
        *
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -26750,13 +27023,13 @@ public final class ProtoMessage {
        * 手机号
        * </pre>
        *
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -26770,14 +27043,14 @@ public final class ProtoMessage {
        * 手机号
        * </pre>
        *
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
@@ -26787,10 +27060,10 @@ public final class ProtoMessage {
        * 手机号
        * </pre>
        *
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
@@ -26800,7 +27073,7 @@ public final class ProtoMessage {
        * 手机号
        * </pre>
        *
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -26808,7 +27081,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -26820,7 +27093,7 @@ public final class ProtoMessage {
        * 好友的名字
        * </pre>
        *
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -26839,13 +27112,13 @@ public final class ProtoMessage {
        * 好友的名字
        * </pre>
        *
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
         java.lang.Object ref = userName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           userName_ = b;
@@ -26859,14 +27132,14 @@ public final class ProtoMessage {
        * 好友的名字
        * </pre>
        *
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         userName_ = value;
         onChanged();
         return this;
@@ -26876,10 +27149,10 @@ public final class ProtoMessage {
        * 好友的名字
        * </pre>
        *
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public Builder clearUserName() {
-
+        
         userName_ = getDefaultInstance().getUserName();
         onChanged();
         return this;
@@ -26889,7 +27162,7 @@ public final class ProtoMessage {
        * 好友的名字
        * </pre>
        *
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -26897,7 +27170,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         userName_ = value;
         onChanged();
         return this;
@@ -26909,7 +27182,7 @@ public final class ProtoMessage {
        * 好友的备注名
        * </pre>
        *
-       * <code>optional string nickName = 4;</code>
+       * <code>string nickName = 4;</code>
        */
       public java.lang.String getNickName() {
         java.lang.Object ref = nickName_;
@@ -26928,13 +27201,13 @@ public final class ProtoMessage {
        * 好友的备注名
        * </pre>
        *
-       * <code>optional string nickName = 4;</code>
+       * <code>string nickName = 4;</code>
        */
       public com.google.protobuf.ByteString
           getNickNameBytes() {
         java.lang.Object ref = nickName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nickName_ = b;
@@ -26948,14 +27221,14 @@ public final class ProtoMessage {
        * 好友的备注名
        * </pre>
        *
-       * <code>optional string nickName = 4;</code>
+       * <code>string nickName = 4;</code>
        */
       public Builder setNickName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         nickName_ = value;
         onChanged();
         return this;
@@ -26965,10 +27238,10 @@ public final class ProtoMessage {
        * 好友的备注名
        * </pre>
        *
-       * <code>optional string nickName = 4;</code>
+       * <code>string nickName = 4;</code>
        */
       public Builder clearNickName() {
-
+        
         nickName_ = getDefaultInstance().getNickName();
         onChanged();
         return this;
@@ -26978,7 +27251,7 @@ public final class ProtoMessage {
        * 好友的备注名
        * </pre>
        *
-       * <code>optional string nickName = 4;</code>
+       * <code>string nickName = 4;</code>
        */
       public Builder setNickNameBytes(
           com.google.protobuf.ByteString value) {
@@ -26986,7 +27259,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         nickName_ = value;
         onChanged();
         return this;
@@ -26998,7 +27271,7 @@ public final class ProtoMessage {
        * 是否星标
        * </pre>
        *
-       * <code>optional bool friendStar = 5;</code>
+       * <code>bool friendStar = 5;</code>
        */
       public boolean getFriendStar() {
         return friendStar_;
@@ -27008,10 +27281,10 @@ public final class ProtoMessage {
        * 是否星标
        * </pre>
        *
-       * <code>optional bool friendStar = 5;</code>
+       * <code>bool friendStar = 5;</code>
        */
       public Builder setFriendStar(boolean value) {
-
+        
         friendStar_ = value;
         onChanged();
         return this;
@@ -27021,10 +27294,10 @@ public final class ProtoMessage {
        * 是否星标
        * </pre>
        *
-       * <code>optional bool friendStar = 5;</code>
+       * <code>bool friendStar = 5;</code>
        */
       public Builder clearFriendStar() {
-
+        
         friendStar_ = false;
         onChanged();
         return this;
@@ -27036,7 +27309,7 @@ public final class ProtoMessage {
        * 用户头像
        * </pre>
        *
-       * <code>optional bytes userPic = 6;</code>
+       * <code>bytes userPic = 6;</code>
        */
       public com.google.protobuf.ByteString getUserPic() {
         return userPic_;
@@ -27046,13 +27319,13 @@ public final class ProtoMessage {
        * 用户头像
        * </pre>
        *
-       * <code>optional bytes userPic = 6;</code>
+       * <code>bytes userPic = 6;</code>
        */
       public Builder setUserPic(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         userPic_ = value;
         onChanged();
         return this;
@@ -27062,10 +27335,10 @@ public final class ProtoMessage {
        * 用户头像
        * </pre>
        *
-       * <code>optional bytes userPic = 6;</code>
+       * <code>bytes userPic = 6;</code>
        */
       public Builder clearUserPic() {
-
+        
         userPic_ = getDefaultInstance().getUserPic();
         onChanged();
         return this;
@@ -27077,7 +27350,7 @@ public final class ProtoMessage {
        * 性别
        * </pre>
        *
-       * <code>optional int32 userSex = 7;</code>
+       * <code>int32 userSex = 7;</code>
        */
       public int getUserSex() {
         return userSex_;
@@ -27087,10 +27360,10 @@ public final class ProtoMessage {
        * 性别
        * </pre>
        *
-       * <code>optional int32 userSex = 7;</code>
+       * <code>int32 userSex = 7;</code>
        */
       public Builder setUserSex(int value) {
-
+        
         userSex_ = value;
         onChanged();
         return this;
@@ -27100,10 +27373,10 @@ public final class ProtoMessage {
        * 性别
        * </pre>
        *
-       * <code>optional int32 userSex = 7;</code>
+       * <code>int32 userSex = 7;</code>
        */
       public Builder clearUserSex() {
-
+        
         userSex_ = 0;
         onChanged();
         return this;
@@ -27115,7 +27388,7 @@ public final class ProtoMessage {
        * 申请消息
        * </pre>
        *
-       * <code>optional string applyInfo = 8;</code>
+       * <code>string applyInfo = 8;</code>
        */
       public java.lang.String getApplyInfo() {
         java.lang.Object ref = applyInfo_;
@@ -27134,13 +27407,13 @@ public final class ProtoMessage {
        * 申请消息
        * </pre>
        *
-       * <code>optional string applyInfo = 8;</code>
+       * <code>string applyInfo = 8;</code>
        */
       public com.google.protobuf.ByteString
           getApplyInfoBytes() {
         java.lang.Object ref = applyInfo_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           applyInfo_ = b;
@@ -27154,14 +27427,14 @@ public final class ProtoMessage {
        * 申请消息
        * </pre>
        *
-       * <code>optional string applyInfo = 8;</code>
+       * <code>string applyInfo = 8;</code>
        */
       public Builder setApplyInfo(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         applyInfo_ = value;
         onChanged();
         return this;
@@ -27171,10 +27444,10 @@ public final class ProtoMessage {
        * 申请消息
        * </pre>
        *
-       * <code>optional string applyInfo = 8;</code>
+       * <code>string applyInfo = 8;</code>
        */
       public Builder clearApplyInfo() {
-
+        
         applyInfo_ = getDefaultInstance().getApplyInfo();
         onChanged();
         return this;
@@ -27184,7 +27457,7 @@ public final class ProtoMessage {
        * 申请消息
        * </pre>
        *
-       * <code>optional string applyInfo = 8;</code>
+       * <code>string applyInfo = 8;</code>
        */
       public Builder setApplyInfoBytes(
           com.google.protobuf.ByteString value) {
@@ -27192,7 +27465,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         applyInfo_ = value;
         onChanged();
         return this;
@@ -27204,7 +27477,7 @@ public final class ProtoMessage {
        * 车机ID
        * </pre>
        *
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -27223,13 +27496,13 @@ public final class ProtoMessage {
        * 车机ID
        * </pre>
        *
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
         java.lang.Object ref = carID_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carID_ = b;
@@ -27243,14 +27516,14 @@ public final class ProtoMessage {
        * 车机ID
        * </pre>
        *
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carID_ = value;
         onChanged();
         return this;
@@ -27260,10 +27533,10 @@ public final class ProtoMessage {
        * 车机ID
        * </pre>
        *
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public Builder clearCarID() {
-
+        
         carID_ = getDefaultInstance().getCarID();
         onChanged();
         return this;
@@ -27273,7 +27546,7 @@ public final class ProtoMessage {
        * 车机ID
        * </pre>
        *
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -27281,7 +27554,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carID_ = value;
         onChanged();
         return this;
@@ -27293,7 +27566,7 @@ public final class ProtoMessage {
        * 生日改为 “yyyy-MM-dd"
        * </pre>
        *
-       * <code>optional string birthday = 10;</code>
+       * <code>string birthday = 10;</code>
        */
       public java.lang.String getBirthday() {
         java.lang.Object ref = birthday_;
@@ -27312,13 +27585,13 @@ public final class ProtoMessage {
        * 生日改为 “yyyy-MM-dd"
        * </pre>
        *
-       * <code>optional string birthday = 10;</code>
+       * <code>string birthday = 10;</code>
        */
       public com.google.protobuf.ByteString
           getBirthdayBytes() {
         java.lang.Object ref = birthday_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           birthday_ = b;
@@ -27332,14 +27605,14 @@ public final class ProtoMessage {
        * 生日改为 “yyyy-MM-dd"
        * </pre>
        *
-       * <code>optional string birthday = 10;</code>
+       * <code>string birthday = 10;</code>
        */
       public Builder setBirthday(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         birthday_ = value;
         onChanged();
         return this;
@@ -27349,10 +27622,10 @@ public final class ProtoMessage {
        * 生日改为 “yyyy-MM-dd"
        * </pre>
        *
-       * <code>optional string birthday = 10;</code>
+       * <code>string birthday = 10;</code>
        */
       public Builder clearBirthday() {
-
+        
         birthday_ = getDefaultInstance().getBirthday();
         onChanged();
         return this;
@@ -27362,7 +27635,7 @@ public final class ProtoMessage {
        * 生日改为 “yyyy-MM-dd"
        * </pre>
        *
-       * <code>optional string birthday = 10;</code>
+       * <code>string birthday = 10;</code>
        */
       public Builder setBirthdayBytes(
           com.google.protobuf.ByteString value) {
@@ -27370,7 +27643,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         birthday_ = value;
         onChanged();
         return this;
@@ -27378,7 +27651,7 @@ public final class ProtoMessage {
 
       private java.lang.Object prov_ = "";
       /**
-       * <code>optional string prov = 11;</code>
+       * <code>string prov = 11;</code>
        */
       public java.lang.String getProv() {
         java.lang.Object ref = prov_;
@@ -27393,13 +27666,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string prov = 11;</code>
+       * <code>string prov = 11;</code>
        */
       public com.google.protobuf.ByteString
           getProvBytes() {
         java.lang.Object ref = prov_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           prov_ = b;
@@ -27409,29 +27682,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string prov = 11;</code>
+       * <code>string prov = 11;</code>
        */
       public Builder setProv(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         prov_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string prov = 11;</code>
+       * <code>string prov = 11;</code>
        */
       public Builder clearProv() {
-
+        
         prov_ = getDefaultInstance().getProv();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string prov = 11;</code>
+       * <code>string prov = 11;</code>
        */
       public Builder setProvBytes(
           com.google.protobuf.ByteString value) {
@@ -27439,7 +27712,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         prov_ = value;
         onChanged();
         return this;
@@ -27447,7 +27720,7 @@ public final class ProtoMessage {
 
       private java.lang.Object city_ = "";
       /**
-       * <code>optional string city = 12;</code>
+       * <code>string city = 12;</code>
        */
       public java.lang.String getCity() {
         java.lang.Object ref = city_;
@@ -27462,13 +27735,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string city = 12;</code>
+       * <code>string city = 12;</code>
        */
       public com.google.protobuf.ByteString
           getCityBytes() {
         java.lang.Object ref = city_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           city_ = b;
@@ -27478,29 +27751,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string city = 12;</code>
+       * <code>string city = 12;</code>
        */
       public Builder setCity(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         city_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string city = 12;</code>
+       * <code>string city = 12;</code>
        */
       public Builder clearCity() {
-
+        
         city_ = getDefaultInstance().getCity();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string city = 12;</code>
+       * <code>string city = 12;</code>
        */
       public Builder setCityBytes(
           com.google.protobuf.ByteString value) {
@@ -27508,7 +27781,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         city_ = value;
         onChanged();
         return this;
@@ -27516,7 +27789,7 @@ public final class ProtoMessage {
 
       private java.lang.Object town_ = "";
       /**
-       * <code>optional string town = 13;</code>
+       * <code>string town = 13;</code>
        */
       public java.lang.String getTown() {
         java.lang.Object ref = town_;
@@ -27531,13 +27804,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string town = 13;</code>
+       * <code>string town = 13;</code>
        */
       public com.google.protobuf.ByteString
           getTownBytes() {
         java.lang.Object ref = town_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           town_ = b;
@@ -27547,29 +27820,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string town = 13;</code>
+       * <code>string town = 13;</code>
        */
       public Builder setTown(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         town_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string town = 13;</code>
+       * <code>string town = 13;</code>
        */
       public Builder clearTown() {
-
+        
         town_ = getDefaultInstance().getTown();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string town = 13;</code>
+       * <code>string town = 13;</code>
        */
       public Builder setTownBytes(
           com.google.protobuf.ByteString value) {
@@ -27577,7 +27850,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         town_ = value;
         onChanged();
         return this;
@@ -27585,7 +27858,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType1_ = "";
       /**
-       * <code>optional string car_type1 = 14;</code>
+       * <code>string car_type1 = 14;</code>
        */
       public java.lang.String getCarType1() {
         java.lang.Object ref = carType1_;
@@ -27600,13 +27873,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type1 = 14;</code>
+       * <code>string car_type1 = 14;</code>
        */
       public com.google.protobuf.ByteString
           getCarType1Bytes() {
         java.lang.Object ref = carType1_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carType1_ = b;
@@ -27616,29 +27889,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type1 = 14;</code>
+       * <code>string car_type1 = 14;</code>
        */
       public Builder setCarType1(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carType1_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type1 = 14;</code>
+       * <code>string car_type1 = 14;</code>
        */
       public Builder clearCarType1() {
-
+        
         carType1_ = getDefaultInstance().getCarType1();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type1 = 14;</code>
+       * <code>string car_type1 = 14;</code>
        */
       public Builder setCarType1Bytes(
           com.google.protobuf.ByteString value) {
@@ -27646,7 +27919,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carType1_ = value;
         onChanged();
         return this;
@@ -27654,7 +27927,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType2_ = "";
       /**
-       * <code>optional string car_type2 = 15;</code>
+       * <code>string car_type2 = 15;</code>
        */
       public java.lang.String getCarType2() {
         java.lang.Object ref = carType2_;
@@ -27669,13 +27942,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type2 = 15;</code>
+       * <code>string car_type2 = 15;</code>
        */
       public com.google.protobuf.ByteString
           getCarType2Bytes() {
         java.lang.Object ref = carType2_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carType2_ = b;
@@ -27685,29 +27958,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type2 = 15;</code>
+       * <code>string car_type2 = 15;</code>
        */
       public Builder setCarType2(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carType2_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type2 = 15;</code>
+       * <code>string car_type2 = 15;</code>
        */
       public Builder clearCarType2() {
-
+        
         carType2_ = getDefaultInstance().getCarType2();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type2 = 15;</code>
+       * <code>string car_type2 = 15;</code>
        */
       public Builder setCarType2Bytes(
           com.google.protobuf.ByteString value) {
@@ -27715,7 +27988,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carType2_ = value;
         onChanged();
         return this;
@@ -27723,7 +27996,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType3_ = "";
       /**
-       * <code>optional string car_type3 = 16;</code>
+       * <code>string car_type3 = 16;</code>
        */
       public java.lang.String getCarType3() {
         java.lang.Object ref = carType3_;
@@ -27738,13 +28011,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type3 = 16;</code>
+       * <code>string car_type3 = 16;</code>
        */
       public com.google.protobuf.ByteString
           getCarType3Bytes() {
         java.lang.Object ref = carType3_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carType3_ = b;
@@ -27754,29 +28027,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string car_type3 = 16;</code>
+       * <code>string car_type3 = 16;</code>
        */
       public Builder setCarType3(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carType3_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type3 = 16;</code>
+       * <code>string car_type3 = 16;</code>
        */
       public Builder clearCarType3() {
-
+        
         carType3_ = getDefaultInstance().getCarType3();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string car_type3 = 16;</code>
+       * <code>string car_type3 = 16;</code>
        */
       public Builder setCarType3Bytes(
           com.google.protobuf.ByteString value) {
@@ -27784,7 +28057,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carType3_ = value;
         onChanged();
         return this;
@@ -27796,7 +28069,7 @@ public final class ProtoMessage {
        * 车牌号
        * </pre>
        *
-       * <code>optional string car_num = 17;</code>
+       * <code>string car_num = 17;</code>
        */
       public java.lang.String getCarNum() {
         java.lang.Object ref = carNum_;
@@ -27815,13 +28088,13 @@ public final class ProtoMessage {
        * 车牌号
        * </pre>
        *
-       * <code>optional string car_num = 17;</code>
+       * <code>string car_num = 17;</code>
        */
       public com.google.protobuf.ByteString
           getCarNumBytes() {
         java.lang.Object ref = carNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carNum_ = b;
@@ -27835,14 +28108,14 @@ public final class ProtoMessage {
        * 车牌号
        * </pre>
        *
-       * <code>optional string car_num = 17;</code>
+       * <code>string car_num = 17;</code>
        */
       public Builder setCarNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carNum_ = value;
         onChanged();
         return this;
@@ -27852,10 +28125,10 @@ public final class ProtoMessage {
        * 车牌号
        * </pre>
        *
-       * <code>optional string car_num = 17;</code>
+       * <code>string car_num = 17;</code>
        */
       public Builder clearCarNum() {
-
+        
         carNum_ = getDefaultInstance().getCarNum();
         onChanged();
         return this;
@@ -27865,7 +28138,7 @@ public final class ProtoMessage {
        * 车牌号
        * </pre>
        *
-       * <code>optional string car_num = 17;</code>
+       * <code>string car_num = 17;</code>
        */
       public Builder setCarNumBytes(
           com.google.protobuf.ByteString value) {
@@ -27873,7 +28146,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carNum_ = value;
         onChanged();
         return this;
@@ -27885,7 +28158,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_0 = 18;</code>
+       * <code>int32 hide_field_0 = 18;</code>
        */
       public int getHideField0() {
         return hideField0_;
@@ -27895,10 +28168,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_0 = 18;</code>
+       * <code>int32 hide_field_0 = 18;</code>
        */
       public Builder setHideField0(int value) {
-
+        
         hideField0_ = value;
         onChanged();
         return this;
@@ -27908,10 +28181,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_0 = 18;</code>
+       * <code>int32 hide_field_0 = 18;</code>
        */
       public Builder clearHideField0() {
-
+        
         hideField0_ = 0;
         onChanged();
         return this;
@@ -27923,7 +28196,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_1 = 19;</code>
+       * <code>int32 hide_field_1 = 19;</code>
        */
       public int getHideField1() {
         return hideField1_;
@@ -27933,10 +28206,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_1 = 19;</code>
+       * <code>int32 hide_field_1 = 19;</code>
        */
       public Builder setHideField1(int value) {
-
+        
         hideField1_ = value;
         onChanged();
         return this;
@@ -27946,10 +28219,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_1 = 19;</code>
+       * <code>int32 hide_field_1 = 19;</code>
        */
       public Builder clearHideField1() {
-
+        
         hideField1_ = 0;
         onChanged();
         return this;
@@ -27961,7 +28234,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_2 = 20;</code>
+       * <code>int32 hide_field_2 = 20;</code>
        */
       public int getHideField2() {
         return hideField2_;
@@ -27971,10 +28244,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_2 = 20;</code>
+       * <code>int32 hide_field_2 = 20;</code>
        */
       public Builder setHideField2(int value) {
-
+        
         hideField2_ = value;
         onChanged();
         return this;
@@ -27984,10 +28257,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_2 = 20;</code>
+       * <code>int32 hide_field_2 = 20;</code>
        */
       public Builder clearHideField2() {
-
+        
         hideField2_ = 0;
         onChanged();
         return this;
@@ -27999,7 +28272,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_3 = 21;</code>
+       * <code>int32 hide_field_3 = 21;</code>
        */
       public int getHideField3() {
         return hideField3_;
@@ -28009,10 +28282,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_3 = 21;</code>
+       * <code>int32 hide_field_3 = 21;</code>
        */
       public Builder setHideField3(int value) {
-
+        
         hideField3_ = value;
         onChanged();
         return this;
@@ -28022,10 +28295,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_3 = 21;</code>
+       * <code>int32 hide_field_3 = 21;</code>
        */
       public Builder clearHideField3() {
-
+        
         hideField3_ = 0;
         onChanged();
         return this;
@@ -28037,7 +28310,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_4 = 22;</code>
+       * <code>int32 hide_field_4 = 22;</code>
        */
       public int getHideField4() {
         return hideField4_;
@@ -28047,10 +28320,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_4 = 22;</code>
+       * <code>int32 hide_field_4 = 22;</code>
        */
       public Builder setHideField4(int value) {
-
+        
         hideField4_ = value;
         onChanged();
         return this;
@@ -28060,10 +28333,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_4 = 22;</code>
+       * <code>int32 hide_field_4 = 22;</code>
        */
       public Builder clearHideField4() {
-
+        
         hideField4_ = 0;
         onChanged();
         return this;
@@ -28075,7 +28348,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_5 = 23;</code>
+       * <code>int32 hide_field_5 = 23;</code>
        */
       public int getHideField5() {
         return hideField5_;
@@ -28085,10 +28358,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_5 = 23;</code>
+       * <code>int32 hide_field_5 = 23;</code>
        */
       public Builder setHideField5(int value) {
-
+        
         hideField5_ = value;
         onChanged();
         return this;
@@ -28098,10 +28371,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_5 = 23;</code>
+       * <code>int32 hide_field_5 = 23;</code>
        */
       public Builder clearHideField5() {
-
+        
         hideField5_ = 0;
         onChanged();
         return this;
@@ -28113,7 +28386,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_6 = 24;</code>
+       * <code>int32 hide_field_6 = 24;</code>
        */
       public int getHideField6() {
         return hideField6_;
@@ -28123,10 +28396,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_6 = 24;</code>
+       * <code>int32 hide_field_6 = 24;</code>
        */
       public Builder setHideField6(int value) {
-
+        
         hideField6_ = value;
         onChanged();
         return this;
@@ -28136,10 +28409,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_6 = 24;</code>
+       * <code>int32 hide_field_6 = 24;</code>
        */
       public Builder clearHideField6() {
-
+        
         hideField6_ = 0;
         onChanged();
         return this;
@@ -28151,7 +28424,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_7 = 25;</code>
+       * <code>int32 hide_field_7 = 25;</code>
        */
       public int getHideField7() {
         return hideField7_;
@@ -28161,10 +28434,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_7 = 25;</code>
+       * <code>int32 hide_field_7 = 25;</code>
        */
       public Builder setHideField7(int value) {
-
+        
         hideField7_ = value;
         onChanged();
         return this;
@@ -28174,10 +28447,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_7 = 25;</code>
+       * <code>int32 hide_field_7 = 25;</code>
        */
       public Builder clearHideField7() {
-
+        
         hideField7_ = 0;
         onChanged();
         return this;
@@ -28189,7 +28462,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_8 = 26;</code>
+       * <code>int32 hide_field_8 = 26;</code>
        */
       public int getHideField8() {
         return hideField8_;
@@ -28199,10 +28472,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_8 = 26;</code>
+       * <code>int32 hide_field_8 = 26;</code>
        */
       public Builder setHideField8(int value) {
-
+        
         hideField8_ = value;
         onChanged();
         return this;
@@ -28212,10 +28485,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_8 = 26;</code>
+       * <code>int32 hide_field_8 = 26;</code>
        */
       public Builder clearHideField8() {
-
+        
         hideField8_ = 0;
         onChanged();
         return this;
@@ -28227,7 +28500,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_9 = 27;</code>
+       * <code>int32 hide_field_9 = 27;</code>
        */
       public int getHideField9() {
         return hideField9_;
@@ -28237,10 +28510,10 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_9 = 27;</code>
+       * <code>int32 hide_field_9 = 27;</code>
        */
       public Builder setHideField9(int value) {
-
+        
         hideField9_ = value;
         onChanged();
         return this;
@@ -28250,11 +28523,278 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>optional int32 hide_field_9 = 27;</code>
+       * <code>int32 hide_field_9 = 27;</code>
        */
       public Builder clearHideField9() {
-
+        
         hideField9_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object interest_ = "";
+      /**
+       * <pre>
+       *兴趣
+       * </pre>
+       *
+       * <code>string interest = 36;</code>
+       */
+      public java.lang.String getInterest() {
+        java.lang.Object ref = interest_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          interest_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *兴趣
+       * </pre>
+       *
+       * <code>string interest = 36;</code>
+       */
+      public com.google.protobuf.ByteString
+          getInterestBytes() {
+        java.lang.Object ref = interest_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          interest_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *兴趣
+       * </pre>
+       *
+       * <code>string interest = 36;</code>
+       */
+      public Builder setInterest(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        interest_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *兴趣
+       * </pre>
+       *
+       * <code>string interest = 36;</code>
+       */
+      public Builder clearInterest() {
+        
+        interest_ = getDefaultInstance().getInterest();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *兴趣
+       * </pre>
+       *
+       * <code>string interest = 36;</code>
+       */
+      public Builder setInterestBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        interest_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object career_ = "";
+      /**
+       * <pre>
+       *行业
+       * </pre>
+       *
+       * <code>string career = 37;</code>
+       */
+      public java.lang.String getCareer() {
+        java.lang.Object ref = career_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          career_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *行业
+       * </pre>
+       *
+       * <code>string career = 37;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCareerBytes() {
+        java.lang.Object ref = career_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          career_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *行业
+       * </pre>
+       *
+       * <code>string career = 37;</code>
+       */
+      public Builder setCareer(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        career_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *行业
+       * </pre>
+       *
+       * <code>string career = 37;</code>
+       */
+      public Builder clearCareer() {
+        
+        career_ = getDefaultInstance().getCareer();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *行业
+       * </pre>
+       *
+       * <code>string career = 37;</code>
+       */
+      public Builder setCareerBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        career_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object signature_ = "";
+      /**
+       * <pre>
+       *个性签名
+       * </pre>
+       *
+       * <code>string signature = 38;</code>
+       */
+      public java.lang.String getSignature() {
+        java.lang.Object ref = signature_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          signature_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *个性签名
+       * </pre>
+       *
+       * <code>string signature = 38;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSignatureBytes() {
+        java.lang.Object ref = signature_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          signature_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *个性签名
+       * </pre>
+       *
+       * <code>string signature = 38;</code>
+       */
+      public Builder setSignature(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        signature_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *个性签名
+       * </pre>
+       *
+       * <code>string signature = 38;</code>
+       */
+      public Builder clearSignature() {
+        
+        signature_ = getDefaultInstance().getSignature();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *个性签名
+       * </pre>
+       *
+       * <code>string signature = 38;</code>
+       */
+      public Builder setSignatureBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        signature_ = value;
         onChanged();
         return this;
       }
@@ -28312,14 +28852,14 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
      * <code>repeated .UserInfo friends = 2;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo> 
         getFriendsList();
     /**
      * <code>repeated .UserInfo friends = 2;</code>
@@ -28332,7 +28872,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .UserInfo friends = 2;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder> 
         getFriendsOrBuilderList();
     /**
      * <code>repeated .UserInfo friends = 2;</code>
@@ -28425,7 +28965,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -28442,7 +28982,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .UserInfo friends = 2;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder> 
         getFriendsOrBuilderList() {
       return friends_;
     }
@@ -28528,7 +29068,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getFriendsCount() > 0) {
@@ -28759,7 +29299,7 @@ public final class ProtoMessage {
               friendsBuilder_ = null;
               friends_ = other.friends_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              friendsBuilder_ =
+              friendsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getFriendsFieldBuilder() : null;
             } else {
@@ -28796,25 +29336,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -29015,7 +29555,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .UserInfo friends = 2;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder> 
            getFriendsOrBuilderList() {
         if (friendsBuilder_ != null) {
           return friendsBuilder_.getMessageOrBuilderList();
@@ -29041,12 +29581,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .UserInfo friends = 2;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder> 
            getFriendsBuilderList() {
         return getFriendsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder> 
           getFriendsFieldBuilder() {
         if (friendsBuilder_ == null) {
           friendsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -29113,42 +29653,42 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int64 teamID = 2;</code>
+     * <code>int64 teamID = 2;</code>
      */
     long getTeamID();
 
     /**
-     * <code>optional string teamName = 3;</code>
+     * <code>string teamName = 3;</code>
      */
     java.lang.String getTeamName();
     /**
-     * <code>optional string teamName = 3;</code>
+     * <code>string teamName = 3;</code>
      */
     com.google.protobuf.ByteString
         getTeamNameBytes();
 
     /**
-     * <code>optional string teamDesc = 4;</code>
+     * <code>string teamDesc = 4;</code>
      */
     java.lang.String getTeamDesc();
     /**
-     * <code>optional string teamDesc = 4;</code>
+     * <code>string teamDesc = 4;</code>
      */
     com.google.protobuf.ByteString
         getTeamDescBytes();
 
     /**
-     * <code>optional int32 teamType = 5;</code>
+     * <code>int32 teamType = 5;</code>
      */
     int getTeamType();
 
     /**
-     * <code>optional int64 groupID = 6;</code>
+     * <code>int64 groupID = 6;</code>
      */
     long getGroupID();
 
@@ -29157,7 +29697,7 @@ public final class ProtoMessage {
      * 我在群中的角色
      * </pre>
      *
-     * <code>optional int32 memberRole = 7;</code>
+     * <code>int32 memberRole = 7;</code>
      */
     int getMemberRole();
 
@@ -29166,7 +29706,7 @@ public final class ProtoMessage {
      * 群优先级
      * </pre>
      *
-     * <code>optional int32 teamPriority = 8;</code>
+     * <code>int32 teamPriority = 8;</code>
      */
     int getTeamPriority();
 
@@ -29175,7 +29715,7 @@ public final class ProtoMessage {
      * 我在群中的名称
      * </pre>
      *
-     * <code>optional string myTeamName = 9;</code>
+     * <code>string myTeamName = 9;</code>
      */
     java.lang.String getMyTeamName();
     /**
@@ -29183,14 +29723,14 @@ public final class ProtoMessage {
      * 我在群中的名称
      * </pre>
      *
-     * <code>optional string myTeamName = 9;</code>
+     * <code>string myTeamName = 9;</code>
      */
     com.google.protobuf.ByteString
         getMyTeamNameBytes();
   }
   /**
    * <pre>
-   ** 群信息(建群时的参数)
+   ** 群信息(建群时的参数) 
    * </pre>
    *
    * Protobuf type {@code TeamInfo}
@@ -29314,7 +29854,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -29323,7 +29863,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 2;
     private long teamID_;
     /**
-     * <code>optional int64 teamID = 2;</code>
+     * <code>int64 teamID = 2;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -29332,14 +29872,14 @@ public final class ProtoMessage {
     public static final int TEAMNAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object teamName_;
     /**
-     * <code>optional string teamName = 3;</code>
+     * <code>string teamName = 3;</code>
      */
     public java.lang.String getTeamName() {
       java.lang.Object ref = teamName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         teamName_ = s;
@@ -29347,13 +29887,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string teamName = 3;</code>
+     * <code>string teamName = 3;</code>
      */
     public com.google.protobuf.ByteString
         getTeamNameBytes() {
       java.lang.Object ref = teamName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         teamName_ = b;
@@ -29366,14 +29906,14 @@ public final class ProtoMessage {
     public static final int TEAMDESC_FIELD_NUMBER = 4;
     private volatile java.lang.Object teamDesc_;
     /**
-     * <code>optional string teamDesc = 4;</code>
+     * <code>string teamDesc = 4;</code>
      */
     public java.lang.String getTeamDesc() {
       java.lang.Object ref = teamDesc_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         teamDesc_ = s;
@@ -29381,13 +29921,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string teamDesc = 4;</code>
+     * <code>string teamDesc = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTeamDescBytes() {
       java.lang.Object ref = teamDesc_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         teamDesc_ = b;
@@ -29400,7 +29940,7 @@ public final class ProtoMessage {
     public static final int TEAMTYPE_FIELD_NUMBER = 5;
     private int teamType_;
     /**
-     * <code>optional int32 teamType = 5;</code>
+     * <code>int32 teamType = 5;</code>
      */
     public int getTeamType() {
       return teamType_;
@@ -29409,7 +29949,7 @@ public final class ProtoMessage {
     public static final int GROUPID_FIELD_NUMBER = 6;
     private long groupID_;
     /**
-     * <code>optional int64 groupID = 6;</code>
+     * <code>int64 groupID = 6;</code>
      */
     public long getGroupID() {
       return groupID_;
@@ -29422,7 +29962,7 @@ public final class ProtoMessage {
      * 我在群中的角色
      * </pre>
      *
-     * <code>optional int32 memberRole = 7;</code>
+     * <code>int32 memberRole = 7;</code>
      */
     public int getMemberRole() {
       return memberRole_;
@@ -29435,7 +29975,7 @@ public final class ProtoMessage {
      * 群优先级
      * </pre>
      *
-     * <code>optional int32 teamPriority = 8;</code>
+     * <code>int32 teamPriority = 8;</code>
      */
     public int getTeamPriority() {
       return teamPriority_;
@@ -29448,14 +29988,14 @@ public final class ProtoMessage {
      * 我在群中的名称
      * </pre>
      *
-     * <code>optional string myTeamName = 9;</code>
+     * <code>string myTeamName = 9;</code>
      */
     public java.lang.String getMyTeamName() {
       java.lang.Object ref = myTeamName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         myTeamName_ = s;
@@ -29467,13 +30007,13 @@ public final class ProtoMessage {
      * 我在群中的名称
      * </pre>
      *
-     * <code>optional string myTeamName = 9;</code>
+     * <code>string myTeamName = 9;</code>
      */
     public com.google.protobuf.ByteString
         getMyTeamNameBytes() {
       java.lang.Object ref = myTeamName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         myTeamName_ = b;
@@ -29605,7 +30145,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TEAMID_FIELD_NUMBER;
@@ -29710,7 +30250,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 群信息(建群时的参数)
+     ** 群信息(建群时的参数) 
      * </pre>
      *
      * Protobuf type {@code TeamInfo}
@@ -29896,25 +30436,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -29922,25 +30462,25 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>optional int64 teamID = 2;</code>
+       * <code>int64 teamID = 2;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>optional int64 teamID = 2;</code>
+       * <code>int64 teamID = 2;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 teamID = 2;</code>
+       * <code>int64 teamID = 2;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -29948,7 +30488,7 @@ public final class ProtoMessage {
 
       private java.lang.Object teamName_ = "";
       /**
-       * <code>optional string teamName = 3;</code>
+       * <code>string teamName = 3;</code>
        */
       public java.lang.String getTeamName() {
         java.lang.Object ref = teamName_;
@@ -29963,13 +30503,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string teamName = 3;</code>
+       * <code>string teamName = 3;</code>
        */
       public com.google.protobuf.ByteString
           getTeamNameBytes() {
         java.lang.Object ref = teamName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           teamName_ = b;
@@ -29979,29 +30519,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string teamName = 3;</code>
+       * <code>string teamName = 3;</code>
        */
       public Builder setTeamName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         teamName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string teamName = 3;</code>
+       * <code>string teamName = 3;</code>
        */
       public Builder clearTeamName() {
-
+        
         teamName_ = getDefaultInstance().getTeamName();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string teamName = 3;</code>
+       * <code>string teamName = 3;</code>
        */
       public Builder setTeamNameBytes(
           com.google.protobuf.ByteString value) {
@@ -30009,7 +30549,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         teamName_ = value;
         onChanged();
         return this;
@@ -30017,7 +30557,7 @@ public final class ProtoMessage {
 
       private java.lang.Object teamDesc_ = "";
       /**
-       * <code>optional string teamDesc = 4;</code>
+       * <code>string teamDesc = 4;</code>
        */
       public java.lang.String getTeamDesc() {
         java.lang.Object ref = teamDesc_;
@@ -30032,13 +30572,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string teamDesc = 4;</code>
+       * <code>string teamDesc = 4;</code>
        */
       public com.google.protobuf.ByteString
           getTeamDescBytes() {
         java.lang.Object ref = teamDesc_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           teamDesc_ = b;
@@ -30048,29 +30588,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string teamDesc = 4;</code>
+       * <code>string teamDesc = 4;</code>
        */
       public Builder setTeamDesc(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         teamDesc_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string teamDesc = 4;</code>
+       * <code>string teamDesc = 4;</code>
        */
       public Builder clearTeamDesc() {
-
+        
         teamDesc_ = getDefaultInstance().getTeamDesc();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string teamDesc = 4;</code>
+       * <code>string teamDesc = 4;</code>
        */
       public Builder setTeamDescBytes(
           com.google.protobuf.ByteString value) {
@@ -30078,7 +30618,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         teamDesc_ = value;
         onChanged();
         return this;
@@ -30086,25 +30626,25 @@ public final class ProtoMessage {
 
       private int teamType_ ;
       /**
-       * <code>optional int32 teamType = 5;</code>
+       * <code>int32 teamType = 5;</code>
        */
       public int getTeamType() {
         return teamType_;
       }
       /**
-       * <code>optional int32 teamType = 5;</code>
+       * <code>int32 teamType = 5;</code>
        */
       public Builder setTeamType(int value) {
-
+        
         teamType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 teamType = 5;</code>
+       * <code>int32 teamType = 5;</code>
        */
       public Builder clearTeamType() {
-
+        
         teamType_ = 0;
         onChanged();
         return this;
@@ -30112,25 +30652,25 @@ public final class ProtoMessage {
 
       private long groupID_ ;
       /**
-       * <code>optional int64 groupID = 6;</code>
+       * <code>int64 groupID = 6;</code>
        */
       public long getGroupID() {
         return groupID_;
       }
       /**
-       * <code>optional int64 groupID = 6;</code>
+       * <code>int64 groupID = 6;</code>
        */
       public Builder setGroupID(long value) {
-
+        
         groupID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 groupID = 6;</code>
+       * <code>int64 groupID = 6;</code>
        */
       public Builder clearGroupID() {
-
+        
         groupID_ = 0L;
         onChanged();
         return this;
@@ -30142,7 +30682,7 @@ public final class ProtoMessage {
        * 我在群中的角色
        * </pre>
        *
-       * <code>optional int32 memberRole = 7;</code>
+       * <code>int32 memberRole = 7;</code>
        */
       public int getMemberRole() {
         return memberRole_;
@@ -30152,10 +30692,10 @@ public final class ProtoMessage {
        * 我在群中的角色
        * </pre>
        *
-       * <code>optional int32 memberRole = 7;</code>
+       * <code>int32 memberRole = 7;</code>
        */
       public Builder setMemberRole(int value) {
-
+        
         memberRole_ = value;
         onChanged();
         return this;
@@ -30165,10 +30705,10 @@ public final class ProtoMessage {
        * 我在群中的角色
        * </pre>
        *
-       * <code>optional int32 memberRole = 7;</code>
+       * <code>int32 memberRole = 7;</code>
        */
       public Builder clearMemberRole() {
-
+        
         memberRole_ = 0;
         onChanged();
         return this;
@@ -30180,7 +30720,7 @@ public final class ProtoMessage {
        * 群优先级
        * </pre>
        *
-       * <code>optional int32 teamPriority = 8;</code>
+       * <code>int32 teamPriority = 8;</code>
        */
       public int getTeamPriority() {
         return teamPriority_;
@@ -30190,10 +30730,10 @@ public final class ProtoMessage {
        * 群优先级
        * </pre>
        *
-       * <code>optional int32 teamPriority = 8;</code>
+       * <code>int32 teamPriority = 8;</code>
        */
       public Builder setTeamPriority(int value) {
-
+        
         teamPriority_ = value;
         onChanged();
         return this;
@@ -30203,10 +30743,10 @@ public final class ProtoMessage {
        * 群优先级
        * </pre>
        *
-       * <code>optional int32 teamPriority = 8;</code>
+       * <code>int32 teamPriority = 8;</code>
        */
       public Builder clearTeamPriority() {
-
+        
         teamPriority_ = 0;
         onChanged();
         return this;
@@ -30218,7 +30758,7 @@ public final class ProtoMessage {
        * 我在群中的名称
        * </pre>
        *
-       * <code>optional string myTeamName = 9;</code>
+       * <code>string myTeamName = 9;</code>
        */
       public java.lang.String getMyTeamName() {
         java.lang.Object ref = myTeamName_;
@@ -30237,13 +30777,13 @@ public final class ProtoMessage {
        * 我在群中的名称
        * </pre>
        *
-       * <code>optional string myTeamName = 9;</code>
+       * <code>string myTeamName = 9;</code>
        */
       public com.google.protobuf.ByteString
           getMyTeamNameBytes() {
         java.lang.Object ref = myTeamName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           myTeamName_ = b;
@@ -30257,14 +30797,14 @@ public final class ProtoMessage {
        * 我在群中的名称
        * </pre>
        *
-       * <code>optional string myTeamName = 9;</code>
+       * <code>string myTeamName = 9;</code>
        */
       public Builder setMyTeamName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         myTeamName_ = value;
         onChanged();
         return this;
@@ -30274,10 +30814,10 @@ public final class ProtoMessage {
        * 我在群中的名称
        * </pre>
        *
-       * <code>optional string myTeamName = 9;</code>
+       * <code>string myTeamName = 9;</code>
        */
       public Builder clearMyTeamName() {
-
+        
         myTeamName_ = getDefaultInstance().getMyTeamName();
         onChanged();
         return this;
@@ -30287,7 +30827,7 @@ public final class ProtoMessage {
        * 我在群中的名称
        * </pre>
        *
-       * <code>optional string myTeamName = 9;</code>
+       * <code>string myTeamName = 9;</code>
        */
       public Builder setMyTeamNameBytes(
           com.google.protobuf.ByteString value) {
@@ -30295,7 +30835,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         myTeamName_ = value;
         onChanged();
         return this;
@@ -30354,14 +30894,14 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
      * <code>repeated .TeamInfo teams = 2;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfo>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfo> 
         getTeamsList();
     /**
      * <code>repeated .TeamInfo teams = 2;</code>
@@ -30374,7 +30914,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .TeamInfo teams = 2;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfoOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfoOrBuilder> 
         getTeamsOrBuilderList();
     /**
      * <code>repeated .TeamInfo teams = 2;</code>
@@ -30384,7 +30924,7 @@ public final class ProtoMessage {
   }
   /**
    * <pre>
-   ** 群列表
+   ** 群列表 
    * </pre>
    *
    * Protobuf type {@code TeamList}
@@ -30471,7 +31011,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -30488,7 +31028,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .TeamInfo teams = 2;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfoOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfoOrBuilder> 
         getTeamsOrBuilderList() {
       return teams_;
     }
@@ -30574,7 +31114,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getTeamsCount() > 0) {
@@ -30665,7 +31205,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 群列表
+     ** 群列表 
      * </pre>
      *
      * Protobuf type {@code TeamList}
@@ -30809,7 +31349,7 @@ public final class ProtoMessage {
               teamsBuilder_ = null;
               teams_ = other.teams_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              teamsBuilder_ =
+              teamsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getTeamsFieldBuilder() : null;
             } else {
@@ -30846,25 +31386,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -31065,7 +31605,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .TeamInfo teams = 2;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfoOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfoOrBuilder> 
            getTeamsOrBuilderList() {
         if (teamsBuilder_ != null) {
           return teamsBuilder_.getMessageOrBuilderList();
@@ -31091,12 +31631,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .TeamInfo teams = 2;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfo.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfo.Builder> 
            getTeamsBuilderList() {
         return getTeamsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfo, com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfo.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfoOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfo, com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfo.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.TeamInfoOrBuilder> 
           getTeamsFieldBuilder() {
         if (teamsBuilder_ == null) {
           teamsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -31163,7 +31703,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -31172,7 +31712,7 @@ public final class ProtoMessage {
      * 申请或邀请都需要此参数
      * </pre>
      *
-     * <code>optional int64 teamID = 2;</code>
+     * <code>int64 teamID = 2;</code>
      */
     long getTeamID();
 
@@ -31213,7 +31753,7 @@ public final class ProtoMessage {
   }
   /**
    * <pre>
-   ** 邀请或申请加入群
+   ** 邀请或申请加入群 
    * </pre>
    *
    * Protobuf type {@code ApplyTeam}
@@ -31306,7 +31846,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -31319,7 +31859,7 @@ public final class ProtoMessage {
      * 申请或邀请都需要此参数
      * </pre>
      *
-     * <code>optional int64 teamID = 2;</code>
+     * <code>int64 teamID = 2;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -31445,7 +31985,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TEAMID_FIELD_NUMBER;
@@ -31539,7 +32079,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 邀请或申请加入群
+     ** 邀请或申请加入群 
      * </pre>
      *
      * Protobuf type {@code ApplyTeam}
@@ -31701,25 +32241,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -31731,7 +32271,7 @@ public final class ProtoMessage {
        * 申请或邀请都需要此参数
        * </pre>
        *
-       * <code>optional int64 teamID = 2;</code>
+       * <code>int64 teamID = 2;</code>
        */
       public long getTeamID() {
         return teamID_;
@@ -31741,10 +32281,10 @@ public final class ProtoMessage {
        * 申请或邀请都需要此参数
        * </pre>
        *
-       * <code>optional int64 teamID = 2;</code>
+       * <code>int64 teamID = 2;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
@@ -31754,10 +32294,10 @@ public final class ProtoMessage {
        * 申请或邀请都需要此参数
        * </pre>
        *
-       * <code>optional int64 teamID = 2;</code>
+       * <code>int64 teamID = 2;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -31946,22 +32486,22 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string teamName = 2;</code>
+     * <code>string teamName = 2;</code>
      */
     java.lang.String getTeamName();
     /**
-     * <code>optional string teamName = 2;</code>
+     * <code>string teamName = 2;</code>
      */
     com.google.protobuf.ByteString
         getTeamNameBytes();
 
     /**
-     * <code>optional int64 teamID = 3;</code>
+     * <code>int64 teamID = 3;</code>
      */
     long getTeamID();
 
@@ -31970,7 +32510,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
      * </pre>
      *
-     * <code>optional string userPhone = 4;</code>
+     * <code>string userPhone = 4;</code>
      */
     java.lang.String getUserPhone();
     /**
@@ -31978,7 +32518,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
      * </pre>
      *
-     * <code>optional string userPhone = 4;</code>
+     * <code>string userPhone = 4;</code>
      */
     com.google.protobuf.ByteString
         getUserPhoneBytes();
@@ -31988,7 +32528,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
      * </pre>
      *
-     * <code>optional string userName = 5;</code>
+     * <code>string userName = 5;</code>
      */
     java.lang.String getUserName();
     /**
@@ -31996,7 +32536,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
      * </pre>
      *
-     * <code>optional string userName = 5;</code>
+     * <code>string userName = 5;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
@@ -32006,13 +32546,13 @@ public final class ProtoMessage {
      * &#64;see ApplyTeamType
      * </pre>
      *
-     * <code>optional int32 applyType = 6;</code>
+     * <code>int32 applyType = 6;</code>
      */
     int getApplyType();
   }
   /**
    * <pre>
-   ** 邀请或申请加群的列表项
+   ** 邀请或申请加群的列表项 
    * </pre>
    *
    * Protobuf type {@code AppliedTeam}
@@ -32118,7 +32658,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -32127,14 +32667,14 @@ public final class ProtoMessage {
     public static final int TEAMNAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object teamName_;
     /**
-     * <code>optional string teamName = 2;</code>
+     * <code>string teamName = 2;</code>
      */
     public java.lang.String getTeamName() {
       java.lang.Object ref = teamName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         teamName_ = s;
@@ -32142,13 +32682,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string teamName = 2;</code>
+     * <code>string teamName = 2;</code>
      */
     public com.google.protobuf.ByteString
         getTeamNameBytes() {
       java.lang.Object ref = teamName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         teamName_ = b;
@@ -32161,7 +32701,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 3;
     private long teamID_;
     /**
-     * <code>optional int64 teamID = 3;</code>
+     * <code>int64 teamID = 3;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -32174,14 +32714,14 @@ public final class ProtoMessage {
      * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
      * </pre>
      *
-     * <code>optional string userPhone = 4;</code>
+     * <code>string userPhone = 4;</code>
      */
     public java.lang.String getUserPhone() {
       java.lang.Object ref = userPhone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         userPhone_ = s;
@@ -32193,13 +32733,13 @@ public final class ProtoMessage {
      * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
      * </pre>
      *
-     * <code>optional string userPhone = 4;</code>
+     * <code>string userPhone = 4;</code>
      */
     public com.google.protobuf.ByteString
         getUserPhoneBytes() {
       java.lang.Object ref = userPhone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         userPhone_ = b;
@@ -32216,14 +32756,14 @@ public final class ProtoMessage {
      * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
      * </pre>
      *
-     * <code>optional string userName = 5;</code>
+     * <code>string userName = 5;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         userName_ = s;
@@ -32235,13 +32775,13 @@ public final class ProtoMessage {
      * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
      * </pre>
      *
-     * <code>optional string userName = 5;</code>
+     * <code>string userName = 5;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         userName_ = b;
@@ -32258,7 +32798,7 @@ public final class ProtoMessage {
      * &#64;see ApplyTeamType
      * </pre>
      *
-     * <code>optional int32 applyType = 6;</code>
+     * <code>int32 applyType = 6;</code>
      */
     public int getApplyType() {
       return applyType_;
@@ -32359,7 +32899,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TEAMNAME_FIELD_NUMBER;
@@ -32457,7 +32997,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 邀请或申请加群的列表项
+     ** 邀请或申请加群的列表项 
      * </pre>
      *
      * Protobuf type {@code AppliedTeam}
@@ -32625,25 +33165,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -32651,7 +33191,7 @@ public final class ProtoMessage {
 
       private java.lang.Object teamName_ = "";
       /**
-       * <code>optional string teamName = 2;</code>
+       * <code>string teamName = 2;</code>
        */
       public java.lang.String getTeamName() {
         java.lang.Object ref = teamName_;
@@ -32666,13 +33206,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string teamName = 2;</code>
+       * <code>string teamName = 2;</code>
        */
       public com.google.protobuf.ByteString
           getTeamNameBytes() {
         java.lang.Object ref = teamName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           teamName_ = b;
@@ -32682,29 +33222,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string teamName = 2;</code>
+       * <code>string teamName = 2;</code>
        */
       public Builder setTeamName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         teamName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string teamName = 2;</code>
+       * <code>string teamName = 2;</code>
        */
       public Builder clearTeamName() {
-
+        
         teamName_ = getDefaultInstance().getTeamName();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string teamName = 2;</code>
+       * <code>string teamName = 2;</code>
        */
       public Builder setTeamNameBytes(
           com.google.protobuf.ByteString value) {
@@ -32712,7 +33252,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         teamName_ = value;
         onChanged();
         return this;
@@ -32720,25 +33260,25 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -32750,7 +33290,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
        * </pre>
        *
-       * <code>optional string userPhone = 4;</code>
+       * <code>string userPhone = 4;</code>
        */
       public java.lang.String getUserPhone() {
         java.lang.Object ref = userPhone_;
@@ -32769,13 +33309,13 @@ public final class ProtoMessage {
        * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
        * </pre>
        *
-       * <code>optional string userPhone = 4;</code>
+       * <code>string userPhone = 4;</code>
        */
       public com.google.protobuf.ByteString
           getUserPhoneBytes() {
         java.lang.Object ref = userPhone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           userPhone_ = b;
@@ -32789,14 +33329,14 @@ public final class ProtoMessage {
        * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
        * </pre>
        *
-       * <code>optional string userPhone = 4;</code>
+       * <code>string userPhone = 4;</code>
        */
       public Builder setUserPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         userPhone_ = value;
         onChanged();
         return this;
@@ -32806,10 +33346,10 @@ public final class ProtoMessage {
        * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
        * </pre>
        *
-       * <code>optional string userPhone = 4;</code>
+       * <code>string userPhone = 4;</code>
        */
       public Builder clearUserPhone() {
-
+        
         userPhone_ = getDefaultInstance().getUserPhone();
         onChanged();
         return this;
@@ -32819,7 +33359,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
        * </pre>
        *
-       * <code>optional string userPhone = 4;</code>
+       * <code>string userPhone = 4;</code>
        */
       public Builder setUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -32827,7 +33367,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         userPhone_ = value;
         onChanged();
         return this;
@@ -32839,7 +33379,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
        * </pre>
        *
-       * <code>optional string userName = 5;</code>
+       * <code>string userName = 5;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -32858,13 +33398,13 @@ public final class ProtoMessage {
        * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
        * </pre>
        *
-       * <code>optional string userName = 5;</code>
+       * <code>string userName = 5;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
         java.lang.Object ref = userName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           userName_ = b;
@@ -32878,14 +33418,14 @@ public final class ProtoMessage {
        * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
        * </pre>
        *
-       * <code>optional string userName = 5;</code>
+       * <code>string userName = 5;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         userName_ = value;
         onChanged();
         return this;
@@ -32895,10 +33435,10 @@ public final class ProtoMessage {
        * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
        * </pre>
        *
-       * <code>optional string userName = 5;</code>
+       * <code>string userName = 5;</code>
        */
       public Builder clearUserName() {
-
+        
         userName_ = getDefaultInstance().getUserName();
         onChanged();
         return this;
@@ -32908,7 +33448,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
        * </pre>
        *
-       * <code>optional string userName = 5;</code>
+       * <code>string userName = 5;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -32916,7 +33456,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         userName_ = value;
         onChanged();
         return this;
@@ -32928,7 +33468,7 @@ public final class ProtoMessage {
        * &#64;see ApplyTeamType
        * </pre>
        *
-       * <code>optional int32 applyType = 6;</code>
+       * <code>int32 applyType = 6;</code>
        */
       public int getApplyType() {
         return applyType_;
@@ -32938,10 +33478,10 @@ public final class ProtoMessage {
        * &#64;see ApplyTeamType
        * </pre>
        *
-       * <code>optional int32 applyType = 6;</code>
+       * <code>int32 applyType = 6;</code>
        */
       public Builder setApplyType(int value) {
-
+        
         applyType_ = value;
         onChanged();
         return this;
@@ -32951,10 +33491,10 @@ public final class ProtoMessage {
        * &#64;see ApplyTeamType
        * </pre>
        *
-       * <code>optional int32 applyType = 6;</code>
+       * <code>int32 applyType = 6;</code>
        */
       public Builder clearApplyType() {
-
+        
         applyType_ = 0;
         onChanged();
         return this;
@@ -33013,14 +33553,14 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
      * <code>repeated .AppliedTeam apply = 2;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeam>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeam> 
         getApplyList();
     /**
      * <code>repeated .AppliedTeam apply = 2;</code>
@@ -33033,7 +33573,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .AppliedTeam apply = 2;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeamOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeamOrBuilder> 
         getApplyOrBuilderList();
     /**
      * <code>repeated .AppliedTeam apply = 2;</code>
@@ -33043,7 +33583,7 @@ public final class ProtoMessage {
   }
   /**
    * <pre>
-   ** 邀请或申请加群的列表
+   ** 邀请或申请加群的列表 
    * </pre>
    *
    * Protobuf type {@code AppliedTeamList}
@@ -33130,7 +33670,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -33147,7 +33687,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .AppliedTeam apply = 2;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeamOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeamOrBuilder> 
         getApplyOrBuilderList() {
       return apply_;
     }
@@ -33233,7 +33773,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getApplyCount() > 0) {
@@ -33324,7 +33864,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 邀请或申请加群的列表
+     ** 邀请或申请加群的列表 
      * </pre>
      *
      * Protobuf type {@code AppliedTeamList}
@@ -33468,7 +34008,7 @@ public final class ProtoMessage {
               applyBuilder_ = null;
               apply_ = other.apply_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              applyBuilder_ =
+              applyBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getApplyFieldBuilder() : null;
             } else {
@@ -33505,25 +34045,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -33724,7 +34264,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .AppliedTeam apply = 2;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeamOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeamOrBuilder> 
            getApplyOrBuilderList() {
         if (applyBuilder_ != null) {
           return applyBuilder_.getMessageOrBuilderList();
@@ -33750,12 +34290,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .AppliedTeam apply = 2;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeam.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeam.Builder> 
            getApplyBuilderList() {
         return getApplyFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeam, com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeam.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeamOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeam, com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeam.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.AppliedTeamOrBuilder> 
           getApplyFieldBuilder() {
         if (applyBuilder_ == null) {
           applyBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -33822,22 +34362,22 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>optional int64 teamID = 3;</code>
+     * <code>int64 teamID = 3;</code>
      */
     long getTeamID();
 
@@ -33846,7 +34386,7 @@ public final class ProtoMessage {
      * 接爱或拒绝
      * </pre>
      *
-     * <code>optional int32 acceptType = 4;</code>
+     * <code>int32 acceptType = 4;</code>
      */
     int getAcceptType();
 
@@ -33855,7 +34395,7 @@ public final class ProtoMessage {
      * 申请或邀请
      * </pre>
      *
-     * <code>optional int32 applyType = 5;</code>
+     * <code>int32 applyType = 5;</code>
      */
     int getApplyType();
 
@@ -33896,7 +34436,7 @@ public final class ProtoMessage {
   }
   /**
    * <pre>
-   ** 接受或拒绝加入群组，删除群成员
+   ** 接受或拒绝加入群组，删除群成员 
    * </pre>
    *
    * Protobuf type {@code AcceptTeam}
@@ -34008,7 +34548,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -34017,14 +34557,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -34032,13 +34572,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -34051,7 +34591,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 3;
     private long teamID_;
     /**
-     * <code>optional int64 teamID = 3;</code>
+     * <code>int64 teamID = 3;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -34064,7 +34604,7 @@ public final class ProtoMessage {
      * 接爱或拒绝
      * </pre>
      *
-     * <code>optional int32 acceptType = 4;</code>
+     * <code>int32 acceptType = 4;</code>
      */
     public int getAcceptType() {
       return acceptType_;
@@ -34077,7 +34617,7 @@ public final class ProtoMessage {
      * 申请或邀请
      * </pre>
      *
-     * <code>optional int32 applyType = 5;</code>
+     * <code>int32 applyType = 5;</code>
      */
     public int getApplyType() {
       return applyType_;
@@ -34229,7 +34769,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -34329,7 +34869,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 接受或拒绝加入群组，删除群成员
+     ** 接受或拒绝加入群组，删除群成员 
      * </pre>
      *
      * Protobuf type {@code AcceptTeam}
@@ -34510,25 +35050,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -34536,7 +35076,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -34551,13 +35091,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -34567,29 +35107,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -34597,7 +35137,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -34605,25 +35145,25 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -34635,7 +35175,7 @@ public final class ProtoMessage {
        * 接爱或拒绝
        * </pre>
        *
-       * <code>optional int32 acceptType = 4;</code>
+       * <code>int32 acceptType = 4;</code>
        */
       public int getAcceptType() {
         return acceptType_;
@@ -34645,10 +35185,10 @@ public final class ProtoMessage {
        * 接爱或拒绝
        * </pre>
        *
-       * <code>optional int32 acceptType = 4;</code>
+       * <code>int32 acceptType = 4;</code>
        */
       public Builder setAcceptType(int value) {
-
+        
         acceptType_ = value;
         onChanged();
         return this;
@@ -34658,10 +35198,10 @@ public final class ProtoMessage {
        * 接爱或拒绝
        * </pre>
        *
-       * <code>optional int32 acceptType = 4;</code>
+       * <code>int32 acceptType = 4;</code>
        */
       public Builder clearAcceptType() {
-
+        
         acceptType_ = 0;
         onChanged();
         return this;
@@ -34673,7 +35213,7 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>optional int32 applyType = 5;</code>
+       * <code>int32 applyType = 5;</code>
        */
       public int getApplyType() {
         return applyType_;
@@ -34683,10 +35223,10 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>optional int32 applyType = 5;</code>
+       * <code>int32 applyType = 5;</code>
        */
       public Builder setApplyType(int value) {
-
+        
         applyType_ = value;
         onChanged();
         return this;
@@ -34696,10 +35236,10 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>optional int32 applyType = 5;</code>
+       * <code>int32 applyType = 5;</code>
        */
       public Builder clearApplyType() {
-
+        
         applyType_ = 0;
         onChanged();
         return this;
@@ -34888,70 +35428,70 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string userPhone = 2;</code>
+     * <code>string userPhone = 2;</code>
      */
     java.lang.String getUserPhone();
     /**
-     * <code>optional string userPhone = 2;</code>
+     * <code>string userPhone = 2;</code>
      */
     com.google.protobuf.ByteString
         getUserPhoneBytes();
 
     /**
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     java.lang.String getUserName();
     /**
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
 
     /**
-     * <code>optional string nickName = 4;</code>
+     * <code>string nickName = 4;</code>
      */
     java.lang.String getNickName();
     /**
-     * <code>optional string nickName = 4;</code>
+     * <code>string nickName = 4;</code>
      */
     com.google.protobuf.ByteString
         getNickNameBytes();
 
     /**
-     * <code>optional int32 role = 5;</code>
+     * <code>int32 role = 5;</code>
      */
     int getRole();
 
     /**
-     * <code>optional int32 memberPriority = 6;</code>
+     * <code>int32 memberPriority = 6;</code>
      */
     int getMemberPriority();
 
     /**
-     * <code>optional int64 teamID = 7;</code>
+     * <code>int64 teamID = 7;</code>
      */
     long getTeamID();
 
     /**
-     * <code>optional int64 userID = 8;</code>
+     * <code>int64 userID = 8;</code>
      */
     long getUserID();
 
     /**
-     * <code>optional .UserInfo userInfo = 9;</code>
+     * <code>.UserInfo userInfo = 9;</code>
      */
     boolean hasUserInfo();
     /**
-     * <code>optional .UserInfo userInfo = 9;</code>
+     * <code>.UserInfo userInfo = 9;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo getUserInfo();
     /**
-     * <code>optional .UserInfo userInfo = 9;</code>
+     * <code>.UserInfo userInfo = 9;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder getUserInfoOrBuilder();
   }
@@ -35084,7 +35624,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -35093,14 +35633,14 @@ public final class ProtoMessage {
     public static final int USERPHONE_FIELD_NUMBER = 2;
     private volatile java.lang.Object userPhone_;
     /**
-     * <code>optional string userPhone = 2;</code>
+     * <code>string userPhone = 2;</code>
      */
     public java.lang.String getUserPhone() {
       java.lang.Object ref = userPhone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         userPhone_ = s;
@@ -35108,13 +35648,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string userPhone = 2;</code>
+     * <code>string userPhone = 2;</code>
      */
     public com.google.protobuf.ByteString
         getUserPhoneBytes() {
       java.lang.Object ref = userPhone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         userPhone_ = b;
@@ -35127,14 +35667,14 @@ public final class ProtoMessage {
     public static final int USERNAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object userName_;
     /**
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         userName_ = s;
@@ -35142,13 +35682,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string userName = 3;</code>
+     * <code>string userName = 3;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         userName_ = b;
@@ -35161,14 +35701,14 @@ public final class ProtoMessage {
     public static final int NICKNAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object nickName_;
     /**
-     * <code>optional string nickName = 4;</code>
+     * <code>string nickName = 4;</code>
      */
     public java.lang.String getNickName() {
       java.lang.Object ref = nickName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         nickName_ = s;
@@ -35176,13 +35716,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string nickName = 4;</code>
+     * <code>string nickName = 4;</code>
      */
     public com.google.protobuf.ByteString
         getNickNameBytes() {
       java.lang.Object ref = nickName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nickName_ = b;
@@ -35195,7 +35735,7 @@ public final class ProtoMessage {
     public static final int ROLE_FIELD_NUMBER = 5;
     private int role_;
     /**
-     * <code>optional int32 role = 5;</code>
+     * <code>int32 role = 5;</code>
      */
     public int getRole() {
       return role_;
@@ -35204,7 +35744,7 @@ public final class ProtoMessage {
     public static final int MEMBERPRIORITY_FIELD_NUMBER = 6;
     private int memberPriority_;
     /**
-     * <code>optional int32 memberPriority = 6;</code>
+     * <code>int32 memberPriority = 6;</code>
      */
     public int getMemberPriority() {
       return memberPriority_;
@@ -35213,7 +35753,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 7;
     private long teamID_;
     /**
-     * <code>optional int64 teamID = 7;</code>
+     * <code>int64 teamID = 7;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -35222,7 +35762,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 8;
     private long userID_;
     /**
-     * <code>optional int64 userID = 8;</code>
+     * <code>int64 userID = 8;</code>
      */
     public long getUserID() {
       return userID_;
@@ -35231,19 +35771,19 @@ public final class ProtoMessage {
     public static final int USERINFO_FIELD_NUMBER = 9;
     private com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo userInfo_;
     /**
-     * <code>optional .UserInfo userInfo = 9;</code>
+     * <code>.UserInfo userInfo = 9;</code>
      */
     public boolean hasUserInfo() {
       return userInfo_ != null;
     }
     /**
-     * <code>optional .UserInfo userInfo = 9;</code>
+     * <code>.UserInfo userInfo = 9;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo getUserInfo() {
       return userInfo_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.getDefaultInstance() : userInfo_;
     }
     /**
-     * <code>optional .UserInfo userInfo = 9;</code>
+     * <code>.UserInfo userInfo = 9;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder getUserInfoOrBuilder() {
       return getUserInfo();
@@ -35374,7 +35914,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + USERPHONE_FIELD_NUMBER;
@@ -35671,25 +36211,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -35697,7 +36237,7 @@ public final class ProtoMessage {
 
       private java.lang.Object userPhone_ = "";
       /**
-       * <code>optional string userPhone = 2;</code>
+       * <code>string userPhone = 2;</code>
        */
       public java.lang.String getUserPhone() {
         java.lang.Object ref = userPhone_;
@@ -35712,13 +36252,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string userPhone = 2;</code>
+       * <code>string userPhone = 2;</code>
        */
       public com.google.protobuf.ByteString
           getUserPhoneBytes() {
         java.lang.Object ref = userPhone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           userPhone_ = b;
@@ -35728,29 +36268,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string userPhone = 2;</code>
+       * <code>string userPhone = 2;</code>
        */
       public Builder setUserPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         userPhone_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string userPhone = 2;</code>
+       * <code>string userPhone = 2;</code>
        */
       public Builder clearUserPhone() {
-
+        
         userPhone_ = getDefaultInstance().getUserPhone();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string userPhone = 2;</code>
+       * <code>string userPhone = 2;</code>
        */
       public Builder setUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -35758,7 +36298,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         userPhone_ = value;
         onChanged();
         return this;
@@ -35766,7 +36306,7 @@ public final class ProtoMessage {
 
       private java.lang.Object userName_ = "";
       /**
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -35781,13 +36321,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
         java.lang.Object ref = userName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           userName_ = b;
@@ -35797,29 +36337,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         userName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public Builder clearUserName() {
-
+        
         userName_ = getDefaultInstance().getUserName();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string userName = 3;</code>
+       * <code>string userName = 3;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -35827,7 +36367,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         userName_ = value;
         onChanged();
         return this;
@@ -35835,7 +36375,7 @@ public final class ProtoMessage {
 
       private java.lang.Object nickName_ = "";
       /**
-       * <code>optional string nickName = 4;</code>
+       * <code>string nickName = 4;</code>
        */
       public java.lang.String getNickName() {
         java.lang.Object ref = nickName_;
@@ -35850,13 +36390,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string nickName = 4;</code>
+       * <code>string nickName = 4;</code>
        */
       public com.google.protobuf.ByteString
           getNickNameBytes() {
         java.lang.Object ref = nickName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nickName_ = b;
@@ -35866,29 +36406,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string nickName = 4;</code>
+       * <code>string nickName = 4;</code>
        */
       public Builder setNickName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         nickName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string nickName = 4;</code>
+       * <code>string nickName = 4;</code>
        */
       public Builder clearNickName() {
-
+        
         nickName_ = getDefaultInstance().getNickName();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string nickName = 4;</code>
+       * <code>string nickName = 4;</code>
        */
       public Builder setNickNameBytes(
           com.google.protobuf.ByteString value) {
@@ -35896,7 +36436,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         nickName_ = value;
         onChanged();
         return this;
@@ -35904,25 +36444,25 @@ public final class ProtoMessage {
 
       private int role_ ;
       /**
-       * <code>optional int32 role = 5;</code>
+       * <code>int32 role = 5;</code>
        */
       public int getRole() {
         return role_;
       }
       /**
-       * <code>optional int32 role = 5;</code>
+       * <code>int32 role = 5;</code>
        */
       public Builder setRole(int value) {
-
+        
         role_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 role = 5;</code>
+       * <code>int32 role = 5;</code>
        */
       public Builder clearRole() {
-
+        
         role_ = 0;
         onChanged();
         return this;
@@ -35930,25 +36470,25 @@ public final class ProtoMessage {
 
       private int memberPriority_ ;
       /**
-       * <code>optional int32 memberPriority = 6;</code>
+       * <code>int32 memberPriority = 6;</code>
        */
       public int getMemberPriority() {
         return memberPriority_;
       }
       /**
-       * <code>optional int32 memberPriority = 6;</code>
+       * <code>int32 memberPriority = 6;</code>
        */
       public Builder setMemberPriority(int value) {
-
+        
         memberPriority_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 memberPriority = 6;</code>
+       * <code>int32 memberPriority = 6;</code>
        */
       public Builder clearMemberPriority() {
-
+        
         memberPriority_ = 0;
         onChanged();
         return this;
@@ -35956,25 +36496,25 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>optional int64 teamID = 7;</code>
+       * <code>int64 teamID = 7;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>optional int64 teamID = 7;</code>
+       * <code>int64 teamID = 7;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 teamID = 7;</code>
+       * <code>int64 teamID = 7;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -35982,25 +36522,25 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>optional int64 userID = 8;</code>
+       * <code>int64 userID = 8;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>optional int64 userID = 8;</code>
+       * <code>int64 userID = 8;</code>
        */
       public Builder setUserID(long value) {
-
+        
         userID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 userID = 8;</code>
+       * <code>int64 userID = 8;</code>
        */
       public Builder clearUserID() {
-
+        
         userID_ = 0L;
         onChanged();
         return this;
@@ -36010,13 +36550,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder> userInfoBuilder_;
       /**
-       * <code>optional .UserInfo userInfo = 9;</code>
+       * <code>.UserInfo userInfo = 9;</code>
        */
       public boolean hasUserInfo() {
         return userInfoBuilder_ != null || userInfo_ != null;
       }
       /**
-       * <code>optional .UserInfo userInfo = 9;</code>
+       * <code>.UserInfo userInfo = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo getUserInfo() {
         if (userInfoBuilder_ == null) {
@@ -36026,7 +36566,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .UserInfo userInfo = 9;</code>
+       * <code>.UserInfo userInfo = 9;</code>
        */
       public Builder setUserInfo(com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo value) {
         if (userInfoBuilder_ == null) {
@@ -36042,7 +36582,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .UserInfo userInfo = 9;</code>
+       * <code>.UserInfo userInfo = 9;</code>
        */
       public Builder setUserInfo(
           com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder builderForValue) {
@@ -36056,7 +36596,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .UserInfo userInfo = 9;</code>
+       * <code>.UserInfo userInfo = 9;</code>
        */
       public Builder mergeUserInfo(com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo value) {
         if (userInfoBuilder_ == null) {
@@ -36074,7 +36614,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .UserInfo userInfo = 9;</code>
+       * <code>.UserInfo userInfo = 9;</code>
        */
       public Builder clearUserInfo() {
         if (userInfoBuilder_ == null) {
@@ -36088,15 +36628,15 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .UserInfo userInfo = 9;</code>
+       * <code>.UserInfo userInfo = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder getUserInfoBuilder() {
-
+        
         onChanged();
         return getUserInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .UserInfo userInfo = 9;</code>
+       * <code>.UserInfo userInfo = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder getUserInfoOrBuilder() {
         if (userInfoBuilder_ != null) {
@@ -36107,10 +36647,10 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .UserInfo userInfo = 9;</code>
+       * <code>.UserInfo userInfo = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder> 
           getUserInfoFieldBuilder() {
         if (userInfoBuilder_ == null) {
           userInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -36176,14 +36716,14 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
      * <code>repeated .TeamMember members = 2;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TeamMember>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TeamMember> 
         getMembersList();
     /**
      * <code>repeated .TeamMember members = 2;</code>
@@ -36196,7 +36736,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .TeamMember members = 2;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamMemberOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamMemberOrBuilder> 
         getMembersOrBuilderList();
     /**
      * <code>repeated .TeamMember members = 2;</code>
@@ -36205,7 +36745,7 @@ public final class ProtoMessage {
         int index);
 
     /**
-     * <code>optional int64 teamID = 3;</code>
+     * <code>int64 teamID = 3;</code>
      */
     long getTeamID();
 
@@ -36214,7 +36754,7 @@ public final class ProtoMessage {
      * RequestFlag
      * </pre>
      *
-     * <code>optional int32 requestFlag = 4;</code>
+     * <code>int32 requestFlag = 4;</code>
      */
     int getRequestFlag();
   }
@@ -36315,7 +36855,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -36332,7 +36872,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .TeamMember members = 2;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamMemberOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamMemberOrBuilder> 
         getMembersOrBuilderList() {
       return members_;
     }
@@ -36359,7 +36899,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 3;
     private long teamID_;
     /**
-     * <code>optional int64 teamID = 3;</code>
+     * <code>int64 teamID = 3;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -36372,7 +36912,7 @@ public final class ProtoMessage {
      * RequestFlag
      * </pre>
      *
-     * <code>optional int32 requestFlag = 4;</code>
+     * <code>int32 requestFlag = 4;</code>
      */
     public int getRequestFlag() {
       return requestFlag_;
@@ -36458,7 +36998,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getMembersCount() > 0) {
@@ -36700,7 +37240,7 @@ public final class ProtoMessage {
               membersBuilder_ = null;
               members_ = other.members_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              membersBuilder_ =
+              membersBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getMembersFieldBuilder() : null;
             } else {
@@ -36743,25 +37283,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -36962,7 +37502,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .TeamMember members = 2;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamMemberOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.TeamMemberOrBuilder> 
            getMembersOrBuilderList() {
         if (membersBuilder_ != null) {
           return membersBuilder_.getMessageOrBuilderList();
@@ -36988,12 +37528,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .TeamMember members = 2;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TeamMember.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.TeamMember.Builder> 
            getMembersBuilderList() {
         return getMembersFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.TeamMember, com.example.jrd48.service.proto_gen.ProtoMessage.TeamMember.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.TeamMemberOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.TeamMember, com.example.jrd48.service.proto_gen.ProtoMessage.TeamMember.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.TeamMemberOrBuilder> 
           getMembersFieldBuilder() {
         if (membersBuilder_ == null) {
           membersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -37009,25 +37549,25 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -37039,7 +37579,7 @@ public final class ProtoMessage {
        * RequestFlag
        * </pre>
        *
-       * <code>optional int32 requestFlag = 4;</code>
+       * <code>int32 requestFlag = 4;</code>
        */
       public int getRequestFlag() {
         return requestFlag_;
@@ -37049,10 +37589,10 @@ public final class ProtoMessage {
        * RequestFlag
        * </pre>
        *
-       * <code>optional int32 requestFlag = 4;</code>
+       * <code>int32 requestFlag = 4;</code>
        */
       public Builder setRequestFlag(int value) {
-
+        
         requestFlag_ = value;
         onChanged();
         return this;
@@ -37062,10 +37602,10 @@ public final class ProtoMessage {
        * RequestFlag
        * </pre>
        *
-       * <code>optional int32 requestFlag = 4;</code>
+       * <code>int32 requestFlag = 4;</code>
        */
       public Builder clearRequestFlag() {
-
+        
         requestFlag_ = 0;
         onChanged();
         return this;
@@ -37124,31 +37664,31 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>optional int64 teamID = 3;</code>
+     * <code>int64 teamID = 3;</code>
      */
     long getTeamID();
 
     /**
      * <pre>
-     ** 0 撤销，1：授予
+     ** 0 撤销，1：授予 
      * </pre>
      *
-     * <code>optional int32 admin = 4;</code>
+     * <code>int32 admin = 4;</code>
      */
     int getAdmin();
   }
@@ -37242,7 +37782,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -37251,14 +37791,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -37266,13 +37806,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -37285,7 +37825,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 3;
     private long teamID_;
     /**
-     * <code>optional int64 teamID = 3;</code>
+     * <code>int64 teamID = 3;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -37295,10 +37835,10 @@ public final class ProtoMessage {
     private int admin_;
     /**
      * <pre>
-     ** 0 撤销，1：授予
+     ** 0 撤销，1：授予 
      * </pre>
      *
-     * <code>optional int32 admin = 4;</code>
+     * <code>int32 admin = 4;</code>
      */
     public int getAdmin() {
       return admin_;
@@ -37383,7 +37923,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -37627,25 +38167,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -37653,7 +38193,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -37668,13 +38208,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -37684,29 +38224,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -37714,7 +38254,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -37722,25 +38262,25 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -37749,36 +38289,36 @@ public final class ProtoMessage {
       private int admin_ ;
       /**
        * <pre>
-       ** 0 撤销，1：授予
+       ** 0 撤销，1：授予 
        * </pre>
        *
-       * <code>optional int32 admin = 4;</code>
+       * <code>int32 admin = 4;</code>
        */
       public int getAdmin() {
         return admin_;
       }
       /**
        * <pre>
-       ** 0 撤销，1：授予
+       ** 0 撤销，1：授予 
        * </pre>
        *
-       * <code>optional int32 admin = 4;</code>
+       * <code>int32 admin = 4;</code>
        */
       public Builder setAdmin(int value) {
-
+        
         admin_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       ** 0 撤销，1：授予
+       ** 0 撤销，1：授予 
        * </pre>
        *
-       * <code>optional int32 admin = 4;</code>
+       * <code>int32 admin = 4;</code>
        */
       public Builder clearAdmin() {
-
+        
         admin_ = 0;
         onChanged();
         return this;
@@ -37837,37 +38377,37 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string fromUserPhone = 2;</code>
+     * <code>string fromUserPhone = 2;</code>
      */
     java.lang.String getFromUserPhone();
     /**
-     * <code>optional string fromUserPhone = 2;</code>
+     * <code>string fromUserPhone = 2;</code>
      */
     com.google.protobuf.ByteString
         getFromUserPhoneBytes();
 
     /**
-     * <code>optional string toUserPhone = 3;</code>
+     * <code>string toUserPhone = 3;</code>
      */
     java.lang.String getToUserPhone();
     /**
-     * <code>optional string toUserPhone = 3;</code>
+     * <code>string toUserPhone = 3;</code>
      */
     com.google.protobuf.ByteString
         getToUserPhoneBytes();
 
     /**
-     * <code>optional int64 toTeamID = 4;</code>
+     * <code>int64 toTeamID = 4;</code>
      */
     long getToTeamID();
 
     /**
-     * <code>optional int32 msgType = 5;</code>
+     * <code>int32 msgType = 5;</code>
      */
     int getMsgType();
 
@@ -37877,17 +38417,17 @@ public final class ProtoMessage {
      *bytes msgImage = 7;
      * </pre>
      *
-     * <code>optional bytes msgContent = 6;</code>
+     * <code>bytes msgContent = 6;</code>
      */
     com.google.protobuf.ByteString getMsgContent();
 
     /**
-     * <code>optional int64 msgID = 7;</code>
+     * <code>int64 msgID = 7;</code>
      */
     long getMsgID();
 
     /**
-     * <code>optional int64 msgTime = 8;</code>
+     * <code>int64 msgTime = 8;</code>
      */
     long getMsgTime();
 
@@ -37896,7 +38436,7 @@ public final class ProtoMessage {
      * 由发送端传来的数据。再返回给客户端，有助于客户端找回原来发送的记录
      * </pre>
      *
-     * <code>optional int64 msgSN = 9;</code>
+     * <code>int64 msgSN = 9;</code>
      */
     long getMsgSN();
 
@@ -37905,7 +38445,7 @@ public final class ProtoMessage {
      * 附件真实大小
      * </pre>
      *
-     * <code>optional int64 msgSize = 10;</code>
+     * <code>int64 msgSize = 10;</code>
      */
     long getMsgSize();
 
@@ -37914,13 +38454,13 @@ public final class ProtoMessage {
      * 附件校验字
      * </pre>
      *
-     * <code>optional bytes msgSum = 11;</code>
+     * <code>bytes msgSum = 11;</code>
      */
     com.google.protobuf.ByteString getMsgSum();
   }
   /**
    * <pre>
-   ** 普通消息，非对讲
+   ** 普通消息，非对讲 
    * </pre>
    *
    * Protobuf type {@code CommonMsg}
@@ -38055,7 +38595,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -38064,14 +38604,14 @@ public final class ProtoMessage {
     public static final int FROMUSERPHONE_FIELD_NUMBER = 2;
     private volatile java.lang.Object fromUserPhone_;
     /**
-     * <code>optional string fromUserPhone = 2;</code>
+     * <code>string fromUserPhone = 2;</code>
      */
     public java.lang.String getFromUserPhone() {
       java.lang.Object ref = fromUserPhone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         fromUserPhone_ = s;
@@ -38079,13 +38619,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string fromUserPhone = 2;</code>
+     * <code>string fromUserPhone = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFromUserPhoneBytes() {
       java.lang.Object ref = fromUserPhone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         fromUserPhone_ = b;
@@ -38098,14 +38638,14 @@ public final class ProtoMessage {
     public static final int TOUSERPHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object toUserPhone_;
     /**
-     * <code>optional string toUserPhone = 3;</code>
+     * <code>string toUserPhone = 3;</code>
      */
     public java.lang.String getToUserPhone() {
       java.lang.Object ref = toUserPhone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         toUserPhone_ = s;
@@ -38113,13 +38653,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string toUserPhone = 3;</code>
+     * <code>string toUserPhone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getToUserPhoneBytes() {
       java.lang.Object ref = toUserPhone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         toUserPhone_ = b;
@@ -38132,7 +38672,7 @@ public final class ProtoMessage {
     public static final int TOTEAMID_FIELD_NUMBER = 4;
     private long toTeamID_;
     /**
-     * <code>optional int64 toTeamID = 4;</code>
+     * <code>int64 toTeamID = 4;</code>
      */
     public long getToTeamID() {
       return toTeamID_;
@@ -38141,7 +38681,7 @@ public final class ProtoMessage {
     public static final int MSGTYPE_FIELD_NUMBER = 5;
     private int msgType_;
     /**
-     * <code>optional int32 msgType = 5;</code>
+     * <code>int32 msgType = 5;</code>
      */
     public int getMsgType() {
       return msgType_;
@@ -38155,7 +38695,7 @@ public final class ProtoMessage {
      *bytes msgImage = 7;
      * </pre>
      *
-     * <code>optional bytes msgContent = 6;</code>
+     * <code>bytes msgContent = 6;</code>
      */
     public com.google.protobuf.ByteString getMsgContent() {
       return msgContent_;
@@ -38164,7 +38704,7 @@ public final class ProtoMessage {
     public static final int MSGID_FIELD_NUMBER = 7;
     private long msgID_;
     /**
-     * <code>optional int64 msgID = 7;</code>
+     * <code>int64 msgID = 7;</code>
      */
     public long getMsgID() {
       return msgID_;
@@ -38173,7 +38713,7 @@ public final class ProtoMessage {
     public static final int MSGTIME_FIELD_NUMBER = 8;
     private long msgTime_;
     /**
-     * <code>optional int64 msgTime = 8;</code>
+     * <code>int64 msgTime = 8;</code>
      */
     public long getMsgTime() {
       return msgTime_;
@@ -38186,7 +38726,7 @@ public final class ProtoMessage {
      * 由发送端传来的数据。再返回给客户端，有助于客户端找回原来发送的记录
      * </pre>
      *
-     * <code>optional int64 msgSN = 9;</code>
+     * <code>int64 msgSN = 9;</code>
      */
     public long getMsgSN() {
       return msgSN_;
@@ -38199,7 +38739,7 @@ public final class ProtoMessage {
      * 附件真实大小
      * </pre>
      *
-     * <code>optional int64 msgSize = 10;</code>
+     * <code>int64 msgSize = 10;</code>
      */
     public long getMsgSize() {
       return msgSize_;
@@ -38212,7 +38752,7 @@ public final class ProtoMessage {
      * 附件校验字
      * </pre>
      *
-     * <code>optional bytes msgSum = 11;</code>
+     * <code>bytes msgSum = 11;</code>
      */
     public com.google.protobuf.ByteString getMsgSum() {
       return msgSum_;
@@ -38359,7 +38899,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FROMUSERPHONE_FIELD_NUMBER;
@@ -38471,7 +39011,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 普通消息，非对讲
+     ** 普通消息，非对讲 
      * </pre>
      *
      * Protobuf type {@code CommonMsg}
@@ -38668,25 +39208,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -38694,7 +39234,7 @@ public final class ProtoMessage {
 
       private java.lang.Object fromUserPhone_ = "";
       /**
-       * <code>optional string fromUserPhone = 2;</code>
+       * <code>string fromUserPhone = 2;</code>
        */
       public java.lang.String getFromUserPhone() {
         java.lang.Object ref = fromUserPhone_;
@@ -38709,13 +39249,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string fromUserPhone = 2;</code>
+       * <code>string fromUserPhone = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFromUserPhoneBytes() {
         java.lang.Object ref = fromUserPhone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           fromUserPhone_ = b;
@@ -38725,29 +39265,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string fromUserPhone = 2;</code>
+       * <code>string fromUserPhone = 2;</code>
        */
       public Builder setFromUserPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         fromUserPhone_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string fromUserPhone = 2;</code>
+       * <code>string fromUserPhone = 2;</code>
        */
       public Builder clearFromUserPhone() {
-
+        
         fromUserPhone_ = getDefaultInstance().getFromUserPhone();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string fromUserPhone = 2;</code>
+       * <code>string fromUserPhone = 2;</code>
        */
       public Builder setFromUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -38755,7 +39295,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         fromUserPhone_ = value;
         onChanged();
         return this;
@@ -38763,7 +39303,7 @@ public final class ProtoMessage {
 
       private java.lang.Object toUserPhone_ = "";
       /**
-       * <code>optional string toUserPhone = 3;</code>
+       * <code>string toUserPhone = 3;</code>
        */
       public java.lang.String getToUserPhone() {
         java.lang.Object ref = toUserPhone_;
@@ -38778,13 +39318,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string toUserPhone = 3;</code>
+       * <code>string toUserPhone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getToUserPhoneBytes() {
         java.lang.Object ref = toUserPhone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           toUserPhone_ = b;
@@ -38794,29 +39334,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string toUserPhone = 3;</code>
+       * <code>string toUserPhone = 3;</code>
        */
       public Builder setToUserPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         toUserPhone_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string toUserPhone = 3;</code>
+       * <code>string toUserPhone = 3;</code>
        */
       public Builder clearToUserPhone() {
-
+        
         toUserPhone_ = getDefaultInstance().getToUserPhone();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string toUserPhone = 3;</code>
+       * <code>string toUserPhone = 3;</code>
        */
       public Builder setToUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -38824,7 +39364,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         toUserPhone_ = value;
         onChanged();
         return this;
@@ -38832,25 +39372,25 @@ public final class ProtoMessage {
 
       private long toTeamID_ ;
       /**
-       * <code>optional int64 toTeamID = 4;</code>
+       * <code>int64 toTeamID = 4;</code>
        */
       public long getToTeamID() {
         return toTeamID_;
       }
       /**
-       * <code>optional int64 toTeamID = 4;</code>
+       * <code>int64 toTeamID = 4;</code>
        */
       public Builder setToTeamID(long value) {
-
+        
         toTeamID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 toTeamID = 4;</code>
+       * <code>int64 toTeamID = 4;</code>
        */
       public Builder clearToTeamID() {
-
+        
         toTeamID_ = 0L;
         onChanged();
         return this;
@@ -38858,25 +39398,25 @@ public final class ProtoMessage {
 
       private int msgType_ ;
       /**
-       * <code>optional int32 msgType = 5;</code>
+       * <code>int32 msgType = 5;</code>
        */
       public int getMsgType() {
         return msgType_;
       }
       /**
-       * <code>optional int32 msgType = 5;</code>
+       * <code>int32 msgType = 5;</code>
        */
       public Builder setMsgType(int value) {
-
+        
         msgType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 msgType = 5;</code>
+       * <code>int32 msgType = 5;</code>
        */
       public Builder clearMsgType() {
-
+        
         msgType_ = 0;
         onChanged();
         return this;
@@ -38889,7 +39429,7 @@ public final class ProtoMessage {
        *bytes msgImage = 7;
        * </pre>
        *
-       * <code>optional bytes msgContent = 6;</code>
+       * <code>bytes msgContent = 6;</code>
        */
       public com.google.protobuf.ByteString getMsgContent() {
         return msgContent_;
@@ -38900,13 +39440,13 @@ public final class ProtoMessage {
        *bytes msgImage = 7;
        * </pre>
        *
-       * <code>optional bytes msgContent = 6;</code>
+       * <code>bytes msgContent = 6;</code>
        */
       public Builder setMsgContent(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         msgContent_ = value;
         onChanged();
         return this;
@@ -38917,10 +39457,10 @@ public final class ProtoMessage {
        *bytes msgImage = 7;
        * </pre>
        *
-       * <code>optional bytes msgContent = 6;</code>
+       * <code>bytes msgContent = 6;</code>
        */
       public Builder clearMsgContent() {
-
+        
         msgContent_ = getDefaultInstance().getMsgContent();
         onChanged();
         return this;
@@ -38928,25 +39468,25 @@ public final class ProtoMessage {
 
       private long msgID_ ;
       /**
-       * <code>optional int64 msgID = 7;</code>
+       * <code>int64 msgID = 7;</code>
        */
       public long getMsgID() {
         return msgID_;
       }
       /**
-       * <code>optional int64 msgID = 7;</code>
+       * <code>int64 msgID = 7;</code>
        */
       public Builder setMsgID(long value) {
-
+        
         msgID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 msgID = 7;</code>
+       * <code>int64 msgID = 7;</code>
        */
       public Builder clearMsgID() {
-
+        
         msgID_ = 0L;
         onChanged();
         return this;
@@ -38954,25 +39494,25 @@ public final class ProtoMessage {
 
       private long msgTime_ ;
       /**
-       * <code>optional int64 msgTime = 8;</code>
+       * <code>int64 msgTime = 8;</code>
        */
       public long getMsgTime() {
         return msgTime_;
       }
       /**
-       * <code>optional int64 msgTime = 8;</code>
+       * <code>int64 msgTime = 8;</code>
        */
       public Builder setMsgTime(long value) {
-
+        
         msgTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 msgTime = 8;</code>
+       * <code>int64 msgTime = 8;</code>
        */
       public Builder clearMsgTime() {
-
+        
         msgTime_ = 0L;
         onChanged();
         return this;
@@ -38984,7 +39524,7 @@ public final class ProtoMessage {
        * 由发送端传来的数据。再返回给客户端，有助于客户端找回原来发送的记录
        * </pre>
        *
-       * <code>optional int64 msgSN = 9;</code>
+       * <code>int64 msgSN = 9;</code>
        */
       public long getMsgSN() {
         return msgSN_;
@@ -38994,10 +39534,10 @@ public final class ProtoMessage {
        * 由发送端传来的数据。再返回给客户端，有助于客户端找回原来发送的记录
        * </pre>
        *
-       * <code>optional int64 msgSN = 9;</code>
+       * <code>int64 msgSN = 9;</code>
        */
       public Builder setMsgSN(long value) {
-
+        
         msgSN_ = value;
         onChanged();
         return this;
@@ -39007,10 +39547,10 @@ public final class ProtoMessage {
        * 由发送端传来的数据。再返回给客户端，有助于客户端找回原来发送的记录
        * </pre>
        *
-       * <code>optional int64 msgSN = 9;</code>
+       * <code>int64 msgSN = 9;</code>
        */
       public Builder clearMsgSN() {
-
+        
         msgSN_ = 0L;
         onChanged();
         return this;
@@ -39022,7 +39562,7 @@ public final class ProtoMessage {
        * 附件真实大小
        * </pre>
        *
-       * <code>optional int64 msgSize = 10;</code>
+       * <code>int64 msgSize = 10;</code>
        */
       public long getMsgSize() {
         return msgSize_;
@@ -39032,10 +39572,10 @@ public final class ProtoMessage {
        * 附件真实大小
        * </pre>
        *
-       * <code>optional int64 msgSize = 10;</code>
+       * <code>int64 msgSize = 10;</code>
        */
       public Builder setMsgSize(long value) {
-
+        
         msgSize_ = value;
         onChanged();
         return this;
@@ -39045,10 +39585,10 @@ public final class ProtoMessage {
        * 附件真实大小
        * </pre>
        *
-       * <code>optional int64 msgSize = 10;</code>
+       * <code>int64 msgSize = 10;</code>
        */
       public Builder clearMsgSize() {
-
+        
         msgSize_ = 0L;
         onChanged();
         return this;
@@ -39060,7 +39600,7 @@ public final class ProtoMessage {
        * 附件校验字
        * </pre>
        *
-       * <code>optional bytes msgSum = 11;</code>
+       * <code>bytes msgSum = 11;</code>
        */
       public com.google.protobuf.ByteString getMsgSum() {
         return msgSum_;
@@ -39070,13 +39610,13 @@ public final class ProtoMessage {
        * 附件校验字
        * </pre>
        *
-       * <code>optional bytes msgSum = 11;</code>
+       * <code>bytes msgSum = 11;</code>
        */
       public Builder setMsgSum(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         msgSum_ = value;
         onChanged();
         return this;
@@ -39086,10 +39626,10 @@ public final class ProtoMessage {
        * 附件校验字
        * </pre>
        *
-       * <code>optional bytes msgSum = 11;</code>
+       * <code>bytes msgSum = 11;</code>
        */
       public Builder clearMsgSum() {
-
+        
         msgSum_ = getDefaultInstance().getMsgSum();
         onChanged();
         return this;
@@ -39148,17 +39688,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int64 msgID = 2;</code>
+     * <code>int64 msgID = 2;</code>
      */
     long getMsgID();
 
     /**
-     * <code>optional int64 msgTime = 3;</code>
+     * <code>int64 msgTime = 3;</code>
      */
     long getMsgTime();
   }
@@ -39245,7 +39785,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -39254,7 +39794,7 @@ public final class ProtoMessage {
     public static final int MSGID_FIELD_NUMBER = 2;
     private long msgID_;
     /**
-     * <code>optional int64 msgID = 2;</code>
+     * <code>int64 msgID = 2;</code>
      */
     public long getMsgID() {
       return msgID_;
@@ -39263,7 +39803,7 @@ public final class ProtoMessage {
     public static final int MSGTIME_FIELD_NUMBER = 3;
     private long msgTime_;
     /**
-     * <code>optional int64 msgTime = 3;</code>
+     * <code>int64 msgTime = 3;</code>
      */
     public long getMsgTime() {
       return msgTime_;
@@ -39340,7 +39880,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + MSGID_FIELD_NUMBER;
@@ -39576,25 +40116,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -39602,25 +40142,25 @@ public final class ProtoMessage {
 
       private long msgID_ ;
       /**
-       * <code>optional int64 msgID = 2;</code>
+       * <code>int64 msgID = 2;</code>
        */
       public long getMsgID() {
         return msgID_;
       }
       /**
-       * <code>optional int64 msgID = 2;</code>
+       * <code>int64 msgID = 2;</code>
        */
       public Builder setMsgID(long value) {
-
+        
         msgID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 msgID = 2;</code>
+       * <code>int64 msgID = 2;</code>
        */
       public Builder clearMsgID() {
-
+        
         msgID_ = 0L;
         onChanged();
         return this;
@@ -39628,25 +40168,25 @@ public final class ProtoMessage {
 
       private long msgTime_ ;
       /**
-       * <code>optional int64 msgTime = 3;</code>
+       * <code>int64 msgTime = 3;</code>
        */
       public long getMsgTime() {
         return msgTime_;
       }
       /**
-       * <code>optional int64 msgTime = 3;</code>
+       * <code>int64 msgTime = 3;</code>
        */
       public Builder setMsgTime(long value) {
-
+        
         msgTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 msgTime = 3;</code>
+       * <code>int64 msgTime = 3;</code>
        */
       public Builder clearMsgTime() {
-
+        
         msgTime_ = 0L;
         onChanged();
         return this;
@@ -39719,7 +40259,7 @@ public final class ProtoMessage {
   }
   /**
    * <pre>
-   ** 接收到的普通消息确认
+   ** 接收到的普通消息确认 
    * </pre>
    *
    * Protobuf type {@code CommonMsgConfirm}
@@ -39899,7 +40439,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getMsgIDsCount() > 0) {
         hash = (37 * hash) + MSGIDS_FIELD_NUMBER;
         hash = (53 * hash) + getMsgIDsList().hashCode();
@@ -39988,7 +40528,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 接收到的普通消息确认
+     ** 接收到的普通消息确认 
      * </pre>
      *
      * Protobuf type {@code CommonMsgConfirm}
@@ -40257,7 +40797,7 @@ public final class ProtoMessage {
      * 从哪条消息开始读
      * </pre>
      *
-     * <code>optional int64 afterMsgID = 1;</code>
+     * <code>int64 afterMsgID = 1;</code>
      */
     long getAfterMsgID();
   }
@@ -40336,7 +40876,7 @@ public final class ProtoMessage {
      * 从哪条消息开始读
      * </pre>
      *
-     * <code>optional int64 afterMsgID = 1;</code>
+     * <code>int64 afterMsgID = 1;</code>
      */
     public long getAfterMsgID() {
       return afterMsgID_;
@@ -40395,7 +40935,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + AFTERMSGID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getAfterMsgID());
@@ -40618,7 +41158,7 @@ public final class ProtoMessage {
        * 从哪条消息开始读
        * </pre>
        *
-       * <code>optional int64 afterMsgID = 1;</code>
+       * <code>int64 afterMsgID = 1;</code>
        */
       public long getAfterMsgID() {
         return afterMsgID_;
@@ -40628,10 +41168,10 @@ public final class ProtoMessage {
        * 从哪条消息开始读
        * </pre>
        *
-       * <code>optional int64 afterMsgID = 1;</code>
+       * <code>int64 afterMsgID = 1;</code>
        */
       public Builder setAfterMsgID(long value) {
-
+        
         afterMsgID_ = value;
         onChanged();
         return this;
@@ -40641,10 +41181,10 @@ public final class ProtoMessage {
        * 从哪条消息开始读
        * </pre>
        *
-       * <code>optional int64 afterMsgID = 1;</code>
+       * <code>int64 afterMsgID = 1;</code>
        */
       public Builder clearAfterMsgID() {
-
+        
         afterMsgID_ = 0L;
         onChanged();
         return this;
@@ -40703,14 +41243,14 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
      * <code>repeated .CommonMsg msgList = 2;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsg>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsg> 
         getMsgListList();
     /**
      * <code>repeated .CommonMsg msgList = 2;</code>
@@ -40723,7 +41263,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .CommonMsg msgList = 2;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsgOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsgOrBuilder> 
         getMsgListOrBuilderList();
     /**
      * <code>repeated .CommonMsg msgList = 2;</code>
@@ -40816,7 +41356,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -40833,7 +41373,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .CommonMsg msgList = 2;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsgOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsgOrBuilder> 
         getMsgListOrBuilderList() {
       return msgList_;
     }
@@ -40919,7 +41459,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getMsgListCount() > 0) {
@@ -41150,7 +41690,7 @@ public final class ProtoMessage {
               msgListBuilder_ = null;
               msgList_ = other.msgList_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              msgListBuilder_ =
+              msgListBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getMsgListFieldBuilder() : null;
             } else {
@@ -41187,25 +41727,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -41406,7 +41946,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .CommonMsg msgList = 2;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsgOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsgOrBuilder> 
            getMsgListOrBuilderList() {
         if (msgListBuilder_ != null) {
           return msgListBuilder_.getMessageOrBuilderList();
@@ -41432,12 +41972,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .CommonMsg msgList = 2;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsg.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsg.Builder> 
            getMsgListBuilderList() {
         return getMsgListFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsg, com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsgOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsg, com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.CommonMsgOrBuilder> 
           getMsgListFieldBuilder() {
         if (msgListBuilder_ == null) {
           msgListBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -41504,7 +42044,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -41513,7 +42053,7 @@ public final class ProtoMessage {
      * 单呼对象
      * </pre>
      *
-     * <code>optional string toUserPhone = 2;</code>
+     * <code>string toUserPhone = 2;</code>
      */
     java.lang.String getToUserPhone();
     /**
@@ -41521,13 +42061,13 @@ public final class ProtoMessage {
      * 单呼对象
      * </pre>
      *
-     * <code>optional string toUserPhone = 2;</code>
+     * <code>string toUserPhone = 2;</code>
      */
     com.google.protobuf.ByteString
         getToUserPhoneBytes();
 
     /**
-     * <code>optional int64 teamID = 3;</code>
+     * <code>int64 teamID = 3;</code>
      */
     long getTeamID();
 
@@ -41536,7 +42076,7 @@ public final class ProtoMessage {
      * 后台生成，从1开始，到最大值，然后循环使用
      * </pre>
      *
-     * <code>optional int64 roomID = 4;</code>
+     * <code>int64 roomID = 4;</code>
      */
     long getRoomID();
 
@@ -41544,14 +42084,14 @@ public final class ProtoMessage {
      * <pre>
      * </pre>
      *
-     * <code>optional string fromUserPhone = 5;</code>
+     * <code>string fromUserPhone = 5;</code>
      */
     java.lang.String getFromUserPhone();
     /**
      * <pre>
      * </pre>
      *
-     * <code>optional string fromUserPhone = 5;</code>
+     * <code>string fromUserPhone = 5;</code>
      */
     com.google.protobuf.ByteString
         getFromUserPhoneBytes();
@@ -41561,7 +42101,7 @@ public final class ProtoMessage {
      * 仅用于视频对讲
      * </pre>
      *
-     * <code>optional .AcceptType accept = 6;</code>
+     * <code>.AcceptType accept = 6;</code>
      */
     int getAcceptValue();
     /**
@@ -41569,7 +42109,7 @@ public final class ProtoMessage {
      * 仅用于视频对讲
      * </pre>
      *
-     * <code>optional .AcceptType accept = 6;</code>
+     * <code>.AcceptType accept = 6;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept();
   }
@@ -41677,7 +42217,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -41690,14 +42230,14 @@ public final class ProtoMessage {
      * 单呼对象
      * </pre>
      *
-     * <code>optional string toUserPhone = 2;</code>
+     * <code>string toUserPhone = 2;</code>
      */
     public java.lang.String getToUserPhone() {
       java.lang.Object ref = toUserPhone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         toUserPhone_ = s;
@@ -41709,13 +42249,13 @@ public final class ProtoMessage {
      * 单呼对象
      * </pre>
      *
-     * <code>optional string toUserPhone = 2;</code>
+     * <code>string toUserPhone = 2;</code>
      */
     public com.google.protobuf.ByteString
         getToUserPhoneBytes() {
       java.lang.Object ref = toUserPhone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         toUserPhone_ = b;
@@ -41728,7 +42268,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 3;
     private long teamID_;
     /**
-     * <code>optional int64 teamID = 3;</code>
+     * <code>int64 teamID = 3;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -41741,7 +42281,7 @@ public final class ProtoMessage {
      * 后台生成，从1开始，到最大值，然后循环使用
      * </pre>
      *
-     * <code>optional int64 roomID = 4;</code>
+     * <code>int64 roomID = 4;</code>
      */
     public long getRoomID() {
       return roomID_;
@@ -41753,14 +42293,14 @@ public final class ProtoMessage {
      * <pre>
      * </pre>
      *
-     * <code>optional string fromUserPhone = 5;</code>
+     * <code>string fromUserPhone = 5;</code>
      */
     public java.lang.String getFromUserPhone() {
       java.lang.Object ref = fromUserPhone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         fromUserPhone_ = s;
@@ -41771,13 +42311,13 @@ public final class ProtoMessage {
      * <pre>
      * </pre>
      *
-     * <code>optional string fromUserPhone = 5;</code>
+     * <code>string fromUserPhone = 5;</code>
      */
     public com.google.protobuf.ByteString
         getFromUserPhoneBytes() {
       java.lang.Object ref = fromUserPhone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         fromUserPhone_ = b;
@@ -41794,7 +42334,7 @@ public final class ProtoMessage {
      * 仅用于视频对讲
      * </pre>
      *
-     * <code>optional .AcceptType accept = 6;</code>
+     * <code>.AcceptType accept = 6;</code>
      */
     public int getAcceptValue() {
       return accept_;
@@ -41804,7 +42344,7 @@ public final class ProtoMessage {
      * 仅用于视频对讲
      * </pre>
      *
-     * <code>optional .AcceptType accept = 6;</code>
+     * <code>.AcceptType accept = 6;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept() {
       com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType result = com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType.valueOf(accept_);
@@ -41906,7 +42446,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TOUSERPHONE_FIELD_NUMBER;
@@ -42168,25 +42708,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -42198,7 +42738,7 @@ public final class ProtoMessage {
        * 单呼对象
        * </pre>
        *
-       * <code>optional string toUserPhone = 2;</code>
+       * <code>string toUserPhone = 2;</code>
        */
       public java.lang.String getToUserPhone() {
         java.lang.Object ref = toUserPhone_;
@@ -42217,13 +42757,13 @@ public final class ProtoMessage {
        * 单呼对象
        * </pre>
        *
-       * <code>optional string toUserPhone = 2;</code>
+       * <code>string toUserPhone = 2;</code>
        */
       public com.google.protobuf.ByteString
           getToUserPhoneBytes() {
         java.lang.Object ref = toUserPhone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           toUserPhone_ = b;
@@ -42237,14 +42777,14 @@ public final class ProtoMessage {
        * 单呼对象
        * </pre>
        *
-       * <code>optional string toUserPhone = 2;</code>
+       * <code>string toUserPhone = 2;</code>
        */
       public Builder setToUserPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         toUserPhone_ = value;
         onChanged();
         return this;
@@ -42254,10 +42794,10 @@ public final class ProtoMessage {
        * 单呼对象
        * </pre>
        *
-       * <code>optional string toUserPhone = 2;</code>
+       * <code>string toUserPhone = 2;</code>
        */
       public Builder clearToUserPhone() {
-
+        
         toUserPhone_ = getDefaultInstance().getToUserPhone();
         onChanged();
         return this;
@@ -42267,7 +42807,7 @@ public final class ProtoMessage {
        * 单呼对象
        * </pre>
        *
-       * <code>optional string toUserPhone = 2;</code>
+       * <code>string toUserPhone = 2;</code>
        */
       public Builder setToUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -42275,7 +42815,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         toUserPhone_ = value;
         onChanged();
         return this;
@@ -42283,25 +42823,25 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 teamID = 3;</code>
+       * <code>int64 teamID = 3;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -42313,7 +42853,7 @@ public final class ProtoMessage {
        * 后台生成，从1开始，到最大值，然后循环使用
        * </pre>
        *
-       * <code>optional int64 roomID = 4;</code>
+       * <code>int64 roomID = 4;</code>
        */
       public long getRoomID() {
         return roomID_;
@@ -42323,10 +42863,10 @@ public final class ProtoMessage {
        * 后台生成，从1开始，到最大值，然后循环使用
        * </pre>
        *
-       * <code>optional int64 roomID = 4;</code>
+       * <code>int64 roomID = 4;</code>
        */
       public Builder setRoomID(long value) {
-
+        
         roomID_ = value;
         onChanged();
         return this;
@@ -42336,10 +42876,10 @@ public final class ProtoMessage {
        * 后台生成，从1开始，到最大值，然后循环使用
        * </pre>
        *
-       * <code>optional int64 roomID = 4;</code>
+       * <code>int64 roomID = 4;</code>
        */
       public Builder clearRoomID() {
-
+        
         roomID_ = 0L;
         onChanged();
         return this;
@@ -42350,7 +42890,7 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>optional string fromUserPhone = 5;</code>
+       * <code>string fromUserPhone = 5;</code>
        */
       public java.lang.String getFromUserPhone() {
         java.lang.Object ref = fromUserPhone_;
@@ -42368,13 +42908,13 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>optional string fromUserPhone = 5;</code>
+       * <code>string fromUserPhone = 5;</code>
        */
       public com.google.protobuf.ByteString
           getFromUserPhoneBytes() {
         java.lang.Object ref = fromUserPhone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           fromUserPhone_ = b;
@@ -42387,14 +42927,14 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>optional string fromUserPhone = 5;</code>
+       * <code>string fromUserPhone = 5;</code>
        */
       public Builder setFromUserPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         fromUserPhone_ = value;
         onChanged();
         return this;
@@ -42403,10 +42943,10 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>optional string fromUserPhone = 5;</code>
+       * <code>string fromUserPhone = 5;</code>
        */
       public Builder clearFromUserPhone() {
-
+        
         fromUserPhone_ = getDefaultInstance().getFromUserPhone();
         onChanged();
         return this;
@@ -42415,7 +42955,7 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>optional string fromUserPhone = 5;</code>
+       * <code>string fromUserPhone = 5;</code>
        */
       public Builder setFromUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -42423,7 +42963,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         fromUserPhone_ = value;
         onChanged();
         return this;
@@ -42435,7 +42975,7 @@ public final class ProtoMessage {
        * 仅用于视频对讲
        * </pre>
        *
-       * <code>optional .AcceptType accept = 6;</code>
+       * <code>.AcceptType accept = 6;</code>
        */
       public int getAcceptValue() {
         return accept_;
@@ -42445,7 +42985,7 @@ public final class ProtoMessage {
        * 仅用于视频对讲
        * </pre>
        *
-       * <code>optional .AcceptType accept = 6;</code>
+       * <code>.AcceptType accept = 6;</code>
        */
       public Builder setAcceptValue(int value) {
         accept_ = value;
@@ -42457,7 +42997,7 @@ public final class ProtoMessage {
        * 仅用于视频对讲
        * </pre>
        *
-       * <code>optional .AcceptType accept = 6;</code>
+       * <code>.AcceptType accept = 6;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept() {
         com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType result = com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType.valueOf(accept_);
@@ -42468,13 +43008,13 @@ public final class ProtoMessage {
        * 仅用于视频对讲
        * </pre>
        *
-       * <code>optional .AcceptType accept = 6;</code>
+       * <code>.AcceptType accept = 6;</code>
        */
       public Builder setAccept(com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-
+        
         accept_ = value.getNumber();
         onChanged();
         return this;
@@ -42484,10 +43024,10 @@ public final class ProtoMessage {
        * 仅用于视频对讲
        * </pre>
        *
-       * <code>optional .AcceptType accept = 6;</code>
+       * <code>.AcceptType accept = 6;</code>
        */
       public Builder clearAccept() {
-
+        
         accept_ = 0;
         onChanged();
         return this;
@@ -42546,22 +43086,22 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>optional int32 status = 3;</code>
+     * <code>int32 status = 3;</code>
      */
     int getStatus();
   }
@@ -42649,7 +43189,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -42658,14 +43198,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -42673,13 +43213,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -42692,7 +43232,7 @@ public final class ProtoMessage {
     public static final int STATUS_FIELD_NUMBER = 3;
     private int status_;
     /**
-     * <code>optional int32 status = 3;</code>
+     * <code>int32 status = 3;</code>
      */
     public int getStatus() {
       return status_;
@@ -42768,7 +43308,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -43003,25 +43543,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -43029,7 +43569,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -43044,13 +43584,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -43060,29 +43600,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -43090,7 +43630,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -43098,25 +43638,25 @@ public final class ProtoMessage {
 
       private int status_ ;
       /**
-       * <code>optional int32 status = 3;</code>
+       * <code>int32 status = 3;</code>
        */
       public int getStatus() {
         return status_;
       }
       /**
-       * <code>optional int32 status = 3;</code>
+       * <code>int32 status = 3;</code>
        */
       public Builder setStatus(int value) {
-
+        
         status_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 status = 3;</code>
+       * <code>int32 status = 3;</code>
        */
       public Builder clearStatus() {
-
+        
         status_ = 0;
         onChanged();
         return this;
@@ -43175,17 +43715,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int64 roomID = 2;</code>
+     * <code>int64 roomID = 2;</code>
      */
     long getRoomID();
 
     /**
-     * <code>optional int32 acceptType = 3;</code>
+     * <code>int32 acceptType = 3;</code>
      */
     int getAcceptType();
 
@@ -43194,14 +43734,14 @@ public final class ProtoMessage {
      * 当房间关闭后， roomClosed = 1; 其他时间为0
      * </pre>
      *
-     * <code>optional int32 roomClosed = 4;</code>
+     * <code>int32 roomClosed = 4;</code>
      */
     int getRoomClosed();
 
     /**
      * <code>repeated .ChatRoomMemberMsg members = 5;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsg>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsg> 
         getMembersList();
     /**
      * <code>repeated .ChatRoomMemberMsg members = 5;</code>
@@ -43214,7 +43754,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .ChatRoomMemberMsg members = 5;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsgOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsgOrBuilder> 
         getMembersOrBuilderList();
     /**
      * <code>repeated .ChatRoomMemberMsg members = 5;</code>
@@ -43227,7 +43767,7 @@ public final class ProtoMessage {
      * 组ID 单呼时为0
      * </pre>
      *
-     * <code>optional int64 teamID = 6;</code>
+     * <code>int64 teamID = 6;</code>
      */
     long getTeamID();
 
@@ -43236,7 +43776,7 @@ public final class ProtoMessage {
      * 发起者的号码
      * </pre>
      *
-     * <code>optional string phoneNum = 7;</code>
+     * <code>string phoneNum = 7;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -43244,7 +43784,7 @@ public final class ProtoMessage {
      * 发起者的号码
      * </pre>
      *
-     * <code>optional string phoneNum = 7;</code>
+     * <code>string phoneNum = 7;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -43254,7 +43794,7 @@ public final class ProtoMessage {
      * 对讲服务器的IP
      * </pre>
      *
-     * <code>optional string roomIP = 8;</code>
+     * <code>string roomIP = 8;</code>
      */
     java.lang.String getRoomIP();
     /**
@@ -43262,7 +43802,7 @@ public final class ProtoMessage {
      * 对讲服务器的IP
      * </pre>
      *
-     * <code>optional string roomIP = 8;</code>
+     * <code>string roomIP = 8;</code>
      */
     com.google.protobuf.ByteString
         getRoomIPBytes();
@@ -43272,7 +43812,7 @@ public final class ProtoMessage {
      * 对讲服务器的的Port
      * </pre>
      *
-     * <code>optional int32 roomPort = 9;</code>
+     * <code>int32 roomPort = 9;</code>
      */
     int getRoomPort();
 
@@ -43281,7 +43821,7 @@ public final class ProtoMessage {
      * 是哪个服务器的 响应，参照：ServerType
      * </pre>
      *
-     * <code>optional int32 serverType = 10;</code>
+     * <code>int32 serverType = 10;</code>
      */
     int getServerType();
 
@@ -43290,7 +43830,7 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>optional string toUserPhone = 11;</code>
+     * <code>string toUserPhone = 11;</code>
      */
     java.lang.String getToUserPhone();
     /**
@@ -43298,7 +43838,7 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>optional string toUserPhone = 11;</code>
+     * <code>string toUserPhone = 11;</code>
      */
     com.google.protobuf.ByteString
         getToUserPhoneBytes();
@@ -43308,7 +43848,7 @@ public final class ProtoMessage {
      * 保存房间的视频URL add by qhb at: 2018-03-19
      * </pre>
      *
-     * <code>optional string videoUrl = 12;</code>
+     * <code>string videoUrl = 12;</code>
      */
     java.lang.String getVideoUrl();
     /**
@@ -43316,7 +43856,7 @@ public final class ProtoMessage {
      * 保存房间的视频URL add by qhb at: 2018-03-19
      * </pre>
      *
-     * <code>optional string videoUrl = 12;</code>
+     * <code>string videoUrl = 12;</code>
      */
     com.google.protobuf.ByteString
         getVideoUrlBytes();
@@ -43470,7 +44010,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -43479,7 +44019,7 @@ public final class ProtoMessage {
     public static final int ROOMID_FIELD_NUMBER = 2;
     private long roomID_;
     /**
-     * <code>optional int64 roomID = 2;</code>
+     * <code>int64 roomID = 2;</code>
      */
     public long getRoomID() {
       return roomID_;
@@ -43488,7 +44028,7 @@ public final class ProtoMessage {
     public static final int ACCEPTTYPE_FIELD_NUMBER = 3;
     private int acceptType_;
     /**
-     * <code>optional int32 acceptType = 3;</code>
+     * <code>int32 acceptType = 3;</code>
      */
     public int getAcceptType() {
       return acceptType_;
@@ -43501,7 +44041,7 @@ public final class ProtoMessage {
      * 当房间关闭后， roomClosed = 1; 其他时间为0
      * </pre>
      *
-     * <code>optional int32 roomClosed = 4;</code>
+     * <code>int32 roomClosed = 4;</code>
      */
     public int getRoomClosed() {
       return roomClosed_;
@@ -43518,7 +44058,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .ChatRoomMemberMsg members = 5;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsgOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsgOrBuilder> 
         getMembersOrBuilderList() {
       return members_;
     }
@@ -43549,7 +44089,7 @@ public final class ProtoMessage {
      * 组ID 单呼时为0
      * </pre>
      *
-     * <code>optional int64 teamID = 6;</code>
+     * <code>int64 teamID = 6;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -43562,14 +44102,14 @@ public final class ProtoMessage {
      * 发起者的号码
      * </pre>
      *
-     * <code>optional string phoneNum = 7;</code>
+     * <code>string phoneNum = 7;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -43581,13 +44121,13 @@ public final class ProtoMessage {
      * 发起者的号码
      * </pre>
      *
-     * <code>optional string phoneNum = 7;</code>
+     * <code>string phoneNum = 7;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -43604,14 +44144,14 @@ public final class ProtoMessage {
      * 对讲服务器的IP
      * </pre>
      *
-     * <code>optional string roomIP = 8;</code>
+     * <code>string roomIP = 8;</code>
      */
     public java.lang.String getRoomIP() {
       java.lang.Object ref = roomIP_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         roomIP_ = s;
@@ -43623,13 +44163,13 @@ public final class ProtoMessage {
      * 对讲服务器的IP
      * </pre>
      *
-     * <code>optional string roomIP = 8;</code>
+     * <code>string roomIP = 8;</code>
      */
     public com.google.protobuf.ByteString
         getRoomIPBytes() {
       java.lang.Object ref = roomIP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         roomIP_ = b;
@@ -43646,7 +44186,7 @@ public final class ProtoMessage {
      * 对讲服务器的的Port
      * </pre>
      *
-     * <code>optional int32 roomPort = 9;</code>
+     * <code>int32 roomPort = 9;</code>
      */
     public int getRoomPort() {
       return roomPort_;
@@ -43659,7 +44199,7 @@ public final class ProtoMessage {
      * 是哪个服务器的 响应，参照：ServerType
      * </pre>
      *
-     * <code>optional int32 serverType = 10;</code>
+     * <code>int32 serverType = 10;</code>
      */
     public int getServerType() {
       return serverType_;
@@ -43672,14 +44212,14 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>optional string toUserPhone = 11;</code>
+     * <code>string toUserPhone = 11;</code>
      */
     public java.lang.String getToUserPhone() {
       java.lang.Object ref = toUserPhone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         toUserPhone_ = s;
@@ -43691,13 +44231,13 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>optional string toUserPhone = 11;</code>
+     * <code>string toUserPhone = 11;</code>
      */
     public com.google.protobuf.ByteString
         getToUserPhoneBytes() {
       java.lang.Object ref = toUserPhone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         toUserPhone_ = b;
@@ -43714,14 +44254,14 @@ public final class ProtoMessage {
      * 保存房间的视频URL add by qhb at: 2018-03-19
      * </pre>
      *
-     * <code>optional string videoUrl = 12;</code>
+     * <code>string videoUrl = 12;</code>
      */
     public java.lang.String getVideoUrl() {
       java.lang.Object ref = videoUrl_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         videoUrl_ = s;
@@ -43733,13 +44273,13 @@ public final class ProtoMessage {
      * 保存房间的视频URL add by qhb at: 2018-03-19
      * </pre>
      *
-     * <code>optional string videoUrl = 12;</code>
+     * <code>string videoUrl = 12;</code>
      */
     public com.google.protobuf.ByteString
         getVideoUrlBytes() {
       java.lang.Object ref = videoUrl_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         videoUrl_ = b;
@@ -43897,7 +44437,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + ROOMID_FIELD_NUMBER;
@@ -44189,7 +44729,7 @@ public final class ProtoMessage {
               membersBuilder_ = null;
               members_ = other.members_;
               bitField0_ = (bitField0_ & ~0x00000010);
-              membersBuilder_ =
+              membersBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getMembersFieldBuilder() : null;
             } else {
@@ -44251,25 +44791,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -44277,25 +44817,25 @@ public final class ProtoMessage {
 
       private long roomID_ ;
       /**
-       * <code>optional int64 roomID = 2;</code>
+       * <code>int64 roomID = 2;</code>
        */
       public long getRoomID() {
         return roomID_;
       }
       /**
-       * <code>optional int64 roomID = 2;</code>
+       * <code>int64 roomID = 2;</code>
        */
       public Builder setRoomID(long value) {
-
+        
         roomID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 roomID = 2;</code>
+       * <code>int64 roomID = 2;</code>
        */
       public Builder clearRoomID() {
-
+        
         roomID_ = 0L;
         onChanged();
         return this;
@@ -44303,25 +44843,25 @@ public final class ProtoMessage {
 
       private int acceptType_ ;
       /**
-       * <code>optional int32 acceptType = 3;</code>
+       * <code>int32 acceptType = 3;</code>
        */
       public int getAcceptType() {
         return acceptType_;
       }
       /**
-       * <code>optional int32 acceptType = 3;</code>
+       * <code>int32 acceptType = 3;</code>
        */
       public Builder setAcceptType(int value) {
-
+        
         acceptType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 acceptType = 3;</code>
+       * <code>int32 acceptType = 3;</code>
        */
       public Builder clearAcceptType() {
-
+        
         acceptType_ = 0;
         onChanged();
         return this;
@@ -44333,7 +44873,7 @@ public final class ProtoMessage {
        * 当房间关闭后， roomClosed = 1; 其他时间为0
        * </pre>
        *
-       * <code>optional int32 roomClosed = 4;</code>
+       * <code>int32 roomClosed = 4;</code>
        */
       public int getRoomClosed() {
         return roomClosed_;
@@ -44343,10 +44883,10 @@ public final class ProtoMessage {
        * 当房间关闭后， roomClosed = 1; 其他时间为0
        * </pre>
        *
-       * <code>optional int32 roomClosed = 4;</code>
+       * <code>int32 roomClosed = 4;</code>
        */
       public Builder setRoomClosed(int value) {
-
+        
         roomClosed_ = value;
         onChanged();
         return this;
@@ -44356,10 +44896,10 @@ public final class ProtoMessage {
        * 当房间关闭后， roomClosed = 1; 其他时间为0
        * </pre>
        *
-       * <code>optional int32 roomClosed = 4;</code>
+       * <code>int32 roomClosed = 4;</code>
        */
       public Builder clearRoomClosed() {
-
+        
         roomClosed_ = 0;
         onChanged();
         return this;
@@ -44560,7 +45100,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .ChatRoomMemberMsg members = 5;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsgOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsgOrBuilder> 
            getMembersOrBuilderList() {
         if (membersBuilder_ != null) {
           return membersBuilder_.getMessageOrBuilderList();
@@ -44586,12 +45126,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .ChatRoomMemberMsg members = 5;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsg.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsg.Builder> 
            getMembersBuilderList() {
         return getMembersFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsg, com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsgOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsg, com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.ChatRoomMemberMsgOrBuilder> 
           getMembersFieldBuilder() {
         if (membersBuilder_ == null) {
           membersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -44611,7 +45151,7 @@ public final class ProtoMessage {
        * 组ID 单呼时为0
        * </pre>
        *
-       * <code>optional int64 teamID = 6;</code>
+       * <code>int64 teamID = 6;</code>
        */
       public long getTeamID() {
         return teamID_;
@@ -44621,10 +45161,10 @@ public final class ProtoMessage {
        * 组ID 单呼时为0
        * </pre>
        *
-       * <code>optional int64 teamID = 6;</code>
+       * <code>int64 teamID = 6;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
@@ -44634,10 +45174,10 @@ public final class ProtoMessage {
        * 组ID 单呼时为0
        * </pre>
        *
-       * <code>optional int64 teamID = 6;</code>
+       * <code>int64 teamID = 6;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -44649,7 +45189,7 @@ public final class ProtoMessage {
        * 发起者的号码
        * </pre>
        *
-       * <code>optional string phoneNum = 7;</code>
+       * <code>string phoneNum = 7;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -44668,13 +45208,13 @@ public final class ProtoMessage {
        * 发起者的号码
        * </pre>
        *
-       * <code>optional string phoneNum = 7;</code>
+       * <code>string phoneNum = 7;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -44688,14 +45228,14 @@ public final class ProtoMessage {
        * 发起者的号码
        * </pre>
        *
-       * <code>optional string phoneNum = 7;</code>
+       * <code>string phoneNum = 7;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
@@ -44705,10 +45245,10 @@ public final class ProtoMessage {
        * 发起者的号码
        * </pre>
        *
-       * <code>optional string phoneNum = 7;</code>
+       * <code>string phoneNum = 7;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
@@ -44718,7 +45258,7 @@ public final class ProtoMessage {
        * 发起者的号码
        * </pre>
        *
-       * <code>optional string phoneNum = 7;</code>
+       * <code>string phoneNum = 7;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -44726,7 +45266,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -44738,7 +45278,7 @@ public final class ProtoMessage {
        * 对讲服务器的IP
        * </pre>
        *
-       * <code>optional string roomIP = 8;</code>
+       * <code>string roomIP = 8;</code>
        */
       public java.lang.String getRoomIP() {
         java.lang.Object ref = roomIP_;
@@ -44757,13 +45297,13 @@ public final class ProtoMessage {
        * 对讲服务器的IP
        * </pre>
        *
-       * <code>optional string roomIP = 8;</code>
+       * <code>string roomIP = 8;</code>
        */
       public com.google.protobuf.ByteString
           getRoomIPBytes() {
         java.lang.Object ref = roomIP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           roomIP_ = b;
@@ -44777,14 +45317,14 @@ public final class ProtoMessage {
        * 对讲服务器的IP
        * </pre>
        *
-       * <code>optional string roomIP = 8;</code>
+       * <code>string roomIP = 8;</code>
        */
       public Builder setRoomIP(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         roomIP_ = value;
         onChanged();
         return this;
@@ -44794,10 +45334,10 @@ public final class ProtoMessage {
        * 对讲服务器的IP
        * </pre>
        *
-       * <code>optional string roomIP = 8;</code>
+       * <code>string roomIP = 8;</code>
        */
       public Builder clearRoomIP() {
-
+        
         roomIP_ = getDefaultInstance().getRoomIP();
         onChanged();
         return this;
@@ -44807,7 +45347,7 @@ public final class ProtoMessage {
        * 对讲服务器的IP
        * </pre>
        *
-       * <code>optional string roomIP = 8;</code>
+       * <code>string roomIP = 8;</code>
        */
       public Builder setRoomIPBytes(
           com.google.protobuf.ByteString value) {
@@ -44815,7 +45355,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         roomIP_ = value;
         onChanged();
         return this;
@@ -44827,7 +45367,7 @@ public final class ProtoMessage {
        * 对讲服务器的的Port
        * </pre>
        *
-       * <code>optional int32 roomPort = 9;</code>
+       * <code>int32 roomPort = 9;</code>
        */
       public int getRoomPort() {
         return roomPort_;
@@ -44837,10 +45377,10 @@ public final class ProtoMessage {
        * 对讲服务器的的Port
        * </pre>
        *
-       * <code>optional int32 roomPort = 9;</code>
+       * <code>int32 roomPort = 9;</code>
        */
       public Builder setRoomPort(int value) {
-
+        
         roomPort_ = value;
         onChanged();
         return this;
@@ -44850,10 +45390,10 @@ public final class ProtoMessage {
        * 对讲服务器的的Port
        * </pre>
        *
-       * <code>optional int32 roomPort = 9;</code>
+       * <code>int32 roomPort = 9;</code>
        */
       public Builder clearRoomPort() {
-
+        
         roomPort_ = 0;
         onChanged();
         return this;
@@ -44865,7 +45405,7 @@ public final class ProtoMessage {
        * 是哪个服务器的 响应，参照：ServerType
        * </pre>
        *
-       * <code>optional int32 serverType = 10;</code>
+       * <code>int32 serverType = 10;</code>
        */
       public int getServerType() {
         return serverType_;
@@ -44875,10 +45415,10 @@ public final class ProtoMessage {
        * 是哪个服务器的 响应，参照：ServerType
        * </pre>
        *
-       * <code>optional int32 serverType = 10;</code>
+       * <code>int32 serverType = 10;</code>
        */
       public Builder setServerType(int value) {
-
+        
         serverType_ = value;
         onChanged();
         return this;
@@ -44888,10 +45428,10 @@ public final class ProtoMessage {
        * 是哪个服务器的 响应，参照：ServerType
        * </pre>
        *
-       * <code>optional int32 serverType = 10;</code>
+       * <code>int32 serverType = 10;</code>
        */
       public Builder clearServerType() {
-
+        
         serverType_ = 0;
         onChanged();
         return this;
@@ -44903,7 +45443,7 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>optional string toUserPhone = 11;</code>
+       * <code>string toUserPhone = 11;</code>
        */
       public java.lang.String getToUserPhone() {
         java.lang.Object ref = toUserPhone_;
@@ -44922,13 +45462,13 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>optional string toUserPhone = 11;</code>
+       * <code>string toUserPhone = 11;</code>
        */
       public com.google.protobuf.ByteString
           getToUserPhoneBytes() {
         java.lang.Object ref = toUserPhone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           toUserPhone_ = b;
@@ -44942,14 +45482,14 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>optional string toUserPhone = 11;</code>
+       * <code>string toUserPhone = 11;</code>
        */
       public Builder setToUserPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         toUserPhone_ = value;
         onChanged();
         return this;
@@ -44959,10 +45499,10 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>optional string toUserPhone = 11;</code>
+       * <code>string toUserPhone = 11;</code>
        */
       public Builder clearToUserPhone() {
-
+        
         toUserPhone_ = getDefaultInstance().getToUserPhone();
         onChanged();
         return this;
@@ -44972,7 +45512,7 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>optional string toUserPhone = 11;</code>
+       * <code>string toUserPhone = 11;</code>
        */
       public Builder setToUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -44980,7 +45520,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         toUserPhone_ = value;
         onChanged();
         return this;
@@ -44992,7 +45532,7 @@ public final class ProtoMessage {
        * 保存房间的视频URL add by qhb at: 2018-03-19
        * </pre>
        *
-       * <code>optional string videoUrl = 12;</code>
+       * <code>string videoUrl = 12;</code>
        */
       public java.lang.String getVideoUrl() {
         java.lang.Object ref = videoUrl_;
@@ -45011,13 +45551,13 @@ public final class ProtoMessage {
        * 保存房间的视频URL add by qhb at: 2018-03-19
        * </pre>
        *
-       * <code>optional string videoUrl = 12;</code>
+       * <code>string videoUrl = 12;</code>
        */
       public com.google.protobuf.ByteString
           getVideoUrlBytes() {
         java.lang.Object ref = videoUrl_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           videoUrl_ = b;
@@ -45031,14 +45571,14 @@ public final class ProtoMessage {
        * 保存房间的视频URL add by qhb at: 2018-03-19
        * </pre>
        *
-       * <code>optional string videoUrl = 12;</code>
+       * <code>string videoUrl = 12;</code>
        */
       public Builder setVideoUrl(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         videoUrl_ = value;
         onChanged();
         return this;
@@ -45048,10 +45588,10 @@ public final class ProtoMessage {
        * 保存房间的视频URL add by qhb at: 2018-03-19
        * </pre>
        *
-       * <code>optional string videoUrl = 12;</code>
+       * <code>string videoUrl = 12;</code>
        */
       public Builder clearVideoUrl() {
-
+        
         videoUrl_ = getDefaultInstance().getVideoUrl();
         onChanged();
         return this;
@@ -45061,7 +45601,7 @@ public final class ProtoMessage {
        * 保存房间的视频URL add by qhb at: 2018-03-19
        * </pre>
        *
-       * <code>optional string videoUrl = 12;</code>
+       * <code>string videoUrl = 12;</code>
        */
       public Builder setVideoUrlBytes(
           com.google.protobuf.ByteString value) {
@@ -45069,7 +45609,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         videoUrl_ = value;
         onChanged();
         return this;
@@ -45128,12 +45668,12 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int64 roomID = 2;</code>
+     * <code>int64 roomID = 2;</code>
      */
     long getRoomID();
 
@@ -45142,7 +45682,7 @@ public final class ProtoMessage {
      * 接受或拒绝，当设置为免打扰的时候为拒绝
      * </pre>
      *
-     * <code>optional int32 acceptType = 3;</code>
+     * <code>int32 acceptType = 3;</code>
      */
     int getAcceptType();
 
@@ -45151,7 +45691,7 @@ public final class ProtoMessage {
      * added at 2017-12-21
      * </pre>
      *
-     * <code>optional int64 teamID = 4;</code>
+     * <code>int64 teamID = 4;</code>
      */
     long getTeamID();
 
@@ -45160,7 +45700,7 @@ public final class ProtoMessage {
      * 接收者的帐号
      * </pre>
      *
-     * <code>optional string phoneNum = 5;</code>
+     * <code>string phoneNum = 5;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -45168,7 +45708,7 @@ public final class ProtoMessage {
      * 接收者的帐号
      * </pre>
      *
-     * <code>optional string phoneNum = 5;</code>
+     * <code>string phoneNum = 5;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -45178,7 +45718,7 @@ public final class ProtoMessage {
      * 其他人的帐号
      * </pre>
      *
-     * <code>optional string friendPhoneNum = 6;</code>
+     * <code>string friendPhoneNum = 6;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
@@ -45186,7 +45726,7 @@ public final class ProtoMessage {
      * 其他人的帐号
      * </pre>
      *
-     * <code>optional string friendPhoneNum = 6;</code>
+     * <code>string friendPhoneNum = 6;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
@@ -45294,7 +45834,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -45303,7 +45843,7 @@ public final class ProtoMessage {
     public static final int ROOMID_FIELD_NUMBER = 2;
     private long roomID_;
     /**
-     * <code>optional int64 roomID = 2;</code>
+     * <code>int64 roomID = 2;</code>
      */
     public long getRoomID() {
       return roomID_;
@@ -45316,7 +45856,7 @@ public final class ProtoMessage {
      * 接受或拒绝，当设置为免打扰的时候为拒绝
      * </pre>
      *
-     * <code>optional int32 acceptType = 3;</code>
+     * <code>int32 acceptType = 3;</code>
      */
     public int getAcceptType() {
       return acceptType_;
@@ -45329,7 +45869,7 @@ public final class ProtoMessage {
      * added at 2017-12-21
      * </pre>
      *
-     * <code>optional int64 teamID = 4;</code>
+     * <code>int64 teamID = 4;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -45342,14 +45882,14 @@ public final class ProtoMessage {
      * 接收者的帐号
      * </pre>
      *
-     * <code>optional string phoneNum = 5;</code>
+     * <code>string phoneNum = 5;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -45361,13 +45901,13 @@ public final class ProtoMessage {
      * 接收者的帐号
      * </pre>
      *
-     * <code>optional string phoneNum = 5;</code>
+     * <code>string phoneNum = 5;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -45384,14 +45924,14 @@ public final class ProtoMessage {
      * 其他人的帐号
      * </pre>
      *
-     * <code>optional string friendPhoneNum = 6;</code>
+     * <code>string friendPhoneNum = 6;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         friendPhoneNum_ = s;
@@ -45403,13 +45943,13 @@ public final class ProtoMessage {
      * 其他人的帐号
      * </pre>
      *
-     * <code>optional string friendPhoneNum = 6;</code>
+     * <code>string friendPhoneNum = 6;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
       java.lang.Object ref = friendPhoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         friendPhoneNum_ = b;
@@ -45515,7 +46055,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + ROOMID_FIELD_NUMBER;
@@ -45777,25 +46317,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -45803,25 +46343,25 @@ public final class ProtoMessage {
 
       private long roomID_ ;
       /**
-       * <code>optional int64 roomID = 2;</code>
+       * <code>int64 roomID = 2;</code>
        */
       public long getRoomID() {
         return roomID_;
       }
       /**
-       * <code>optional int64 roomID = 2;</code>
+       * <code>int64 roomID = 2;</code>
        */
       public Builder setRoomID(long value) {
-
+        
         roomID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 roomID = 2;</code>
+       * <code>int64 roomID = 2;</code>
        */
       public Builder clearRoomID() {
-
+        
         roomID_ = 0L;
         onChanged();
         return this;
@@ -45833,7 +46373,7 @@ public final class ProtoMessage {
        * 接受或拒绝，当设置为免打扰的时候为拒绝
        * </pre>
        *
-       * <code>optional int32 acceptType = 3;</code>
+       * <code>int32 acceptType = 3;</code>
        */
       public int getAcceptType() {
         return acceptType_;
@@ -45843,10 +46383,10 @@ public final class ProtoMessage {
        * 接受或拒绝，当设置为免打扰的时候为拒绝
        * </pre>
        *
-       * <code>optional int32 acceptType = 3;</code>
+       * <code>int32 acceptType = 3;</code>
        */
       public Builder setAcceptType(int value) {
-
+        
         acceptType_ = value;
         onChanged();
         return this;
@@ -45856,10 +46396,10 @@ public final class ProtoMessage {
        * 接受或拒绝，当设置为免打扰的时候为拒绝
        * </pre>
        *
-       * <code>optional int32 acceptType = 3;</code>
+       * <code>int32 acceptType = 3;</code>
        */
       public Builder clearAcceptType() {
-
+        
         acceptType_ = 0;
         onChanged();
         return this;
@@ -45871,7 +46411,7 @@ public final class ProtoMessage {
        * added at 2017-12-21
        * </pre>
        *
-       * <code>optional int64 teamID = 4;</code>
+       * <code>int64 teamID = 4;</code>
        */
       public long getTeamID() {
         return teamID_;
@@ -45881,10 +46421,10 @@ public final class ProtoMessage {
        * added at 2017-12-21
        * </pre>
        *
-       * <code>optional int64 teamID = 4;</code>
+       * <code>int64 teamID = 4;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
@@ -45894,10 +46434,10 @@ public final class ProtoMessage {
        * added at 2017-12-21
        * </pre>
        *
-       * <code>optional int64 teamID = 4;</code>
+       * <code>int64 teamID = 4;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -45909,7 +46449,7 @@ public final class ProtoMessage {
        * 接收者的帐号
        * </pre>
        *
-       * <code>optional string phoneNum = 5;</code>
+       * <code>string phoneNum = 5;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -45928,13 +46468,13 @@ public final class ProtoMessage {
        * 接收者的帐号
        * </pre>
        *
-       * <code>optional string phoneNum = 5;</code>
+       * <code>string phoneNum = 5;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -45948,14 +46488,14 @@ public final class ProtoMessage {
        * 接收者的帐号
        * </pre>
        *
-       * <code>optional string phoneNum = 5;</code>
+       * <code>string phoneNum = 5;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
@@ -45965,10 +46505,10 @@ public final class ProtoMessage {
        * 接收者的帐号
        * </pre>
        *
-       * <code>optional string phoneNum = 5;</code>
+       * <code>string phoneNum = 5;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
@@ -45978,7 +46518,7 @@ public final class ProtoMessage {
        * 接收者的帐号
        * </pre>
        *
-       * <code>optional string phoneNum = 5;</code>
+       * <code>string phoneNum = 5;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -45986,7 +46526,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -45998,7 +46538,7 @@ public final class ProtoMessage {
        * 其他人的帐号
        * </pre>
        *
-       * <code>optional string friendPhoneNum = 6;</code>
+       * <code>string friendPhoneNum = 6;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -46017,13 +46557,13 @@ public final class ProtoMessage {
        * 其他人的帐号
        * </pre>
        *
-       * <code>optional string friendPhoneNum = 6;</code>
+       * <code>string friendPhoneNum = 6;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
         java.lang.Object ref = friendPhoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           friendPhoneNum_ = b;
@@ -46037,14 +46577,14 @@ public final class ProtoMessage {
        * 其他人的帐号
        * </pre>
        *
-       * <code>optional string friendPhoneNum = 6;</code>
+       * <code>string friendPhoneNum = 6;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         friendPhoneNum_ = value;
         onChanged();
         return this;
@@ -46054,10 +46594,10 @@ public final class ProtoMessage {
        * 其他人的帐号
        * </pre>
        *
-       * <code>optional string friendPhoneNum = 6;</code>
+       * <code>string friendPhoneNum = 6;</code>
        */
       public Builder clearFriendPhoneNum() {
-
+        
         friendPhoneNum_ = getDefaultInstance().getFriendPhoneNum();
         onChanged();
         return this;
@@ -46067,7 +46607,7 @@ public final class ProtoMessage {
        * 其他人的帐号
        * </pre>
        *
-       * <code>optional string friendPhoneNum = 6;</code>
+       * <code>string friendPhoneNum = 6;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -46075,7 +46615,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         friendPhoneNum_ = value;
         onChanged();
         return this;
@@ -46134,7 +46674,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -46143,7 +46683,7 @@ public final class ProtoMessage {
      * 音频数据
      * </pre>
      *
-     * <code>optional bytes audioData = 2;</code>
+     * <code>bytes audioData = 2;</code>
      */
     com.google.protobuf.ByteString getAudioData();
   }
@@ -46224,7 +46764,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -46237,7 +46777,7 @@ public final class ProtoMessage {
      * 音频数据
      * </pre>
      *
-     * <code>optional bytes audioData = 2;</code>
+     * <code>bytes audioData = 2;</code>
      */
     public com.google.protobuf.ByteString getAudioData() {
       return audioData_;
@@ -46305,7 +46845,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + AUDIODATA_FIELD_NUMBER;
@@ -46531,25 +47071,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -46561,7 +47101,7 @@ public final class ProtoMessage {
        * 音频数据
        * </pre>
        *
-       * <code>optional bytes audioData = 2;</code>
+       * <code>bytes audioData = 2;</code>
        */
       public com.google.protobuf.ByteString getAudioData() {
         return audioData_;
@@ -46571,13 +47111,13 @@ public final class ProtoMessage {
        * 音频数据
        * </pre>
        *
-       * <code>optional bytes audioData = 2;</code>
+       * <code>bytes audioData = 2;</code>
        */
       public Builder setAudioData(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         audioData_ = value;
         onChanged();
         return this;
@@ -46587,10 +47127,10 @@ public final class ProtoMessage {
        * 音频数据
        * </pre>
        *
-       * <code>optional bytes audioData = 2;</code>
+       * <code>bytes audioData = 2;</code>
        */
       public Builder clearAudioData() {
-
+        
         audioData_ = getDefaultInstance().getAudioData();
         onChanged();
         return this;
@@ -46649,17 +47189,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional double lat = 2;</code>
+     * <code>double lat = 2;</code>
      */
     double getLat();
 
     /**
-     * <code>optional double lng = 3;</code>
+     * <code>double lng = 3;</code>
      */
     double getLng();
 
@@ -46668,7 +47208,7 @@ public final class ProtoMessage {
      * 半径(米)
      * </pre>
      *
-     * <code>optional int32 radius = 4;</code>
+     * <code>int32 radius = 4;</code>
      */
     int getRadius();
 
@@ -46677,7 +47217,7 @@ public final class ProtoMessage {
      * 是否准确：1：准确， 0：模糊
      * </pre>
      *
-     * <code>optional int32 isAccurate = 5;</code>
+     * <code>int32 isAccurate = 5;</code>
      */
     int getIsAccurate();
 
@@ -46686,7 +47226,7 @@ public final class ProtoMessage {
      * 位置时间
      * </pre>
      *
-     * <code>optional int64 time = 6;</code>
+     * <code>int64 time = 6;</code>
      */
     long getTime();
 
@@ -46695,7 +47235,7 @@ public final class ProtoMessage {
      * 好友手机号
      * </pre>
      *
-     * <code>optional string phoneNum = 7;</code>
+     * <code>string phoneNum = 7;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -46703,7 +47243,7 @@ public final class ProtoMessage {
      * 好友手机号
      * </pre>
      *
-     * <code>optional string phoneNum = 7;</code>
+     * <code>string phoneNum = 7;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -46713,7 +47253,7 @@ public final class ProtoMessage {
      * 位置类型（0：高德，）
      * </pre>
      *
-     * <code>optional int32 latlngType = 8;</code>
+     * <code>int32 latlngType = 8;</code>
      */
     int getLatlngType();
 
@@ -46722,7 +47262,7 @@ public final class ProtoMessage {
      * 好友名称包括（陌生人）
      * </pre>
      *
-     * <code>optional string userName = 9;</code>
+     * <code>string userName = 9;</code>
      */
     java.lang.String getUserName();
     /**
@@ -46730,7 +47270,7 @@ public final class ProtoMessage {
      * 好友名称包括（陌生人）
      * </pre>
      *
-     * <code>optional string userName = 9;</code>
+     * <code>string userName = 9;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
@@ -46740,7 +47280,7 @@ public final class ProtoMessage {
      * 是否有位置
      * </pre>
      *
-     * <code>optional bool hasLocation = 10;</code>
+     * <code>bool hasLocation = 10;</code>
      */
     boolean getHasLocation();
 
@@ -46749,7 +47289,7 @@ public final class ProtoMessage {
      * 仅限于服务器内部使用，客户端不应使用，
      * </pre>
      *
-     * <code>optional int64 userID = 11;</code>
+     * <code>int64 userID = 11;</code>
      */
     long getUserID();
 
@@ -46758,7 +47298,7 @@ public final class ProtoMessage {
      * 0 自动上报，1：按键打卡，2：NFC打卡
      * </pre>
      *
-     * <code>optional int32 reportType = 12;</code>
+     * <code>int32 reportType = 12;</code>
      */
     int getReportType();
 
@@ -46767,7 +47307,7 @@ public final class ProtoMessage {
      * 自定义标志，表示 上班或下班等，暂时不用
      * </pre>
      *
-     * <code>optional int32 reportFlag = 13;</code>
+     * <code>int32 reportFlag = 13;</code>
      */
     int getReportFlag();
   }
@@ -46916,7 +47456,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -46925,7 +47465,7 @@ public final class ProtoMessage {
     public static final int LAT_FIELD_NUMBER = 2;
     private double lat_;
     /**
-     * <code>optional double lat = 2;</code>
+     * <code>double lat = 2;</code>
      */
     public double getLat() {
       return lat_;
@@ -46934,7 +47474,7 @@ public final class ProtoMessage {
     public static final int LNG_FIELD_NUMBER = 3;
     private double lng_;
     /**
-     * <code>optional double lng = 3;</code>
+     * <code>double lng = 3;</code>
      */
     public double getLng() {
       return lng_;
@@ -46947,7 +47487,7 @@ public final class ProtoMessage {
      * 半径(米)
      * </pre>
      *
-     * <code>optional int32 radius = 4;</code>
+     * <code>int32 radius = 4;</code>
      */
     public int getRadius() {
       return radius_;
@@ -46960,7 +47500,7 @@ public final class ProtoMessage {
      * 是否准确：1：准确， 0：模糊
      * </pre>
      *
-     * <code>optional int32 isAccurate = 5;</code>
+     * <code>int32 isAccurate = 5;</code>
      */
     public int getIsAccurate() {
       return isAccurate_;
@@ -46973,7 +47513,7 @@ public final class ProtoMessage {
      * 位置时间
      * </pre>
      *
-     * <code>optional int64 time = 6;</code>
+     * <code>int64 time = 6;</code>
      */
     public long getTime() {
       return time_;
@@ -46986,14 +47526,14 @@ public final class ProtoMessage {
      * 好友手机号
      * </pre>
      *
-     * <code>optional string phoneNum = 7;</code>
+     * <code>string phoneNum = 7;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -47005,13 +47545,13 @@ public final class ProtoMessage {
      * 好友手机号
      * </pre>
      *
-     * <code>optional string phoneNum = 7;</code>
+     * <code>string phoneNum = 7;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -47028,7 +47568,7 @@ public final class ProtoMessage {
      * 位置类型（0：高德，）
      * </pre>
      *
-     * <code>optional int32 latlngType = 8;</code>
+     * <code>int32 latlngType = 8;</code>
      */
     public int getLatlngType() {
       return latlngType_;
@@ -47041,14 +47581,14 @@ public final class ProtoMessage {
      * 好友名称包括（陌生人）
      * </pre>
      *
-     * <code>optional string userName = 9;</code>
+     * <code>string userName = 9;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         userName_ = s;
@@ -47060,13 +47600,13 @@ public final class ProtoMessage {
      * 好友名称包括（陌生人）
      * </pre>
      *
-     * <code>optional string userName = 9;</code>
+     * <code>string userName = 9;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
       java.lang.Object ref = userName_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         userName_ = b;
@@ -47083,7 +47623,7 @@ public final class ProtoMessage {
      * 是否有位置
      * </pre>
      *
-     * <code>optional bool hasLocation = 10;</code>
+     * <code>bool hasLocation = 10;</code>
      */
     public boolean getHasLocation() {
       return hasLocation_;
@@ -47096,7 +47636,7 @@ public final class ProtoMessage {
      * 仅限于服务器内部使用，客户端不应使用，
      * </pre>
      *
-     * <code>optional int64 userID = 11;</code>
+     * <code>int64 userID = 11;</code>
      */
     public long getUserID() {
       return userID_;
@@ -47109,7 +47649,7 @@ public final class ProtoMessage {
      * 0 自动上报，1：按键打卡，2：NFC打卡
      * </pre>
      *
-     * <code>optional int32 reportType = 12;</code>
+     * <code>int32 reportType = 12;</code>
      */
     public int getReportType() {
       return reportType_;
@@ -47122,7 +47662,7 @@ public final class ProtoMessage {
      * 自定义标志，表示 上班或下班等，暂时不用
      * </pre>
      *
-     * <code>optional int32 reportFlag = 13;</code>
+     * <code>int32 reportFlag = 13;</code>
      */
     public int getReportFlag() {
       return reportFlag_;
@@ -47291,7 +47831,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + LAT_FIELD_NUMBER;
@@ -47612,25 +48152,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -47638,25 +48178,25 @@ public final class ProtoMessage {
 
       private double lat_ ;
       /**
-       * <code>optional double lat = 2;</code>
+       * <code>double lat = 2;</code>
        */
       public double getLat() {
         return lat_;
       }
       /**
-       * <code>optional double lat = 2;</code>
+       * <code>double lat = 2;</code>
        */
       public Builder setLat(double value) {
-
+        
         lat_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double lat = 2;</code>
+       * <code>double lat = 2;</code>
        */
       public Builder clearLat() {
-
+        
         lat_ = 0D;
         onChanged();
         return this;
@@ -47664,25 +48204,25 @@ public final class ProtoMessage {
 
       private double lng_ ;
       /**
-       * <code>optional double lng = 3;</code>
+       * <code>double lng = 3;</code>
        */
       public double getLng() {
         return lng_;
       }
       /**
-       * <code>optional double lng = 3;</code>
+       * <code>double lng = 3;</code>
        */
       public Builder setLng(double value) {
-
+        
         lng_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double lng = 3;</code>
+       * <code>double lng = 3;</code>
        */
       public Builder clearLng() {
-
+        
         lng_ = 0D;
         onChanged();
         return this;
@@ -47694,7 +48234,7 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>optional int32 radius = 4;</code>
+       * <code>int32 radius = 4;</code>
        */
       public int getRadius() {
         return radius_;
@@ -47704,10 +48244,10 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>optional int32 radius = 4;</code>
+       * <code>int32 radius = 4;</code>
        */
       public Builder setRadius(int value) {
-
+        
         radius_ = value;
         onChanged();
         return this;
@@ -47717,10 +48257,10 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>optional int32 radius = 4;</code>
+       * <code>int32 radius = 4;</code>
        */
       public Builder clearRadius() {
-
+        
         radius_ = 0;
         onChanged();
         return this;
@@ -47732,7 +48272,7 @@ public final class ProtoMessage {
        * 是否准确：1：准确， 0：模糊
        * </pre>
        *
-       * <code>optional int32 isAccurate = 5;</code>
+       * <code>int32 isAccurate = 5;</code>
        */
       public int getIsAccurate() {
         return isAccurate_;
@@ -47742,10 +48282,10 @@ public final class ProtoMessage {
        * 是否准确：1：准确， 0：模糊
        * </pre>
        *
-       * <code>optional int32 isAccurate = 5;</code>
+       * <code>int32 isAccurate = 5;</code>
        */
       public Builder setIsAccurate(int value) {
-
+        
         isAccurate_ = value;
         onChanged();
         return this;
@@ -47755,10 +48295,10 @@ public final class ProtoMessage {
        * 是否准确：1：准确， 0：模糊
        * </pre>
        *
-       * <code>optional int32 isAccurate = 5;</code>
+       * <code>int32 isAccurate = 5;</code>
        */
       public Builder clearIsAccurate() {
-
+        
         isAccurate_ = 0;
         onChanged();
         return this;
@@ -47770,7 +48310,7 @@ public final class ProtoMessage {
        * 位置时间
        * </pre>
        *
-       * <code>optional int64 time = 6;</code>
+       * <code>int64 time = 6;</code>
        */
       public long getTime() {
         return time_;
@@ -47780,10 +48320,10 @@ public final class ProtoMessage {
        * 位置时间
        * </pre>
        *
-       * <code>optional int64 time = 6;</code>
+       * <code>int64 time = 6;</code>
        */
       public Builder setTime(long value) {
-
+        
         time_ = value;
         onChanged();
         return this;
@@ -47793,10 +48333,10 @@ public final class ProtoMessage {
        * 位置时间
        * </pre>
        *
-       * <code>optional int64 time = 6;</code>
+       * <code>int64 time = 6;</code>
        */
       public Builder clearTime() {
-
+        
         time_ = 0L;
         onChanged();
         return this;
@@ -47808,7 +48348,7 @@ public final class ProtoMessage {
        * 好友手机号
        * </pre>
        *
-       * <code>optional string phoneNum = 7;</code>
+       * <code>string phoneNum = 7;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -47827,13 +48367,13 @@ public final class ProtoMessage {
        * 好友手机号
        * </pre>
        *
-       * <code>optional string phoneNum = 7;</code>
+       * <code>string phoneNum = 7;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -47847,14 +48387,14 @@ public final class ProtoMessage {
        * 好友手机号
        * </pre>
        *
-       * <code>optional string phoneNum = 7;</code>
+       * <code>string phoneNum = 7;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
@@ -47864,10 +48404,10 @@ public final class ProtoMessage {
        * 好友手机号
        * </pre>
        *
-       * <code>optional string phoneNum = 7;</code>
+       * <code>string phoneNum = 7;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
@@ -47877,7 +48417,7 @@ public final class ProtoMessage {
        * 好友手机号
        * </pre>
        *
-       * <code>optional string phoneNum = 7;</code>
+       * <code>string phoneNum = 7;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -47885,7 +48425,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -47897,7 +48437,7 @@ public final class ProtoMessage {
        * 位置类型（0：高德，）
        * </pre>
        *
-       * <code>optional int32 latlngType = 8;</code>
+       * <code>int32 latlngType = 8;</code>
        */
       public int getLatlngType() {
         return latlngType_;
@@ -47907,10 +48447,10 @@ public final class ProtoMessage {
        * 位置类型（0：高德，）
        * </pre>
        *
-       * <code>optional int32 latlngType = 8;</code>
+       * <code>int32 latlngType = 8;</code>
        */
       public Builder setLatlngType(int value) {
-
+        
         latlngType_ = value;
         onChanged();
         return this;
@@ -47920,10 +48460,10 @@ public final class ProtoMessage {
        * 位置类型（0：高德，）
        * </pre>
        *
-       * <code>optional int32 latlngType = 8;</code>
+       * <code>int32 latlngType = 8;</code>
        */
       public Builder clearLatlngType() {
-
+        
         latlngType_ = 0;
         onChanged();
         return this;
@@ -47935,7 +48475,7 @@ public final class ProtoMessage {
        * 好友名称包括（陌生人）
        * </pre>
        *
-       * <code>optional string userName = 9;</code>
+       * <code>string userName = 9;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -47954,13 +48494,13 @@ public final class ProtoMessage {
        * 好友名称包括（陌生人）
        * </pre>
        *
-       * <code>optional string userName = 9;</code>
+       * <code>string userName = 9;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
         java.lang.Object ref = userName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           userName_ = b;
@@ -47974,14 +48514,14 @@ public final class ProtoMessage {
        * 好友名称包括（陌生人）
        * </pre>
        *
-       * <code>optional string userName = 9;</code>
+       * <code>string userName = 9;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         userName_ = value;
         onChanged();
         return this;
@@ -47991,10 +48531,10 @@ public final class ProtoMessage {
        * 好友名称包括（陌生人）
        * </pre>
        *
-       * <code>optional string userName = 9;</code>
+       * <code>string userName = 9;</code>
        */
       public Builder clearUserName() {
-
+        
         userName_ = getDefaultInstance().getUserName();
         onChanged();
         return this;
@@ -48004,7 +48544,7 @@ public final class ProtoMessage {
        * 好友名称包括（陌生人）
        * </pre>
        *
-       * <code>optional string userName = 9;</code>
+       * <code>string userName = 9;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -48012,7 +48552,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         userName_ = value;
         onChanged();
         return this;
@@ -48024,7 +48564,7 @@ public final class ProtoMessage {
        * 是否有位置
        * </pre>
        *
-       * <code>optional bool hasLocation = 10;</code>
+       * <code>bool hasLocation = 10;</code>
        */
       public boolean getHasLocation() {
         return hasLocation_;
@@ -48034,10 +48574,10 @@ public final class ProtoMessage {
        * 是否有位置
        * </pre>
        *
-       * <code>optional bool hasLocation = 10;</code>
+       * <code>bool hasLocation = 10;</code>
        */
       public Builder setHasLocation(boolean value) {
-
+        
         hasLocation_ = value;
         onChanged();
         return this;
@@ -48047,10 +48587,10 @@ public final class ProtoMessage {
        * 是否有位置
        * </pre>
        *
-       * <code>optional bool hasLocation = 10;</code>
+       * <code>bool hasLocation = 10;</code>
        */
       public Builder clearHasLocation() {
-
+        
         hasLocation_ = false;
         onChanged();
         return this;
@@ -48062,7 +48602,7 @@ public final class ProtoMessage {
        * 仅限于服务器内部使用，客户端不应使用，
        * </pre>
        *
-       * <code>optional int64 userID = 11;</code>
+       * <code>int64 userID = 11;</code>
        */
       public long getUserID() {
         return userID_;
@@ -48072,10 +48612,10 @@ public final class ProtoMessage {
        * 仅限于服务器内部使用，客户端不应使用，
        * </pre>
        *
-       * <code>optional int64 userID = 11;</code>
+       * <code>int64 userID = 11;</code>
        */
       public Builder setUserID(long value) {
-
+        
         userID_ = value;
         onChanged();
         return this;
@@ -48085,10 +48625,10 @@ public final class ProtoMessage {
        * 仅限于服务器内部使用，客户端不应使用，
        * </pre>
        *
-       * <code>optional int64 userID = 11;</code>
+       * <code>int64 userID = 11;</code>
        */
       public Builder clearUserID() {
-
+        
         userID_ = 0L;
         onChanged();
         return this;
@@ -48100,7 +48640,7 @@ public final class ProtoMessage {
        * 0 自动上报，1：按键打卡，2：NFC打卡
        * </pre>
        *
-       * <code>optional int32 reportType = 12;</code>
+       * <code>int32 reportType = 12;</code>
        */
       public int getReportType() {
         return reportType_;
@@ -48110,10 +48650,10 @@ public final class ProtoMessage {
        * 0 自动上报，1：按键打卡，2：NFC打卡
        * </pre>
        *
-       * <code>optional int32 reportType = 12;</code>
+       * <code>int32 reportType = 12;</code>
        */
       public Builder setReportType(int value) {
-
+        
         reportType_ = value;
         onChanged();
         return this;
@@ -48123,10 +48663,10 @@ public final class ProtoMessage {
        * 0 自动上报，1：按键打卡，2：NFC打卡
        * </pre>
        *
-       * <code>optional int32 reportType = 12;</code>
+       * <code>int32 reportType = 12;</code>
        */
       public Builder clearReportType() {
-
+        
         reportType_ = 0;
         onChanged();
         return this;
@@ -48138,7 +48678,7 @@ public final class ProtoMessage {
        * 自定义标志，表示 上班或下班等，暂时不用
        * </pre>
        *
-       * <code>optional int32 reportFlag = 13;</code>
+       * <code>int32 reportFlag = 13;</code>
        */
       public int getReportFlag() {
         return reportFlag_;
@@ -48148,10 +48688,10 @@ public final class ProtoMessage {
        * 自定义标志，表示 上班或下班等，暂时不用
        * </pre>
        *
-       * <code>optional int32 reportFlag = 13;</code>
+       * <code>int32 reportFlag = 13;</code>
        */
       public Builder setReportFlag(int value) {
-
+        
         reportFlag_ = value;
         onChanged();
         return this;
@@ -48161,10 +48701,10 @@ public final class ProtoMessage {
        * 自定义标志，表示 上班或下班等，暂时不用
        * </pre>
        *
-       * <code>optional int32 reportFlag = 13;</code>
+       * <code>int32 reportFlag = 13;</code>
        */
       public Builder clearReportFlag() {
-
+        
         reportFlag_ = 0;
         onChanged();
         return this;
@@ -48223,21 +48763,21 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int64 teamID = 2;</code>
+     * <code>int64 teamID = 2;</code>
      */
     long getTeamID();
 
     /**
-     * <code>optional string phoneNum = 3;</code>
+     * <code>string phoneNum = 3;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 3;</code>
+     * <code>string phoneNum = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -48245,7 +48785,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .LocationMsg locations = 4;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg> 
         getLocationsList();
     /**
      * <code>repeated .LocationMsg locations = 4;</code>
@@ -48258,7 +48798,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .LocationMsg locations = 4;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
         getLocationsOrBuilderList();
     /**
      * <code>repeated .LocationMsg locations = 4;</code>
@@ -48364,7 +48904,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -48373,7 +48913,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 2;
     private long teamID_;
     /**
-     * <code>optional int64 teamID = 2;</code>
+     * <code>int64 teamID = 2;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -48382,14 +48922,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 3;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 3;</code>
+     * <code>string phoneNum = 3;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -48397,13 +48937,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 3;</code>
+     * <code>string phoneNum = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -48424,7 +48964,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .LocationMsg locations = 4;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
         getLocationsOrBuilderList() {
       return locations_;
     }
@@ -48527,7 +49067,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TEAMID_FIELD_NUMBER;
@@ -48776,7 +49316,7 @@ public final class ProtoMessage {
               locationsBuilder_ = null;
               locations_ = other.locations_;
               bitField0_ = (bitField0_ & ~0x00000008);
-              locationsBuilder_ =
+              locationsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getLocationsFieldBuilder() : null;
             } else {
@@ -48813,25 +49353,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -48839,25 +49379,25 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>optional int64 teamID = 2;</code>
+       * <code>int64 teamID = 2;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>optional int64 teamID = 2;</code>
+       * <code>int64 teamID = 2;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 teamID = 2;</code>
+       * <code>int64 teamID = 2;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -48865,7 +49405,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 3;</code>
+       * <code>string phoneNum = 3;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -48880,13 +49420,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 3;</code>
+       * <code>string phoneNum = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -48896,29 +49436,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 3;</code>
+       * <code>string phoneNum = 3;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 3;</code>
+       * <code>string phoneNum = 3;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 3;</code>
+       * <code>string phoneNum = 3;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -48926,7 +49466,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -49127,7 +49667,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .LocationMsg locations = 4;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
            getLocationsOrBuilderList() {
         if (locationsBuilder_ != null) {
           return locationsBuilder_.getMessageOrBuilderList();
@@ -49153,12 +49693,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .LocationMsg locations = 4;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder> 
            getLocationsBuilderList() {
         return getLocationsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
           getLocationsFieldBuilder() {
         if (locationsBuilder_ == null) {
           locationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -49225,7 +49765,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -49234,7 +49774,7 @@ public final class ProtoMessage {
      * imei
      * </pre>
      *
-     * <code>optional string carID = 2;</code>
+     * <code>string carID = 2;</code>
      */
     java.lang.String getCarID();
     /**
@@ -49242,7 +49782,7 @@ public final class ProtoMessage {
      * imei
      * </pre>
      *
-     * <code>optional string carID = 2;</code>
+     * <code>string carID = 2;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -49252,7 +49792,7 @@ public final class ProtoMessage {
      * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
      * </pre>
      *
-     * <code>optional string tempToken = 3;</code>
+     * <code>string tempToken = 3;</code>
      */
     java.lang.String getTempToken();
     /**
@@ -49260,7 +49800,7 @@ public final class ProtoMessage {
      * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
      * </pre>
      *
-     * <code>optional string tempToken = 3;</code>
+     * <code>string tempToken = 3;</code>
      */
     com.google.protobuf.ByteString
         getTempTokenBytes();
@@ -49270,7 +49810,7 @@ public final class ProtoMessage {
      * 返回手机号（即：帐号）
      * </pre>
      *
-     * <code>optional string phoneNum = 4;</code>
+     * <code>string phoneNum = 4;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -49278,7 +49818,7 @@ public final class ProtoMessage {
      * 返回手机号（即：帐号）
      * </pre>
      *
-     * <code>optional string phoneNum = 4;</code>
+     * <code>string phoneNum = 4;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -49288,7 +49828,7 @@ public final class ProtoMessage {
      * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
      * </pre>
      *
-     * <code>optional string carUrl = 5;</code>
+     * <code>string carUrl = 5;</code>
      */
     java.lang.String getCarUrl();
     /**
@@ -49296,28 +49836,28 @@ public final class ProtoMessage {
      * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
      * </pre>
      *
-     * <code>optional string carUrl = 5;</code>
+     * <code>string carUrl = 5;</code>
      */
     com.google.protobuf.ByteString
         getCarUrlBytes();
 
     /**
-     * <code>optional string sessionIP = 6;</code>
+     * <code>string sessionIP = 6;</code>
      */
     java.lang.String getSessionIP();
     /**
-     * <code>optional string sessionIP = 6;</code>
+     * <code>string sessionIP = 6;</code>
      */
     com.google.protobuf.ByteString
         getSessionIPBytes();
 
     /**
-     * <code>optional int32 sessionPort = 7;</code>
+     * <code>int32 sessionPort = 7;</code>
      */
     int getSessionPort();
 
     /**
-     * <code>optional int32 serverType = 8;</code>
+     * <code>int32 serverType = 8;</code>
      */
     int getServerType();
   }
@@ -49447,7 +49987,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -49460,14 +50000,14 @@ public final class ProtoMessage {
      * imei
      * </pre>
      *
-     * <code>optional string carID = 2;</code>
+     * <code>string carID = 2;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carID_ = s;
@@ -49479,13 +50019,13 @@ public final class ProtoMessage {
      * imei
      * </pre>
      *
-     * <code>optional string carID = 2;</code>
+     * <code>string carID = 2;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carID_ = b;
@@ -49502,14 +50042,14 @@ public final class ProtoMessage {
      * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
      * </pre>
      *
-     * <code>optional string tempToken = 3;</code>
+     * <code>string tempToken = 3;</code>
      */
     public java.lang.String getTempToken() {
       java.lang.Object ref = tempToken_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         tempToken_ = s;
@@ -49521,13 +50061,13 @@ public final class ProtoMessage {
      * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
      * </pre>
      *
-     * <code>optional string tempToken = 3;</code>
+     * <code>string tempToken = 3;</code>
      */
     public com.google.protobuf.ByteString
         getTempTokenBytes() {
       java.lang.Object ref = tempToken_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         tempToken_ = b;
@@ -49544,14 +50084,14 @@ public final class ProtoMessage {
      * 返回手机号（即：帐号）
      * </pre>
      *
-     * <code>optional string phoneNum = 4;</code>
+     * <code>string phoneNum = 4;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -49563,13 +50103,13 @@ public final class ProtoMessage {
      * 返回手机号（即：帐号）
      * </pre>
      *
-     * <code>optional string phoneNum = 4;</code>
+     * <code>string phoneNum = 4;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -49586,14 +50126,14 @@ public final class ProtoMessage {
      * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
      * </pre>
      *
-     * <code>optional string carUrl = 5;</code>
+     * <code>string carUrl = 5;</code>
      */
     public java.lang.String getCarUrl() {
       java.lang.Object ref = carUrl_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carUrl_ = s;
@@ -49605,13 +50145,13 @@ public final class ProtoMessage {
      * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
      * </pre>
      *
-     * <code>optional string carUrl = 5;</code>
+     * <code>string carUrl = 5;</code>
      */
     public com.google.protobuf.ByteString
         getCarUrlBytes() {
       java.lang.Object ref = carUrl_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carUrl_ = b;
@@ -49624,14 +50164,14 @@ public final class ProtoMessage {
     public static final int SESSIONIP_FIELD_NUMBER = 6;
     private volatile java.lang.Object sessionIP_;
     /**
-     * <code>optional string sessionIP = 6;</code>
+     * <code>string sessionIP = 6;</code>
      */
     public java.lang.String getSessionIP() {
       java.lang.Object ref = sessionIP_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         sessionIP_ = s;
@@ -49639,13 +50179,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string sessionIP = 6;</code>
+     * <code>string sessionIP = 6;</code>
      */
     public com.google.protobuf.ByteString
         getSessionIPBytes() {
       java.lang.Object ref = sessionIP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         sessionIP_ = b;
@@ -49658,7 +50198,7 @@ public final class ProtoMessage {
     public static final int SESSIONPORT_FIELD_NUMBER = 7;
     private int sessionPort_;
     /**
-     * <code>optional int32 sessionPort = 7;</code>
+     * <code>int32 sessionPort = 7;</code>
      */
     public int getSessionPort() {
       return sessionPort_;
@@ -49667,7 +50207,7 @@ public final class ProtoMessage {
     public static final int SERVERTYPE_FIELD_NUMBER = 8;
     private int serverType_;
     /**
-     * <code>optional int32 serverType = 8;</code>
+     * <code>int32 serverType = 8;</code>
      */
     public int getServerType() {
       return serverType_;
@@ -49784,7 +50324,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + CARID_FIELD_NUMBER;
@@ -50071,25 +50611,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -50101,7 +50641,7 @@ public final class ProtoMessage {
        * imei
        * </pre>
        *
-       * <code>optional string carID = 2;</code>
+       * <code>string carID = 2;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -50120,13 +50660,13 @@ public final class ProtoMessage {
        * imei
        * </pre>
        *
-       * <code>optional string carID = 2;</code>
+       * <code>string carID = 2;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
         java.lang.Object ref = carID_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carID_ = b;
@@ -50140,14 +50680,14 @@ public final class ProtoMessage {
        * imei
        * </pre>
        *
-       * <code>optional string carID = 2;</code>
+       * <code>string carID = 2;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carID_ = value;
         onChanged();
         return this;
@@ -50157,10 +50697,10 @@ public final class ProtoMessage {
        * imei
        * </pre>
        *
-       * <code>optional string carID = 2;</code>
+       * <code>string carID = 2;</code>
        */
       public Builder clearCarID() {
-
+        
         carID_ = getDefaultInstance().getCarID();
         onChanged();
         return this;
@@ -50170,7 +50710,7 @@ public final class ProtoMessage {
        * imei
        * </pre>
        *
-       * <code>optional string carID = 2;</code>
+       * <code>string carID = 2;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -50178,7 +50718,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carID_ = value;
         onChanged();
         return this;
@@ -50190,7 +50730,7 @@ public final class ProtoMessage {
        * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
        * </pre>
        *
-       * <code>optional string tempToken = 3;</code>
+       * <code>string tempToken = 3;</code>
        */
       public java.lang.String getTempToken() {
         java.lang.Object ref = tempToken_;
@@ -50209,13 +50749,13 @@ public final class ProtoMessage {
        * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
        * </pre>
        *
-       * <code>optional string tempToken = 3;</code>
+       * <code>string tempToken = 3;</code>
        */
       public com.google.protobuf.ByteString
           getTempTokenBytes() {
         java.lang.Object ref = tempToken_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           tempToken_ = b;
@@ -50229,14 +50769,14 @@ public final class ProtoMessage {
        * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
        * </pre>
        *
-       * <code>optional string tempToken = 3;</code>
+       * <code>string tempToken = 3;</code>
        */
       public Builder setTempToken(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         tempToken_ = value;
         onChanged();
         return this;
@@ -50246,10 +50786,10 @@ public final class ProtoMessage {
        * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
        * </pre>
        *
-       * <code>optional string tempToken = 3;</code>
+       * <code>string tempToken = 3;</code>
        */
       public Builder clearTempToken() {
-
+        
         tempToken_ = getDefaultInstance().getTempToken();
         onChanged();
         return this;
@@ -50259,7 +50799,7 @@ public final class ProtoMessage {
        * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
        * </pre>
        *
-       * <code>optional string tempToken = 3;</code>
+       * <code>string tempToken = 3;</code>
        */
       public Builder setTempTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -50267,7 +50807,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         tempToken_ = value;
         onChanged();
         return this;
@@ -50279,7 +50819,7 @@ public final class ProtoMessage {
        * 返回手机号（即：帐号）
        * </pre>
        *
-       * <code>optional string phoneNum = 4;</code>
+       * <code>string phoneNum = 4;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -50298,13 +50838,13 @@ public final class ProtoMessage {
        * 返回手机号（即：帐号）
        * </pre>
        *
-       * <code>optional string phoneNum = 4;</code>
+       * <code>string phoneNum = 4;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -50318,14 +50858,14 @@ public final class ProtoMessage {
        * 返回手机号（即：帐号）
        * </pre>
        *
-       * <code>optional string phoneNum = 4;</code>
+       * <code>string phoneNum = 4;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
@@ -50335,10 +50875,10 @@ public final class ProtoMessage {
        * 返回手机号（即：帐号）
        * </pre>
        *
-       * <code>optional string phoneNum = 4;</code>
+       * <code>string phoneNum = 4;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
@@ -50348,7 +50888,7 @@ public final class ProtoMessage {
        * 返回手机号（即：帐号）
        * </pre>
        *
-       * <code>optional string phoneNum = 4;</code>
+       * <code>string phoneNum = 4;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -50356,7 +50896,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -50368,7 +50908,7 @@ public final class ProtoMessage {
        * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
        * </pre>
        *
-       * <code>optional string carUrl = 5;</code>
+       * <code>string carUrl = 5;</code>
        */
       public java.lang.String getCarUrl() {
         java.lang.Object ref = carUrl_;
@@ -50387,13 +50927,13 @@ public final class ProtoMessage {
        * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
        * </pre>
        *
-       * <code>optional string carUrl = 5;</code>
+       * <code>string carUrl = 5;</code>
        */
       public com.google.protobuf.ByteString
           getCarUrlBytes() {
         java.lang.Object ref = carUrl_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carUrl_ = b;
@@ -50407,14 +50947,14 @@ public final class ProtoMessage {
        * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
        * </pre>
        *
-       * <code>optional string carUrl = 5;</code>
+       * <code>string carUrl = 5;</code>
        */
       public Builder setCarUrl(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carUrl_ = value;
         onChanged();
         return this;
@@ -50424,10 +50964,10 @@ public final class ProtoMessage {
        * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
        * </pre>
        *
-       * <code>optional string carUrl = 5;</code>
+       * <code>string carUrl = 5;</code>
        */
       public Builder clearCarUrl() {
-
+        
         carUrl_ = getDefaultInstance().getCarUrl();
         onChanged();
         return this;
@@ -50437,7 +50977,7 @@ public final class ProtoMessage {
        * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
        * </pre>
        *
-       * <code>optional string carUrl = 5;</code>
+       * <code>string carUrl = 5;</code>
        */
       public Builder setCarUrlBytes(
           com.google.protobuf.ByteString value) {
@@ -50445,7 +50985,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carUrl_ = value;
         onChanged();
         return this;
@@ -50453,7 +50993,7 @@ public final class ProtoMessage {
 
       private java.lang.Object sessionIP_ = "";
       /**
-       * <code>optional string sessionIP = 6;</code>
+       * <code>string sessionIP = 6;</code>
        */
       public java.lang.String getSessionIP() {
         java.lang.Object ref = sessionIP_;
@@ -50468,13 +51008,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string sessionIP = 6;</code>
+       * <code>string sessionIP = 6;</code>
        */
       public com.google.protobuf.ByteString
           getSessionIPBytes() {
         java.lang.Object ref = sessionIP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           sessionIP_ = b;
@@ -50484,29 +51024,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string sessionIP = 6;</code>
+       * <code>string sessionIP = 6;</code>
        */
       public Builder setSessionIP(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         sessionIP_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string sessionIP = 6;</code>
+       * <code>string sessionIP = 6;</code>
        */
       public Builder clearSessionIP() {
-
+        
         sessionIP_ = getDefaultInstance().getSessionIP();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string sessionIP = 6;</code>
+       * <code>string sessionIP = 6;</code>
        */
       public Builder setSessionIPBytes(
           com.google.protobuf.ByteString value) {
@@ -50514,7 +51054,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         sessionIP_ = value;
         onChanged();
         return this;
@@ -50522,25 +51062,25 @@ public final class ProtoMessage {
 
       private int sessionPort_ ;
       /**
-       * <code>optional int32 sessionPort = 7;</code>
+       * <code>int32 sessionPort = 7;</code>
        */
       public int getSessionPort() {
         return sessionPort_;
       }
       /**
-       * <code>optional int32 sessionPort = 7;</code>
+       * <code>int32 sessionPort = 7;</code>
        */
       public Builder setSessionPort(int value) {
-
+        
         sessionPort_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 sessionPort = 7;</code>
+       * <code>int32 sessionPort = 7;</code>
        */
       public Builder clearSessionPort() {
-
+        
         sessionPort_ = 0;
         onChanged();
         return this;
@@ -50548,25 +51088,25 @@ public final class ProtoMessage {
 
       private int serverType_ ;
       /**
-       * <code>optional int32 serverType = 8;</code>
+       * <code>int32 serverType = 8;</code>
        */
       public int getServerType() {
         return serverType_;
       }
       /**
-       * <code>optional int32 serverType = 8;</code>
+       * <code>int32 serverType = 8;</code>
        */
       public Builder setServerType(int value) {
-
+        
         serverType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 serverType = 8;</code>
+       * <code>int32 serverType = 8;</code>
        */
       public Builder clearServerType() {
-
+        
         serverType_ = 0;
         onChanged();
         return this;
@@ -50625,25 +51165,25 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional .AcceptType accept = 2;</code>
+     * <code>.AcceptType accept = 2;</code>
      */
     int getAcceptValue();
     /**
-     * <code>optional .AcceptType accept = 2;</code>
+     * <code>.AcceptType accept = 2;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept();
 
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     java.lang.String getPhone();
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneBytes();
@@ -50653,7 +51193,7 @@ public final class ProtoMessage {
      * add by qhb at 2018-03-20
      * </pre>
      *
-     * <code>optional string videoUrl = 4;</code>
+     * <code>string videoUrl = 4;</code>
      */
     java.lang.String getVideoUrl();
     /**
@@ -50661,7 +51201,7 @@ public final class ProtoMessage {
      * add by qhb at 2018-03-20
      * </pre>
      *
-     * <code>optional string videoUrl = 4;</code>
+     * <code>string videoUrl = 4;</code>
      */
     com.google.protobuf.ByteString
         getVideoUrlBytes();
@@ -50762,7 +51302,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -50771,13 +51311,13 @@ public final class ProtoMessage {
     public static final int ACCEPT_FIELD_NUMBER = 2;
     private int accept_;
     /**
-     * <code>optional .AcceptType accept = 2;</code>
+     * <code>.AcceptType accept = 2;</code>
      */
     public int getAcceptValue() {
       return accept_;
     }
     /**
-     * <code>optional .AcceptType accept = 2;</code>
+     * <code>.AcceptType accept = 2;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept() {
       com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType result = com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType.valueOf(accept_);
@@ -50787,14 +51327,14 @@ public final class ProtoMessage {
     public static final int PHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object phone_;
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     public java.lang.String getPhone() {
       java.lang.Object ref = phone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phone_ = s;
@@ -50802,13 +51342,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneBytes() {
       java.lang.Object ref = phone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phone_ = b;
@@ -50825,14 +51365,14 @@ public final class ProtoMessage {
      * add by qhb at 2018-03-20
      * </pre>
      *
-     * <code>optional string videoUrl = 4;</code>
+     * <code>string videoUrl = 4;</code>
      */
     public java.lang.String getVideoUrl() {
       java.lang.Object ref = videoUrl_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         videoUrl_ = s;
@@ -50844,13 +51384,13 @@ public final class ProtoMessage {
      * add by qhb at 2018-03-20
      * </pre>
      *
-     * <code>optional string videoUrl = 4;</code>
+     * <code>string videoUrl = 4;</code>
      */
     public com.google.protobuf.ByteString
         getVideoUrlBytes() {
       java.lang.Object ref = videoUrl_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         videoUrl_ = b;
@@ -50937,7 +51477,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + ACCEPT_FIELD_NUMBER;
@@ -51185,25 +51725,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -51211,13 +51751,13 @@ public final class ProtoMessage {
 
       private int accept_ = 0;
       /**
-       * <code>optional .AcceptType accept = 2;</code>
+       * <code>.AcceptType accept = 2;</code>
        */
       public int getAcceptValue() {
         return accept_;
       }
       /**
-       * <code>optional .AcceptType accept = 2;</code>
+       * <code>.AcceptType accept = 2;</code>
        */
       public Builder setAcceptValue(int value) {
         accept_ = value;
@@ -51225,29 +51765,29 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .AcceptType accept = 2;</code>
+       * <code>.AcceptType accept = 2;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept() {
         com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType result = com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType.valueOf(accept_);
         return result == null ? com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .AcceptType accept = 2;</code>
+       * <code>.AcceptType accept = 2;</code>
        */
       public Builder setAccept(com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-
+        
         accept_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>optional .AcceptType accept = 2;</code>
+       * <code>.AcceptType accept = 2;</code>
        */
       public Builder clearAccept() {
-
+        
         accept_ = 0;
         onChanged();
         return this;
@@ -51255,7 +51795,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phone_ = "";
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public java.lang.String getPhone() {
         java.lang.Object ref = phone_;
@@ -51270,13 +51810,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneBytes() {
         java.lang.Object ref = phone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phone_ = b;
@@ -51286,29 +51826,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder setPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phone_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder clearPhone() {
-
+        
         phone_ = getDefaultInstance().getPhone();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder setPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -51316,7 +51856,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phone_ = value;
         onChanged();
         return this;
@@ -51328,7 +51868,7 @@ public final class ProtoMessage {
        * add by qhb at 2018-03-20
        * </pre>
        *
-       * <code>optional string videoUrl = 4;</code>
+       * <code>string videoUrl = 4;</code>
        */
       public java.lang.String getVideoUrl() {
         java.lang.Object ref = videoUrl_;
@@ -51347,13 +51887,13 @@ public final class ProtoMessage {
        * add by qhb at 2018-03-20
        * </pre>
        *
-       * <code>optional string videoUrl = 4;</code>
+       * <code>string videoUrl = 4;</code>
        */
       public com.google.protobuf.ByteString
           getVideoUrlBytes() {
         java.lang.Object ref = videoUrl_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           videoUrl_ = b;
@@ -51367,14 +51907,14 @@ public final class ProtoMessage {
        * add by qhb at 2018-03-20
        * </pre>
        *
-       * <code>optional string videoUrl = 4;</code>
+       * <code>string videoUrl = 4;</code>
        */
       public Builder setVideoUrl(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         videoUrl_ = value;
         onChanged();
         return this;
@@ -51384,10 +51924,10 @@ public final class ProtoMessage {
        * add by qhb at 2018-03-20
        * </pre>
        *
-       * <code>optional string videoUrl = 4;</code>
+       * <code>string videoUrl = 4;</code>
        */
       public Builder clearVideoUrl() {
-
+        
         videoUrl_ = getDefaultInstance().getVideoUrl();
         onChanged();
         return this;
@@ -51397,7 +51937,7 @@ public final class ProtoMessage {
        * add by qhb at 2018-03-20
        * </pre>
        *
-       * <code>optional string videoUrl = 4;</code>
+       * <code>string videoUrl = 4;</code>
        */
       public Builder setVideoUrlBytes(
           com.google.protobuf.ByteString value) {
@@ -51405,7 +51945,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         videoUrl_ = value;
         onChanged();
         return this;
@@ -51464,7 +52004,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -51473,7 +52013,7 @@ public final class ProtoMessage {
      * 中心点，纬度
      * </pre>
      *
-     * <code>optional double lat = 2;</code>
+     * <code>double lat = 2;</code>
      */
     double getLat();
 
@@ -51482,7 +52022,7 @@ public final class ProtoMessage {
      * 中心点，经度
      * </pre>
      *
-     * <code>optional double lng = 3;</code>
+     * <code>double lng = 3;</code>
      */
     double getLng();
 
@@ -51491,7 +52031,7 @@ public final class ProtoMessage {
      * 半径(米)
      * </pre>
      *
-     * <code>optional int32 radius = 4;</code>
+     * <code>int32 radius = 4;</code>
      */
     int getRadius();
 
@@ -51500,7 +52040,7 @@ public final class ProtoMessage {
      * 批次：0,第一批，1第二批，...， 每次100个
      * </pre>
      *
-     * <code>optional int32 pos = 5;</code>
+     * <code>int32 pos = 5;</code>
      */
     int getPos();
 
@@ -51511,7 +52051,7 @@ public final class ProtoMessage {
      *
      * <code>repeated .LocationMsg locations = 6;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg> 
         getLocationsList();
     /**
      * <pre>
@@ -51536,7 +52076,7 @@ public final class ProtoMessage {
      *
      * <code>repeated .LocationMsg locations = 6;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
         getLocationsOrBuilderList();
     /**
      * <pre>
@@ -51657,7 +52197,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -51670,7 +52210,7 @@ public final class ProtoMessage {
      * 中心点，纬度
      * </pre>
      *
-     * <code>optional double lat = 2;</code>
+     * <code>double lat = 2;</code>
      */
     public double getLat() {
       return lat_;
@@ -51683,7 +52223,7 @@ public final class ProtoMessage {
      * 中心点，经度
      * </pre>
      *
-     * <code>optional double lng = 3;</code>
+     * <code>double lng = 3;</code>
      */
     public double getLng() {
       return lng_;
@@ -51696,7 +52236,7 @@ public final class ProtoMessage {
      * 半径(米)
      * </pre>
      *
-     * <code>optional int32 radius = 4;</code>
+     * <code>int32 radius = 4;</code>
      */
     public int getRadius() {
       return radius_;
@@ -51709,7 +52249,7 @@ public final class ProtoMessage {
      * 批次：0,第一批，1第二批，...， 每次100个
      * </pre>
      *
-     * <code>optional int32 pos = 5;</code>
+     * <code>int32 pos = 5;</code>
      */
     public int getPos() {
       return pos_;
@@ -51734,7 +52274,7 @@ public final class ProtoMessage {
      *
      * <code>repeated .LocationMsg locations = 6;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
         getLocationsOrBuilderList() {
       return locations_;
     }
@@ -51872,7 +52412,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + LAT_FIELD_NUMBER;
@@ -52137,7 +52677,7 @@ public final class ProtoMessage {
               locationsBuilder_ = null;
               locations_ = other.locations_;
               bitField0_ = (bitField0_ & ~0x00000020);
-              locationsBuilder_ =
+              locationsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getLocationsFieldBuilder() : null;
             } else {
@@ -52174,25 +52714,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -52204,7 +52744,7 @@ public final class ProtoMessage {
        * 中心点，纬度
        * </pre>
        *
-       * <code>optional double lat = 2;</code>
+       * <code>double lat = 2;</code>
        */
       public double getLat() {
         return lat_;
@@ -52214,10 +52754,10 @@ public final class ProtoMessage {
        * 中心点，纬度
        * </pre>
        *
-       * <code>optional double lat = 2;</code>
+       * <code>double lat = 2;</code>
        */
       public Builder setLat(double value) {
-
+        
         lat_ = value;
         onChanged();
         return this;
@@ -52227,10 +52767,10 @@ public final class ProtoMessage {
        * 中心点，纬度
        * </pre>
        *
-       * <code>optional double lat = 2;</code>
+       * <code>double lat = 2;</code>
        */
       public Builder clearLat() {
-
+        
         lat_ = 0D;
         onChanged();
         return this;
@@ -52242,7 +52782,7 @@ public final class ProtoMessage {
        * 中心点，经度
        * </pre>
        *
-       * <code>optional double lng = 3;</code>
+       * <code>double lng = 3;</code>
        */
       public double getLng() {
         return lng_;
@@ -52252,10 +52792,10 @@ public final class ProtoMessage {
        * 中心点，经度
        * </pre>
        *
-       * <code>optional double lng = 3;</code>
+       * <code>double lng = 3;</code>
        */
       public Builder setLng(double value) {
-
+        
         lng_ = value;
         onChanged();
         return this;
@@ -52265,10 +52805,10 @@ public final class ProtoMessage {
        * 中心点，经度
        * </pre>
        *
-       * <code>optional double lng = 3;</code>
+       * <code>double lng = 3;</code>
        */
       public Builder clearLng() {
-
+        
         lng_ = 0D;
         onChanged();
         return this;
@@ -52280,7 +52820,7 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>optional int32 radius = 4;</code>
+       * <code>int32 radius = 4;</code>
        */
       public int getRadius() {
         return radius_;
@@ -52290,10 +52830,10 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>optional int32 radius = 4;</code>
+       * <code>int32 radius = 4;</code>
        */
       public Builder setRadius(int value) {
-
+        
         radius_ = value;
         onChanged();
         return this;
@@ -52303,10 +52843,10 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>optional int32 radius = 4;</code>
+       * <code>int32 radius = 4;</code>
        */
       public Builder clearRadius() {
-
+        
         radius_ = 0;
         onChanged();
         return this;
@@ -52318,7 +52858,7 @@ public final class ProtoMessage {
        * 批次：0,第一批，1第二批，...， 每次100个
        * </pre>
        *
-       * <code>optional int32 pos = 5;</code>
+       * <code>int32 pos = 5;</code>
        */
       public int getPos() {
         return pos_;
@@ -52328,10 +52868,10 @@ public final class ProtoMessage {
        * 批次：0,第一批，1第二批，...， 每次100个
        * </pre>
        *
-       * <code>optional int32 pos = 5;</code>
+       * <code>int32 pos = 5;</code>
        */
       public Builder setPos(int value) {
-
+        
         pos_ = value;
         onChanged();
         return this;
@@ -52341,10 +52881,10 @@ public final class ProtoMessage {
        * 批次：0,第一批，1第二批，...， 每次100个
        * </pre>
        *
-       * <code>optional int32 pos = 5;</code>
+       * <code>int32 pos = 5;</code>
        */
       public Builder clearPos() {
-
+        
         pos_ = 0;
         onChanged();
         return this;
@@ -52605,7 +53145,7 @@ public final class ProtoMessage {
        *
        * <code>repeated .LocationMsg locations = 6;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
            getLocationsOrBuilderList() {
         if (locationsBuilder_ != null) {
           return locationsBuilder_.getMessageOrBuilderList();
@@ -52643,12 +53183,12 @@ public final class ProtoMessage {
        *
        * <code>repeated .LocationMsg locations = 6;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder> 
            getLocationsBuilderList() {
         return getLocationsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
           getLocationsFieldBuilder() {
         if (locationsBuilder_ == null) {
           locationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -52715,16 +53255,16 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string videoUrl = 2;</code>
+     * <code>string videoUrl = 2;</code>
      */
     java.lang.String getVideoUrl();
     /**
-     * <code>optional string videoUrl = 2;</code>
+     * <code>string videoUrl = 2;</code>
      */
     com.google.protobuf.ByteString
         getVideoUrlBytes();
@@ -52807,7 +53347,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -52816,14 +53356,14 @@ public final class ProtoMessage {
     public static final int VIDEOURL_FIELD_NUMBER = 2;
     private volatile java.lang.Object videoUrl_;
     /**
-     * <code>optional string videoUrl = 2;</code>
+     * <code>string videoUrl = 2;</code>
      */
     public java.lang.String getVideoUrl() {
       java.lang.Object ref = videoUrl_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         videoUrl_ = s;
@@ -52831,13 +53371,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string videoUrl = 2;</code>
+     * <code>string videoUrl = 2;</code>
      */
     public com.google.protobuf.ByteString
         getVideoUrlBytes() {
       java.lang.Object ref = videoUrl_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         videoUrl_ = b;
@@ -52908,7 +53448,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + VIDEOURL_FIELD_NUMBER;
@@ -53135,25 +53675,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -53161,7 +53701,7 @@ public final class ProtoMessage {
 
       private java.lang.Object videoUrl_ = "";
       /**
-       * <code>optional string videoUrl = 2;</code>
+       * <code>string videoUrl = 2;</code>
        */
       public java.lang.String getVideoUrl() {
         java.lang.Object ref = videoUrl_;
@@ -53176,13 +53716,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string videoUrl = 2;</code>
+       * <code>string videoUrl = 2;</code>
        */
       public com.google.protobuf.ByteString
           getVideoUrlBytes() {
         java.lang.Object ref = videoUrl_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           videoUrl_ = b;
@@ -53192,29 +53732,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string videoUrl = 2;</code>
+       * <code>string videoUrl = 2;</code>
        */
       public Builder setVideoUrl(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         videoUrl_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string videoUrl = 2;</code>
+       * <code>string videoUrl = 2;</code>
        */
       public Builder clearVideoUrl() {
-
+        
         videoUrl_ = getDefaultInstance().getVideoUrl();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string videoUrl = 2;</code>
+       * <code>string videoUrl = 2;</code>
        */
       public Builder setVideoUrlBytes(
           com.google.protobuf.ByteString value) {
@@ -53222,7 +53762,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         videoUrl_ = value;
         onChanged();
         return this;
@@ -53281,7 +53821,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -53325,7 +53865,7 @@ public final class ProtoMessage {
      * 新密码
      * </pre>
      *
-     * <code>optional string newPassword = 3;</code>
+     * <code>string newPassword = 3;</code>
      */
     java.lang.String getNewPassword();
     /**
@@ -53333,7 +53873,7 @@ public final class ProtoMessage {
      * 新密码
      * </pre>
      *
-     * <code>optional string newPassword = 3;</code>
+     * <code>string newPassword = 3;</code>
      */
     com.google.protobuf.ByteString
         getNewPasswordBytes();
@@ -53434,7 +53974,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -53492,14 +54032,14 @@ public final class ProtoMessage {
      * 新密码
      * </pre>
      *
-     * <code>optional string newPassword = 3;</code>
+     * <code>string newPassword = 3;</code>
      */
     public java.lang.String getNewPassword() {
       java.lang.Object ref = newPassword_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         newPassword_ = s;
@@ -53511,13 +54051,13 @@ public final class ProtoMessage {
      * 新密码
      * </pre>
      *
-     * <code>optional string newPassword = 3;</code>
+     * <code>string newPassword = 3;</code>
      */
     public com.google.protobuf.ByteString
         getNewPasswordBytes() {
       java.lang.Object ref = newPassword_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         newPassword_ = b;
@@ -53601,7 +54141,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getPhoneListCount() > 0) {
@@ -53857,25 +54397,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -54017,7 +54557,7 @@ public final class ProtoMessage {
        * 新密码
        * </pre>
        *
-       * <code>optional string newPassword = 3;</code>
+       * <code>string newPassword = 3;</code>
        */
       public java.lang.String getNewPassword() {
         java.lang.Object ref = newPassword_;
@@ -54036,13 +54576,13 @@ public final class ProtoMessage {
        * 新密码
        * </pre>
        *
-       * <code>optional string newPassword = 3;</code>
+       * <code>string newPassword = 3;</code>
        */
       public com.google.protobuf.ByteString
           getNewPasswordBytes() {
         java.lang.Object ref = newPassword_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           newPassword_ = b;
@@ -54056,14 +54596,14 @@ public final class ProtoMessage {
        * 新密码
        * </pre>
        *
-       * <code>optional string newPassword = 3;</code>
+       * <code>string newPassword = 3;</code>
        */
       public Builder setNewPassword(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         newPassword_ = value;
         onChanged();
         return this;
@@ -54073,10 +54613,10 @@ public final class ProtoMessage {
        * 新密码
        * </pre>
        *
-       * <code>optional string newPassword = 3;</code>
+       * <code>string newPassword = 3;</code>
        */
       public Builder clearNewPassword() {
-
+        
         newPassword_ = getDefaultInstance().getNewPassword();
         onChanged();
         return this;
@@ -54086,7 +54626,7 @@ public final class ProtoMessage {
        * 新密码
        * </pre>
        *
-       * <code>optional string newPassword = 3;</code>
+       * <code>string newPassword = 3;</code>
        */
       public Builder setNewPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -54094,7 +54634,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         newPassword_ = value;
         onChanged();
         return this;
@@ -54153,17 +54693,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     java.lang.String getIp();
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     com.google.protobuf.ByteString
         getIpBytes();
 
     /**
-     * <code>optional int32 port = 2;</code>
+     * <code>int32 port = 2;</code>
      */
     int getPort();
   }
@@ -54245,14 +54785,14 @@ public final class ProtoMessage {
     public static final int IP_FIELD_NUMBER = 1;
     private volatile java.lang.Object ip_;
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     public java.lang.String getIp() {
       java.lang.Object ref = ip_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         ip_ = s;
@@ -54260,13 +54800,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIpBytes() {
       java.lang.Object ref = ip_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         ip_ = b;
@@ -54279,7 +54819,7 @@ public final class ProtoMessage {
     public static final int PORT_FIELD_NUMBER = 2;
     private int port_;
     /**
-     * <code>optional int32 port = 2;</code>
+     * <code>int32 port = 2;</code>
      */
     public int getPort() {
       return port_;
@@ -54346,7 +54886,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + IP_FIELD_NUMBER;
       hash = (53 * hash) + getIp().hashCode();
       hash = (37 * hash) + PORT_FIELD_NUMBER;
@@ -54573,7 +55113,7 @@ public final class ProtoMessage {
 
       private java.lang.Object ip_ = "";
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public java.lang.String getIp() {
         java.lang.Object ref = ip_;
@@ -54588,13 +55128,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIpBytes() {
         java.lang.Object ref = ip_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           ip_ = b;
@@ -54604,29 +55144,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public Builder setIp(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         ip_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public Builder clearIp() {
-
+        
         ip_ = getDefaultInstance().getIp();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public Builder setIpBytes(
           com.google.protobuf.ByteString value) {
@@ -54634,7 +55174,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         ip_ = value;
         onChanged();
         return this;
@@ -54642,25 +55182,25 @@ public final class ProtoMessage {
 
       private int port_ ;
       /**
-       * <code>optional int32 port = 2;</code>
+       * <code>int32 port = 2;</code>
        */
       public int getPort() {
         return port_;
       }
       /**
-       * <code>optional int32 port = 2;</code>
+       * <code>int32 port = 2;</code>
        */
       public Builder setPort(int value) {
-
+        
         port_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 port = 2;</code>
+       * <code>int32 port = 2;</code>
        */
       public Builder clearPort() {
-
+        
         port_ = 0;
         onChanged();
         return this;
@@ -54719,25 +55259,25 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional .MsgIpPort ipport = 2;</code>
+     * <code>.MsgIpPort ipport = 2;</code>
      */
     boolean hasIpport();
     /**
-     * <code>optional .MsgIpPort ipport = 2;</code>
+     * <code>.MsgIpPort ipport = 2;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport();
     /**
-     * <code>optional .MsgIpPort ipport = 2;</code>
+     * <code>.MsgIpPort ipport = 2;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder();
 
     /**
-     * <code>optional int32 pullPort = 3;</code>
+     * <code>int32 pullPort = 3;</code>
      */
     int getPullPort();
   }
@@ -54831,7 +55371,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -54840,19 +55380,19 @@ public final class ProtoMessage {
     public static final int IPPORT_FIELD_NUMBER = 2;
     private com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort ipport_;
     /**
-     * <code>optional .MsgIpPort ipport = 2;</code>
+     * <code>.MsgIpPort ipport = 2;</code>
      */
     public boolean hasIpport() {
       return ipport_ != null;
     }
     /**
-     * <code>optional .MsgIpPort ipport = 2;</code>
+     * <code>.MsgIpPort ipport = 2;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
       return ipport_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.getDefaultInstance() : ipport_;
     }
     /**
-     * <code>optional .MsgIpPort ipport = 2;</code>
+     * <code>.MsgIpPort ipport = 2;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
       return getIpport();
@@ -54861,7 +55401,7 @@ public final class ProtoMessage {
     public static final int PULLPORT_FIELD_NUMBER = 3;
     private int pullPort_;
     /**
-     * <code>optional int32 pullPort = 3;</code>
+     * <code>int32 pullPort = 3;</code>
      */
     public int getPullPort() {
       return pullPort_;
@@ -54941,7 +55481,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (hasIpport()) {
@@ -55185,25 +55725,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -55213,13 +55753,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> ipportBuilder_;
       /**
-       * <code>optional .MsgIpPort ipport = 2;</code>
+       * <code>.MsgIpPort ipport = 2;</code>
        */
       public boolean hasIpport() {
         return ipportBuilder_ != null || ipport_ != null;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 2;</code>
+       * <code>.MsgIpPort ipport = 2;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
         if (ipportBuilder_ == null) {
@@ -55229,7 +55769,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .MsgIpPort ipport = 2;</code>
+       * <code>.MsgIpPort ipport = 2;</code>
        */
       public Builder setIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -55245,7 +55785,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 2;</code>
+       * <code>.MsgIpPort ipport = 2;</code>
        */
       public Builder setIpport(
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder builderForValue) {
@@ -55259,7 +55799,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 2;</code>
+       * <code>.MsgIpPort ipport = 2;</code>
        */
       public Builder mergeIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -55277,7 +55817,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 2;</code>
+       * <code>.MsgIpPort ipport = 2;</code>
        */
       public Builder clearIpport() {
         if (ipportBuilder_ == null) {
@@ -55291,15 +55831,15 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 2;</code>
+       * <code>.MsgIpPort ipport = 2;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder getIpportBuilder() {
-
+        
         onChanged();
         return getIpportFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .MsgIpPort ipport = 2;</code>
+       * <code>.MsgIpPort ipport = 2;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
         if (ipportBuilder_ != null) {
@@ -55310,10 +55850,10 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .MsgIpPort ipport = 2;</code>
+       * <code>.MsgIpPort ipport = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> 
           getIpportFieldBuilder() {
         if (ipportBuilder_ == null) {
           ipportBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -55328,25 +55868,25 @@ public final class ProtoMessage {
 
       private int pullPort_ ;
       /**
-       * <code>optional int32 pullPort = 3;</code>
+       * <code>int32 pullPort = 3;</code>
        */
       public int getPullPort() {
         return pullPort_;
       }
       /**
-       * <code>optional int32 pullPort = 3;</code>
+       * <code>int32 pullPort = 3;</code>
        */
       public Builder setPullPort(int value) {
-
+        
         pullPort_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 pullPort = 3;</code>
+       * <code>int32 pullPort = 3;</code>
        */
       public Builder clearPullPort() {
-
+        
         pullPort_ = 0;
         onChanged();
         return this;
@@ -55405,31 +55945,31 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int32 cmd = 2;</code>
+     * <code>int32 cmd = 2;</code>
      */
     int getCmd();
 
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     boolean hasIpport();
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport();
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder();
   }
   /**
    * <pre>
-   ** Session服务器向root 服务器汇报
+   ** Session服务器向root 服务器汇报 
    * </pre>
    *
    * Protobuf type {@code MsgSessionReport}
@@ -55521,7 +56061,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -55530,7 +56070,7 @@ public final class ProtoMessage {
     public static final int CMD_FIELD_NUMBER = 2;
     private int cmd_;
     /**
-     * <code>optional int32 cmd = 2;</code>
+     * <code>int32 cmd = 2;</code>
      */
     public int getCmd() {
       return cmd_;
@@ -55539,19 +56079,19 @@ public final class ProtoMessage {
     public static final int IPPORT_FIELD_NUMBER = 3;
     private com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort ipport_;
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     public boolean hasIpport() {
       return ipport_ != null;
     }
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
       return ipport_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.getDefaultInstance() : ipport_;
     }
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
       return getIpport();
@@ -55631,7 +56171,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + CMD_FIELD_NUMBER;
@@ -55724,7 +56264,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** Session服务器向root 服务器汇报
+     ** Session服务器向root 服务器汇报 
      * </pre>
      *
      * Protobuf type {@code MsgSessionReport}
@@ -55879,25 +56419,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -55905,25 +56445,25 @@ public final class ProtoMessage {
 
       private int cmd_ ;
       /**
-       * <code>optional int32 cmd = 2;</code>
+       * <code>int32 cmd = 2;</code>
        */
       public int getCmd() {
         return cmd_;
       }
       /**
-       * <code>optional int32 cmd = 2;</code>
+       * <code>int32 cmd = 2;</code>
        */
       public Builder setCmd(int value) {
-
+        
         cmd_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 cmd = 2;</code>
+       * <code>int32 cmd = 2;</code>
        */
       public Builder clearCmd() {
-
+        
         cmd_ = 0;
         onChanged();
         return this;
@@ -55933,13 +56473,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> ipportBuilder_;
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public boolean hasIpport() {
         return ipportBuilder_ != null || ipport_ != null;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
         if (ipportBuilder_ == null) {
@@ -55949,7 +56489,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public Builder setIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -55965,7 +56505,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public Builder setIpport(
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder builderForValue) {
@@ -55979,7 +56519,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public Builder mergeIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -55997,7 +56537,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public Builder clearIpport() {
         if (ipportBuilder_ == null) {
@@ -56011,15 +56551,15 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder getIpportBuilder() {
-
+        
         onChanged();
         return getIpportFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
         if (ipportBuilder_ != null) {
@@ -56030,10 +56570,10 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> 
           getIpportFieldBuilder() {
         if (ipportBuilder_ == null) {
           ipportBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -56099,39 +56639,39 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int32 cmd = 2;</code>
+     * <code>int32 cmd = 2;</code>
      */
     int getCmd();
 
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     boolean hasIpport();
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport();
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder();
 
     /**
-     * <code>optional int32 pullPort = 4;</code>
+     * <code>int32 pullPort = 4;</code>
      */
     int getPullPort();
 
     /**
-     * <code>optional string phonenum = 5;</code>
+     * <code>string phonenum = 5;</code>
      */
     java.lang.String getPhonenum();
     /**
-     * <code>optional string phonenum = 5;</code>
+     * <code>string phonenum = 5;</code>
      */
     com.google.protobuf.ByteString
         getPhonenumBytes();
@@ -56141,26 +56681,26 @@ public final class ProtoMessage {
      *0 login, 1: logout, 2: report_alive
      * </pre>
      *
-     * <code>optional int32 reportType = 6;</code>
+     * <code>int32 reportType = 6;</code>
      */
     int getReportType();
 
     /**
-     * <code>optional int64 userID = 7;</code>
+     * <code>int64 userID = 7;</code>
      */
     long getUserID();
 
     /**
-     * <code>optional int32 appType = 8;</code>
+     * <code>int32 appType = 8;</code>
      */
     int getAppType();
 
     /**
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     java.lang.String getCarID();
     /**
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -56170,7 +56710,7 @@ public final class ProtoMessage {
      * 车机的临时串
      * </pre>
      *
-     * <code>optional string tempToken = 10;</code>
+     * <code>string tempToken = 10;</code>
      */
     java.lang.String getTempToken();
     /**
@@ -56178,14 +56718,14 @@ public final class ProtoMessage {
      * 车机的临时串
      * </pre>
      *
-     * <code>optional string tempToken = 10;</code>
+     * <code>string tempToken = 10;</code>
      */
     com.google.protobuf.ByteString
         getTempTokenBytes();
   }
   /**
    * <pre>
-   ** Session 服务器向 Indexer 汇报
+   ** Session 服务器向 Indexer 汇报 
    * </pre>
    *
    * Protobuf type {@code MsgLoginReport}
@@ -56322,7 +56862,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -56331,7 +56871,7 @@ public final class ProtoMessage {
     public static final int CMD_FIELD_NUMBER = 2;
     private int cmd_;
     /**
-     * <code>optional int32 cmd = 2;</code>
+     * <code>int32 cmd = 2;</code>
      */
     public int getCmd() {
       return cmd_;
@@ -56340,19 +56880,19 @@ public final class ProtoMessage {
     public static final int IPPORT_FIELD_NUMBER = 3;
     private com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort ipport_;
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     public boolean hasIpport() {
       return ipport_ != null;
     }
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
       return ipport_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.getDefaultInstance() : ipport_;
     }
     /**
-     * <code>optional .MsgIpPort ipport = 3;</code>
+     * <code>.MsgIpPort ipport = 3;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
       return getIpport();
@@ -56361,7 +56901,7 @@ public final class ProtoMessage {
     public static final int PULLPORT_FIELD_NUMBER = 4;
     private int pullPort_;
     /**
-     * <code>optional int32 pullPort = 4;</code>
+     * <code>int32 pullPort = 4;</code>
      */
     public int getPullPort() {
       return pullPort_;
@@ -56370,14 +56910,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 5;
     private volatile java.lang.Object phonenum_;
     /**
-     * <code>optional string phonenum = 5;</code>
+     * <code>string phonenum = 5;</code>
      */
     public java.lang.String getPhonenum() {
       java.lang.Object ref = phonenum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phonenum_ = s;
@@ -56385,13 +56925,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phonenum = 5;</code>
+     * <code>string phonenum = 5;</code>
      */
     public com.google.protobuf.ByteString
         getPhonenumBytes() {
       java.lang.Object ref = phonenum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phonenum_ = b;
@@ -56408,7 +56948,7 @@ public final class ProtoMessage {
      *0 login, 1: logout, 2: report_alive
      * </pre>
      *
-     * <code>optional int32 reportType = 6;</code>
+     * <code>int32 reportType = 6;</code>
      */
     public int getReportType() {
       return reportType_;
@@ -56417,7 +56957,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 7;
     private long userID_;
     /**
-     * <code>optional int64 userID = 7;</code>
+     * <code>int64 userID = 7;</code>
      */
     public long getUserID() {
       return userID_;
@@ -56426,7 +56966,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 8;
     private int appType_;
     /**
-     * <code>optional int32 appType = 8;</code>
+     * <code>int32 appType = 8;</code>
      */
     public int getAppType() {
       return appType_;
@@ -56435,14 +56975,14 @@ public final class ProtoMessage {
     public static final int CARID_FIELD_NUMBER = 9;
     private volatile java.lang.Object carID_;
     /**
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carID_ = s;
@@ -56450,13 +56990,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carID_ = b;
@@ -56473,14 +57013,14 @@ public final class ProtoMessage {
      * 车机的临时串
      * </pre>
      *
-     * <code>optional string tempToken = 10;</code>
+     * <code>string tempToken = 10;</code>
      */
     public java.lang.String getTempToken() {
       java.lang.Object ref = tempToken_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         tempToken_ = s;
@@ -56492,13 +57032,13 @@ public final class ProtoMessage {
      * 车机的临时串
      * </pre>
      *
-     * <code>optional string tempToken = 10;</code>
+     * <code>string tempToken = 10;</code>
      */
     public com.google.protobuf.ByteString
         getTempTokenBytes() {
       java.lang.Object ref = tempToken_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         tempToken_ = b;
@@ -56642,7 +57182,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + CMD_FIELD_NUMBER;
@@ -56750,7 +57290,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** Session 服务器向 Indexer 汇报
+     ** Session 服务器向 Indexer 汇报 
      * </pre>
      *
      * Protobuf type {@code MsgLoginReport}
@@ -56950,25 +57490,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -56976,25 +57516,25 @@ public final class ProtoMessage {
 
       private int cmd_ ;
       /**
-       * <code>optional int32 cmd = 2;</code>
+       * <code>int32 cmd = 2;</code>
        */
       public int getCmd() {
         return cmd_;
       }
       /**
-       * <code>optional int32 cmd = 2;</code>
+       * <code>int32 cmd = 2;</code>
        */
       public Builder setCmd(int value) {
-
+        
         cmd_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 cmd = 2;</code>
+       * <code>int32 cmd = 2;</code>
        */
       public Builder clearCmd() {
-
+        
         cmd_ = 0;
         onChanged();
         return this;
@@ -57004,13 +57544,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> ipportBuilder_;
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public boolean hasIpport() {
         return ipportBuilder_ != null || ipport_ != null;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
         if (ipportBuilder_ == null) {
@@ -57020,7 +57560,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public Builder setIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -57036,7 +57576,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public Builder setIpport(
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder builderForValue) {
@@ -57050,7 +57590,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public Builder mergeIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -57068,7 +57608,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public Builder clearIpport() {
         if (ipportBuilder_ == null) {
@@ -57082,15 +57622,15 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder getIpportBuilder() {
-
+        
         onChanged();
         return getIpportFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
         if (ipportBuilder_ != null) {
@@ -57101,10 +57641,10 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .MsgIpPort ipport = 3;</code>
+       * <code>.MsgIpPort ipport = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> 
           getIpportFieldBuilder() {
         if (ipportBuilder_ == null) {
           ipportBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -57119,25 +57659,25 @@ public final class ProtoMessage {
 
       private int pullPort_ ;
       /**
-       * <code>optional int32 pullPort = 4;</code>
+       * <code>int32 pullPort = 4;</code>
        */
       public int getPullPort() {
         return pullPort_;
       }
       /**
-       * <code>optional int32 pullPort = 4;</code>
+       * <code>int32 pullPort = 4;</code>
        */
       public Builder setPullPort(int value) {
-
+        
         pullPort_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 pullPort = 4;</code>
+       * <code>int32 pullPort = 4;</code>
        */
       public Builder clearPullPort() {
-
+        
         pullPort_ = 0;
         onChanged();
         return this;
@@ -57145,7 +57685,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phonenum_ = "";
       /**
-       * <code>optional string phonenum = 5;</code>
+       * <code>string phonenum = 5;</code>
        */
       public java.lang.String getPhonenum() {
         java.lang.Object ref = phonenum_;
@@ -57160,13 +57700,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phonenum = 5;</code>
+       * <code>string phonenum = 5;</code>
        */
       public com.google.protobuf.ByteString
           getPhonenumBytes() {
         java.lang.Object ref = phonenum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phonenum_ = b;
@@ -57176,29 +57716,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phonenum = 5;</code>
+       * <code>string phonenum = 5;</code>
        */
       public Builder setPhonenum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phonenum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phonenum = 5;</code>
+       * <code>string phonenum = 5;</code>
        */
       public Builder clearPhonenum() {
-
+        
         phonenum_ = getDefaultInstance().getPhonenum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phonenum = 5;</code>
+       * <code>string phonenum = 5;</code>
        */
       public Builder setPhonenumBytes(
           com.google.protobuf.ByteString value) {
@@ -57206,7 +57746,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phonenum_ = value;
         onChanged();
         return this;
@@ -57218,7 +57758,7 @@ public final class ProtoMessage {
        *0 login, 1: logout, 2: report_alive
        * </pre>
        *
-       * <code>optional int32 reportType = 6;</code>
+       * <code>int32 reportType = 6;</code>
        */
       public int getReportType() {
         return reportType_;
@@ -57228,10 +57768,10 @@ public final class ProtoMessage {
        *0 login, 1: logout, 2: report_alive
        * </pre>
        *
-       * <code>optional int32 reportType = 6;</code>
+       * <code>int32 reportType = 6;</code>
        */
       public Builder setReportType(int value) {
-
+        
         reportType_ = value;
         onChanged();
         return this;
@@ -57241,10 +57781,10 @@ public final class ProtoMessage {
        *0 login, 1: logout, 2: report_alive
        * </pre>
        *
-       * <code>optional int32 reportType = 6;</code>
+       * <code>int32 reportType = 6;</code>
        */
       public Builder clearReportType() {
-
+        
         reportType_ = 0;
         onChanged();
         return this;
@@ -57252,25 +57792,25 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>optional int64 userID = 7;</code>
+       * <code>int64 userID = 7;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>optional int64 userID = 7;</code>
+       * <code>int64 userID = 7;</code>
        */
       public Builder setUserID(long value) {
-
+        
         userID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 userID = 7;</code>
+       * <code>int64 userID = 7;</code>
        */
       public Builder clearUserID() {
-
+        
         userID_ = 0L;
         onChanged();
         return this;
@@ -57278,25 +57818,25 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>optional int32 appType = 8;</code>
+       * <code>int32 appType = 8;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>optional int32 appType = 8;</code>
+       * <code>int32 appType = 8;</code>
        */
       public Builder setAppType(int value) {
-
+        
         appType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 appType = 8;</code>
+       * <code>int32 appType = 8;</code>
        */
       public Builder clearAppType() {
-
+        
         appType_ = 0;
         onChanged();
         return this;
@@ -57304,7 +57844,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carID_ = "";
       /**
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -57319,13 +57859,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
         java.lang.Object ref = carID_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carID_ = b;
@@ -57335,29 +57875,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public Builder clearCarID() {
-
+        
         carID_ = getDefaultInstance().getCarID();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -57365,7 +57905,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carID_ = value;
         onChanged();
         return this;
@@ -57377,7 +57917,7 @@ public final class ProtoMessage {
        * 车机的临时串
        * </pre>
        *
-       * <code>optional string tempToken = 10;</code>
+       * <code>string tempToken = 10;</code>
        */
       public java.lang.String getTempToken() {
         java.lang.Object ref = tempToken_;
@@ -57396,13 +57936,13 @@ public final class ProtoMessage {
        * 车机的临时串
        * </pre>
        *
-       * <code>optional string tempToken = 10;</code>
+       * <code>string tempToken = 10;</code>
        */
       public com.google.protobuf.ByteString
           getTempTokenBytes() {
         java.lang.Object ref = tempToken_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           tempToken_ = b;
@@ -57416,14 +57956,14 @@ public final class ProtoMessage {
        * 车机的临时串
        * </pre>
        *
-       * <code>optional string tempToken = 10;</code>
+       * <code>string tempToken = 10;</code>
        */
       public Builder setTempToken(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         tempToken_ = value;
         onChanged();
         return this;
@@ -57433,10 +57973,10 @@ public final class ProtoMessage {
        * 车机的临时串
        * </pre>
        *
-       * <code>optional string tempToken = 10;</code>
+       * <code>string tempToken = 10;</code>
        */
       public Builder clearTempToken() {
-
+        
         tempToken_ = getDefaultInstance().getTempToken();
         onChanged();
         return this;
@@ -57446,7 +57986,7 @@ public final class ProtoMessage {
        * 车机的临时串
        * </pre>
        *
-       * <code>optional string tempToken = 10;</code>
+       * <code>string tempToken = 10;</code>
        */
       public Builder setTempTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -57454,7 +57994,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         tempToken_ = value;
         onChanged();
         return this;
@@ -57513,7 +58053,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -57522,27 +58062,27 @@ public final class ProtoMessage {
      * &#64;ref sptToClient
      * </pre>
      *
-     * <code>optional int32 what = 2;</code>
+     * <code>int32 what = 2;</code>
      */
     int getWhat();
 
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     java.lang.String getPhone();
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneBytes();
 
     /**
-     * <code>optional int64 userID = 4;</code>
+     * <code>int64 userID = 4;</code>
      */
     long getUserID();
 
     /**
-     * <code>optional int32 apptype = 5;</code>
+     * <code>int32 apptype = 5;</code>
      */
     int getApptype();
 
@@ -57551,7 +58091,7 @@ public final class ProtoMessage {
      * 发给客户端的消息
      * </pre>
      *
-     * <code>optional bytes msg = 6;</code>
+     * <code>bytes msg = 6;</code>
      */
     com.google.protobuf.ByteString getMsg();
 
@@ -57559,26 +58099,26 @@ public final class ProtoMessage {
      * <pre>
      * </pre>
      *
-     * <code>optional int64 userID2 = 7;</code>
+     * <code>int64 userID2 = 7;</code>
      */
     long getUserID2();
 
     /**
-     * <code>optional string phone2 = 8;</code>
+     * <code>string phone2 = 8;</code>
      */
     java.lang.String getPhone2();
     /**
-     * <code>optional string phone2 = 8;</code>
+     * <code>string phone2 = 8;</code>
      */
     com.google.protobuf.ByteString
         getPhone2Bytes();
 
     /**
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     java.lang.String getCarID();
     /**
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -57588,7 +58128,7 @@ public final class ProtoMessage {
      * 车机二维码临时token
      * </pre>
      *
-     * <code>optional string tempToken = 10;</code>
+     * <code>string tempToken = 10;</code>
      */
     java.lang.String getTempToken();
     /**
@@ -57596,7 +58136,7 @@ public final class ProtoMessage {
      * 车机二维码临时token
      * </pre>
      *
-     * <code>optional string tempToken = 10;</code>
+     * <code>string tempToken = 10;</code>
      */
     com.google.protobuf.ByteString
         getTempTokenBytes();
@@ -57606,7 +58146,7 @@ public final class ProtoMessage {
      * 车机登录的Token
      * </pre>
      *
-     * <code>optional string carLoginToken = 11;</code>
+     * <code>string carLoginToken = 11;</code>
      */
     java.lang.String getCarLoginToken();
     /**
@@ -57614,7 +58154,7 @@ public final class ProtoMessage {
      * 车机登录的Token
      * </pre>
      *
-     * <code>optional string carLoginToken = 11;</code>
+     * <code>string carLoginToken = 11;</code>
      */
     com.google.protobuf.ByteString
         getCarLoginTokenBytes();
@@ -57759,7 +58299,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -57772,7 +58312,7 @@ public final class ProtoMessage {
      * &#64;ref sptToClient
      * </pre>
      *
-     * <code>optional int32 what = 2;</code>
+     * <code>int32 what = 2;</code>
      */
     public int getWhat() {
       return what_;
@@ -57781,14 +58321,14 @@ public final class ProtoMessage {
     public static final int PHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object phone_;
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     public java.lang.String getPhone() {
       java.lang.Object ref = phone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phone_ = s;
@@ -57796,13 +58336,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneBytes() {
       java.lang.Object ref = phone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phone_ = b;
@@ -57815,7 +58355,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 4;
     private long userID_;
     /**
-     * <code>optional int64 userID = 4;</code>
+     * <code>int64 userID = 4;</code>
      */
     public long getUserID() {
       return userID_;
@@ -57824,7 +58364,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 5;
     private int apptype_;
     /**
-     * <code>optional int32 apptype = 5;</code>
+     * <code>int32 apptype = 5;</code>
      */
     public int getApptype() {
       return apptype_;
@@ -57837,7 +58377,7 @@ public final class ProtoMessage {
      * 发给客户端的消息
      * </pre>
      *
-     * <code>optional bytes msg = 6;</code>
+     * <code>bytes msg = 6;</code>
      */
     public com.google.protobuf.ByteString getMsg() {
       return msg_;
@@ -57849,7 +58389,7 @@ public final class ProtoMessage {
      * <pre>
      * </pre>
      *
-     * <code>optional int64 userID2 = 7;</code>
+     * <code>int64 userID2 = 7;</code>
      */
     public long getUserID2() {
       return userID2_;
@@ -57858,14 +58398,14 @@ public final class ProtoMessage {
     public static final int PHONE2_FIELD_NUMBER = 8;
     private volatile java.lang.Object phone2_;
     /**
-     * <code>optional string phone2 = 8;</code>
+     * <code>string phone2 = 8;</code>
      */
     public java.lang.String getPhone2() {
       java.lang.Object ref = phone2_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phone2_ = s;
@@ -57873,13 +58413,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phone2 = 8;</code>
+     * <code>string phone2 = 8;</code>
      */
     public com.google.protobuf.ByteString
         getPhone2Bytes() {
       java.lang.Object ref = phone2_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phone2_ = b;
@@ -57892,14 +58432,14 @@ public final class ProtoMessage {
     public static final int CARID_FIELD_NUMBER = 9;
     private volatile java.lang.Object carID_;
     /**
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carID_ = s;
@@ -57907,13 +58447,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string carID = 9;</code>
+     * <code>string carID = 9;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carID_ = b;
@@ -57930,14 +58470,14 @@ public final class ProtoMessage {
      * 车机二维码临时token
      * </pre>
      *
-     * <code>optional string tempToken = 10;</code>
+     * <code>string tempToken = 10;</code>
      */
     public java.lang.String getTempToken() {
       java.lang.Object ref = tempToken_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         tempToken_ = s;
@@ -57949,13 +58489,13 @@ public final class ProtoMessage {
      * 车机二维码临时token
      * </pre>
      *
-     * <code>optional string tempToken = 10;</code>
+     * <code>string tempToken = 10;</code>
      */
     public com.google.protobuf.ByteString
         getTempTokenBytes() {
       java.lang.Object ref = tempToken_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         tempToken_ = b;
@@ -57972,14 +58512,14 @@ public final class ProtoMessage {
      * 车机登录的Token
      * </pre>
      *
-     * <code>optional string carLoginToken = 11;</code>
+     * <code>string carLoginToken = 11;</code>
      */
     public java.lang.String getCarLoginToken() {
       java.lang.Object ref = carLoginToken_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carLoginToken_ = s;
@@ -57991,13 +58531,13 @@ public final class ProtoMessage {
      * 车机登录的Token
      * </pre>
      *
-     * <code>optional string carLoginToken = 11;</code>
+     * <code>string carLoginToken = 11;</code>
      */
     public com.google.protobuf.ByteString
         getCarLoginTokenBytes() {
       java.lang.Object ref = carLoginToken_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carLoginToken_ = b;
@@ -58145,7 +58685,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + WHAT_FIELD_NUMBER;
@@ -58454,25 +58994,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -58484,7 +59024,7 @@ public final class ProtoMessage {
        * &#64;ref sptToClient
        * </pre>
        *
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public int getWhat() {
         return what_;
@@ -58494,10 +59034,10 @@ public final class ProtoMessage {
        * &#64;ref sptToClient
        * </pre>
        *
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public Builder setWhat(int value) {
-
+        
         what_ = value;
         onChanged();
         return this;
@@ -58507,10 +59047,10 @@ public final class ProtoMessage {
        * &#64;ref sptToClient
        * </pre>
        *
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public Builder clearWhat() {
-
+        
         what_ = 0;
         onChanged();
         return this;
@@ -58518,7 +59058,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phone_ = "";
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public java.lang.String getPhone() {
         java.lang.Object ref = phone_;
@@ -58533,13 +59073,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneBytes() {
         java.lang.Object ref = phone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phone_ = b;
@@ -58549,29 +59089,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder setPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phone_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder clearPhone() {
-
+        
         phone_ = getDefaultInstance().getPhone();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder setPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -58579,7 +59119,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phone_ = value;
         onChanged();
         return this;
@@ -58587,25 +59127,25 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>optional int64 userID = 4;</code>
+       * <code>int64 userID = 4;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>optional int64 userID = 4;</code>
+       * <code>int64 userID = 4;</code>
        */
       public Builder setUserID(long value) {
-
+        
         userID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 userID = 4;</code>
+       * <code>int64 userID = 4;</code>
        */
       public Builder clearUserID() {
-
+        
         userID_ = 0L;
         onChanged();
         return this;
@@ -58613,25 +59153,25 @@ public final class ProtoMessage {
 
       private int apptype_ ;
       /**
-       * <code>optional int32 apptype = 5;</code>
+       * <code>int32 apptype = 5;</code>
        */
       public int getApptype() {
         return apptype_;
       }
       /**
-       * <code>optional int32 apptype = 5;</code>
+       * <code>int32 apptype = 5;</code>
        */
       public Builder setApptype(int value) {
-
+        
         apptype_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 apptype = 5;</code>
+       * <code>int32 apptype = 5;</code>
        */
       public Builder clearApptype() {
-
+        
         apptype_ = 0;
         onChanged();
         return this;
@@ -58643,7 +59183,7 @@ public final class ProtoMessage {
        * 发给客户端的消息
        * </pre>
        *
-       * <code>optional bytes msg = 6;</code>
+       * <code>bytes msg = 6;</code>
        */
       public com.google.protobuf.ByteString getMsg() {
         return msg_;
@@ -58653,13 +59193,13 @@ public final class ProtoMessage {
        * 发给客户端的消息
        * </pre>
        *
-       * <code>optional bytes msg = 6;</code>
+       * <code>bytes msg = 6;</code>
        */
       public Builder setMsg(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         msg_ = value;
         onChanged();
         return this;
@@ -58669,10 +59209,10 @@ public final class ProtoMessage {
        * 发给客户端的消息
        * </pre>
        *
-       * <code>optional bytes msg = 6;</code>
+       * <code>bytes msg = 6;</code>
        */
       public Builder clearMsg() {
-
+        
         msg_ = getDefaultInstance().getMsg();
         onChanged();
         return this;
@@ -58683,7 +59223,7 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>optional int64 userID2 = 7;</code>
+       * <code>int64 userID2 = 7;</code>
        */
       public long getUserID2() {
         return userID2_;
@@ -58692,10 +59232,10 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>optional int64 userID2 = 7;</code>
+       * <code>int64 userID2 = 7;</code>
        */
       public Builder setUserID2(long value) {
-
+        
         userID2_ = value;
         onChanged();
         return this;
@@ -58704,10 +59244,10 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>optional int64 userID2 = 7;</code>
+       * <code>int64 userID2 = 7;</code>
        */
       public Builder clearUserID2() {
-
+        
         userID2_ = 0L;
         onChanged();
         return this;
@@ -58715,7 +59255,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phone2_ = "";
       /**
-       * <code>optional string phone2 = 8;</code>
+       * <code>string phone2 = 8;</code>
        */
       public java.lang.String getPhone2() {
         java.lang.Object ref = phone2_;
@@ -58730,13 +59270,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phone2 = 8;</code>
+       * <code>string phone2 = 8;</code>
        */
       public com.google.protobuf.ByteString
           getPhone2Bytes() {
         java.lang.Object ref = phone2_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phone2_ = b;
@@ -58746,29 +59286,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phone2 = 8;</code>
+       * <code>string phone2 = 8;</code>
        */
       public Builder setPhone2(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phone2_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phone2 = 8;</code>
+       * <code>string phone2 = 8;</code>
        */
       public Builder clearPhone2() {
-
+        
         phone2_ = getDefaultInstance().getPhone2();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phone2 = 8;</code>
+       * <code>string phone2 = 8;</code>
        */
       public Builder setPhone2Bytes(
           com.google.protobuf.ByteString value) {
@@ -58776,7 +59316,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phone2_ = value;
         onChanged();
         return this;
@@ -58784,7 +59324,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carID_ = "";
       /**
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -58799,13 +59339,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
         java.lang.Object ref = carID_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carID_ = b;
@@ -58815,29 +59355,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public Builder clearCarID() {
-
+        
         carID_ = getDefaultInstance().getCarID();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string carID = 9;</code>
+       * <code>string carID = 9;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -58845,7 +59385,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carID_ = value;
         onChanged();
         return this;
@@ -58857,7 +59397,7 @@ public final class ProtoMessage {
        * 车机二维码临时token
        * </pre>
        *
-       * <code>optional string tempToken = 10;</code>
+       * <code>string tempToken = 10;</code>
        */
       public java.lang.String getTempToken() {
         java.lang.Object ref = tempToken_;
@@ -58876,13 +59416,13 @@ public final class ProtoMessage {
        * 车机二维码临时token
        * </pre>
        *
-       * <code>optional string tempToken = 10;</code>
+       * <code>string tempToken = 10;</code>
        */
       public com.google.protobuf.ByteString
           getTempTokenBytes() {
         java.lang.Object ref = tempToken_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           tempToken_ = b;
@@ -58896,14 +59436,14 @@ public final class ProtoMessage {
        * 车机二维码临时token
        * </pre>
        *
-       * <code>optional string tempToken = 10;</code>
+       * <code>string tempToken = 10;</code>
        */
       public Builder setTempToken(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         tempToken_ = value;
         onChanged();
         return this;
@@ -58913,10 +59453,10 @@ public final class ProtoMessage {
        * 车机二维码临时token
        * </pre>
        *
-       * <code>optional string tempToken = 10;</code>
+       * <code>string tempToken = 10;</code>
        */
       public Builder clearTempToken() {
-
+        
         tempToken_ = getDefaultInstance().getTempToken();
         onChanged();
         return this;
@@ -58926,7 +59466,7 @@ public final class ProtoMessage {
        * 车机二维码临时token
        * </pre>
        *
-       * <code>optional string tempToken = 10;</code>
+       * <code>string tempToken = 10;</code>
        */
       public Builder setTempTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -58934,7 +59474,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         tempToken_ = value;
         onChanged();
         return this;
@@ -58946,7 +59486,7 @@ public final class ProtoMessage {
        * 车机登录的Token
        * </pre>
        *
-       * <code>optional string carLoginToken = 11;</code>
+       * <code>string carLoginToken = 11;</code>
        */
       public java.lang.String getCarLoginToken() {
         java.lang.Object ref = carLoginToken_;
@@ -58965,13 +59505,13 @@ public final class ProtoMessage {
        * 车机登录的Token
        * </pre>
        *
-       * <code>optional string carLoginToken = 11;</code>
+       * <code>string carLoginToken = 11;</code>
        */
       public com.google.protobuf.ByteString
           getCarLoginTokenBytes() {
         java.lang.Object ref = carLoginToken_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carLoginToken_ = b;
@@ -58985,14 +59525,14 @@ public final class ProtoMessage {
        * 车机登录的Token
        * </pre>
        *
-       * <code>optional string carLoginToken = 11;</code>
+       * <code>string carLoginToken = 11;</code>
        */
       public Builder setCarLoginToken(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carLoginToken_ = value;
         onChanged();
         return this;
@@ -59002,10 +59542,10 @@ public final class ProtoMessage {
        * 车机登录的Token
        * </pre>
        *
-       * <code>optional string carLoginToken = 11;</code>
+       * <code>string carLoginToken = 11;</code>
        */
       public Builder clearCarLoginToken() {
-
+        
         carLoginToken_ = getDefaultInstance().getCarLoginToken();
         onChanged();
         return this;
@@ -59015,7 +59555,7 @@ public final class ProtoMessage {
        * 车机登录的Token
        * </pre>
        *
-       * <code>optional string carLoginToken = 11;</code>
+       * <code>string carLoginToken = 11;</code>
        */
       public Builder setCarLoginTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -59023,7 +59563,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carLoginToken_ = value;
         onChanged();
         return this;
@@ -59082,22 +59622,22 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     java.lang.String getIp();
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     com.google.protobuf.ByteString
         getIpBytes();
 
     /**
-     * <code>optional int32 port = 2;</code>
+     * <code>int32 port = 2;</code>
      */
     int getPort();
 
     /**
-     * <code>optional int32 appType = 3;</code>
+     * <code>int32 appType = 3;</code>
      */
     int getAppType();
   }
@@ -59185,14 +59725,14 @@ public final class ProtoMessage {
     public static final int IP_FIELD_NUMBER = 1;
     private volatile java.lang.Object ip_;
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     public java.lang.String getIp() {
       java.lang.Object ref = ip_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         ip_ = s;
@@ -59200,13 +59740,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIpBytes() {
       java.lang.Object ref = ip_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         ip_ = b;
@@ -59219,7 +59759,7 @@ public final class ProtoMessage {
     public static final int PORT_FIELD_NUMBER = 2;
     private int port_;
     /**
-     * <code>optional int32 port = 2;</code>
+     * <code>int32 port = 2;</code>
      */
     public int getPort() {
       return port_;
@@ -59228,7 +59768,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 3;
     private int appType_;
     /**
-     * <code>optional int32 appType = 3;</code>
+     * <code>int32 appType = 3;</code>
      */
     public int getAppType() {
       return appType_;
@@ -59304,7 +59844,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + IP_FIELD_NUMBER;
       hash = (53 * hash) + getIp().hashCode();
       hash = (37 * hash) + PORT_FIELD_NUMBER;
@@ -59539,7 +60079,7 @@ public final class ProtoMessage {
 
       private java.lang.Object ip_ = "";
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public java.lang.String getIp() {
         java.lang.Object ref = ip_;
@@ -59554,13 +60094,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIpBytes() {
         java.lang.Object ref = ip_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           ip_ = b;
@@ -59570,29 +60110,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public Builder setIp(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         ip_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public Builder clearIp() {
-
+        
         ip_ = getDefaultInstance().getIp();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public Builder setIpBytes(
           com.google.protobuf.ByteString value) {
@@ -59600,7 +60140,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         ip_ = value;
         onChanged();
         return this;
@@ -59608,25 +60148,25 @@ public final class ProtoMessage {
 
       private int port_ ;
       /**
-       * <code>optional int32 port = 2;</code>
+       * <code>int32 port = 2;</code>
        */
       public int getPort() {
         return port_;
       }
       /**
-       * <code>optional int32 port = 2;</code>
+       * <code>int32 port = 2;</code>
        */
       public Builder setPort(int value) {
-
+        
         port_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 port = 2;</code>
+       * <code>int32 port = 2;</code>
        */
       public Builder clearPort() {
-
+        
         port_ = 0;
         onChanged();
         return this;
@@ -59634,25 +60174,25 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>optional int32 appType = 3;</code>
+       * <code>int32 appType = 3;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>optional int32 appType = 3;</code>
+       * <code>int32 appType = 3;</code>
        */
       public Builder setAppType(int value) {
-
+        
         appType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 appType = 3;</code>
+       * <code>int32 appType = 3;</code>
        */
       public Builder clearAppType() {
-
+        
         appType_ = 0;
         onChanged();
         return this;
@@ -59711,12 +60251,12 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int64 userID = 1;</code>
+     * <code>int64 userID = 1;</code>
      */
     long getUserID();
 
     /**
-     * <code>optional int32 appType = 2;</code>
+     * <code>int32 appType = 2;</code>
      */
     int getAppType();
   }
@@ -59797,7 +60337,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 1;
     private long userID_;
     /**
-     * <code>optional int64 userID = 1;</code>
+     * <code>int64 userID = 1;</code>
      */
     public long getUserID() {
       return userID_;
@@ -59806,7 +60346,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 2;
     private int appType_;
     /**
-     * <code>optional int32 appType = 2;</code>
+     * <code>int32 appType = 2;</code>
      */
     public int getAppType() {
       return appType_;
@@ -59874,7 +60414,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + USERID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getUserID());
@@ -60101,25 +60641,25 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>optional int64 userID = 1;</code>
+       * <code>int64 userID = 1;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>optional int64 userID = 1;</code>
+       * <code>int64 userID = 1;</code>
        */
       public Builder setUserID(long value) {
-
+        
         userID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 userID = 1;</code>
+       * <code>int64 userID = 1;</code>
        */
       public Builder clearUserID() {
-
+        
         userID_ = 0L;
         onChanged();
         return this;
@@ -60127,25 +60667,25 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>optional int32 appType = 2;</code>
+       * <code>int32 appType = 2;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>optional int32 appType = 2;</code>
+       * <code>int32 appType = 2;</code>
        */
       public Builder setAppType(int value) {
-
+        
         appType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 appType = 2;</code>
+       * <code>int32 appType = 2;</code>
        */
       public Builder clearAppType() {
-
+        
         appType_ = 0;
         onChanged();
         return this;
@@ -60204,24 +60744,24 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     java.lang.String getIp();
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     com.google.protobuf.ByteString
         getIpBytes();
 
     /**
-     * <code>optional int32 port = 2;</code>
+     * <code>int32 port = 2;</code>
      */
     int getPort();
 
     /**
      * <code>repeated .UserAppType users = 3;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.UserAppType>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.UserAppType> 
         getUsersList();
     /**
      * <code>repeated .UserAppType users = 3;</code>
@@ -60234,7 +60774,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .UserAppType users = 3;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserAppTypeOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserAppTypeOrBuilder> 
         getUsersOrBuilderList();
     /**
      * <code>repeated .UserAppType users = 3;</code>
@@ -60334,14 +60874,14 @@ public final class ProtoMessage {
     public static final int IP_FIELD_NUMBER = 1;
     private volatile java.lang.Object ip_;
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     public java.lang.String getIp() {
       java.lang.Object ref = ip_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         ip_ = s;
@@ -60349,13 +60889,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string ip = 1;</code>
+     * <code>string ip = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIpBytes() {
       java.lang.Object ref = ip_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         ip_ = b;
@@ -60368,7 +60908,7 @@ public final class ProtoMessage {
     public static final int PORT_FIELD_NUMBER = 2;
     private int port_;
     /**
-     * <code>optional int32 port = 2;</code>
+     * <code>int32 port = 2;</code>
      */
     public int getPort() {
       return port_;
@@ -60385,7 +60925,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .UserAppType users = 3;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserAppTypeOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserAppTypeOrBuilder> 
         getUsersOrBuilderList() {
       return users_;
     }
@@ -60479,7 +61019,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + IP_FIELD_NUMBER;
       hash = (53 * hash) + getIp().hashCode();
       hash = (37 * hash) + PORT_FIELD_NUMBER;
@@ -60719,7 +61259,7 @@ public final class ProtoMessage {
               usersBuilder_ = null;
               users_ = other.users_;
               bitField0_ = (bitField0_ & ~0x00000004);
-              usersBuilder_ =
+              usersBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getUsersFieldBuilder() : null;
             } else {
@@ -60756,7 +61296,7 @@ public final class ProtoMessage {
 
       private java.lang.Object ip_ = "";
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public java.lang.String getIp() {
         java.lang.Object ref = ip_;
@@ -60771,13 +61311,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIpBytes() {
         java.lang.Object ref = ip_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           ip_ = b;
@@ -60787,29 +61327,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public Builder setIp(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         ip_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public Builder clearIp() {
-
+        
         ip_ = getDefaultInstance().getIp();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string ip = 1;</code>
+       * <code>string ip = 1;</code>
        */
       public Builder setIpBytes(
           com.google.protobuf.ByteString value) {
@@ -60817,7 +61357,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         ip_ = value;
         onChanged();
         return this;
@@ -60825,25 +61365,25 @@ public final class ProtoMessage {
 
       private int port_ ;
       /**
-       * <code>optional int32 port = 2;</code>
+       * <code>int32 port = 2;</code>
        */
       public int getPort() {
         return port_;
       }
       /**
-       * <code>optional int32 port = 2;</code>
+       * <code>int32 port = 2;</code>
        */
       public Builder setPort(int value) {
-
+        
         port_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 port = 2;</code>
+       * <code>int32 port = 2;</code>
        */
       public Builder clearPort() {
-
+        
         port_ = 0;
         onChanged();
         return this;
@@ -61044,7 +61584,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .UserAppType users = 3;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserAppTypeOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.UserAppTypeOrBuilder> 
            getUsersOrBuilderList() {
         if (usersBuilder_ != null) {
           return usersBuilder_.getMessageOrBuilderList();
@@ -61070,12 +61610,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .UserAppType users = 3;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.UserAppType.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.UserAppType.Builder> 
            getUsersBuilderList() {
         return getUsersFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.UserAppType, com.example.jrd48.service.proto_gen.ProtoMessage.UserAppType.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.UserAppTypeOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.UserAppType, com.example.jrd48.service.proto_gen.ProtoMessage.UserAppType.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.UserAppTypeOrBuilder> 
           getUsersFieldBuilder() {
         if (usersBuilder_ == null) {
           usersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -61142,7 +61682,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -61151,27 +61691,27 @@ public final class ProtoMessage {
      * MsgSessionReqWhat
      * </pre>
      *
-     * <code>optional int32 what = 2;</code>
+     * <code>int32 what = 2;</code>
      */
     int getWhat();
 
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     java.lang.String getPhone();
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneBytes();
 
     /**
-     * <code>optional int64 userID = 4;</code>
+     * <code>int64 userID = 4;</code>
      */
     long getUserID();
 
     /**
-     * <code>optional int32 appType = 5;</code>
+     * <code>int32 appType = 5;</code>
      */
     int getAppType();
 
@@ -61182,7 +61722,7 @@ public final class ProtoMessage {
      *
      * <code>repeated .MsgLoginAddr pullAddr = 6;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddr>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddr> 
         getPullAddrList();
     /**
      * <pre>
@@ -61207,7 +61747,7 @@ public final class ProtoMessage {
      *
      * <code>repeated .MsgLoginAddr pullAddr = 6;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddrOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddrOrBuilder> 
         getPullAddrOrBuilderList();
     /**
      * <pre>
@@ -61222,7 +61762,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .WatcherList watcherList = 7;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.WatcherList>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.WatcherList> 
         getWatcherListList();
     /**
      * <code>repeated .WatcherList watcherList = 7;</code>
@@ -61235,7 +61775,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .WatcherList watcherList = 7;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.WatcherListOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.WatcherListOrBuilder> 
         getWatcherListOrBuilderList();
     /**
      * <code>repeated .WatcherList watcherList = 7;</code>
@@ -61244,11 +61784,11 @@ public final class ProtoMessage {
         int index);
 
     /**
-     * <code>optional string carID = 8;</code>
+     * <code>string carID = 8;</code>
      */
     java.lang.String getCarID();
     /**
-     * <code>optional string carID = 8;</code>
+     * <code>string carID = 8;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -61258,7 +61798,7 @@ public final class ProtoMessage {
      * 车机二维码所使用的临时串
      * </pre>
      *
-     * <code>optional string tempToken = 9;</code>
+     * <code>string tempToken = 9;</code>
      */
     java.lang.String getTempToken();
     /**
@@ -61266,7 +61806,7 @@ public final class ProtoMessage {
      * 车机二维码所使用的临时串
      * </pre>
      *
-     * <code>optional string tempToken = 9;</code>
+     * <code>string tempToken = 9;</code>
      */
     com.google.protobuf.ByteString
         getTempTokenBytes();
@@ -61408,7 +61948,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -61421,7 +61961,7 @@ public final class ProtoMessage {
      * MsgSessionReqWhat
      * </pre>
      *
-     * <code>optional int32 what = 2;</code>
+     * <code>int32 what = 2;</code>
      */
     public int getWhat() {
       return what_;
@@ -61430,14 +61970,14 @@ public final class ProtoMessage {
     public static final int PHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object phone_;
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     public java.lang.String getPhone() {
       java.lang.Object ref = phone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phone_ = s;
@@ -61445,13 +61985,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phone = 3;</code>
+     * <code>string phone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneBytes() {
       java.lang.Object ref = phone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phone_ = b;
@@ -61464,7 +62004,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 4;
     private long userID_;
     /**
-     * <code>optional int64 userID = 4;</code>
+     * <code>int64 userID = 4;</code>
      */
     public long getUserID() {
       return userID_;
@@ -61473,7 +62013,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 5;
     private int appType_;
     /**
-     * <code>optional int32 appType = 5;</code>
+     * <code>int32 appType = 5;</code>
      */
     public int getAppType() {
       return appType_;
@@ -61498,7 +62038,7 @@ public final class ProtoMessage {
      *
      * <code>repeated .MsgLoginAddr pullAddr = 6;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddrOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddrOrBuilder> 
         getPullAddrOrBuilderList() {
       return pullAddr_;
     }
@@ -61545,7 +62085,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .WatcherList watcherList = 7;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.WatcherListOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.WatcherListOrBuilder> 
         getWatcherListOrBuilderList() {
       return watcherList_;
     }
@@ -61572,14 +62112,14 @@ public final class ProtoMessage {
     public static final int CARID_FIELD_NUMBER = 8;
     private volatile java.lang.Object carID_;
     /**
-     * <code>optional string carID = 8;</code>
+     * <code>string carID = 8;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         carID_ = s;
@@ -61587,13 +62127,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string carID = 8;</code>
+     * <code>string carID = 8;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
       java.lang.Object ref = carID_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         carID_ = b;
@@ -61610,14 +62150,14 @@ public final class ProtoMessage {
      * 车机二维码所使用的临时串
      * </pre>
      *
-     * <code>optional string tempToken = 9;</code>
+     * <code>string tempToken = 9;</code>
      */
     public java.lang.String getTempToken() {
       java.lang.Object ref = tempToken_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         tempToken_ = s;
@@ -61629,13 +62169,13 @@ public final class ProtoMessage {
      * 车机二维码所使用的临时串
      * </pre>
      *
-     * <code>optional string tempToken = 9;</code>
+     * <code>string tempToken = 9;</code>
      */
     public com.google.protobuf.ByteString
         getTempTokenBytes() {
       java.lang.Object ref = tempToken_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         tempToken_ = b;
@@ -61767,7 +62307,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + WHAT_FIELD_NUMBER;
@@ -62062,7 +62602,7 @@ public final class ProtoMessage {
               pullAddrBuilder_ = null;
               pullAddr_ = other.pullAddr_;
               bitField0_ = (bitField0_ & ~0x00000020);
-              pullAddrBuilder_ =
+              pullAddrBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getPullAddrFieldBuilder() : null;
             } else {
@@ -62088,7 +62628,7 @@ public final class ProtoMessage {
               watcherListBuilder_ = null;
               watcherList_ = other.watcherList_;
               bitField0_ = (bitField0_ & ~0x00000040);
-              watcherListBuilder_ =
+              watcherListBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getWatcherListFieldBuilder() : null;
             } else {
@@ -62133,25 +62673,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -62163,7 +62703,7 @@ public final class ProtoMessage {
        * MsgSessionReqWhat
        * </pre>
        *
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public int getWhat() {
         return what_;
@@ -62173,10 +62713,10 @@ public final class ProtoMessage {
        * MsgSessionReqWhat
        * </pre>
        *
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public Builder setWhat(int value) {
-
+        
         what_ = value;
         onChanged();
         return this;
@@ -62186,10 +62726,10 @@ public final class ProtoMessage {
        * MsgSessionReqWhat
        * </pre>
        *
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public Builder clearWhat() {
-
+        
         what_ = 0;
         onChanged();
         return this;
@@ -62197,7 +62737,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phone_ = "";
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public java.lang.String getPhone() {
         java.lang.Object ref = phone_;
@@ -62212,13 +62752,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneBytes() {
         java.lang.Object ref = phone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phone_ = b;
@@ -62228,29 +62768,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder setPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phone_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder clearPhone() {
-
+        
         phone_ = getDefaultInstance().getPhone();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phone = 3;</code>
+       * <code>string phone = 3;</code>
        */
       public Builder setPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -62258,7 +62798,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phone_ = value;
         onChanged();
         return this;
@@ -62266,25 +62806,25 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>optional int64 userID = 4;</code>
+       * <code>int64 userID = 4;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>optional int64 userID = 4;</code>
+       * <code>int64 userID = 4;</code>
        */
       public Builder setUserID(long value) {
-
+        
         userID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 userID = 4;</code>
+       * <code>int64 userID = 4;</code>
        */
       public Builder clearUserID() {
-
+        
         userID_ = 0L;
         onChanged();
         return this;
@@ -62292,25 +62832,25 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>optional int32 appType = 5;</code>
+       * <code>int32 appType = 5;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>optional int32 appType = 5;</code>
+       * <code>int32 appType = 5;</code>
        */
       public Builder setAppType(int value) {
-
+        
         appType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 appType = 5;</code>
+       * <code>int32 appType = 5;</code>
        */
       public Builder clearAppType() {
-
+        
         appType_ = 0;
         onChanged();
         return this;
@@ -62571,7 +63111,7 @@ public final class ProtoMessage {
        *
        * <code>repeated .MsgLoginAddr pullAddr = 6;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddrOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddrOrBuilder> 
            getPullAddrOrBuilderList() {
         if (pullAddrBuilder_ != null) {
           return pullAddrBuilder_.getMessageOrBuilderList();
@@ -62609,12 +63149,12 @@ public final class ProtoMessage {
        *
        * <code>repeated .MsgLoginAddr pullAddr = 6;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddr.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddr.Builder> 
            getPullAddrBuilderList() {
         return getPullAddrFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddr, com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddr.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddrOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddr, com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddr.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgLoginAddrOrBuilder> 
           getPullAddrFieldBuilder() {
         if (pullAddrBuilder_ == null) {
           pullAddrBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -62823,7 +63363,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .WatcherList watcherList = 7;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.WatcherListOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.WatcherListOrBuilder> 
            getWatcherListOrBuilderList() {
         if (watcherListBuilder_ != null) {
           return watcherListBuilder_.getMessageOrBuilderList();
@@ -62849,12 +63389,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .WatcherList watcherList = 7;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.WatcherList.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.WatcherList.Builder> 
            getWatcherListBuilderList() {
         return getWatcherListFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.WatcherList, com.example.jrd48.service.proto_gen.ProtoMessage.WatcherList.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.WatcherListOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.WatcherList, com.example.jrd48.service.proto_gen.ProtoMessage.WatcherList.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.WatcherListOrBuilder> 
           getWatcherListFieldBuilder() {
         if (watcherListBuilder_ == null) {
           watcherListBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -62870,7 +63410,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carID_ = "";
       /**
-       * <code>optional string carID = 8;</code>
+       * <code>string carID = 8;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -62885,13 +63425,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string carID = 8;</code>
+       * <code>string carID = 8;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
         java.lang.Object ref = carID_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           carID_ = b;
@@ -62901,29 +63441,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string carID = 8;</code>
+       * <code>string carID = 8;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         carID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string carID = 8;</code>
+       * <code>string carID = 8;</code>
        */
       public Builder clearCarID() {
-
+        
         carID_ = getDefaultInstance().getCarID();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string carID = 8;</code>
+       * <code>string carID = 8;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -62931,7 +63471,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         carID_ = value;
         onChanged();
         return this;
@@ -62943,7 +63483,7 @@ public final class ProtoMessage {
        * 车机二维码所使用的临时串
        * </pre>
        *
-       * <code>optional string tempToken = 9;</code>
+       * <code>string tempToken = 9;</code>
        */
       public java.lang.String getTempToken() {
         java.lang.Object ref = tempToken_;
@@ -62962,13 +63502,13 @@ public final class ProtoMessage {
        * 车机二维码所使用的临时串
        * </pre>
        *
-       * <code>optional string tempToken = 9;</code>
+       * <code>string tempToken = 9;</code>
        */
       public com.google.protobuf.ByteString
           getTempTokenBytes() {
         java.lang.Object ref = tempToken_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           tempToken_ = b;
@@ -62982,14 +63522,14 @@ public final class ProtoMessage {
        * 车机二维码所使用的临时串
        * </pre>
        *
-       * <code>optional string tempToken = 9;</code>
+       * <code>string tempToken = 9;</code>
        */
       public Builder setTempToken(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         tempToken_ = value;
         onChanged();
         return this;
@@ -62999,10 +63539,10 @@ public final class ProtoMessage {
        * 车机二维码所使用的临时串
        * </pre>
        *
-       * <code>optional string tempToken = 9;</code>
+       * <code>string tempToken = 9;</code>
        */
       public Builder clearTempToken() {
-
+        
         tempToken_ = getDefaultInstance().getTempToken();
         onChanged();
         return this;
@@ -63012,7 +63552,7 @@ public final class ProtoMessage {
        * 车机二维码所使用的临时串
        * </pre>
        *
-       * <code>optional string tempToken = 9;</code>
+       * <code>string tempToken = 9;</code>
        */
       public Builder setTempTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -63020,7 +63560,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         tempToken_ = value;
         onChanged();
         return this;
@@ -63079,7 +63619,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -63088,22 +63628,22 @@ public final class ProtoMessage {
      * 命令号
      * </pre>
      *
-     * <code>optional int32 what = 2;</code>
+     * <code>int32 what = 2;</code>
      */
     int getWhat();
 
     /**
-     * <code>optional string roomip = 3;</code>
+     * <code>string roomip = 3;</code>
      */
     java.lang.String getRoomip();
     /**
-     * <code>optional string roomip = 3;</code>
+     * <code>string roomip = 3;</code>
      */
     com.google.protobuf.ByteString
         getRoomipBytes();
 
     /**
-     * <code>optional int32 roomport = 4;</code>
+     * <code>int32 roomport = 4;</code>
      */
     int getRoomport();
 
@@ -63112,7 +63652,7 @@ public final class ProtoMessage {
      * 发起者
      * </pre>
      *
-     * <code>optional int64 userID = 5;</code>
+     * <code>int64 userID = 5;</code>
      */
     long getUserID();
 
@@ -63121,7 +63661,7 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>optional int64 userID2 = 6;</code>
+     * <code>int64 userID2 = 6;</code>
      */
     long getUserID2();
 
@@ -63130,7 +63670,7 @@ public final class ProtoMessage {
      * 单呼是为0
      * </pre>
      *
-     * <code>optional int64 teamID = 7;</code>
+     * <code>int64 teamID = 7;</code>
      */
     long getTeamID();
 
@@ -63139,7 +63679,7 @@ public final class ProtoMessage {
      * 对应 userID2
      * </pre>
      *
-     * <code>optional int32 enterType = 8;</code>
+     * <code>int32 enterType = 8;</code>
      */
     int getEnterType();
 
@@ -63148,7 +63688,7 @@ public final class ProtoMessage {
      * 新的话权
      * </pre>
      *
-     * <code>optional int32 memberPriority = 9;</code>
+     * <code>int32 memberPriority = 9;</code>
      */
     int getMemberPriority();
 
@@ -63157,7 +63697,7 @@ public final class ProtoMessage {
      * 和 userid2 对应的 phone
      * </pre>
      *
-     * <code>optional string phoneNum2 = 10;</code>
+     * <code>string phoneNum2 = 10;</code>
      */
     java.lang.String getPhoneNum2();
     /**
@@ -63165,14 +63705,14 @@ public final class ProtoMessage {
      * 和 userid2 对应的 phone
      * </pre>
      *
-     * <code>optional string phoneNum2 = 10;</code>
+     * <code>string phoneNum2 = 10;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNum2Bytes();
   }
   /**
    * <pre>
-   ** Session 或 Room向 RoomIndex服务器汇报或推送消息
+   ** Session 或 Room向 RoomIndex服务器汇报或推送消息 
    * </pre>
    *
    * Protobuf type {@code MsgRoomIndexPull}
@@ -63301,7 +63841,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -63314,7 +63854,7 @@ public final class ProtoMessage {
      * 命令号
      * </pre>
      *
-     * <code>optional int32 what = 2;</code>
+     * <code>int32 what = 2;</code>
      */
     public int getWhat() {
       return what_;
@@ -63323,14 +63863,14 @@ public final class ProtoMessage {
     public static final int ROOMIP_FIELD_NUMBER = 3;
     private volatile java.lang.Object roomip_;
     /**
-     * <code>optional string roomip = 3;</code>
+     * <code>string roomip = 3;</code>
      */
     public java.lang.String getRoomip() {
       java.lang.Object ref = roomip_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         roomip_ = s;
@@ -63338,13 +63878,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string roomip = 3;</code>
+     * <code>string roomip = 3;</code>
      */
     public com.google.protobuf.ByteString
         getRoomipBytes() {
       java.lang.Object ref = roomip_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         roomip_ = b;
@@ -63357,7 +63897,7 @@ public final class ProtoMessage {
     public static final int ROOMPORT_FIELD_NUMBER = 4;
     private int roomport_;
     /**
-     * <code>optional int32 roomport = 4;</code>
+     * <code>int32 roomport = 4;</code>
      */
     public int getRoomport() {
       return roomport_;
@@ -63370,7 +63910,7 @@ public final class ProtoMessage {
      * 发起者
      * </pre>
      *
-     * <code>optional int64 userID = 5;</code>
+     * <code>int64 userID = 5;</code>
      */
     public long getUserID() {
       return userID_;
@@ -63383,7 +63923,7 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>optional int64 userID2 = 6;</code>
+     * <code>int64 userID2 = 6;</code>
      */
     public long getUserID2() {
       return userID2_;
@@ -63396,7 +63936,7 @@ public final class ProtoMessage {
      * 单呼是为0
      * </pre>
      *
-     * <code>optional int64 teamID = 7;</code>
+     * <code>int64 teamID = 7;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -63409,7 +63949,7 @@ public final class ProtoMessage {
      * 对应 userID2
      * </pre>
      *
-     * <code>optional int32 enterType = 8;</code>
+     * <code>int32 enterType = 8;</code>
      */
     public int getEnterType() {
       return enterType_;
@@ -63422,7 +63962,7 @@ public final class ProtoMessage {
      * 新的话权
      * </pre>
      *
-     * <code>optional int32 memberPriority = 9;</code>
+     * <code>int32 memberPriority = 9;</code>
      */
     public int getMemberPriority() {
       return memberPriority_;
@@ -63435,14 +63975,14 @@ public final class ProtoMessage {
      * 和 userid2 对应的 phone
      * </pre>
      *
-     * <code>optional string phoneNum2 = 10;</code>
+     * <code>string phoneNum2 = 10;</code>
      */
     public java.lang.String getPhoneNum2() {
       java.lang.Object ref = phoneNum2_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum2_ = s;
@@ -63454,13 +63994,13 @@ public final class ProtoMessage {
      * 和 userid2 对应的 phone
      * </pre>
      *
-     * <code>optional string phoneNum2 = 10;</code>
+     * <code>string phoneNum2 = 10;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNum2Bytes() {
       java.lang.Object ref = phoneNum2_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum2_ = b;
@@ -63602,7 +64142,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + WHAT_FIELD_NUMBER;
@@ -63710,7 +64250,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** Session 或 Room向 RoomIndex服务器汇报或推送消息
+     ** Session 或 Room向 RoomIndex服务器汇报或推送消息 
      * </pre>
      *
      * Protobuf type {@code MsgRoomIndexPull}
@@ -63901,25 +64441,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -63931,7 +64471,7 @@ public final class ProtoMessage {
        * 命令号
        * </pre>
        *
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public int getWhat() {
         return what_;
@@ -63941,10 +64481,10 @@ public final class ProtoMessage {
        * 命令号
        * </pre>
        *
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public Builder setWhat(int value) {
-
+        
         what_ = value;
         onChanged();
         return this;
@@ -63954,10 +64494,10 @@ public final class ProtoMessage {
        * 命令号
        * </pre>
        *
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public Builder clearWhat() {
-
+        
         what_ = 0;
         onChanged();
         return this;
@@ -63965,7 +64505,7 @@ public final class ProtoMessage {
 
       private java.lang.Object roomip_ = "";
       /**
-       * <code>optional string roomip = 3;</code>
+       * <code>string roomip = 3;</code>
        */
       public java.lang.String getRoomip() {
         java.lang.Object ref = roomip_;
@@ -63980,13 +64520,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string roomip = 3;</code>
+       * <code>string roomip = 3;</code>
        */
       public com.google.protobuf.ByteString
           getRoomipBytes() {
         java.lang.Object ref = roomip_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           roomip_ = b;
@@ -63996,29 +64536,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string roomip = 3;</code>
+       * <code>string roomip = 3;</code>
        */
       public Builder setRoomip(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         roomip_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string roomip = 3;</code>
+       * <code>string roomip = 3;</code>
        */
       public Builder clearRoomip() {
-
+        
         roomip_ = getDefaultInstance().getRoomip();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string roomip = 3;</code>
+       * <code>string roomip = 3;</code>
        */
       public Builder setRoomipBytes(
           com.google.protobuf.ByteString value) {
@@ -64026,7 +64566,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         roomip_ = value;
         onChanged();
         return this;
@@ -64034,25 +64574,25 @@ public final class ProtoMessage {
 
       private int roomport_ ;
       /**
-       * <code>optional int32 roomport = 4;</code>
+       * <code>int32 roomport = 4;</code>
        */
       public int getRoomport() {
         return roomport_;
       }
       /**
-       * <code>optional int32 roomport = 4;</code>
+       * <code>int32 roomport = 4;</code>
        */
       public Builder setRoomport(int value) {
-
+        
         roomport_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 roomport = 4;</code>
+       * <code>int32 roomport = 4;</code>
        */
       public Builder clearRoomport() {
-
+        
         roomport_ = 0;
         onChanged();
         return this;
@@ -64064,7 +64604,7 @@ public final class ProtoMessage {
        * 发起者
        * </pre>
        *
-       * <code>optional int64 userID = 5;</code>
+       * <code>int64 userID = 5;</code>
        */
       public long getUserID() {
         return userID_;
@@ -64074,10 +64614,10 @@ public final class ProtoMessage {
        * 发起者
        * </pre>
        *
-       * <code>optional int64 userID = 5;</code>
+       * <code>int64 userID = 5;</code>
        */
       public Builder setUserID(long value) {
-
+        
         userID_ = value;
         onChanged();
         return this;
@@ -64087,10 +64627,10 @@ public final class ProtoMessage {
        * 发起者
        * </pre>
        *
-       * <code>optional int64 userID = 5;</code>
+       * <code>int64 userID = 5;</code>
        */
       public Builder clearUserID() {
-
+        
         userID_ = 0L;
         onChanged();
         return this;
@@ -64102,7 +64642,7 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>optional int64 userID2 = 6;</code>
+       * <code>int64 userID2 = 6;</code>
        */
       public long getUserID2() {
         return userID2_;
@@ -64112,10 +64652,10 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>optional int64 userID2 = 6;</code>
+       * <code>int64 userID2 = 6;</code>
        */
       public Builder setUserID2(long value) {
-
+        
         userID2_ = value;
         onChanged();
         return this;
@@ -64125,10 +64665,10 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>optional int64 userID2 = 6;</code>
+       * <code>int64 userID2 = 6;</code>
        */
       public Builder clearUserID2() {
-
+        
         userID2_ = 0L;
         onChanged();
         return this;
@@ -64140,7 +64680,7 @@ public final class ProtoMessage {
        * 单呼是为0
        * </pre>
        *
-       * <code>optional int64 teamID = 7;</code>
+       * <code>int64 teamID = 7;</code>
        */
       public long getTeamID() {
         return teamID_;
@@ -64150,10 +64690,10 @@ public final class ProtoMessage {
        * 单呼是为0
        * </pre>
        *
-       * <code>optional int64 teamID = 7;</code>
+       * <code>int64 teamID = 7;</code>
        */
       public Builder setTeamID(long value) {
-
+        
         teamID_ = value;
         onChanged();
         return this;
@@ -64163,10 +64703,10 @@ public final class ProtoMessage {
        * 单呼是为0
        * </pre>
        *
-       * <code>optional int64 teamID = 7;</code>
+       * <code>int64 teamID = 7;</code>
        */
       public Builder clearTeamID() {
-
+        
         teamID_ = 0L;
         onChanged();
         return this;
@@ -64178,7 +64718,7 @@ public final class ProtoMessage {
        * 对应 userID2
        * </pre>
        *
-       * <code>optional int32 enterType = 8;</code>
+       * <code>int32 enterType = 8;</code>
        */
       public int getEnterType() {
         return enterType_;
@@ -64188,10 +64728,10 @@ public final class ProtoMessage {
        * 对应 userID2
        * </pre>
        *
-       * <code>optional int32 enterType = 8;</code>
+       * <code>int32 enterType = 8;</code>
        */
       public Builder setEnterType(int value) {
-
+        
         enterType_ = value;
         onChanged();
         return this;
@@ -64201,10 +64741,10 @@ public final class ProtoMessage {
        * 对应 userID2
        * </pre>
        *
-       * <code>optional int32 enterType = 8;</code>
+       * <code>int32 enterType = 8;</code>
        */
       public Builder clearEnterType() {
-
+        
         enterType_ = 0;
         onChanged();
         return this;
@@ -64216,7 +64756,7 @@ public final class ProtoMessage {
        * 新的话权
        * </pre>
        *
-       * <code>optional int32 memberPriority = 9;</code>
+       * <code>int32 memberPriority = 9;</code>
        */
       public int getMemberPriority() {
         return memberPriority_;
@@ -64226,10 +64766,10 @@ public final class ProtoMessage {
        * 新的话权
        * </pre>
        *
-       * <code>optional int32 memberPriority = 9;</code>
+       * <code>int32 memberPriority = 9;</code>
        */
       public Builder setMemberPriority(int value) {
-
+        
         memberPriority_ = value;
         onChanged();
         return this;
@@ -64239,10 +64779,10 @@ public final class ProtoMessage {
        * 新的话权
        * </pre>
        *
-       * <code>optional int32 memberPriority = 9;</code>
+       * <code>int32 memberPriority = 9;</code>
        */
       public Builder clearMemberPriority() {
-
+        
         memberPriority_ = 0;
         onChanged();
         return this;
@@ -64254,7 +64794,7 @@ public final class ProtoMessage {
        * 和 userid2 对应的 phone
        * </pre>
        *
-       * <code>optional string phoneNum2 = 10;</code>
+       * <code>string phoneNum2 = 10;</code>
        */
       public java.lang.String getPhoneNum2() {
         java.lang.Object ref = phoneNum2_;
@@ -64273,13 +64813,13 @@ public final class ProtoMessage {
        * 和 userid2 对应的 phone
        * </pre>
        *
-       * <code>optional string phoneNum2 = 10;</code>
+       * <code>string phoneNum2 = 10;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNum2Bytes() {
         java.lang.Object ref = phoneNum2_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum2_ = b;
@@ -64293,14 +64833,14 @@ public final class ProtoMessage {
        * 和 userid2 对应的 phone
        * </pre>
        *
-       * <code>optional string phoneNum2 = 10;</code>
+       * <code>string phoneNum2 = 10;</code>
        */
       public Builder setPhoneNum2(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum2_ = value;
         onChanged();
         return this;
@@ -64310,10 +64850,10 @@ public final class ProtoMessage {
        * 和 userid2 对应的 phone
        * </pre>
        *
-       * <code>optional string phoneNum2 = 10;</code>
+       * <code>string phoneNum2 = 10;</code>
        */
       public Builder clearPhoneNum2() {
-
+        
         phoneNum2_ = getDefaultInstance().getPhoneNum2();
         onChanged();
         return this;
@@ -64323,7 +64863,7 @@ public final class ProtoMessage {
        * 和 userid2 对应的 phone
        * </pre>
        *
-       * <code>optional string phoneNum2 = 10;</code>
+       * <code>string phoneNum2 = 10;</code>
        */
       public Builder setPhoneNum2Bytes(
           com.google.protobuf.ByteString value) {
@@ -64331,7 +64871,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum2_ = value;
         onChanged();
         return this;
@@ -64390,30 +64930,30 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int32 what = 2;</code>
+     * <code>int32 what = 2;</code>
      */
     int getWhat();
 
     /**
-     * <code>optional int64 userID = 3;</code>
+     * <code>int64 userID = 3;</code>
      */
     long getUserID();
 
     /**
-     * <code>optional .LocationMsg location = 4;</code>
+     * <code>.LocationMsg location = 4;</code>
      */
     boolean hasLocation();
     /**
-     * <code>optional .LocationMsg location = 4;</code>
+     * <code>.LocationMsg location = 4;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg getLocation();
     /**
-     * <code>optional .LocationMsg location = 4;</code>
+     * <code>.LocationMsg location = 4;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder getLocationOrBuilder();
 
@@ -64433,7 +64973,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .LocationMsg result = 6;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg> 
         getResultList();
     /**
      * <code>repeated .LocationMsg result = 6;</code>
@@ -64446,7 +64986,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .LocationMsg result = 6;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
         getResultOrBuilderList();
     /**
      * <code>repeated .LocationMsg result = 6;</code>
@@ -64455,21 +64995,21 @@ public final class ProtoMessage {
         int index);
 
     /**
-     * <code>optional .MsgSearchAround search = 7;</code>
+     * <code>.MsgSearchAround search = 7;</code>
      */
     boolean hasSearch();
     /**
-     * <code>optional .MsgSearchAround search = 7;</code>
+     * <code>.MsgSearchAround search = 7;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround getSearch();
     /**
-     * <code>optional .MsgSearchAround search = 7;</code>
+     * <code>.MsgSearchAround search = 7;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAroundOrBuilder getSearchOrBuilder();
   }
   /**
    * <pre>
-   ** session -&gt; location
+   ** session -&gt; location 
    * </pre>
    *
    * Protobuf type {@code MsgSessionToLocation}
@@ -64619,7 +65159,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -64628,7 +65168,7 @@ public final class ProtoMessage {
     public static final int WHAT_FIELD_NUMBER = 2;
     private int what_;
     /**
-     * <code>optional int32 what = 2;</code>
+     * <code>int32 what = 2;</code>
      */
     public int getWhat() {
       return what_;
@@ -64637,7 +65177,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 3;
     private long userID_;
     /**
-     * <code>optional int64 userID = 3;</code>
+     * <code>int64 userID = 3;</code>
      */
     public long getUserID() {
       return userID_;
@@ -64646,19 +65186,19 @@ public final class ProtoMessage {
     public static final int LOCATION_FIELD_NUMBER = 4;
     private com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg location_;
     /**
-     * <code>optional .LocationMsg location = 4;</code>
+     * <code>.LocationMsg location = 4;</code>
      */
     public boolean hasLocation() {
       return location_ != null;
     }
     /**
-     * <code>optional .LocationMsg location = 4;</code>
+     * <code>.LocationMsg location = 4;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg getLocation() {
       return location_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.getDefaultInstance() : location_;
     }
     /**
-     * <code>optional .LocationMsg location = 4;</code>
+     * <code>.LocationMsg location = 4;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder getLocationOrBuilder() {
       return getLocation();
@@ -64698,7 +65238,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .LocationMsg result = 6;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
         getResultOrBuilderList() {
       return result_;
     }
@@ -64725,19 +65265,19 @@ public final class ProtoMessage {
     public static final int SEARCH_FIELD_NUMBER = 7;
     private com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround search_;
     /**
-     * <code>optional .MsgSearchAround search = 7;</code>
+     * <code>.MsgSearchAround search = 7;</code>
      */
     public boolean hasSearch() {
       return search_ != null;
     }
     /**
-     * <code>optional .MsgSearchAround search = 7;</code>
+     * <code>.MsgSearchAround search = 7;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround getSearch() {
       return search_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround.getDefaultInstance() : search_;
     }
     /**
-     * <code>optional .MsgSearchAround search = 7;</code>
+     * <code>.MsgSearchAround search = 7;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAroundOrBuilder getSearchOrBuilder() {
       return getSearch();
@@ -64871,7 +65411,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + WHAT_FIELD_NUMBER;
@@ -64979,7 +65519,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** session -&gt; location
+     ** session -&gt; location 
      * </pre>
      *
      * Protobuf type {@code MsgSessionToLocation}
@@ -65177,7 +65717,7 @@ public final class ProtoMessage {
               resultBuilder_ = null;
               result_ = other.result_;
               bitField0_ = (bitField0_ & ~0x00000020);
-              resultBuilder_ =
+              resultBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getResultFieldBuilder() : null;
             } else {
@@ -65217,25 +65757,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -65243,25 +65783,25 @@ public final class ProtoMessage {
 
       private int what_ ;
       /**
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public int getWhat() {
         return what_;
       }
       /**
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public Builder setWhat(int value) {
-
+        
         what_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 what = 2;</code>
+       * <code>int32 what = 2;</code>
        */
       public Builder clearWhat() {
-
+        
         what_ = 0;
         onChanged();
         return this;
@@ -65269,25 +65809,25 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>optional int64 userID = 3;</code>
+       * <code>int64 userID = 3;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>optional int64 userID = 3;</code>
+       * <code>int64 userID = 3;</code>
        */
       public Builder setUserID(long value) {
-
+        
         userID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 userID = 3;</code>
+       * <code>int64 userID = 3;</code>
        */
       public Builder clearUserID() {
-
+        
         userID_ = 0L;
         onChanged();
         return this;
@@ -65297,13 +65837,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> locationBuilder_;
       /**
-       * <code>optional .LocationMsg location = 4;</code>
+       * <code>.LocationMsg location = 4;</code>
        */
       public boolean hasLocation() {
         return locationBuilder_ != null || location_ != null;
       }
       /**
-       * <code>optional .LocationMsg location = 4;</code>
+       * <code>.LocationMsg location = 4;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg getLocation() {
         if (locationBuilder_ == null) {
@@ -65313,7 +65853,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .LocationMsg location = 4;</code>
+       * <code>.LocationMsg location = 4;</code>
        */
       public Builder setLocation(com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg value) {
         if (locationBuilder_ == null) {
@@ -65329,7 +65869,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .LocationMsg location = 4;</code>
+       * <code>.LocationMsg location = 4;</code>
        */
       public Builder setLocation(
           com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder builderForValue) {
@@ -65343,7 +65883,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .LocationMsg location = 4;</code>
+       * <code>.LocationMsg location = 4;</code>
        */
       public Builder mergeLocation(com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg value) {
         if (locationBuilder_ == null) {
@@ -65361,7 +65901,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .LocationMsg location = 4;</code>
+       * <code>.LocationMsg location = 4;</code>
        */
       public Builder clearLocation() {
         if (locationBuilder_ == null) {
@@ -65375,15 +65915,15 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .LocationMsg location = 4;</code>
+       * <code>.LocationMsg location = 4;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder getLocationBuilder() {
-
+        
         onChanged();
         return getLocationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .LocationMsg location = 4;</code>
+       * <code>.LocationMsg location = 4;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder getLocationOrBuilder() {
         if (locationBuilder_ != null) {
@@ -65394,10 +65934,10 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .LocationMsg location = 4;</code>
+       * <code>.LocationMsg location = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
           getLocationFieldBuilder() {
         if (locationBuilder_ == null) {
           locationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -65671,7 +66211,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .LocationMsg result = 6;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
            getResultOrBuilderList() {
         if (resultBuilder_ != null) {
           return resultBuilder_.getMessageOrBuilderList();
@@ -65697,12 +66237,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .LocationMsg result = 6;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder> 
            getResultBuilderList() {
         return getResultFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
           getResultFieldBuilder() {
         if (resultBuilder_ == null) {
           resultBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -65720,13 +66260,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround, com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAroundOrBuilder> searchBuilder_;
       /**
-       * <code>optional .MsgSearchAround search = 7;</code>
+       * <code>.MsgSearchAround search = 7;</code>
        */
       public boolean hasSearch() {
         return searchBuilder_ != null || search_ != null;
       }
       /**
-       * <code>optional .MsgSearchAround search = 7;</code>
+       * <code>.MsgSearchAround search = 7;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround getSearch() {
         if (searchBuilder_ == null) {
@@ -65736,7 +66276,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .MsgSearchAround search = 7;</code>
+       * <code>.MsgSearchAround search = 7;</code>
        */
       public Builder setSearch(com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround value) {
         if (searchBuilder_ == null) {
@@ -65752,7 +66292,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgSearchAround search = 7;</code>
+       * <code>.MsgSearchAround search = 7;</code>
        */
       public Builder setSearch(
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround.Builder builderForValue) {
@@ -65766,7 +66306,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgSearchAround search = 7;</code>
+       * <code>.MsgSearchAround search = 7;</code>
        */
       public Builder mergeSearch(com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround value) {
         if (searchBuilder_ == null) {
@@ -65784,7 +66324,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgSearchAround search = 7;</code>
+       * <code>.MsgSearchAround search = 7;</code>
        */
       public Builder clearSearch() {
         if (searchBuilder_ == null) {
@@ -65798,15 +66338,15 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>optional .MsgSearchAround search = 7;</code>
+       * <code>.MsgSearchAround search = 7;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround.Builder getSearchBuilder() {
-
+        
         onChanged();
         return getSearchFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .MsgSearchAround search = 7;</code>
+       * <code>.MsgSearchAround search = 7;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAroundOrBuilder getSearchOrBuilder() {
         if (searchBuilder_ != null) {
@@ -65817,10 +66357,10 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional .MsgSearchAround search = 7;</code>
+       * <code>.MsgSearchAround search = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround, com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAroundOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround, com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAroundOrBuilder> 
           getSearchFieldBuilder() {
         if (searchBuilder_ == null) {
           searchBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -65886,17 +66426,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string phoneNum = 1;</code>
+     * <code>string phoneNum = 1;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 1;</code>
+     * <code>string phoneNum = 1;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>optional bool online = 2;</code>
+     * <code>bool online = 2;</code>
      */
     boolean getOnline();
   }
@@ -65978,14 +66518,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 1;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 1;</code>
+     * <code>string phoneNum = 1;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -65993,13 +66533,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 1;</code>
+     * <code>string phoneNum = 1;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -66012,7 +66552,7 @@ public final class ProtoMessage {
     public static final int ONLINE_FIELD_NUMBER = 2;
     private boolean online_;
     /**
-     * <code>optional bool online = 2;</code>
+     * <code>bool online = 2;</code>
      */
     public boolean getOnline() {
       return online_;
@@ -66079,7 +66619,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
       hash = (53 * hash) + getPhoneNum().hashCode();
       hash = (37 * hash) + ONLINE_FIELD_NUMBER;
@@ -66307,7 +66847,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 1;</code>
+       * <code>string phoneNum = 1;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -66322,13 +66862,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 1;</code>
+       * <code>string phoneNum = 1;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -66338,29 +66878,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 1;</code>
+       * <code>string phoneNum = 1;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 1;</code>
+       * <code>string phoneNum = 1;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 1;</code>
+       * <code>string phoneNum = 1;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -66368,7 +66908,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -66376,25 +66916,25 @@ public final class ProtoMessage {
 
       private boolean online_ ;
       /**
-       * <code>optional bool online = 2;</code>
+       * <code>bool online = 2;</code>
        */
       public boolean getOnline() {
         return online_;
       }
       /**
-       * <code>optional bool online = 2;</code>
+       * <code>bool online = 2;</code>
        */
       public Builder setOnline(boolean value) {
-
+        
         online_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bool online = 2;</code>
+       * <code>bool online = 2;</code>
        */
       public Builder clearOnline() {
-
+        
         online_ = false;
         onChanged();
         return this;
@@ -66453,14 +66993,14 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
      * <code>repeated .FriendStatus friends = 2;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatus>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatus> 
         getFriendsList();
     /**
      * <code>repeated .FriendStatus friends = 2;</code>
@@ -66473,7 +67013,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .FriendStatus friends = 2;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatusOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatusOrBuilder> 
         getFriendsOrBuilderList();
     /**
      * <code>repeated .FriendStatus friends = 2;</code>
@@ -66566,7 +67106,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -66583,7 +67123,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .FriendStatus friends = 2;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatusOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatusOrBuilder> 
         getFriendsOrBuilderList() {
       return friends_;
     }
@@ -66669,7 +67209,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getFriendsCount() > 0) {
@@ -66900,7 +67440,7 @@ public final class ProtoMessage {
               friendsBuilder_ = null;
               friends_ = other.friends_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              friendsBuilder_ =
+              friendsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getFriendsFieldBuilder() : null;
             } else {
@@ -66937,25 +67477,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -67156,7 +67696,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .FriendStatus friends = 2;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatusOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatusOrBuilder> 
            getFriendsOrBuilderList() {
         if (friendsBuilder_ != null) {
           return friendsBuilder_.getMessageOrBuilderList();
@@ -67182,12 +67722,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .FriendStatus friends = 2;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatus.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatus.Builder> 
            getFriendsBuilderList() {
         return getFriendsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatus, com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatus.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatusOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatus, com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatus.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.FriendStatusOrBuilder> 
           getFriendsFieldBuilder() {
         if (friendsBuilder_ == null) {
           friendsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -67254,17 +67794,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string phoneNum = 1;</code>
+     * <code>string phoneNum = 1;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 1;</code>
+     * <code>string phoneNum = 1;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>optional int32 locationCnt = 2;</code>
+     * <code>int32 locationCnt = 2;</code>
      */
     int getLocationCnt();
   }
@@ -67346,14 +67886,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 1;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 1;</code>
+     * <code>string phoneNum = 1;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -67361,13 +67901,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 1;</code>
+     * <code>string phoneNum = 1;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -67380,7 +67920,7 @@ public final class ProtoMessage {
     public static final int LOCATIONCNT_FIELD_NUMBER = 2;
     private int locationCnt_;
     /**
-     * <code>optional int32 locationCnt = 2;</code>
+     * <code>int32 locationCnt = 2;</code>
      */
     public int getLocationCnt() {
       return locationCnt_;
@@ -67447,7 +67987,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
       hash = (53 * hash) + getPhoneNum().hashCode();
       hash = (37 * hash) + LOCATIONCNT_FIELD_NUMBER;
@@ -67674,7 +68214,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 1;</code>
+       * <code>string phoneNum = 1;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -67689,13 +68229,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 1;</code>
+       * <code>string phoneNum = 1;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -67705,29 +68245,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 1;</code>
+       * <code>string phoneNum = 1;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 1;</code>
+       * <code>string phoneNum = 1;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 1;</code>
+       * <code>string phoneNum = 1;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -67735,7 +68275,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -67743,25 +68283,25 @@ public final class ProtoMessage {
 
       private int locationCnt_ ;
       /**
-       * <code>optional int32 locationCnt = 2;</code>
+       * <code>int32 locationCnt = 2;</code>
        */
       public int getLocationCnt() {
         return locationCnt_;
       }
       /**
-       * <code>optional int32 locationCnt = 2;</code>
+       * <code>int32 locationCnt = 2;</code>
        */
       public Builder setLocationCnt(int value) {
-
+        
         locationCnt_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 locationCnt = 2;</code>
+       * <code>int32 locationCnt = 2;</code>
        */
       public Builder clearLocationCnt() {
-
+        
         locationCnt_ = 0;
         onChanged();
         return this;
@@ -67820,17 +68360,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int64 fromTime = 2;</code>
+     * <code>int64 fromTime = 2;</code>
      */
     long getFromTime();
 
     /**
-     * <code>optional int64 toTime = 3;</code>
+     * <code>int64 toTime = 3;</code>
      */
     long getToTime();
 
@@ -67839,7 +68379,7 @@ public final class ProtoMessage {
      * 要查询谁，只能查询调度员管辖范围内的帐号
      * </pre>
      *
-     * <code>optional string phoneNum = 4;</code>
+     * <code>string phoneNum = 4;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -67847,7 +68387,7 @@ public final class ProtoMessage {
      * 要查询谁，只能查询调度员管辖范围内的帐号
      * </pre>
      *
-     * <code>optional string phoneNum = 4;</code>
+     * <code>string phoneNum = 4;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -67857,14 +68397,14 @@ public final class ProtoMessage {
      * 精度，单位米
      * </pre>
      *
-     * <code>optional int32 accuracy = 5;</code>
+     * <code>int32 accuracy = 5;</code>
      */
     int getAccuracy();
 
     /**
      * <code>repeated .LocationMsg result = 10;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg> 
         getResultList();
     /**
      * <code>repeated .LocationMsg result = 10;</code>
@@ -67877,7 +68417,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .LocationMsg result = 10;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
         getResultOrBuilderList();
     /**
      * <code>repeated .LocationMsg result = 10;</code>
@@ -67888,7 +68428,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .MsgLocationStatics statics = 11;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStatics>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStatics> 
         getStaticsList();
     /**
      * <code>repeated .MsgLocationStatics statics = 11;</code>
@@ -67901,7 +68441,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .MsgLocationStatics statics = 11;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStaticsOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStaticsOrBuilder> 
         getStaticsOrBuilderList();
     /**
      * <code>repeated .MsgLocationStatics statics = 11;</code>
@@ -67911,7 +68451,7 @@ public final class ProtoMessage {
   }
   /**
    * <pre>
-   ** 查询位置历史记录
+   ** 查询位置历史记录 
    * </pre>
    *
    * Protobuf type {@code MsgQueryLocation}
@@ -68036,7 +68576,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -68045,7 +68585,7 @@ public final class ProtoMessage {
     public static final int FROMTIME_FIELD_NUMBER = 2;
     private long fromTime_;
     /**
-     * <code>optional int64 fromTime = 2;</code>
+     * <code>int64 fromTime = 2;</code>
      */
     public long getFromTime() {
       return fromTime_;
@@ -68054,7 +68594,7 @@ public final class ProtoMessage {
     public static final int TOTIME_FIELD_NUMBER = 3;
     private long toTime_;
     /**
-     * <code>optional int64 toTime = 3;</code>
+     * <code>int64 toTime = 3;</code>
      */
     public long getToTime() {
       return toTime_;
@@ -68067,14 +68607,14 @@ public final class ProtoMessage {
      * 要查询谁，只能查询调度员管辖范围内的帐号
      * </pre>
      *
-     * <code>optional string phoneNum = 4;</code>
+     * <code>string phoneNum = 4;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -68086,13 +68626,13 @@ public final class ProtoMessage {
      * 要查询谁，只能查询调度员管辖范围内的帐号
      * </pre>
      *
-     * <code>optional string phoneNum = 4;</code>
+     * <code>string phoneNum = 4;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -68109,7 +68649,7 @@ public final class ProtoMessage {
      * 精度，单位米
      * </pre>
      *
-     * <code>optional int32 accuracy = 5;</code>
+     * <code>int32 accuracy = 5;</code>
      */
     public int getAccuracy() {
       return accuracy_;
@@ -68126,7 +68666,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .LocationMsg result = 10;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
         getResultOrBuilderList() {
       return result_;
     }
@@ -68161,7 +68701,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .MsgLocationStatics statics = 11;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStaticsOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStaticsOrBuilder> 
         getStaticsOrBuilderList() {
       return statics_;
     }
@@ -68291,7 +68831,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FROMTIME_FIELD_NUMBER;
@@ -68396,7 +68936,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     ** 查询位置历史记录
+     ** 查询位置历史记录 
      * </pre>
      *
      * Protobuf type {@code MsgQueryLocation}
@@ -68581,7 +69121,7 @@ public final class ProtoMessage {
               resultBuilder_ = null;
               result_ = other.result_;
               bitField0_ = (bitField0_ & ~0x00000020);
-              resultBuilder_ =
+              resultBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getResultFieldBuilder() : null;
             } else {
@@ -68607,7 +69147,7 @@ public final class ProtoMessage {
               staticsBuilder_ = null;
               statics_ = other.statics_;
               bitField0_ = (bitField0_ & ~0x00000040);
-              staticsBuilder_ =
+              staticsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getStaticsFieldBuilder() : null;
             } else {
@@ -68644,25 +69184,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -68670,25 +69210,25 @@ public final class ProtoMessage {
 
       private long fromTime_ ;
       /**
-       * <code>optional int64 fromTime = 2;</code>
+       * <code>int64 fromTime = 2;</code>
        */
       public long getFromTime() {
         return fromTime_;
       }
       /**
-       * <code>optional int64 fromTime = 2;</code>
+       * <code>int64 fromTime = 2;</code>
        */
       public Builder setFromTime(long value) {
-
+        
         fromTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 fromTime = 2;</code>
+       * <code>int64 fromTime = 2;</code>
        */
       public Builder clearFromTime() {
-
+        
         fromTime_ = 0L;
         onChanged();
         return this;
@@ -68696,25 +69236,25 @@ public final class ProtoMessage {
 
       private long toTime_ ;
       /**
-       * <code>optional int64 toTime = 3;</code>
+       * <code>int64 toTime = 3;</code>
        */
       public long getToTime() {
         return toTime_;
       }
       /**
-       * <code>optional int64 toTime = 3;</code>
+       * <code>int64 toTime = 3;</code>
        */
       public Builder setToTime(long value) {
-
+        
         toTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 toTime = 3;</code>
+       * <code>int64 toTime = 3;</code>
        */
       public Builder clearToTime() {
-
+        
         toTime_ = 0L;
         onChanged();
         return this;
@@ -68726,7 +69266,7 @@ public final class ProtoMessage {
        * 要查询谁，只能查询调度员管辖范围内的帐号
        * </pre>
        *
-       * <code>optional string phoneNum = 4;</code>
+       * <code>string phoneNum = 4;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -68745,13 +69285,13 @@ public final class ProtoMessage {
        * 要查询谁，只能查询调度员管辖范围内的帐号
        * </pre>
        *
-       * <code>optional string phoneNum = 4;</code>
+       * <code>string phoneNum = 4;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -68765,14 +69305,14 @@ public final class ProtoMessage {
        * 要查询谁，只能查询调度员管辖范围内的帐号
        * </pre>
        *
-       * <code>optional string phoneNum = 4;</code>
+       * <code>string phoneNum = 4;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
@@ -68782,10 +69322,10 @@ public final class ProtoMessage {
        * 要查询谁，只能查询调度员管辖范围内的帐号
        * </pre>
        *
-       * <code>optional string phoneNum = 4;</code>
+       * <code>string phoneNum = 4;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
@@ -68795,7 +69335,7 @@ public final class ProtoMessage {
        * 要查询谁，只能查询调度员管辖范围内的帐号
        * </pre>
        *
-       * <code>optional string phoneNum = 4;</code>
+       * <code>string phoneNum = 4;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -68803,7 +69343,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -68815,7 +69355,7 @@ public final class ProtoMessage {
        * 精度，单位米
        * </pre>
        *
-       * <code>optional int32 accuracy = 5;</code>
+       * <code>int32 accuracy = 5;</code>
        */
       public int getAccuracy() {
         return accuracy_;
@@ -68825,10 +69365,10 @@ public final class ProtoMessage {
        * 精度，单位米
        * </pre>
        *
-       * <code>optional int32 accuracy = 5;</code>
+       * <code>int32 accuracy = 5;</code>
        */
       public Builder setAccuracy(int value) {
-
+        
         accuracy_ = value;
         onChanged();
         return this;
@@ -68838,10 +69378,10 @@ public final class ProtoMessage {
        * 精度，单位米
        * </pre>
        *
-       * <code>optional int32 accuracy = 5;</code>
+       * <code>int32 accuracy = 5;</code>
        */
       public Builder clearAccuracy() {
-
+        
         accuracy_ = 0;
         onChanged();
         return this;
@@ -69042,7 +69582,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .LocationMsg result = 10;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
            getResultOrBuilderList() {
         if (resultBuilder_ != null) {
           return resultBuilder_.getMessageOrBuilderList();
@@ -69068,12 +69608,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .LocationMsg result = 10;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder> 
            getResultBuilderList() {
         return getResultFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
           getResultFieldBuilder() {
         if (resultBuilder_ == null) {
           resultBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -69282,7 +69822,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .MsgLocationStatics statics = 11;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStaticsOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStaticsOrBuilder> 
            getStaticsOrBuilderList() {
         if (staticsBuilder_ != null) {
           return staticsBuilder_.getMessageOrBuilderList();
@@ -69308,12 +69848,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .MsgLocationStatics statics = 11;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStatics.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStatics.Builder> 
            getStaticsBuilderList() {
         return getStaticsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStatics, com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStatics.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStaticsOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStatics, com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStatics.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgLocationStaticsOrBuilder> 
           getStaticsFieldBuilder() {
         if (staticsBuilder_ == null) {
           staticsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -69384,17 +69924,17 @@ public final class ProtoMessage {
      * 距离0点的秒数
      * </pre>
      *
-     * <code>optional int32 sec = 1;</code>
+     * <code>int32 sec = 1;</code>
      */
     int getSec();
 
     /**
-     * <code>optional double lat = 2;</code>
+     * <code>double lat = 2;</code>
      */
     double getLat();
 
     /**
-     * <code>optional double lng = 3;</code>
+     * <code>double lng = 3;</code>
      */
     double getLng();
 
@@ -69403,7 +69943,7 @@ public final class ProtoMessage {
      * 地点名称
      * </pre>
      *
-     * <code>optional string addr = 4;</code>
+     * <code>string addr = 4;</code>
      */
     java.lang.String getAddr();
     /**
@@ -69411,7 +69951,7 @@ public final class ProtoMessage {
      * 地点名称
      * </pre>
      *
-     * <code>optional string addr = 4;</code>
+     * <code>string addr = 4;</code>
      */
     com.google.protobuf.ByteString
         getAddrBytes();
@@ -69421,7 +69961,7 @@ public final class ProtoMessage {
      * 打卡类型
      * </pre>
      *
-     * <code>optional int32 reportType = 5;</code>
+     * <code>int32 reportType = 5;</code>
      */
     int getReportType();
   }
@@ -69525,7 +70065,7 @@ public final class ProtoMessage {
      * 距离0点的秒数
      * </pre>
      *
-     * <code>optional int32 sec = 1;</code>
+     * <code>int32 sec = 1;</code>
      */
     public int getSec() {
       return sec_;
@@ -69534,7 +70074,7 @@ public final class ProtoMessage {
     public static final int LAT_FIELD_NUMBER = 2;
     private double lat_;
     /**
-     * <code>optional double lat = 2;</code>
+     * <code>double lat = 2;</code>
      */
     public double getLat() {
       return lat_;
@@ -69543,7 +70083,7 @@ public final class ProtoMessage {
     public static final int LNG_FIELD_NUMBER = 3;
     private double lng_;
     /**
-     * <code>optional double lng = 3;</code>
+     * <code>double lng = 3;</code>
      */
     public double getLng() {
       return lng_;
@@ -69556,14 +70096,14 @@ public final class ProtoMessage {
      * 地点名称
      * </pre>
      *
-     * <code>optional string addr = 4;</code>
+     * <code>string addr = 4;</code>
      */
     public java.lang.String getAddr() {
       java.lang.Object ref = addr_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         addr_ = s;
@@ -69575,13 +70115,13 @@ public final class ProtoMessage {
      * 地点名称
      * </pre>
      *
-     * <code>optional string addr = 4;</code>
+     * <code>string addr = 4;</code>
      */
     public com.google.protobuf.ByteString
         getAddrBytes() {
       java.lang.Object ref = addr_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         addr_ = b;
@@ -69598,7 +70138,7 @@ public final class ProtoMessage {
      * 打卡类型
      * </pre>
      *
-     * <code>optional int32 reportType = 5;</code>
+     * <code>int32 reportType = 5;</code>
      */
     public int getReportType() {
       return reportType_;
@@ -69696,7 +70236,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + SEC_FIELD_NUMBER;
       hash = (53 * hash) + getSec();
       hash = (37 * hash) + LAT_FIELD_NUMBER;
@@ -69953,7 +70493,7 @@ public final class ProtoMessage {
        * 距离0点的秒数
        * </pre>
        *
-       * <code>optional int32 sec = 1;</code>
+       * <code>int32 sec = 1;</code>
        */
       public int getSec() {
         return sec_;
@@ -69963,10 +70503,10 @@ public final class ProtoMessage {
        * 距离0点的秒数
        * </pre>
        *
-       * <code>optional int32 sec = 1;</code>
+       * <code>int32 sec = 1;</code>
        */
       public Builder setSec(int value) {
-
+        
         sec_ = value;
         onChanged();
         return this;
@@ -69976,10 +70516,10 @@ public final class ProtoMessage {
        * 距离0点的秒数
        * </pre>
        *
-       * <code>optional int32 sec = 1;</code>
+       * <code>int32 sec = 1;</code>
        */
       public Builder clearSec() {
-
+        
         sec_ = 0;
         onChanged();
         return this;
@@ -69987,25 +70527,25 @@ public final class ProtoMessage {
 
       private double lat_ ;
       /**
-       * <code>optional double lat = 2;</code>
+       * <code>double lat = 2;</code>
        */
       public double getLat() {
         return lat_;
       }
       /**
-       * <code>optional double lat = 2;</code>
+       * <code>double lat = 2;</code>
        */
       public Builder setLat(double value) {
-
+        
         lat_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double lat = 2;</code>
+       * <code>double lat = 2;</code>
        */
       public Builder clearLat() {
-
+        
         lat_ = 0D;
         onChanged();
         return this;
@@ -70013,25 +70553,25 @@ public final class ProtoMessage {
 
       private double lng_ ;
       /**
-       * <code>optional double lng = 3;</code>
+       * <code>double lng = 3;</code>
        */
       public double getLng() {
         return lng_;
       }
       /**
-       * <code>optional double lng = 3;</code>
+       * <code>double lng = 3;</code>
        */
       public Builder setLng(double value) {
-
+        
         lng_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double lng = 3;</code>
+       * <code>double lng = 3;</code>
        */
       public Builder clearLng() {
-
+        
         lng_ = 0D;
         onChanged();
         return this;
@@ -70043,7 +70583,7 @@ public final class ProtoMessage {
        * 地点名称
        * </pre>
        *
-       * <code>optional string addr = 4;</code>
+       * <code>string addr = 4;</code>
        */
       public java.lang.String getAddr() {
         java.lang.Object ref = addr_;
@@ -70062,13 +70602,13 @@ public final class ProtoMessage {
        * 地点名称
        * </pre>
        *
-       * <code>optional string addr = 4;</code>
+       * <code>string addr = 4;</code>
        */
       public com.google.protobuf.ByteString
           getAddrBytes() {
         java.lang.Object ref = addr_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           addr_ = b;
@@ -70082,14 +70622,14 @@ public final class ProtoMessage {
        * 地点名称
        * </pre>
        *
-       * <code>optional string addr = 4;</code>
+       * <code>string addr = 4;</code>
        */
       public Builder setAddr(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         addr_ = value;
         onChanged();
         return this;
@@ -70099,10 +70639,10 @@ public final class ProtoMessage {
        * 地点名称
        * </pre>
        *
-       * <code>optional string addr = 4;</code>
+       * <code>string addr = 4;</code>
        */
       public Builder clearAddr() {
-
+        
         addr_ = getDefaultInstance().getAddr();
         onChanged();
         return this;
@@ -70112,7 +70652,7 @@ public final class ProtoMessage {
        * 地点名称
        * </pre>
        *
-       * <code>optional string addr = 4;</code>
+       * <code>string addr = 4;</code>
        */
       public Builder setAddrBytes(
           com.google.protobuf.ByteString value) {
@@ -70120,7 +70660,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         addr_ = value;
         onChanged();
         return this;
@@ -70132,7 +70672,7 @@ public final class ProtoMessage {
        * 打卡类型
        * </pre>
        *
-       * <code>optional int32 reportType = 5;</code>
+       * <code>int32 reportType = 5;</code>
        */
       public int getReportType() {
         return reportType_;
@@ -70142,10 +70682,10 @@ public final class ProtoMessage {
        * 打卡类型
        * </pre>
        *
-       * <code>optional int32 reportType = 5;</code>
+       * <code>int32 reportType = 5;</code>
        */
       public Builder setReportType(int value) {
-
+        
         reportType_ = value;
         onChanged();
         return this;
@@ -70155,10 +70695,10 @@ public final class ProtoMessage {
        * 打卡类型
        * </pre>
        *
-       * <code>optional int32 reportType = 5;</code>
+       * <code>int32 reportType = 5;</code>
        */
       public Builder clearReportType() {
-
+        
         reportType_ = 0;
         onChanged();
         return this;
@@ -70217,36 +70757,36 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int64 kqID = 1;</code>
+     * <code>int64 kqID = 1;</code>
      */
     long getKqID();
 
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>optional int32 timeType = 3;</code>
+     * <code>int32 timeType = 3;</code>
      */
     int getTimeType();
 
     /**
-     * <code>optional int32 weekData = 4;</code>
+     * <code>int32 weekData = 4;</code>
      */
     int getWeekData();
 
     /**
-     * <code>optional string timeDesc = 5;</code>
+     * <code>string timeDesc = 5;</code>
      */
     java.lang.String getTimeDesc();
     /**
-     * <code>optional string timeDesc = 5;</code>
+     * <code>string timeDesc = 5;</code>
      */
     com.google.protobuf.ByteString
         getTimeDescBytes();
@@ -70254,7 +70794,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .KqPoint kqPoints = 6;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqPoint>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqPoint> 
         getKqPointsList();
     /**
      * <code>repeated .KqPoint kqPoints = 6;</code>
@@ -70267,7 +70807,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .KqPoint kqPoints = 6;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqPointOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqPointOrBuilder> 
         getKqPointsOrBuilderList();
     /**
      * <code>repeated .KqPoint kqPoints = 6;</code>
@@ -70386,7 +70926,7 @@ public final class ProtoMessage {
     public static final int KQID_FIELD_NUMBER = 1;
     private long kqID_;
     /**
-     * <code>optional int64 kqID = 1;</code>
+     * <code>int64 kqID = 1;</code>
      */
     public long getKqID() {
       return kqID_;
@@ -70395,14 +70935,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -70410,13 +70950,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -70429,7 +70969,7 @@ public final class ProtoMessage {
     public static final int TIMETYPE_FIELD_NUMBER = 3;
     private int timeType_;
     /**
-     * <code>optional int32 timeType = 3;</code>
+     * <code>int32 timeType = 3;</code>
      */
     public int getTimeType() {
       return timeType_;
@@ -70438,7 +70978,7 @@ public final class ProtoMessage {
     public static final int WEEKDATA_FIELD_NUMBER = 4;
     private int weekData_;
     /**
-     * <code>optional int32 weekData = 4;</code>
+     * <code>int32 weekData = 4;</code>
      */
     public int getWeekData() {
       return weekData_;
@@ -70447,14 +70987,14 @@ public final class ProtoMessage {
     public static final int TIMEDESC_FIELD_NUMBER = 5;
     private volatile java.lang.Object timeDesc_;
     /**
-     * <code>optional string timeDesc = 5;</code>
+     * <code>string timeDesc = 5;</code>
      */
     public java.lang.String getTimeDesc() {
       java.lang.Object ref = timeDesc_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         timeDesc_ = s;
@@ -70462,13 +71002,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string timeDesc = 5;</code>
+     * <code>string timeDesc = 5;</code>
      */
     public com.google.protobuf.ByteString
         getTimeDescBytes() {
       java.lang.Object ref = timeDesc_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         timeDesc_ = b;
@@ -70489,7 +71029,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .KqPoint kqPoints = 6;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqPointOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqPointOrBuilder> 
         getKqPointsOrBuilderList() {
       return kqPoints_;
     }
@@ -70609,7 +71149,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + KQID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getKqID());
@@ -70875,7 +71415,7 @@ public final class ProtoMessage {
               kqPointsBuilder_ = null;
               kqPoints_ = other.kqPoints_;
               bitField0_ = (bitField0_ & ~0x00000020);
-              kqPointsBuilder_ =
+              kqPointsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getKqPointsFieldBuilder() : null;
             } else {
@@ -70912,25 +71452,25 @@ public final class ProtoMessage {
 
       private long kqID_ ;
       /**
-       * <code>optional int64 kqID = 1;</code>
+       * <code>int64 kqID = 1;</code>
        */
       public long getKqID() {
         return kqID_;
       }
       /**
-       * <code>optional int64 kqID = 1;</code>
+       * <code>int64 kqID = 1;</code>
        */
       public Builder setKqID(long value) {
-
+        
         kqID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 kqID = 1;</code>
+       * <code>int64 kqID = 1;</code>
        */
       public Builder clearKqID() {
-
+        
         kqID_ = 0L;
         onChanged();
         return this;
@@ -70938,7 +71478,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -70953,13 +71493,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -70969,29 +71509,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -70999,7 +71539,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -71007,25 +71547,25 @@ public final class ProtoMessage {
 
       private int timeType_ ;
       /**
-       * <code>optional int32 timeType = 3;</code>
+       * <code>int32 timeType = 3;</code>
        */
       public int getTimeType() {
         return timeType_;
       }
       /**
-       * <code>optional int32 timeType = 3;</code>
+       * <code>int32 timeType = 3;</code>
        */
       public Builder setTimeType(int value) {
-
+        
         timeType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 timeType = 3;</code>
+       * <code>int32 timeType = 3;</code>
        */
       public Builder clearTimeType() {
-
+        
         timeType_ = 0;
         onChanged();
         return this;
@@ -71033,25 +71573,25 @@ public final class ProtoMessage {
 
       private int weekData_ ;
       /**
-       * <code>optional int32 weekData = 4;</code>
+       * <code>int32 weekData = 4;</code>
        */
       public int getWeekData() {
         return weekData_;
       }
       /**
-       * <code>optional int32 weekData = 4;</code>
+       * <code>int32 weekData = 4;</code>
        */
       public Builder setWeekData(int value) {
-
+        
         weekData_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 weekData = 4;</code>
+       * <code>int32 weekData = 4;</code>
        */
       public Builder clearWeekData() {
-
+        
         weekData_ = 0;
         onChanged();
         return this;
@@ -71059,7 +71599,7 @@ public final class ProtoMessage {
 
       private java.lang.Object timeDesc_ = "";
       /**
-       * <code>optional string timeDesc = 5;</code>
+       * <code>string timeDesc = 5;</code>
        */
       public java.lang.String getTimeDesc() {
         java.lang.Object ref = timeDesc_;
@@ -71074,13 +71614,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string timeDesc = 5;</code>
+       * <code>string timeDesc = 5;</code>
        */
       public com.google.protobuf.ByteString
           getTimeDescBytes() {
         java.lang.Object ref = timeDesc_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           timeDesc_ = b;
@@ -71090,29 +71630,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string timeDesc = 5;</code>
+       * <code>string timeDesc = 5;</code>
        */
       public Builder setTimeDesc(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         timeDesc_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string timeDesc = 5;</code>
+       * <code>string timeDesc = 5;</code>
        */
       public Builder clearTimeDesc() {
-
+        
         timeDesc_ = getDefaultInstance().getTimeDesc();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string timeDesc = 5;</code>
+       * <code>string timeDesc = 5;</code>
        */
       public Builder setTimeDescBytes(
           com.google.protobuf.ByteString value) {
@@ -71120,7 +71660,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         timeDesc_ = value;
         onChanged();
         return this;
@@ -71321,7 +71861,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .KqPoint kqPoints = 6;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqPointOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqPointOrBuilder> 
            getKqPointsOrBuilderList() {
         if (kqPointsBuilder_ != null) {
           return kqPointsBuilder_.getMessageOrBuilderList();
@@ -71347,12 +71887,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .KqPoint kqPoints = 6;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqPoint.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqPoint.Builder> 
            getKqPointsBuilderList() {
         return getKqPointsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.KqPoint, com.example.jrd48.service.proto_gen.ProtoMessage.KqPoint.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.KqPointOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.KqPoint, com.example.jrd48.service.proto_gen.ProtoMessage.KqPoint.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.KqPointOrBuilder> 
           getKqPointsFieldBuilder() {
         if (kqPointsBuilder_ == null) {
           kqPointsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -71419,7 +71959,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -71428,7 +71968,7 @@ public final class ProtoMessage {
      * 获得所有(opNone)/添加/删除/...
      * </pre>
      *
-     * <code>optional int32 opCode = 2;</code>
+     * <code>int32 opCode = 2;</code>
      */
     int getOpCode();
 
@@ -71439,7 +71979,7 @@ public final class ProtoMessage {
      *
      * <code>repeated .KqItem data = 3;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqItem>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqItem> 
         getDataList();
     /**
      * <pre>
@@ -71464,7 +72004,7 @@ public final class ProtoMessage {
      *
      * <code>repeated .KqItem data = 3;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqItemOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqItemOrBuilder> 
         getDataOrBuilderList();
     /**
      * <pre>
@@ -71567,7 +72107,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -71580,7 +72120,7 @@ public final class ProtoMessage {
      * 获得所有(opNone)/添加/删除/...
      * </pre>
      *
-     * <code>optional int32 opCode = 2;</code>
+     * <code>int32 opCode = 2;</code>
      */
     public int getOpCode() {
       return opCode_;
@@ -71605,7 +72145,7 @@ public final class ProtoMessage {
      *
      * <code>repeated .KqItem data = 3;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqItemOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqItemOrBuilder> 
         getDataOrBuilderList() {
       return data_;
     }
@@ -71712,7 +72252,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + OPCODE_FIELD_NUMBER;
@@ -71951,7 +72491,7 @@ public final class ProtoMessage {
               dataBuilder_ = null;
               data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000004);
-              dataBuilder_ =
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getDataFieldBuilder() : null;
             } else {
@@ -71988,25 +72528,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -72018,7 +72558,7 @@ public final class ProtoMessage {
        * 获得所有(opNone)/添加/删除/...
        * </pre>
        *
-       * <code>optional int32 opCode = 2;</code>
+       * <code>int32 opCode = 2;</code>
        */
       public int getOpCode() {
         return opCode_;
@@ -72028,10 +72568,10 @@ public final class ProtoMessage {
        * 获得所有(opNone)/添加/删除/...
        * </pre>
        *
-       * <code>optional int32 opCode = 2;</code>
+       * <code>int32 opCode = 2;</code>
        */
       public Builder setOpCode(int value) {
-
+        
         opCode_ = value;
         onChanged();
         return this;
@@ -72041,10 +72581,10 @@ public final class ProtoMessage {
        * 获得所有(opNone)/添加/删除/...
        * </pre>
        *
-       * <code>optional int32 opCode = 2;</code>
+       * <code>int32 opCode = 2;</code>
        */
       public Builder clearOpCode() {
-
+        
         opCode_ = 0;
         onChanged();
         return this;
@@ -72305,7 +72845,7 @@ public final class ProtoMessage {
        *
        * <code>repeated .KqItem data = 3;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqItemOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqItemOrBuilder> 
            getDataOrBuilderList() {
         if (dataBuilder_ != null) {
           return dataBuilder_.getMessageOrBuilderList();
@@ -72343,12 +72883,12 @@ public final class ProtoMessage {
        *
        * <code>repeated .KqItem data = 3;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqItem.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqItem.Builder> 
            getDataBuilderList() {
         return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.KqItem, com.example.jrd48.service.proto_gen.ProtoMessage.KqItem.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.KqItemOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.KqItem, com.example.jrd48.service.proto_gen.ProtoMessage.KqItem.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.KqItemOrBuilder> 
           getDataFieldBuilder() {
         if (dataBuilder_ == null) {
           dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -72415,12 +72955,12 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int64 kqTime = 1;</code>
+     * <code>int64 kqTime = 1;</code>
      */
     long getKqTime();
 
     /**
-     * <code>optional int64 location_id = 2;</code>
+     * <code>int64 location_id = 2;</code>
      */
     long getLocationId();
   }
@@ -72501,7 +73041,7 @@ public final class ProtoMessage {
     public static final int KQTIME_FIELD_NUMBER = 1;
     private long kqTime_;
     /**
-     * <code>optional int64 kqTime = 1;</code>
+     * <code>int64 kqTime = 1;</code>
      */
     public long getKqTime() {
       return kqTime_;
@@ -72510,7 +73050,7 @@ public final class ProtoMessage {
     public static final int LOCATION_ID_FIELD_NUMBER = 2;
     private long locationId_;
     /**
-     * <code>optional int64 location_id = 2;</code>
+     * <code>int64 location_id = 2;</code>
      */
     public long getLocationId() {
       return locationId_;
@@ -72578,7 +73118,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + KQTIME_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getKqTime());
@@ -72806,25 +73346,25 @@ public final class ProtoMessage {
 
       private long kqTime_ ;
       /**
-       * <code>optional int64 kqTime = 1;</code>
+       * <code>int64 kqTime = 1;</code>
        */
       public long getKqTime() {
         return kqTime_;
       }
       /**
-       * <code>optional int64 kqTime = 1;</code>
+       * <code>int64 kqTime = 1;</code>
        */
       public Builder setKqTime(long value) {
-
+        
         kqTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 kqTime = 1;</code>
+       * <code>int64 kqTime = 1;</code>
        */
       public Builder clearKqTime() {
-
+        
         kqTime_ = 0L;
         onChanged();
         return this;
@@ -72832,25 +73372,25 @@ public final class ProtoMessage {
 
       private long locationId_ ;
       /**
-       * <code>optional int64 location_id = 2;</code>
+       * <code>int64 location_id = 2;</code>
        */
       public long getLocationId() {
         return locationId_;
       }
       /**
-       * <code>optional int64 location_id = 2;</code>
+       * <code>int64 location_id = 2;</code>
        */
       public Builder setLocationId(long value) {
-
+        
         locationId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 location_id = 2;</code>
+       * <code>int64 location_id = 2;</code>
        */
       public Builder clearLocationId() {
-
+        
         locationId_ = 0L;
         onChanged();
         return this;
@@ -72909,11 +73449,11 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -72921,7 +73461,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .KqStaticsItem timeStatics = 3;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItem>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItem> 
         getTimeStaticsList();
     /**
      * <code>repeated .KqStaticsItem timeStatics = 3;</code>
@@ -72934,7 +73474,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .KqStaticsItem timeStatics = 3;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItemOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItemOrBuilder> 
         getTimeStaticsOrBuilderList();
     /**
      * <code>repeated .KqStaticsItem timeStatics = 3;</code>
@@ -73028,14 +73568,14 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         phoneNum_ = s;
@@ -73043,13 +73583,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string phoneNum = 2;</code>
+     * <code>string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
       java.lang.Object ref = phoneNum_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         phoneNum_ = b;
@@ -73070,7 +73610,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .KqStaticsItem timeStatics = 3;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItemOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItemOrBuilder> 
         getTimeStaticsOrBuilderList() {
       return timeStatics_;
     }
@@ -73155,7 +73695,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
       hash = (53 * hash) + getPhoneNum().hashCode();
       if (getTimeStaticsCount() > 0) {
@@ -73387,7 +73927,7 @@ public final class ProtoMessage {
               timeStaticsBuilder_ = null;
               timeStatics_ = other.timeStatics_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              timeStaticsBuilder_ =
+              timeStaticsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getTimeStaticsFieldBuilder() : null;
             } else {
@@ -73424,7 +73964,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -73439,13 +73979,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
         java.lang.Object ref = phoneNum_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           phoneNum_ = b;
@@ -73455,29 +73995,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         phoneNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
-
+        
         phoneNum_ = getDefaultInstance().getPhoneNum();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string phoneNum = 2;</code>
+       * <code>string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -73485,7 +74025,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         phoneNum_ = value;
         onChanged();
         return this;
@@ -73686,7 +74226,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .KqStaticsItem timeStatics = 3;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItemOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItemOrBuilder> 
            getTimeStaticsOrBuilderList() {
         if (timeStaticsBuilder_ != null) {
           return timeStaticsBuilder_.getMessageOrBuilderList();
@@ -73712,12 +74252,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .KqStaticsItem timeStatics = 3;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItem.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItem.Builder> 
            getTimeStaticsBuilderList() {
         return getTimeStaticsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItem, com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItem.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItemOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItem, com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItem.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.KqStaticsItemOrBuilder> 
           getTimeStaticsFieldBuilder() {
         if (timeStaticsBuilder_ == null) {
           timeStaticsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -73784,17 +74324,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional int64 fromTime = 2;</code>
+     * <code>int64 fromTime = 2;</code>
      */
     long getFromTime();
 
     /**
-     * <code>optional int64 toTime = 3;</code>
+     * <code>int64 toTime = 3;</code>
      */
     long getToTime();
 
@@ -73803,7 +74343,7 @@ public final class ProtoMessage {
      * 时间误差
      * </pre>
      *
-     * <code>optional int32 timeError = 4;</code>
+     * <code>int32 timeError = 4;</code>
      */
     int getTimeError();
 
@@ -73812,14 +74352,14 @@ public final class ProtoMessage {
      * 距离误差
      * </pre>
      *
-     * <code>optional int32 distError = 5;</code>
+     * <code>int32 distError = 5;</code>
      */
     int getDistError();
 
     /**
      * <code>repeated .KqTimeStatics statics = 6;</code>
      */
-    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStatics>
+    java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStatics> 
         getStaticsList();
     /**
      * <code>repeated .KqTimeStatics statics = 6;</code>
@@ -73832,7 +74372,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .KqTimeStatics statics = 6;</code>
      */
-    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStaticsOrBuilder>
+    java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStaticsOrBuilder> 
         getStaticsOrBuilderList();
     /**
      * <code>repeated .KqTimeStatics statics = 6;</code>
@@ -73949,7 +74489,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -73958,7 +74498,7 @@ public final class ProtoMessage {
     public static final int FROMTIME_FIELD_NUMBER = 2;
     private long fromTime_;
     /**
-     * <code>optional int64 fromTime = 2;</code>
+     * <code>int64 fromTime = 2;</code>
      */
     public long getFromTime() {
       return fromTime_;
@@ -73967,7 +74507,7 @@ public final class ProtoMessage {
     public static final int TOTIME_FIELD_NUMBER = 3;
     private long toTime_;
     /**
-     * <code>optional int64 toTime = 3;</code>
+     * <code>int64 toTime = 3;</code>
      */
     public long getToTime() {
       return toTime_;
@@ -73980,7 +74520,7 @@ public final class ProtoMessage {
      * 时间误差
      * </pre>
      *
-     * <code>optional int32 timeError = 4;</code>
+     * <code>int32 timeError = 4;</code>
      */
     public int getTimeError() {
       return timeError_;
@@ -73993,7 +74533,7 @@ public final class ProtoMessage {
      * 距离误差
      * </pre>
      *
-     * <code>optional int32 distError = 5;</code>
+     * <code>int32 distError = 5;</code>
      */
     public int getDistError() {
       return distError_;
@@ -74010,7 +74550,7 @@ public final class ProtoMessage {
     /**
      * <code>repeated .KqTimeStatics statics = 6;</code>
      */
-    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStaticsOrBuilder>
+    public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStaticsOrBuilder> 
         getStaticsOrBuilderList() {
       return statics_;
     }
@@ -74132,7 +74672,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FROMTIME_FIELD_NUMBER;
@@ -74397,7 +74937,7 @@ public final class ProtoMessage {
               staticsBuilder_ = null;
               statics_ = other.statics_;
               bitField0_ = (bitField0_ & ~0x00000020);
-              staticsBuilder_ =
+              staticsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getStaticsFieldBuilder() : null;
             } else {
@@ -74434,25 +74974,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -74460,25 +75000,25 @@ public final class ProtoMessage {
 
       private long fromTime_ ;
       /**
-       * <code>optional int64 fromTime = 2;</code>
+       * <code>int64 fromTime = 2;</code>
        */
       public long getFromTime() {
         return fromTime_;
       }
       /**
-       * <code>optional int64 fromTime = 2;</code>
+       * <code>int64 fromTime = 2;</code>
        */
       public Builder setFromTime(long value) {
-
+        
         fromTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 fromTime = 2;</code>
+       * <code>int64 fromTime = 2;</code>
        */
       public Builder clearFromTime() {
-
+        
         fromTime_ = 0L;
         onChanged();
         return this;
@@ -74486,25 +75026,25 @@ public final class ProtoMessage {
 
       private long toTime_ ;
       /**
-       * <code>optional int64 toTime = 3;</code>
+       * <code>int64 toTime = 3;</code>
        */
       public long getToTime() {
         return toTime_;
       }
       /**
-       * <code>optional int64 toTime = 3;</code>
+       * <code>int64 toTime = 3;</code>
        */
       public Builder setToTime(long value) {
-
+        
         toTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 toTime = 3;</code>
+       * <code>int64 toTime = 3;</code>
        */
       public Builder clearToTime() {
-
+        
         toTime_ = 0L;
         onChanged();
         return this;
@@ -74516,7 +75056,7 @@ public final class ProtoMessage {
        * 时间误差
        * </pre>
        *
-       * <code>optional int32 timeError = 4;</code>
+       * <code>int32 timeError = 4;</code>
        */
       public int getTimeError() {
         return timeError_;
@@ -74526,10 +75066,10 @@ public final class ProtoMessage {
        * 时间误差
        * </pre>
        *
-       * <code>optional int32 timeError = 4;</code>
+       * <code>int32 timeError = 4;</code>
        */
       public Builder setTimeError(int value) {
-
+        
         timeError_ = value;
         onChanged();
         return this;
@@ -74539,10 +75079,10 @@ public final class ProtoMessage {
        * 时间误差
        * </pre>
        *
-       * <code>optional int32 timeError = 4;</code>
+       * <code>int32 timeError = 4;</code>
        */
       public Builder clearTimeError() {
-
+        
         timeError_ = 0;
         onChanged();
         return this;
@@ -74554,7 +75094,7 @@ public final class ProtoMessage {
        * 距离误差
        * </pre>
        *
-       * <code>optional int32 distError = 5;</code>
+       * <code>int32 distError = 5;</code>
        */
       public int getDistError() {
         return distError_;
@@ -74564,10 +75104,10 @@ public final class ProtoMessage {
        * 距离误差
        * </pre>
        *
-       * <code>optional int32 distError = 5;</code>
+       * <code>int32 distError = 5;</code>
        */
       public Builder setDistError(int value) {
-
+        
         distError_ = value;
         onChanged();
         return this;
@@ -74577,10 +75117,10 @@ public final class ProtoMessage {
        * 距离误差
        * </pre>
        *
-       * <code>optional int32 distError = 5;</code>
+       * <code>int32 distError = 5;</code>
        */
       public Builder clearDistError() {
-
+        
         distError_ = 0;
         onChanged();
         return this;
@@ -74781,7 +75321,7 @@ public final class ProtoMessage {
       /**
        * <code>repeated .KqTimeStatics statics = 6;</code>
        */
-      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStaticsOrBuilder>
+      public java.util.List<? extends com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStaticsOrBuilder> 
            getStaticsOrBuilderList() {
         if (staticsBuilder_ != null) {
           return staticsBuilder_.getMessageOrBuilderList();
@@ -74807,12 +75347,12 @@ public final class ProtoMessage {
       /**
        * <code>repeated .KqTimeStatics statics = 6;</code>
        */
-      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStatics.Builder>
+      public java.util.List<com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStatics.Builder> 
            getStaticsBuilderList() {
         return getStaticsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStatics, com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStatics.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStaticsOrBuilder>
+          com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStatics, com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStatics.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.KqTimeStaticsOrBuilder> 
           getStaticsFieldBuilder() {
         if (staticsBuilder_ == null) {
           staticsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
@@ -74879,7 +75419,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -74888,16 +75428,16 @@ public final class ProtoMessage {
      * 操作码，参见 EditCode
      * </pre>
      *
-     * <code>optional int32 editCode = 2;</code>
+     * <code>int32 editCode = 2;</code>
      */
     int getEditCode();
 
     /**
-     * <code>optional string iccid = 3;</code>
+     * <code>string iccid = 3;</code>
      */
     java.lang.String getIccid();
     /**
-     * <code>optional string iccid = 3;</code>
+     * <code>string iccid = 3;</code>
      */
     com.google.protobuf.ByteString
         getIccidBytes();
@@ -74986,7 +75526,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -74999,7 +75539,7 @@ public final class ProtoMessage {
      * 操作码，参见 EditCode
      * </pre>
      *
-     * <code>optional int32 editCode = 2;</code>
+     * <code>int32 editCode = 2;</code>
      */
     public int getEditCode() {
       return editCode_;
@@ -75008,14 +75548,14 @@ public final class ProtoMessage {
     public static final int ICCID_FIELD_NUMBER = 3;
     private volatile java.lang.Object iccid_;
     /**
-     * <code>optional string iccid = 3;</code>
+     * <code>string iccid = 3;</code>
      */
     public java.lang.String getIccid() {
       java.lang.Object ref = iccid_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         iccid_ = s;
@@ -75023,13 +75563,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string iccid = 3;</code>
+     * <code>string iccid = 3;</code>
      */
     public com.google.protobuf.ByteString
         getIccidBytes() {
       java.lang.Object ref = iccid_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         iccid_ = b;
@@ -75109,7 +75649,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + EDITCODE_FIELD_NUMBER;
@@ -75344,25 +75884,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -75374,7 +75914,7 @@ public final class ProtoMessage {
        * 操作码，参见 EditCode
        * </pre>
        *
-       * <code>optional int32 editCode = 2;</code>
+       * <code>int32 editCode = 2;</code>
        */
       public int getEditCode() {
         return editCode_;
@@ -75384,10 +75924,10 @@ public final class ProtoMessage {
        * 操作码，参见 EditCode
        * </pre>
        *
-       * <code>optional int32 editCode = 2;</code>
+       * <code>int32 editCode = 2;</code>
        */
       public Builder setEditCode(int value) {
-
+        
         editCode_ = value;
         onChanged();
         return this;
@@ -75397,10 +75937,10 @@ public final class ProtoMessage {
        * 操作码，参见 EditCode
        * </pre>
        *
-       * <code>optional int32 editCode = 2;</code>
+       * <code>int32 editCode = 2;</code>
        */
       public Builder clearEditCode() {
-
+        
         editCode_ = 0;
         onChanged();
         return this;
@@ -75408,7 +75948,7 @@ public final class ProtoMessage {
 
       private java.lang.Object iccid_ = "";
       /**
-       * <code>optional string iccid = 3;</code>
+       * <code>string iccid = 3;</code>
        */
       public java.lang.String getIccid() {
         java.lang.Object ref = iccid_;
@@ -75423,13 +75963,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string iccid = 3;</code>
+       * <code>string iccid = 3;</code>
        */
       public com.google.protobuf.ByteString
           getIccidBytes() {
         java.lang.Object ref = iccid_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           iccid_ = b;
@@ -75439,29 +75979,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string iccid = 3;</code>
+       * <code>string iccid = 3;</code>
        */
       public Builder setIccid(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         iccid_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string iccid = 3;</code>
+       * <code>string iccid = 3;</code>
        */
       public Builder clearIccid() {
-
+        
         iccid_ = getDefaultInstance().getIccid();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string iccid = 3;</code>
+       * <code>string iccid = 3;</code>
        */
       public Builder setIccidBytes(
           com.google.protobuf.ByteString value) {
@@ -75469,7 +76009,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         iccid_ = value;
         onChanged();
         return this;
@@ -75528,26 +76068,26 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string imei = 2;</code>
+     * <code>string imei = 2;</code>
      */
     java.lang.String getImei();
     /**
-     * <code>optional string imei = 2;</code>
+     * <code>string imei = 2;</code>
      */
     com.google.protobuf.ByteString
         getImeiBytes();
 
     /**
-     * <code>optional string desc = 3;</code>
+     * <code>string desc = 3;</code>
      */
     java.lang.String getDesc();
     /**
-     * <code>optional string desc = 3;</code>
+     * <code>string desc = 3;</code>
      */
     com.google.protobuf.ByteString
         getDescBytes();
@@ -75637,7 +76177,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -75646,14 +76186,14 @@ public final class ProtoMessage {
     public static final int IMEI_FIELD_NUMBER = 2;
     private volatile java.lang.Object imei_;
     /**
-     * <code>optional string imei = 2;</code>
+     * <code>string imei = 2;</code>
      */
     public java.lang.String getImei() {
       java.lang.Object ref = imei_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         imei_ = s;
@@ -75661,13 +76201,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string imei = 2;</code>
+     * <code>string imei = 2;</code>
      */
     public com.google.protobuf.ByteString
         getImeiBytes() {
       java.lang.Object ref = imei_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         imei_ = b;
@@ -75680,14 +76220,14 @@ public final class ProtoMessage {
     public static final int DESC_FIELD_NUMBER = 3;
     private volatile java.lang.Object desc_;
     /**
-     * <code>optional string desc = 3;</code>
+     * <code>string desc = 3;</code>
      */
     public java.lang.String getDesc() {
       java.lang.Object ref = desc_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         desc_ = s;
@@ -75695,13 +76235,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string desc = 3;</code>
+     * <code>string desc = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDescBytes() {
       java.lang.Object ref = desc_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         desc_ = b;
@@ -75780,7 +76320,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + IMEI_FIELD_NUMBER;
@@ -76016,25 +76556,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -76042,7 +76582,7 @@ public final class ProtoMessage {
 
       private java.lang.Object imei_ = "";
       /**
-       * <code>optional string imei = 2;</code>
+       * <code>string imei = 2;</code>
        */
       public java.lang.String getImei() {
         java.lang.Object ref = imei_;
@@ -76057,13 +76597,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string imei = 2;</code>
+       * <code>string imei = 2;</code>
        */
       public com.google.protobuf.ByteString
           getImeiBytes() {
         java.lang.Object ref = imei_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           imei_ = b;
@@ -76073,29 +76613,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string imei = 2;</code>
+       * <code>string imei = 2;</code>
        */
       public Builder setImei(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         imei_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string imei = 2;</code>
+       * <code>string imei = 2;</code>
        */
       public Builder clearImei() {
-
+        
         imei_ = getDefaultInstance().getImei();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string imei = 2;</code>
+       * <code>string imei = 2;</code>
        */
       public Builder setImeiBytes(
           com.google.protobuf.ByteString value) {
@@ -76103,7 +76643,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         imei_ = value;
         onChanged();
         return this;
@@ -76111,7 +76651,7 @@ public final class ProtoMessage {
 
       private java.lang.Object desc_ = "";
       /**
-       * <code>optional string desc = 3;</code>
+       * <code>string desc = 3;</code>
        */
       public java.lang.String getDesc() {
         java.lang.Object ref = desc_;
@@ -76126,13 +76666,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string desc = 3;</code>
+       * <code>string desc = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDescBytes() {
         java.lang.Object ref = desc_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           desc_ = b;
@@ -76142,29 +76682,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string desc = 3;</code>
+       * <code>string desc = 3;</code>
        */
       public Builder setDesc(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         desc_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string desc = 3;</code>
+       * <code>string desc = 3;</code>
        */
       public Builder clearDesc() {
-
+        
         desc_ = getDefaultInstance().getDesc();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string desc = 3;</code>
+       * <code>string desc = 3;</code>
        */
       public Builder setDescBytes(
           com.google.protobuf.ByteString value) {
@@ -76172,7 +76712,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         desc_ = value;
         onChanged();
         return this;
@@ -76231,32 +76771,32 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>optional string fromPhone = 2;</code>
+     * <code>string fromPhone = 2;</code>
      */
     java.lang.String getFromPhone();
     /**
-     * <code>optional string fromPhone = 2;</code>
+     * <code>string fromPhone = 2;</code>
      */
     com.google.protobuf.ByteString
         getFromPhoneBytes();
 
     /**
-     * <code>optional string toPhone = 3;</code>
+     * <code>string toPhone = 3;</code>
      */
     java.lang.String getToPhone();
     /**
-     * <code>optional string toPhone = 3;</code>
+     * <code>string toPhone = 3;</code>
      */
     com.google.protobuf.ByteString
         getToPhoneBytes();
 
     /**
-     * <code>optional int64 toTeamID = 4;</code>
+     * <code>int64 toTeamID = 4;</code>
      */
     long getToTeamID();
 
@@ -76265,7 +76805,7 @@ public final class ProtoMessage {
      * 是从哪个应用里发出来的。
      * </pre>
      *
-     * <code>optional int32 fromAppType = 5;</code>
+     * <code>int32 fromAppType = 5;</code>
      */
     int getFromAppType();
 
@@ -76274,38 +76814,38 @@ public final class ProtoMessage {
      * -1 表示全部
      * </pre>
      *
-     * <code>optional int32 toAppType = 6;</code>
+     * <code>int32 toAppType = 6;</code>
      */
     int getToAppType();
 
     /**
-     * <code>optional int32 remoteCmd = 7;</code>
+     * <code>int32 remoteCmd = 7;</code>
      */
     int getRemoteCmd();
 
     /**
-     * <code>optional double lat = 8;</code>
+     * <code>double lat = 8;</code>
      */
     double getLat();
 
     /**
-     * <code>optional double lng = 9;</code>
+     * <code>double lng = 9;</code>
      */
     double getLng();
 
     /**
-     * <code>optional string cmdStr = 10;</code>
+     * <code>string cmdStr = 10;</code>
      */
     java.lang.String getCmdStr();
     /**
-     * <code>optional string cmdStr = 10;</code>
+     * <code>string cmdStr = 10;</code>
      */
     com.google.protobuf.ByteString
         getCmdStrBytes();
   }
   /**
    * <pre>
-   * 远程控制指令
+   * 远程控制指令 
    * </pre>
    *
    * Protobuf type {@code MsgRemoteControl}
@@ -76435,7 +76975,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>optional int32 errorCode = 1;</code>
+     * <code>int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -76444,14 +76984,14 @@ public final class ProtoMessage {
     public static final int FROMPHONE_FIELD_NUMBER = 2;
     private volatile java.lang.Object fromPhone_;
     /**
-     * <code>optional string fromPhone = 2;</code>
+     * <code>string fromPhone = 2;</code>
      */
     public java.lang.String getFromPhone() {
       java.lang.Object ref = fromPhone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         fromPhone_ = s;
@@ -76459,13 +76999,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string fromPhone = 2;</code>
+     * <code>string fromPhone = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFromPhoneBytes() {
       java.lang.Object ref = fromPhone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         fromPhone_ = b;
@@ -76478,14 +77018,14 @@ public final class ProtoMessage {
     public static final int TOPHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object toPhone_;
     /**
-     * <code>optional string toPhone = 3;</code>
+     * <code>string toPhone = 3;</code>
      */
     public java.lang.String getToPhone() {
       java.lang.Object ref = toPhone_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         toPhone_ = s;
@@ -76493,13 +77033,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string toPhone = 3;</code>
+     * <code>string toPhone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getToPhoneBytes() {
       java.lang.Object ref = toPhone_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         toPhone_ = b;
@@ -76512,7 +77052,7 @@ public final class ProtoMessage {
     public static final int TOTEAMID_FIELD_NUMBER = 4;
     private long toTeamID_;
     /**
-     * <code>optional int64 toTeamID = 4;</code>
+     * <code>int64 toTeamID = 4;</code>
      */
     public long getToTeamID() {
       return toTeamID_;
@@ -76525,7 +77065,7 @@ public final class ProtoMessage {
      * 是从哪个应用里发出来的。
      * </pre>
      *
-     * <code>optional int32 fromAppType = 5;</code>
+     * <code>int32 fromAppType = 5;</code>
      */
     public int getFromAppType() {
       return fromAppType_;
@@ -76538,7 +77078,7 @@ public final class ProtoMessage {
      * -1 表示全部
      * </pre>
      *
-     * <code>optional int32 toAppType = 6;</code>
+     * <code>int32 toAppType = 6;</code>
      */
     public int getToAppType() {
       return toAppType_;
@@ -76547,7 +77087,7 @@ public final class ProtoMessage {
     public static final int REMOTECMD_FIELD_NUMBER = 7;
     private int remoteCmd_;
     /**
-     * <code>optional int32 remoteCmd = 7;</code>
+     * <code>int32 remoteCmd = 7;</code>
      */
     public int getRemoteCmd() {
       return remoteCmd_;
@@ -76556,7 +77096,7 @@ public final class ProtoMessage {
     public static final int LAT_FIELD_NUMBER = 8;
     private double lat_;
     /**
-     * <code>optional double lat = 8;</code>
+     * <code>double lat = 8;</code>
      */
     public double getLat() {
       return lat_;
@@ -76565,7 +77105,7 @@ public final class ProtoMessage {
     public static final int LNG_FIELD_NUMBER = 9;
     private double lng_;
     /**
-     * <code>optional double lng = 9;</code>
+     * <code>double lng = 9;</code>
      */
     public double getLng() {
       return lng_;
@@ -76574,14 +77114,14 @@ public final class ProtoMessage {
     public static final int CMDSTR_FIELD_NUMBER = 10;
     private volatile java.lang.Object cmdStr_;
     /**
-     * <code>optional string cmdStr = 10;</code>
+     * <code>string cmdStr = 10;</code>
      */
     public java.lang.String getCmdStr() {
       java.lang.Object ref = cmdStr_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         cmdStr_ = s;
@@ -76589,13 +77129,13 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>optional string cmdStr = 10;</code>
+     * <code>string cmdStr = 10;</code>
      */
     public com.google.protobuf.ByteString
         getCmdStrBytes() {
       java.lang.Object ref = cmdStr_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         cmdStr_ = b;
@@ -76740,7 +77280,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FROMPHONE_FIELD_NUMBER;
@@ -76848,7 +77388,7 @@ public final class ProtoMessage {
     }
     /**
      * <pre>
-     * 远程控制指令
+     * 远程控制指令 
      * </pre>
      *
      * Protobuf type {@code MsgRemoteControl}
@@ -77040,25 +77580,25 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
-
+        
         errorCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 errorCode = 1;</code>
+       * <code>int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
-
+        
         errorCode_ = 0;
         onChanged();
         return this;
@@ -77066,7 +77606,7 @@ public final class ProtoMessage {
 
       private java.lang.Object fromPhone_ = "";
       /**
-       * <code>optional string fromPhone = 2;</code>
+       * <code>string fromPhone = 2;</code>
        */
       public java.lang.String getFromPhone() {
         java.lang.Object ref = fromPhone_;
@@ -77081,13 +77621,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string fromPhone = 2;</code>
+       * <code>string fromPhone = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFromPhoneBytes() {
         java.lang.Object ref = fromPhone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           fromPhone_ = b;
@@ -77097,29 +77637,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string fromPhone = 2;</code>
+       * <code>string fromPhone = 2;</code>
        */
       public Builder setFromPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         fromPhone_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string fromPhone = 2;</code>
+       * <code>string fromPhone = 2;</code>
        */
       public Builder clearFromPhone() {
-
+        
         fromPhone_ = getDefaultInstance().getFromPhone();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string fromPhone = 2;</code>
+       * <code>string fromPhone = 2;</code>
        */
       public Builder setFromPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -77127,7 +77667,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         fromPhone_ = value;
         onChanged();
         return this;
@@ -77135,7 +77675,7 @@ public final class ProtoMessage {
 
       private java.lang.Object toPhone_ = "";
       /**
-       * <code>optional string toPhone = 3;</code>
+       * <code>string toPhone = 3;</code>
        */
       public java.lang.String getToPhone() {
         java.lang.Object ref = toPhone_;
@@ -77150,13 +77690,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string toPhone = 3;</code>
+       * <code>string toPhone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getToPhoneBytes() {
         java.lang.Object ref = toPhone_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           toPhone_ = b;
@@ -77166,29 +77706,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string toPhone = 3;</code>
+       * <code>string toPhone = 3;</code>
        */
       public Builder setToPhone(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         toPhone_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string toPhone = 3;</code>
+       * <code>string toPhone = 3;</code>
        */
       public Builder clearToPhone() {
-
+        
         toPhone_ = getDefaultInstance().getToPhone();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string toPhone = 3;</code>
+       * <code>string toPhone = 3;</code>
        */
       public Builder setToPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -77196,7 +77736,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         toPhone_ = value;
         onChanged();
         return this;
@@ -77204,25 +77744,25 @@ public final class ProtoMessage {
 
       private long toTeamID_ ;
       /**
-       * <code>optional int64 toTeamID = 4;</code>
+       * <code>int64 toTeamID = 4;</code>
        */
       public long getToTeamID() {
         return toTeamID_;
       }
       /**
-       * <code>optional int64 toTeamID = 4;</code>
+       * <code>int64 toTeamID = 4;</code>
        */
       public Builder setToTeamID(long value) {
-
+        
         toTeamID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 toTeamID = 4;</code>
+       * <code>int64 toTeamID = 4;</code>
        */
       public Builder clearToTeamID() {
-
+        
         toTeamID_ = 0L;
         onChanged();
         return this;
@@ -77234,7 +77774,7 @@ public final class ProtoMessage {
        * 是从哪个应用里发出来的。
        * </pre>
        *
-       * <code>optional int32 fromAppType = 5;</code>
+       * <code>int32 fromAppType = 5;</code>
        */
       public int getFromAppType() {
         return fromAppType_;
@@ -77244,10 +77784,10 @@ public final class ProtoMessage {
        * 是从哪个应用里发出来的。
        * </pre>
        *
-       * <code>optional int32 fromAppType = 5;</code>
+       * <code>int32 fromAppType = 5;</code>
        */
       public Builder setFromAppType(int value) {
-
+        
         fromAppType_ = value;
         onChanged();
         return this;
@@ -77257,10 +77797,10 @@ public final class ProtoMessage {
        * 是从哪个应用里发出来的。
        * </pre>
        *
-       * <code>optional int32 fromAppType = 5;</code>
+       * <code>int32 fromAppType = 5;</code>
        */
       public Builder clearFromAppType() {
-
+        
         fromAppType_ = 0;
         onChanged();
         return this;
@@ -77272,7 +77812,7 @@ public final class ProtoMessage {
        * -1 表示全部
        * </pre>
        *
-       * <code>optional int32 toAppType = 6;</code>
+       * <code>int32 toAppType = 6;</code>
        */
       public int getToAppType() {
         return toAppType_;
@@ -77282,10 +77822,10 @@ public final class ProtoMessage {
        * -1 表示全部
        * </pre>
        *
-       * <code>optional int32 toAppType = 6;</code>
+       * <code>int32 toAppType = 6;</code>
        */
       public Builder setToAppType(int value) {
-
+        
         toAppType_ = value;
         onChanged();
         return this;
@@ -77295,10 +77835,10 @@ public final class ProtoMessage {
        * -1 表示全部
        * </pre>
        *
-       * <code>optional int32 toAppType = 6;</code>
+       * <code>int32 toAppType = 6;</code>
        */
       public Builder clearToAppType() {
-
+        
         toAppType_ = 0;
         onChanged();
         return this;
@@ -77306,25 +77846,25 @@ public final class ProtoMessage {
 
       private int remoteCmd_ ;
       /**
-       * <code>optional int32 remoteCmd = 7;</code>
+       * <code>int32 remoteCmd = 7;</code>
        */
       public int getRemoteCmd() {
         return remoteCmd_;
       }
       /**
-       * <code>optional int32 remoteCmd = 7;</code>
+       * <code>int32 remoteCmd = 7;</code>
        */
       public Builder setRemoteCmd(int value) {
-
+        
         remoteCmd_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 remoteCmd = 7;</code>
+       * <code>int32 remoteCmd = 7;</code>
        */
       public Builder clearRemoteCmd() {
-
+        
         remoteCmd_ = 0;
         onChanged();
         return this;
@@ -77332,25 +77872,25 @@ public final class ProtoMessage {
 
       private double lat_ ;
       /**
-       * <code>optional double lat = 8;</code>
+       * <code>double lat = 8;</code>
        */
       public double getLat() {
         return lat_;
       }
       /**
-       * <code>optional double lat = 8;</code>
+       * <code>double lat = 8;</code>
        */
       public Builder setLat(double value) {
-
+        
         lat_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double lat = 8;</code>
+       * <code>double lat = 8;</code>
        */
       public Builder clearLat() {
-
+        
         lat_ = 0D;
         onChanged();
         return this;
@@ -77358,25 +77898,25 @@ public final class ProtoMessage {
 
       private double lng_ ;
       /**
-       * <code>optional double lng = 9;</code>
+       * <code>double lng = 9;</code>
        */
       public double getLng() {
         return lng_;
       }
       /**
-       * <code>optional double lng = 9;</code>
+       * <code>double lng = 9;</code>
        */
       public Builder setLng(double value) {
-
+        
         lng_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional double lng = 9;</code>
+       * <code>double lng = 9;</code>
        */
       public Builder clearLng() {
-
+        
         lng_ = 0D;
         onChanged();
         return this;
@@ -77384,7 +77924,7 @@ public final class ProtoMessage {
 
       private java.lang.Object cmdStr_ = "";
       /**
-       * <code>optional string cmdStr = 10;</code>
+       * <code>string cmdStr = 10;</code>
        */
       public java.lang.String getCmdStr() {
         java.lang.Object ref = cmdStr_;
@@ -77399,13 +77939,13 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string cmdStr = 10;</code>
+       * <code>string cmdStr = 10;</code>
        */
       public com.google.protobuf.ByteString
           getCmdStrBytes() {
         java.lang.Object ref = cmdStr_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           cmdStr_ = b;
@@ -77415,29 +77955,29 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>optional string cmdStr = 10;</code>
+       * <code>string cmdStr = 10;</code>
        */
       public Builder setCmdStr(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-
+  
         cmdStr_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string cmdStr = 10;</code>
+       * <code>string cmdStr = 10;</code>
        */
       public Builder clearCmdStr() {
-
+        
         cmdStr_ = getDefaultInstance().getCmdStr();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string cmdStr = 10;</code>
+       * <code>string cmdStr = 10;</code>
        */
       public Builder setCmdStrBytes(
           com.google.protobuf.ByteString value) {
@@ -77445,7 +77985,7 @@ public final class ProtoMessage {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+        
         cmdStr_ = value;
         onChanged();
         return this;
@@ -77501,357 +78041,357 @@ public final class ProtoMessage {
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgRegImei_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgRegImei_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgImei_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgImei_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgImeiList_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgImeiList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgSearchCar_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgSearchCar_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgAttachment_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgAttachment_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_SmsCodeReq_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SmsCodeReq_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CommonRequest_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CommonRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CommonResp_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CommonResp_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CommonResp2_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CommonResp2_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_UserReg_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_UserReg_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_UserLogin_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_UserLogin_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_LoginResponse_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_LoginResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ChangePasswordBySms_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ChangePasswordBySms_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_SearchUser_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SearchUser_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ApplyFriend_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ApplyFriend_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ChangeFriendName_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ChangeFriendName_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_AcceptFriend_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_AcceptFriend_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_DeleteFriend_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_DeleteFriend_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_NotifyMsg_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_NotifyMsg_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_UserInfo_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_UserInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_FriendList_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_FriendList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TeamInfo_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TeamInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TeamList_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TeamList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ApplyTeam_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ApplyTeam_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_AppliedTeam_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_AppliedTeam_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_AppliedTeamList_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_AppliedTeamList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_AcceptTeam_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_AcceptTeam_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TeamMember_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TeamMember_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TeamMemberList_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TeamMemberList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_AssignTeamAdmin_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_AssignTeamAdmin_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CommonMsg_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CommonMsg_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CommonMsgResp_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CommonMsgResp_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CommonMsgConfirm_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CommonMsgConfirm_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CommonMsgRequest_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CommonMsgRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CommonMsgList_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CommonMsgList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_StartVoiceMsg_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_StartVoiceMsg_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ChatRoomMemberMsg_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ChatRoomMemberMsg_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ChatRoomMsg_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ChatRoomMsg_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_AcceptVoice_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_AcceptVoice_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_SpeakMsg_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SpeakMsg_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_LocationMsg_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_LocationMsg_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_LocationMsgList_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_LocationMsgList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CarRegister_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_CarRegister_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_LiveVideoCallAns_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_LiveVideoCallAns_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgSearchAround_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgSearchAround_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgSpeakBegin_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgSpeakBegin_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgSetPassword_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgSetPassword_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgIpPort_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgIpPort_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgLoginServer_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgLoginServer_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgSessionReport_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgSessionReport_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgLoginReport_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgLoginReport_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgSessionPull_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgSessionPull_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgLoginAddr_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgLoginAddr_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_UserAppType_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_UserAppType_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_WatcherList_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_WatcherList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgSessionReq_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgSessionReq_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgRoomIndexPull_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgRoomIndexPull_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgSessionToLocation_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgSessionToLocation_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_FriendStatus_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_FriendStatus_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgFriendsStatus_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgFriendsStatus_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgLocationStatics_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgLocationStatics_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgQueryLocation_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgQueryLocation_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_KqPoint_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_KqPoint_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_KqItem_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_KqItem_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgKqData_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgKqData_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_KqStaticsItem_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_KqStaticsItem_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_KqTimeStatics_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_KqTimeStatics_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgKqStatics_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgKqStatics_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgIccid_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgIccid_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgSetImeiName_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgSetImeiName_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MsgRemoteControl_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MsgRemoteControl_fieldAccessorTable;
 
@@ -77915,7 +78455,7 @@ public final class ProtoMessage {
       "\n\nchatStatus\030\t \001(\005\022\021\n\tenterType\030\n \001(\005\022\021\n",
       "\tapplyType\030\013 \001(\005\022\023\n\013appTypeFrom\030\014 \001(\005\022\021\n" +
       "\tappTypeTo\030\r \001(\005\022\020\n\010videoUrl\030\016 \001(\t\022\022\n\nse" +
-      "rverType\030\017 \001(\005\022\016\n\006online\030\020 \001(\010\"\215\004\n\010UserI" +
+      "rverType\030\017 \001(\005\022\016\n\006online\030\020 \001(\010\"\302\004\n\010UserI" +
       "nfo\022\021\n\terrorCode\030\001 \001(\005\022\020\n\010phoneNum\030\002 \001(\t" +
       "\022\020\n\010userName\030\003 \001(\t\022\020\n\010nickName\030\004 \001(\t\022\022\n\n" +
       "friendStar\030\005 \001(\010\022\017\n\007userPic\030\006 \001(\014\022\017\n\007use" +
@@ -77928,320 +78468,322 @@ public final class ProtoMessage {
       " \001(\005\022\024\n\014hide_field_3\030\025 \001(\005\022\024\n\014hide_field" +
       "_4\030\026 \001(\005\022\024\n\014hide_field_5\030\027 \001(\005\022\024\n\014hide_f" +
       "ield_6\030\030 \001(\005\022\024\n\014hide_field_7\030\031 \001(\005\022\024\n\014hi" +
-      "de_field_8\030\032 \001(\005\022\024\n\014hide_field_9\030\033 \001(\005\";" +
-      "\n\nFriendList\022\021\n\terrorCode\030\001 \001(\005\022\032\n\007frien" +
-      "ds\030\002 \003(\0132\t.UserInfo\"\262\001\n\010TeamInfo\022\021\n\terro" +
-      "rCode\030\001 \001(\005\022\016\n\006teamID\030\002 \001(\003\022\020\n\010teamName\030" +
-      "\003 \001(\t\022\020\n\010teamDesc\030\004 \001(\t\022\020\n\010teamType\030\005 \001(",
-      "\005\022\017\n\007groupID\030\006 \001(\003\022\022\n\nmemberRole\030\007 \001(\005\022\024" +
-      "\n\014teamPriority\030\010 \001(\005\022\022\n\nmyTeamName\030\t \001(\t" +
-      "\"7\n\010TeamList\022\021\n\terrorCode\030\001 \001(\005\022\030\n\005teams" +
-      "\030\002 \003(\0132\t.TeamInfo\"A\n\tApplyTeam\022\021\n\terrorC" +
-      "ode\030\001 \001(\005\022\016\n\006teamID\030\002 \001(\003\022\021\n\tphoneList\030\003" +
-      " \003(\t\"z\n\013AppliedTeam\022\021\n\terrorCode\030\001 \001(\005\022\020" +
-      "\n\010teamName\030\002 \001(\t\022\016\n\006teamID\030\003 \001(\003\022\021\n\tuser" +
-      "Phone\030\004 \001(\t\022\020\n\010userName\030\005 \001(\t\022\021\n\tapplyTy" +
-      "pe\030\006 \001(\005\"A\n\017AppliedTeamList\022\021\n\terrorCode" +
-      "\030\001 \001(\005\022\033\n\005apply\030\002 \003(\0132\014.AppliedTeam\"{\n\nA",
-      "cceptTeam\022\021\n\terrorCode\030\001 \001(\005\022\020\n\010phoneNum" +
-      "\030\002 \001(\t\022\016\n\006teamID\030\003 \001(\003\022\022\n\nacceptType\030\004 \001" +
-      "(\005\022\021\n\tapplyType\030\005 \001(\005\022\021\n\tphoneList\030\006 \003(\t" +
-      "\"\271\001\n\nTeamMember\022\021\n\terrorCode\030\001 \001(\005\022\021\n\tus" +
-      "erPhone\030\002 \001(\t\022\020\n\010userName\030\003 \001(\t\022\020\n\010nickN" +
-      "ame\030\004 \001(\t\022\014\n\004role\030\005 \001(\005\022\026\n\016memberPriorit" +
-      "y\030\006 \001(\005\022\016\n\006teamID\030\007 \001(\003\022\016\n\006userID\030\010 \001(\003\022" +
-      "\033\n\010userInfo\030\t \001(\0132\t.UserInfo\"f\n\016TeamMemb" +
-      "erList\022\021\n\terrorCode\030\001 \001(\005\022\034\n\007members\030\002 \003" +
-      "(\0132\013.TeamMember\022\016\n\006teamID\030\003 \001(\003\022\023\n\013reque",
-      "stFlag\030\004 \001(\005\"U\n\017AssignTeamAdmin\022\021\n\terror" +
-      "Code\030\001 \001(\005\022\020\n\010phoneNum\030\002 \001(\t\022\016\n\006teamID\030\003" +
-      " \001(\003\022\r\n\005admin\030\004 \001(\005\"\321\001\n\tCommonMsg\022\021\n\terr" +
-      "orCode\030\001 \001(\005\022\025\n\rfromUserPhone\030\002 \001(\t\022\023\n\013t" +
-      "oUserPhone\030\003 \001(\t\022\020\n\010toTeamID\030\004 \001(\003\022\017\n\007ms" +
-      "gType\030\005 \001(\005\022\022\n\nmsgContent\030\006 \001(\014\022\r\n\005msgID" +
-      "\030\007 \001(\003\022\017\n\007msgTime\030\010 \001(\003\022\r\n\005msgSN\030\t \001(\003\022\017" +
-      "\n\007msgSize\030\n \001(\003\022\016\n\006msgSum\030\013 \001(\014\"B\n\rCommo" +
-      "nMsgResp\022\021\n\terrorCode\030\001 \001(\005\022\r\n\005msgID\030\002 \001" +
-      "(\003\022\017\n\007msgTime\030\003 \001(\003\"\"\n\020CommonMsgConfirm\022",
-      "\016\n\006msgIDs\030\001 \003(\003\"&\n\020CommonMsgRequest\022\022\n\na" +
-      "fterMsgID\030\001 \001(\003\"?\n\rCommonMsgList\022\021\n\terro" +
-      "rCode\030\001 \001(\005\022\033\n\007msgList\030\002 \003(\0132\n.CommonMsg" +
-      "\"\213\001\n\rStartVoiceMsg\022\021\n\terrorCode\030\001 \001(\005\022\023\n" +
-      "\013toUserPhone\030\002 \001(\t\022\016\n\006teamID\030\003 \001(\003\022\016\n\006ro" +
-      "omID\030\004 \001(\003\022\025\n\rfromUserPhone\030\005 \001(\t\022\033\n\006acc" +
-      "ept\030\006 \001(\0162\013.AcceptType\"H\n\021ChatRoomMember" +
-      "Msg\022\021\n\terrorCode\030\001 \001(\005\022\020\n\010phoneNum\030\002 \001(\t" +
-      "\022\016\n\006status\030\003 \001(\005\"\374\001\n\013ChatRoomMsg\022\021\n\terro" +
-      "rCode\030\001 \001(\005\022\016\n\006roomID\030\002 \001(\003\022\022\n\nacceptTyp",
-      "e\030\003 \001(\005\022\022\n\nroomClosed\030\004 \001(\005\022#\n\007members\030\005" +
-      " \003(\0132\022.ChatRoomMemberMsg\022\016\n\006teamID\030\006 \001(\003" +
-      "\022\020\n\010phoneNum\030\007 \001(\t\022\016\n\006roomIP\030\010 \001(\t\022\020\n\010ro" +
-      "omPort\030\t \001(\005\022\022\n\nserverType\030\n \001(\005\022\023\n\013toUs" +
-      "erPhone\030\013 \001(\t\022\020\n\010videoUrl\030\014 \001(\t\"~\n\013Accep" +
-      "tVoice\022\021\n\terrorCode\030\001 \001(\005\022\016\n\006roomID\030\002 \001(" +
-      "\003\022\022\n\nacceptType\030\003 \001(\005\022\016\n\006teamID\030\004 \001(\003\022\020\n" +
-      "\010phoneNum\030\005 \001(\t\022\026\n\016friendPhoneNum\030\006 \001(\t\"" +
-      "0\n\010SpeakMsg\022\021\n\terrorCode\030\001 \001(\005\022\021\n\taudioD" +
-      "ata\030\002 \001(\014\"\361\001\n\013LocationMsg\022\021\n\terrorCode\030\001",
-      " \001(\005\022\013\n\003lat\030\002 \001(\001\022\013\n\003lng\030\003 \001(\001\022\016\n\006radius" +
-      "\030\004 \001(\005\022\022\n\nisAccurate\030\005 \001(\005\022\014\n\004time\030\006 \001(\003" +
-      "\022\020\n\010phoneNum\030\007 \001(\t\022\022\n\nlatlngType\030\010 \001(\005\022\020" +
-      "\n\010userName\030\t \001(\t\022\023\n\013hasLocation\030\n \001(\010\022\016\n" +
-      "\006userID\030\013 \001(\003\022\022\n\nreportType\030\014 \001(\005\022\022\n\nrep" +
-      "ortFlag\030\r \001(\005\"g\n\017LocationMsgList\022\021\n\terro" +
-      "rCode\030\001 \001(\005\022\016\n\006teamID\030\002 \001(\003\022\020\n\010phoneNum\030" +
-      "\003 \001(\t\022\037\n\tlocations\030\004 \003(\0132\014.LocationMsg\"\240" +
-      "\001\n\013CarRegister\022\021\n\terrorCode\030\001 \001(\005\022\r\n\005car" +
-      "ID\030\002 \001(\t\022\021\n\ttempToken\030\003 \001(\t\022\020\n\010phoneNum\030",
-      "\004 \001(\t\022\016\n\006carUrl\030\005 \001(\t\022\021\n\tsessionIP\030\006 \001(\t" +
-      "\022\023\n\013sessionPort\030\007 \001(\005\022\022\n\nserverType\030\010 \001(" +
-      "\005\"c\n\020LiveVideoCallAns\022\021\n\terrorCode\030\001 \001(\005" +
-      "\022\033\n\006accept\030\002 \001(\0162\013.AcceptType\022\r\n\005phone\030\003" +
-      " \001(\t\022\020\n\010videoUrl\030\004 \001(\t\"|\n\017MsgSearchAroun" +
-      "d\022\021\n\terrorCode\030\001 \001(\005\022\013\n\003lat\030\002 \001(\001\022\013\n\003lng" +
-      "\030\003 \001(\001\022\016\n\006radius\030\004 \001(\005\022\013\n\003pos\030\005 \001(\005\022\037\n\tl" +
-      "ocations\030\006 \003(\0132\014.LocationMsg\"4\n\rMsgSpeak" +
-      "Begin\022\021\n\terrorCode\030\001 \001(\005\022\020\n\010videoUrl\030\002 \001" +
-      "(\t\"K\n\016MsgSetPassword\022\021\n\terrorCode\030\001 \001(\005\022",
-      "\021\n\tphoneList\030\002 \003(\t\022\023\n\013newPassword\030\003 \001(\t\"" +
-      "%\n\tMsgIpPort\022\n\n\002ip\030\001 \001(\t\022\014\n\004port\030\002 \001(\005\"Q" +
-      "\n\016MsgLoginServer\022\021\n\terrorCode\030\001 \001(\005\022\032\n\006i" +
-      "pport\030\002 \001(\0132\n.MsgIpPort\022\020\n\010pullPort\030\003 \001(" +
-      "\005\"N\n\020MsgSessionReport\022\021\n\terrorCode\030\001 \001(\005" +
-      "\022\013\n\003cmd\030\002 \001(\005\022\032\n\006ipport\030\003 \001(\0132\n.MsgIpPor" +
-      "t\"\307\001\n\016MsgLoginReport\022\021\n\terrorCode\030\001 \001(\005\022" +
-      "\013\n\003cmd\030\002 \001(\005\022\032\n\006ipport\030\003 \001(\0132\n.MsgIpPort" +
-      "\022\020\n\010pullPort\030\004 \001(\005\022\020\n\010phonenum\030\005 \001(\t\022\022\n\n" +
-      "reportType\030\006 \001(\005\022\016\n\006userID\030\007 \001(\003\022\017\n\007appT",
-      "ype\030\010 \001(\005\022\r\n\005carID\030\t \001(\t\022\021\n\ttempToken\030\n " +
-      "\001(\t\"\310\001\n\016MsgSessionPull\022\021\n\terrorCode\030\001 \001(" +
-      "\005\022\014\n\004what\030\002 \001(\005\022\r\n\005phone\030\003 \001(\t\022\016\n\006userID" +
-      "\030\004 \001(\003\022\017\n\007apptype\030\005 \001(\005\022\013\n\003msg\030\006 \001(\014\022\017\n\007" +
-      "userID2\030\007 \001(\003\022\016\n\006phone2\030\010 \001(\t\022\r\n\005carID\030\t" +
-      " \001(\t\022\021\n\ttempToken\030\n \001(\t\022\025\n\rcarLoginToken" +
-      "\030\013 \001(\t\"9\n\014MsgLoginAddr\022\n\n\002ip\030\001 \001(\t\022\014\n\004po" +
-      "rt\030\002 \001(\005\022\017\n\007appType\030\003 \001(\005\".\n\013UserAppType" +
-      "\022\016\n\006userID\030\001 \001(\003\022\017\n\007appType\030\002 \001(\005\"D\n\013Wat" +
-      "cherList\022\n\n\002ip\030\001 \001(\t\022\014\n\004port\030\002 \001(\005\022\033\n\005us",
-      "ers\030\003 \003(\0132\014.UserAppType\"\306\001\n\rMsgSessionRe" +
-      "q\022\021\n\terrorCode\030\001 \001(\005\022\014\n\004what\030\002 \001(\005\022\r\n\005ph" +
-      "one\030\003 \001(\t\022\016\n\006userID\030\004 \001(\003\022\017\n\007appType\030\005 \001" +
-      "(\005\022\037\n\010pullAddr\030\006 \003(\0132\r.MsgLoginAddr\022!\n\013w" +
-      "atcherList\030\007 \003(\0132\014.WatcherList\022\r\n\005carID\030" +
-      "\010 \001(\t\022\021\n\ttempToken\030\t \001(\t\"\304\001\n\020MsgRoomInde" +
-      "xPull\022\021\n\terrorCode\030\001 \001(\005\022\014\n\004what\030\002 \001(\005\022\016" +
-      "\n\006roomip\030\003 \001(\t\022\020\n\010roomport\030\004 \001(\005\022\016\n\006user" +
-      "ID\030\005 \001(\003\022\017\n\007userID2\030\006 \001(\003\022\016\n\006teamID\030\007 \001(" +
-      "\003\022\021\n\tenterType\030\010 \001(\005\022\026\n\016memberPriority\030\t",
-      " \001(\005\022\021\n\tphoneNum2\030\n \001(\t\"\274\001\n\024MsgSessionTo" +
-      "Location\022\021\n\terrorCode\030\001 \001(\005\022\014\n\004what\030\002 \001(" +
-      "\005\022\016\n\006userID\030\003 \001(\003\022\036\n\010location\030\004 \001(\0132\014.Lo" +
-      "cationMsg\022\023\n\013watcherList\030\005 \003(\003\022\034\n\006result" +
-      "\030\006 \003(\0132\014.LocationMsg\022 \n\006search\030\007 \001(\0132\020.M" +
-      "sgSearchAround\"0\n\014FriendStatus\022\020\n\010phoneN" +
-      "um\030\001 \001(\t\022\016\n\006online\030\002 \001(\010\"E\n\020MsgFriendsSt" +
-      "atus\022\021\n\terrorCode\030\001 \001(\005\022\036\n\007friends\030\002 \003(\013" +
-      "2\r.FriendStatus\";\n\022MsgLocationStatics\022\020\n" +
-      "\010phoneNum\030\001 \001(\t\022\023\n\013locationCnt\030\002 \001(\005\"\257\001\n",
-      "\020MsgQueryLocation\022\021\n\terrorCode\030\001 \001(\005\022\020\n\010" +
-      "fromTime\030\002 \001(\003\022\016\n\006toTime\030\003 \001(\003\022\020\n\010phoneN" +
-      "um\030\004 \001(\t\022\020\n\010accuracy\030\005 \001(\005\022\034\n\006result\030\n \003" +
-      "(\0132\014.LocationMsg\022$\n\007statics\030\013 \003(\0132\023.MsgL" +
-      "ocationStatics\"R\n\007KqPoint\022\013\n\003sec\030\001 \001(\005\022\013" +
-      "\n\003lat\030\002 \001(\001\022\013\n\003lng\030\003 \001(\001\022\014\n\004addr\030\004 \001(\t\022\022" +
-      "\n\nreportType\030\005 \001(\005\"z\n\006KqItem\022\014\n\004kqID\030\001 \001" +
-      "(\003\022\020\n\010phoneNum\030\002 \001(\t\022\020\n\010timeType\030\003 \001(\005\022\020" +
-      "\n\010weekData\030\004 \001(\005\022\020\n\010timeDesc\030\005 \001(\t\022\032\n\010kq" +
-      "Points\030\006 \003(\0132\010.KqPoint\"E\n\tMsgKqData\022\021\n\te",
-      "rrorCode\030\001 \001(\005\022\016\n\006opCode\030\002 \001(\005\022\025\n\004data\030\003" +
-      " \003(\0132\007.KqItem\"4\n\rKqStaticsItem\022\016\n\006kqTime" +
-      "\030\001 \001(\003\022\023\n\013location_id\030\002 \001(\003\"F\n\rKqTimeSta" +
-      "tics\022\020\n\010phoneNum\030\002 \001(\t\022#\n\013timeStatics\030\003 " +
-      "\003(\0132\016.KqStaticsItem\"\212\001\n\014MsgKqStatics\022\021\n\t" +
-      "errorCode\030\001 \001(\005\022\020\n\010fromTime\030\002 \001(\003\022\016\n\006toT" +
-      "ime\030\003 \001(\003\022\021\n\ttimeError\030\004 \001(\005\022\021\n\tdistErro" +
-      "r\030\005 \001(\005\022\037\n\007statics\030\006 \003(\0132\016.KqTimeStatics" +
-      "\">\n\010MsgIccid\022\021\n\terrorCode\030\001 \001(\005\022\020\n\010editC" +
-      "ode\030\002 \001(\005\022\r\n\005iccid\030\003 \001(\t\"?\n\016MsgSetImeiNa",
-      "me\022\021\n\terrorCode\030\001 \001(\005\022\014\n\004imei\030\002 \001(\t\022\014\n\004d" +
-      "esc\030\003 \001(\t\"\300\001\n\020MsgRemoteControl\022\021\n\terrorC" +
-      "ode\030\001 \001(\005\022\021\n\tfromPhone\030\002 \001(\t\022\017\n\007toPhone\030" +
-      "\003 \001(\t\022\020\n\010toTeamID\030\004 \001(\003\022\023\n\013fromAppType\030\005" +
-      " \001(\005\022\021\n\ttoAppType\030\006 \001(\005\022\021\n\tremoteCmd\030\007 \001" +
-      "(\005\022\013\n\003lat\030\010 \001(\001\022\013\n\003lng\030\t \001(\001\022\016\n\006cmdStr\030\n" +
-      " \001(\t*\245\016\n\003Cmd\022\014\n\010cmdDummy\020\000\022\022\n\014cmdHeartbe" +
-      "at\020\200\200\004\022\020\n\ncmdSmsCode\020\201\200\004\022\014\n\006cmdReg\020\202\200\004\022\016" +
-      "\n\010cmdLogin\020\203\200\004\022\021\n\013cmdSendText\020\204\200\004\022\022\n\014cmd" +
-      "SendVoice\020\205\200\004\022\034\n\026cmdChangePasswordBySms\020",
-      "\206\200\004\022\023\n\rcmdSearchUser\020\207\200\004\022\024\n\016cmdApplyFrie" +
-      "nd\020\210\200\004\022\017\n\tcmdNotify\020\211\200\004\022\024\n\016cmdAppliedLis" +
-      "t\020\212\200\004\022\025\n\017cmdDeleteFriend\020\213\200\004\022\025\n\017cmdAccep" +
-      "tFriend\020\214\200\004\022\026\n\020cmdSetFriendInfo\020\215\200\004\022\026\n\020c" +
-      "mdGetFriendList\020\216\200\004\022\022\n\014cmdSetMyInfo\020\217\200\004\022" +
-      "\023\n\rcmdCreateTeam\020\220\200\004\022\024\n\016cmdGetTeamList\020\221" +
-      "\200\004\022\022\n\014cmdApplyTeam\020\222\200\004\022\030\n\022cmdAppliedTeam" +
-      "List\020\223\200\004\022\023\n\rcmdAcceptTeam\020\224\200\004\022\022\n\014cmdGetM" +
-      "yInfo\020\225\200\004\022\031\n\023cmdDeleteTeamMember\020\226\200\004\022\026\n\020" +
-      "cmdGetTeamMember\020\227\200\004\022\024\n\016cmdDismissTeam\020\230",
-      "\200\004\022\023\n\rcmdSearchTeam\020\231\200\004\022\030\n\022cmdAssignTeam" +
-      "Admin\020\232\200\004\022\027\n\021cmdModifyTeamInfo\020\233\200\004\022!\n\033cm" +
-      "dModifyTeamMemberPriority\020\234\200\004\022\021\n\013cmdQuit" +
-      "Team\020\235\200\004\022\022\n\014cmdCommonMsg\020\236\200\004\022\025\n\017cmdGotCo" +
-      "mmonMsg\020\237\200\004\022\031\n\023cmdGetAllTeamMember\020\240\200\004\022\023" +
-      "\n\rcmdStartVoice\020\241\200\004\022\024\n\016cmdAcceptVoice\020\242\200" +
-      "\004\022\021\n\013cmdSpeakMsg\020\243\200\004\022\024\n\016cmdGotSpeakMsg\020\244" +
-      "\200\004\022\023\n\rcmdSpeakBegin\020\245\200\004\022\021\n\013cmdSpeakEnd\020\246" +
-      "\200\004\022\026\n\020cmdAutoCloseRoom\020\247\200\004\022\031\n\023cmdChangeM" +
-      "yTeamName\020\250\200\004\022\023\n\rcmdMsgConfirm\020\251\200\004\022\017\n\tcm",
-      "dGetMsg\020\252\200\004\022\026\n\020cmdGetFriendInfo\020\253\200\004\022\025\n\017c" +
-      "mdForceOffline\020\254\200\004\022\017\n\tcmdLogout\020\255\200\004\022\033\n\025c" +
-      "mdSearchPhoneContact\020\256\200\004\022\031\n\023cmdUploadAtt" +
-      "achment\020\257\200\004\022\033\n\025cmdDownloadAttachment\020\260\200\004" +
-      "\022\026\n\020cmdCloseChatRoom\020\261\200\004\022\027\n\021cmdReportLoc" +
-      "ation\020\262\200\004\022\031\n\023cmdStartGetLocation\020\263\200\004\022\030\n\022" +
-      "cmdStopGetLocation\020\264\200\004\022\031\n\023cmdTouchGetLoc" +
-      "ation\020\265\200\004\022\036\n\030cmdFriendLocationChanged\020\266\200" +
-      "\004\022\026\n\020cmdLiveVideoCall\020\267\200\004\022\024\n\016cmdCarRegis" +
-      "ter\020\270\200\004\022\024\n\016cmdScanCarCode\020\271\200\004\022\022\n\014cmdUnbi",
-      "ndCar\020\272\200\004\022\022\n\014cmdLogoutCar\020\273\200\004\022\024\n\016cmdLive" +
-      "CallAns\020\274\200\004\022\022\n\014cmdScanCarOk\020\275\200\004\022\025\n\017cmdSe" +
-      "archAround\020\276\200\004\022\022\n\014cmdSearchCar\020\277\200\004\022\024\n\016cm" +
-      "dSearchUser2\020\300\200\004\022\020\n\ncmdRegImei\020\301\200\004\022\024\n\016cm" +
-      "dGetImeiList\020\302\200\004\022\024\n\016cmdSetPassword\020\303\200\004\022\031" +
-      "\n\023cmdQueryLoginServer\020\304\200\004\022\031\n\023cmdGetFrien" +
-      "dsStatus\020\305\200\004\022\027\n\021cmdQueryLocations\020\306\200\004\022\023\n" +
-      "\rcmdKaoQinEdit\020\307\200\004\022\026\n\020cmdKaoQinStatics\020\310" +
-      "\200\004\022\026\n\020cmdIccidGetOrSet\020\311\200\004\022\024\n\016cmdSetImei" +
-      "Name\020\312\200\004\022\026\n\020cmdRemoteControl\020\313\200\004\022\031\n\023cmdG",
-      "otRemoteControl\020\314\200\004\022\031\n\023cmdAnsRemoteContr" +
-      "ol\020\315\200\004\022\034\n\026cmdGotAnsRemoteControl\020\316\200\004*M\n\006" +
-      "OpCode\022\n\n\006opNone\020\000\022\t\n\005opAdd\020\001\022\t\n\005opDel\020\002" +
-      "\022\r\n\topDisable\020\003\022\022\n\016opEnableRecord\020\004*C\n\007A" +
-      "ppType\022\016\n\nappDefault\020\000\022\n\n\006appWeb\020\001\022\020\n\014ap" +
-      "pPocCenter\020\002\022\n\n\006appCar\020\003*\200\025\n\tErrorCode\022\006" +
-      "\n\002OK\020\000\022\013\n\007UNKNOWN\020\001\022\024\n\017SMS_CODE_FAILED\020\350" +
-      "\007\022\025\n\020SMS_CODE_NOT_GOT\020\351\007\022\027\n\022SMS_CODE_NOT" +
-      "_MATCH\020\352\007\022\023\n\016PASS_TOO_SHORT\020\353\007\022\022\n\rREG_DB" +
-      "_FAILED\020\354\007\022\027\n\022DATA_LEN_TOO_SHORT\020\355\007\022\036\n\031L",
-      "OGIN_PHONE_OR_PASS_WRONG\020\356\007\022\026\n\021LOGIN_TOK" +
-      "EN_WRONG\020\357\007\022\032\n\025LOGIN_TOKEN_NOT_EXIST\020\360\007\022" +
-      "\016\n\tNOT_LOGIN\020\361\007\022\024\n\017PHONE_NOT_FOUND\020\362\007\022\030\n" +
-      "\023FRIEND_NOT_INVITIED\020\363\007\022\023\n\016CHANGE_NOTHIN" +
-      "G\020\364\007\022\020\n\013NOT_MY_TEAM\020\365\007\022\034\n\027CANNOT_APPLY_G" +
-      "ROUP_TEAM\020\366\007\022\023\n\016TEAM_NOT_EXIST\020\367\007\022\024\n\017CUR" +
-      "R_USER_WRONG\020\370\007\022\023\n\016INNER_DB_ERROR\020\371\007\022\023\n\016" +
-      "NOT_TEAM_ADMIN\020\372\007\022\027\n\022CANNOT_DELETE_SELF\020" +
-      "\373\007\022\035\n\030CANNOT_DELETE_TEAM_OWNER\020\374\007\022\024\n\017NOT" +
-      "_TEAM_MEMBER\020\375\007\022\023\n\016NOT_TEAM_OWNER\020\376\007\022\030\n\023",
-      "TEAM_NAME_TOO_SHORT\020\377\007\022\"\n\035CANNOT_ASSIGN_" +
-      "TEAM_ADMIN_SELF\020\200\010\022#\n\036CANNOT_ASSIGN_TEAM" +
-      "_OWNER_ADMIN\020\201\010\022\033\n\026CANNOT_ADD_FRIEND_SEL" +
-      "F\020\202\010\022\026\n\021NOT_FOUND_USER_ID\020\203\010\022\032\n\025DUPLICAT" +
-      "ED_APPLY_TEAM\020\204\010\022\033\n\026CANNOT_EXIT_TEAM_OWN" +
-      "ER\020\205\010\022\017\n\nNOT_FRIEND\020\206\010\022\032\n\025CHAT_ROOM_INNE" +
-      "R_ERROR\020\207\010\022\031\n\024ALREADY_IN_CHAT_ROOM\020\210\010\022\034\n" +
-      "\027CANNOT_GET_NEW_ROOM_NUM\020\211\010\022\027\n\022NO_ANY_TE" +
-      "AM_MEMBER\020\212\010\022\027\n\022CANNOT_CALL_FRIEND\020\213\010\022\030\n" +
-      "\023NOT_FOUND_THIS_ROOM\020\214\010\022\035\n\030NOT_FOUND_THI",
-      "S_ROOM_USER\020\215\010\022\033\n\026ENTER_CHAT_ROOM_FAILED" +
-      "\020\220\010\022\031\n\024NOT_IN_ANY_CHAT_ROOM\020\221\010\022\027\n\022OTHER_" +
-      "SPEAKING_NOW\020\222\010\022\020\n\013INNER_ERROR\020\223\010\022\027\n\022DID" +
-      "NOT_SPEAK_BEGIN\020\224\010\022\023\n\016NAME_TOO_SHORT\020\225\010\022" +
-      "\023\n\016TOO_MANY_TEAMS\020\226\010\022\027\n\022TEAM_OR_USER_WRO" +
-      "NG\020\227\010\022!\n\034NOT_FOUND_USER_NAME_OR_PHONE\020\230\010" +
-      "\022\024\n\017USER_NAME_EXIST\020\231\010\022\017\n\nNOT_MY_MSG\020\232\010\022" +
-      "\034\n\027MSG_ATTACHMENT_UPLOADED\020\233\010\022&\n!MSG_ATT" +
-      "ACHMENT_UPLOAD_PARAM_ERROR\020\234\010\022%\n MSG_ATT" +
-      "ACHMENT_UPLOAD_FILE_ERROR\020\235\010\022$\n\037MSG_ATTA",
-      "CHMENT_UPLOAD_SUM_ERROR\020\236\010\022\'\n\"MSG_ATTACH" +
-      "MENT_UPLOAD_UPDATE_ERROR\020\237\010\022*\n%MSG_ATTAC" +
-      "HMENT_DOWNLOAD_NO_ATTACHMENT\020\240\010\022\'\n\"MSG_A" +
-      "TTACHMENT_DOWNLOAD_NO_MSG_SUM\020\253\010\022%\n MSG_" +
-      "ATTACHMENT_DOWNOAD_NO_EXISTS\020\254\010\022(\n#MSG_A" +
-      "TTACHMENT_DOWNLOAD_PARAM_ERROR\020\255\010\022\'\n\"MSG" +
-      "_ATTACHMENT_DOWNLOAD_READ_ERROR\020\256\010\022$\n\037MS" +
-      "G_ATTACHMENT_UPLOAD_LEN_ERROR\020\257\010\022\032\n\025CHAT" +
-      "_NOT_FROM_MY_CALL\020\260\010\022\025\n\020USER_PHONE_EXIST" +
-      "\020\261\010\022\024\n\017TEAM_NAME_EXIST\020\262\010\022\024\n\017NOT_GROUP_A",
-      "DMIN\020\263\010\022\020\n\013NO_GROUP_ID\020\264\010\022\026\n\021NO_GROUP_AD" +
-      "MIN_AD\020\265\010\022\026\n\021NOT_CAR_SCAN_CODE\020\266\010\022\026\n\021NOT" +
-      "_CAR_CONNECTED\020\267\010\022\017\n\nNOT_MY_CAR\020\270\010\022\025\n\020NO" +
-      "T_VALID_CAR_ID\020\271\010\022\024\n\017NOT_HAS_ANY_CAR\020\272\010\022" +
-      "\026\n\021CAR_NUM_TOO_SHORT\020\273\010\022\026\n\021CAR_NUM_DUPLI" +
-      "CATE\020\274\010\022\023\n\016NOT_VALID_IMEI\020\275\010\022\023\n\016IMEI_TOO" +
-      "_SHORT\020\276\010\022\024\n\017UNKNOWN_OP_CODE\020\277\010\022\024\n\017NOT_M" +
-      "Y_SUB_USER\020\300\010\022\034\n\027NOT_FRIEND_OR_SAME_TEAM" +
-      "\020\301\010\022\026\n\021NO_SESSION_SERVER\020\302\010\022\024\n\017NO_TEAM_O" +
-      "R_USER\020\303\010\022\030\n\023NO_CHAT_ROOM_SERVER\020\304\010\022\026\n\021C",
-      "HAT_MAIN_TIMEOUT\020\305\010\022\024\n\017BAD_SERVER_TYPE\020\306" +
-      "\010\022\032\n\025NOT_FOUND_ROOM_SERVER\020\307\010\022\033\n\026LOCATIO" +
-      "N_SERVER_FAILED\020\310\010\022\034\n\027LOCATION_SERVER_TI" +
-      "MEOUT\020\311\010\022\023\n\016NO_MY_LOCATION\020\312\010\022\031\n\024SEARCH_" +
-      "AROUND_FAILED\020\313\010\022\022\n\rNAME_TOO_LONG\020\314\010\022\025\n\020" +
-      "HDFS_OPEN_FAILED\020\315\010\022\021\n\014USER_DISABLE\020\316\010\022\030" +
-      "\n\023SMS_CODE_TYPE_WRONG\020\317\010\022\023\n\016PHONE_TOO_LO" +
-      "NG\020\320\010\022\026\n\021VOICE_UNSUPPORTED\020\321\010\022\027\n\022PHONE_F" +
-      "ORMAT_WRONG\020\322\010\022\031\n\024ACCOUNT_PREFIX_WRONG\020\323" +
-      "\010\022\020\n\013KQ_NO_PARAM\020\324\010\022\r\n\010KQ_NO_ID\020\325\010\022\031\n\024KQ",
-      "_ID_OR_PHONE_WRONG\020\326\010\022\024\n\017KQ_NOT_FOUND_ID" +
-      "\020\327\010\022\027\n\022NOT_VALID_GROUP_ID\020\330\010\022\031\n\024TOO_MANY" +
-      "_TEAM_MEMBER\020\331\010\022\022\n\rTOO_MANY_IMEI\020\332\010*A\n\013S" +
-      "msCodeType\022\016\n\nsmsCodeReg\020\000\022\020\n\014smsCodeRes" +
-      "et\020\001\022\020\n\014smsCodeCheck\020\002*I\n\nServerType\022\r\n\t" +
-      "stSession\020\000\022\n\n\006stRoot\020\001\022\n\n\006stRoom\020\002\022\024\n\007s" +
-      "tOther\020\377\377\377\377\377\377\377\377\377\001*&\n\nAcceptType\022\014\n\010atAcc" +
-      "ept\020\000\022\n\n\006atDeny\020\001*G\n\tEnterType\022\t\n\005Enter\020" +
-      "\000\022\t\n\005Leave\020\001\022\023\n\017PriorityChanged\020\002\022\017\n\013Dis" +
-      "missTeam\020\003*\332\003\n\nNotifyType\022\017\n\013NotifyDummy",
-      "\020\000\022\025\n\021NotifyApplyFriend\020\001\022\026\n\022NotifyAccep" +
-      "tFriend\020\002\022\026\n\022NotifyDeleteFriend\020\003\022\023\n\017Not" +
-      "ifyApplyTeam\020\004\022\024\n\020NotifyAcceptTeam\020\005\022\032\n\026" +
-      "NotifyDeleteTeamMember\020\006\022\025\n\021NotifyDismis" +
-      "sTeam\020\007\022\031\n\025NotifyAssignTeamAdmin\020\010\022\030\n\024No" +
-      "tifyModifyTeamInfo\020\t\022\022\n\016NotifyQuitTeam\020\n" +
-      "\022\022\n\016NotifyTeamCall\020\013\022\024\n\020NotifySingleCall" +
-      "\020\014\022\024\n\020NotifyChatStatus\020\r\022\026\n\022NotifySaveVa" +
-      "riable\020\016\022\016\n\nNotifyCall\020\017\022\030\n\024NotifyChange" +
-      "TeamNick\020\020\022\027\n\023NotifyLiveVideoCall\020\021\022\032\n\026N",
-      "otifyLiveVideoCallAns\020\022\022\026\n\022NotifyFriendS" +
-      "tatus\020\023*\257\001\n\rUserHideField\022\016\n\nhfPhoneNum\020" +
-      "\000\022\016\n\nhfUsername\020\001\022\r\n\thfUserSex\020\002\022\016\n\nhfBi" +
-      "rthday\020\003\022\016\n\nhfAddrInfo\020\004\022\r\n\thfCarType\020\005\022" +
-      "\014\n\010hfCarNum\020\006\022\t\n\005hfGps\020\007\022\020\n\014hfTeamRandom" +
-      "\020\010\022\025\n\021hfTeamRandomVideo\020\t*2\n\010TeamRole\022\016\n" +
-      "\nmemberOnly\020\000\022\013\n\007Manager\020\001\022\t\n\005Owner\020\002*p\n" +
-      "\010TeamType\022\016\n\nteamPublic\020\000\022\r\n\tteamTempo\020\001" +
-      "\022\017\n\013teamPrivate\020\002\022\017\n\013teamInGroup\020\003\022\016\n\nte" +
-      "amRandom\020\004\022\023\n\017teamMapSelector\020\005*,\n\rApply",
-      "TeamType\022\r\n\tattInvite\020\000\022\014\n\010attApply\020\001*)\n" +
-      "\013RequestFlag\022\017\n\013rfAllMember\020\000\022\t\n\005rfOne\020\001" +
-      "*\326\001\n\007MsgType\022\n\n\006mtText\020\000\022\013\n\007mtImage\020\001\022\013\n" +
-      "\007mtVoice\020\002\022\014\n\010mtCancel\020\003\022\017\n\013mtEnterTeam\020" +
-      "\004\022\017\n\013mtLeaveTeam\020\005\022\025\n\021mtChangeHeadImage\020" +
-      "\006\022\022\n\016mtAcceptFriend\020\007\022\022\n\016mtDeleteFriend\020" +
-      "\010\022\017\n\013mtVideoFile\020\t\022\017\n\013mtVoiceFile\020\n\022\024\n\020m" +
-      "tVoiceShortFile\020\013*B\n\nChatStatus\022\r\n\tcsOff" +
-      "line\020\000\022\013\n\007csNotIn\020\001\022\010\n\004csOk\020\002\022\016\n\ncsSpeak" +
-      "ing\020\003*&\n\003Sex\022\t\n\005noset\020\000\022\010\n\004male\020\001\022\n\n\006fem",
-      "ale\020\002*3\n\014KqReportType\022\013\n\007krtAuto\020\000\022\n\n\006kr" +
-      "tKey\020\001\022\n\n\006krtNfc\020\002*M\n\nReportType\022\013\n\007rtLo" +
-      "gin\020\000\022\014\n\010rtLogout\020\001\022\013\n\007rtAlive\020\002\022\014\n\010rtCa" +
-      "rReg\020\003\022\t\n\005rtMax\020\004*N\n\017SessionPullType\022\017\n\013" +
-      "sptToClient\020\000\022\023\n\017sptForceOffline\020\001\022\025\n\021sp" +
-      "tNotifyCarLogin\020\002*K\n\020CmdMsgSessionReq\022\033\n" +
-      "\027SessionGetUserSessionIP\020\000\022\032\n\026SessionQue" +
-      "ryWhoWatchMe\020\001*6\n\021MsgSessionReqWhat\022\r\n\ts" +
-      "rwNormal\020\000\022\022\n\016srwCarRegister\020\001*\200\001\n\007RoomC" +
-      "md\022\025\n\021rcRoomReportAlive\020\000\022\020\n\014rcStartVoic",
-      "e\020\001\022\021\n\rrcAcceptVoice\020\002\022\020\n\014rcCreateRoom\020\003" +
-      "\022\017\n\013rcCloseRoom\020\004\022\026\n\022rcTeamMemberChange\020" +
-      "\005*[\n\013LocationCmd\022\020\n\014LOCATION_PUT\020\000\022\022\n\016LO" +
-      "CATION_START\020\001\022\021\n\rLOCATION_STOP\020\002\022\023\n\017LOC" +
-      "ATION_SEARCH\020\003*&\n\nKqTimeType\022\013\n\007kttNone\020" +
-      "\000\022\013\n\007kttWeek\020\001*.\n\010EditCode\022\t\n\005ecGet\020\000\022\014\n" +
-      "\010ecUpdate\020\001\022\t\n\005ecDel\020\002*\'\n\tRemoteCmd\022\n\n\006r" +
-      "cNone\020\000\022\016\n\nrcNavigate\020\001B%\n#com.example.j" +
-      "rd48.service.proto_genb\006proto3"
+      "de_field_8\030\032 \001(\005\022\024\n\014hide_field_9\030\033 \001(\005\022\020" +
+      "\n\010interest\030$ \001(\t\022\016\n\006career\030% \001(\t\022\021\n\tsign" +
+      "ature\030& \001(\t\";\n\nFriendList\022\021\n\terrorCode\030\001" +
+      " \001(\005\022\032\n\007friends\030\002 \003(\0132\t.UserInfo\"\262\001\n\010Tea" +
+      "mInfo\022\021\n\terrorCode\030\001 \001(\005\022\016\n\006teamID\030\002 \001(\003",
+      "\022\020\n\010teamName\030\003 \001(\t\022\020\n\010teamDesc\030\004 \001(\t\022\020\n\010" +
+      "teamType\030\005 \001(\005\022\017\n\007groupID\030\006 \001(\003\022\022\n\nmembe" +
+      "rRole\030\007 \001(\005\022\024\n\014teamPriority\030\010 \001(\005\022\022\n\nmyT" +
+      "eamName\030\t \001(\t\"7\n\010TeamList\022\021\n\terrorCode\030\001" +
+      " \001(\005\022\030\n\005teams\030\002 \003(\0132\t.TeamInfo\"A\n\tApplyT" +
+      "eam\022\021\n\terrorCode\030\001 \001(\005\022\016\n\006teamID\030\002 \001(\003\022\021" +
+      "\n\tphoneList\030\003 \003(\t\"z\n\013AppliedTeam\022\021\n\terro" +
+      "rCode\030\001 \001(\005\022\020\n\010teamName\030\002 \001(\t\022\016\n\006teamID\030" +
+      "\003 \001(\003\022\021\n\tuserPhone\030\004 \001(\t\022\020\n\010userName\030\005 \001" +
+      "(\t\022\021\n\tapplyType\030\006 \001(\005\"A\n\017AppliedTeamList",
+      "\022\021\n\terrorCode\030\001 \001(\005\022\033\n\005apply\030\002 \003(\0132\014.App" +
+      "liedTeam\"{\n\nAcceptTeam\022\021\n\terrorCode\030\001 \001(" +
+      "\005\022\020\n\010phoneNum\030\002 \001(\t\022\016\n\006teamID\030\003 \001(\003\022\022\n\na" +
+      "cceptType\030\004 \001(\005\022\021\n\tapplyType\030\005 \001(\005\022\021\n\tph" +
+      "oneList\030\006 \003(\t\"\271\001\n\nTeamMember\022\021\n\terrorCod" +
+      "e\030\001 \001(\005\022\021\n\tuserPhone\030\002 \001(\t\022\020\n\010userName\030\003" +
+      " \001(\t\022\020\n\010nickName\030\004 \001(\t\022\014\n\004role\030\005 \001(\005\022\026\n\016" +
+      "memberPriority\030\006 \001(\005\022\016\n\006teamID\030\007 \001(\003\022\016\n\006" +
+      "userID\030\010 \001(\003\022\033\n\010userInfo\030\t \001(\0132\t.UserInf" +
+      "o\"f\n\016TeamMemberList\022\021\n\terrorCode\030\001 \001(\005\022\034",
+      "\n\007members\030\002 \003(\0132\013.TeamMember\022\016\n\006teamID\030\003" +
+      " \001(\003\022\023\n\013requestFlag\030\004 \001(\005\"U\n\017AssignTeamA" +
+      "dmin\022\021\n\terrorCode\030\001 \001(\005\022\020\n\010phoneNum\030\002 \001(" +
+      "\t\022\016\n\006teamID\030\003 \001(\003\022\r\n\005admin\030\004 \001(\005\"\321\001\n\tCom" +
+      "monMsg\022\021\n\terrorCode\030\001 \001(\005\022\025\n\rfromUserPho" +
+      "ne\030\002 \001(\t\022\023\n\013toUserPhone\030\003 \001(\t\022\020\n\010toTeamI" +
+      "D\030\004 \001(\003\022\017\n\007msgType\030\005 \001(\005\022\022\n\nmsgContent\030\006" +
+      " \001(\014\022\r\n\005msgID\030\007 \001(\003\022\017\n\007msgTime\030\010 \001(\003\022\r\n\005" +
+      "msgSN\030\t \001(\003\022\017\n\007msgSize\030\n \001(\003\022\016\n\006msgSum\030\013" +
+      " \001(\014\"B\n\rCommonMsgResp\022\021\n\terrorCode\030\001 \001(\005",
+      "\022\r\n\005msgID\030\002 \001(\003\022\017\n\007msgTime\030\003 \001(\003\"\"\n\020Comm" +
+      "onMsgConfirm\022\016\n\006msgIDs\030\001 \003(\003\"&\n\020CommonMs" +
+      "gRequest\022\022\n\nafterMsgID\030\001 \001(\003\"?\n\rCommonMs" +
+      "gList\022\021\n\terrorCode\030\001 \001(\005\022\033\n\007msgList\030\002 \003(" +
+      "\0132\n.CommonMsg\"\213\001\n\rStartVoiceMsg\022\021\n\terror" +
+      "Code\030\001 \001(\005\022\023\n\013toUserPhone\030\002 \001(\t\022\016\n\006teamI" +
+      "D\030\003 \001(\003\022\016\n\006roomID\030\004 \001(\003\022\025\n\rfromUserPhone" +
+      "\030\005 \001(\t\022\033\n\006accept\030\006 \001(\0162\013.AcceptType\"H\n\021C" +
+      "hatRoomMemberMsg\022\021\n\terrorCode\030\001 \001(\005\022\020\n\010p" +
+      "honeNum\030\002 \001(\t\022\016\n\006status\030\003 \001(\005\"\374\001\n\013ChatRo",
+      "omMsg\022\021\n\terrorCode\030\001 \001(\005\022\016\n\006roomID\030\002 \001(\003" +
+      "\022\022\n\nacceptType\030\003 \001(\005\022\022\n\nroomClosed\030\004 \001(\005" +
+      "\022#\n\007members\030\005 \003(\0132\022.ChatRoomMemberMsg\022\016\n" +
+      "\006teamID\030\006 \001(\003\022\020\n\010phoneNum\030\007 \001(\t\022\016\n\006roomI" +
+      "P\030\010 \001(\t\022\020\n\010roomPort\030\t \001(\005\022\022\n\nserverType\030" +
+      "\n \001(\005\022\023\n\013toUserPhone\030\013 \001(\t\022\020\n\010videoUrl\030\014" +
+      " \001(\t\"~\n\013AcceptVoice\022\021\n\terrorCode\030\001 \001(\005\022\016" +
+      "\n\006roomID\030\002 \001(\003\022\022\n\nacceptType\030\003 \001(\005\022\016\n\006te" +
+      "amID\030\004 \001(\003\022\020\n\010phoneNum\030\005 \001(\t\022\026\n\016friendPh" +
+      "oneNum\030\006 \001(\t\"0\n\010SpeakMsg\022\021\n\terrorCode\030\001 ",
+      "\001(\005\022\021\n\taudioData\030\002 \001(\014\"\361\001\n\013LocationMsg\022\021" +
+      "\n\terrorCode\030\001 \001(\005\022\013\n\003lat\030\002 \001(\001\022\013\n\003lng\030\003 " +
+      "\001(\001\022\016\n\006radius\030\004 \001(\005\022\022\n\nisAccurate\030\005 \001(\005\022" +
+      "\014\n\004time\030\006 \001(\003\022\020\n\010phoneNum\030\007 \001(\t\022\022\n\nlatln" +
+      "gType\030\010 \001(\005\022\020\n\010userName\030\t \001(\t\022\023\n\013hasLoca" +
+      "tion\030\n \001(\010\022\016\n\006userID\030\013 \001(\003\022\022\n\nreportType" +
+      "\030\014 \001(\005\022\022\n\nreportFlag\030\r \001(\005\"g\n\017LocationMs" +
+      "gList\022\021\n\terrorCode\030\001 \001(\005\022\016\n\006teamID\030\002 \001(\003" +
+      "\022\020\n\010phoneNum\030\003 \001(\t\022\037\n\tlocations\030\004 \003(\0132\014." +
+      "LocationMsg\"\240\001\n\013CarRegister\022\021\n\terrorCode",
+      "\030\001 \001(\005\022\r\n\005carID\030\002 \001(\t\022\021\n\ttempToken\030\003 \001(\t" +
+      "\022\020\n\010phoneNum\030\004 \001(\t\022\016\n\006carUrl\030\005 \001(\t\022\021\n\tse" +
+      "ssionIP\030\006 \001(\t\022\023\n\013sessionPort\030\007 \001(\005\022\022\n\nse" +
+      "rverType\030\010 \001(\005\"c\n\020LiveVideoCallAns\022\021\n\ter" +
+      "rorCode\030\001 \001(\005\022\033\n\006accept\030\002 \001(\0162\013.AcceptTy" +
+      "pe\022\r\n\005phone\030\003 \001(\t\022\020\n\010videoUrl\030\004 \001(\t\"|\n\017M" +
+      "sgSearchAround\022\021\n\terrorCode\030\001 \001(\005\022\013\n\003lat" +
+      "\030\002 \001(\001\022\013\n\003lng\030\003 \001(\001\022\016\n\006radius\030\004 \001(\005\022\013\n\003p" +
+      "os\030\005 \001(\005\022\037\n\tlocations\030\006 \003(\0132\014.LocationMs" +
+      "g\"4\n\rMsgSpeakBegin\022\021\n\terrorCode\030\001 \001(\005\022\020\n",
+      "\010videoUrl\030\002 \001(\t\"K\n\016MsgSetPassword\022\021\n\terr" +
+      "orCode\030\001 \001(\005\022\021\n\tphoneList\030\002 \003(\t\022\023\n\013newPa" +
+      "ssword\030\003 \001(\t\"%\n\tMsgIpPort\022\n\n\002ip\030\001 \001(\t\022\014\n" +
+      "\004port\030\002 \001(\005\"Q\n\016MsgLoginServer\022\021\n\terrorCo" +
+      "de\030\001 \001(\005\022\032\n\006ipport\030\002 \001(\0132\n.MsgIpPort\022\020\n\010" +
+      "pullPort\030\003 \001(\005\"N\n\020MsgSessionReport\022\021\n\ter" +
+      "rorCode\030\001 \001(\005\022\013\n\003cmd\030\002 \001(\005\022\032\n\006ipport\030\003 \001" +
+      "(\0132\n.MsgIpPort\"\307\001\n\016MsgLoginReport\022\021\n\terr" +
+      "orCode\030\001 \001(\005\022\013\n\003cmd\030\002 \001(\005\022\032\n\006ipport\030\003 \001(" +
+      "\0132\n.MsgIpPort\022\020\n\010pullPort\030\004 \001(\005\022\020\n\010phone",
+      "num\030\005 \001(\t\022\022\n\nreportType\030\006 \001(\005\022\016\n\006userID\030" +
+      "\007 \001(\003\022\017\n\007appType\030\010 \001(\005\022\r\n\005carID\030\t \001(\t\022\021\n" +
+      "\ttempToken\030\n \001(\t\"\310\001\n\016MsgSessionPull\022\021\n\te" +
+      "rrorCode\030\001 \001(\005\022\014\n\004what\030\002 \001(\005\022\r\n\005phone\030\003 " +
+      "\001(\t\022\016\n\006userID\030\004 \001(\003\022\017\n\007apptype\030\005 \001(\005\022\013\n\003" +
+      "msg\030\006 \001(\014\022\017\n\007userID2\030\007 \001(\003\022\016\n\006phone2\030\010 \001" +
+      "(\t\022\r\n\005carID\030\t \001(\t\022\021\n\ttempToken\030\n \001(\t\022\025\n\r" +
+      "carLoginToken\030\013 \001(\t\"9\n\014MsgLoginAddr\022\n\n\002i" +
+      "p\030\001 \001(\t\022\014\n\004port\030\002 \001(\005\022\017\n\007appType\030\003 \001(\005\"." +
+      "\n\013UserAppType\022\016\n\006userID\030\001 \001(\003\022\017\n\007appType",
+      "\030\002 \001(\005\"D\n\013WatcherList\022\n\n\002ip\030\001 \001(\t\022\014\n\004por" +
+      "t\030\002 \001(\005\022\033\n\005users\030\003 \003(\0132\014.UserAppType\"\306\001\n" +
+      "\rMsgSessionReq\022\021\n\terrorCode\030\001 \001(\005\022\014\n\004wha" +
+      "t\030\002 \001(\005\022\r\n\005phone\030\003 \001(\t\022\016\n\006userID\030\004 \001(\003\022\017" +
+      "\n\007appType\030\005 \001(\005\022\037\n\010pullAddr\030\006 \003(\0132\r.MsgL" +
+      "oginAddr\022!\n\013watcherList\030\007 \003(\0132\014.WatcherL" +
+      "ist\022\r\n\005carID\030\010 \001(\t\022\021\n\ttempToken\030\t \001(\t\"\304\001" +
+      "\n\020MsgRoomIndexPull\022\021\n\terrorCode\030\001 \001(\005\022\014\n" +
+      "\004what\030\002 \001(\005\022\016\n\006roomip\030\003 \001(\t\022\020\n\010roomport\030" +
+      "\004 \001(\005\022\016\n\006userID\030\005 \001(\003\022\017\n\007userID2\030\006 \001(\003\022\016",
+      "\n\006teamID\030\007 \001(\003\022\021\n\tenterType\030\010 \001(\005\022\026\n\016mem" +
+      "berPriority\030\t \001(\005\022\021\n\tphoneNum2\030\n \001(\t\"\274\001\n" +
+      "\024MsgSessionToLocation\022\021\n\terrorCode\030\001 \001(\005" +
+      "\022\014\n\004what\030\002 \001(\005\022\016\n\006userID\030\003 \001(\003\022\036\n\010locati" +
+      "on\030\004 \001(\0132\014.LocationMsg\022\023\n\013watcherList\030\005 " +
+      "\003(\003\022\034\n\006result\030\006 \003(\0132\014.LocationMsg\022 \n\006sea" +
+      "rch\030\007 \001(\0132\020.MsgSearchAround\"0\n\014FriendSta" +
+      "tus\022\020\n\010phoneNum\030\001 \001(\t\022\016\n\006online\030\002 \001(\010\"E\n" +
+      "\020MsgFriendsStatus\022\021\n\terrorCode\030\001 \001(\005\022\036\n\007" +
+      "friends\030\002 \003(\0132\r.FriendStatus\";\n\022MsgLocat",
+      "ionStatics\022\020\n\010phoneNum\030\001 \001(\t\022\023\n\013location" +
+      "Cnt\030\002 \001(\005\"\257\001\n\020MsgQueryLocation\022\021\n\terrorC" +
+      "ode\030\001 \001(\005\022\020\n\010fromTime\030\002 \001(\003\022\016\n\006toTime\030\003 " +
+      "\001(\003\022\020\n\010phoneNum\030\004 \001(\t\022\020\n\010accuracy\030\005 \001(\005\022" +
+      "\034\n\006result\030\n \003(\0132\014.LocationMsg\022$\n\007statics" +
+      "\030\013 \003(\0132\023.MsgLocationStatics\"R\n\007KqPoint\022\013" +
+      "\n\003sec\030\001 \001(\005\022\013\n\003lat\030\002 \001(\001\022\013\n\003lng\030\003 \001(\001\022\014\n" +
+      "\004addr\030\004 \001(\t\022\022\n\nreportType\030\005 \001(\005\"z\n\006KqIte" +
+      "m\022\014\n\004kqID\030\001 \001(\003\022\020\n\010phoneNum\030\002 \001(\t\022\020\n\010tim" +
+      "eType\030\003 \001(\005\022\020\n\010weekData\030\004 \001(\005\022\020\n\010timeDes",
+      "c\030\005 \001(\t\022\032\n\010kqPoints\030\006 \003(\0132\010.KqPoint\"E\n\tM" +
+      "sgKqData\022\021\n\terrorCode\030\001 \001(\005\022\016\n\006opCode\030\002 " +
+      "\001(\005\022\025\n\004data\030\003 \003(\0132\007.KqItem\"4\n\rKqStaticsI" +
+      "tem\022\016\n\006kqTime\030\001 \001(\003\022\023\n\013location_id\030\002 \001(\003" +
+      "\"F\n\rKqTimeStatics\022\020\n\010phoneNum\030\002 \001(\t\022#\n\013t" +
+      "imeStatics\030\003 \003(\0132\016.KqStaticsItem\"\212\001\n\014Msg" +
+      "KqStatics\022\021\n\terrorCode\030\001 \001(\005\022\020\n\010fromTime" +
+      "\030\002 \001(\003\022\016\n\006toTime\030\003 \001(\003\022\021\n\ttimeError\030\004 \001(" +
+      "\005\022\021\n\tdistError\030\005 \001(\005\022\037\n\007statics\030\006 \003(\0132\016." +
+      "KqTimeStatics\">\n\010MsgIccid\022\021\n\terrorCode\030\001",
+      " \001(\005\022\020\n\010editCode\030\002 \001(\005\022\r\n\005iccid\030\003 \001(\t\"?\n" +
+      "\016MsgSetImeiName\022\021\n\terrorCode\030\001 \001(\005\022\014\n\004im" +
+      "ei\030\002 \001(\t\022\014\n\004desc\030\003 \001(\t\"\300\001\n\020MsgRemoteCont" +
+      "rol\022\021\n\terrorCode\030\001 \001(\005\022\021\n\tfromPhone\030\002 \001(" +
+      "\t\022\017\n\007toPhone\030\003 \001(\t\022\020\n\010toTeamID\030\004 \001(\003\022\023\n\013" +
+      "fromAppType\030\005 \001(\005\022\021\n\ttoAppType\030\006 \001(\005\022\021\n\t" +
+      "remoteCmd\030\007 \001(\005\022\013\n\003lat\030\010 \001(\001\022\013\n\003lng\030\t \001(" +
+      "\001\022\016\n\006cmdStr\030\n \001(\t*\272\016\n\003Cmd\022\014\n\010cmdDummy\020\000\022" +
+      "\022\n\014cmdHeartbeat\020\200\200\004\022\020\n\ncmdSmsCode\020\201\200\004\022\014\n" +
+      "\006cmdReg\020\202\200\004\022\016\n\010cmdLogin\020\203\200\004\022\021\n\013cmdSendTe",
+      "xt\020\204\200\004\022\022\n\014cmdSendVoice\020\205\200\004\022\034\n\026cmdChangeP" +
+      "asswordBySms\020\206\200\004\022\023\n\rcmdSearchUser\020\207\200\004\022\024\n" +
+      "\016cmdApplyFriend\020\210\200\004\022\017\n\tcmdNotify\020\211\200\004\022\024\n\016" +
+      "cmdAppliedList\020\212\200\004\022\025\n\017cmdDeleteFriend\020\213\200" +
+      "\004\022\025\n\017cmdAcceptFriend\020\214\200\004\022\026\n\020cmdSetFriend" +
+      "Info\020\215\200\004\022\026\n\020cmdGetFriendList\020\216\200\004\022\022\n\014cmdS" +
+      "etMyInfo\020\217\200\004\022\023\n\rcmdCreateTeam\020\220\200\004\022\024\n\016cmd" +
+      "GetTeamList\020\221\200\004\022\022\n\014cmdApplyTeam\020\222\200\004\022\030\n\022c" +
+      "mdAppliedTeamList\020\223\200\004\022\023\n\rcmdAcceptTeam\020\224" +
+      "\200\004\022\022\n\014cmdGetMyInfo\020\225\200\004\022\031\n\023cmdDeleteTeamM",
+      "ember\020\226\200\004\022\023\n\rcmdGetBBSList\020\334\200\004\022\026\n\020cmdGet" +
+      "TeamMember\020\227\200\004\022\024\n\016cmdDismissTeam\020\230\200\004\022\023\n\r" +
+      "cmdSearchTeam\020\231\200\004\022\030\n\022cmdAssignTeamAdmin\020" +
+      "\232\200\004\022\027\n\021cmdModifyTeamInfo\020\233\200\004\022!\n\033cmdModif" +
+      "yTeamMemberPriority\020\234\200\004\022\021\n\013cmdQuitTeam\020\235" +
+      "\200\004\022\022\n\014cmdCommonMsg\020\236\200\004\022\025\n\017cmdGotCommonMs" +
+      "g\020\237\200\004\022\031\n\023cmdGetAllTeamMember\020\240\200\004\022\023\n\rcmdS" +
+      "tartVoice\020\241\200\004\022\024\n\016cmdAcceptVoice\020\242\200\004\022\021\n\013c" +
+      "mdSpeakMsg\020\243\200\004\022\024\n\016cmdGotSpeakMsg\020\244\200\004\022\023\n\r" +
+      "cmdSpeakBegin\020\245\200\004\022\021\n\013cmdSpeakEnd\020\246\200\004\022\026\n\020",
+      "cmdAutoCloseRoom\020\247\200\004\022\031\n\023cmdChangeMyTeamN" +
+      "ame\020\250\200\004\022\023\n\rcmdMsgConfirm\020\251\200\004\022\017\n\tcmdGetMs" +
+      "g\020\252\200\004\022\026\n\020cmdGetFriendInfo\020\253\200\004\022\025\n\017cmdForc" +
+      "eOffline\020\254\200\004\022\017\n\tcmdLogout\020\255\200\004\022\033\n\025cmdSear" +
+      "chPhoneContact\020\256\200\004\022\031\n\023cmdUploadAttachmen" +
+      "t\020\257\200\004\022\033\n\025cmdDownloadAttachment\020\260\200\004\022\026\n\020cm" +
+      "dCloseChatRoom\020\261\200\004\022\027\n\021cmdReportLocation\020" +
+      "\262\200\004\022\031\n\023cmdStartGetLocation\020\263\200\004\022\030\n\022cmdSto" +
+      "pGetLocation\020\264\200\004\022\031\n\023cmdTouchGetLocation\020" +
+      "\265\200\004\022\036\n\030cmdFriendLocationChanged\020\266\200\004\022\026\n\020c",
+      "mdLiveVideoCall\020\267\200\004\022\024\n\016cmdCarRegister\020\270\200" +
+      "\004\022\024\n\016cmdScanCarCode\020\271\200\004\022\022\n\014cmdUnbindCar\020" +
+      "\272\200\004\022\022\n\014cmdLogoutCar\020\273\200\004\022\024\n\016cmdLiveCallAn" +
+      "s\020\274\200\004\022\022\n\014cmdScanCarOk\020\275\200\004\022\025\n\017cmdSearchAr" +
+      "ound\020\276\200\004\022\022\n\014cmdSearchCar\020\277\200\004\022\024\n\016cmdSearc" +
+      "hUser2\020\300\200\004\022\020\n\ncmdRegImei\020\301\200\004\022\024\n\016cmdGetIm" +
+      "eiList\020\302\200\004\022\024\n\016cmdSetPassword\020\303\200\004\022\031\n\023cmdQ" +
+      "ueryLoginServer\020\304\200\004\022\031\n\023cmdGetFriendsStat" +
+      "us\020\305\200\004\022\027\n\021cmdQueryLocations\020\306\200\004\022\023\n\rcmdKa" +
+      "oQinEdit\020\307\200\004\022\026\n\020cmdKaoQinStatics\020\310\200\004\022\026\n\020",
+      "cmdIccidGetOrSet\020\311\200\004\022\024\n\016cmdSetImeiName\020\312" +
+      "\200\004\022\026\n\020cmdRemoteControl\020\313\200\004\022\031\n\023cmdGotRemo" +
+      "teControl\020\314\200\004\022\031\n\023cmdAnsRemoteControl\020\315\200\004" +
+      "\022\034\n\026cmdGotAnsRemoteControl\020\316\200\004*M\n\006OpCode" +
+      "\022\n\n\006opNone\020\000\022\t\n\005opAdd\020\001\022\t\n\005opDel\020\002\022\r\n\top" +
+      "Disable\020\003\022\022\n\016opEnableRecord\020\004*C\n\007AppType" +
+      "\022\016\n\nappDefault\020\000\022\n\n\006appWeb\020\001\022\020\n\014appPocCe" +
+      "nter\020\002\022\n\n\006appCar\020\003*\200\025\n\tErrorCode\022\006\n\002OK\020\000" +
+      "\022\013\n\007UNKNOWN\020\001\022\024\n\017SMS_CODE_FAILED\020\350\007\022\025\n\020S" +
+      "MS_CODE_NOT_GOT\020\351\007\022\027\n\022SMS_CODE_NOT_MATCH",
+      "\020\352\007\022\023\n\016PASS_TOO_SHORT\020\353\007\022\022\n\rREG_DB_FAILE" +
+      "D\020\354\007\022\027\n\022DATA_LEN_TOO_SHORT\020\355\007\022\036\n\031LOGIN_P" +
+      "HONE_OR_PASS_WRONG\020\356\007\022\026\n\021LOGIN_TOKEN_WRO" +
+      "NG\020\357\007\022\032\n\025LOGIN_TOKEN_NOT_EXIST\020\360\007\022\016\n\tNOT" +
+      "_LOGIN\020\361\007\022\024\n\017PHONE_NOT_FOUND\020\362\007\022\030\n\023FRIEN" +
+      "D_NOT_INVITIED\020\363\007\022\023\n\016CHANGE_NOTHING\020\364\007\022\020" +
+      "\n\013NOT_MY_TEAM\020\365\007\022\034\n\027CANNOT_APPLY_GROUP_T" +
+      "EAM\020\366\007\022\023\n\016TEAM_NOT_EXIST\020\367\007\022\024\n\017CURR_USER" +
+      "_WRONG\020\370\007\022\023\n\016INNER_DB_ERROR\020\371\007\022\023\n\016NOT_TE" +
+      "AM_ADMIN\020\372\007\022\027\n\022CANNOT_DELETE_SELF\020\373\007\022\035\n\030",
+      "CANNOT_DELETE_TEAM_OWNER\020\374\007\022\024\n\017NOT_TEAM_" +
+      "MEMBER\020\375\007\022\023\n\016NOT_TEAM_OWNER\020\376\007\022\030\n\023TEAM_N" +
+      "AME_TOO_SHORT\020\377\007\022\"\n\035CANNOT_ASSIGN_TEAM_A" +
+      "DMIN_SELF\020\200\010\022#\n\036CANNOT_ASSIGN_TEAM_OWNER" +
+      "_ADMIN\020\201\010\022\033\n\026CANNOT_ADD_FRIEND_SELF\020\202\010\022\026" +
+      "\n\021NOT_FOUND_USER_ID\020\203\010\022\032\n\025DUPLICATED_APP" +
+      "LY_TEAM\020\204\010\022\033\n\026CANNOT_EXIT_TEAM_OWNER\020\205\010\022" +
+      "\017\n\nNOT_FRIEND\020\206\010\022\032\n\025CHAT_ROOM_INNER_ERRO" +
+      "R\020\207\010\022\031\n\024ALREADY_IN_CHAT_ROOM\020\210\010\022\034\n\027CANNO" +
+      "T_GET_NEW_ROOM_NUM\020\211\010\022\027\n\022NO_ANY_TEAM_MEM",
+      "BER\020\212\010\022\027\n\022CANNOT_CALL_FRIEND\020\213\010\022\030\n\023NOT_F" +
+      "OUND_THIS_ROOM\020\214\010\022\035\n\030NOT_FOUND_THIS_ROOM" +
+      "_USER\020\215\010\022\033\n\026ENTER_CHAT_ROOM_FAILED\020\220\010\022\031\n" +
+      "\024NOT_IN_ANY_CHAT_ROOM\020\221\010\022\027\n\022OTHER_SPEAKI" +
+      "NG_NOW\020\222\010\022\020\n\013INNER_ERROR\020\223\010\022\027\n\022DIDNOT_SP" +
+      "EAK_BEGIN\020\224\010\022\023\n\016NAME_TOO_SHORT\020\225\010\022\023\n\016TOO" +
+      "_MANY_TEAMS\020\226\010\022\027\n\022TEAM_OR_USER_WRONG\020\227\010\022" +
+      "!\n\034NOT_FOUND_USER_NAME_OR_PHONE\020\230\010\022\024\n\017US" +
+      "ER_NAME_EXIST\020\231\010\022\017\n\nNOT_MY_MSG\020\232\010\022\034\n\027MSG" +
+      "_ATTACHMENT_UPLOADED\020\233\010\022&\n!MSG_ATTACHMEN",
+      "T_UPLOAD_PARAM_ERROR\020\234\010\022%\n MSG_ATTACHMEN" +
+      "T_UPLOAD_FILE_ERROR\020\235\010\022$\n\037MSG_ATTACHMENT" +
+      "_UPLOAD_SUM_ERROR\020\236\010\022\'\n\"MSG_ATTACHMENT_U" +
+      "PLOAD_UPDATE_ERROR\020\237\010\022*\n%MSG_ATTACHMENT_" +
+      "DOWNLOAD_NO_ATTACHMENT\020\240\010\022\'\n\"MSG_ATTACHM" +
+      "ENT_DOWNLOAD_NO_MSG_SUM\020\253\010\022%\n MSG_ATTACH" +
+      "MENT_DOWNOAD_NO_EXISTS\020\254\010\022(\n#MSG_ATTACHM" +
+      "ENT_DOWNLOAD_PARAM_ERROR\020\255\010\022\'\n\"MSG_ATTAC" +
+      "HMENT_DOWNLOAD_READ_ERROR\020\256\010\022$\n\037MSG_ATTA" +
+      "CHMENT_UPLOAD_LEN_ERROR\020\257\010\022\032\n\025CHAT_NOT_F",
+      "ROM_MY_CALL\020\260\010\022\025\n\020USER_PHONE_EXIST\020\261\010\022\024\n" +
+      "\017TEAM_NAME_EXIST\020\262\010\022\024\n\017NOT_GROUP_ADMIN\020\263" +
+      "\010\022\020\n\013NO_GROUP_ID\020\264\010\022\026\n\021NO_GROUP_ADMIN_AD" +
+      "\020\265\010\022\026\n\021NOT_CAR_SCAN_CODE\020\266\010\022\026\n\021NOT_CAR_C" +
+      "ONNECTED\020\267\010\022\017\n\nNOT_MY_CAR\020\270\010\022\025\n\020NOT_VALI" +
+      "D_CAR_ID\020\271\010\022\024\n\017NOT_HAS_ANY_CAR\020\272\010\022\026\n\021CAR" +
+      "_NUM_TOO_SHORT\020\273\010\022\026\n\021CAR_NUM_DUPLICATE\020\274" +
+      "\010\022\023\n\016NOT_VALID_IMEI\020\275\010\022\023\n\016IMEI_TOO_SHORT" +
+      "\020\276\010\022\024\n\017UNKNOWN_OP_CODE\020\277\010\022\024\n\017NOT_MY_SUB_" +
+      "USER\020\300\010\022\034\n\027NOT_FRIEND_OR_SAME_TEAM\020\301\010\022\026\n",
+      "\021NO_SESSION_SERVER\020\302\010\022\024\n\017NO_TEAM_OR_USER" +
+      "\020\303\010\022\030\n\023NO_CHAT_ROOM_SERVER\020\304\010\022\026\n\021CHAT_MA" +
+      "IN_TIMEOUT\020\305\010\022\024\n\017BAD_SERVER_TYPE\020\306\010\022\032\n\025N" +
+      "OT_FOUND_ROOM_SERVER\020\307\010\022\033\n\026LOCATION_SERV" +
+      "ER_FAILED\020\310\010\022\034\n\027LOCATION_SERVER_TIMEOUT\020" +
+      "\311\010\022\023\n\016NO_MY_LOCATION\020\312\010\022\031\n\024SEARCH_AROUND" +
+      "_FAILED\020\313\010\022\022\n\rNAME_TOO_LONG\020\314\010\022\025\n\020HDFS_O" +
+      "PEN_FAILED\020\315\010\022\021\n\014USER_DISABLE\020\316\010\022\030\n\023SMS_" +
+      "CODE_TYPE_WRONG\020\317\010\022\023\n\016PHONE_TOO_LONG\020\320\010\022" +
+      "\026\n\021VOICE_UNSUPPORTED\020\321\010\022\027\n\022PHONE_FORMAT_",
+      "WRONG\020\322\010\022\031\n\024ACCOUNT_PREFIX_WRONG\020\323\010\022\020\n\013K" +
+      "Q_NO_PARAM\020\324\010\022\r\n\010KQ_NO_ID\020\325\010\022\031\n\024KQ_ID_OR" +
+      "_PHONE_WRONG\020\326\010\022\024\n\017KQ_NOT_FOUND_ID\020\327\010\022\027\n" +
+      "\022NOT_VALID_GROUP_ID\020\330\010\022\031\n\024TOO_MANY_TEAM_" +
+      "MEMBER\020\331\010\022\022\n\rTOO_MANY_IMEI\020\332\010*A\n\013SmsCode" +
+      "Type\022\016\n\nsmsCodeReg\020\000\022\020\n\014smsCodeReset\020\001\022\020" +
+      "\n\014smsCodeCheck\020\002*I\n\nServerType\022\r\n\tstSess" +
+      "ion\020\000\022\n\n\006stRoot\020\001\022\n\n\006stRoom\020\002\022\024\n\007stOther" +
+      "\020\377\377\377\377\377\377\377\377\377\001*&\n\nAcceptType\022\014\n\010atAccept\020\000\022" +
+      "\n\n\006atDeny\020\001*G\n\tEnterType\022\t\n\005Enter\020\000\022\t\n\005L",
+      "eave\020\001\022\023\n\017PriorityChanged\020\002\022\017\n\013DismissTe" +
+      "am\020\003*\332\003\n\nNotifyType\022\017\n\013NotifyDummy\020\000\022\025\n\021" +
+      "NotifyApplyFriend\020\001\022\026\n\022NotifyAcceptFrien" +
+      "d\020\002\022\026\n\022NotifyDeleteFriend\020\003\022\023\n\017NotifyApp" +
+      "lyTeam\020\004\022\024\n\020NotifyAcceptTeam\020\005\022\032\n\026Notify" +
+      "DeleteTeamMember\020\006\022\025\n\021NotifyDismissTeam\020" +
+      "\007\022\031\n\025NotifyAssignTeamAdmin\020\010\022\030\n\024NotifyMo" +
+      "difyTeamInfo\020\t\022\022\n\016NotifyQuitTeam\020\n\022\022\n\016No" +
+      "tifyTeamCall\020\013\022\024\n\020NotifySingleCall\020\014\022\024\n\020" +
+      "NotifyChatStatus\020\r\022\026\n\022NotifySaveVariable",
+      "\020\016\022\016\n\nNotifyCall\020\017\022\030\n\024NotifyChangeTeamNi" +
+      "ck\020\020\022\027\n\023NotifyLiveVideoCall\020\021\022\032\n\026NotifyL" +
+      "iveVideoCallAns\020\022\022\026\n\022NotifyFriendStatus\020" +
+      "\023*\257\001\n\rUserHideField\022\016\n\nhfPhoneNum\020\000\022\016\n\nh" +
+      "fUsername\020\001\022\r\n\thfUserSex\020\002\022\016\n\nhfBirthday" +
+      "\020\003\022\016\n\nhfAddrInfo\020\004\022\r\n\thfCarType\020\005\022\014\n\010hfC" +
+      "arNum\020\006\022\t\n\005hfGps\020\007\022\020\n\014hfTeamRandom\020\010\022\025\n\021" +
+      "hfTeamRandomVideo\020\t*2\n\010TeamRole\022\016\n\nmembe" +
+      "rOnly\020\000\022\013\n\007Manager\020\001\022\t\n\005Owner\020\002*p\n\010TeamT" +
+      "ype\022\016\n\nteamPublic\020\000\022\r\n\tteamTempo\020\001\022\017\n\013te",
+      "amPrivate\020\002\022\017\n\013teamInGroup\020\003\022\016\n\nteamRand" +
+      "om\020\004\022\023\n\017teamMapSelector\020\005*,\n\rApplyTeamTy" +
+      "pe\022\r\n\tattInvite\020\000\022\014\n\010attApply\020\001*)\n\013Reque" +
+      "stFlag\022\017\n\013rfAllMember\020\000\022\t\n\005rfOne\020\001*\326\001\n\007M" +
+      "sgType\022\n\n\006mtText\020\000\022\013\n\007mtImage\020\001\022\013\n\007mtVoi" +
+      "ce\020\002\022\014\n\010mtCancel\020\003\022\017\n\013mtEnterTeam\020\004\022\017\n\013m" +
+      "tLeaveTeam\020\005\022\025\n\021mtChangeHeadImage\020\006\022\022\n\016m" +
+      "tAcceptFriend\020\007\022\022\n\016mtDeleteFriend\020\010\022\017\n\013m" +
+      "tVideoFile\020\t\022\017\n\013mtVoiceFile\020\n\022\024\n\020mtVoice" +
+      "ShortFile\020\013*B\n\nChatStatus\022\r\n\tcsOffline\020\000",
+      "\022\013\n\007csNotIn\020\001\022\010\n\004csOk\020\002\022\016\n\ncsSpeaking\020\003*" +
+      "&\n\003Sex\022\t\n\005noset\020\000\022\010\n\004male\020\001\022\n\n\006female\020\002*" +
+      "3\n\014KqReportType\022\013\n\007krtAuto\020\000\022\n\n\006krtKey\020\001" +
+      "\022\n\n\006krtNfc\020\002*M\n\nReportType\022\013\n\007rtLogin\020\000\022" +
+      "\014\n\010rtLogout\020\001\022\013\n\007rtAlive\020\002\022\014\n\010rtCarReg\020\003" +
+      "\022\t\n\005rtMax\020\004*N\n\017SessionPullType\022\017\n\013sptToC" +
+      "lient\020\000\022\023\n\017sptForceOffline\020\001\022\025\n\021sptNotif" +
+      "yCarLogin\020\002*K\n\020CmdMsgSessionReq\022\033\n\027Sessi" +
+      "onGetUserSessionIP\020\000\022\032\n\026SessionQueryWhoW" +
+      "atchMe\020\001*6\n\021MsgSessionReqWhat\022\r\n\tsrwNorm",
+      "al\020\000\022\022\n\016srwCarRegister\020\001*\200\001\n\007RoomCmd\022\025\n\021" +
+      "rcRoomReportAlive\020\000\022\020\n\014rcStartVoice\020\001\022\021\n" +
+      "\rrcAcceptVoice\020\002\022\020\n\014rcCreateRoom\020\003\022\017\n\013rc" +
+      "CloseRoom\020\004\022\026\n\022rcTeamMemberChange\020\005*[\n\013L" +
+      "ocationCmd\022\020\n\014LOCATION_PUT\020\000\022\022\n\016LOCATION" +
+      "_START\020\001\022\021\n\rLOCATION_STOP\020\002\022\023\n\017LOCATION_" +
+      "SEARCH\020\003*&\n\nKqTimeType\022\013\n\007kttNone\020\000\022\013\n\007k" +
+      "ttWeek\020\001*.\n\010EditCode\022\t\n\005ecGet\020\000\022\014\n\010ecUpd" +
+      "ate\020\001\022\t\n\005ecDel\020\002*\'\n\tRemoteCmd\022\n\n\006rcNone\020" +
+      "\000\022\016\n\nrcNavigate\020\001B%\n#com.example.jrd48.s",
+      "ervice.proto_genb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -78374,7 +78916,7 @@ public final class ProtoMessage {
     internal_static_UserInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserInfo_descriptor,
-        new java.lang.String[] { "ErrorCode", "PhoneNum", "UserName", "NickName", "FriendStar", "UserPic", "UserSex", "ApplyInfo", "CarID", "Birthday", "Prov", "City", "Town", "CarType1", "CarType2", "CarType3", "CarNum", "HideField0", "HideField1", "HideField2", "HideField3", "HideField4", "HideField5", "HideField6", "HideField7", "HideField8", "HideField9", });
+        new java.lang.String[] { "ErrorCode", "PhoneNum", "UserName", "NickName", "FriendStar", "UserPic", "UserSex", "ApplyInfo", "CarID", "Birthday", "Prov", "City", "Town", "CarType1", "CarType2", "CarType3", "CarNum", "HideField0", "HideField1", "HideField2", "HideField3", "HideField4", "HideField5", "HideField6", "HideField7", "HideField8", "HideField9", "Interest", "Career", "Signature", });
     internal_static_FriendList_descriptor =
       getDescriptor().getMessageTypes().get(20);
     internal_static_FriendList_fieldAccessorTable = new

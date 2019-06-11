@@ -35,6 +35,10 @@ public class MyInforTool {
     private boolean startSeaChatGroup;
     private boolean startSeaChatGroupVideo;
 
+    private String interest;// 兴趣
+    private String career;//行业
+    private String signature;//签名
+
     public boolean isStartSeaChatGroup() {
         return startSeaChatGroup;
     }
@@ -259,6 +263,9 @@ public class MyInforTool {
         switchLocationUpload = preferences.getBoolean("switchGPS",false);
         startSeaChatGroup = preferences.getBoolean("seaChatGroup",false);
         startSeaChatGroupVideo = preferences.getBoolean("seaChatGroupVideo",false);
+        interest = preferences.getString("interest","");
+        career = preferences.getString("career","");
+        signature = preferences.getString("signature","");
         return;
     }
 

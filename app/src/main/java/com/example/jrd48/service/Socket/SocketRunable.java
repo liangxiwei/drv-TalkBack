@@ -60,7 +60,8 @@ public class SocketRunable implements Runnable {
     private String mHost = "irobbing.com";
     //private String mHost = "120.76.42.120";
     //private String mHost = "10.0.0.66";
-    private int mPort = 18000;
+   // private int mPort = 18000;
+    private int mPort = 18001;
     /**
      * 接收缓冲区
      */

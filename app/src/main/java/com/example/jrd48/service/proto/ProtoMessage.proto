@@ -59,6 +59,13 @@ enum Cmd {
     cmdGetMyInfo = 0x00010015; // 读取我的信息
     cmdDeleteTeamMember = 0x00010016; // 删除一个群成员（仅群主和管理员有效）
 
+    /**
+     * 输入：无
+      * 输出：TeamMemberList
+      */
+    cmdGetBBSList = 0x0001005C; //获取海聊群
+
+
     /** 获取群成员列表
      * 输入：AcceptTeam { teamID }
      * 输出：TeamMemberList
@@ -810,6 +817,10 @@ message UserInfo {
     int32 hide_field_7 = 25; // 参照 UserHideField
     int32 hide_field_8 = 26; // 参照 UserHideField
     int32 hide_field_9 = 27; // 参照 UserHideField
+
+    string interest = 36;//兴趣
+    string career = 37;//行业
+    string signature = 38;//个性签名
 
 }
 

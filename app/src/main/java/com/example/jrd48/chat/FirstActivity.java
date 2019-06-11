@@ -129,6 +129,8 @@ import com.google.protobuf.ByteString;
 import com.luobin.dvr.DvrConfig;
 import com.luobin.dvr.DvrService;
 import com.luobin.dvr.R;
+import com.luobin.manager.SelectActivity;
+import com.luobin.manager.SelectViewManager;
 import com.luobin.model.CallState;
 import com.luobin.search.friends.map.TeamMemberLocationActivity;
 import com.luobin.timer.ChatManager;
@@ -166,7 +168,7 @@ import static android.view.View.VISIBLE;
 import static com.example.jrd48.service.protocol.root.ReceiverProcesser.getMyDataRoot;
 
 
-public class FirstActivity extends BaseActivity implements OnClickListener, OnTouchListener, PermissionUtil.PermissionCallBack
+public class FirstActivity extends SelectActivity implements OnClickListener, OnTouchListener, PermissionUtil.PermissionCallBack
         , Animation.AnimationListener {
 
     public static final int SWITCH_BTN_ALPHA = 200;
@@ -540,6 +542,15 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         }
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         dataInit();
+        List<View>  selectViews = new ArrayList<>();
+        selectViews.add(prefixCamera);
+        selectViews.add(rearCamera);
+        selectViews.add(pictureInPicture);
+        selectViews.add(voice);
+        selectViews.add(gotoMap);
+        selectViews.add(doNotDisturb);
+        setSelectViewManager(new SelectViewManager(selectViews));
+
     }
 
     private void checkRandomChat() {
