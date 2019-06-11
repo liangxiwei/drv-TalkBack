@@ -75,7 +75,7 @@ public class TSSearchAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         SearchFriends af = list.get(i);
-        ViewHolder viewHolder = new ViewHolder(view);
+        ViewHolder viewHolder = null;
 //        if (view == null) {
 //            view = LayoutInflater.from(context).inflate(R.layout.adapter_search_item, null);
 //            viewHolder = new ViewHolder(view);
@@ -89,10 +89,14 @@ public class TSSearchAdapter extends BaseAdapter {
             view = LayoutInflater.from(context).inflate(R.layout.index, null);
 //            view.setBackgroundColor(context.getResources().getColor(R.color.search_bg));
             view.setFocusable(false);
+            viewHolder =  new ViewHolder(view);
+            view.setTag(viewHolder);
             viewHolder.indexTv.setText(af.getUserName());
+
         } else {
             view = inflater.inflate(R.layout.search_list_item, null);
-
+            viewHolder =  new ViewHolder(view);
+            view.setTag(viewHolder);
             if (af.getSearchType().equals(SearchActivity.linkMan)) {
                 //联系人
                 viewHolder.TeamAvatar.setVisibility(View.GONE);
