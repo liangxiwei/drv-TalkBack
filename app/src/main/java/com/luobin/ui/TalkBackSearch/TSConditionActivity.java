@@ -245,7 +245,7 @@ public class TSConditionActivity extends BaseDialogActivity implements
                     if (userInfoList == null || userInfoList.size() <= 0) {
                         ToastR.setToastLong(context, "未找到相关的陌生人");
                     } else {
-                        Intent intent = new Intent(context, TSConditionPersionAdapter.class);
+                        Intent intent = new Intent(context, TSConditionPersonActivity.class);
                         intent.putExtra("user_info", (Serializable) userInfoList);
                         intent.putExtra("conditon", searchFriendsCondition);
                         startActivity(intent);

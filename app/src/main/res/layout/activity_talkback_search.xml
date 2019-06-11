@@ -36,7 +36,6 @@
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/img1"
                 android:background="@null"
-                android:focusable="false"
                 android:gravity="center|left"
                 android:hint="名称/群号/手机号/车牌号"
                 android:maxLines="1"
@@ -59,8 +58,8 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/bg_panel_setting"
             android:text="搜索"
             android:textColor="@color/text_color_90white"
@@ -77,8 +76,8 @@
                 android:id="@+id/btnSearchPerson"
                 android:layout_width="160dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="20dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="20dp"
                 android:background="@drawable/bg_panel_setting"
                 android:text="按条件查找陌生人"
                 android:textColor="@color/text_color_90white"
@@ -98,8 +97,9 @@
 
         </RelativeLayout>
 
-
         <ListView
+            android:layout_below="@+id/rlbtnIsShow"
+            android:layout_marginTop="10dp"
             android:id="@+id/listLinkman"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,8 +114,8 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
         android:background="@mipmap/close" />
 
 

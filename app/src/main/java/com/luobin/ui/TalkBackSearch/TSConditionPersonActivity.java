@@ -222,13 +222,6 @@ public class TSConditionPersonActivity extends BaseDialogActivity implements
         }
     }
 
-    @OnItemClick(R.id.list)
-    void itemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        //TODO 显示好友信息
-    }
-
-
     private void toSearchFriends() {
 
         ProtoMessage.MsgSearchCar.Builder builder = ProtoMessage.MsgSearchCar.newBuilder();

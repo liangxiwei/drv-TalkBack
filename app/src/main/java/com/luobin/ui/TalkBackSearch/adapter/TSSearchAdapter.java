@@ -76,6 +76,7 @@ public class TSSearchAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         SearchFriends af = list.get(i);
         ViewHolder viewHolder = null;
+        ViewHolderNew viewHolderNew = null;
 //        if (view == null) {
 //            view = LayoutInflater.from(context).inflate(R.layout.adapter_search_item, null);
 //            viewHolder = new ViewHolder(view);
@@ -95,23 +96,23 @@ public class TSSearchAdapter extends BaseAdapter {
 
         } else {
             view = inflater.inflate(R.layout.search_list_item, null);
-            viewHolder =  new ViewHolder(view);
+            viewHolderNew =  new ViewHolderNew(view);
 
             view.setTag(viewHolder);
             if (af.getSearchType().equals(SearchActivity.linkMan)) {
                 //联系人
-                viewHolder.TeamAvatar.setVisibility(View.GONE);
-                viewHolder.searchMemberName.setVisibility(View.GONE);
+                viewHolderNew.TeamAvatar.setVisibility(View.GONE);
+                viewHolderNew.searchMemberName.setVisibility(View.GONE);
                 if (af.getPhoneNum() != null) {
                     Bitmap bitmap = GlobalImg.getImage(context, af.getPhoneNum());
                     if (bitmap == null) {
                         if (af.getUserSex() == ProtoMessage.Sex.female_VALUE) {
-                            viewHolder.linkmanAvatar.setImageResource(R.drawable.woman);
+                            viewHolderNew.linkmanAvatar.setImageResource(R.drawable.woman);
                         } else {
-                            viewHolder.linkmanAvatar.setImageResource(R.drawable.man);
+                            viewHolderNew.linkmanAvatar.setImageResource(R.drawable.man);
                         }
                     } else {
-                        viewHolder.linkmanAvatar.setImageBitmap(bitmap);
+                        viewHolderNew.linkmanAvatar.setImageBitmap(bitmap);
                     }
                 }
                 if (af.getType().equals(SearchActivity.strName)) {
@@ -122,23 +123,23 @@ public class TSSearchAdapter extends BaseAdapter {
                     if (index >= 0) {
                         span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                         span.setSpan(new StyleSpan(Typeface.BOLD), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        viewHolder.userName.setText(span);
+                        viewHolderNew.userName.setText(span);
                     } else {
                         if (af.getKeyword() != null && af.getKeyword().length() > 0) {
                             index = userName.indexOf(af.getKeyword());
                             if (index >= 0) {
                                 span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                                 span.setSpan(new StyleSpan(Typeface.BOLD), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                                viewHolder.userName.setText(span);
+                                viewHolderNew.userName.setText(span);
                             } else {
-                                viewHolder.userName.setText(userName);
+                                viewHolderNew.userName.setText(userName);
                             }
                         } else {
-                            viewHolder.userName.setText(userName);
+                            viewHolderNew.userName.setText(userName);
                         }
 
                     }
-                    viewHolder.mobile.setText(af.getPhoneNum());
+                    viewHolderNew.mobile.setText(af.getPhoneNum());
                 } else if (af.getType().equals(SearchActivity.strPhone)) {
                     //电话搜索
                     String userPhone = af.getPhoneNum();
@@ -146,72 +147,72 @@ public class TSSearchAdapter extends BaseAdapter {
                     SpannableString span = new SpannableString(userPhone);
                     span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     span.setSpan(new StyleSpan(Typeface.BOLD), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    viewHolder.mobile.setText(span);
-                    viewHolder.userName.setText(af.getUserName());
+                    viewHolderNew.mobile.setText(span);
+                    viewHolderNew.userName.setText(af.getUserName());
                 }
             } else if (af.getSearchType().equals(SearchActivity.linkTeam)) {
                 //群聊
-                viewHolder.linkmanAvatar.setVisibility(View.GONE);
+                viewHolderNew.linkmanAvatar.setVisibility(View.GONE);
 //                viewHolder.linkmanAvatar.setImageResource(R.drawable.group);
-                setTeamImageView(viewHolder.TeamAvatar, af);
+                setTeamImageView(viewHolderNew.TeamAvatar, af);
                 if (af.getUserName() == null || af.getUserName().length() <= 0) {
-                    viewHolder.mobile.setVisibility(View.GONE);
-                    viewHolder.searchMemberName.setVisibility(View.GONE);
+                    viewHolderNew.mobile.setVisibility(View.GONE);
+                    viewHolderNew.searchMemberName.setVisibility(View.GONE);
                     String teamName = af.getTeamName();
                     int index = teamName.indexOf(result);
                     SpannableString span = new SpannableString(teamName);
                     if (index >= 0) {
                         span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                         span.setSpan(new StyleSpan(Typeface.BOLD), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        viewHolder.userName.setText(span);
+                        viewHolderNew.userName.setText(span);
                     } else {
                         if (af.getKeyword() != null && af.getKeyword().length() > 0) {
                             index = teamName.indexOf(af.getKeyword());
                             if (index >= 0) {
                                 span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                                 span.setSpan(new StyleSpan(Typeface.BOLD), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                                viewHolder.userName.setText(span);
+                                viewHolderNew.userName.setText(span);
                             } else {
-                                viewHolder.userName.setText(teamName);
+                                viewHolderNew.userName.setText(teamName);
                             }
                         } else {
-                            viewHolder.userName.setText(teamName);
+                            viewHolderNew.userName.setText(teamName);
                         }
                     }
                 } else if (af.getUserName().length() > 0) {
-                    viewHolder.userName.setText(af.getTeamName());
-                    viewHolder.tvPromt.setVisibility(View.VISIBLE);
-                    viewHolder.searchLeftBrackets.setVisibility(View.VISIBLE);
-                    viewHolder.searchRightBrackets.setVisibility(View.VISIBLE);
+                    viewHolderNew.userName.setText(af.getTeamName());
+                    viewHolderNew.tvPromt.setVisibility(View.VISIBLE);
+                    viewHolderNew.searchLeftBrackets.setVisibility(View.VISIBLE);
+                    viewHolderNew.searchRightBrackets.setVisibility(View.VISIBLE);
                     String name = af.getUserName();
                     int index = name.indexOf(result);
                     SpannableString span = new SpannableString(name);
 
                     if (af.getType().equals(SearchActivity.strName)) {
-                        viewHolder.mobile.setText(af.getPhoneNum());
+                        viewHolderNew.mobile.setText(af.getPhoneNum());
                         if (index >= 0) {
                             span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                             span.setSpan(new StyleSpan(Typeface.BOLD), index, index + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                            viewHolder.searchMemberName.setText(span);
+                            viewHolderNew.searchMemberName.setText(span);
                         } else {
                             if (af.getKeyword() != null && af.getKeyword().length() > 0) {
                                 index = name.indexOf(af.getKeyword());
                                 if (index >= 0) {
                                     span.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                                     span.setSpan(new StyleSpan(Typeface.BOLD), index, index + af.getKeyword().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                                    viewHolder.searchMemberName.setText(span);
+                                    viewHolderNew.searchMemberName.setText(span);
                                 } else {
-                                    viewHolder.searchMemberName.setText(name);
+                                    viewHolderNew.searchMemberName.setText(name);
                                 }
                             } else {
-                                viewHolder.searchMemberName.setText(name);
+                                viewHolderNew.searchMemberName.setText(name);
                             }
                         }
                     } else {
                         String phone = af.getPhoneNum();
                         SpannableString ss = new SpannableString(phone);
                         int t = phone.indexOf(result);
-                        viewHolder.searchMemberName.setText(af.getUserName());
+                        viewHolderNew.searchMemberName.setText(af.getUserName());
                         if (t >= 0) {
                             /*
                              SpannableStringBuilder style = new SpannableStringBuilder(friendsMsg.getUserName()+"邀请您加入" + friendsMsg.getTeamName() + "群组");
@@ -220,9 +221,9 @@ public class TSSearchAdapter extends BaseAdapter {
                              */
                             ss.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.textColor)), t, t + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                             ss.setSpan(new StyleSpan(Typeface.BOLD), t, t + result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                            viewHolder.mobile.setText(ss);
+                            viewHolderNew.mobile.setText(ss);
                         } else {
-                            viewHolder.mobile.setText(phone);
+                            viewHolderNew.mobile.setText(phone);
                         }
                     }
                 }
@@ -242,6 +243,18 @@ public class TSSearchAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
+
+        @BindView(R.id.indexTv)
+        TextView indexTv;
+
+
+        ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+    }
+
+
+    static class ViewHolderNew {
         @BindView(R.id.search_image)
         CircleImageView linkmanAvatar;
         @BindView(R.id.search_team_image)
@@ -258,14 +271,13 @@ public class TSSearchAdapter extends BaseAdapter {
         TextView mobile;
         @BindView(R.id.search_right_brackets)
         TextView searchRightBrackets;
-        @BindView(R.id.indexTv)
-        TextView indexTv;
 
 
-        ViewHolder(View view) {
+        ViewHolderNew(View view) {
             ButterKnife.bind(this, view);
         }
     }
+
 
     public void setTeamImageView(PuzzleView TeamAvatar, SearchFriends af) {
         TeamMemberHelper teamMemberHelper = new TeamMemberHelper(context, af.getTeamID() + "TeamMember.dp", null);

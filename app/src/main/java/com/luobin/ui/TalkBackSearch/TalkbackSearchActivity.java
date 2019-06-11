@@ -159,14 +159,7 @@ public class TalkbackSearchActivity extends BaseDialogActivity {
     private void initView() {
 
 
-        edContent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showSoftInputFromWindow();
-            }
-        });
-        edContent.setOnFocusChangeListener(new View.
-                OnFocusChangeListener() {
+        edContent.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
@@ -219,6 +212,7 @@ public class TalkbackSearchActivity extends BaseDialogActivity {
                 edContent.setText("");
                 break;
             case R.id.btnSearch:
+
                 hideSoftInputFromWindow();
                 String content = "";
 

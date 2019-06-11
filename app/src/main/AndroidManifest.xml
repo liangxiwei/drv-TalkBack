@@ -406,10 +406,7 @@
             android:name="com.luobin.ui.TalkBackSearch.TSConditionPersonActivity"
             android:screenOrientation="landscape"
             android:theme="@style/MyDialogStyleBottom" />
-        <activity
-            android:name="com.luobin.ui.TalkBackSearch.TSCarMapActivity"
-            android:screenOrientation="landscape"
-            android:theme="@style/MyDialogStyleBottom" />
+
         <activity
             android:name="com.luobin.ui.TalkBackSearch.TSConditionActivity"
             android:screenOrientation="landscape"
