@@ -1,59 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+   >
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+    <ImageView
+        android:id="@+id/imgClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:src="@mipmap/close" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+    <RelativeLayout
+        android:layout_width="440dp"
+        android:layout_height="270dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_panel_relative_layout"
+        >
+
+        <TextView
+            android:id="@+id/tv_no_notification"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" >
-            <TextView
-                android:id="@+id/custom_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:textColor="@color/dvr_title_colro"
-                android:textSize="@dimen/normal_title_size" />
-        </android.support.v7.widget.Toolbar>
-
-        <View
-            android:id="@+id/divider"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textSize="@dimen/normal_text_size"
+            android:textColor="@color/white"
+            android:text="@string/no_notice" />
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/pull_request_in_refresh_list"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/white"/>
-    </android.support.design.widget.AppBarLayout>
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:fadingEdge="none"
+            android:fastScrollEnabled="false"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="false"
+            android:smoothScrollbar="true" >
+        </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
-    <TextView
-        android:id="@+id/tv_no_notification"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:visibility="gone"
-        android:textSize="@dimen/normal_text_size"
-        android:textColor="@color/white"
-        android:text="@string/no_notice" />
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        android:id="@+id/pull_request_in_refresh_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:cacheColorHint="#00000000"
-        android:fadingEdge="none"
-        android:fastScrollEnabled="false"
-        android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false"
-        android:smoothScrollbar="true" >
-    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+    </RelativeLayout>
 
-</LinearLayout>
+
+</RelativeLayout>

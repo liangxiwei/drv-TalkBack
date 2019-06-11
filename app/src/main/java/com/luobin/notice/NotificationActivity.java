@@ -1,5 +1,6 @@
 package com.luobin.notice;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -63,13 +64,14 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.luobin.dvr.R;
+import com.luobin.ui.BaseDialogActivity;
 import com.luobin.ui.VideoOrVoiceDialog;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class NotificationActivity extends BaseActivity implements OnClickListener {
+public class NotificationActivity extends BaseDialogActivity implements OnClickListener {
     private PullToRefreshListView mPullRefreshListView;
     ListView listView;
     private FriendRequestAdapter adapter;
@@ -92,7 +94,7 @@ public class NotificationActivity extends BaseActivity implements OnClickListene
     public static String friendType = "好友申请";
     public static String teamType = "群组申请和添加";
     private String agreeMatch = "Agree";
-
+    ImageView imgClose;
     class ViewFriendsMsg {
         public FriendsAndTeams friends;
 
@@ -104,14 +106,8 @@ public class NotificationActivity extends BaseActivity implements OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification_activity);
+        getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         mContext = this;
-        Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
-//        toolbar.setNavigationIcon(R.drawable.btn_back);//设置Navigatiicon 图标
-        toolbar.setTitle(null);
-        ((TextView)toolbar.findViewById(R.id.custom_title)).setText(R.string.my_notice);
-//        btnCreateGroup = (Button) findViewById(R.id.btn_create_group);
-//        btnCreateGroup.setOnClickListener(this);
-
         mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.pull_request_in_refresh_list);
         listView = mPullRefreshListView.getRefreshableView();
 
@@ -155,6 +151,14 @@ public class NotificationActivity extends BaseActivity implements OnClickListene
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 acceptOrRefuseDialog(position);
+            }
+        });
+
+        imgClose = (ImageView) findViewById(R.id.imgClose);
+        imgClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

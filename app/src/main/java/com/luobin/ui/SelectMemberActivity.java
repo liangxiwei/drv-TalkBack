@@ -46,12 +46,20 @@ public class SelectMemberActivity extends BaseDialogActivity {
     SelectMemberAdapter adapter;
     ImageView imgClose;
     long teamID;
+    public static final int APPLYTEAM = 100102;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_member);
         getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         context = this;
+        teamID = getIntent().getLongExtra("teamID",-1);
+
+        if (teamID == -1){
+            ToastR.setToast(this,"群ID错误");
+            finish();
+        }
+
         initView();
         initData();
     }
@@ -170,6 +178,7 @@ public class SelectMemberActivity extends BaseDialogActivity {
                 int errorCode = intent.getIntExtra("error_code", -1);
                 if (errorCode == ProtoMessage.ErrorCode.OK.getNumber()) {
                     ToastR.setToast(context, "邀请成功");
+                    setResult(APPLYTEAM);
                     finish();
                 } else {
                     fail(intent.getIntExtra("error_code", -1));

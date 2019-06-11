@@ -130,12 +130,14 @@ import com.luobin.dvr.DvrConfig;
 import com.luobin.dvr.DvrService;
 import com.luobin.dvr.R;
 import com.luobin.model.CallState;
+import com.luobin.search.friends.map.TeamMemberLocationActivity;
 import com.luobin.timer.ChatManager;
 import com.luobin.ui.FriendDetailsDialogActivity;
 import com.luobin.ui.SelectMemberActivity;
 import com.luobin.voice.AudioInitailFailedBroadcast;
 import com.luobin.voice.AudioRecordStatusBroadcast;
 import com.luobin.voice.VoiceHandler;
+import com.luobin.widget.PromptDialog;
 import com.video.VideoCallActivity;
 
 import java.io.ByteArrayInputStream;
@@ -291,7 +293,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 case 2:
                     if (r != null) {
                         name.setText(groupName);
-                        sta_num.setText( nowMansNum + "/" + mansNum);
+                        sta_num.setText(nowMansNum + "/" + mansNum);
                         r = null;
                     } else {
                         name.setText(groupName);
@@ -1794,8 +1796,10 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 }
             });
             memberListView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+
                 public void onCreateContextMenu(ContextMenu menu, View v,
                                                 ContextMenu.ContextMenuInfo menuInfo) {
+                    menu.setHeaderIcon(R.color.white);
                     menu.add(0, 10, 0, getName(phone));
                     //info.id得到listview中选择的条目绑定的id
 //				menu.add(0, 4, 0, "信息查询");
@@ -1829,6 +1833,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                         }
                     }
                 }
+
             });
         }
     }
@@ -1871,7 +1876,27 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         remark.setText("用户名");
         editRemark.setText(name);
         editRemark.setSelection(editRemark.length());// 将光标追踪到内容的最后
-        new AlertDialog.Builder(mContext, AlertDialog.THEME_HOLO_LIGHT).setTitle(str)// 提示框标题
+
+        PromptDialog dialog = new PromptDialog(mContext);
+        dialog.show();
+        dialog.setTitle(str);
+        dialog.setView(view);
+        dialog.setOkListener("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String remark = editRemark.getText().toString().trim();
+                setFriendInfo(af, type, remark);
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelListener("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+      /*  new AlertDialog.Builder(mContext, AlertDialog.THEME_HOLO_LIGHT).setTitle(str)// 提示框标题
                 .setView(view).setPositiveButton("确定", // 提示框的两个按钮
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -1890,7 +1915,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                         dialog.dismiss();
 
                     }
-                }).create().show();
+                }).create().show();*/
     }
 
     private void onChangeNickName() {
@@ -2094,12 +2119,6 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 }
                 return true;
             case 2:
-//					 if(mTeamMemberInfo.getRole() == ProtoMessage.TeamRole.Owner_VALUE) {
-//						ToastR.setToast(FirstActivity.this, "不能修改群主优先级");
-//					}else if(type == ProtoMessage.TeamRole.Manager_VALUE  &&
-//							mTeamMemberInfo.getRole() == ProtoMessage.TeamRole.Manager_VALUE){
-//						ToastR.setToast(FirstActivity.this, "管理员不能修改管理员优先级");
-//					}else{
                 showChangePriorityDilog(mTeamMemberInfo);
 //					}
                 //	ToastR.setToast(FirstActivity.this, "修改成员优先级");
@@ -2317,6 +2336,8 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         final TextView userName = (TextView) view.findViewById(R.id.user_name);
         final EditText nickName = (EditText) view.findViewById(R.id.nick_name);
         final EditText etMsg = (EditText) view.findViewById(R.id.et_msg);
+        final TextView ok = (TextView) view.findViewById(R.id.ok);
+        final TextView cancel = (TextView) view.findViewById(R.id.cancel);
         if (user.getName() != null && !user.getName().equals("")) {
             userName.setText(user.getName());
             nickName.setText(user.getName());
@@ -2328,40 +2349,72 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         String myPhone = preferences.getString("phone", "");
         String userNameMe = preferences.getString("name", myPhone);
         etMsg.setText("我是" + userNameMe + ",请求加您为好友，谢谢。");
-        new AlertDialog.Builder(mContext, AlertDialog.THEME_HOLO_LIGHT)// 提示框标题
-                .setView(view).setPositiveButton("确定", // 提示框的两个按钮
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+        final AlertDialog dialog = new AlertDialog.Builder(mContext, AlertDialog.THEME_HOLO_LIGHT)// 提示框标题
+                .setView(view)
+                /* .setPositiveButton("确定", // 提示框的两个按钮
+                 new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialog, int which) {
 
-                        String msg = etMsg.getText().toString().trim();
-                        String remark = nickName.getText().toString().trim();
-                        if (remark.length() <= 0) {
-                            ToastR.setToast(mContext, "备注输入不能为空");
-                            return;
-                        }
-                        if (msg.length() <= 0) {
-                            ToastR.setToast(mContext, "验证信息输入不能为空");
-                            return;
-                        }
-                        if (remark.length() > GlobalStatus.MAX_TEXT_COUNT) {
-                            ToastR.setToast(mContext, "备注输入过长（最大只能设置16个字符）");
-                            return;
-                        }
-                        addFriendsRequest(remark, msg, mTeamMemberInfo.getUserPhone());
-                        dialog.dismiss();
-                    }
+                         String msg = etMsg.getText().toString().trim();
+                         String remark = nickName.getText().toString().trim();
+                         if (remark.length() <= 0) {
+                             ToastR.setToast(mContext, "备注输入不能为空");
+                             return;
+                         }
+                         if (msg.length() <= 0) {
+                             ToastR.setToast(mContext, "验证信息输入不能为空");
+                             return;
+                         }
+                         if (remark.length() > GlobalStatus.MAX_TEXT_COUNT) {
+                             ToastR.setToast(mContext, "备注输入过长（最大只能设置16个字符）");
+                             return;
+                         }
+                         addFriendsRequest(remark, msg, mTeamMemberInfo.getUserPhone());
+                         dialog.dismiss();
+                     }
 
-                })
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                 })
+                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                     @Override
+                     public void onClick(DialogInterface dialog, int which) {
+                         dialog.dismiss();
 
-                    }
-                }).create().show();
+                     }
+                 })*/
 
+                .create();
+
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String msg = etMsg.getText().toString().trim();
+                String remark = nickName.getText().toString().trim();
+                if (remark.length() <= 0) {
+                    ToastR.setToast(mContext, "备注输入不能为空");
+                    return;
+                }
+                if (msg.length() <= 0) {
+                    ToastR.setToast(mContext, "验证信息输入不能为空");
+                    return;
+                }
+                if (remark.length() > GlobalStatus.MAX_TEXT_COUNT) {
+                    ToastR.setToast(mContext, "备注输入过长（最大只能设置16个字符）");
+                    return;
+                }
+                addFriendsRequest(remark, msg, mTeamMemberInfo.getUserPhone());
+                dialog.dismiss();
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     /**
@@ -2511,7 +2564,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         Bundle bundle = new Bundle();
         bundle.putString("userPhone", teamMemberInfo.getUserPhone());
         bundle.putString("userName", teamMemberInfo.getUserName());
-        intent.putExtra("teamID",group);
+        intent.putExtra("teamID", group);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -2657,11 +2710,32 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
 
     private void showDeleteDialog(final TeamMemberInfo tm) {
 //		cmdDeleteTeamMember
+        String userName = tm.getNickName();
+        if (TextUtils.isEmpty(userName)) {
+            userName = tm.getUserName();
+        }
         String msg = tm.getUserName();
         if (msg == null || msg.equals("")) {
             msg = tm.getUserPhone();
         }
-        new AlertDialog.Builder(FirstActivity.this, AlertDialog.THEME_HOLO_LIGHT).setTitle("提示：")// 提示框标题
+        PromptDialog dialog = new PromptDialog(mContext);
+        dialog.show();
+        dialog.setTitle("提示：");
+        dialog.setMessage("确定要删除 " + userName + " ？");
+        dialog.setOkListener("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                deleteTeamMember(tm);
+            }
+        });
+        dialog.setCancelListener("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+       /* new AlertDialog.Builder(FirstActivity.this, AlertDialog.THEME_HOLO_LIGHT).setTitle("提示：")// 提示框标题
                 .setMessage("确定要删除" + msg + "?").setPositiveButton("确定", // 提示框的两个按钮
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -2677,7 +2751,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
-        }).create().show();
+        }).create().show();*/
 
     }
 
@@ -2749,7 +2823,32 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             radioManager.setChecked(true);
         }
 
-        new AlertDialog.Builder(FirstActivity.this, AlertDialog.THEME_HOLO_LIGHT).setTitle("设置管理员")// 提示框标题
+
+        PromptDialog dialog = new PromptDialog(mContext);
+        dialog.show();
+        dialog.setTitle("设置管理员");
+        dialog.setView(view);
+        dialog.setOkListener("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (radioMember.isChecked()) {
+                    teamRole = ProtoMessage.TeamRole.memberOnly_VALUE;
+                } else if (radioManager.isChecked()) {
+                    teamRole = ProtoMessage.TeamRole.Manager_VALUE;
+                }
+                toSendChangePermission(teamRole, mTeamMemberInfo);
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelListener("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+
+      /*  new AlertDialog.Builder(FirstActivity.this, AlertDialog.THEME_HOLO_LIGHT).setTitle("设置管理员")// 提示框标题
                 .setView(view).setPositiveButton("确定", // 提示框的两个按钮
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -2768,7 +2867,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
-        }).create().show();
+        }).create().show();*/
     }
     //**********************改变GridView大小***********************************
 
@@ -2943,7 +3042,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         message.what = 2;
         refreshHandler.sendMessage(message);
 
-      //  userT(User.ADD, 0, "", 0);
+        //  userT(User.ADD, 0, "", 0);
 
         mTMInfo.clear();
         for (TeamMemberInfo te : allTeamMemberInfos) {
@@ -3069,10 +3168,9 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
     public void onBackPressed() {
         Log.i("pocdemo", "first activit onBackPress:" + additionType);
 
-        if (GlobalStatus.isVideo()){
+        if (GlobalStatus.isVideo()) {
             HungupClick();
-        }else
-        if (additionType == 1) {
+        } else if (additionType == 1) {
             additionLayout.setVisibility(GONE);
             additionType = 0;
         } else {
@@ -3167,8 +3265,8 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                     //speakingUser.setImage(userList.get(i).getImage());
                     String time = saveMsgRemind(userList.get(i).getName() + "在话权中");
                     msgList.add(new Msg(userList.get(i).getName() + "在话权中", Msg.TYPE_MSG_RECORD, time, 0, 0, changephone, 0, 0));
-                    userList.add(0,userList.get(i));
-                    userList.remove(i+1);
+                    userList.add(0, userList.get(i));
+                    userList.remove(i + 1);
                 }
             }
             if (changephone.equals(this.myPhone)) {
@@ -3221,7 +3319,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 sta_num.setText(online[nowMansNum]);
             } else {
                 name.setText(groupName);
-                sta_num.setText( nowMansNum + "/" + mansNum);
+                sta_num.setText(nowMansNum + "/" + mansNum);
             }
             //  mMap.refreshMapLocalData(userList);
         }
@@ -4960,7 +5058,7 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         }
     }
 
-    @OnClick({R.id.voice,R.id.btn_return, R.id.prefix_camera, R.id.rear_camera, R.id.picture_in_picture, R.id.goto_map, R.id.do_not_disturb,R.id.btn_add})
+    @OnClick({R.id.voice, R.id.btn_return, R.id.prefix_camera, R.id.rear_camera, R.id.picture_in_picture, R.id.goto_map, R.id.do_not_disturb, R.id.btn_add})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_return:
@@ -5003,7 +5101,6 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 voice.setTextColor(getResources().getColor(R.color.white));
                 doNotDisturb.setTextColor(getResources().getColor(R.color.white));
 
-
                 //抬起操作
                 SharedPreferencesUtils.put(mContext, "pttKeyDown", false);
                 pttKeyUpSent();
@@ -5024,6 +5121,9 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
                 break;
             case R.id.goto_map:
                 // 地图查看
+                Intent mapIntent = new Intent(mContext, TeamMemberLocationActivity.class);
+                mapIntent.putExtra("team_id",group);
+                startActivity(mapIntent);
                 break;
             case R.id.do_not_disturb:
                 //免打扰
@@ -5038,11 +5138,14 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
             case R.id.btn_add:
                 //添加好友
                 Intent intent = new Intent(mContext, SelectMemberActivity.class);
+                intent.putExtra("teamID", group);
                 startActivity(intent);
                 break;
 
         }
     }
+
+
 
     //*************************************一直开启的监听*********************************************
     class UploadReceiiver extends BroadcastReceiver {
@@ -5327,7 +5430,6 @@ public class FirstActivity extends BaseActivity implements OnClickListener, OnTo
         sendBroadcast(intent);*/
         Settings.System.putInt(mContext.getContentResolver(), NAVIGATION_BAR_CTRL, 1);
     }
-
 
 
 }

@@ -36,6 +36,7 @@ import com.example.jrd48.chat.friend.AppliedFriends;
 import com.example.jrd48.chat.friend.DBHelperFriendsList;
 import com.example.jrd48.chat.friend.DBManagerFriendsList;
 import com.example.jrd48.chat.friend.FriendFaceUtill;
+import com.example.jrd48.chat.friend.FriendsDetailsActivity;
 import com.example.jrd48.chat.group.MsgTool;
 import com.example.jrd48.chat.group.cache.DBTableName;
 import com.example.jrd48.service.ITimeoutBroadcast;
@@ -50,6 +51,7 @@ import com.example.jrd48.service.protocol.root.SetFriendInfoProcesser;
 import com.luobin.dvr.R;
 import com.luobin.model.SearchStrangers;
 import com.luobin.myinfor.MyInforActivity;
+import com.luobin.search.friends.map.TeamMemberLocationActivity;
 import com.luobin.utils.ButtonUtils;
 import com.luobin.widget.PromptDialog;
 
@@ -101,7 +103,7 @@ public class FriendDetailsDialogActivity extends BaseActivity {
     ProtoMessage.UserInfo userInfo;
     boolean isFriends = false;
 
-    public static final String TAG = "pangtao";
+    public static final String TAG = "FriendDetailsDialogActivity";
 
     private ProgressDialog m_pDialog;
     boolean checkDialog = true;
@@ -124,6 +126,7 @@ public class FriendDetailsDialogActivity extends BaseActivity {
 
     private void refreshUI() {
         if (isFriends) { // 如果是好友
+            userPhone = appliedFriend.getPhoneNum();
             userName = appliedFriend.getUserName();
             if (appliedFriend != null) {
                 if (TextUtils.isEmpty(userName)) {
@@ -170,6 +173,7 @@ public class FriendDetailsDialogActivity extends BaseActivity {
                 if (TextUtils.isEmpty(userName)) {
                     userName = "未设置";
                 }
+                userPhone = userInfo.getPhoneNum();
                 tvUserName.setText(userName);
 
                 Bitmap bmp = FriendFaceUtill.getUserFace(mContext, userPhone);
@@ -190,7 +194,7 @@ public class FriendDetailsDialogActivity extends BaseActivity {
                 }
                 setMyLocalMsg(userInfo.getProv(), userInfo.getCity(), userInfo.getTown());
             }else if (mSearchStrangers != null){
-
+                userPhone = mSearchStrangers.getPhoneNum();
                 userName = mSearchStrangers.getUserName();
                 if (TextUtils.isEmpty(userName)) {
                     userName = "未设置";
@@ -216,8 +220,15 @@ public class FriendDetailsDialogActivity extends BaseActivity {
                 setMyLocalMsg(mSearchStrangers.getProv(), mSearchStrangers.getCity(), mSearchStrangers.getTown());
 
             }
-            btnAddFriend.setVisibility(View.VISIBLE);
-            btnDeteleFriend.setVisibility(View.GONE);
+
+            if (userPhone != myPhone){
+                btnAddFriend.setVisibility(View.VISIBLE);
+                btnDeteleFriend.setVisibility(View.GONE);
+            }else{
+                btnAddFriend.setVisibility(View.GONE);
+                btnDeteleFriend.setVisibility(View.GONE);
+            }
+
 
         }
     }
@@ -230,6 +241,37 @@ public class FriendDetailsDialogActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.btn_map:
+                Intent mapIntent = new Intent(mContext, TeamMemberLocationActivity.class);
+                if (appliedFriend != null){
+                    mapIntent.putExtra("linkmanSex", appliedFriend.getUserSex());
+                    mapIntent.putExtra("linkmanName", appliedFriend.getUserName());
+                    mapIntent.putExtra("linkmanPhone", appliedFriend.getPhoneNum());
+                    if (appliedFriend.getNickName() != null && appliedFriend.getNickName().length() > 0) {
+                        mapIntent.putExtra("linkNickName", appliedFriend.getNickName());
+                    } else {
+                        mapIntent.putExtra("linkNickName", appliedFriend.getUserName());
+                    }
+                }else if (userInfo != null){
+                    mapIntent.putExtra("linkmanSex", userInfo.getUserSex());
+                    mapIntent.putExtra("linkmanName", userInfo.getUserName());
+                    mapIntent.putExtra("linkmanPhone", userInfo.getPhoneNum());
+                    if (userInfo.getNickName() != null && userInfo.getNickName().length() > 0) {
+                        mapIntent.putExtra("linkNickName", userInfo.getNickName());
+                    } else {
+                        mapIntent.putExtra("linkNickName", userInfo.getUserName());
+                    }
+                }else if (mSearchStrangers != null){
+                    mapIntent.putExtra("linkmanSex", mSearchStrangers.getUserSex());
+                    mapIntent.putExtra("linkmanName", mSearchStrangers.getUserName());
+                    mapIntent.putExtra("linkmanPhone", mSearchStrangers.getPhoneNum());
+                    if (mSearchStrangers.getNickName() != null && mSearchStrangers.getNickName().length() > 0) {
+                        mapIntent.putExtra("linkNickName", mSearchStrangers.getNickName());
+                    } else {
+                        mapIntent.putExtra("linkNickName", mSearchStrangers.getUserName());
+                    }
+                }
+
+                startActivity(mapIntent);
                 break;
             case R.id.btn_trail:
                 break;

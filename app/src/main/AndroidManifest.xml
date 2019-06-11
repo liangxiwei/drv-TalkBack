@@ -172,10 +172,7 @@
             android:name="com.example.jrd48.chat.SettingActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.luobin.notice.NotificationActivity"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name="com.example.jrd48.chat.friend.MatchPhoneNumberActivity"
             android:screenOrientation="landscape"
@@ -407,6 +404,11 @@
 
         <activity
             android:name="com.luobin.ui.TalkBackSearch.TSConditionPersonActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom" />
+
+        <activity
+            android:name="com.luobin.notice.NotificationActivity"
             android:screenOrientation="landscape"
             android:theme="@style/MyDialogStyleBottom" />
 

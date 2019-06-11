@@ -1,6 +1,7 @@
 package com.luobin.widget;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.StyleRes;
@@ -8,7 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 
-public abstract class BaseDialog extends AlertDialog {
+public abstract class BaseDialog extends Dialog {
     Context context;
     // 设置布局
     public abstract View initView(Context context);

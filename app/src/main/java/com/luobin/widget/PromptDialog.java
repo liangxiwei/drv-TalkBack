@@ -5,6 +5,7 @@ import android.support.annotation.StyleRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.luobin.dvr.R;
@@ -18,6 +19,7 @@ import com.luobin.utils.ScreenUtil;
 public class PromptDialog extends BaseDialog {
 
     TextView title,message,cancel,ok;
+    RelativeLayout messageView;
 
     public PromptDialog(Context context) {
         super(context);
@@ -41,7 +43,13 @@ public class PromptDialog extends BaseDialog {
         message = (TextView) view.findViewById(R.id.message);
         cancel = (TextView) view.findViewById(R.id.cancel);
         ok = (TextView) view.findViewById(R.id.ok);
+        messageView = (RelativeLayout) view.findViewById(R.id.rel_messageView);
         return view;
+    }
+
+    public void setView(View view){
+        messageView.removeAllViews();
+        messageView.addView(view);
     }
 
     public void setTitle(String title){

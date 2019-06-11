@@ -1044,8 +1044,10 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
         progressDialogShow();
         ProtoMessage.LocationMsgList.Builder builder = ProtoMessage.LocationMsgList.newBuilder();
         if (single) {
+            Log.d("pangtao","个人");
             builder.setPhoneNum(linkmanPhone);
         } else {
+            Log.d("pangtao","地图查看群 teamId = " + teamId);
             builder.setTeamID(teamId);
         }
         MyService.start(mContext, ProtoMessage.Cmd.cmdStartGetLocation.getNumber(), builder.build());

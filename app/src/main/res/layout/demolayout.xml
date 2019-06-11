@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
-    >
+    android:animateLayoutChanges="true">
 
     <com.baoyz.widget.PullRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -36,36 +35,57 @@
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp">
 
-               <RelativeLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/group_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWirte"
-                    android:textSize="16dp" />
-
-
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:textColor="@color/colorWirte"
-                       android:layout_alignParentRight="true"
-                       android:layout_marginRight="10dp"
-                       android:text="群成员"
-                       android:textSize="16dp" />
-               </RelativeLayout>
-
-                <com.luobin.widget.ScrollListView
-                    android:id="@+id/lv_member"
-                    android:layout_marginTop="3dp"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scrollbars="none" />
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/group_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorWirte"
+                        android:textSize="16dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:text="群成员"
+                        android:textColor="@color/colorWirte"
+                        android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/btn_add_group_member"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@id/tv_group"
+                            android:layout_marginRight="10dp"
+                            android:text="添加"
+                            android:textColor="@color/colorWirte"
+                            android:textSize="16dp"
+                            />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.luobin.widget.ScrollListView
+                        android:id="@+id/lv_member"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:scrollbars="none" />
+
+                </RelativeLayout>
             </LinearLayout>
 
         </LinearLayout>
     </com.baoyz.widget.PullRefreshLayout>
+
 
 </RelativeLayout>

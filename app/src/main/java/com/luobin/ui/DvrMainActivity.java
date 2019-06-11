@@ -297,13 +297,13 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
                     return super.dispatchKeyEvent(event);
                 case KeyEvent.KEYCODE_ENTER:
                 case KeyEvent.KEYCODE_DPAD_CENTER:
-
+                    tabFragmentLinkGroup.clickCenter();
                     return super.dispatchKeyEvent(event);
                 case KeyEvent.KEYCODE_BACK:
                     finish();
                     return true;
                 case KeyEvent.KEYCODE_F6:
-
+                    tabFragmentLinkGroup.clickPTT();
                     return super.dispatchKeyEvent(event);
 
             }
