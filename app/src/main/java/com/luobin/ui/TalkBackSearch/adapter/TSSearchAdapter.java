@@ -96,6 +96,7 @@ public class TSSearchAdapter extends BaseAdapter {
         } else {
             view = inflater.inflate(R.layout.search_list_item, null);
             viewHolder =  new ViewHolder(view);
+
             view.setTag(viewHolder);
             if (af.getSearchType().equals(SearchActivity.linkMan)) {
                 //联系人
