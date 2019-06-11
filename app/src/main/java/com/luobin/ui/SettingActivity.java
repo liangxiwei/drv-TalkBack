@@ -13,6 +13,10 @@ import android.widget.GridView;
 
 import com.example.jrd48.chat.BaseActivity;
 import com.luobin.dvr.R;
+import com.luobin.ui.settingitem.SettingDrawVideoActivity;
+import com.luobin.ui.settingitem.SettingPhotoActivity;
+import com.luobin.ui.settingitem.SettingTrajectoryActivity;
+import com.luobin.ui.settingitem.SettingVideoActivity;
 
 import java.util.Arrays;
 
@@ -60,7 +64,7 @@ public class SettingActivity extends BaseActivity {
             case 0:
                 if (checkLogin()) {
                     Intent intent = new Intent(this, RegisterInfoActivity.class);
-                    intent.putExtra("tuichu","set");
+                    intent.putExtra("tuichu", "set");
                     startActivity(intent);
                     //startActivity(new Intent(this, RegisterInfoActivity.class));class
                 } else {
@@ -79,15 +83,19 @@ public class SettingActivity extends BaseActivity {
                 break;
             //轨迹设置
             case 4:
+                startActivity(new Intent(this, SettingTrajectoryActivity.class));
                 break;
             //画中画
             case 5:
+                startActivity(new Intent(this, SettingDrawVideoActivity.class));
                 break;
             //随手拍照片
             case 6:
+                startActivity(new Intent(this, SettingPhotoActivity.class));
                 break;
             //随手拍视频
             case 7:
+                startActivity(new Intent(this, SettingVideoActivity.class));
                 break;
             //无线电设置
             case 8:
@@ -141,7 +149,6 @@ public class SettingActivity extends BaseActivity {
         simplelistdialog = builder.create();
         simplelistdialog.show();
     }
-
 
 
 }

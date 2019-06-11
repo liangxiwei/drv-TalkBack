@@ -56,6 +56,22 @@
         android:label="@string/app_name"
         android:persistent="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name="com.luobin.ui.settingitem.SettingTrajectoryActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom" />
+        <activity
+            android:name="com.luobin.ui.settingitem.SettingDrawVideoActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom" />
+        <activity
+            android:name="com.luobin.ui.settingitem.SettingPhotoActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom" />
+        <activity
+            android:name="com.luobin.ui.settingitem.SettingVideoActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom" />
 
         <service
             android:name=".DvrService"
@@ -420,12 +436,11 @@
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
             android:theme="@style/MyDialogStyleBottom" />
-
-        <activity android:name="com.luobin.ui.BBSActivity"
-            android:launchMode="singleTask"
+        <activity
+            android:name="com.luobin.ui.BBSActivity"
             android:exported="true"
-            android:screenOrientation="landscape"
-            />
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>
