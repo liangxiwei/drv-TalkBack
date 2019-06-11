@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 
 import com.luobin.dvr.R;
 import com.luobin.widget.BaseDialog;
@@ -22,6 +23,15 @@ public class SelectInterestDialog extends BaseDialog {
     private List<InterestBean> data = new ArrayList<>();
     private SelectInterestAdapter adapter = null;
 
+    public SelectInterestAdapter.OnRecyclerViewItemClickListener getOnItemClickListener() {
+        return onItemClickListener;
+    }
+
+    public void setOnItemClickListener(SelectInterestAdapter.OnRecyclerViewItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    SelectInterestAdapter.OnRecyclerViewItemClickListener onItemClickListener;
     public SelectInterestAdapter getAdapter() {
         return adapter;
     }
@@ -58,12 +68,12 @@ public class SelectInterestDialog extends BaseDialog {
         View view = LayoutInflater.from(context)
                 .inflate(R.layout.dialog_select_interest, null);
         this.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        setSize(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
         Window window = this.getWindow();
         window.setGravity(Gravity.BOTTOM);
         WindowManager.LayoutParams params = window.getAttributes();
-        params.width = WindowManager.LayoutParams.MATCH_PARENT;
-        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        window.setAttributes(params);
+
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rvList);
         Button btnSure = (Button) view.findViewById(R.id.btnSure);
@@ -76,6 +86,15 @@ public class SelectInterestDialog extends BaseDialog {
         recyclerView.setLayoutManager(gridLayoutManager);
 
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new SelectInterestAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(InterestBean interestBeans) {
+                if (onItemClickListener != null){
+                    onItemClickListener.onItemClick(interestBeans);
+                }
+            }
+        });
+
         btnSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

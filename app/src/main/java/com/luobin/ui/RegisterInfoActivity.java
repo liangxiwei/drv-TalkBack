@@ -45,6 +45,7 @@ import com.example.jrd48.chat.BaseActivity;
 
 import com.example.jrd48.chat.ImageTool;
 import com.example.jrd48.chat.PicTool.LetterTileDrawable;
+import com.example.jrd48.chat.SharedPreferencesUtils;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.friend.FriendFaceUtill;
 import com.example.jrd48.chat.permission.PermissionUtil;
@@ -97,8 +98,14 @@ import butterknife.OnClick;
  * 2019/3/25
  */
 public class RegisterInfoActivity extends BaseDialogActivity implements
-        PermissionUtil.PermissionCallBack, SelectInterestAdapter.OnRecyclerViewItemClickListener {
+        PermissionUtil.PermissionCallBack{
 
+
+    public static final String VehicleType = "VehicleType"; //车型
+    public static final String Birthday = "Birthday";//出生日期
+    public static final String Location = "Location";//所在地
+    public static final String Hometown = "Hometown";//家乡
+    public static final String Industry = "Industry";//行业
 
     /**
      * 调用相机
@@ -460,7 +467,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             default:
                 break;
         }
-
     }
 
 
@@ -1035,13 +1041,11 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
      * 设置个人数据
      */
     private void setInfor() {
-        //TODO 设置个人数据 从服务器上拉取的
         if (TextUtils.isEmpty(myInforTool.getSignature()) ) {
             tvSign.setText("未设置");
         } else {
             tvSign.setText(myInforTool.getSignature());
         }
-
         if (!TextUtils.isEmpty(myInforTool.getCarNum())){
             tvCarNo.setText(myInforTool.getCarNum());
         }
@@ -1063,16 +1067,18 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
         tvPhone.setText(myPhone);
         tvSex.setText(sexItems[sexdata] + "");
-
-        //TODO 天坑
         sbtnName.setChecked(!myInforTool.isSwitchNickName());
         sbtnSex.setChecked(!myInforTool.isSwitchSex());
         sbtnPhone.setChecked(!myInforTool.isSwitchPhoneNumber());
         sbtnCarNo.setChecked(!myInforTool.isSwitchCarNumber());
         sbtnGps.setChecked(!myInforTool.isSwitchLocationUpload());
-
-        //TODO 需要新增
         sbtnSign.setChecked(!myInforTool.isSwitchCarBrand());
+
+         tvCarModels.setText((String) SharedPreferencesUtils.get(context,VehicleType,""));
+         tvBirth.setText((String)SharedPreferencesUtils.get(context,Birthday,""));
+         tvLocation.setText((String)SharedPreferencesUtils.get(context,Location,""));
+         tvHome.setText((String)SharedPreferencesUtils.get(context,Hometown,""));
+         tvIndustry.setText((String)SharedPreferencesUtils.get(context,Industry,""));
 
     }
 
@@ -1312,20 +1318,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         return format.format(date);
     }
 
-    @Override
-    public void onItemClick(List<InterestBean> interestBeans) {
-
-        //TODO 设置兴趣爱好
-        String interestName = "";
-        for (int a = 0; a < interestBeans.size(); a++) {
-            if (interestBeans.get(a).isChecked()) {
-                interestName += interestBeans.get(a).getName() + ",";
-            }
-
-        }
-        tvInterest.setText(interestName);
-
-    }
 
 
     public enum DIALOG_TYPE {
@@ -1375,16 +1367,20 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                 }
 
                 if (type == DIALOG_TYPE.CARTYPE) {
+                    SharedPreferencesUtils.put(context,VehicleType,tx);
                     tvCarModels.setText(tx);
                     //TODO 在这里进行发送数据
                 } else if (type == DIALOG_TYPE.ADDRESS) {
                     tvLocation.setText(tx);
+                    SharedPreferencesUtils.put(context,Location,tx);
                     //TODO 在这里进行发送数据
                 } else if (type == DIALOG_TYPE.INDUSTRY) {
                     tvIndustry.setText(tx);
+                    SharedPreferencesUtils.put(context,Industry,tx);
                     //TODO 在这里进行发送数据
                 } else if (type == DIALOG_TYPE.HOME) {
                     tvHome.setText(tx);
+                    SharedPreferencesUtils.put(context,Hometown,tx);
                 }
 
 
@@ -1536,7 +1532,12 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
         SelectInterestDialog selectInterestDialog = new SelectInterestDialog(this
                 , interestList);
-
+        selectInterestDialog.setOnItemClickListener(new SelectInterestAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(InterestBean interestBean) {
+                tvIndustry.setText(interestBean.getName());
+            }
+        });
         selectInterestDialog.show();
 
     }

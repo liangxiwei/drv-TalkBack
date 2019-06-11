@@ -8,7 +8,9 @@ import android.util.Log;
 
 import com.example.jrd48.chat.crash.MyApplication;
 import com.luobin.dvr.R;
+import com.luobin.utils.PathUtlis;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -26,6 +28,10 @@ public class DvrConfig {
     private final static String KEY_THUMBNAIL_VIEW_RECT = "ThumbnailViewRect";
     private final static String KEY_PRE_VIDEO_TIME = "PreVideoTime";
     private final static String KEY_VIDEO_BITRATE = "VideoBitrate";
+    //随手拍地址
+    public final static String TAKE_PHOTOS = "/dvr/handy/snapshot";
+    //随手录地址
+    public final static String TAKE_VIDEOS = "/dvr/handy/video";
 
     public static void init(Context context) {
         if (mContext == null) {
@@ -33,6 +39,28 @@ public class DvrConfig {
         } else {
             Log.w(TAG, "DvrConfig already initialized");
         }
+    }
+
+    public static String getTakePhontPath(){
+        String path = PathUtlis.getRootDirectory()+TAKE_PHOTOS;
+        File file = new File(path);
+        if (!file.exists()){
+            file.mkdirs();
+            Log.d("pangtao","TakePhontPath = " +path );
+        }
+
+        return path;
+    }
+
+    public static String getTakeVideoPath(){
+        String path = PathUtlis.getRootDirectory()+TAKE_VIDEOS;
+
+        File file = new File(path);
+        if (!file.exists()){
+            file.mkdirs();
+            Log.d("pangtao","TakePhontPath = " +path );
+        }
+        return path;
     }
 
     public static int getVideoDuration() {

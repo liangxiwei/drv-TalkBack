@@ -9,7 +9,7 @@
     <LinearLayout android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_marginLeft="10dp"
         >
 
@@ -18,7 +18,7 @@
             android:layout_height="@dimen/time_height"
             android:gravity="center"
             android:textColor="#ffffffff"
-            android:textSize="@dimen/time_text_size" />
+            android:textSize="28dp" />
 
         <TextView android:id="@+id/time2"
             android:layout_width="wrap_content"
@@ -68,21 +68,21 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:textColor="#ffffff"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <TextView android:id="@+id/week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:layout_marginLeft="10dp"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
     </LinearLayout>
 
 
    <com.luobin.widget.StatusBar
        android:layout_width="160dp"
-       android:layout_height="30dp"
+       android:layout_height="25dp"
        android:layout_marginLeft="10dp"
        />
 

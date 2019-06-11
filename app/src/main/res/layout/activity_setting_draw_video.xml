@@ -15,7 +15,7 @@
         android:layout_marginEnd="15dp"
         android:src="@mipmap/close" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="440dp"
         android:layout_height="270dp"
         android:layout_centerHorizontal="true"
@@ -24,21 +24,12 @@
         android:orientation="vertical">
 
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvList"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="57dp"
-            android:layout_marginEnd="57dp"
-            android:paddingTop="9dp"
-            android:paddingBottom="9dp" />
-
-
         <RelativeLayout
+            android:id="@+id/rel_bottom"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            >
 
             <Button
                 android:id="@+id/btnSure"
@@ -46,14 +37,30 @@
                 android:layout_height="38dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/bg_panel_btn"
-                android:gravity="center"
+                android:textColor="@color/white"
                 android:text="确定"
                 android:textSize="16dp" />
 
         </RelativeLayout>
 
 
-    </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="57dp"
+            android:layout_marginEnd="57dp"
+            android:layout_above="@id/rel_bottom"
+            android:paddingTop="9dp"
+            android:paddingBottom="9dp" />
+
+
+
+
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

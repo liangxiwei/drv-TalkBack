@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.os.AsyncTask;
 import android.os.Handler;
@@ -114,6 +116,9 @@ public class GlobalStatus {
     private static int changeHeartbeat = -1;
     private static boolean isFirstPause = false;
     private static String curRoadPhone = null;
+    private static SurfaceTexture mSurfaceTexture;
+    private static Bitmap mBitmap;
+    private static int mTextureId = 10;
     public static boolean isPttKeyDown() {
         return pttKeyDown;
     }
@@ -666,6 +671,31 @@ public class GlobalStatus {
     public static void setEglCore(EglCore eglCore) {
         GlobalStatus.eglCore = eglCore;
     }
+
+    public static SurfaceTexture getSurfaceTexture() {
+                return mSurfaceTexture;
+            }
+
+            public static void setSurfaceTexture(SurfaceTexture surfaceTexture) {
+                GlobalStatus.mSurfaceTexture = surfaceTexture;
+            }
+
+            public static Bitmap getBitmapDvr() {
+                return mBitmap;
+            }
+
+            public static void setBitmapDvr(Bitmap bitmap) {
+                GlobalStatus.mBitmap = bitmap;
+            }
+
+            public static int getTextureId() {
+                return mTextureId;
+            }
+
+            public static void setTextureId(int textureId) {
+                GlobalStatus.mTextureId = textureId;
+            }
+
 
     public static String getCurRtmpAddr() {
         Log.v("wsDvr","getCurRtmpAddr:" + curRtmpAddr);

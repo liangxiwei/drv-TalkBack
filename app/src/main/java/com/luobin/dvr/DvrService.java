@@ -38,6 +38,7 @@ import android.os.UEventObserver;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 
 import com.android.internal.app.ShutdownActivity;
 import com.example.jrd48.GlobalStatus;
@@ -107,9 +108,23 @@ public class DvrService extends Service {
             } else {
                 mImpl.onClick();
             }
-
         }
     };
+
+    public static String keyDonwBroadcastAction = "luobin.dvr.keydonw";
+    private BroadcastReceiver keyDonwBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int keyCode = intent.getIntExtra("keyCode",-1);
+            Log.d("pangtao","keyCode = "+keyCode);
+            if (keyCode == KeyEvent.KEYCODE_CAMERA){
+                takePhoto();
+            }else if (keyCode == KeyEvent.KEYCODE_F9){
+                startTalkRecord();
+            }
+        }
+    };
+
 
     public class ServiceBinder extends IDvrService.Stub {
 
@@ -822,6 +837,10 @@ public class DvrService extends Service {
         } catch (Exception e){
             e.printStackTrace();
         }
+        IntentFilter intentFilter1 = new IntentFilter(keyDonwBroadcastAction);
+        registerReceiver(keyDonwBroadcastReceiver,intentFilter);
+
+
         super.onCreate();
     }
 
@@ -868,6 +887,12 @@ public class DvrService extends Service {
             vUsbObserverOn.stopObserving();
         }
         RESClient.getInstance().removeSurfaceView();
+        try {
+            unregisterReceiver(keyDonwBroadcastReceiver);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         super.onDestroy();
     }
     
@@ -1263,4 +1288,32 @@ public class DvrService extends Service {
             }).start();
         }
     }
+
+    public  void takePhoto(){
+        if (mServiceBinder != null){
+            try {
+                mServiceBinder.takePhoto(DvrConfig.getTakePhontPath());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public boolean startTalkRecord() {
+        stopRecord();
+        String path = DvrConfig.getTakeVideoPath();
+        Log.d(TAG, "start circle recording path=" + path);
+        int intervalms = DvrConfig.getVideoDuration();
+        Log.d(TAG, "start circle recording path=" + path + ", intervalms="+intervalms);
+        if (mCircleRecordHelper == null) {
+            Log.d(TAG, "start circle recording ");
+            mCircleRecordHelper = new CircleRecordHelper(mImpl, path, intervalms);
+            return true;
+        } else {
+            Log.e(TAG, "circle recording already running");
+            return false;
+        }
+    }
+
+
 }

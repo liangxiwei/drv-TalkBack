@@ -58,7 +58,7 @@ public class InputTextDialog extends BaseDialog {
     public View initView(final Context context) {
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_password, null);
         this.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
-        setSize(ScreenUtils.Dp2Px(context, 300), LinearLayout.LayoutParams.WRAP_CONTENT);
+        setSize(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         unClickDissmiss();
 
         tvTitleName = (TextView) view.findViewById(R.id.tvTitleName);

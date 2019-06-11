@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 
+import com.example.jrd48.chat.SharedPreferencesUtils;
 import com.luobin.dvr.R;
 import com.luobin.ui.BaseDialogActivity;
 import com.luobin.ui.SelectInterestAdapter;
@@ -34,7 +35,7 @@ public class SettingDrawVideoActivity extends BaseDialogActivity {
     SetDrawVideoAdapter adapter = null;
 
     ArrayList<String> data = new ArrayList<>();
-
+    String result = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +49,10 @@ public class SettingDrawVideoActivity extends BaseDialogActivity {
 
     private void initView() {
         data = new ArrayList<>();
-        data.add("0");
-        data.add("1");
         data.add("2");
         data.add("3");
+        data.add("4");
+        data.add("5");
         adapter = new SetDrawVideoAdapter(this, data);
 //布局管理器对象 参数1.上下文 2.规定一行显示几列的参数常量
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
@@ -60,6 +61,13 @@ public class SettingDrawVideoActivity extends BaseDialogActivity {
         //设置布局管理器， 参数gridLayoutManager对象
         rvList.setLayoutManager(gridLayoutManager);
         rvList.setAdapter(adapter);
+        adapter.setOnItemClickListener(new SetDrawVideoAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(int position, String videoTag) {
+                result = videoTag;
+            }
+        });
+
     }
 
 
@@ -70,6 +78,8 @@ public class SettingDrawVideoActivity extends BaseDialogActivity {
                 finish();
                 break;
             case R.id.btnSure:
+                SharedPreferencesUtils.put(context,"picture",result);
+                finish();
                 break;
             default:
                 break;

@@ -300,16 +300,16 @@ public class TSConditionActivity extends BaseDialogActivity implements
     }
 
     @Override
-    public void onItemClick(List<InterestBean> interestBeans) {
+    public void onItemClick(InterestBean interestBeans) {
         Log.i("aihao","shujju");
         //TODO 设置兴趣爱好
-        String interestName = "";
-        for (int a = 0; a < interestBeans.size(); a++) {
+        String interestName = interestBeans.getName();
+      /*  for (int a = 0; a < interestBeans.size(); a++) {
             if (interestBeans.get(a).isChecked()) {
                 interestName += interestBeans.get(a).getName() + ",";
             }
 
-        }
+        }*/
         tvLikeGood.setText(interestName);
 
     }

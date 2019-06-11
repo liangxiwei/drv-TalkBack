@@ -7,13 +7,13 @@
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:orientation="horizontal"
         >
 
         <com.luobin.widget.ActionBarDataView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center_horizontal"
             />
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="10dp"
                 android:orientation="vertical">
 
                 <Button
@@ -89,7 +89,7 @@
                     android:textSize="16dp"
                     android:text="视频对讲"
                     android:textColor="@color/white"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     />
 
                 <Button
@@ -100,8 +100,8 @@
                     android:textSize="16dp"
                     android:text="后摄对讲"
                     android:textColor="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:visibility="gone"
+                    android:layout_marginTop="8dp"
+                    android:visibility="visible"
                     />
 
                 <Button
@@ -112,7 +112,7 @@
                     android:textSize="16dp"
                     android:text="画中画对讲"
                     android:textColor="@color/white"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     />
 
                 <Button
@@ -123,7 +123,7 @@
                     android:textSize="16dp"
                     android:text="语音对讲"
                     android:textColor="@color/white"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     />
 
             </LinearLayout>

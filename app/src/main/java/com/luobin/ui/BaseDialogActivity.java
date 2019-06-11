@@ -2,6 +2,7 @@ package com.luobin.ui;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.StrictMode;
 
@@ -13,6 +14,7 @@ import com.example.jrd48.service.TimeoutBroadcastManager;
  */
 public class BaseDialogActivity extends Activity{
     public static final int REQUEST_TIME_OUT = 15;
+    public Context context;
     private TimeoutBroadcastManager mTimeoutBroadcastManager = new TimeoutBroadcastManager();
 
     public TimeoutBroadcastManager getBroadcastManager() {
@@ -22,6 +24,7 @@ public class BaseDialogActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = this;
         /*Intent intent = new Intent(this, MyService.class);
         intent.putExtra("heart", true);
 		startService(intent);*/

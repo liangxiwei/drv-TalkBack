@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.example.jrd48.chat.BaseActivity;
@@ -144,4 +145,28 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
     /* zhangzhaolei add for switch dvr fullscreen preview 20170328 end */
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+       switch (event.getKeyCode()){
+           case KeyEvent.KEYCODE_CAMERA:
+               Intent intent = new Intent( DvrService.keyDonwBroadcastAction);
+                intent.putExtra("keyCode",KeyEvent.KEYCODE_CAMERA);
+               sendBroadcast(intent);
+               break;
+           case KeyEvent.KEYCODE_F9:
+               Intent intent1 = new Intent( DvrService.keyDonwBroadcastAction);
+               intent1.putExtra("keyCode",KeyEvent.KEYCODE_F9);
+               sendBroadcast(intent1);
+               break;
+               default:
+                   break;
+       }
+
+
+
+        return super.onKeyDown(keyCode, event);
+    }
 }

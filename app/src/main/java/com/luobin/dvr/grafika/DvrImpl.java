@@ -91,8 +91,11 @@ public class DvrImpl extends DvrImplBase
     private FullFrameRect mFullFrameBlit;
     private FullFrameRect mWaterMarkBlit;
     private FullFrameRect mUsbFrameBlit;
-    private final float[] mTmpMatrix = {1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f};
-
+    private final float[] mTmpMatrix = {
+                        1.0f, 0.0f, 0.0f, 0.0f,
+                        0.0f, -1.0f, 0.0f, 0.0f,
+                        0.0f, 0.0f, 1.0f, 0.0f,
+                        0.0f, 1.0f, 0.0f, 1.0f};
     private long mFrameCount = 0;
     private final int mRecordingFlagFlashRate = 20; // frames
     private int mCamTextureId;
@@ -102,7 +105,7 @@ public class DvrImpl extends DvrImplBase
     private int mWaterMarkHeight;
     private int mWaterMarkGravity;
 
-    private SurfaceTexture mCameraTexture;
+    public SurfaceTexture mCameraTexture;
 
     private DvrEncoder mDvrEncoder;
     public static final boolean USB_H264_CAM = true;//
@@ -1223,6 +1226,7 @@ public class DvrImpl extends DvrImplBase
                 GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D,
                         GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE);
                 GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, usbBmp, 0);
+                GlobalStatus.setTextureId(mUsbTextureId);
                 usbBmp = null;
             } else {
                 Log.e(TAG, "bmp == null");

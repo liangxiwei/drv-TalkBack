@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
 import com.luobin.dvr.R;
 import com.luobin.ui.InterestBean;
 import com.luobin.ui.SelectInterestAdapter;
@@ -26,7 +27,7 @@ public class SetDrawVideoAdapter extends
     private Context context = null;
 
     ArrayList<String> list = new ArrayList<>();
-
+    int selectPosition = 0;
     public SetDrawVideoAdapter(Context context, ArrayList<String> list) {
         this.context = context;
         this.list = list;
@@ -45,17 +46,32 @@ public class SetDrawVideoAdapter extends
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        if (position == 1 || position == 3) {
-            holder.imgSmallLeft.setVisibility(View.GONE);
-            holder.imgSmallRight.setVisibility(View.VISIBLE);
-        } else {
-            holder.imgSmallLeft.setVisibility(View.VISIBLE);
-            holder.imgSmallRight.setVisibility(View.GONE);
+        if (position == selectPosition){
+            holder.imgShow.setVisibility(View.VISIBLE);
+        }else{
+            holder.imgShow.setVisibility(View.GONE);
+        }
+        switch (position){
+            case 0:
+                Glide.with(context).load(R.mipmap.pic_pre_right).into(holder.imgBig);
+                break;
+            case 1:
+                Glide.with(context).load(R.mipmap.pic_pre_left).into(holder.imgBig);
+                break;
+            case 2:
+                Glide.with(context).load(R.mipmap.pic_post_right).into(holder.imgBig);
+                break;
+            case 3:
+                Glide.with(context).load(R.mipmap.pic_post_left).into(holder.imgBig);
+                break;
+                default:
+                    break;
         }
 
+
+
+
         final String s = list.get(position);
-
-
         holder.rlitem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +79,9 @@ public class SetDrawVideoAdapter extends
                     //注意这里使用getTag方法获取数据
 
                     Log.i("aihao", "shujju>");
-                    mOnItemClickListener.onItemClick(list);
+                    mOnItemClickListener.onItemClick(position,s);
+                    selectPosition = position;
+                    notifyDataSetChanged();
                 }
             }
         });
@@ -88,11 +106,6 @@ public class SetDrawVideoAdapter extends
         @BindView(R.id.imgShow)
         ImageView imgShow;
 
-        @BindView(R.id.imgSmallLeft)
-        ImageView imgSmallLeft;
-
-        @BindView(R.id.imgSmallRight)
-        ImageView imgSmallRight;
         @BindView(R.id.rlitem)
         RelativeLayout rlitem;
 
@@ -107,7 +120,7 @@ public class SetDrawVideoAdapter extends
         /**
          * 列表点击
          */
-        void onItemClick(ArrayList<String> interestBeans);
+        void onItemClick(int position,String videoTag);
     }
 
     private OnRecyclerViewItemClickListener mOnItemClickListener = null;

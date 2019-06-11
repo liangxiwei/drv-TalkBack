@@ -57,7 +57,7 @@ public class SelectInterestAdapter extends
 
                     dataList.get(position).setChecked(isChecked);
                     Log.i("aihao","shujju>");
-                    mOnItemClickListener.onItemClick(dataList);
+                    mOnItemClickListener.onItemClick(dataList.get(position));
                 }
 
             }
@@ -88,7 +88,7 @@ public class SelectInterestAdapter extends
          * 列表点击
          *
          */
-        void onItemClick(List<InterestBean> interestBeans);
+        void onItemClick(InterestBean interestBean);
     }
 
     private OnRecyclerViewItemClickListener mOnItemClickListener = null;

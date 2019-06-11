@@ -543,10 +543,29 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         }
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         dataInit();
-        voice.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
+
+        if(GlobalStatus.isVideo()){
+            switch ( Settings.System.getInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_VIDEO_SCREEN_MODE, 0)){
+                case 0:
+                    prefixCamera.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
+                    break;
+                case 1:
+                    prefixCamera.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
+                    break;
+                    default:
+                        pictureInPicture.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
+                        break;
+            }
+        }else{
+            voice.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
+        }
+
+
+
+
         List<View>  selectViews = new ArrayList<>();
         selectViews.add(prefixCamera);
-       // selectViews.add(rearCamera);
+        selectViews.add(rearCamera);
         selectViews.add(pictureInPicture);
         selectViews.add(voice);
         selectViews.add(gotoMap);
@@ -5103,6 +5122,8 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 if (GlobalStatus.checkSpeakPhone(getMyPhone(), getRoomId())) {
                     VoiceHandler.startRTMP(mContext, GlobalStatus.getCurRtmpAddr());
                 }
+
+                Settings.System.putInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_VIDEO_SCREEN_MODE, 0);
                 break;
             case R.id.rear_camera:
                 //后置对讲
@@ -5113,10 +5134,14 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 doNotDisturb.setTextColor(getResources().getColor(R.color.white));
                 //按下操作
 
-                SharedPreferencesUtils.put(mContext, "pttKeyDown", true);
-                pttKeyDownSent();
+                GlobalStatus.setIsVideo(true);
+                GlobalStatus.changeChatStatusInfo();
+                changeTitle();
+                if (GlobalStatus.checkSpeakPhone(getMyPhone(), getRoomId())) {
+                    VoiceHandler.startRTMP(mContext, GlobalStatus.getCurRtmpAddr());
+                }
 
-
+                Settings.System.putInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_VIDEO_SCREEN_MODE, 1);
                 break;
             case R.id.picture_in_picture:
                 //画中画对讲
@@ -5125,10 +5150,17 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 pictureInPicture.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
                 voice.setTextColor(getResources().getColor(R.color.white));
                 doNotDisturb.setTextColor(getResources().getColor(R.color.white));
-
+                GlobalStatus.setIsVideo(true);
+                GlobalStatus.changeChatStatusInfo();
+                changeTitle();
+                if (GlobalStatus.checkSpeakPhone(getMyPhone(), getRoomId())) {
+                    VoiceHandler.startRTMP(mContext, GlobalStatus.getCurRtmpAddr());
+                }
                 //抬起操作
-                SharedPreferencesUtils.put(mContext, "pttKeyDown", false);
-                pttKeyUpSent();
+              /*  SharedPreferencesUtils.put(mContext, "pttKeyDown", false);
+                pttKeyUpSent();*/
+                Log.d("pangtao", (String) SharedPreferencesUtils.get(context,"picture","2"));
+                Settings.System.putInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_VIDEO_SCREEN_MODE, Integer.valueOf((String)SharedPreferencesUtils.get(context,"picture","2")));
                 break;
             case R.id.voice:
                 //语音对讲
@@ -5137,7 +5169,6 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 pictureInPicture.setTextColor(getResources().getColor(R.color.white));
                 voice.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
                 doNotDisturb.setTextColor(getResources().getColor(R.color.white));
-
 
                 GlobalStatus.setIsVideo(false);
                 changeTitle();
@@ -5166,6 +5197,8 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 intent.putExtra("teamID", group);
                 startActivity(intent);
                 break;
+                default:
+                    break;
 
         }
     }
