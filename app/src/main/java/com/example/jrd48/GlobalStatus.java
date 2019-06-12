@@ -118,7 +118,8 @@ public class GlobalStatus {
     private static String curRoadPhone = null;
     private static SurfaceTexture mSurfaceTexture;
     private static Bitmap mBitmap;
-    private static int mTextureId = 10;
+    private static int mDvrTextureId = 10;
+    private static int mUsbTextureId = 11;
     public static boolean isPttKeyDown() {
         return pttKeyDown;
     }
@@ -673,29 +674,36 @@ public class GlobalStatus {
     }
 
     public static SurfaceTexture getSurfaceTexture() {
-                return mSurfaceTexture;
-            }
+        return mSurfaceTexture;
+    }
 
-            public static void setSurfaceTexture(SurfaceTexture surfaceTexture) {
-                GlobalStatus.mSurfaceTexture = surfaceTexture;
-            }
+    public static void setSurfaceTexture(SurfaceTexture surfaceTexture) {
+        GlobalStatus.mSurfaceTexture = surfaceTexture;
+    }
 
-            public static Bitmap getBitmapDvr() {
-                return mBitmap;
-            }
+    public static Bitmap getBitmapDvr() {
+        return mBitmap;
+    }
 
-            public static void setBitmapDvr(Bitmap bitmap) {
-                GlobalStatus.mBitmap = bitmap;
-            }
+    public static void setBitmapDvr(Bitmap bitmap) {
+        GlobalStatus.mBitmap = bitmap;
+    }
 
-            public static int getTextureId() {
-                return mTextureId;
-            }
+    public static int getDvrTextureId() {
+        return mDvrTextureId;
+    }
 
-            public static void setTextureId(int textureId) {
-                GlobalStatus.mTextureId = textureId;
-            }
+    public static void setDvrTextureId(int textureId) {
+        GlobalStatus.mDvrTextureId = textureId;
+    }
 
+    public static int getUsbTextureId() {
+        return mUsbTextureId;
+    }
+
+    public static void setUsbTextureId(int textureId) {
+        GlobalStatus.mUsbTextureId = textureId;
+    }
 
     public static String getCurRtmpAddr() {
         Log.v("wsDvr","getCurRtmpAddr:" + curRtmpAddr);
@@ -816,6 +824,11 @@ public class GlobalStatus {
     public static final String NAVI_START_STOP = Settings.System.NAVI_START_STOP;
     public static int getShutDownType(Context context) {
         return Settings.System.getInt(context.getContentResolver(), NAVI_START_STOP, 1);
+    }
+
+    public static final String CHAT_VIDEO_RADIO_SWITCH = Settings.System.CHAT_VIDEO_RADIO_SWITCH;
+    public static int getChatVideoMode(Context context) {
+        return Settings.System.getInt(context.getContentResolver(), CHAT_VIDEO_RADIO_SWITCH, 0);
     }
 
     public static boolean isPttBroadCast() {

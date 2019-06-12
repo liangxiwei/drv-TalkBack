@@ -11,7 +11,7 @@ public class VideoFactory {
 
     public VideoBase createVideo(Context context) {
         String product = Build.PRODUCT;
-        if (product != null && (product.equals("LB1728V4") ||product.equals("LB1822") )) {
+        if (product != null && product.equals("LB1728V4") || "LB1820".equals(Build.PRODUCT) || "LB1822".equals(Build.PRODUCT)) {
             USBVideo usb = new USBVideo(context);
             return usb;
         }else/* if (product.equals("DVR_CAM")) */{

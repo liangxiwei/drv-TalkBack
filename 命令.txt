@@ -64,3 +64,7 @@ fastboot reboot
 就可以拿到log
 :
 也要root先
+
+roomid 和cmdAcceptVoice这个接口配合使用，可以进入房间和挂断房间
+这个是进入之前存在的房间，假如房价被挂断了，会有错误码返回的
+TeamID 和 cmdStartVoice接口联合使用，这个是对这个群组发起呼叫，

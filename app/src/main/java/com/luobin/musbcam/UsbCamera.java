@@ -1,16 +1,7 @@
 package com.luobin.musbcam;
 
-import android.content.Intent;
 import android.os.SystemClock;
 import android.util.Log;
-
-import com.example.jrd48.chat.crash.MyApplication;
-import com.example.jrd48.chat.receiver.ToastReceiver;
-import com.luobin.dvr.R;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 /**
  * Created by xugq on 8/2/17.
@@ -122,8 +113,8 @@ public class UsbCamera {
      */
     public boolean open(String dev, int reqsize[]) {
         Log.e(TAG, "open " + dev);
-        mDev = new String(dev);
         Log.e("====", "========open " + dev);
+        mDev = new String(dev);
         mReqSize = new int[2];
         if (reqsize != null) {
             mReqSize[0] = reqsize[0];

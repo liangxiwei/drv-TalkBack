@@ -1,16 +1,23 @@
 package com.luobin.dvr.grafika;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageFormat;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.hardware.Camera;
+import android.hardware.Camera.Size;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.os.Build;
@@ -18,6 +25,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -50,17 +58,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.IntBuffer;
 
+import me.lake.librestreaming.client.CameraVideo;
 import me.lake.librestreaming.client.GlobalMediaCodec;
 import me.lake.librestreaming.client.RESClient;
 import me.lake.librestreaming.model.RESConfig;
-
-import android.graphics.ImageFormat;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.hardware.Camera;
-import android.hardware.Camera.Size;
-
-import me.lake.librestreaming.client.CameraVideo;
-
 
 public class DvrImpl extends DvrImplBase
         implements Callback, UsbCamera.UsbCameraListener, OnFrameAvailableListener {
@@ -91,11 +92,14 @@ public class DvrImpl extends DvrImplBase
     private FullFrameRect mFullFrameBlit;
     private FullFrameRect mWaterMarkBlit;
     private FullFrameRect mUsbFrameBlit;
+    private ChatVideoScreenModeObserver mChatVideoScreenModeObserver;
+    private int mCurrentVideoScreenMode = 0;
     private final float[] mTmpMatrix = {
-                        1.0f, 0.0f, 0.0f, 0.0f,
-                        0.0f, -1.0f, 0.0f, 0.0f,
-                        0.0f, 0.0f, 1.0f, 0.0f,
-                        0.0f, 1.0f, 0.0f, 1.0f};
+            1.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, -1.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 1.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 1.0f};
+
     private long mFrameCount = 0;
     private final int mRecordingFlagFlashRate = 20; // frames
     private int mCamTextureId;
@@ -222,6 +226,16 @@ public class DvrImpl extends DvrImplBase
 
     public DvrImpl(Context context) {
         super(context);
+        mChatVideoScreenModeObserver = new ChatVideoScreenModeObserver(new Handler());
+        mChatVideoScreenModeObserver.startObserving();
+        try {
+            mCurrentVideoScreenMode = Settings.System.getInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_VIDEO_SCREEN_MODE);
+            if (mCurrentVideoScreenMode > 0) {
+                DvrService.start(MyApplication.getContext(), RESClient.ACTION_SWITCH_RTMP, null);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean isHiden = false;
@@ -470,10 +484,10 @@ public class DvrImpl extends DvrImplBase
         Log.d(TAG, "DvrImpl USB_H264_CAM =" + USB_H264_CAM);
         if (USB_H264_CAM) {
             if (mUsbVideoRecorder == null) {
-                String dev = mContext.getResources().getStringArray(R.array.video_devs)[1];
+                String  dev = mContext.getResources().getStringArray(R.array.video_devs)[2];//20190509
                 String product = Build.PRODUCT;
                 if (product != null && product.equals("LB1728V4")) {
-                    dev = mContext.getResources().getStringArray(R.array.video_devs)[1];
+                    dev = mContext.getResources().getStringArray(R.array.video_devs)[2];//h264 recorder
                 }
                 mUsbVideoRecorder = new UsbVideoRecorder();
                 boolean res = mUsbVideoRecorder.start(dev, RESConfig.VIDEO_WIDTH_BIG, RESConfig.VIDEO_HEIGHT_BIG, file);
@@ -708,6 +722,20 @@ public class DvrImpl extends DvrImplBase
     public void surfaceDestroyed(SurfaceHolder holder) {
 
     }
+	
+	@Override
+    public void onFrameAvailable(SurfaceTexture surfaceTexture) {
+        synchronized (mLock) {
+            if (mWaitingForPreview) {
+                mHandler.removeMessages(MSG_FRAME_AVAILABLE_TIMEOUT);
+                mWaitingForPreview = false;
+                Log.d(TAG, "mWaitingForPreview notify ");
+                mLock.notifyAll();
+            }
+        }
+        updateTimeStampBmpIfNeeded();
+        mHandler.sendEmptyMessage(MSG_FRAME_AVAILABLE);
+    }
 
     private void updateTimeStampBmpIfNeeded() {
         synchronized (this) {
@@ -781,6 +809,7 @@ public class DvrImpl extends DvrImplBase
      */
     private void drawFrame() {
         //Log.d(TAG, "drawFrame ,"+Thread.currentThread().getName());
+        int dvrShow = Settings.System.getInt(mContext.getContentResolver(), "dvr_fullscreen_show", 0);
         if (mEglCore == null) {
             Log.d(TAG, "Skipping drawFrame after shutdown");
             return;
@@ -811,9 +840,49 @@ public class DvrImpl extends DvrImplBase
             mFullFrameBlit.drawFrame(mCamTextureId, mTmpMatrix);
             //Log.v(TAG,"drawFrame viewWidth=" + viewWidth+",viewHeight="+viewHeight);
 
-            if (mUsbTextureId >= 0) {
+            /*if (mUsbTextureId >= 0) {
                 GLES20.glViewport(0, 0, viewWidth, viewHeight);
                 mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+            }*/
+            if (dvrShow == 1) {
+                if (mUsbTextureId >= 0) {
+                    GLES20.glViewport(0, 0, viewWidth, viewHeight);
+                    mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                }
+            } else {
+                if (mUsbTextureId >= 0) {
+                    switch (mCurrentVideoScreenMode) {
+                        case 0:
+                        case 1:
+                            GLES20.glViewport(0, 0, viewWidth, viewHeight);
+                            mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                            break;
+                        case 2:
+                            GLES20.glViewport(0, 0, viewWidth, viewWidth);
+                            mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                            GLES20.glViewport(viewWidth / 2, 0, viewWidth / 2, viewHeight / 2);
+                            mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                            break;
+                        case 3:
+                            GLES20.glViewport(0, 0, viewWidth, viewWidth);
+                            mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                            GLES20.glViewport(0, 0, viewWidth / 2, viewHeight / 2);
+                            mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                            break;
+                        case 4:
+                            GLES20.glViewport(0, 0, viewWidth, viewWidth);
+                            mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                            GLES20.glViewport(viewWidth / 2, 0, viewWidth / 2, viewHeight / 2);
+                            mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                            break;
+                        case 5:
+                            GLES20.glViewport(0, 0, viewWidth, viewWidth);
+                            mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                            GLES20.glViewport(0, 0, viewWidth / 2, viewHeight / 2);
+                            mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                            break;
+                    }
+                }
             }
             /*
             Log.d(TAG, "mTmpMatrix="+mTmpMatrix);
@@ -830,7 +899,9 @@ public class DvrImpl extends DvrImplBase
 
             if (isRecording() && (mFrameCount % (2 * mRecordingFlagFlashRate) < mRecordingFlagFlashRate)) {
                 //drawBox(viewWidth - 40, viewHeight - 40, 20, 20, isCollided());
-                drawRound1(isCollided());
+                if (dvrShow == 1) {
+                    drawRound1(isCollided());
+                }
             }
         }
 
@@ -869,8 +940,39 @@ public class DvrImpl extends DvrImplBase
                     GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
                     mFullFrameBlit.drawFrame(mCamTextureId, mTmpMatrix);
                     if (mUsbTextureId >= 0) {
-                        GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
-                        mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                        //GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                        //mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                        switch (mCurrentVideoScreenMode) {
+                            case 0:
+                            case 1:
+                                GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                                mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                break;
+                            case 2:
+                                GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                                mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                GLES20.glViewport(mCamPrevWidth / 2, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                break;
+                            case 3:
+                                GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                                mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                GLES20.glViewport(0, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                break;
+                            case 4:
+                                GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                                mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                GLES20.glViewport(mCamPrevWidth / 2, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                break;
+                            case 5:
+                                GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                                mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                GLES20.glViewport(0, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                break;
+                        }
                     }
                     /*if (mWaterMarkTextureId >= 0) {
                         setWaterMarkViewport(mCamPrevWidth, mCamPrevHeight);
@@ -1069,6 +1171,7 @@ public class DvrImpl extends DvrImplBase
             mUsbTextureId = -1;
         }
         Log.d(TAG, "release return");
+        //mChatVideoScreenModeObserver.stopObserving();
         return true;
     }
 
@@ -1185,6 +1288,7 @@ public class DvrImpl extends DvrImplBase
             options.inMutable = true;
             options.outWidth = mCamPrevWidth;
             options.outHeight = mCamPrevHeight;
+            //options.inSampleSize = 1;//fix Problem decoding into existing bitmap
         }
         Bitmap tempBmp = null;
         try {
@@ -1226,7 +1330,7 @@ public class DvrImpl extends DvrImplBase
                 GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D,
                         GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE);
                 GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, usbBmp, 0);
-                GlobalStatus.setTextureId(mUsbTextureId);
+                GlobalStatus.setDvrTextureId(mUsbTextureId);
                 usbBmp = null;
             } else {
                 Log.e(TAG, "bmp == null");
@@ -1234,20 +1338,6 @@ public class DvrImpl extends DvrImplBase
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void onFrameAvailable(SurfaceTexture surfaceTexture) {
-        synchronized (mLock) {
-            if (mWaitingForPreview) {
-                mHandler.removeMessages(MSG_FRAME_AVAILABLE_TIMEOUT);
-                mWaitingForPreview = false;
-                Log.d(TAG, "mWaitingForPreview notify ");
-                mLock.notifyAll();
-            }
-        }
-        updateTimeStampBmpIfNeeded();
-        mHandler.sendEmptyMessage(MSG_FRAME_AVAILABLE);
     }
 
 
@@ -1409,6 +1499,53 @@ public class DvrImpl extends DvrImplBase
         if (mCollisionDetector != null) {
             mCollisionDetector.release();
             mCollisionDetector = null;
+        }
+    }
+
+    /**
+     * ContentObserver to watch video chat behavior
+     **/
+    private class ChatVideoScreenModeObserver extends ContentObserver {
+
+        private final Uri CHAT_VIDEO_SCREEN_MODE_URI =
+                Settings.System.getUriFor(Settings.System.CHAT_VIDEO_SCREEN_MODE);
+
+        public ChatVideoScreenModeObserver(Handler handler) {
+            super(handler);
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            onChange(selfChange, null);
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            if (selfChange) return;
+            try {
+                int lastVideoScreenMode = mCurrentVideoScreenMode;
+                mCurrentVideoScreenMode = Settings.System.getInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_VIDEO_SCREEN_MODE);
+                Log.d("ChatVideoScreenMode", "=mCurrentVideoScreenMode=" + mCurrentVideoScreenMode);
+                Log.e("====", "=mCurrentVideoScreenMode=" + mCurrentVideoScreenMode);
+                if (lastVideoScreenMode == 0 && mCurrentVideoScreenMode != 0 || lastVideoScreenMode != 0 && mCurrentVideoScreenMode == 0) {
+                    DvrService.start(MyApplication.getContext(), RESClient.ACTION_SWITCH_RTMP, null);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void startObserving() {
+            final ContentResolver cr = MyApplication.getContext().getContentResolver();
+            cr.unregisterContentObserver(this);
+            cr.registerContentObserver(
+                    CHAT_VIDEO_SCREEN_MODE_URI,
+                    false, this);
+        }
+
+        public void stopObserving() {
+            final ContentResolver cr = MyApplication.getContext().getContentResolver();
+            cr.unregisterContentObserver(this);
         }
     }
 }
