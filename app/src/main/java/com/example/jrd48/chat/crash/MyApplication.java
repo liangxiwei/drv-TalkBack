@@ -1,7 +1,6 @@
 package com.example.jrd48.chat.crash;
 
 import android.app.ActivityManager;
-import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -12,7 +11,6 @@ import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
-import android.os.Process;
 import android.provider.Settings;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
@@ -24,18 +22,12 @@ import android.view.Choreographer;
 import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.ActivityCollector;
 import com.example.jrd48.chat.SharedPreferencesUtils;
-import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.service.MyService;
 import com.luobin.dvr.DvrConfig;
-import com.luobin.dvr.DvrService;
 import com.luobin.dvr.R;
-import com.luobin.log.DBMyLogHelper;
-import com.luobin.log.LogCode;
 import com.luobin.utils.VideoRoadUtils;
 import com.qihoo.linker.logcollector.LogCollector;
 import com.qihoo.linker.logcollector.upload.HttpParameters;
-
-import me.lake.librestreaming.client.RESClient;
 public class MyApplication extends MultiDexApplication {
     CrashHandler mHander = null;
     private ShutDownObserver shutDownObserver;
@@ -144,6 +136,8 @@ public class MyApplication extends MultiDexApplication {
     private class ShutDownObserver extends ContentObserver {
         private final Uri NAVI_START_STOP_URI =
                 Settings.System.getUriFor(GlobalStatus.NAVI_START_STOP);
+        private final Uri CHAT_VIDEO_RADIO_SWITCH_URI =
+                Settings.System.getUriFor(GlobalStatus.CHAT_VIDEO_RADIO_SWITCH);
 
         public ShutDownObserver(Handler handler) {
             super(handler);
@@ -158,12 +152,20 @@ public class MyApplication extends MultiDexApplication {
         public void onChange(boolean selfChange, Uri uri) {
             if (NAVI_START_STOP_URI.equals(uri)) {
                 int type = GlobalStatus.getShutDownType(getContext());
-                Log.v("Application", "ShutDownObserver type:" + type);
+                Log.d("Application", "ShutDownObserver type:" + type);
                 if (0 == type) {
                     ActivityCollector.finishAll();
                 } else {
                     Log.d("Application", "onChange checkStatus ");
                     checkStatus(false);
+                }
+            } else if (CHAT_VIDEO_RADIO_SWITCH_URI.equals(uri)) {
+                int currentMode = GlobalStatus.getChatVideoMode(getContext());
+                Log.d("Application", "ChatVideoMode switch=" + currentMode);
+                if (currentMode == 0) {
+                    checkStatus(false);
+                } else {
+                    ActivityCollector.finishAll();
                 }
             }
         }
@@ -173,6 +175,9 @@ public class MyApplication extends MultiDexApplication {
             cr.unregisterContentObserver(this);
             cr.registerContentObserver(
                     NAVI_START_STOP_URI,
+                    false, this);
+            cr.registerContentObserver(
+                    CHAT_VIDEO_RADIO_SWITCH_URI,
                     false, this);
         }
 
@@ -243,7 +248,4 @@ public class MyApplication extends MultiDexApplication {
         }
         return "none";
     }
-
-
-
 }

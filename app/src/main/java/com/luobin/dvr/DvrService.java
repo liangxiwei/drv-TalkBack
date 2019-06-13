@@ -1118,6 +1118,9 @@ public class DvrService extends Service {
     private class ShutDownObserver extends ContentObserver {
         private final Uri NAVI_START_STOP_URI =
                 Settings.System.getUriFor(GlobalStatus.NAVI_START_STOP);
+        private final Uri CHAT_VIDEO_RADIO_SWITCH_URI =
+                Settings.System.getUriFor(GlobalStatus.CHAT_VIDEO_RADIO_SWITCH);
+
         public ShutDownObserver(Handler handler) {
             super(handler);
         }
@@ -1131,6 +1134,8 @@ public class DvrService extends Service {
         public void onChange(boolean selfChange, Uri uri) {
             if (NAVI_START_STOP_URI.equals(uri)) {
                 checkStatus(false);
+            } else if (CHAT_VIDEO_RADIO_SWITCH_URI.equals(uri)) {
+                checkStatus(false);
             }
         }
 
@@ -1139,6 +1144,9 @@ public class DvrService extends Service {
             cr.unregisterContentObserver(this);
             cr.registerContentObserver(
                     NAVI_START_STOP_URI,
+                    false, this);
+            cr.registerContentObserver(
+                    CHAT_VIDEO_RADIO_SWITCH_URI,
                     false, this);
         }
 
@@ -1220,16 +1228,18 @@ public class DvrService extends Service {
 
     public boolean openCamera(){
         UsbCamera usbCamera = null;
+        CameraVideo mCameraVideo = null;
         int[] size = new int[2];
         DvrConfig.getVideoSize(size);
         if(GlobalStatus.getUsbVideo2() != null){
             return true;
         } else {
             usbCamera = new UsbCamera();
-            String dev = getResources().getStringArray(R.array.video_devs)[1];
+            //mCameraVideo = new CameraVideo(this);
+            String dev = getResources().getStringArray(R.array.video_devs)[1];//1820->2 //chat? 0509
             String product = Build.PRODUCT;
             if (product != null && product.equals("LB1728V4")) {
-                dev = getResources().getStringArray(R.array.video_devs)[1];
+                dev = getResources().getStringArray(R.array.video_devs)[1];//no use? 1 //chat 1->front,3->nonwork
             }
             boolean isOpen = usbCamera.open(dev, size);
             if (!isOpen) {
@@ -1246,7 +1256,8 @@ public class DvrService extends Service {
     public void checkStatus(boolean screenOn){
         DvrService dvrService = DvrService.this;
         int type = GlobalStatus.getShutDownType(dvrService);
-        Log.v(TAG,"checkStatus type:" + type);
+        int chatVideoMode = GlobalStatus.getChatVideoMode(dvrService);
+        Log.v(TAG,"checkStatus type:" + type + "--chatVideoMode: " + chatVideoMode);
         dvrService.stopRecord();
         if(mImpl != null) {
             mImpl.release();
@@ -1264,9 +1275,9 @@ public class DvrService extends Service {
             GlobalStatus.setCamera(null);
         }
 
-        if (1 == type || screenOn) {
+        if (1 == type || screenOn || chatVideoMode == 0) {
             System.exit(0);
-        } else if (0 == type) {
+        } else if (0 == type || chatVideoMode == 1) {
             //TODO 熄火
             //DvrService.this.stopSelf();
             new Thread(new Runnable() {

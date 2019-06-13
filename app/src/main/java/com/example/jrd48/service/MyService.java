@@ -318,6 +318,10 @@ public class MyService extends Service {
 //            ToastR.setToastLong(this,"当前处于熄火状态");
             return;
         }
+        // videoChat or radioChat after power on
+        if (GlobalStatus.getChatVideoMode(this) == 1) {
+            return;
+        }
         test();
         Log.d("chatjrd", "onCreate");
         setServerForeground();
@@ -919,6 +923,8 @@ public class MyService extends Service {
     private class ShutDownObserver extends ContentObserver {
         private final Uri NAVI_START_STOP_URI =
                 Settings.System.getUriFor(GlobalStatus.NAVI_START_STOP);
+        private final Uri CHAT_VIDEO_RADIO_SWITCH_URI =
+                Settings.System.getUriFor(GlobalStatus.CHAT_VIDEO_RADIO_SWITCH);
 
         public ShutDownObserver(Handler handler) {
             super(handler);
@@ -931,16 +937,24 @@ public class MyService extends Service {
 
         @Override
         public void onChange(boolean selfChange, Uri uri) {
+            Context context = MyService.this;
             if (NAVI_START_STOP_URI.equals(uri)) {
-                Context context = MyService.this;
                 int type = GlobalStatus.getShutDownType(context);
-                Log.v("MyService", "ShutDownObserver type:" + type);
+                Log.v("MyService", "NAVI_START_STOP type:" + type);
                 if (1 == type) {
                     //TODO 打火
                     Log.d(TAG, "dahuo-GlobalStatus.getOldTeam()=" + GlobalStatus.getOldTeam());
                     MyService.restart(context);
                 } else if (0 == type) {
                     Log.d(TAG, "xihuo-GlobalStatus.getOldTeam()=" + GlobalStatus.getOldTeam());
+                    stopService(context);
+                }
+            } else if (CHAT_VIDEO_RADIO_SWITCH_URI.equals(uri)) {
+                int currentMode = GlobalStatus.getChatVideoMode(context);
+                Log.d(TAG, "ChatVideoMode switch=" + currentMode);
+                if (currentMode == 0) {
+                    MyService.restart(context);
+                } else {
                     stopService(context);
                 }
             }
@@ -951,6 +965,9 @@ public class MyService extends Service {
             cr.unregisterContentObserver(this);
             cr.registerContentObserver(
                     NAVI_START_STOP_URI,
+                    false, this);
+            cr.registerContentObserver(
+                    CHAT_VIDEO_RADIO_SWITCH_URI,
                     false, this);
         }
 

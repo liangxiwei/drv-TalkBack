@@ -33,7 +33,7 @@ public class WelcomeActivity extends BaseActivity implements Animation.Animation
 
         SharedPreferences preferences=getSharedPreferences("token", Context.MODE_PRIVATE);
         String token=preferences.getString("token","");
-        if(token.equals("")){
+        if("".equals(token)){
             Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
@@ -70,7 +70,7 @@ public class WelcomeActivity extends BaseActivity implements Animation.Animation
 
         SharedPreferences preferences=getSharedPreferences("token", Context.MODE_PRIVATE);
         String token=preferences.getString("token","");
-        if(token.equals("")){
+        if("".equals(token)){
             Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
