@@ -964,13 +964,13 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         if (single) {
             if (!GlobalStatus.equalPhone(linkmanPhone)) {
                 Intent service = new Intent(this, MyService.class);
-                service.putExtra("ptt_key_action", true);
+                service.putExtra("ptt_key_action", false);
                 this.startService(service);
             }
         } else {
             if (!GlobalStatus.equalTeamID(group)) {
                 Intent service = new Intent(this, MyService.class);
-                service.putExtra("ptt_key_action", true);
+                service.putExtra("ptt_key_action", false);
                 this.startService(service);
             }
         }
