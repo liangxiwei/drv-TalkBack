@@ -34,7 +34,7 @@ public class SpeakerBeginProcesser extends CommonProcesser {
 
                 VoiceHandler.startRTMP(context,GlobalStatus.getCurRtmpAddr());
                 if(GlobalStatus.getOnlineCount() > 1) {
-                    if (!Build.PRODUCT.contains("LB1728")) {
+                    if (!Build.PRODUCT.contains("LB1728") && !"LB1822".equals(Build.PRODUCT)) {
                         ToastR.setToast(context, "请开始讲话 :-)", Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
                     }
                 } else {

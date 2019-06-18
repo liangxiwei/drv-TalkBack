@@ -292,7 +292,7 @@ public class SimInfoService extends Service {
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
                 case MSG_SHOW_VIEW:
-                    if (!Build.PRODUCT.contains("LB1728")) {
+                    if (!Build.PRODUCT.contains("LB1728") && !"LB1822".equals(Build.PRODUCT)) {
                         createFloatView();
                     }
                     break;

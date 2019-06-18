@@ -134,7 +134,7 @@ public class UserInfoProcesser extends CommonProcesser {
                     Log.d("UserInfo","team_random ="+resp.getHideField8()+",team_random_video="+resp.getHideField9());
                     editor.apply();
                     // add for radio chat sharing info
-                    if (Build.PRODUCT.contains("LB1728")) {
+                    if (Build.PRODUCT.contains("LB1728") || "LB1822".equals(Build.PRODUCT)) {
                         MyInforTool myInforTool = new MyInforTool(context, true);
                         Bitmap bmp = GlobalImg.getImage(context, myInforTool.getPhone());
                         if (bmp != null) {

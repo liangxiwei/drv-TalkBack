@@ -61,7 +61,7 @@ public class SocketRunable implements Runnable {
     //private String mHost = "120.76.42.120";
     //private String mHost = "10.0.0.66";
     private int mPort = 18000;
-  //  private int mPort = 18001;
+    //private int mPort = 18001;
     /**
      * 接收缓冲区
      */
@@ -200,7 +200,7 @@ public class SocketRunable implements Runnable {
 
                                     // 放回到队列的最前面
                                     // drop the missing data for LB1728
-                                    if (!Build.PRODUCT.contains("LB1728")) {
+                                    if (!Build.PRODUCT.contains("LB1728") && !"LB1822".equals(Build.PRODUCT)) {
                                         SendDataParcelable r = new SendDataParcelable(ArrayUtils.subarray(d.getData(), n, d.getData().length),
                                                 d.getDataType());
 

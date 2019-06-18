@@ -784,7 +784,7 @@ public class DvrService extends Service {
                         Log.v(TAG,"/dev/video2 open failed");
                     }
                     try {
-                        if (Build.PRODUCT.contains("LB1728")) {
+                        if (Build.PRODUCT.contains("LB1728") || "LB1822".equals(Build.PRODUCT)) {
                             vUsbObserverOff = new UEventObserver() {
                                 @Override
                                 public void onUEvent(UEvent uEvent) {

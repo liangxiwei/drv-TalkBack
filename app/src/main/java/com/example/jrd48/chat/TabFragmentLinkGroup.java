@@ -952,7 +952,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             Team contact2 = (Team) o2;
             long time1 = 0;
             long time2 = 0;
-            if (!Build.PRODUCT.contains("LB1728")) {
+            if (!Build.PRODUCT.contains("LB1728") && !"LB1822".equals(Build.PRODUCT)) {
                 if (chatTime != null) {
                     if (chatTime.get(contact1.getTeamID()) != null) {
                         time1 = chatTime.get(contact1.getTeamID());
