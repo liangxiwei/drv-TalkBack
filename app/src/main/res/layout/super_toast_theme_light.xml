@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/content_toast"
+                android:layout_width="200dp"
+                android:layout_height="72dp"
+                android:background="@drawable/toast_bg">
+
+    <ImageView
+        android:id="@+id/face"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="4dp"
+        android:foregroundGravity="center_vertical"
+        android:padding="6dp"
+        android:src="@drawable/default_useravatar"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/face"
+        android:paddingLeft="1dp"
+        android:text=""
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/groupMsg"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_alignLeft="@+id/name"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:text=""
+        android:textSize="18sp"/>
+</RelativeLayout>

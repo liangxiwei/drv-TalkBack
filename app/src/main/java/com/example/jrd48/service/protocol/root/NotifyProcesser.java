@@ -7,19 +7,27 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Slog;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.FirstActivity;
+import com.example.jrd48.chat.GlobalImg;
 import com.example.jrd48.chat.MainActivity;
 import com.example.jrd48.chat.SharedPreferencesUtils;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.crash.MyApplication;
-import com.example.jrd48.chat.crash.MyLog;
 import com.example.jrd48.chat.friend.AppliedFriends;
 import com.example.jrd48.chat.friend.DBHelperFriendsList;
 import com.example.jrd48.chat.friend.DBManagerFriendsList;
@@ -28,8 +36,8 @@ import com.example.jrd48.chat.group.DBManagerTeamList;
 import com.example.jrd48.chat.group.MsgTool;
 import com.example.jrd48.chat.group.TeamInfo;
 import com.example.jrd48.chat.group.cache.DBTableName;
-import com.example.jrd48.chat.location.Utils;
 import com.example.jrd48.chat.receiver.NotifyFriendBroadcast;
+import com.example.jrd48.chat.wiget.SuperCustomToast;
 import com.example.jrd48.service.ConnUtil;
 import com.example.jrd48.service.ITimeoutBroadcast;
 import com.example.jrd48.service.MyService;
@@ -67,9 +75,18 @@ public class NotifyProcesser extends CommonProcesser {
     public static String ONLINE_KEY = "online";
     public static final String FRIEND_STATUS_ACTION = "com.example.jrd48.service.protocol.root.action.Status";
     public Handler mHandler = null;
+    private SuperCustomToast mSuperCustomToast;
+    private Bitmap mBitmapFace;
+    private Toast mToast;
+    private LayoutInflater mLayoutInflater;
+    private View mView;
+    public Handler mToastHandler = null;
 
     public NotifyProcesser(Context context) {
         super(context);
+        //mSuperCustomToast = SuperCustomToast.getInstance(MyApplication.getContext());
+        mToastHandler = new Handler();
+        mToast = Toast.makeText(MyApplication.getContext(), "", Toast.LENGTH_LONG);
     }
 
     @Override
@@ -79,6 +96,55 @@ public class NotifyProcesser extends CommonProcesser {
             final ProtoMessage.NotifyMsg resp = ProtoMessage.NotifyMsg.parseFrom(ArrayUtils.subarray(data, 4, data.length));
             final String phone = resp.getFriendPhoneNum();
             final Long teamID = resp.getTeamID();
+
+            if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 1) {
+                Log.e("chat", "=====phone=" + phone + "----teamID=" + teamID + "----resp.getRoomID()=" + resp.getRoomID());
+                DBManagerFriendsList db0 = new DBManagerFriendsList(context, true, DBTableName.getTableName(context, DBHelperFriendsList.NAME));
+                AppliedFriends linkman = db0.getFriend(phone);
+                db0.closeDB();
+                String groupName = "";
+                if (teamID > 0) {
+                    DBManagerTeamList db1 = new DBManagerTeamList(context, true, DBTableName.getTableName(context, DBHelperTeamList.NAME));
+                    TeamInfo t = db1.getTeamInfo(teamID);
+                    groupName = t.getTeamName();
+                    db1.closeDB();
+                    Log.e("chat", "--------TeamInfo=" + t.getTeamName());
+                }
+                String linkmanName = "";
+                if (linkman != null) {
+                    linkmanName = linkman.getNickName();
+                    if (TextUtils.isEmpty(linkmanName)) {
+                        linkmanName = linkman.getUserName();
+                    }
+                    Log.e("chat", "--------linkmanName=" + linkmanName);
+                }
+                if (phone != null && !"".equals(phone)) {
+                    Log.e("====", "====linkmanName===!=null-" + phone + "---" + MyApplication.getContext().getFilesDir().toString());
+                    mBitmapFace = GlobalImg.getImage(MyApplication.getContext(), phone);
+                }
+                //mBitmapFace = BitmapFactory.decodeResource(MyApplication.getContext().getResources(), R.mipmap.ic_launcher);
+                if (mBitmapFace != null) {
+                    //mSuperCustomToast.show(mBitmapFace, linkmanName, groupName, R.layout.super_toast_theme_light, R.id.content_toast, MyApplication.getContext());
+                    mLayoutInflater = (LayoutInflater)
+                            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    mView = mLayoutInflater.inflate(R.layout.super_toast_theme_light, null);
+                    ImageView face_ = (ImageView) mView.findViewById(R.id.face);
+                    face_.setImageBitmap(mBitmapFace);
+                    TextView name_ = (TextView) mView.findViewById(R.id.name);
+                    if (linkmanName != null) {
+                        name_.setText(linkmanName);
+                    }
+                    TextView groupMsg_ = (TextView) mView.findViewById(R.id.groupMsg);
+                    if (groupName != null) {
+                        groupMsg_.setText(groupName);
+                    }
+                    mToast.setView(mView);
+                    mToast.setGravity(Gravity.LEFT | Gravity.TOP, 0, 0);
+                    //toast.show();
+                    mToastHandler.removeCallbacks(mToastRunnable);
+                    mToastHandler.postDelayed(mToastRunnable, 500);
+                }
+            }
             SharedPreferences preferences = context.getSharedPreferences("token", Context.MODE_PRIVATE);
             String myPhone = preferences.getString("phone", "");
             if (resp.getNotifyType() == ProtoMessage.NotifyType.NotifyApplyFriend.getNumber()) {
@@ -134,7 +200,7 @@ public class NotifyProcesser extends CommonProcesser {
                 ToastR.setToast(context, "电话号码为：" + phone + " 的用户接受加入或者同意加入群组");
                 context.sendBroadcast(new Intent(MainActivity.TEAM_ACTION));
 
-            }else if (resp.getNotifyType() == ProtoMessage.NotifyType.NotifyFriendStatus.getNumber()) {
+            } else if (resp.getNotifyType() == ProtoMessage.NotifyType.NotifyFriendStatus.getNumber()) {
 //                ToastR.setToast(context, "上线或者下线通知：电话号码为：" + phone + " online :"+resp.getOnline() );
                 Intent x = new Intent(FRIEND_STATUS_ACTION);
                 x.putExtra(NUMBER, resp.getFriendPhoneNum());
@@ -146,12 +212,13 @@ public class NotifyProcesser extends CommonProcesser {
                 boolean isAccept = false;
                 /*if(GlobalStatus.getOldTeam() == 0 && GlobalStatus.getOldPhone() != null && GlobalStatus.getOldPhone().equals(phone)){
                     isAccept = true;
-                } else */if(GlobalStatus.getOldTeam() > 0 && GlobalStatus.getOldTeam() == teamID){
+                } else */
+                if (GlobalStatus.getOldTeam() > 0 && GlobalStatus.getOldTeam() == teamID) {
                     isAccept = true;
                 }
                 Log.v("wsDvr", "isAccept:" + isAccept);
 //                if (GlobalStatus.getChatRoomMsg() == null || (GlobalStatus.equalPhone(phone) || GlobalStatus.equalTeamID(teamID))) {
-                if(isAccept){
+                if (isAccept) {
                     final long roomID = resp.getRoomID();
                     ConnUtil.screenOn(MyApplication.getContext());
                     ProtoMessage.AcceptVoice.Builder builder = ProtoMessage.AcceptVoice.newBuilder();//发送接受
@@ -179,9 +246,9 @@ public class NotifyProcesser extends CommonProcesser {
                                     AppliedFriends linkman = db.getFriend(phone);
                                     db.closeDB();
                                     linkmanName = phone;
-                                    if(linkman != null){
+                                    if (linkman != null) {
                                         linkmanName = linkman.getNickName();
-                                        if(TextUtils.isEmpty(linkmanName)){
+                                        if (TextUtils.isEmpty(linkmanName)) {
                                             linkmanName = linkman.getUserName();
                                         }
                                     }
@@ -256,16 +323,18 @@ public class NotifyProcesser extends CommonProcesser {
                     callState.setState(GlobalStatus.STATE_CALL);
                     GlobalStatus.putCallCallStatus(temp, callState);
                 }
-                NotifyManager.getInstance().showNotification(temp, 0);
-
+                if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                    NotifyManager.getInstance().showNotification(temp, 0);
+                }
+                Log.e("====", "=============notify1111111");
             } else if (resp.getNotifyType() == ProtoMessage.NotifyType.NotifyChatStatus_VALUE) {
                 Log.i("wsDvr", "notify chat status msg: " + resp.toString());
                 int waitTime = 0;
-                if(GlobalStatus.isStartRooming() || GlobalStatus.isAcceptRooming()){
+                if (GlobalStatus.isStartRooming() || GlobalStatus.isAcceptRooming()) {
                     waitTime = 500;
                 }
 
-                if(mHandler == null){
+                if (mHandler == null) {
                     mHandler = new Handler(Looper.getMainLooper());
                 }
                 mHandler.postDelayed(new Runnable() {
@@ -278,7 +347,7 @@ public class NotifyProcesser extends CommonProcesser {
 
                         ProtoMessage.ChatRoomMsg chatRoomMsg = GlobalStatus.getChatRoomMsg();
                         if (chatRoomMsg != null && chatRoomMsg.getRoomID() == resp.getRoomID()) {
-                            if(!TextUtils.isEmpty(resp.getVideoUrl())){
+                            if (!TextUtils.isEmpty(resp.getVideoUrl())) {
                                 GlobalStatus.setCurPlayAddr(resp.getVideoUrl());
                             }
                             if (resp.getNotifyType() == ProtoMessage.NotifyType.NotifyChatStatus_VALUE) {
@@ -320,8 +389,8 @@ public class NotifyProcesser extends CommonProcesser {
                             String temp = null;
                             SharedPreferences preferences = context.getSharedPreferences("token", Context.MODE_PRIVATE);
                             String myPhone = preferences.getString("phone", "");
-                            Log.v("wsDvr","chatstatus phone:" + phone);
-                            Log.v("wsDvr","chatstatus getTempChat:" + GlobalStatus.getTempChat());
+                            Log.v("wsDvr", "chatstatus phone:" + phone);
+                            Log.v("wsDvr", "chatstatus getTempChat:" + GlobalStatus.getTempChat());
                             if (teamID == 0 && !phone.equals(myPhone) && !phone.equals(GlobalStatus.getSingleLinkManPhone()) && !phone.equals(GlobalStatus.getTempChat())) {
                                 temp = 0 + phone;
                                 CallState callState = GlobalStatus.getCallSatte(temp);
@@ -330,12 +399,14 @@ public class NotifyProcesser extends CommonProcesser {
                                     GlobalStatus.putCallCallStatus(temp, callState);
                                 } else {
                                     callState.setRoomId(resp.getRoomID());
-                                    if(callState.getState() == GlobalStatus.STATE_CLOSE) {
+                                    if (callState.getState() == GlobalStatus.STATE_CLOSE) {
                                         callState.setState(GlobalStatus.STATE_CALL);
                                     }
                                     GlobalStatus.putCallCallStatus(temp, callState);
                                 }
-                                NotifyManager.getInstance().showNotification(temp, 0);
+                                if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                                    NotifyManager.getInstance().showNotification(temp, 0);
+                                }
                             }
 //                            else {
 //                                temp = String.valueOf(1) + String.valueOf(teamID);
@@ -343,7 +414,7 @@ public class NotifyProcesser extends CommonProcesser {
 //                            NotifyManager.getInstance().showNotification(temp, 2);
                         }
                     }
-                },waitTime);
+                }, waitTime);
             } else if (resp.getNotifyType() == ProtoMessage.NotifyType.NotifyLiveVideoCall_VALUE) {
                 Log.v("VideoCall", resp.toString());
 //                if ((MyApplication.getVideoTeam() == 0 || MyApplication.getVideoTeam() != resp.getTeamID())
@@ -354,11 +425,13 @@ public class NotifyProcesser extends CommonProcesser {
                 if (resp.getApplyType() == ProtoMessage.AcceptType.atAccept_VALUE) {
                     if (!TextUtils.isEmpty(phone)) {
 //                        if (teamID == 0 && GlobalStatus.getChatRoomMsg() == null) {
-                        if(phone.equals(GlobalStatus.getCurViewPhone())){
+                        if (phone.equals(GlobalStatus.getCurViewPhone())) {
                             VideoRoadUtils.AcceptLiveCall(context, phone);
-                        } else if (teamID == 0){
+                        } else if (teamID == 0) {
                             GlobalStatus.addViewRoadPhone(phone);
-                            NotifyManager.getInstance().showNotification("0" + phone, 1);
+                            if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                                NotifyManager.getInstance().showNotification("0" + phone, 1);
+                            }
                         }
 //                        else if (teamID == 0) {
 //                            Log.v("VideoCall", "当前正在对讲自动屏蔽路况分享请求");
@@ -368,7 +441,7 @@ public class NotifyProcesser extends CommonProcesser {
                             Log.v("VideoCall", "暂时不支持群组");
                         }
                     }
-                } else if(resp.getFriendPhoneNum().equals(GlobalStatus.getCurViewPhone())){
+                } else if (resp.getFriendPhoneNum().equals(GlobalStatus.getCurViewPhone())) {
                     DvrService.start(MyApplication.getContext(), RESClient.ACTION_STOP_RTMP, null);
                     ToastR.setToast(context, "用户 " + GlobalStatus.getCurViewPhone() + " 结束路况查询");
                     GlobalStatus.setCurViewPhone(null);
@@ -377,22 +450,22 @@ public class NotifyProcesser extends CommonProcesser {
                 Log.v("VideoCall ANS", resp.toString());
                 DBMyLogHelper.insertLog(context, LogCode.VIDEO_CALL_ANS, resp.toString(), null);
                 if (resp.getApplyType() == ProtoMessage.AcceptType.atAccept_VALUE) {
-                    if(phone.equals(GlobalStatus.getCurRoadPhone())){
+                    if (phone.equals(GlobalStatus.getCurRoadPhone())) {
                         return;
                     }
-                    PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);// init powerManager
-                    PowerManager.WakeLock mWakelock = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP|
-                            PowerManager.SCREEN_DIM_WAKE_LOCK,"target");
+                    PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);// init powerManager
+                    PowerManager.WakeLock mWakelock = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP |
+                            PowerManager.SCREEN_DIM_WAKE_LOCK, "target");
                     mWakelock.acquire(4000); // Wake up Screen and keep screen lighting
-                    if(mHandler == null){
+                    if (mHandler == null) {
                         mHandler = new Handler(Looper.getMainLooper());
                     }
                     mHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            VideoCallActivity.startActivity(context, resp.getFriendPhoneNum(),resp.getVideoUrl());
+                            VideoCallActivity.startActivity(context, resp.getFriendPhoneNum(), resp.getVideoUrl());
                         }
-                    },300);
+                    }, 300);
                 } else {
                     context.sendBroadcast(new Intent(ACTION_LIVE_CALL_ANS_DENY).putExtra("phone", resp.getFriendPhoneNum()));
                 }
@@ -456,4 +529,11 @@ public class NotifyProcesser extends CommonProcesser {
     public void onSent() {
         Log.i("chat", "pack sent: sms");
     }
+
+    private final Runnable mToastRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mToast.show();
+        }
+    };
 }

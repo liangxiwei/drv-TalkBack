@@ -163,9 +163,9 @@ public class MyApplication extends MultiDexApplication {
                 int currentMode = GlobalStatus.getChatVideoMode(getContext());
                 Log.d("Application", "ChatVideoMode switch=" + currentMode);
                 if (currentMode == 0) {
-                    checkStatus(false);
+                    //checkStatus(false);
                 } else {
-                    ActivityCollector.finishAll();
+                    //ActivityCollector.finishAll();
                 }
             }
         }

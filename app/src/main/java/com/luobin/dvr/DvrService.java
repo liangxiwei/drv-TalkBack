@@ -1135,7 +1135,7 @@ public class DvrService extends Service {
             if (NAVI_START_STOP_URI.equals(uri)) {
                 checkStatus(false);
             } else if (CHAT_VIDEO_RADIO_SWITCH_URI.equals(uri)) {
-                checkStatus(false);
+                //checkStatus(false);
             }
         }
 
@@ -1275,9 +1275,9 @@ public class DvrService extends Service {
             GlobalStatus.setCamera(null);
         }
 
-        if (1 == type || screenOn || chatVideoMode == 0) {
+        if (1 == type || screenOn) {
             System.exit(0);
-        } else if (0 == type || chatVideoMode == 1) {
+        } else if (0 == type) {
             //TODO 熄火
             //DvrService.this.stopSelf();
             new Thread(new Runnable() {

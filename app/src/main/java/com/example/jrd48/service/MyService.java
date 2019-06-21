@@ -320,7 +320,7 @@ public class MyService extends Service {
         }
         // videoChat or radioChat after power on
         if (GlobalStatus.getChatVideoMode(this) == 1) {
-            return;
+            //return;
         }
         test();
         Log.d("chatjrd", "onCreate");
@@ -952,10 +952,8 @@ public class MyService extends Service {
             } else if (CHAT_VIDEO_RADIO_SWITCH_URI.equals(uri)) {
                 int currentMode = GlobalStatus.getChatVideoMode(context);
                 Log.d(TAG, "ChatVideoMode switch=" + currentMode);
-                if (currentMode == 0) {
-                    MyService.restart(context);
-                } else {
-                    stopService(context);
+                if (currentMode == 1) {
+                    goHome(context);
                 }
             }
         }
@@ -1025,5 +1023,13 @@ public class MyService extends Service {
         Log.d(TAG, " stopSimInfoService");
         Intent intent = new Intent(this, SimInfoService.class);
         stopService(intent);
+    }
+
+    public static void goHome(Context context) {
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.MAIN");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addCategory("android.intent.category.HOME");
+        context.startActivity(intent);
     }
 }
