@@ -492,7 +492,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     private void loadTeamListFromNet(boolean isLoad) {
         isPullRefresh = true;
         if (isLoad) {
-            showLoading();
+            //showLoading();
         }
 
         ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
@@ -727,7 +727,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             DBManagerTeamList db = new DBManagerTeamList(getContext(), true, DBTableName.getTableName(getContext(), DBHelperTeamList.NAME));
             List<TeamInfo> mTeamInfo = db.getTeams();
             db.closeDB();
-            showLoading();
+            //showLoading();
             if (mTeamInfo.size() <= 0) {
                 Log.i(ServiceCheckUserEvent.TAG, "get team list = 0");
                 loadTeamListFromNet();
