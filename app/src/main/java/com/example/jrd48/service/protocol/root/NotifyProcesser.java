@@ -135,8 +135,10 @@ public class NotifyProcesser extends CommonProcesser {
                         name_.setText(linkmanName);
                     }
                     TextView groupMsg_ = (TextView) mView.findViewById(R.id.groupMsg);
-                    if (groupName != null) {
-                        groupMsg_.setText(groupName);
+                    if (groupName != null && !"".equals(groupName)) {
+                        groupMsg_.setText("从群组" + "[" + groupName + "]" + "发起对讲");
+                    } else {
+                        groupMsg_.setText("发起对讲");
                     }
                     mToast.setView(mView);
                     mToast.setGravity(Gravity.LEFT | Gravity.TOP, 0, 0);
