@@ -57,6 +57,7 @@ import com.luobin.utils.VideoRoadUtils;
 import com.video.GlobalVideo;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -723,6 +724,9 @@ public class DvrService extends Service {
                     SharedPreferencesUtils.put(DvrService.this,"isScreenOn",false);
                     checkStatus(false);
                 }
+            } else if ("erobbing.take_photo_test".equals(intent.getAction())) {
+                Log.d("====", "============takephoto test");
+                takePhoto("/data/media/0/DCIM/ttt.jpg");
             }
         }
     };
@@ -738,6 +742,7 @@ public class DvrService extends Service {
         intentFilter.addAction(Intent.ACTION_SHUTDOWN);
         intentFilter.addAction(Intent.ACTION_SCREEN_ON);
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        intentFilter.addAction("erobbing.take_photo_test");
         registerReceiver(shutDownReceiver,intentFilter);
         DvrConfig.init(getApplicationContext());
         if (mImpl == null) {
@@ -1326,5 +1331,18 @@ public class DvrService extends Service {
         }
     }
 
-
+    public static void takePhoto(String fileStr) {
+        Bitmap bitmap = GlobalStatus.getBitmapDvr();
+        if (bitmap != null) {
+            try {
+                File file = new File(fileStr);
+                FileOutputStream out = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+                out.flush();
+                out.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

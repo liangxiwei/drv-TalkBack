@@ -1331,6 +1331,7 @@ public class DvrImpl extends DvrImplBase
                         GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE);
                 GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, usbBmp, 0);
                 GlobalStatus.setDvrTextureId(mUsbTextureId);
+                GlobalStatus.setBitmapDvr(usbBmp);
                 usbBmp = null;
             } else {
                 Log.e(TAG, "bmp == null");
