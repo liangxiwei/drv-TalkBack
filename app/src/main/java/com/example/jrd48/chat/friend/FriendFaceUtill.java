@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.example.jrd48.chat.MyFileUtil;
 import com.example.jrd48.chat.PicTool.LetterTileDrawable;
+import com.luobin.dvr.DvrConfig;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -131,6 +132,7 @@ public class FriendFaceUtill {
 
     private static String getFriendFaceImgPath(Context context) {
         String strPath = MyFileUtil.getMemoryPath(context);
+        String strStoragePath = DvrConfig.getStoragePath() + "/friend_face";
 //        SharedPreferences preferences = context.getSharedPreferences("token", Context.MODE_PRIVATE);
 //        String phone = preferences.getString("phone", "");
 //        strPath += "/" + phone + "/friend_face";//     strPath/手机号/friend_face
@@ -138,6 +140,10 @@ public class FriendFaceUtill {
         File file = new File(strPath);
         if (!file.exists()) {
             file.mkdirs();
+        }
+        File fileStorage = new File(strStoragePath);
+        if (!fileStorage.exists()) {
+            fileStorage.mkdirs();
         }
         return strPath;
     }

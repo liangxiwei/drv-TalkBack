@@ -1,21 +1,17 @@
 package com.luobin.ui;
 
 import android.app.AlertDialog;
-import android.app.Instrumentation;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.jrd48.PolyphonePinYin;
 import com.example.jrd48.chat.BadgeView;
@@ -24,20 +20,19 @@ import com.example.jrd48.chat.TabFragmentLinkGroup;
 import com.example.jrd48.chat.TabFragmentLinkmans;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.group.CreateGroupActivity;
-import com.example.jrd48.chat.group.InviteJoinGroupActivity;
 import com.example.jrd48.chat.permission.PermissionUtil;
 import com.example.jrd48.chat.receiver.NotifyFriendBroadcast;
 import com.example.jrd48.service.MyBroadcastReceiver;
 import com.example.jrd48.service.protocol.root.NotifyProcesser;
+import com.luobin.dvr.DvrConfig;
 import com.luobin.dvr.R;
 import com.luobin.notice.NotificationActivity;
 import com.luobin.tool.MyInforTool;
 import com.luobin.tool.OnlineSetTool;
 import com.luobin.ui.TalkBackSearch.TalkbackSearchActivity;
+import com.luobin.utils.ShellUtils;
 
 import java.util.List;
-
-import uk.co.senab.photoview.log.Logger;
 
 /**
  * Created by Administrator on 2017/8/8.
@@ -86,7 +81,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts, tabFragmentLinkGroup)
                 .commitAllowingStateLoss();
 
-
+        ShellUtils.execCommand("cp -r /data/data/com.luobin.dvr/files/friend_face/*.jpg " + DvrConfig.getStoragePath() + "/friend_face", false);
     }
 
     private void initBroadCast() {
