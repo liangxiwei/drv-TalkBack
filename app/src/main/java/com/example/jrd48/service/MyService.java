@@ -954,6 +954,15 @@ public class MyService extends Service {
                 Log.d(TAG, "ChatVideoMode switch=" + currentMode);
                 if (currentMode == 1) {
                     goHome(context);
+                    Intent intent = new Intent();
+                    intent.setClassName("com.benshikj.ht.jf",
+                            "com.dw.ht.JFMainActivity");
+                    context.startActivity(intent);
+                } else if (currentMode == 0) {
+                    Intent intent = new Intent();
+                    intent.setClassName("com.luobin.dvr",
+                            "com.example.jrd48.chat.WelcomeActivity");
+                    context.startActivity(intent);
                 }
             }
         }
