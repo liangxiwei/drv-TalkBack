@@ -1,12 +1,5 @@
 package com.example.jrd48.chat.location;
 
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
-
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -15,6 +8,10 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.jrd48.GlobalStatus;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 public class Utils {
 

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.SystemClock;
@@ -151,7 +152,8 @@ public class VoiceHandler {
             final String radom = uuid.toString();
             ProtoMessage.ChatRoomMsg chatRoomMsg = GlobalStatus.getChatRoomMsg();
             if (chatRoomMsg != null) {
-                if (!Utils.getTopActivity(context)) {
+                //if (!Utils.getTopActivity(context)) {
+                if ("LB1822".equals(Build.PRODUCT)) {
                     context.sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP));
                 }
         }

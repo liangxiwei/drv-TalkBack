@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
@@ -68,6 +69,7 @@ import static com.video.VideoCallActivity.ACTION_LIVE_CALL_ANS_DENY;
 
 public class NotifyProcesser extends CommonProcesser {
     //public final static String ACTION = "ACTION.NotifyProcesser";
+    private final static String TAG = "NotifyProcesser";
     private static volatile boolean mSpeaking = false;
     public final static String Call_ACTION = "ACTION.NotifyCallProcesser";
     public static String Call_KEY = "call_key";
@@ -355,6 +357,10 @@ public class NotifyProcesser extends CommonProcesser {
                             if (resp.getNotifyType() == ProtoMessage.NotifyType.NotifyChatStatus_VALUE) {
                                 SharedPreferences preferences = context.getSharedPreferences("token", Context.MODE_PRIVATE);
                                 String myPhone = preferences.getString("phone", "");
+                                Log.d(TAG, "NotifyType.NotifyChatStatus_VALUE");
+                                if ("LB1822".equals(Build.PRODUCT)) {
+                                    MyApplication.getContext().sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP));
+                                }
                                 // 给自己的通知，不需要播放提示音
                                 if (!myPhone.equals(resp.getFriendPhoneNum())) {
                                     Log.i("wsDvr", "--------- chat status changed ----------");
