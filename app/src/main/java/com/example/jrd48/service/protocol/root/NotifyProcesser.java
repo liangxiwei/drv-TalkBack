@@ -359,7 +359,9 @@ public class NotifyProcesser extends CommonProcesser {
                                 String myPhone = preferences.getString("phone", "");
                                 Log.d(TAG, "NotifyType.NotifyChatStatus_VALUE");
                                 if ("LB1822".equals(Build.PRODUCT)) {
-                                    MyApplication.getContext().sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP));
+                                    if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                                        MyApplication.getContext().sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP));
+                                    }
                                 }
                                 // 给自己的通知，不需要播放提示音
                                 if (!myPhone.equals(resp.getFriendPhoneNum())) {

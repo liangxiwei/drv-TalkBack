@@ -154,7 +154,9 @@ public class VoiceHandler {
             if (chatRoomMsg != null) {
                 //if (!Utils.getTopActivity(context)) {
                 if ("LB1822".equals(Build.PRODUCT)) {
-                    context.sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP));
+                    if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                        context.sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP));
+                    }
                 }
         }
         doVoiceAction(context, true);

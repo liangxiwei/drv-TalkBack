@@ -8,7 +8,7 @@
     <integer name="default_collision_value" translatable="false">2</integer>
     <bool name="default_auto_run_when_boot" translatable="false">true</bool>
     <!--<string name="default_thumbnail_view_rect" translatable="false">-260,0,260,228</string>-->
-    <string name="default_thumbnail_view_rect" translatable="false">-220,0,1,1</string>
+    <string name="default_thumbnail_view_rect" translatable="false">-10,-10,4,3</string>
     <integer name="default_pre_video_time" translatable="false">5</integer>
     <integer name="default_video_bitrate" translatable="false">5000000</integer>
     <!-- default zxing code size -->
