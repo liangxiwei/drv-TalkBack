@@ -192,8 +192,8 @@ public class USBVideo extends VideoBase implements SurfaceHolder.Callback, UsbCa
                 new Texture2dProgram(Texture2dProgram.ProgramType.TEXTURE_EXT));
         mUsbFrameBlit = new FullFrameRect(
                 new Texture2dProgram(Texture2dProgram.ProgramType.TEXTURE_2D));
-        mUsbDvrFrameBlit = new FullFrameRect(
-                new Texture2dProgram(Texture2dProgram.ProgramType.TEXTURE_2D));
+        /*mUsbDvrFrameBlit = new FullFrameRect(
+                new Texture2dProgram(Texture2dProgram.ProgramType.TEXTURE_2D));*/
         mCamTextureId = mFullFrameBlit.createTextureObject();
         mCameraTexture = new SurfaceTexture(mCamTextureId);
         //mCameraTexture.setOnFrameAvailableListener(this);
@@ -238,7 +238,7 @@ public class USBVideo extends VideoBase implements SurfaceHolder.Callback, UsbCa
             mUsbTextureId = -1;
         }
 
-        if (mUsbDvrFrameBlit != null) {
+        /*if (mUsbDvrFrameBlit != null) {
             mUsbDvrFrameBlit.release(true);
         }
         if (mUsbDvrTextureId >= 0) {
@@ -246,7 +246,7 @@ public class USBVideo extends VideoBase implements SurfaceHolder.Callback, UsbCa
                     new int[]{mUsbDvrTextureId}, 0);
             checkGlError("glDeleteTextures");
             mUsbDvrTextureId = 10;
-        }
+        }*/
     }
 
     @Override
@@ -396,7 +396,7 @@ public class USBVideo extends VideoBase implements SurfaceHolder.Callback, UsbCa
             }*/
 
             //int SignTexId = loadTexture(MyApplication.getContext(), R.drawable.location_selector);
-            mUsbDvrTextureId = loadTexture(MyApplication.getContext(), R.drawable.location_selector);
+            //mUsbDvrTextureId = loadTexture(MyApplication.getContext(), R.drawable.location_selector);
             //mUsbFrameBlit.drawFrame(SignTexId, mTmpMatrix);
             //mDvrTex = GlobalStatus.getSurfaceTexture();
             //mUsbDvrTextureId = loadTexture(MyApplication.getContext(), GlobalStatus.getBitmapDvr());
