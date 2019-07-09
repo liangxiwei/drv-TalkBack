@@ -727,6 +727,17 @@ public class DvrService extends Service {
             } else if ("erobbing.take_photo_test".equals(intent.getAction())) {
                 Log.d("====", "============takephoto test");
                 takePhoto("/data/media/0/DCIM/ttt.jpg");
+            } else if ("erobbing.pip_mode_test".equals(intent.getAction())) {
+                Log.d("====", "========erobbing.pip_mode_test");
+                if (GlobalStatus.getPipMode() == 0) {
+                    GlobalStatus.setPipMode(1);
+                } else if (GlobalStatus.getPipMode() == 1) {
+                    GlobalStatus.setPipMode(2);
+                } else if (GlobalStatus.getPipMode() == 2) {
+                    GlobalStatus.setPipMode(3);
+                } else if (GlobalStatus.getPipMode() == 3) {
+                    GlobalStatus.setPipMode(0);
+                }
             }
         }
     };
@@ -743,6 +754,7 @@ public class DvrService extends Service {
         intentFilter.addAction(Intent.ACTION_SCREEN_ON);
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
         intentFilter.addAction("erobbing.take_photo_test");
+        intentFilter.addAction("erobbing.pip_mode_test");
         registerReceiver(shutDownReceiver,intentFilter);
         DvrConfig.init(getApplicationContext());
         if (mImpl == null) {

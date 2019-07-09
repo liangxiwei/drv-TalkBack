@@ -120,6 +120,7 @@ public class GlobalStatus {
     private static Bitmap mBitmap;
     private static int mDvrTextureId = 10;
     private static int mUsbTextureId = 11;
+    private static int mCurrentPipMode;
     public static boolean isPttKeyDown() {
         return pttKeyDown;
     }
@@ -703,6 +704,14 @@ public class GlobalStatus {
 
     public static void setUsbTextureId(int textureId) {
         GlobalStatus.mUsbTextureId = textureId;
+    }
+
+    public static int getPipMode() {
+        return (int) SharedPreferencesUtils.get(MyApplication.getContext(), "pip_mode", 0);
+    }
+
+    public static void setPipMode(int mode) {
+        SharedPreferencesUtils.put(MyApplication.getContext(), "pip_mode", mode);
     }
 
     public static String getCurRtmpAddr() {
