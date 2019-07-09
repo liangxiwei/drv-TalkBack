@@ -60,6 +60,7 @@ public class SimInfoService extends Service {
     private final static String ACTION_SIM_STATE_CHANGED = "android.intent.action.SIM_STATE_CHANGED";
     HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
     private boolean isUseApiAdd = false;
+    private TimeoutBroadcast b;
     ISimStatusListener mSimStatusListener = new ISimStatusListener() {
         @Override
         public void onSimResult(String result, String error) {
@@ -238,7 +239,7 @@ public class SimInfoService extends Service {
         MyService.start(mContext, ProtoMessage.Cmd.cmdIccidGetOrSet.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
         filter.addAction(IccidGetOrSetProcesser.ACTION);
-        final TimeoutBroadcast b = new TimeoutBroadcast(mContext, filter, new TimeoutBroadcastManager());
+        b = new TimeoutBroadcast(mContext, filter, new TimeoutBroadcastManager());
         b.startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
             @Override
             public void onTimeout() {
@@ -329,6 +330,7 @@ public class SimInfoService extends Service {
             mUIHandler.removeMessages(MSG_DISMISS_VIEW);
             mUIHandler.removeCallbacks(mSearchRunnable);
         }
+        b.stop();
     }
 
     /**
