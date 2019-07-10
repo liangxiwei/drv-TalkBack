@@ -175,13 +175,9 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     @BindView(R.id.btn_return)
     Button btnReturn;
     @BindView(R.id.prefix_camera)
-    Button prefixCamera;
-    @BindView(R.id.rear_camera)
-    Button rearCamera;
-    @BindView(R.id.picture_in_picture)
-    Button pictureInPicture;
+    ImageView prefixCamera;
     @BindView(R.id.voice)
-    Button voice;
+    ImageView voice;
     @BindView(R.id.goto_map)
     Button gotoMap;
     @BindView(R.id.do_not_disturb)
@@ -287,7 +283,6 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-                    Log.d("pangtao","userList33 = " + userList.size());
                     adapterU.notifyDataSetChanged();
                     break;
                 case 1:
@@ -544,29 +539,8 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         dataInit();
 
-        if(GlobalStatus.isVideo()){
-            switch ( Settings.System.getInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_VIDEO_SCREEN_MODE, 0)){
-                case 0:
-                    prefixCamera.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
-                    break;
-                case 1:
-                    prefixCamera.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
-                    break;
-                    default:
-                        pictureInPicture.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
-                        break;
-            }
-        }else{
-            voice.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
-        }
-
-
-
-
         List<View>  selectViews = new ArrayList<>();
         selectViews.add(prefixCamera);
-        selectViews.add(rearCamera);
-        selectViews.add(pictureInPicture);
         selectViews.add(voice);
         selectViews.add(gotoMap);
         selectViews.add(doNotDisturb);
@@ -2943,8 +2917,9 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     }
 
     public void getGroupMan(final long id) {
-        convertViewTeamMember(allTeamMemberInfos);
-        /*readSql();
+
+        //convertViewTeamMember(allTeamMemberInfos);
+        readSql();
         mansNum = userList.size();
 
         ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
@@ -2964,7 +2939,8 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             public void onGot(Intent i) {
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
-//                    TeamMemberInfoList list = i.getParcelableExtra("get_teamMember_list");
+                    TeamMemberInfoList list = i.getParcelableExtra("get_teamMember_list");
+                    List<TeamMemberInfo> list2 =  SQLiteTool.getTeamMembers(mContext, id);
                     convertViewTeamMember(SQLiteTool.getTeamMembers(mContext, id));
                     //	ToastR.setToast(FirstActivity.this, "获取群成员成功");
                 } else if (i.getIntExtra("error_code", -1) ==
@@ -2977,7 +2953,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                     fail(i.getIntExtra("error_code", -1));
                 }
             }
-        });*/
+        });
     }
     //*****************通过系统图库选择图片发送********************
 
@@ -3030,7 +3006,6 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
     //*****************************************设置群成员显示********************************************
     private void convertViewTeamMember(List<TeamMemberInfo> teamMemberInfos) {
-        Log.d("pangtao","teamMemberInfos = " + teamMemberInfos.size());
         nowMansNum = 0;
         userList.clear();
         allTeamMemberInfos = teamMemberInfos;//保存群成员列表
@@ -3116,7 +3091,6 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 mTMInfoNew.add(te);
             }
         }
-        Log.d("pangtao","userList 22 = " + userList.size());
         setGridViewClick(true);
         rankList(0);
         //adapterU.notifyDataSetChanged();
@@ -3168,7 +3142,6 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             userList.add(userTemp);
         }
         */
-        Log.d("pangtao","userList = " + userList.size());
         Message message = new Message();
         message.what = 0;
         refreshHandler.sendMessage(message);
@@ -4974,43 +4947,24 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (bottomLayoutManager != null && keyCode != KeyEvent.KEYCODE_BACK && keyCode != KeyEvent.KEYCODE_F6 && !pauseIs) {
-            //  bottomLayoutManager.show(false);
+        switch (event.getKeyCode()){
+            case KeyEvent.KEYCODE_CAMERA:
+                Intent intent = new Intent( DvrService.keyDonwBroadcastAction);
+                intent.putExtra("keyCode",KeyEvent.KEYCODE_CAMERA);
+                sendBroadcast(intent);
+                break;
+            case KeyEvent.KEYCODE_F9:
+                Intent intent1 = new Intent( DvrService.keyDonwBroadcastAction);
+                intent1.putExtra("keyCode",KeyEvent.KEYCODE_F9);
+                sendBroadcast(intent1);
+                break;
+            default:
+                break;
         }
 
-//        if (keyCode == KeyEvent.KEYCODE_F6) {
-//            //Log.i("pocdemo", "key F6 按下");
-//            /**
-//             TODO:
-//             if (当前窗口在会话界面) {
-//             if (不在呼叫状态) {
-//             发起呼叫;
-//             }
-//             }
-//
-//             if (当前在呼叫 状态）{
-//             触发说话按钮->按下。
-//             }
-//             */
-//            // pttKeyDownSent();
-//        }
         return super.onKeyDown(keyCode, event);
     }
 
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-//        if (keyCode == KeyEvent.KEYCODE_F6) {
-//            //Log.i("pocdemo", "key F6 弹起");
-//            /**
-//             TODO:
-//             if (当前在呼叫 状态）{
-//             触发说话按钮->弹起。
-//             }
-//             */
-//            //pttKeyUpSent();
-//        }
-        return super.onKeyUp(keyCode, event);
-    }
 
     private void showDialog(final String type) {
         String msg = "";
@@ -5102,7 +5056,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         }
     }
 
-    @OnClick({R.id.voice, R.id.btn_return, R.id.prefix_camera, R.id.rear_camera, R.id.picture_in_picture, R.id.goto_map, R.id.do_not_disturb, R.id.btn_add})
+    @OnClick({R.id.voice, R.id.btn_return, R.id.prefix_camera, R.id.goto_map, R.id.do_not_disturb, R.id.btn_add})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_return:
@@ -5110,11 +5064,6 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 break;
             case R.id.prefix_camera:
                 //前置对讲
-                prefixCamera.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
-                rearCamera.setTextColor(getResources().getColor(R.color.white));
-                pictureInPicture.setTextColor(getResources().getColor(R.color.white));
-                voice.setTextColor(getResources().getColor(R.color.white));
-                doNotDisturb.setTextColor(getResources().getColor(R.color.white));
 
                 GlobalStatus.setIsVideo(true);
                 GlobalStatus.changeChatStatusInfo();
@@ -5125,50 +5074,8 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
                 Settings.System.putInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_VIDEO_SCREEN_MODE, 0);
                 break;
-            case R.id.rear_camera:
-                //后置对讲
-                prefixCamera.setTextColor(getResources().getColor(R.color.white));
-                rearCamera.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
-                pictureInPicture.setTextColor(getResources().getColor(R.color.white));
-                voice.setTextColor(getResources().getColor(R.color.white));
-                doNotDisturb.setTextColor(getResources().getColor(R.color.white));
-                //按下操作
-
-                GlobalStatus.setIsVideo(true);
-                GlobalStatus.changeChatStatusInfo();
-                changeTitle();
-                if (GlobalStatus.checkSpeakPhone(getMyPhone(), getRoomId())) {
-                    VoiceHandler.startRTMP(mContext, GlobalStatus.getCurRtmpAddr());
-                }
-
-                Settings.System.putInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_VIDEO_SCREEN_MODE, 1);
-                break;
-            case R.id.picture_in_picture:
-                //画中画对讲
-                prefixCamera.setTextColor(getResources().getColor(R.color.white));
-                rearCamera.setTextColor(getResources().getColor(R.color.white));
-                pictureInPicture.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
-                voice.setTextColor(getResources().getColor(R.color.white));
-                doNotDisturb.setTextColor(getResources().getColor(R.color.white));
-                GlobalStatus.setIsVideo(true);
-                GlobalStatus.changeChatStatusInfo();
-                changeTitle();
-                if (GlobalStatus.checkSpeakPhone(getMyPhone(), getRoomId())) {
-                    VoiceHandler.startRTMP(mContext, GlobalStatus.getCurRtmpAddr());
-                }
-                //抬起操作
-              /*  SharedPreferencesUtils.put(mContext, "pttKeyDown", false);
-                pttKeyUpSent();*/
-                Log.d("pangtao", (String) SharedPreferencesUtils.get(context,"picture","2"));
-                Settings.System.putInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_VIDEO_SCREEN_MODE, Integer.valueOf((String)SharedPreferencesUtils.get(context,"picture","2")));
-                break;
             case R.id.voice:
                 //语音对讲
-                prefixCamera.setTextColor(getResources().getColor(R.color.white));
-                rearCamera.setTextColor(getResources().getColor(R.color.white));
-                pictureInPicture.setTextColor(getResources().getColor(R.color.white));
-                voice.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
-                doNotDisturb.setTextColor(getResources().getColor(R.color.white));
 
                 GlobalStatus.setIsVideo(false);
                 changeTitle();
@@ -5183,12 +5090,6 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 break;
             case R.id.do_not_disturb:
                 //免打扰
-                prefixCamera.setTextColor(getResources().getColor(R.color.white));
-                rearCamera.setTextColor(getResources().getColor(R.color.white));
-                pictureInPicture.setTextColor(getResources().getColor(R.color.white));
-                voice.setTextColor(getResources().getColor(R.color.white));
-                doNotDisturb.setTextColor(getResources().getColor(R.color.match_btn_bg_press));
-
                 HungupClick();
                 break;
             case R.id.btn_add:

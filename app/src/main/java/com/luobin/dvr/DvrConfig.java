@@ -46,7 +46,6 @@ public class DvrConfig {
         File file = new File(path);
         if (!file.exists()){
             file.mkdirs();
-            Log.d("pangtao","TakePhontPath = " +path );
         }
 
         return path;
@@ -58,7 +57,6 @@ public class DvrConfig {
         File file = new File(path);
         if (!file.exists()){
             file.mkdirs();
-            Log.d("pangtao","TakePhontPath = " +path );
         }
         return path;
     }

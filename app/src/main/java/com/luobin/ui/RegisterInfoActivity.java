@@ -100,7 +100,6 @@ import butterknife.OnClick;
 public class RegisterInfoActivity extends BaseDialogActivity implements
         PermissionUtil.PermissionCallBack{
 
-
     public static final String VehicleType = "VehicleType"; //车型
     public static final String Birthday = "Birthday";//出生日期
     public static final String Location = "Location";//所在地
@@ -495,6 +494,9 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                 }
                 sexDialog();
                 break;
+            case R.id.tvPhone:
+                inputDialog("手机号码",PHONE, InputTextDialog.Type.NUMBER);
+                break;
             case R.id.tvCarNo:
                 if (!checkNetWork()) {
                     return;
@@ -866,10 +868,10 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
      */
     public void sexDialog() {
 
-        SexSelectDialog sexSelectDialog = new SexSelectDialog(this);
-        sexSelectDialog.show();
+       /* SexSelectDialog sexSelectDialog = new SexSelectDialog(this);
+        sexSelectDialog.show();*/
 
-        /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("设置性别");
         //设置单选列表项，默认选中第二项
         builder.setSingleChoiceItems(sexShow, sexdatashow, new DialogInterface.OnClickListener() {
@@ -895,7 +897,43 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             }
         });
         AlertDialog simplechoicedialog = builder.create();
-        simplechoicedialog.show();*/
+        simplechoicedialog.show();
+    }
+
+
+    private void setCareer(final String career){
+        ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
+        builder.setCareer(career);
+        MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdSetMyInfo.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SetUserInfoProcesser.ACTION);
+        final TimeoutBroadcast b = new TimeoutBroadcast(RegisterInfoActivity.this, filter, getBroadcastManager());
+
+        b.startReceiver(BaseDialogActivity.REQUEST_TIME_OUT, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                ToastR.setToast(RegisterInfoActivity.this, "设置失败");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+
+                int code = i.getIntExtra("error_code", -1);
+                if (code == ProtoMessage.ErrorCode.OK.getNumber()) {
+                    ToastR.setToast(RegisterInfoActivity.this, "设置成功");
+                    tvIndustry.setText(career);
+                    SharedPreferences preference = mContext.getSharedPreferences("token", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preference.edit();
+                    //int
+                    editor.putString("career", career);
+                    editor.commit();
+
+                } else {
+
+                    new ResponseErrorProcesser(RegisterInfoActivity.this, code);
+                }
+            }
+        });
     }
 
 
@@ -940,6 +978,82 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             }
         });
     }
+
+    private void setSign(final String sign){
+        ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
+        builder.setSignature(sign);
+
+        MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdSetMyInfo.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SetUserInfoProcesser.ACTION);
+        final TimeoutBroadcast b = new TimeoutBroadcast(RegisterInfoActivity.this, filter, getBroadcastManager());
+
+        b.startReceiver(BaseDialogActivity.REQUEST_TIME_OUT, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                ToastR.setToast(RegisterInfoActivity.this, "设置失败");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+
+                int code = i.getIntExtra("error_code", -1);
+                if (code == ProtoMessage.ErrorCode.OK.getNumber()) {
+                    ToastR.setToast(RegisterInfoActivity.this, "设置成功");
+                    tvSign.setText(sign);
+                    SharedPreferences preference = mContext.getSharedPreferences("token", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preference.edit();
+                    //int
+                    editor.putString("signature", sign);
+                    editor.commit();
+
+                } else {
+
+                    new ResponseErrorProcesser(RegisterInfoActivity.this, code);
+                }
+            }
+        });
+
+    }
+
+    private void setPhone (final String phone){
+        ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
+        builder.setPhoneNum(phone);
+
+        MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdSetMyInfo.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SetUserInfoProcesser.ACTION);
+        final TimeoutBroadcast b = new TimeoutBroadcast(RegisterInfoActivity.this, filter, getBroadcastManager());
+
+        b.startReceiver(BaseDialogActivity.REQUEST_TIME_OUT, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                ToastR.setToast(RegisterInfoActivity.this, "设置失败");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+
+                int code = i.getIntExtra("error_code", -1);
+                if (code == ProtoMessage.ErrorCode.OK.getNumber()) {
+                    ToastR.setToast(RegisterInfoActivity.this, "设置成功");
+                    tvPhone.setText(phone);
+                    SharedPreferences preference = mContext.getSharedPreferences("token", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preference.edit();
+                    //int
+                    editor.putString("phone", phone);
+                    editor.commit();
+
+                } else {
+
+                    new ResponseErrorProcesser(RegisterInfoActivity.this, code);
+                }
+            }
+        });
+
+    }
+
+
 
     /**
      * 设置昵称
@@ -1073,12 +1187,13 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         sbtnCarNo.setChecked(!myInforTool.isSwitchCarNumber());
         sbtnGps.setChecked(!myInforTool.isSwitchLocationUpload());
         sbtnSign.setChecked(!myInforTool.isSwitchCarBrand());
+        tvIndustry.setText(myInforTool.getCareer());
 
          tvCarModels.setText((String) SharedPreferencesUtils.get(context,VehicleType,""));
          tvBirth.setText((String)SharedPreferencesUtils.get(context,Birthday,""));
          tvLocation.setText((String)SharedPreferencesUtils.get(context,Location,""));
          tvHome.setText((String)SharedPreferencesUtils.get(context,Hometown,""));
-         tvIndustry.setText((String)SharedPreferencesUtils.get(context,Industry,""));
+
 
     }
 
@@ -1111,10 +1226,12 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                                 }
                                 break;
                             case SIGN:
-                                tvSign.setText(password);
+                                setSign(password);
+                                break;
+                            case PHONE:
+                                setPhone(password);
                                 break;
                             case CAR_NO:
-
                                 tvCarNo.setText(password);
                                 break;
                             default:
@@ -1375,8 +1492,10 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                     SharedPreferencesUtils.put(context,Location,tx);
                     //TODO 在这里进行发送数据
                 } else if (type == DIALOG_TYPE.INDUSTRY) {
-                    tvIndustry.setText(tx);
-                    SharedPreferencesUtils.put(context,Industry,tx);
+                 /*   tvIndustry.setText(tx);
+                    SharedPreferencesUtils.put(context,Industry,tx);*/
+                 setCareer(tx);
+
                     //TODO 在这里进行发送数据
                 } else if (type == DIALOG_TYPE.HOME) {
                     tvHome.setText(tx);

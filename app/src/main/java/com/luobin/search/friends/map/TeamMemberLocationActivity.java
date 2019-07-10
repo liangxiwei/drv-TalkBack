@@ -1044,10 +1044,8 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
         progressDialogShow();
         ProtoMessage.LocationMsgList.Builder builder = ProtoMessage.LocationMsgList.newBuilder();
         if (single) {
-            Log.d("pangtao","个人");
             builder.setPhoneNum(linkmanPhone);
         } else {
-            Log.d("pangtao","地图查看群 teamId = " + teamId);
             builder.setTeamID(teamId);
         }
         MyService.start(mContext, ProtoMessage.Cmd.cmdStartGetLocation.getNumber(), builder.build());
@@ -1064,7 +1062,6 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
             @Override
             public void onGot(Intent intent) {
                 int errorCode = intent.getIntExtra("error_code", -1);
-                Log.d("pangtao","errorCode =" +errorCode);
                 if (errorCode == ProtoMessage.ErrorCode.OK.getNumber()) {
                     friendLocationStatusesList = intent.getParcelableArrayListExtra("location");
                     addMarkersToMap();

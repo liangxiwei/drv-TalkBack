@@ -94,9 +94,6 @@ public class UserInfoProcesser extends CommonProcesser {
                     i.putExtra("name", resp.getUserName());//String
                     i.putExtra("sex", resp.getUserSex());//int
                     i.putExtra("car_id", resp.getCarID());//String
-                    Log.d("pangtao","interest = " + resp.getInterest());
-                    Log.d("pangtao","career = " + resp.getCareer());
-                    Log.d("pangtao","signature = " + resp.getSignature());
                     i.putExtra("interest",resp.getInterest());
                     i.putExtra("career",resp.getCareer());
                     i.putExtra("signature",resp.getSignature());

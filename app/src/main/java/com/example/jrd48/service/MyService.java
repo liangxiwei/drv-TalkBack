@@ -65,6 +65,7 @@ import com.example.jrd48.service.protocol.root.DeleteFriendProcesser;
 import com.example.jrd48.service.protocol.root.DeleteTeamMemberProcesser;
 import com.example.jrd48.service.protocol.root.DismissTeamProcesser;
 import com.example.jrd48.service.protocol.root.DownloadProcesser;
+import com.example.jrd48.service.protocol.root.DownloadTrackProcesser;
 import com.example.jrd48.service.protocol.root.FriendLocationChangedProcesser;
 import com.example.jrd48.service.protocol.root.FriendsListProcesser;
 import com.example.jrd48.service.protocol.root.GetCarLocationProcesser;
@@ -103,6 +104,7 @@ import com.example.jrd48.service.protocol.root.TeamMemberProcesser;
 import com.example.jrd48.service.protocol.root.TrackListProcesser;
 import com.example.jrd48.service.protocol.root.TypeSearchFriendsProcesser;
 import com.example.jrd48.service.protocol.root.UploadProcesser;
+import com.example.jrd48.service.protocol.root.UploadTrackProcesser;
 import com.example.jrd48.service.protocol.root.UserInfoProcesser;
 import com.example.jrd48.service.protocol.root.UserRegProcesser;
 import com.example.jrd48.service.protocol.root.VoiceAcceptProcesser;
@@ -188,6 +190,9 @@ public class MyService extends Service {
             put(ProtoMessage.Cmd.cmdGetTeamList.getNumber(), new GroupsListProcesser(MyService.this));  // 读群列表
             put(ProtoMessage.Cmd.cmdGetBBSList.getNumber(), new BBSListProcesser(MyService.this));  // 读群海聊列表
             put(ProtoMessage.Cmd.cmdGetTrackList.getNumber(), new TrackListProcesser(MyService.this));  // 读群轨迹列表
+            put(ProtoMessage.Cmd.cmdUploadTrack.getNumber(), new UploadTrackProcesser(MyService.this));  // 上传轨迹
+            put(ProtoMessage.Cmd.cmdDownloadTrack.getNumber(), new DownloadTrackProcesser(MyService.this));  //轨迹下载
+
 
             put(ProtoMessage.Cmd.cmdAssignTeamAdmin.getNumber(), new AssignTeamAdminProcesser(MyService.this));  // 指定或取消群中的某一个管理员
             put(ProtoMessage.Cmd.cmdDismissTeam.getNumber(), new DismissTeamProcesser(MyService.this));  // 解散群（仅群主可以操作）

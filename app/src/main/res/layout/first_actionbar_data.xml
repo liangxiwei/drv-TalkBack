@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00ffffff"
+    android:orientation="vertical"
+  >
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="10dp"
+        >
+
+        <TextView android:id="@+id/time1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffffff"
+            android:textSize="34dp" />
+
+        <TextView android:id="@+id/time2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffffff"
+            android:layout_marginLeft="@dimen/time_margin"
+            android:textSize="34dp" />
+
+        <TextView android:id="@+id/time3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffffff"
+            android:layout_marginLeft="@dimen/time_margin"
+            android:textSize="34dp"  />
+
+        <TextView android:id="@+id/time4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffffff"
+            android:layout_marginLeft="@dimen/time_margin"
+            android:textSize="34dp"  />
+
+        <TextView android:id="@+id/time5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffffff"
+            android:layout_marginLeft="@dimen/time_margin"
+            android:textSize="34dp"  />
+
+
+        <com.luobin.widget.FirstStatusBar
+            android:layout_width="192dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="31dp"
+            android:layout_gravity="center_vertical"
+            />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        >
+
+        <TextView android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ffffff"
+            android:textSize="14dp" />
+
+        <TextView android:id="@+id/week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="10dp"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

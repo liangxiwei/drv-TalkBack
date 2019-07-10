@@ -117,7 +117,6 @@ public class DvrService extends Service {
         @Override
         public void onReceive(Context context, Intent intent) {
             int keyCode = intent.getIntExtra("keyCode",-1);
-            Log.d("pangtao","keyCode = "+keyCode);
             if (keyCode == KeyEvent.KEYCODE_CAMERA){
                 takePhoto();
             }else if (keyCode == KeyEvent.KEYCODE_F9){
@@ -855,7 +854,7 @@ public class DvrService extends Service {
             e.printStackTrace();
         }
         IntentFilter intentFilter1 = new IntentFilter(keyDonwBroadcastAction);
-        registerReceiver(keyDonwBroadcastReceiver,intentFilter);
+        registerReceiver(keyDonwBroadcastReceiver,intentFilter1);
 
 
         super.onCreate();

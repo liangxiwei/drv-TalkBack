@@ -85,7 +85,7 @@ import static com.luobin.ui.SelectMemberActivity.APPLYTEAM;
  */
 
 public class TabFragmentLinkGroup extends BaseLazyFragment {
-    private static final String TAG = "pangtao";
+    private static final String TAG = "TabFragmentLinkGroup";
     int i;
     private ScrollListView groupListView;
     private ListView memberListView;
@@ -245,7 +245,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("pangtao","groupPosition = " +groupSelectPosition);
        /* if (run) {
             getDBMsg();
         }*/
@@ -324,7 +323,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 groupSelectPosition = position;
-                Log.d("pangtao","groupSelectPosition = " +groupSelectPosition);
                 List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
 
                 memberAdapter.setData(memberList);

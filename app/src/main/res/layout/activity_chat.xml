@@ -46,8 +46,7 @@
 
     <include
         layout="@layout/activity_talk_room"
-        android:visibility="visible"
-        />
+        android:visibility="visible" />
 
     <include
         layout="@layout/firstlayout"

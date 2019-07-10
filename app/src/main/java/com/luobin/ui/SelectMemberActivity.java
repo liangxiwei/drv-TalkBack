@@ -118,7 +118,6 @@ public class SelectMemberActivity extends BaseDialogActivity {
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
                     try {
-                        Log.d("pangtao","cmdGetFriendList onGot");
                         GlobalImg.clear();
                         DBManagerFriendsList db = new DBManagerFriendsList(context, DBTableName.getTableName(context, DBHelperFriendsList.NAME));
                         selectMemberList = db.getFriends(false);

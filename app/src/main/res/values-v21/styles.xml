@@ -8,14 +8,15 @@
         <item name="android:textSize">@dimen/normal_text_size</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowDisablePreview">true</item>
         <item name="android:textSize">@dimen/normal_text_size</item>
-        <item name="android:windowBackground">@color/window_background_color</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
-        <item name="android:statusBarColor">@color/window_background_color</item>
     </style>
+
 
 
     <style name="CustomActionBarTitleText" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title">

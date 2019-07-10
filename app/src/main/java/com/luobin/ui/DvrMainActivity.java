@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.example.jrd48.GlobalNotice;
 import com.example.jrd48.PolyphonePinYin;
 import com.example.jrd48.chat.BadgeView;
 import com.example.jrd48.chat.BaseActivity;
