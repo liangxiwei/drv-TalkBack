@@ -121,6 +121,7 @@ public class GlobalStatus {
     private static int mDvrTextureId = 10;
     private static int mUsbTextureId = 11;
     private static int mCurrentPipMode;
+    private static boolean isTakingPipPhoto = false;
     public static boolean isPttKeyDown() {
         return pttKeyDown;
     }
@@ -714,6 +715,14 @@ public class GlobalStatus {
         SharedPreferencesUtils.put(MyApplication.getContext(), "pip_mode", mode);
     }
 
+    public static boolean getTakingPipPhotoStatus() {
+        return isTakingPipPhoto;
+    }
+
+    public static void setTakingPipPhotoStatus(boolean enable) {
+        GlobalStatus.isTakingPipPhoto = enable;
+    }
+
     public static String getCurRtmpAddr() {
         Log.v("wsDvr","getCurRtmpAddr:" + curRtmpAddr);
         return curRtmpAddr;
@@ -838,6 +847,26 @@ public class GlobalStatus {
     public static final String CHAT_VIDEO_RADIO_SWITCH = Settings.System.CHAT_VIDEO_RADIO_SWITCH;
     public static int getChatVideoMode(Context context) {
         return Settings.System.getInt(context.getContentResolver(), CHAT_VIDEO_RADIO_SWITCH, 0);
+    }
+
+    public static final String TAKE_PHOTO_COUNT = Settings.System.TAKE_PHOTO_COUNT;
+
+    public static int getTakePhotoCount(Context context) {
+        return Settings.System.getInt(context.getContentResolver(), TAKE_PHOTO_COUNT, 1);
+    }
+
+    public static void setTakePhotoCount(Context context, int count) {
+        Settings.System.putInt(context.getContentResolver(), TAKE_PHOTO_COUNT, count);
+    }
+
+    public static final String TAKE_PHOTO_INTERVAL_MS = Settings.System.TAKE_PHOTO_INTERVAL_MS;
+
+    public static int getTakePhotoIntervalMs(Context context) {
+        return Settings.System.getInt(context.getContentResolver(), TAKE_PHOTO_INTERVAL_MS, 1000);
+    }
+
+    public static void setTakePhotoIntervalMs(Context context, int interval_ms) {
+        Settings.System.putInt(context.getContentResolver(), TAKE_PHOTO_INTERVAL_MS, interval_ms);
     }
 
     public static boolean isPttBroadCast() {

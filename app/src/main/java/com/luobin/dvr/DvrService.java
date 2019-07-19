@@ -40,7 +40,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 
-import com.android.internal.app.ShutdownActivity;
 import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.FileUtils;
 import com.example.jrd48.chat.SharedPreferencesUtils;
@@ -48,10 +47,7 @@ import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.WelcomeActivity;
 import com.example.jrd48.chat.crash.MyApplication;
 import com.example.jrd48.chat.receiver.ToastReceiver;
-import com.example.jrd48.service.MyService;
 import com.luobin.dvr.ui.MainActivity;
-import com.luobin.log.DBMyLogHelper;
-import com.luobin.log.LogCode;
 import com.luobin.musbcam.UsbCamera;
 import com.luobin.utils.VideoRoadUtils;
 import com.video.GlobalVideo;
@@ -83,6 +79,9 @@ public class DvrService extends Service {
     private final int MSG_AFTER_UNBIND = 1;
     public static final String DVR_FULLSCREEN_SHOW = "dvr_fullscreen_show";
     private SmartMirrorsObserver mSmartMirrorsObserver;
+    private static final boolean pipVideoModeEnable = true;
+    private int mPhotoCount = 1;
+    private int mPhotoIntervalMs = 1000;
     private Handler mHandler = new Handler() {
 
         @Override
@@ -359,6 +358,8 @@ public class DvrService extends Service {
         private final int MSG_SWITCH_NEW_VIDEO = MSG_BASE + 1;
         private final int MSG_CHECK_FREE_SPACE = MSG_BASE + 2;
         private final int MSG_UPDATE_WATER_MARK = MSG_BASE + 3;
+        private final int MSG_START_PIP_VIDEO = MSG_BASE + 4;
+        private final int MSG_STOP_PIP_VIDEO = MSG_BASE + 5;
         
         private final boolean FREE_SPACE_DEBUG = false;
         private final long ENOUGH_FREE_SPACE = FREE_SPACE_DEBUG ? 10L * 1024L * 1024L * 1024L : 500L * 1024L * 1024L;
@@ -369,7 +370,11 @@ public class DvrService extends Service {
             mDvr = dvr;
             mPath = new String(path);
             mIntervalms = intervalms;
-            mHandler.sendEmptyMessage(MSG_SWITCH_NEW_VIDEO);
+            if (pipVideoModeEnable) {
+                mHandler.sendEmptyMessage(MSG_START_PIP_VIDEO);
+            } else {
+                mHandler.sendEmptyMessage(MSG_SWITCH_NEW_VIDEO);
+            }
             Log.d(TAG, "CircleRecordHelper created");
         }
         
@@ -382,6 +387,13 @@ public class DvrService extends Service {
                 return true;
             } else if (msg.what == MSG_CHECK_FREE_SPACE) {
                 checkFreeSpace();
+                return true;
+            } else if (msg.what == MSG_START_PIP_VIDEO) {
+                startPipVideoRecord();
+                return true;
+            } else if (msg.what == MSG_STOP_PIP_VIDEO) {
+                stopRecord();
+                ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.video_capture_succeed));
                 return true;
             }
             return false;
@@ -407,6 +419,24 @@ public class DvrService extends Service {
                 updateTimeStamp();
                 checkFreeSpace();
             }
+        }
+
+        public void startPipVideoRecord() {
+            File f = new File(mPath);
+            if (!f.exists()) {
+                if (!f.mkdirs()) {
+                    mPath = DvrConfig.getStoragePath();
+                    mHandler.removeMessages(MSG_START_PIP_VIDEO);
+                    mHandler.sendEmptyMessageDelayed(MSG_START_PIP_VIDEO, 1000);
+                }
+            }
+            mCurVideoName = mPath + "/" + newFileName(true);
+            Log.d(TAG, "startPipVideoRecord " + mCurVideoName);
+            mDvr.startRecord(mCurVideoName, false);
+            mHandler.removeMessages(MSG_START_PIP_VIDEO);
+            mHandler.sendEmptyMessageDelayed(MSG_STOP_PIP_VIDEO, mIntervalms);
+            updateTimeStamp();
+            checkFreeSpace();
         }
         
         public void checkFreeSpace() {
@@ -725,7 +755,8 @@ public class DvrService extends Service {
                 }
             } else if ("erobbing.take_photo_test".equals(intent.getAction())) {
                 Log.d("====", "============takephoto test");
-                takePhoto("/data/media/0/DCIM/ttt.jpg");
+                mHandler.removeCallbacks(mTakePhotoRunnable);
+                mHandler.postDelayed(mTakePhotoRunnable, 100);
             } else if ("erobbing.pip_mode_test".equals(intent.getAction())) {
                 Log.d("====", "========erobbing.pip_mode_test");
                 if (GlobalStatus.getPipMode() == 0) {
@@ -737,6 +768,21 @@ public class DvrService extends Service {
                 } else if (GlobalStatus.getPipMode() == 3) {
                     GlobalStatus.setPipMode(0);
                 }
+                /*if (GlobalStatus.getTakePhotoCount(MyApplication.getContext()) == 1) {
+                    GlobalStatus.setTakePhotoCount(MyApplication.getContext(), 2);
+                    GlobalStatus.setTakePhotoIntervalMs(MyApplication.getContext(), 1500);
+                } else if (GlobalStatus.getTakePhotoCount(MyApplication.getContext()) == 2) {
+                    GlobalStatus.setTakePhotoCount(MyApplication.getContext(), 3);
+                    GlobalStatus.setTakePhotoIntervalMs(MyApplication.getContext(), 2000);
+                } else if (GlobalStatus.getTakePhotoCount(MyApplication.getContext()) == 3) {
+                    GlobalStatus.setTakePhotoCount(MyApplication.getContext(), 4);
+                    GlobalStatus.setTakePhotoIntervalMs(MyApplication.getContext(), 1000);
+                } else if (GlobalStatus.getTakePhotoCount(MyApplication.getContext()) == 4) {
+                    GlobalStatus.setTakePhotoCount(MyApplication.getContext(), 1);
+                    GlobalStatus.setTakePhotoIntervalMs(MyApplication.getContext(), 1000);
+                }*/
+            } else if ("erobbing.video_record_test".equals(intent.getAction())) {
+                startCircleRecord();
             }
         }
     };
@@ -748,12 +794,15 @@ public class DvrService extends Service {
         Settings.System.putInt(MyApplication.getContext().getContentResolver(), MainActivity.DVR_FULLSCREEN_SHOW, 0);
         mSmartMirrorsObserver = new SmartMirrorsObserver(new Handler());
         mSmartMirrorsObserver.startObserving();
+        mPhotoCount = GlobalStatus.getTakePhotoCount(MyApplication.getContext());
+        mPhotoIntervalMs = GlobalStatus.getTakePhotoIntervalMs(MyApplication.getContext());
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_SHUTDOWN);
         intentFilter.addAction(Intent.ACTION_SCREEN_ON);
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
         intentFilter.addAction("erobbing.take_photo_test");
         intentFilter.addAction("erobbing.pip_mode_test");
+        intentFilter.addAction("erobbing.video_record_test");
         registerReceiver(shutDownReceiver,intentFilter);
         DvrConfig.init(getApplicationContext());
         if (mImpl == null) {
@@ -841,7 +890,9 @@ public class DvrService extends Service {
                     }
 
                     startPreview();
-                    startCircleRecord();
+                    if (!pipVideoModeEnable) {
+                        startCircleRecord();
+                    }
                     startThumbnailPreview();
                 }
             };
@@ -1035,7 +1086,7 @@ public class DvrService extends Service {
     }
 
     public boolean startCircleRecord() {
-        String path = DvrConfig.getStoragePath();
+        String path = pipVideoModeEnable ? DvrConfig.getTakeVideoPath() : DvrConfig.getStoragePath();
         Log.d(TAG, "start circle recording path=" + path);
         int intervalms = DvrConfig.getVideoDuration();
         Log.d(TAG, "start circle recording path=" + path + ", intervalms="+intervalms);
@@ -1136,6 +1187,10 @@ public class DvrService extends Service {
                 Settings.System.getUriFor(GlobalStatus.NAVI_START_STOP);
         private final Uri CHAT_VIDEO_RADIO_SWITCH_URI =
                 Settings.System.getUriFor(GlobalStatus.CHAT_VIDEO_RADIO_SWITCH);
+        private final Uri TAKE_PHOTO_COUNT_URI =
+                Settings.System.getUriFor(GlobalStatus.TAKE_PHOTO_COUNT);
+        private final Uri TAKE_PHOTO_INTERVAL_MS_URI =
+                Settings.System.getUriFor(GlobalStatus.TAKE_PHOTO_INTERVAL_MS);
 
         public ShutDownObserver(Handler handler) {
             super(handler);
@@ -1152,6 +1207,10 @@ public class DvrService extends Service {
                 checkStatus(false);
             } else if (CHAT_VIDEO_RADIO_SWITCH_URI.equals(uri)) {
                 //checkStatus(false);
+            } else if (TAKE_PHOTO_COUNT_URI.equals(uri)) {
+                mPhotoCount = GlobalStatus.getTakePhotoCount(MyApplication.getContext());
+            } else if (TAKE_PHOTO_INTERVAL_MS_URI.equals(uri)) {
+                mPhotoIntervalMs = GlobalStatus.getTakePhotoIntervalMs(MyApplication.getContext());
             }
         }
 
@@ -1163,6 +1222,12 @@ public class DvrService extends Service {
                     false, this);
             cr.registerContentObserver(
                     CHAT_VIDEO_RADIO_SWITCH_URI,
+                    false, this);
+            cr.registerContentObserver(
+                    TAKE_PHOTO_COUNT_URI,
+                    false, this);
+            cr.registerContentObserver(
+                    TAKE_PHOTO_INTERVAL_MS_URI,
                     false, this);
         }
 
@@ -1316,7 +1381,7 @@ public class DvrService extends Service {
         }
     }
 
-    public  void takePhoto(){
+    public void takePhoto(){
         if (mServiceBinder != null){
             try {
                 mServiceBinder.takePhoto(DvrConfig.getTakePhontPath());
@@ -1356,4 +1421,21 @@ public class DvrService extends Service {
             }
         }
     }
+
+    private Runnable mTakePhotoRunnable = new Runnable() {
+        @Override
+        public void run() {
+            Log.d("====", "====mTakePhotoRunnable.mPhotoCount=" + mPhotoCount);
+            mPhotoCount--;
+            if (mPhotoCount >= 0) {
+                GlobalStatus.setTakingPipPhotoStatus(true);
+                mHandler.postDelayed(mTakePhotoRunnable, mPhotoIntervalMs);
+            } else {
+                mHandler.removeCallbacks(mTakePhotoRunnable);
+                mPhotoCount = GlobalStatus.getTakePhotoCount(MyApplication.getContext());
+                GlobalStatus.setTakingPipPhotoStatus(false);
+                ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.photo_capture_succeed));
+            }
+        }
+    };
 }

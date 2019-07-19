@@ -25,6 +25,7 @@ public class DvrReceiver extends BroadcastReceiver {
             Log.d(TAG, "DvrReceiver:boot completed");
             SharedPreferencesUtils.put(context, "group_booting", true);
             SharedPreferencesUtils.put(context, "member_booting", true);
+            context.startService(new Intent(context, DvrService.class));
         }
 
     }

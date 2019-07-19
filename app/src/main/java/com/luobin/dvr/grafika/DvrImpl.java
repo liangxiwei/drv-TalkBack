@@ -112,7 +112,7 @@ public class DvrImpl extends DvrImplBase
     public SurfaceTexture mCameraTexture;
 
     private DvrEncoder mDvrEncoder;
-    public static final boolean USB_H264_CAM = true;//
+    public static final boolean USB_H264_CAM = false;//
     private UsbVideoRecorder mUsbVideoRecorder = null;
 
     private boolean mAudioRecording = false;
@@ -853,6 +853,9 @@ public class DvrImpl extends DvrImplBase
                 if (mUsbTextureId >= 0) {
                     switch (mCurrentVideoScreenMode) {
                         case 0:
+                            GLES20.glViewport(0, 0, viewWidth, viewHeight);
+                            mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                            break;
                         case 1:
                             GLES20.glViewport(0, 0, viewWidth, viewHeight);
                             mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
@@ -916,9 +919,49 @@ public class DvrImpl extends DvrImplBase
             mEncoderSurface.makeCurrent();
             GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
             mFullFrameBlit.drawFrame(mCamTextureId, mTmpMatrix);
-            if (mUsbTextureId >= 0) {
+            /*if (mUsbTextureId >= 0) {
                 GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
                 mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+            }*/
+            if (mUsbTextureId >= 0) {
+                switch (mCurrentVideoScreenMode) {
+                    case 0:
+                        GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                        mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                        break;
+                    case 1:
+                        GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                        mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                        break;
+                    case 2:
+                        switch (GlobalStatus.getPipMode()) {
+                            case 0:
+                                GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                                mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                GLES20.glViewport(mCamPrevWidth / 2, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                break;
+                            case 1:
+                                GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevWidth);
+                                mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                GLES20.glViewport(0, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                break;
+                            case 2:
+                                GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevWidth);
+                                mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                GLES20.glViewport(mCamPrevWidth / 2, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                break;
+                            case 3:
+                                GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevWidth);
+                                mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                GLES20.glViewport(0, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                break;
+                        }
+                        break;
+                }
             }
             if (mWaterMarkTextureId >= 0) {
                 setWaterMarkViewport(mCamPrevWidth, mCamPrevHeight);
@@ -933,7 +976,15 @@ public class DvrImpl extends DvrImplBase
             mEncoderSurface.setPresentationTime(presentationTimeUs);
             mEncoderSurface.swapBuffers();
         }
-
+        if (TAKE_PHOTO_FROM_PREVIEW_DATA) {
+            synchronized (mLock) {
+                if (GlobalStatus.getTakingPipPhotoStatus()) {
+                    takePhotoLocked(DvrConfig.getTakePhontPath());
+                    mLock.notifyAll();
+                    GlobalStatus.setTakingPipPhotoStatus(false);
+                }
+            }
+        }
         if (!RESClient.getInstance().getSelf_video() && RESClient.getInstance().getStatus() == RESClient.STATUS_SUCCESS) {
             if (globalMediaCodec != null && globalMediaCodec.isStarted()) {
                 WindowSurface windowSurface = globalMediaCodec.getmEncoderSurface();
@@ -948,6 +999,9 @@ public class DvrImpl extends DvrImplBase
                         //mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
                         switch (mCurrentVideoScreenMode) {
                             case 0:
+                                GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                                mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                break;
                             case 1:
                                 GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
                                 mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
@@ -997,7 +1051,7 @@ public class DvrImpl extends DvrImplBase
                 }
             }
         }
-        if (TAKE_PHOTO_FROM_PREVIEW_DATA) {
+        /*if (TAKE_PHOTO_FROM_PREVIEW_DATA) {
             synchronized (mLock) {
                 if (mTakingPhoto) {
                     takePhotoLocked(mTakePhotoFile);
@@ -1005,7 +1059,7 @@ public class DvrImpl extends DvrImplBase
                     mLock.notifyAll();
                 }
             }
-        }
+        }*/
 
         //mFrameNum++;
     }

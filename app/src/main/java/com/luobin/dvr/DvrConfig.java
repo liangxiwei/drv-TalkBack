@@ -2,18 +2,18 @@ package com.luobin.dvr;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Environment;
 import android.os.storage.StorageManager;
 import android.util.Log;
 
 import com.example.jrd48.chat.crash.MyApplication;
-import com.luobin.dvr.R;
 import com.luobin.utils.PathUtlis;
 
 import java.io.File;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DvrConfig {
     private static final String TAG = DvrService.TAG;
@@ -21,6 +21,8 @@ public class DvrConfig {
     private final static String PREFERENCE_NAME = "Dvr";
     private final static String KEY_VIDEO_DURATION = "VideoDuration";
     private final static String KEY_VIDEO_SIZE = "VideoSize";
+    private final static String KEY_PHOTO_COUNT = "photo_count";
+    private final static String KEY_PHOTO_INTERVAL_MS = "photo_interval_ms";
     private final static String KEY_STORAGE_PATH = "StoragePath";
     private final static String KEY_AUDIO_ENABLED = "AudioEnabled";
     private final static String KEY_COLLISION_SENSITIVITY = "CollisionSensitivity";
@@ -32,6 +34,8 @@ public class DvrConfig {
     public final static String TAKE_PHOTOS = "/dvr/handy/snapshot";
     //随手录地址
     public final static String TAKE_VIDEOS = "/dvr/handy/video";
+    private static final int DEFAULT_PHOTO_COUNT = 1;
+    private static final long DEFAULT_PHOTO_INTERVAL_MS = 1000;
 
     public static void init(Context context) {
         if (mContext == null) {
@@ -41,14 +45,16 @@ public class DvrConfig {
         }
     }
 
-    public static String getTakePhontPath(){
-        String path = PathUtlis.getRootDirectory()+TAKE_PHOTOS;
+    public static String getTakePhontPath() {
+        String path = PathUtlis.getRootDirectory() + TAKE_PHOTOS;
         File file = new File(path);
-        if (!file.exists()){
+        if (!file.exists()) {
             file.mkdirs();
         }
-
-        return path;
+        SimpleDateFormat timeFormate = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_ssss");
+        String fileName = "/" + timeFormate.format(new Date(System.currentTimeMillis())) + ".jpg";
+        Log.d(TAG, "=getTakePhontPath.fileName=" + fileName);
+        return path + fileName;
     }
 
     public static String getTakeVideoPath(){
@@ -59,6 +65,32 @@ public class DvrConfig {
             file.mkdirs();
         }
         return path;
+    }
+
+    @Deprecated
+    public static int getPhotoCount() {
+        SharedPreferences sp = mContext.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
+        int count = sp.getInt(KEY_PHOTO_COUNT, DEFAULT_PHOTO_COUNT);
+        return count;
+    }
+
+    @Deprecated
+    public static void setPhotoCount(int count) {
+        SharedPreferences sp = mContext.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
+        sp.edit().putInt(KEY_PHOTO_COUNT, count).commit();
+    }
+
+    @Deprecated
+    public static long getPhotoIntervalMs() {
+        SharedPreferences sp = mContext.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
+        long interval_ms = sp.getLong(KEY_PHOTO_INTERVAL_MS, DEFAULT_PHOTO_INTERVAL_MS);
+        return interval_ms;
+    }
+
+    @Deprecated
+    public static void setPhotoIntervalMs(long interval_ms) {
+        SharedPreferences sp = mContext.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
+        sp.edit().putLong(KEY_PHOTO_INTERVAL_MS, interval_ms).commit();
     }
 
     public static int getVideoDuration() {
