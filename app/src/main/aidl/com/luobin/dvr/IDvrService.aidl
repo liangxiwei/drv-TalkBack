@@ -130,4 +130,8 @@ interface IDvrService {
 	void switchCamera();
 
 	int rtmpStatus();
+
+    void startPipVideoCapture();
+
+    void startTakePipPhoto();
 }

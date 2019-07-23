@@ -77,6 +77,9 @@ public class DvrService extends Service {
     private boolean mClientConnected = false;
     private WakeLock mWakeLock;
     private final int MSG_AFTER_UNBIND = 1;
+    private final int MSG_START_PIP_RECORD = 2;
+    private final int MSG_STOP_PIP_RECORD = 3;
+    private final int MSG_TAKE_PHOTO = 4;
     public static final String DVR_FULLSCREEN_SHOW = "dvr_fullscreen_show";
     private SmartMirrorsObserver mSmartMirrorsObserver;
     private static final boolean pipVideoModeEnable = true;
@@ -95,6 +98,23 @@ public class DvrService extends Service {
             super.handleMessage(msg);
         }
         
+    };
+
+    private Handler mPipHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case MSG_START_PIP_RECORD:
+                    startCircleRecord();
+                    break;
+                case MSG_STOP_PIP_RECORD:
+                    stopRecord();
+                    break;
+                case MSG_TAKE_PHOTO:
+                    break;
+            }
+        }
     };
 
     private BroadcastReceiver receiver = new BroadcastReceiver() {
@@ -338,6 +358,20 @@ public class DvrService extends Service {
         @Override
         public int rtmpStatus() throws RemoteException {
             return RESClient.getInstance().getStatus();
+        }
+
+        @Override
+        public void startPipVideoCapture() throws RemoteException {
+            Log.d(TAG, "=========aidl-startPipVideoCapture");
+            mPipHandler.sendEmptyMessage(MSG_STOP_PIP_RECORD);
+            mPipHandler.sendEmptyMessageDelayed(MSG_START_PIP_RECORD, 100);
+        }
+
+        @Override
+        public void startTakePipPhoto() throws RemoteException {
+            Log.e(TAG, "=========aidl-startTakePipPhoto");
+            mPipHandler.removeCallbacks(mTakePhotoRunnable);
+            mPipHandler.postDelayed(mTakePhotoRunnable, 100);
         }
     }
     private void mkDir(File file) {
@@ -755,8 +789,8 @@ public class DvrService extends Service {
                 }
             } else if ("erobbing.take_photo_test".equals(intent.getAction())) {
                 Log.d("====", "============takephoto test");
-                mHandler.removeCallbacks(mTakePhotoRunnable);
-                mHandler.postDelayed(mTakePhotoRunnable, 100);
+                mPipHandler.removeCallbacks(mTakePhotoRunnable);
+                mPipHandler.postDelayed(mTakePhotoRunnable, 100);
             } else if ("erobbing.pip_mode_test".equals(intent.getAction())) {
                 Log.d("====", "========erobbing.pip_mode_test");
                 if (GlobalStatus.getPipMode() == 0) {
@@ -782,7 +816,8 @@ public class DvrService extends Service {
                     GlobalStatus.setTakePhotoIntervalMs(MyApplication.getContext(), 1000);
                 }*/
             } else if ("erobbing.video_record_test".equals(intent.getAction())) {
-                startCircleRecord();
+                mPipHandler.sendEmptyMessage(MSG_STOP_PIP_RECORD);
+                mPipHandler.sendEmptyMessageDelayed(MSG_START_PIP_RECORD, 100);
             }
         }
     };
@@ -904,8 +939,8 @@ public class DvrService extends Service {
         } catch (Exception e){
             e.printStackTrace();
         }
-        IntentFilter intentFilter1 = new IntentFilter(keyDonwBroadcastAction);
-        registerReceiver(keyDonwBroadcastReceiver,intentFilter1);
+        //IntentFilter intentFilter1 = new IntentFilter(keyDonwBroadcastAction);
+        //registerReceiver(keyDonwBroadcastReceiver,intentFilter1);
 
 
         super.onCreate();
@@ -954,11 +989,11 @@ public class DvrService extends Service {
             vUsbObserverOn.stopObserving();
         }
         RESClient.getInstance().removeSurfaceView();
-        try {
+        /*try {
             unregisterReceiver(keyDonwBroadcastReceiver);
         }catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
 
         super.onDestroy();
     }

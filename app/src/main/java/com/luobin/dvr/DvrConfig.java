@@ -57,14 +57,17 @@ public class DvrConfig {
         return path + fileName;
     }
 
-    public static String getTakeVideoPath(){
-        String path = PathUtlis.getRootDirectory()+TAKE_VIDEOS;
+    public static String getTakeVideoPath() {
+        String path = PathUtlis.getRootDirectory() + TAKE_VIDEOS;
 
         File file = new File(path);
-        if (!file.exists()){
+        if (!file.exists()) {
             file.mkdirs();
         }
-        return path;
+        SimpleDateFormat timeFormate = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_ssss");
+        String fileName = "/" + timeFormate.format(new Date(System.currentTimeMillis())) + ".mp4";
+        Log.d(TAG, "=getTakePhontPath.fileName=" + fileName);
+        return path + fileName;
     }
 
     @Deprecated

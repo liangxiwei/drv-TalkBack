@@ -66,7 +66,7 @@ import me.lake.librestreaming.model.RESConfig;
 public class DvrImpl extends DvrImplBase
         implements Callback, UsbCamera.UsbCameraListener, OnFrameAvailableListener {
 
-    private final String TAG = com.luobin.dvr.DvrService.TAG;
+    private final String TAG = "DvrImpl";
     private static final boolean VERBOSE = false;
     private final boolean TAKE_PHOTO_FROM_PREVIEW_DATA = true;
     private static final int SAMPLE_RATE = 44100; // must be same with DvrEncoder define
@@ -963,12 +963,12 @@ public class DvrImpl extends DvrImplBase
                         break;
                 }
             }
-            if (mWaterMarkTextureId >= 0) {
+            /*if (mWaterMarkTextureId >= 0) {
                 setWaterMarkViewport(mCamPrevWidth, mCamPrevHeight);
                 GLES20.glEnable(GLES20.GL_BLEND);
                 GLES20.glBlendFunc(GLES20.GL_SRC_ALPHA, GLES20.GL_ONE_MINUS_SRC_ALPHA);
                 mWaterMarkBlit.drawFrame(mWaterMarkTextureId, mTmpMatrix);
-            }
+            }*/
 //        drawExtra(mFrameNum, VIDEO_WIDTH, VIDEO_HEIGHT);
 
             mDvrEncoder.frameAvailableSoon();
