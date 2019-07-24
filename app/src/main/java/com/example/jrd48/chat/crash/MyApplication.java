@@ -28,6 +28,8 @@ import com.luobin.dvr.R;
 import com.luobin.utils.VideoRoadUtils;
 import com.qihoo.linker.logcollector.LogCollector;
 import com.qihoo.linker.logcollector.upload.HttpParameters;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 public class MyApplication extends MultiDexApplication {
     CrashHandler mHander = null;
     private ShutDownObserver shutDownObserver;
@@ -35,6 +37,7 @@ public class MyApplication extends MultiDexApplication {
     private static long videoTeam = 0;
     private static Context context;
     private static Choreographer choreographer;
+    private RefWatcher mRefWatcher;
     private BroadcastReceiver shutDownReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -84,6 +87,7 @@ public class MyApplication extends MultiDexApplication {
         registerReceiver(shutDownReceiver, intentFilter);
         //upload logfile , post params.
         checkPermission();
+        //initLeakCanary();
     }
 
     @Override
@@ -247,5 +251,15 @@ public class MyApplication extends MultiDexApplication {
             }
         }
         return "none";
+    }
+
+    private void initLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            mRefWatcher = RefWatcher.DISABLED;
+            return;
+        }
+        mRefWatcher = LeakCanary.install(this);
     }
 }
