@@ -2,7 +2,7 @@ package com.luobin.ui.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +18,6 @@ import com.example.jrd48.chat.TeamMemberInfo;
 import com.luobin.dvr.R;
 import com.luobin.ui.ScreenUtils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -59,7 +58,9 @@ public class ContactsGroupAdapter extends BaseAdapter {
         if (view == null){
             view = LayoutInflater.from(context).inflate(R.layout.adapter_group,null);
             holder = new ViewHolder();
-            holder.groupIcon = (LinearLayout) view.findViewById(R.id.groutIcon);
+            if (!"LB1822".equals(Build.PRODUCT)) {
+                holder.groupIcon = (LinearLayout) view.findViewById(R.id.groutIcon);
+            }
             holder.groupName = (TextView) view.findViewById(R.id.groupName);
             view.setTag(holder);
         }else{
@@ -74,7 +75,9 @@ public class ContactsGroupAdapter extends BaseAdapter {
 
         List<TeamMemberInfo> memberInfos = allMemberList.get(list.get(position).getTeamID());
 
-        initIcon(holder.groupIcon,memberInfos);
+        if (!"LB1822".equals(Build.PRODUCT)) {
+            initIcon(holder.groupIcon, memberInfos);
+        }
 
         return view;
     }

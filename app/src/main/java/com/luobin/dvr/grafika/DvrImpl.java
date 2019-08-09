@@ -37,6 +37,7 @@ import android.view.WindowManager;
 
 import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.BottomLayoutManager;
+import com.example.jrd48.chat.SharedPreferencesUtils;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.crash.MyApplication;
 import com.example.jrd48.chat.receiver.ToastReceiver;
@@ -319,7 +320,12 @@ public class DvrImpl extends DvrImplBase
 //                            .getSystemService(Context.WINDOW_SERVICE);
                     int[] rect = new int[4];
                     DvrConfig.getThumbnailViewRect(rect);
-                    show(rect[0], rect[1], rect[2], rect[3]);
+                    boolean firstActivityOntop = (boolean) SharedPreferencesUtils.get(mContext, "firstactivity_ontop", false);
+                    if (firstActivityOntop) {
+                        show(32, 224, 304, 228);
+                    } else {
+                        show(rect[0], rect[1], rect[2], rect[3]);
+                    }
 //                    mPreviewRect = new Rect(rect[0], rect[1], rect[0] + rect[2], rect[1] + rect[3]);
 //                    mCamViewParams.x = rect[0];
 //                    mCamViewParams.y = rect[1];
@@ -979,7 +985,7 @@ public class DvrImpl extends DvrImplBase
         if (TAKE_PHOTO_FROM_PREVIEW_DATA) {
             synchronized (mLock) {
                 if (GlobalStatus.getTakingPipPhotoStatus()) {
-                    takePhotoLocked(DvrConfig.getTakePhontPath());
+                    takePhotoLocked(DvrConfig.getTakePhotoPath());
                     mLock.notifyAll();
                     GlobalStatus.setTakingPipPhotoStatus(false);
                 }

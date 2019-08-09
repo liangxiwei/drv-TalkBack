@@ -18,12 +18,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWirte"
-            android:textSize="16dp" />
+            android:textSize="24dp" />
 
         <LinearLayout
             android:id="@+id/groutIcon"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="3dp"
             android:layout_marginTop="5dp"
             android:orientation="horizontal" />
 

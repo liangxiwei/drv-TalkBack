@@ -28,6 +28,7 @@ public class DvrConfig {
     private final static String KEY_COLLISION_SENSITIVITY = "CollisionSensitivity";
     private final static String KEY_AUTO_RUN_WHEN_BOOT = "AutoRunWhenBoot";
     private final static String KEY_THUMBNAIL_VIEW_RECT = "ThumbnailViewRect";
+    private final static String KEY_PIP_THUMBNAIL_VIEW_RECT = "ThumbnailViewRect";
     private final static String KEY_PRE_VIDEO_TIME = "PreVideoTime";
     private final static String KEY_VIDEO_BITRATE = "VideoBitrate";
     //随手拍地址
@@ -45,7 +46,7 @@ public class DvrConfig {
         }
     }
 
-    public static String getTakePhontPath() {
+    public static String getTakePhotoPath() {
         String path = PathUtlis.getRootDirectory() + TAKE_PHOTOS;
         File file = new File(path);
         if (!file.exists()) {
@@ -53,7 +54,7 @@ public class DvrConfig {
         }
         SimpleDateFormat timeFormate = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_ssss");
         String fileName = "/" + timeFormate.format(new Date(System.currentTimeMillis())) + ".jpg";
-        Log.d(TAG, "=getTakePhontPath.fileName=" + fileName);
+        Log.d(TAG, "=getTakePhotoPath.fileName=" + fileName);
         return path + fileName;
     }
 
@@ -66,8 +67,8 @@ public class DvrConfig {
         }
         SimpleDateFormat timeFormate = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_ssss");
         String fileName = "/" + timeFormate.format(new Date(System.currentTimeMillis())) + ".mp4";
-        Log.d(TAG, "=getTakePhontPath.fileName=" + fileName);
-        return path + fileName;
+        Log.d(TAG, "=getTakeVideoPath.fileName=" + fileName);
+        return path;
     }
 
     @Deprecated
@@ -239,6 +240,24 @@ public class DvrConfig {
         SharedPreferences sp = mContext.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putString(KEY_THUMBNAIL_VIEW_RECT, val).commit();
         Log.d(TAG, "DvrConfig getThumbnailViewRect: " + val);
+    }
+
+    public static void getPipThumbnailViewRect(int[] size) {
+        String defval = mContext.getResources().getString(R.string.default_pip_thumbnail_view_rect);
+        SharedPreferences sp = mContext.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
+        String val = sp.getString(KEY_PIP_THUMBNAIL_VIEW_RECT, defval);
+        String[] rect = val.split(",");
+        for (int i = 0; i < 4; i++) {
+            size[i] = Integer.parseInt(rect[i]);
+        }
+        Log.d(TAG, "DvrConfig getPipThumbnailViewRect: " + val);
+    }
+
+    public static void setPipThumbnailViewRect(int[] size) {
+        String val = String.format("%d,%d,%d,%d", size[0], size[1], size[2], size[3]);
+        SharedPreferences sp = mContext.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
+        sp.edit().putString(KEY_PIP_THUMBNAIL_VIEW_RECT, val).commit();
+        Log.d(TAG, "DvrConfig setPipThumbnailViewRect: " + val);
     }
 
     public static int getPreVideoTime() {

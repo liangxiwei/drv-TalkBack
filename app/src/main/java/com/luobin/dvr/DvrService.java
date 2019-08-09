@@ -464,7 +464,7 @@ public class DvrService extends Service {
                     mHandler.sendEmptyMessageDelayed(MSG_START_PIP_VIDEO, 1000);
                 }
             }
-            mCurVideoName = mPath + "/" + newFileName(true);
+            mCurVideoName = mPath + "/" + pipFileName();
             Log.d(TAG, "startPipVideoRecord " + mCurVideoName);
             mDvr.startRecord(mCurVideoName, false);
             mHandler.removeMessages(MSG_START_PIP_VIDEO);
@@ -656,6 +656,15 @@ public class DvrService extends Service {
             setLastIndex(lastindex);
             return file;
         }
+
+        /*
+         * video file format: 2019_08_07_15_23_55_0055.mp4
+         */
+        public String pipFileName() {
+            SimpleDateFormat timeFormate = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_ssss");
+            String fileName = "/" + timeFormate.format(new Date(System.currentTimeMillis())) + ".mp4";
+            return fileName;
+        }
         
         public int getLastIndex() {
             SharedPreferences sp = DvrService.this.getApplicationContext().getSharedPreferences("Dvr", Context.MODE_PRIVATE);
@@ -818,6 +827,12 @@ public class DvrService extends Service {
             } else if ("erobbing.video_record_test".equals(intent.getAction())) {
                 mPipHandler.sendEmptyMessage(MSG_STOP_PIP_RECORD);
                 mPipHandler.sendEmptyMessageDelayed(MSG_START_PIP_RECORD, 100);
+            } else if ("erobbing.firstactivity_test".equals(intent.getAction())) {
+                try {
+                    mServiceBinder.hide();
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
             }
         }
     };
@@ -838,6 +853,7 @@ public class DvrService extends Service {
         intentFilter.addAction("erobbing.take_photo_test");
         intentFilter.addAction("erobbing.pip_mode_test");
         intentFilter.addAction("erobbing.video_record_test");
+        intentFilter.addAction("erobbing.firstactivity_test");
         registerReceiver(shutDownReceiver,intentFilter);
         DvrConfig.init(getApplicationContext());
         if (mImpl == null) {
@@ -1008,6 +1024,17 @@ public class DvrService extends Service {
             e.printStackTrace();
         }
 //        RESClient.getInstance().updateSurfaceView(rect[0], rect[1], rect[2], rect[3]);
+    }
+
+    public void startPipThumbnailPreview() {
+        int[] rect = new int[4];
+        Log.d(TAG, "startThumbnailPreview");
+        DvrConfig.getPipThumbnailViewRect(rect);
+        try {
+            mImpl.show(rect[0], rect[1], rect[2], rect[3]);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void show(int x, int y, int w, int h){
@@ -1419,7 +1446,7 @@ public class DvrService extends Service {
     public void takePhoto(){
         if (mServiceBinder != null){
             try {
-                mServiceBinder.takePhoto(DvrConfig.getTakePhontPath());
+                mServiceBinder.takePhoto(DvrConfig.getTakePhotoPath());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

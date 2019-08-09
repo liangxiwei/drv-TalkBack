@@ -4782,6 +4782,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         pauseIs = false;
         GlobalStatus.setIsFirstPause(false);
         ChatManager.getInstance().setIsFinishing(false);
+        SharedPreferencesUtils.put(this, "firstactivity_ontop", true);
         super.onResume();
     }
 
@@ -4942,6 +4943,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         shareSuceess();
 
         ChatManager.getInstance().hideView();
+        SharedPreferencesUtils.put(this, "firstactivity_ontop", false);
         super.onPause();
     }
 
