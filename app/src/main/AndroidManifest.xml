@@ -441,6 +441,26 @@
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="landscape" />
+        <activity
+            android:name="com.luobin.ui.trajectory.TrajectoryOneActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.luobin.ui.trajectory.QueryActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.luobin.ui.trajectory.CloudTrajectoryActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.luobin.ui.trajectory.TrajectoryDownActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.luobin.ui.trajectory.TrackRecordingActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

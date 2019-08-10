@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/nocolor">
+
+        <ImageView
+            android:id="@+id/imgHead"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_centerVertical="true" />
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_toRightOf="@+id/imgHead"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:text="本机菅"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="119-111--1111"
+                android:textColor="@color/white"
+                android:textSize="9dp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvContext"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toLeftOf="@+id/cbItem"
+            android:layout_toRightOf="@id/ll"
+            android:gravity="center|left"
+            android:maxLines="2"
+            android:text="楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN1"
+            android:textColor="@color/white"
+            android:textSize="13dp" />
+
+
+        <CheckBox
+            android:id="@+id/cbItem"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:text="" />
+    </RelativeLayout>
+
+
+</LinearLayout>

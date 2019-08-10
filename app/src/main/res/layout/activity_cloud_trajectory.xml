@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#002c70"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/xbg_rect_panel"
+        android:orientation="horizontal">
+
+        <com.luobin.widget.ActionBarDataView2
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/rlSearch"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_toLeftOf="@+id/btnBack"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/img"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/search" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/img"
+                    android:layout_marginTop="5dp"
+                    android:text="轨迹查询"
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_panel_setting"
+                android:drawableLeft="@mipmap/setting_back_icon"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="返回"
+                android:textColor="@color/text_color_90white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/xbg_rect_panel"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/my"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tvMyShare"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="我的分享"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tvMyDown"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="我的下载"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@+id/my">
+
+            <TextView
+                android:id="@+id/tvDel"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_panel_setting"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
+
+
+            <TextView
+                android:id="@+id/tvMap"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toLeftOf="@+id/tvDel"
+                android:background="@drawable/bg_panel_setting"
+                android:gravity="center"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:text="地图显示"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tvSend"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toLeftOf="@+id/tvMap"
+                android:background="@drawable/bg_panel_setting"
+                android:gravity="center"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:text="发送朋友"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tvShare"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toLeftOf="@+id/tvSend"
+                android:background="@drawable/bg_panel_setting"
+                android:gravity="center"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:text="云分享"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/text"
+            android:layout_marginStart="37dp"
+            android:background="@color/gray" />
+
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvSure"
+            android:layout_below="@+id/line" />
+
+
+        <TextView
+            android:id="@+id/tvSure"
+            android:layout_width="80dp"
+            android:layout_height="38dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_panel_setting"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
