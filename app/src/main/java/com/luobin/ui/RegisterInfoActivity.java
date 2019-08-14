@@ -14,6 +14,7 @@ import android.filterfw.io.TextGraphReader;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -335,10 +336,9 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         }
 
 
-
-
-
-        waitDialog();
+        if (!"LB1822".equals(Build.PRODUCT)) {
+            waitDialog();
+        }
         initView();
         initData();
 
@@ -1115,7 +1115,9 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             Log.w("network", "当前没有网络（请检查网络是否连接）");
             return;
         }
-        dialog.show();
+        if (dialog != null) {
+            dialog.show();
+        }
         ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
         MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdGetMyInfo.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
