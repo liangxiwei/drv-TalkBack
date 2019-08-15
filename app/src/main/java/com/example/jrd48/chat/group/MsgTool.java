@@ -89,9 +89,9 @@ public class MsgTool {
         deleteDirectory(rootAddress);
         File file = new File(rootAddress);
         if (file.exists()) {
-            Log.i("jrdchat", "删除好像失败了");
+            Log.i("jrdchat", "deleteTeamMsg-删除好像失败了");
         } else {
-            Log.i("jrdchat", "删除成功了");
+            Log.i("jrdchat", "deleteTeamMsg-删除成功了");
         }
     }
 
@@ -111,9 +111,9 @@ public class MsgTool {
         deleteDirectory(rootAddress);
         File file = new File(rootAddress);
         if (file.exists()) {
-            Log.i("jrdchat", "删除好像失败了");
+            Log.i("jrdchat", "deleteTeam_OnlyMsg-删除好像失败了");
         } else {
-            Log.i("jrdchat", "删除成功了");
+            Log.i("jrdchat", "deleteTeam_OnlyMsg-删除成功了");
         }
     }
 
@@ -140,9 +140,9 @@ public class MsgTool {
         deleteDirectory(rootAddress);
         File file = new File(rootAddress);
         if (file.exists()) {
-            Log.i("jrdchat", "删除好像失败了");
+            Log.i("jrdchat", "deleteFriendsMsg-删除好像失败了");
         } else {
-            Log.i("jrdchat", "删除成功了");
+            Log.i("jrdchat", "deleteFriendsMsg-删除成功了");
         }
     }
 
@@ -162,9 +162,9 @@ public class MsgTool {
         deleteDirectory(rootAddress);
         File file = new File(rootAddress);
         if (file.exists()) {
-            Log.i("jrdchat", "删除好像失败了");
+            Log.i("jrdchat", "deleteFriends_OnlyMsg-删除好像失败了");
         } else {
-            Log.i("jrdchat", "删除成功了");
+            Log.i("jrdchat", "deleteFriends_OnlyMsg-删除成功了");
         }
     }
 

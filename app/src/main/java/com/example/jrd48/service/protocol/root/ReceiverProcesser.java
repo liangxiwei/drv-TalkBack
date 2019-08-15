@@ -254,7 +254,8 @@ public class ReceiverProcesser extends CommonProcesser {
                         long joinTeamId = -1;
                         String teamName = "";
                         TeamInfo teamInfo = null ;
-                        if (groupId == 0 || (resp.getMsgContent().toStringUtf8().equals(myPhone) && resp.getMsgType() == ProtoMessage.MsgType.mtLeaveTeam_VALUE)) {
+                        //if (groupId == 0 || (resp.getMsgContent().toStringUtf8().equals(myPhone) && resp.getMsgType() == ProtoMessage.MsgType.mtLeaveTeam_VALUE)) {
+                        if (resp.getMsgContent().toStringUtf8().equals(myPhone) && resp.getMsgType() == ProtoMessage.MsgType.mtLeaveTeam_VALUE) {
                             try {
                                 if (groupId == 0) {
                                     groupIdTemp = Long.valueOf(resp.getMsgContent().toStringUtf8());

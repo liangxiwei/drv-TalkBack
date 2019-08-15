@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -182,7 +183,9 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
     private Runnable mShowProgress = new Runnable() {
         @Override
         public void run() {
-            dialog.show();
+            if (!"LB1822".equals(Build.PRODUCT)) {
+                dialog.show();
+            }
         }
     };
 
