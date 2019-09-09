@@ -50,6 +50,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     public static final int FRAGMENT_POSITION_MANS = 1;
     private int fragmentPostion = FRAGMENT_POSITION_GROUP;
     Button btnChange;
+    Button btnReturn;
     BadgeView badgeView;
     NotifyFriendBroadcast mNotifyFriendBroadcast;
 
@@ -62,6 +63,8 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         actionbarMessage.setOnClickListener(this);
         btnChange = (Button) findViewById(R.id.btn_change);
         btnChange.setOnClickListener(this);
+        btnReturn = (Button) findViewById(R.id.btn_return);
+        btnReturn.setOnClickListener(this);
         actionbarAdd = (LinearLayout) findViewById(R.id.actionbar_add);
         actionbarAdd.setOnClickListener(this);
         actionbarSearch = (LinearLayout) findViewById(R.id.actionbar_search);
@@ -156,12 +159,15 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
                 //TODO 添加群组
                 Intent addIntent = new Intent(context, CreateGroupActivity.class);
                 startActivity(addIntent);
-
                 break;
 
             case R.id.actionbar_search:
                 //TODO 搜索
                 startActivity(new Intent(this, TalkbackSearchActivity.class));
+                break;
+
+            case R.id.btn_return:
+                super.onBackPressed();
                 break;
 
             case R.id.btn_change:

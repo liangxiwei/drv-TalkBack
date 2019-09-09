@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,7 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
+import java.util.List;
 import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.BaseActivity;
 import com.example.jrd48.chat.MainActivity;
@@ -117,6 +119,16 @@ public class CreateGroupActivity extends BaseDialogActivity {
             ToastR.setToastLong(this, "群描述信息输入过长（最大只能设置10个字符）");
             return;
         }
+		List<TeamInfo> teamInfos = GlobalStatus.getTeamsInfoList();
+		if (teamInfos != null) {
+			for (int i = 0; i < teamInfos.size(); i ++) {
+                TeamInfo info = teamInfos.get(i);
+			    if (TextUtils.equals(info.getTeamName(), groupName)) {
+                    ToastR.setToastLong(this, "群组名字已经使用，请重新输入");
+                    return;
+                }
+			}
+	    }
 //        if (groupDescribe.length() <= 0) {
 //            ToastR.setToast(this, "请输入群描述信息");
 //            return;

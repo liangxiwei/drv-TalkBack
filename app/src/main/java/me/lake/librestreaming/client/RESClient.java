@@ -491,7 +491,7 @@ public class RESClient {
                 if (errno == 9) {
                     resClient.stopStreaming();
                     resClient.startStreaming();
-//            Toast.makeText(activity, "errno==9,restarting", Toast.LENGTH_SHORT).show();
+					// Toast.makeText(activity, "errno==9,restarting", Toast.LENGTH_SHORT).show();
                 }
             }
 

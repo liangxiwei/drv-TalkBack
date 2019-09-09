@@ -108,7 +108,7 @@ public class FriendDetailsDialogActivity extends BaseActivity {
 
     private ProgressDialog m_pDialog;
     boolean checkDialog = true;
-//    boolean showDialog = true;
+    // boolean showDialog = true;
 
     public static  int REQUST_TYPE = 0;
     public static final  int ADD_FRIEND = 1;
@@ -504,7 +504,7 @@ public class FriendDetailsDialogActivity extends BaseActivity {
             } else {
                 c.moveToFirst();
                 ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
-                builder.setPhoneNum(myPhone);
+                builder.setPhoneNum(userPhone);
                 builder.setCarID(CommonUtil.makeNotNull(c.getString(c.getColumnIndex(DBHelperFriendsList.CAR_ID))));//String
                 builder.setUserSex(c.getInt(c.getColumnIndex("userSex")));
                 builder.setCity(CommonUtil.makeNotNull(c.getString(c.getColumnIndex(DBHelperFriendsList.CITY))));//String

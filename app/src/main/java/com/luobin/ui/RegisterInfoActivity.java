@@ -405,9 +405,9 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                 selectBtnShow(selectCarIsShow);
                 break;
             case R.id.imgClose:
-                if (!checkHasEmpty()) {
+                // if (!checkHasEmpty()) {
                     finish();
-                }
+                // }
                 break;
             case R.id.imgHead:
                 if (!checkNetWork()) {
@@ -1730,9 +1730,9 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
     @Override
     public void onBackPressed() {
-        if (!checkHasEmpty()) {
+        // if (!checkHasEmpty()) {
             finish();
-        }
+        // }
     }
 
 
