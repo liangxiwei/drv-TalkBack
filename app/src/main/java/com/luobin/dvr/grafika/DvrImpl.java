@@ -930,7 +930,50 @@ public class DvrImpl extends DvrImplBase
                 mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
             }*/
             if (mUsbTextureId >= 0) {
-                switch (mCurrentVideoScreenMode) {
+                if (GlobalStatus.getDvrSwitchToPipEnable()) {
+                    switch (mCurrentVideoScreenMode) {
+                        case 0:
+                            GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                            mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                            break;
+                        case 1:
+                            GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                            mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                            break;
+                        case 2:
+                            switch (GlobalStatus.getPipMode()) {
+                                case 0:
+                                    GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                                    mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                    GLES20.glViewport(mCamPrevWidth / 2, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                    mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                    break;
+                                case 1:
+                                    GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevWidth);
+                                    mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                    GLES20.glViewport(0, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                    mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                    break;
+                                case 2:
+                                    GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevWidth);
+                                    mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                    GLES20.glViewport(mCamPrevWidth / 2, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                    mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                    break;
+                                case 3:
+                                    GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevWidth);
+                                    mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
+                                    GLES20.glViewport(0, 0, mCamPrevWidth / 2, mCamPrevHeight / 2);
+                                    mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                                    break;
+                            }
+                            break;
+                    }
+                } else {
+                    GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
+                    mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                }
+                /*switch (mCurrentVideoScreenMode) {
                     case 0:
                         GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
                         mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
@@ -967,7 +1010,7 @@ public class DvrImpl extends DvrImplBase
                                 break;
                         }
                         break;
-                }
+                }*/
             }
             /*if (mWaterMarkTextureId >= 0) {
                 setWaterMarkViewport(mCamPrevWidth, mCamPrevHeight);

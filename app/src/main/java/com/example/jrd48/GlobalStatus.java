@@ -715,6 +715,16 @@ public class GlobalStatus {
         SharedPreferencesUtils.put(MyApplication.getContext(), "pip_mode", mode);
     }
 
+    public static final String DvrSwitchToPip = Settings.System.DVR_SWITCH_TO_PIP;
+
+    public static boolean getDvrSwitchToPipEnable() {
+        return Settings.System.getInt(MyApplication.getContext().getContentResolver(), DvrSwitchToPip, 0) == 1 ? true : false;
+    }
+
+    public static void setDvrSwitchToPipEnable(boolean enable) {
+        Settings.System.putInt(MyApplication.getContext().getContentResolver(), DvrSwitchToPip, enable ? 1 : 0);
+    }
+
     public static boolean getTakingPipPhotoStatus() {
         return isTakingPipPhoto;
     }
