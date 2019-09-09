@@ -1318,16 +1318,18 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
     @SuppressLint("ClickableViewAccessibility")
     public void getIndexView(int layoutHeight) {
         height = layoutHeight / indexStr.length;
-        int size = 13;
+		//rs modified for LBCJW-13
+        int size = 11;
         if (height >= 40 ){
-            size = 13;
-        } else if (height >= 25 && height < 40){
             size = 11;
-        } else if (height >= 10 && height < 25){
+        } else if (height >= 25 && height < 40){
             size = 9;
-        } else {
+        } else if (height >= 10 && height < 25){
             size = 7;
+        } else {
+            size = 5;
         }
+		//end
 //        ToastR.setToastLong(getActivity(),height+"  "+size);
 //        Log.i("jmh","height:"+height + " size:"+size);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(

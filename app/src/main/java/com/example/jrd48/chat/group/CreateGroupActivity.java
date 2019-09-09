@@ -109,12 +109,12 @@ public class CreateGroupActivity extends BaseDialogActivity {
         if (groupName.length() <= 0) {
             ToastR.setToastLong(this, "请输入群名");
             return;
-        } else if (groupName.length() > GlobalStatus.MAX_TEXT_COUNT){
-            ToastR.setToastLong(this, "群名输入过长（最大只能设置16个字符）");
+        } else if (groupName.length() > 10/*GlobalStatus.MAX_TEXT_COUNT*/){//rs modified to 10
+            ToastR.setToastLong(this, "群名输入过长（最大只能设置10个字符）");
             return;
         }
-        if (groupDescribe.length() > GlobalStatus.MAX_TEXT_COUNT) {
-            ToastR.setToastLong(this, "群描述信息输入过长（最大只能设置16个字符）");
+        if (groupDescribe.length() > 10/*GlobalStatus.MAX_TEXT_COUNT*/) {//rs modified to 10
+            ToastR.setToastLong(this, "群描述信息输入过长（最大只能设置10个字符）");
             return;
         }
 //        if (groupDescribe.length() <= 0) {

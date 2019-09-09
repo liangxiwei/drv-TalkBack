@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:background="#1E72EA"
         android:minHeight="200dp">
 
@@ -21,7 +21,22 @@
             android:textColor="@color/text_color_90white"
             android:textSize="20sp" />
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/optionspicker"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="#1E72EA"
+            android:orientation="horizontal">
+
+            <com.contrarywind.view.WheelView
+                android:id="@+id/rvList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#1E72EA" />
+
+        </LinearLayout>
+        <!--RelativeLayout
             android:layout_toEndOf="@+id/tvTitle"
             android:layout_toStartOf="@+id/btnSure"
             android:layout_width="wrap_content"
@@ -36,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
          />
-        </RelativeLayout>
+        </RelativeLayout-->
 
         <Button
             android:id="@+id/btnSure"
