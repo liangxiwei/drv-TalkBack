@@ -1813,9 +1813,9 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 public void onCreateContextMenu(ContextMenu menu, View v,
                                                 ContextMenu.ContextMenuInfo menuInfo) {
                     menu.setHeaderIcon(R.color.white);
-                    menu.add(0, 10, 0, getName(phone));
+                    //menu.add(0, 10, 0, getName(phone));
                     //info.id得到listview中选择的条目绑定的id
-//				menu.add(0, 4, 0, "信息查询");
+					//menu.add(0, 4, 0, "信息查询");
                     if (mTMInfo.size() > 0) {
                         for (TeamMemberInfo te : mTMInfo) {
                             if (te.getUserPhone().equals(phone)) {

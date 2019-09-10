@@ -142,6 +142,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                         if (groupList.size() > 0) {
                             groupAdapter = new ContactsGroupAdapter(groupList, allMemberMap, mContext);
                             groupListView.setAdapter(groupAdapter);
+							groupListView.requestFocus();      
                             memberAdapter = new ContactsMemberAdapter(allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()), mContext);
                             memberListView.setAdapter(memberAdapter);
                             tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
@@ -164,8 +165,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                             memberAdapter.setData(new ArrayList<TeamMemberInfo>());
                             memberAdapter.notifyDataSetChanged();
                         }
-
-
                     }
                     break;
                 default:
@@ -184,7 +183,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             if (deletTeamID == -1) {
                 loadTeamListFromNet();
             } else {
-//                deleteSQLite();
+                // deleteSQLite();
                 getDBMsg();
             }
         }
@@ -237,7 +236,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 getContext().unregisterReceiver(chatStatusReceiver);
             }
         } catch (Exception e) {
-//            e.printStackTrace();
+            // e.printStackTrace();
         }
         super.onDestroy();
     }
@@ -280,7 +279,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         myPhone = getMyPhone();
         if (!run) {
             run = true;
-
             getDBMsg();
         }
     }
@@ -340,8 +338,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
-
                 if (!groupListView.isFocusable()){
+				   Log.i("TabFragmentLinkGroup", "not focusable");
                    return false;
                 }
 
@@ -380,7 +378,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             }
         });
 
-        groupListView.requestFocus();
         memberListView = (ListView) view.findViewById(R.id.lv_member);
         memberListView.setSelector(R.drawable.tab_list_item_selector);
         memberListView.setFocusable(true);
@@ -390,14 +387,10 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
                     switch (keyEvent.getKeyCode()) {
-
                         default:
                             break;
-
                     }
                 }
-
-
                 return false;
             }
         });
@@ -414,13 +407,13 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 groupList.get(groupSelectPosition).setSelect(true);
                 groupAdapter.seteData(groupList);
                 groupAdapter.notifyDataSetChanged();
-
-                List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-                memberList.get(memberSelectPosition).setSelect(false);
-                memberSelectPosition = 0;
-                memberAdapter.setData(memberList);
-                memberAdapter.notifyDataSetChanged();
-
+                if (allMemberMap.size() > 0) {
+                    List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
+                    memberList.get(memberSelectPosition).setSelect(false);
+                    memberSelectPosition = 0;
+                    memberAdapter.setData(memberList);
+                    memberAdapter.notifyDataSetChanged();
+                }
             }
         });
 
@@ -444,7 +437,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         memberListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 moveList = MOVE_MEMBER_LIST;
                 groupList.get(groupSelectPosition).setSelect(false);
                 groupAdapter.notifyDataSetChanged();
@@ -456,7 +448,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
                 memberAdapter.setData(memberList);
                 memberAdapter.notifyDataSetChanged();
-
 
                 Intent intent = new Intent(mContext, FriendDetailsDialogActivity.class);
                 Bundle bundle = new Bundle();
@@ -474,15 +465,21 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         btnAddGroupMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, SelectMemberActivity.class);
-                intent.putExtra("teamID", groupList.get(groupSelectPosition).getTeamID());
-                startActivityForResult(intent, 0);
+                if (groupList.size() == 0) {
+                    ToastR.setToast(getContext(), "咱无群组可以添加成员");
+                } else {
+                    try {
+                        Intent intent = new Intent(mContext, SelectMemberActivity.class);
+                        intent.putExtra("teamID", groupList.get(groupSelectPosition).getTeamID());
+                        startActivityForResult(intent, 0);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
-
         return view;
     }
-
 
     /**
      * 获取群组
@@ -730,10 +727,9 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 Log.i(ServiceCheckUserEvent.TAG, "get team list = 0");
                 loadTeamListFromNet();
             } else {
+				GlobalStatus.setTeamsInfoList(mTeamInfo);
                 convertViewGroupList(mTeamInfo);
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -781,9 +777,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         // 排序(实现了中英文混排)
         AllTeamPinyinComparator comparator = new AllTeamPinyinComparator(timeList);
         Collections.sort(groupList, comparator);
-
         getMembersData(groupList);
-
     }
 
     private boolean isTop(TeamInfo in) {
@@ -805,7 +799,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         new ShowTeamInfoPrompt().dialogSTeamInfo(getMyActivity(), allTeamInfos.get(id));
     }
 
-
     /**
      * 获取所有群成员
      *
@@ -813,6 +806,11 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
      */
     private void getMembersData(final List<Team> mTeamInfo) {
         allMemberMap.clear();
+		if (mTeamInfo.size() == 0) {
+			isPullRefresh = false;
+			Log.i("TabFragmentLinkGroup", "no team info");
+			return;
+		}
         for (final Team teamInfo : mTeamInfo) {
             // 如果数据库中没有，从网络获取群成员
             ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
@@ -969,25 +967,24 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                             return -1;
                         }
                     }
-//                Log.e("wsTest","id:" + contact1.getTeamID());
-//                Log.e("wsTest","time1:" + time1);
-//                Log.e("wsTest","id:" + contact2.getTeamID());
-//                Log.e("wsTest","time2:" + time2);
+                    // Log.e("wsTest","id:" + contact1.getTeamID());
+                    // Log.e("wsTest","time1:" + time1);
+                    // Log.e("wsTest","id:" + contact2.getTeamID());
+                    // Log.e("wsTest","time2:" + time2);
                 } else {
-//                Log.e("wsTest","chatTime == null");
+                    // Log.e("wsTest","chatTime == null");
                 }
             }
             String str = contact1.getLinkmanName();
             String str3 = contact2.getLinkmanName();
 
-//            String str1 = Cn2Spell.getPinYin(str);
-//            String str2 = Cn2Spell.getPinYin(str3);
+            // String str1 = Cn2Spell.getPinYin(str);
+            // String str2 = Cn2Spell.getPinYin(str3);
             String str1 = ChineseToHanYuPYTest.convertChineseToPinyin(str, false);
             String str2 = ChineseToHanYuPYTest.convertChineseToPinyin(str3, false);
-//            Log.e("wsTest", "str1:  " + str1 + "-----------------str2:  " + str2 + "   str 和 str3:   " + str + "---" + str3);
+            // Log.e("wsTest", "str1:  " + str1 + "-----------------str2:  " + str2 + "   str 和 str3:   " + str + "---" + str3);
             int flag = str1.compareTo(str2);
-//            Log.e("wsTest", "flag:" + flag);
-
+            // Log.e("wsTest", "flag:" + flag);
             return flag;
         }
     }

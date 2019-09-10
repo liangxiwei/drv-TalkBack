@@ -127,12 +127,12 @@ public class GlobalStatus {
     }
 
     public static void setPttKeyDown(boolean pttKeyDown) {
-        Log.v("wsdvr", "setPttKeyDown:" + pttKeyDown);
+        Log.v(TAG, "setPttKeyDown:" + pttKeyDown);
         GlobalStatus.pttKeyDown = pttKeyDown;
     }
 
     public synchronized static void setChatRoomMsg(ProtoMessage.ChatRoomMsg amsg, String friendPhone) {
-        Log.v("wsdvr", "old:" + singleLinkManPhone + "," + friendPhone);
+        Log.v(TAG, "old:" + singleLinkManPhone + "," + friendPhone);
         String oldman = singleLinkManPhone;
         msg = amsg.toBuilder().build();
         setOldChat(0,friendPhone,msg.getRoomID());
@@ -558,7 +558,7 @@ public class GlobalStatus {
     }
 
     public static void putCallCallStatus(String number, CallState state) {
-        Log.e("wsDvr","putCallCallStatus:" + state.toString());
+        Log.e(TAG,"putCallCallStatus:" + state.toString());
         getCallCallStatus().put(number, state);
         MyApplication.getContext().sendBroadcast(new Intent(NOTIFY_CALL_ACTION));
     }
@@ -656,7 +656,7 @@ public class GlobalStatus {
     }
 
     public static void setUsbVideo1(UsbCamera usbVideo1) {
-        Log.v("wsDvr","setUsbVideo1,"+(usbVideo1==null));
+        Log.v(TAG,"setUsbVideo1,"+(usbVideo1==null));
         GlobalStatus.usbVideo1 = usbVideo1;
     }
     public static UsbCamera getUsbVideo2() {
@@ -715,6 +715,16 @@ public class GlobalStatus {
         SharedPreferencesUtils.put(MyApplication.getContext(), "pip_mode", mode);
     }
 
+    public static final String DvrSwitchToPip = Settings.System.DVR_SWITCH_TO_PIP;
+
+    public static boolean getDvrSwitchToPipEnable() {
+        return Settings.System.getInt(MyApplication.getContext().getContentResolver(), DvrSwitchToPip, 0) == 1 ? true : false;
+    }
+
+    public static void setDvrSwitchToPipEnable(boolean enable) {
+        Settings.System.putInt(MyApplication.getContext().getContentResolver(), DvrSwitchToPip, enable ? 1 : 0);
+    }
+
     public static boolean getTakingPipPhotoStatus() {
         return isTakingPipPhoto;
     }
@@ -724,12 +734,12 @@ public class GlobalStatus {
     }
 
     public static String getCurRtmpAddr() {
-        Log.v("wsDvr","getCurRtmpAddr:" + curRtmpAddr);
+        Log.v(TAG,"getCurRtmpAddr:" + curRtmpAddr);
         return curRtmpAddr;
     }
 
     public static void setCurRtmpAddr(String curRtmpAddr) {
-        Log.v("wsDvr","setCurRtmpAddr:" + curRtmpAddr);
+        Log.v(TAG,"setCurRtmpAddr:" + curRtmpAddr);
         GlobalStatus.curRtmpAddr = curRtmpAddr;
     }
 
@@ -881,12 +891,12 @@ public class GlobalStatus {
         if(oldPhone == null){
             oldPhone = (String) SharedPreferencesUtils.get(MyApplication.getContext(),"oldPhone","");
         }
-        Log.v("wsDvr","getOldPhone:" + oldPhone);
+        Log.v(TAG,"getOldPhone:" + oldPhone);
         return oldPhone;
     }
 
     public static void setOldChat(long oldTeam,String oldPhone, long oldRoom) {
-        Log.v("wsDvr","oldTeam:" + oldTeam + ",oldPhone:" + oldPhone);
+        Log.v(TAG,"oldTeam:" + oldTeam + ",oldPhone:" + oldPhone);
         GlobalStatus.oldTeam = oldTeam;
         GlobalStatus.oldPhone = oldPhone;
         GlobalStatus.oldRoom = oldRoom;
@@ -904,25 +914,25 @@ public class GlobalStatus {
         if(oldTeam == -1){
             oldTeam = (Long) SharedPreferencesUtils.get(MyApplication.getContext(),"oldTeam", (Long)0L);
         }
-        Log.v("wsDvr","getOldTeam:" + oldTeam);
+        Log.v(TAG,"getOldTeam:" + oldTeam);
         return oldTeam;
     }
     public static long getOldRoom() {
         if(oldRoom == -1){
             oldRoom = (Long) SharedPreferencesUtils.get(MyApplication.getContext(),"oldRoom",(Long)0L);
         }
-        Log.v("wsDvr","oldRoom:" + oldRoom);
+        Log.v(TAG,"oldRoom:" + oldRoom);
         return oldRoom;
     }
     /**
      * 重新恢复对话*/
 
     public static void setOldChatRoom(long oldChat) {
-        Log.v("wsDvr","setOldChatRoom oldChat:" + oldChat);
+        Log.v(TAG,"setOldChatRoom oldChat:" + oldChat);
         SharedPreferencesUtils.put(MyApplication.getContext(),"oldChatRoom",oldChat);
     }
     public static long getOldChatRoom() {
-        Log.v("wsDvr","getOldChatRoom");
+        Log.v(TAG,"getOldChatRoom");
         return (long)SharedPreferencesUtils.get(MyApplication.getContext(),"oldChatRoom",(Long)0L);
     }
     public static String getCurPlayAddr() {
@@ -938,12 +948,12 @@ public class GlobalStatus {
     }
 
     public static void setTempChat(String tempChat) {
-        Log.v("wsDvr","setTempChat:" + tempChat);
+        Log.v(TAG,"setTempChat:" + tempChat);
         GlobalStatus.tempChat = tempChat;
     }
 
     public static boolean isIsFirstPause() {
-        Log.e("wsDvr","isFirstPause:" + isFirstPause);
+        Log.e(TAG,"isFirstPause:" + isFirstPause);
         return isFirstPause;
     }
 
@@ -968,7 +978,7 @@ public class GlobalStatus {
     }
 
     public static void findError(String str){
-        Log.e("wsDvr","findError:" + str);
+        Log.e(TAG,"findError:" + str);
         DBMyLogHelper.insertLog(MyApplication.getContext(), LogCode.BUG, str, null);
         DvrService dvrService = RESClient.getInstance().getDvrService();
         if(dvrService != null) {

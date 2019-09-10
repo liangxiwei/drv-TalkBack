@@ -169,7 +169,7 @@
     <string name="button_text_i_know">I Know.</string>
 
     <string name="toast_tip">提示</string>
-    <string name="toast_logout">确认退出账号吗？</string>
+    <string name="toast_logout">确认退出当前账号吗？</string>
 
     <!-- input login -->
     <string name="edittext_input_login_phone_hint">Please input phone number</string>

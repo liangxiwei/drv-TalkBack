@@ -75,11 +75,11 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
     private PullToRefreshListView mPullRefreshListView;
     ListView listView;
     private FriendRequestAdapter adapter;
-    //    private ImageView mImageView;
+    // private ImageView mImageView;
     private Handler mHandler = new Handler();
-    //    private RelativeLayout mRelativeLayout;
-//    private View mView;
-//    private EditText etSearch;
+    // private RelativeLayout mRelativeLayout;
+	// private View mView;
+	// private EditText etSearch;
     private TextView tvNotification;
     Button btnCreateGroup;
     String getEditText;

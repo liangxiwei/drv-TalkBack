@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/simple_background_selector"
             android:textSize="@dimen/normal_text_size"
-            android:text="@string/accept" />
+            android:text="@string/accept"
+            android:textColor="@color/black"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/simple_background_selector"
             android:textSize="@dimen/normal_text_size"
-            android:text="@string/refuse" />
+            android:text="@string/refuse"
+            android:textColor="@color/black" />
     </RelativeLayout>
 </LinearLayout>

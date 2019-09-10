@@ -47,7 +47,13 @@ public class DvrConfig {
     }
 
     public static String getTakePhotoPath() {
-        String path = PathUtlis.getRootDirectory() + TAKE_PHOTOS;
+        String path;
+        String pathSD = DvrConfig.getStoragePath(MyApplication.getContext(), true);
+        if (pathSD != null) {
+            path = pathSD + TAKE_PHOTOS;
+        } else {
+            path = PathUtlis.getRootDirectory() + TAKE_PHOTOS;
+        }
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
@@ -59,7 +65,13 @@ public class DvrConfig {
     }
 
     public static String getTakeVideoPath() {
-        String path = PathUtlis.getRootDirectory() + TAKE_VIDEOS;
+        String path;
+        String pathSD = DvrConfig.getStoragePath(MyApplication.getContext(), true);
+        if (pathSD != null) {
+            path = pathSD + TAKE_VIDEOS;
+        } else {
+            path = PathUtlis.getRootDirectory() + TAKE_VIDEOS;
+        }
 
         File file = new File(path);
         if (!file.exists()) {

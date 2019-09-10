@@ -21,7 +21,6 @@
         android:background="@drawable/bg_panel_relative_layout"
        >
 
-
         <Button
             android:id="@+id/btn_ok"
             android:layout_width="80dp"
@@ -30,8 +29,9 @@
             android:textColor="@color/white"
             android:text="邀请"
             android:layout_alignParentBottom="true"
-           android:layout_centerHorizontal="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
+            android:visibility="gone"
             />
 
 
@@ -42,9 +42,19 @@
             android:scrollbars="none"
             android:divider="@null"
             android:layout_marginBottom="65dp"
+            android:visibility="gone"
             />
 
 
+		<TextView
+	        android:id="@+id/loading_member"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:gravity="center"
+	        android:textSize="@dimen/normal_text_size"
+	        android:textColor="@color/colorWirte"
+	        android:text="正在加载成员列表..."
+	        />
     </RelativeLayout>
 
 

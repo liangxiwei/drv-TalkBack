@@ -176,7 +176,7 @@ public class TSConditionActivity extends BaseDialogActivity implements
             case R.id.btnAge:
 
                 InputTextDialog inputTextDialog = new InputTextDialog(context, "年纪",
-                        InputTextDialog.Type.NUMBER, new InputTextDialog.GetPasswordListener() {
+                        InputTextDialog.Type.NUMBER, 2/*limit length*/, new InputTextDialog.GetPasswordListener() {
                     @Override
                     public void getPassword(String password) {
                         tvAge.setText(password);
@@ -193,7 +193,9 @@ public class TSConditionActivity extends BaseDialogActivity implements
                 selectTypeDialog(1, DIALOG_TYPE.INDUSTRY);
                 break;
             case R.id.btnLikeGood:
-                selectInterestDialog();
+				//rs added for interst
+				selectTypeDialog(1, DIALOG_TYPE.INTEREST);
+                //selectInterestDialog();
                 break;
             case R.id.btnSearch:
                 //TODO 搜索
@@ -322,6 +324,8 @@ public class TSConditionActivity extends BaseDialogActivity implements
         ADDRESS,
         //行业
         INDUSTRY,
+        //兴趣
+        INTEREST,
     }
 
     private DIALOG_TYPE type;
@@ -376,7 +380,9 @@ public class TSConditionActivity extends BaseDialogActivity implements
                     //TODO 行业 String X =one;
 
                     tvIndustry.setText(tx);
-                }
+                }else if(type == DIALOG_TYPE.INTEREST){
+					tvLikeGood.setText(tx);
+				}
 
 
             }
@@ -391,7 +397,9 @@ public class TSConditionActivity extends BaseDialogActivity implements
                     tvTitle.setText("所在地");
                 } else if (type == DIALOG_TYPE.INDUSTRY) {
                     tvTitle.setText("行业");
-                }
+                } else if(type == DIALOG_TYPE.INTEREST){
+                    tvTitle.setText("兴趣爱好");
+				}
 
                 Button btnSure = (Button) v.findViewById(R.id.btnSure);
                 btnSure.setOnClickListener(new View.OnClickListener() {
@@ -413,16 +421,31 @@ public class TSConditionActivity extends BaseDialogActivity implements
                 .build();
 
         if (num == 1) {
-            //TODO 行业假数据 测试数据坑死爹
             options1Items = new ArrayList<>();
-            String[] testData = {"java开发-假数据", "C开发-假数据",
-                    "产品经理-假数据", "android开发-假数据"
-                    , "ios开发-假数据", "RN开发-假数据"
-                    , "前端开发-假数据"};
-            for (String a : Arrays.asList(testData)) {
-                options1Items.add(a);
-            }
+			//rs added for real data
+            String[] industryData = {"计算机/互联网/通信", "生产/工艺/制造",
+                    "医疗/护理/制药", "金融/银行/投资/保险", 
+                    "商业/服务业/个体经营", "文化/广告/传媒",
+                    "娱乐/艺术/表演","律师/法务",
+                    "教育/培训","公务员/行政/事业单位",
+                    "模特","空姐",
+                    "学生","其他行业"};
+		    String[] interestData = {"汽车", "旅游", "动漫", "影视",
+            "时尚", "音乐", "体育", "美食",
+            "摄影", "宠物", "钓鱼", "工艺",
+            "手工", "游戏"};
+		    if(type == DIALOG_TYPE.INDUSTRY){
+	            for (String a : Arrays.asList(industryData)) {
+	                options1Items.add(a);
+	            }
+		    }else if(type == DIALOG_TYPE.INTEREST){
+					for (String a : Arrays.asList(interestData)) {
+						options1Items.add(a);
+					}
 
+			}
+			//end
+			
             //二级选择器*/
             pvOptions.setPicker(options1Items);
         } else if (num == 2) {

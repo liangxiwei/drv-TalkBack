@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 
 import com.example.jrd48.chat.BaseActivity;
 import com.example.jrd48.chat.GlobalImg;
@@ -47,6 +50,11 @@ public class SelectMemberActivity extends BaseDialogActivity {
     ImageView imgClose;
     long teamID;
     public static final int APPLYTEAM = 100102;
+
+
+	TextView tvLoadingMember = null;
+	Button buttonInvite = null;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,8 +82,8 @@ public class SelectMemberActivity extends BaseDialogActivity {
                 finish();
             }
         });
-        ok = (Button) findViewById(R.id.btn_ok);
-        ok.setOnClickListener(new View.OnClickListener() {
+        buttonInvite = (Button) findViewById(R.id.btn_ok);
+        buttonInvite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (adapter != null){
@@ -83,6 +91,8 @@ public class SelectMemberActivity extends BaseDialogActivity {
                 }
             }
         });
+
+        tvLoadingMember = (TextView)findViewById(R.id.loading_member);
     }
 
     private void initData(){
@@ -99,6 +109,7 @@ public class SelectMemberActivity extends BaseDialogActivity {
         if (!ConnUtil.isConnected(context)) {
             Log.w("drv", "没有网络");
             OnlineSetTool.removeAll();
+		    tvLoadingMember.setText("无网络");
             return;
         }
         ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
@@ -110,6 +121,7 @@ public class SelectMemberActivity extends BaseDialogActivity {
             @Override
             public void onTimeout() {
                 ToastR.setToast(context, "连接超时");
+				tvLoadingMember.setText("获取成员列表超时，请重试");
             }
 
             @Override
@@ -117,6 +129,11 @@ public class SelectMemberActivity extends BaseDialogActivity {
 
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
+                        //rs added for loading member
+                        tvLoadingMember.setVisibility(View.GONE);
+						selectMemberListView.setVisibility(View.VISIBLE);
+						buttonInvite.setVisibility(View.VISIBLE);
+						//end
                     try {
                         GlobalImg.clear();
                         DBManagerFriendsList db = new DBManagerFriendsList(context, DBTableName.getTableName(context, DBHelperFriendsList.NAME));
@@ -144,6 +161,7 @@ public class SelectMemberActivity extends BaseDialogActivity {
                     }
                 } else {
                     fail(i.getIntExtra("error_code", -1));
+					tvLoadingMember.setText("获取成员列表失败，请重试");
                 }
             }
         });

@@ -231,6 +231,7 @@
                 android:background="@drawable/bg_button"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
+                android:visibility="gone"
                 />
             <RelativeLayout
                 android:layout_width="80dp"

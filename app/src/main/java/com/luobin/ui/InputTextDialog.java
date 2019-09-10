@@ -14,6 +14,9 @@ import com.example.jrd48.chat.ToastR;
 import com.luobin.dvr.R;
 import com.luobin.widget.BaseDialog;
 
+import android.text.InputFilter;
+
+
 
 public class InputTextDialog extends BaseDialog {
 
@@ -26,6 +29,8 @@ public class InputTextDialog extends BaseDialog {
 
 
     private Type type;
+
+	private int inputLengthLimit = 0;
 
 
     public enum Type {
@@ -45,6 +50,18 @@ public class InputTextDialog extends BaseDialog {
         this.titleName = titleName;
         this.type = type;
     }
+
+	//rs added for length limit
+	public InputTextDialog(Context context, String titleName, Type type, int limit,
+                           GetPasswordListener sureLisitener) {
+        super(context);
+        this.sureLisitener = sureLisitener;
+        this.titleName = titleName;
+        this.type = type;
+		this.inputLengthLimit = limit;
+    }
+
+	//end
 
     protected InputTextDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
@@ -75,6 +92,13 @@ public class InputTextDialog extends BaseDialog {
         } else if (type == Type.TEXT) {
             editPassword.setInputType(InputType.TYPE_CLASS_TEXT);
         }
+		
+       //rs added for limit lenth
+		if(inputLengthLimit > 0){    		
+			editPassword.setFilters(new InputFilter[]{new InputFilter.LengthFilter(inputLengthLimit)});
+		}
+		//end
+		
         editPassword.setHint("请输入" + titleName);
 
         passwordCancel.setOnClickListener(new View.OnClickListener() {

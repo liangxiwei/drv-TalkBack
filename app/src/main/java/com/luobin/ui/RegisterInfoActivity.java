@@ -105,7 +105,8 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     public static final String Birthday = "Birthday";//出生日期
     public static final String Location = "Location";//所在地
     public static final String Hometown = "Hometown";//家乡
-    public static final String Industry = "Industry";//行业
+    public static final String Industry = "Industry";//行业   
+    public static final String Interest = "interest";//兴趣
 
     /**
      * 调用相机
@@ -404,9 +405,9 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                 selectBtnShow(selectCarIsShow);
                 break;
             case R.id.imgClose:
-                if (!checkHasEmpty()) {
+                // if (!checkHasEmpty()) {
                     finish();
-                }
+                // }
                 break;
             case R.id.imgHead:
                 if (!checkNetWork()) {
@@ -461,7 +462,8 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                 selectTypeDialog(1, DIALOG_TYPE.INDUSTRY);
                 break;
             case R.id.btnInterest:
-                selectInterestDialog();
+                //selectInterestDialog();
+                selectTypeDialog(1, DIALOG_TYPE.INTEREST);
                 break;
             default:
                 break;
@@ -1195,6 +1197,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
          tvBirth.setText((String)SharedPreferencesUtils.get(context,Birthday,""));
          tvLocation.setText((String)SharedPreferencesUtils.get(context,Location,""));
          tvHome.setText((String)SharedPreferencesUtils.get(context,Hometown,""));
+		 tvInterest.setText((String)SharedPreferencesUtils.get(context,Interest,""));
 
 
     }
@@ -1448,6 +1451,8 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         INDUSTRY,
         //家乡
         HOME,
+        //兴趣
+        INTEREST,
 
     }
 
@@ -1502,7 +1507,10 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                 } else if (type == DIALOG_TYPE.HOME) {
                     tvHome.setText(tx);
                     SharedPreferencesUtils.put(context,Hometown,tx);
-                }
+                } else if(type == DIALOG_TYPE.INTEREST){
+					tvInterest.setText(tx);
+					SharedPreferencesUtils.put(context,Interest,tx);
+				}
 
 
             }
@@ -1519,6 +1527,8 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                     tvTitle.setText("行业");
                 } else if (type == DIALOG_TYPE.HOME) {
                     tvTitle.setText("家乡");
+                } else if (type == DIALOG_TYPE.INTEREST) {
+                    tvTitle.setText("兴趣爱好");
                 }
 
                 Button btnSure = (Button) v.findViewById(R.id.btnSure);
@@ -1541,16 +1551,32 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                 .build();
 
         if (num == 1) {
-            //TODO 行业假数据 测试数据坑死爹
             options1Items = new ArrayList<>();
-            String[] testData =  {"java开发-假数据","C开发-假数据",
-                    "产品经理-假数据","android开发-假数据"
-                    ,"ios开发-假数据","RN开发-假数据"
-                    ,"前端开发-假数据"};
-            for (String a :Arrays.asList(testData)){
-                options1Items.add(a);
-            }
-
+			//rs added for real data
+			//rs added for real data
+			String[] industryData = {"计算机/互联网/通信", "生产/工艺/制造",
+					"医疗/护理/制药", "金融/银行/投资/保险", 
+					"商业/服务业/个体经营", "文化/广告/传媒",
+					"娱乐/艺术/表演","律师/法务",
+					"教育/培训","公务员/行政/事业单位",
+					"模特","空姐",
+					"学生","其他行业"};
+			String[] interestData = {"汽车", "旅游", "动漫", "影视",
+			"时尚", "音乐", "体育", "美食",
+			"摄影", "宠物", "钓鱼", "工艺",
+			"手工", "游戏"};
+			if(type == DIALOG_TYPE.INDUSTRY){
+				for (String a : Arrays.asList(industryData)) {
+					options1Items.add(a);
+				}
+			}else if(type == DIALOG_TYPE.INTEREST){
+					for (String a : Arrays.asList(interestData)) {
+						options1Items.add(a);
+					}
+			
+			}
+			//end
+			
             //二级选择器*/
             pvOptions.setPicker(options1Items);
         } else if (num == 2) {
@@ -1642,6 +1668,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     /**
      * 兴趣爱好
      */
+     /*
     private void selectInterestDialog() {
         interestList = new ArrayList<>();
         for (int a = 0; a < Arrays.asList(list).size(); a++) {
@@ -1662,6 +1689,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         selectInterestDialog.show();
 
     }
+    */
 
 //    private boolean checkHasEmpty(){
 //        boolean isEmpty = false;
@@ -1702,9 +1730,9 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
     @Override
     public void onBackPressed() {
-        if (!checkHasEmpty()) {
+        // if (!checkHasEmpty()) {
             finish();
-        }
+        // }
     }
 
 

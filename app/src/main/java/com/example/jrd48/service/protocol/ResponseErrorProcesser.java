@@ -110,6 +110,9 @@ public class ResponseErrorProcesser {
                 case 1015:
                     ToastR.setToast(context, "添加失败，已经是群成员了");
                     break;
+				case 1124:
+					ToastR.setToast(context, "操作太快");
+                    break;
                 default:
                     ToastR.setToast(context, "操作失败：" + errCode);
                     break;

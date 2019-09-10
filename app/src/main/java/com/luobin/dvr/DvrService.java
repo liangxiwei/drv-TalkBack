@@ -80,6 +80,7 @@ public class DvrService extends Service {
     private final int MSG_START_PIP_RECORD = 2;
     private final int MSG_STOP_PIP_RECORD = 3;
     private final int MSG_TAKE_PHOTO = 4;
+    private final int MSG_DVR_SWITCH_VIDEO = 5;
     public static final String DVR_FULLSCREEN_SHOW = "dvr_fullscreen_show";
     private SmartMirrorsObserver mSmartMirrorsObserver;
     private static final boolean pipVideoModeEnable = true;
@@ -106,12 +107,16 @@ public class DvrService extends Service {
             super.handleMessage(msg);
             switch (msg.what) {
                 case MSG_START_PIP_RECORD:
+                    Settings.System.putInt(getContentResolver(), "dvr_switch_to_pip", 1);
                     startCircleRecord();
                     break;
                 case MSG_STOP_PIP_RECORD:
                     stopRecord();
                     break;
                 case MSG_TAKE_PHOTO:
+                    break;
+                case MSG_DVR_SWITCH_VIDEO:
+                    mCircleRecordHelper.switchVideo();
                     break;
             }
         }
@@ -404,7 +409,8 @@ public class DvrService extends Service {
             mDvr = dvr;
             mPath = new String(path);
             mIntervalms = intervalms;
-            if (pipVideoModeEnable) {
+            //if (pipVideoModeEnable) {
+            if (GlobalStatus.getDvrSwitchToPipEnable()) {
                 mHandler.sendEmptyMessage(MSG_START_PIP_VIDEO);
             } else {
                 mHandler.sendEmptyMessage(MSG_SWITCH_NEW_VIDEO);
@@ -427,6 +433,7 @@ public class DvrService extends Service {
                 return true;
             } else if (msg.what == MSG_STOP_PIP_VIDEO) {
                 stopRecord();
+                Settings.System.putInt(getContentResolver(), "dvr_switch_to_pip", 0);
                 ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.video_capture_succeed));
                 return true;
             }
@@ -833,6 +840,13 @@ public class DvrService extends Service {
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+            } else if ("erobbing.video_record_test_dvr".equals(intent.getAction())) {
+                /*try {
+                    mServiceBinder.startRecord("/data/media/0/test.mp4");
+                    mImpl.startRecord("/data/media/0/test.mp4", false);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }*/
             }
         }
     };
@@ -854,6 +868,7 @@ public class DvrService extends Service {
         intentFilter.addAction("erobbing.pip_mode_test");
         intentFilter.addAction("erobbing.video_record_test");
         intentFilter.addAction("erobbing.firstactivity_test");
+        intentFilter.addAction("erobbing.video_record_test_dvr");
         registerReceiver(shutDownReceiver,intentFilter);
         DvrConfig.init(getApplicationContext());
         if (mImpl == null) {
@@ -941,7 +956,8 @@ public class DvrService extends Service {
                     }
 
                     startPreview();
-                    if (!pipVideoModeEnable) {
+                    //if (!pipVideoModeEnable) {
+                    if (!GlobalStatus.getDvrSwitchToPipEnable()) {
                         startCircleRecord();
                     }
                     startThumbnailPreview();
@@ -1148,9 +1164,10 @@ public class DvrService extends Service {
     }
 
     public boolean startCircleRecord() {
-        String path = pipVideoModeEnable ? DvrConfig.getTakeVideoPath() : DvrConfig.getStoragePath();
+        //String path = pipVideoModeEnable ? DvrConfig.getTakeVideoPath() : DvrConfig.getStoragePath();
+        String path = GlobalStatus.getDvrSwitchToPipEnable() ? DvrConfig.getTakeVideoPath() : DvrConfig.getStoragePath();
         Log.d(TAG, "start circle recording path=" + path);
-        int intervalms = DvrConfig.getVideoDuration();
+        int intervalms = GlobalStatus.getDvrSwitchToPipEnable() ? DvrConfig.getVideoDuration() : 5 * 60 * 1000;
         Log.d(TAG, "start circle recording path=" + path + ", intervalms="+intervalms);
         if (mCircleRecordHelper == null) {
             Log.d(TAG, "start circle recording ");
@@ -1253,6 +1270,8 @@ public class DvrService extends Service {
                 Settings.System.getUriFor(GlobalStatus.TAKE_PHOTO_COUNT);
         private final Uri TAKE_PHOTO_INTERVAL_MS_URI =
                 Settings.System.getUriFor(GlobalStatus.TAKE_PHOTO_INTERVAL_MS);
+        private final Uri DVR_SWITCH_TO_PIP_URI =
+                Settings.System.getUriFor("dvr_switch_to_pip");
 
         public ShutDownObserver(Handler handler) {
             super(handler);
@@ -1273,6 +1292,10 @@ public class DvrService extends Service {
                 mPhotoCount = GlobalStatus.getTakePhotoCount(MyApplication.getContext());
             } else if (TAKE_PHOTO_INTERVAL_MS_URI.equals(uri)) {
                 mPhotoIntervalMs = GlobalStatus.getTakePhotoIntervalMs(MyApplication.getContext());
+            } else if (DVR_SWITCH_TO_PIP_URI.equals(uri)) {
+                if (!GlobalStatus.getDvrSwitchToPipEnable()) {
+                    mPipHandler.sendEmptyMessageDelayed(MSG_DVR_SWITCH_VIDEO, 100);
+                }
             }
         }
 
@@ -1290,6 +1313,9 @@ public class DvrService extends Service {
                     false, this);
             cr.registerContentObserver(
                     TAKE_PHOTO_INTERVAL_MS_URI,
+                    false, this);
+            cr.registerContentObserver(
+                    DVR_SWITCH_TO_PIP_URI,
                     false, this);
         }
 

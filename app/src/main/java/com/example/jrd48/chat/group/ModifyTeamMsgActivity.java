@@ -151,12 +151,12 @@ public class ModifyTeamMsgActivity extends BaseActivity {
         if (teamName.length() <= 0 ) {
             ToastR.setToastLong(mContext, "群名输入不能为空");
             return;
-        } else if (teamName.length() > GlobalStatus.MAX_TEXT_COUNT){
-            ToastR.setToastLong(this, "群名输入过长（最大只能设置16个字符）");
+        } else if (teamName.length() > 10/*GlobalStatus.MAX_TEXT_COUNT*/){//rs modified to 10
+            ToastR.setToastLong(this, "群名输入过长（最大只能设置10个字符）");
             return;
         }
-        if (teamDescribe.length() > GlobalStatus.MAX_TEXT_COUNT) {
-            ToastR.setToastLong(this, "群描述信息输入过长（最大只能设置16个字符）");
+        if (teamDescribe.length() > 10/*GlobalStatus.MAX_TEXT_COUNT*/) {//rs modified to 10
+            ToastR.setToastLong(this, "群描述信息输入过长（最大只能设置10个字符）");
             return;
         }
         TeamInfo tm = new TeamInfo();
