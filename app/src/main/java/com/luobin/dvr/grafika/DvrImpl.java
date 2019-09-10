@@ -203,7 +203,7 @@ public class DvrImpl extends DvrImplBase
                     }
                 }
                 drawFrameUsb((Bitmap) msg.obj);
-                updateTimeStampBmpIfNeeded();
+                //updateTimeStampBmpIfNeeded();
                 synchronized (RESClient.getInstance().getUsbDrawLock()) {
                     drawFrame();
                 }
@@ -972,6 +972,13 @@ public class DvrImpl extends DvrImplBase
                 } else {
                     GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
                     mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
+                    updateTimeStampBmpIfNeeded();
+                    if (mWaterMarkTextureId >= 0) {
+                        setWaterMarkViewport(mCamPrevWidth, mCamPrevHeight);
+                        GLES20.glEnable(GLES20.GL_BLEND);
+                        GLES20.glBlendFunc(GLES20.GL_SRC_ALPHA, GLES20.GL_ONE_MINUS_SRC_ALPHA);
+                        mWaterMarkBlit.drawFrame(mWaterMarkTextureId, mTmpMatrix);
+                    }
                 }
                 /*switch (mCurrentVideoScreenMode) {
                     case 0:
