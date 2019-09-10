@@ -324,7 +324,7 @@
         </provider> <!-- wangsheng key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="c0161ca8acda117a3816fc4c40098f2b" /> <!-- hanjiming key 测试版 -->
+            android:value="55e7da871ae42669a8bfef7c98b3bc06" /> <!-- hanjiming key 测试版 -->
         <!--
          <meta-data
          android:name="com.amap.api.v2.apikey"
