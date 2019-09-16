@@ -342,14 +342,14 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 				   Log.i("TabFragmentLinkGroup", "not focusable");
                    return false;
                 }
-
                 if (groupListView.getSelectedItemPosition() != -1){
                     groupSelectPosition = groupListView.getSelectedItemPosition();
                 }
-                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyEvent.getRepeatCount() == 0) {
                     switch (keyEvent.getKeyCode()) {
                         case KeyEvent.KEYCODE_F6:
                             if (isVisible){
+                                Log.i("TabFragmentLinkGroup", "KEYCODE_F6");
                                 Team msg = groupList.get(groupSelectPosition);
                                 Intent intent = new Intent(getContext(), FirstActivity.class);
                                 intent.putExtra("data", 1);
