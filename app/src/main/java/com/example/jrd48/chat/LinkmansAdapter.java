@@ -22,6 +22,10 @@ import com.luobin.ui.VideoOrVoiceDialog;
 
 import java.util.List;
 
+import com.example.jrd48.service.proto_gen.ProtoMessage;
+import com.example.jrd48.service.MyService;
+import com.luobin.voice.VoiceHandler;
+
 /**
  * Created by jrd48
  */
@@ -179,17 +183,27 @@ class LinkmansAdapter extends BaseAdapter {
                     intent.putExtra("data", 1);
 
                     CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(0) + linkmans.getLinkmanPhone());
+
+					//rs modified for LBCJW-51:hangup call in list item
                     if (GlobalStatus.equalPhone(linkmans.getLinkmanPhone())) {
                         intent.putExtra("callType", 0);
-                    } else if (callState != null && callState.getState() == GlobalStatus.STATE_CALL) {
-                        intent.putExtra("callType", 1);
+						Log.d("rs", "callType 0");
+						HangupButtonClick();
+						viewHolder.callLink.setImageResource(R.drawable.btn_call);
                     } else {
-                        intent.putExtra("callType", 2);
+						if (callState != null && callState.getState() == GlobalStatus.STATE_CALL) {
+	                        intent.putExtra("callType", 1);
+							Log.d("rs", "callType 1");
+                    	} else {
+	                        intent.putExtra("callType", 2);
+							Log.d("rs", "callType 2");
+                    	}
+	                    intent.putExtra("linkmanName", linkmans.getLinkmanName());
+	                    intent.putExtra("linkmanPhone", linkmans.getLinkmanPhone());
+	                    VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(context, intent);
+	                    dialog.show();
                     }
-                    intent.putExtra("linkmanName", linkmans.getLinkmanName());
-                    intent.putExtra("linkmanPhone", linkmans.getLinkmanPhone());
-                    VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(context, intent);
-                    dialog.show();
+					//end
                 }
             });
         }
@@ -224,4 +238,30 @@ class LinkmansAdapter extends BaseAdapter {
         LinearLayout callClick;
         private TextView indexTv;
     }
+
+	
+		public void HangupButtonClick() {
+			ProtoMessage.AcceptVoice.Builder builder = ProtoMessage.AcceptVoice.newBuilder();
+			if (GlobalStatus.isStartRooming() && GlobalStatus.getChatRoomtempId() != 0) {
+				Log.d("rs", "HungupClick->getChatRoomtempId");
+				builder.setRoomID(GlobalStatus.getChatRoomtempId());
+			} else {
+				Log.d("rs", "HungupClick->getRoomID");
+				builder.setRoomID(GlobalStatus.getRoomID());
+			}
+			if (builder.getRoomID() == -1) {
+				Log.d("rs", "HungupClick->getRoomID -1");
+				GlobalStatus.setChatRoomtempId(-1);
+			} else {
+				Log.d("rs", "HungupClick->getRoomID 0");
+				GlobalStatus.setChatRoomtempId(0);
+			}
+			Log.v("rs", "roomId:" + builder.getRoomID());
+			builder.setAcceptType(ProtoMessage.AcceptType.atDeny_VALUE);
+			MyService.start(context, ProtoMessage.Cmd.cmdAcceptVoice.getNumber(), builder.build());
+	//		  IntentFilter filter = new IntentFilter();
+			VoiceHandler.doVoiceAction(context, false);
+			GlobalStatus.setOldChat(0, "", 0);
+			GlobalStatus.clearChatRoomMsg();
+		}
 }
