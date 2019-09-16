@@ -5086,8 +5086,17 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 break;
             case R.id.goto_map:
                 // 地图查看
+                //rs modified for crash LBCJW-67
+                Log.d("rs", "firstactivity goto_map clicked->single:"+single+", linkmanPhone:"+linkmanPhone+", linkman:"+linkman);
                 Intent mapIntent = new Intent(mContext, TeamMemberLocationActivity.class);
-                mapIntent.putExtra("team_id",group);
+				if(single){
+					//mapIntent.putExtra("linkmanSex", appliedFriend.getUserSex());
+                    mapIntent.putExtra("linkmanName", linkman);
+                    mapIntent.putExtra("linkmanPhone", linkmanPhone);
+				}else{
+                	mapIntent.putExtra("team_id",group);
+				}
+				//end
                 startActivity(mapIntent);
                 break;
             case R.id.do_not_disturb:
