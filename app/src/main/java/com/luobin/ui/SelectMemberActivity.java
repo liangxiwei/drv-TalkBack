@@ -39,6 +39,8 @@ import com.example.jrd48.service.proto_gen.ProtoMessage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import com.example.jrd48.chat.TeamMemberInfo;
+import java.util.Iterator;
 
 public class SelectMemberActivity extends BaseDialogActivity {
 
@@ -54,6 +56,9 @@ public class SelectMemberActivity extends BaseDialogActivity {
 
 	TextView tvLoadingMember = null;
 	Button buttonInvite = null;
+
+	private List<TeamMemberInfo> curAllTeamMemberInfos;
+	List<String> selectMemberPhoneList = new ArrayList<String>();
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +67,25 @@ public class SelectMemberActivity extends BaseDialogActivity {
         getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         context = this;
         teamID = getIntent().getLongExtra("teamID",-1);
+		curAllTeamMemberInfos = getIntent().getParcelableArrayListExtra("curMemberList");//rs added for LBCJW-68
 
         if (teamID == -1){
             ToastR.setToast(this,"群ID错误");
             finish();
         }
+
+		//rs added for duplicate
+		if(curAllTeamMemberInfos != null){
+			for (TeamMemberInfo c : curAllTeamMemberInfos) {
+            	if (!TextUtils.isEmpty(c.getUserPhone())) {
+					selectMemberPhoneList.add(c.getUserPhone());
+					//Log.d("rs", "added phone->" + c.getUserPhone());
+					//Log.d("rs", "added phone->"+  "nick name:"+c.getUserName());
+                }
+
+			}
+		}
+		//end
 
         initView();
         initData();
@@ -144,6 +163,16 @@ public class SelectMemberActivity extends BaseDialogActivity {
                                 c.setNickName(c.getUserName());
                             }
                         }
+
+						Iterator<AppliedFriends> iterator = selectMemberList.iterator();        
+						while (iterator.hasNext()) {            
+							String phoneNum = iterator.next().getPhoneNum();            
+							if ((selectMemberPhoneList != null) && (phoneNum != null) && (selectMemberPhoneList.contains(phoneNum))) {               
+								iterator.remove();                
+								//Log.d("rs", "remove phone:"+phoneNum);          
+							}        
+						}
+
                         // 排序(实现了中英文混排)
                         PinyinComparator comparator = new PinyinComparator();
                         Collections.sort(selectMemberList, comparator);

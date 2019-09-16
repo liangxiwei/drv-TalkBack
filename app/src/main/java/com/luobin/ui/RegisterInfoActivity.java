@@ -280,7 +280,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     /**
      * 弹窗
      */
-    private ProgressDialog dialog;
+    private ProgressDialog dialog = null;
     /**
      * 上下文对象
      */
@@ -336,25 +336,31 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             });
         }
 
-
+		/*
         if (!"LB1822".equals(Build.PRODUCT)) {
             waitDialog();
         }
-        initView();
+        */
+
+		waitDialog();
+
+        //initView();
         initData();
 
-
+		/*
         new Thread() {
             @Override
             public void run() {
                 handler.sendEmptyMessage(1);
             }
         }.start();
-
-
+		*/
     }
 
     private void initData() {
+		if(dialog != null){
+			dialog.show();
+		}
         mPermissionUtil = PermissionUtil.getInstance();
 
         myInforTool = new MyInforTool(mContext, true);
@@ -362,16 +368,20 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         //初始化
       // setInfor();
         //获取个人信息
-        getInfor();
-        initView();
+        //getInfor();
+        //initView();
         SharedPreferences preferences1 = getSharedPreferences("token", Context.MODE_PRIVATE);
         myPhone = preferences1.getString("phone", "");
+
+		//rs modified for load content null
+		//Log.d("rs", "initData->myPhone:"+myPhone);
+		getInfor();
 
     }
 
     private void initView() {
 
-        selectBtnShow(false);
+        selectBtnShow(true);
     }
 
     /**
@@ -383,7 +393,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         // 设置进度条风格，风格为圆形，旋转的
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         // 设置ProgressDialog 提示信息
-        dialog.setMessage("正在获取数据，请稍等...");
+        dialog.setMessage("请稍等...");
         // 设置ProgressDialog 的进度条是否不明确
         dialog.setIndeterminate(false);
         // 设置ProgressDialog 是否可以按退回按键取消
@@ -1114,12 +1124,14 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
      */
     private void getInfor() {
         if (!ConnUtil.isConnected(this)) {
-            Log.w("network", "当前没有网络（请检查网络是否连接）");
+            Log.d("rs", "当前没有网络（请检查网络是否连接）");
             return;
         }
+		/*
         if (dialog != null) {
             dialog.show();
         }
+        */
         ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
         MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdGetMyInfo.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
@@ -1135,8 +1147,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             @Override
             public void onGot(Intent i) {
                 ShowMyinfo();
-                if (i.getIntExtra("error_code", -1) ==
-                        ProtoMessage.ErrorCode.OK_VALUE) {
+                if (i.getIntExtra("error_code", -1) ==ProtoMessage.ErrorCode.OK_VALUE) {
                     mCarID = i.getStringExtra("car_id");
                     if (myInforTool == null) {
                         myInforTool = new MyInforTool(mContext, true);
@@ -1373,6 +1384,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             public void onTimeSelect(Date date, View view) {
                 tvBirth.setText(getTime(date));
                 //TODO 设置出生年月
+                SharedPreferencesUtils.put(context,Birthday,getTime(date));//rs added
 
             }
         }).setLayoutRes(R.layout.dialog_select_time, new CustomListener() {

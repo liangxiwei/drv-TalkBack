@@ -466,11 +466,12 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             @Override
             public void onClick(View v) {
                 if (groupList.size() == 0) {
-                    ToastR.setToast(getContext(), "咱无群组可以添加成员");
+                    ToastR.setToast(getContext(), "暂无群组可以添加成员");
                 } else {
                     try {
                         Intent intent = new Intent(mContext, SelectMemberActivity.class);
                         intent.putExtra("teamID", groupList.get(groupSelectPosition).getTeamID());
+					    intent.putParcelableArrayListExtra("curMemberList", (ArrayList<? extends Parcelable>) allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));//rs added for LBCJW-68
                         startActivityForResult(intent, 0);
                     } catch (Exception e) {
                         e.printStackTrace();
