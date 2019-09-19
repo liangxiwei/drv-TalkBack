@@ -1,7 +1,13 @@
 package com.luobin.musbcam;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.os.SystemClock;
 import android.util.Log;
+
+import com.luobin.dvr.DvrService;
+import com.luobin.utils.ShellUtils;
 
 /**
  * Created by xugq on 8/2/17.
@@ -33,7 +39,12 @@ public class UsbCamera {
     private long mNativeCam;
 
     private UsbCameraListener mListener;
-
+    private Handler mHandler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
     private Runnable mReadRunnable = new Runnable() {
 
         @Override
@@ -128,7 +139,16 @@ public class UsbCamera {
 //            Intent intent = new Intent(ToastReceiver.TOAST_ACTION);
 //            intent.putExtra(ToastReceiver.TOAST_CONTENT, mDev + MyApplication.getContext().getString(R.string.usb_open_failed));
 //            MyApplication.getContext().sendBroadcast(intent);
-            Log.e("====", "=============UsbCamera=!nativeOpen");
+            Log.e(TAG, "=UsbCamera=!nativeOpen-err in /dev/video" + mDev);
+            ShellUtils.execCommand("sh /system/bin/usbcam_start.sh", false);
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d(TAG, "SerialService:" + "chmod video*");
+                    ShellUtils.execCommand("chmod 666 /dev/video*", false);
+                    DvrService.restart();
+                }
+            }, 3000);
             return false;
         }
 

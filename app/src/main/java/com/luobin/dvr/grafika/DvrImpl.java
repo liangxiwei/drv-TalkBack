@@ -53,6 +53,7 @@ import com.luobin.dvr.grafika.gles.Texture2dProgram;
 import com.luobin.dvr.grafika.gles.WindowSurface;
 import com.luobin.musbcam.UsbCamera;
 import com.luobin.musbcam.UsbVideoRecorder;
+import com.luobin.utils.ShellUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -553,6 +554,16 @@ public class DvrImpl extends DvrImplBase
         if (!file.exists()) {
             ToastR.setToast(mContext, dev + MyApplication.getContext().getString(R.string.camera_node_not_exist));
             Log.v(TAG, dev + " is not exist");
+            Log.e(TAG, "=DvrImpl-err in /dev/video" + dev);
+            ShellUtils.execCommand("sh /system/bin/usbcam_start.sh", false);
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d(TAG, "SerialService:" + "chmod video*");
+                    ShellUtils.execCommand("chmod 666 /dev/video*", false);
+                    DvrService.restart();
+                }
+            }, 3000);
             return;
         }
 

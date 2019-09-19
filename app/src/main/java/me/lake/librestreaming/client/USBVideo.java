@@ -19,12 +19,14 @@ import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.crash.MyApplication;
 import com.example.jrd48.chat.receiver.ToastReceiver;
+import com.luobin.dvr.DvrService;
 import com.luobin.dvr.R;
 import com.luobin.dvr.grafika.gles.EglCore;
 import com.luobin.dvr.grafika.gles.FullFrameRect;
 import com.luobin.dvr.grafika.gles.Texture2dProgram;
 import com.luobin.dvr.grafika.gles.WindowSurface;
 import com.luobin.musbcam.UsbCamera;
+import com.luobin.utils.ShellUtils;
 
 import java.io.File;
 
@@ -130,6 +132,16 @@ public class USBVideo extends VideoBase implements SurfaceHolder.Callback, UsbCa
         if (!file.exists()) {
             ToastR.setToast(MyApplication.getContext(), dev + MyApplication.getContext().getString(R.string.camera_node_not_exist));
             Log.v(TAG, dev + " is not exist");
+            Log.e(TAG, "=USBVideo-err in /dev/video" + dev);
+            ShellUtils.execCommand("sh /system/bin/usbcam_start.sh", false);
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d(TAG, "SerialService:" + "chmod video*");
+                    ShellUtils.execCommand("chmod 666 /dev/video*", false);
+                    DvrService.restart();
+                }
+            }, 3000);
             return;
         }
 
