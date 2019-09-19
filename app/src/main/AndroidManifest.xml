@@ -461,6 +461,12 @@
             android:name="com.luobin.ui.trajectory.TrackRecordingActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
+
+       	<activity
+            android:name="com.luobin.ui.SelectMemberToDeleteActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom" />
     </application>
 
 </manifest>

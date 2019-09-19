@@ -1,5 +1,7 @@
 package com.example.jrd48.chat;
 
+import android.text.TextUtils;
+
 public class User {
 	public static final int NOSPEAK = 0;
 	public static final int SPEAKING = 1;
@@ -39,7 +41,7 @@ public class User {
 		this.phone = phone;
 		this.userSex = userSex;
 
-		if (phone.equals("")) {
+		if (/*phone.equals("")*/TextUtils.isEmpty(phone)) {
 			bAddIcon = true;
 		}
 	}
@@ -50,7 +52,7 @@ public class User {
 		this.phone = phone;
 		this.userSex = userSex;
 		this.nickName = nickName;
-		if (phone.equals("")) {
+		if (/*phone.equals("")*/TextUtils.isEmpty(phone)) {
 			bAddIcon = true;
 		}
 	}

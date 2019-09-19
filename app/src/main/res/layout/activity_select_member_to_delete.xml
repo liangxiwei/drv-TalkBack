@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  >
+
+    <ImageView
+        android:id="@+id/imgClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:src="@mipmap/close" />
+
+
+    <RelativeLayout
+        android:layout_width="440dp"
+        android:layout_height="270dp"
+         android:layout_centerInParent="true"
+        android:background="@drawable/bg_panel_relative_layout"
+       >
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:background="@mipmap/bg_button"
+            android:textColor="@color/white"
+            android:text="删除"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            />
+
+
+        <ListView
+            android:id="@+id/member_select_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:divider="@null"
+            android:layout_marginBottom="65dp"
+            />
+
+
+		<!--TextView
+	        android:id="@+id/loading_member"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:gravity="center"
+	        android:textSize="@dimen/normal_text_size"
+	        android:textColor="@color/colorWirte"
+	        android:text="正在加载成员列表..."
+	        android:visibility="gone"
+	        /-->
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -79,6 +79,13 @@ import io.reactivex.disposables.Disposable;
 
 import static com.luobin.ui.SelectMemberActivity.APPLYTEAM;
 
+import android.support.design.widget.FloatingActionButton;
+import android.view.View.OnClickListener;
+
+import com.luobin.ui.SelectMemberToDeleteActivity;
+
+import android.widget.ImageView;
+
 
 /**
  * Created by jrd48
@@ -119,6 +126,10 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
     public static boolean isVisiable = true;
 
+	private ImageView addMember;
+    private ImageView removeMember;
+
+	
     public boolean isPullRefresh() {
         return isPullRefresh;
     }
@@ -479,6 +490,55 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 }
             }
         });
+
+		//rs added for add/delete member
+		addMember = (ImageView) view.findViewById(R.id.add_member);
+		removeMember = (ImageView) view.findViewById(R.id.remove_member);
+		addMember.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				ToastR.setToast(getContext(), "添加群组成员");			
+				
+                if (groupList.size() == 0) {
+                    ToastR.setToast(getContext(), "暂无群组可以添加成员");
+                } else {
+                    try {
+                        Intent intent = new Intent(mContext, SelectMemberActivity.class);
+                        intent.putExtra("teamID", groupList.get(groupSelectPosition).getTeamID());
+					    intent.putParcelableArrayListExtra("curMemberList", (ArrayList<? extends Parcelable>) allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));//rs added for LBCJW-68
+                        startActivityForResult(intent, 0);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+			}
+		});
+
+		
+		removeMember.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				//ToastR.setToast(getContext(), "删除群组成员");			
+				Log.d("rs", "removeMember clicked:");
+				Team curTeam = groupList.get(groupSelectPosition);
+				//if(curTeam.getMemberRole() == ProtoMessage.TeamRole.Owner_VALUE || curTeam.getMemberRole() == ProtoMessage.TeamRole.Manager_VALUE){
+				try {
+	                Intent intent = new Intent(mContext, SelectMemberToDeleteActivity.class);
+	                intent.putExtra("teamID", curTeam.getTeamID());
+	                intent.putExtra("type", curTeam.getMemberRole());
+	                intent.putParcelableArrayListExtra("curMemberList", (ArrayList<? extends Parcelable>) allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));
+					startActivityForResult(intent, 0);
+					} catch (Exception e) {
+                        e.printStackTrace();
+						Log.d("rs", "found exception:"+e.toString());
+                    }
+				//}else{
+				//	ToastR.setToast(getContext(), "没有删除群组成员的权限");			
+				//}
+			}
+		});
+		//end	
+		
         return view;
     }
 

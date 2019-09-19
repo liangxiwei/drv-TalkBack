@@ -330,7 +330,10 @@ public class SimInfoService extends Service {
             mUIHandler.removeMessages(MSG_DISMISS_VIEW);
             mUIHandler.removeCallbacks(mSearchRunnable);
         }
-        b.stop();
+
+		if(b != null){//rs added for null check
+        	b.stop();
+		}
     }
 
     /**
