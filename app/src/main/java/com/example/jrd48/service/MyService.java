@@ -473,7 +473,7 @@ public class MyService extends Service {
         intentFilter.addAction("com.erobbing.ACTION_STOP_THREAD");
         registerReceiver(contentObserver, intentFilter);
         // start sim check
-        startSimInfoService();
+        //startSimInfoService();
     }
 
     private BroadcastReceiver contentObserver = new BroadcastReceiver() {
