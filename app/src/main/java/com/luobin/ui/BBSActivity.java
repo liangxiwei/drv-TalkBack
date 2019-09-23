@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.jrd48.GlobalStatus;
@@ -38,15 +39,22 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.example.jrd48.chat.crash.MyApplication.getContext;
 
 public class BBSActivity extends BaseActivity {
 
-    @BindView(R.id.bbs_listview)
-    ListView bbsListview;
-    BBSAdapter bbsAdapter;
-    List<TeamInfo> bbsList = new ArrayList<>();
+    @BindView(R.id.bbs_listview1)
+    ListView bbsListview1;
+    @BindView(R.id.bbs_listview2)
+    ListView bbsListview2;
+    @BindView(R.id.btn_return)
+    Button btnReturn;
+    BBSAdapter bbsAdapter1;
+    BBSAdapter bbsAdapter2;
+    List<TeamInfo> bbsList1 = new ArrayList<>();
+    List<TeamInfo> bbsList2 = new ArrayList<>();
     String userPhone = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +64,11 @@ public class BBSActivity extends BaseActivity {
         SharedPreferences preferences = getSharedPreferences("token", Context.MODE_PRIVATE);
         userPhone = preferences.getString("phone", "");
         initData();
+    }
+
+    @OnClick(R.id.btn_return)
+    public void onBtnReturnClick(View view) {
+        finish();
     }
 
     private void initData(){
@@ -74,14 +87,35 @@ public class BBSActivity extends BaseActivity {
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
                     TeamInfoList list = i.getParcelableExtra("get_bbs_list");
-                    bbsList = list.getmTeamInfo();
-                    bbsAdapter = new BBSAdapter(bbsList,getContext());
-                    bbsListview.setAdapter(bbsAdapter);
-                    bbsListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    List<TeamInfo> tempList = list.getmTeamInfo();
+                    if (tempList != null) {
+                        int length = tempList.size() / 2 + tempList.size() % 2;
+                        int index = 0;
+                        for (TeamInfo info : tempList) {
+                            if (index < length) {
+                                bbsList1.add(info);
+                            } else {
+                                bbsList2.add(info);
+                            }
+                            index = index + 1;
+                        }
+                    }
+                    bbsAdapter1 = new BBSAdapter(bbsList1,getContext());
+                    bbsListview1.setAdapter(bbsAdapter1);
+                    bbsListview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             //加入群组，跳转到对讲界面
-                            applyBBS(bbsList.get(position));
+                            applyBBS(bbsList1.get(position));
+                        }
+                    });
+                    bbsAdapter2 = new BBSAdapter(bbsList2,getContext());
+                    bbsListview2.setAdapter(bbsAdapter2);
+                    bbsListview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            //加入群组，跳转到对讲界面
+                            applyBBS(bbsList2.get(position));
                         }
                     });
                 } else {
