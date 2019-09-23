@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/modify_group_name"
+        android:title="更改群名"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/show_location"
+        android:title="地图显示"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/quit_group"
+        android:title="退出"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/dismiss_group"
+        android:title="解散"
+        app:showAsAction="never"/>
+</menu>

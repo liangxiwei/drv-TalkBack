@@ -1,6 +1,8 @@
 package com.example.jrd48.chat;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,11 +22,15 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.baoyz.widget.PullRefreshLayout;
@@ -48,16 +54,19 @@ import com.example.jrd48.service.protocol.ResponseErrorProcesser;
 import com.example.jrd48.service.protocol.root.AutoCloseProcesser;
 import com.example.jrd48.service.protocol.root.DismissTeamProcesser;
 import com.example.jrd48.service.protocol.root.GroupsListProcesser;
+import com.example.jrd48.service.protocol.root.ModifyTeamInfoProcesser;
 import com.example.jrd48.service.protocol.root.ReceiverProcesser;
 import com.example.jrd48.service.protocol.root.SearchFriendProcesser;
 import com.example.jrd48.service.protocol.root.TeamMemberProcesser;
 import com.luobin.dvr.R;
 import com.luobin.model.CallState;
+import com.luobin.search.friends.map.TeamMemberLocationActivity;
 import com.luobin.ui.FriendDetailsDialogActivity;
 import com.luobin.ui.SelectMemberActivity;
 import com.luobin.ui.VideoOrVoiceDialog;
 import com.luobin.ui.adapter.ContactsGroupAdapter;
 import com.luobin.ui.adapter.ContactsMemberAdapter;
+import com.luobin.utils.ButtonUtils;
 import com.luobin.widget.LoadingDialog;
 import com.luobin.widget.PromptDialog;
 import com.luobin.widget.ScrollListView;
@@ -128,7 +137,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
 	private ImageView addMember;
     private ImageView removeMember;
-
+    private ProgressDialog mProgressDialog;
 	
     public boolean isPullRefresh() {
         return isPullRefresh;
@@ -435,16 +444,37 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         groupListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Team team = groupList.get(position);
-
+                final Team team = groupList.get(position);
+                PopupMenu pop = new PopupMenu(mContext, view);
+                pop.getMenuInflater().inflate(R.menu.menu_group, pop.getMenu());
                 if (team.getMemberRole() == ProtoMessage.TeamRole.Owner_VALUE) {
-                    //如果是群主，解散群
-                    deleteTeamDialog(team.getTeamID(), DELETE_TEAM, team.getLinkmanName());
+                    pop.getMenu().removeItem(R.id.quit_group);
                 } else {
-                    //不是群主，退出群
-                    deleteTeamDialog(team.getTeamID(), QUIT_TEAM, team.getLinkmanName());
+                    pop.getMenu().removeItem(R.id.dismiss_group);
                 }
-
+                pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.modify_group_name:
+                                showChangeGroupNameDialog(team);
+                                break;
+                            case R.id.show_location:
+                                goToMap(team.getTeamID());
+                                break;
+                            case R.id.quit_group:
+                                deleteTeamDialog(team.getTeamID(), QUIT_TEAM, team.getLinkmanName());
+                                break;
+                            case R.id.dismiss_group:
+                                deleteTeamDialog(team.getTeamID(), DELETE_TEAM, team.getLinkmanName());
+                                break;
+                            default:
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                pop.show();
                 return true;
             }
         });
@@ -1071,6 +1101,118 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     @Override
     public void onStop() {
         super.onStop();
+    }
 
+    private void toModifyTeamInfo(final TeamInfo tm) {
+        showModifyProgressDialog();
+        ProtoMessage.TeamInfo.Builder builder = ProtoMessage.TeamInfo.newBuilder();
+        builder.setTeamName(tm.getTeamName());
+        // builder.setTeamType(tm.getTeamType());
+        // builder.setTeamDesc(tm.getTeamDesc());
+        // builder.setTeamPriority(tm.getTeamPriority());
+        // builder.setTeamID(tm.getTeamID());
+        MyService.start(mContext, ProtoMessage.Cmd.cmdModifyTeamInfo.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ModifyTeamInfoProcesser.ACTION);
+        new TimeoutBroadcast(mContext, filter, getBroadcastManager()).startReceiver(10, new ITimeoutBroadcast() {
+
+            @Override
+            public void onTimeout() {
+                dismissProgressDialog();
+                ToastR.setToast(mContext, "连接超时");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+                dismissProgressDialog();
+                if (i.getIntExtra("error_code", -1) ==
+                        ProtoMessage.ErrorCode.OK.getNumber()) {
+                    modifyDBitem(tm);
+                    ToastR.setToast(mContext, "修改群组名称成功");
+                } else {
+                    fail(i.getIntExtra("error_code", -1));
+                }
+            }
+        });
+    }
+
+    private void dismissProgressDialog() {
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+            mProgressDialog = null;
+        }
+    }
+
+    private void showModifyProgressDialog () {
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+            mProgressDialog = null;
+        }
+        mProgressDialog = new ProgressDialog(mContext, R.style.CustomDialog);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.setMessage("请稍等...");
+        mProgressDialog.setIndeterminate(false);
+        mProgressDialog.setCancelable(true);
+        mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+                getBroadcastManager().stopAll();
+                ToastR.setToast(mContext, "取消修改群组名称");
+            }
+        });
+    }
+
+    private void modifyDBitem(TeamInfo tm) {
+        try {
+            DBManagerTeamList db = new DBManagerTeamList(mContext, DBTableName.getTableName(mContext, DBHelperTeamList.NAME));
+            db.updateData(tm);
+            db.closeDB();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void goToMap(long groupId) {
+        Intent mapIntent = new Intent(mContext, TeamMemberLocationActivity.class);
+        mapIntent.putExtra("team_id", groupId);
+        startActivity(mapIntent);
+    }
+
+    private void showChangeGroupNameDialog(final Team team) {
+        LayoutInflater factory = LayoutInflater.from(mContext);
+        final View view = factory.inflate(R.layout.dialog_change_group_name, null);
+        final EditText nameEdit = view.findViewById(R.id.name_edit);
+        final Button btnOk = view.findViewById(R.id.ok);
+        final Button btnCancel = view.findViewById(R.id.cancel);
+        final AlertDialog dialog = new AlertDialog.Builder(mContext).setView(view).create();
+        dialog.show();
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            String name = nameEdit.getText().toString().trim();
+            if (TextUtils.isEmpty(name)) {
+                ToastR.setToast(mContext, "请输入群组名称");
+                return;
+            }
+            if (name.length() > 16) {
+                ToastR.setToast(mContext, "群组名称长度不能超过16");
+                return;
+            }
+            if (TextUtils.equals(name, team.getLinkmanName())) {
+                ToastR.setToast(mContext, "群组名称未改变");
+                return;
+            }
+            TeamInfo tmInfo = new TeamInfo();
+            tmInfo.setTeamName(name);
+            toModifyTeamInfo(tmInfo);
+            dialog.dismiss();
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
     }
 }
