@@ -153,9 +153,10 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                         if (groupList.size() > 0) {
                             groupAdapter = new ContactsGroupAdapter(groupList, allMemberMap, mContext);
                             groupListView.setAdapter(groupAdapter);
-							groupListView.requestFocus();      
+                            groupListView.requestFocus();
                             memberAdapter = new ContactsMemberAdapter(allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()), mContext);
                             memberListView.setAdapter(memberAdapter);
+                            groupListView.setSelection(groupSelectPosition);
                             tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
                         }
                     } else {
@@ -172,6 +173,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                         if (groupList.size() > 0) {
                             memberAdapter.setData(allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));
                             memberAdapter.notifyDataSetChanged();
+                            groupListView.setSelection(groupSelectPosition);
+                            tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
                         } else {//如果当前没有群组，清空群成员列表
                             memberAdapter.setData(new ArrayList<TeamMemberInfo>());
                             memberAdapter.notifyDataSetChanged();
@@ -255,10 +258,10 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     @Override
     public void onResume() {
         super.onResume();
-       /* if (run) {
+        if (run) {
+            Log.i("TabFragmentLinkGroup", "onResume set groupSelectPosition to 0");
             getDBMsg();
-        }*/
-
+        }
     }
 
     @Override
@@ -353,14 +356,12 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 				   Log.i("TabFragmentLinkGroup", "not focusable");
                    return false;
                 }
-                if (groupListView.getSelectedItemPosition() != -1){
-                    groupSelectPosition = groupListView.getSelectedItemPosition();
-                }
                 if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyEvent.getRepeatCount() == 0) {
                     switch (keyEvent.getKeyCode()) {
                         case KeyEvent.KEYCODE_F6:
+                            groupSelectPosition = groupListView.getSelectedItemPosition();
                             if (isVisible){
-                                Log.i("TabFragmentLinkGroup", "KEYCODE_F6");
+                                Log.i("TabFragmentLinkGroup", "KEYCODE_F6, groupSelectPosition = " + groupSelectPosition);
                                 Team msg = groupList.get(groupSelectPosition);
                                 Intent intent = new Intent(getContext(), FirstActivity.class);
                                 intent.putExtra("data", 1);
@@ -822,6 +823,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         chatDB.closeDB();
         String typedesc;
         String name;
+        List<Team> oldGroupList = new ArrayList<>();
+        oldGroupList.addAll(groupList);
         groupList.clear();
         for (TeamInfo in : teamInfos) {
             int i = in.getMemberRole();
@@ -838,6 +841,17 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         // 排序(实现了中英文混排)
         AllTeamPinyinComparator comparator = new AllTeamPinyinComparator(timeList);
         Collections.sort(groupList, comparator);
+        if (oldGroupList.size() == groupList.size() && groupList.size() > 0) {
+            Team oldHead = oldGroupList.get(0);
+            Team newHead = groupList.get(0);
+            if (!TextUtils.equals(oldHead.getLinkmanName(), newHead.getLinkmanName())) {
+                groupSelectPosition = 0;
+                Log.d(TAG, "convertViewGroupList reset groupSelectPosition");
+            }
+        } else {
+            groupSelectPosition = 0;
+            Log.d(TAG, "convertViewGroupList reset groupSelectPosition");
+        }
         getMembersData(groupList);
     }
 
@@ -1009,7 +1023,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             Team contact2 = (Team) o2;
             long time1 = 0;
             long time2 = 0;
-            if (!Build.PRODUCT.contains("LB1728") && !"LB1822".equals(Build.PRODUCT)) {
+            // if (!Build.PRODUCT.contains("LB1728") && !"LB1822".equals(Build.PRODUCT)) {
                 if (chatTime != null) {
                     if (chatTime.get(contact1.getTeamID()) != null) {
                         time1 = chatTime.get(contact1.getTeamID());
@@ -1035,7 +1049,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 } else {
                     // Log.e("wsTest","chatTime == null");
                 }
-            }
+            // }
             String str = contact1.getLinkmanName();
             String str3 = contact2.getLinkmanName();
 
