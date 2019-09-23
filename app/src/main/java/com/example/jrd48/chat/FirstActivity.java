@@ -855,6 +855,27 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+		//rs added for get huazhonghua settings,show image with settings
+		int savedPosition = (int)SharedPreferencesUtils.get(mContext,"picture_position", 0);
+		Log.d("rs", "firstActivity->get settings position:"+savedPosition);
+		switch (savedPosition){
+            case 0:
+				prefixCamera.setImageResource(R.mipmap.pic_pre_right);
+                break;
+            case 1:
+				prefixCamera.setImageResource(R.mipmap.pic_pre_left);
+                break;
+            case 2:
+				prefixCamera.setImageResource(R.mipmap.pic_post_right);
+                break;
+            case 3:
+				prefixCamera.setImageResource(R.mipmap.pic_post_left);
+                break;
+           	default:
+                break;
+        }
+		//end
     }
 
 

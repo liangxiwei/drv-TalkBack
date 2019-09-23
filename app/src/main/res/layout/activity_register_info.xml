@@ -15,7 +15,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="15dp"
-        android:src="@mipmap/close" />
+        android:src="@mipmap/close" 
+        android:visibility="gone"/>
 
 
     <LinearLayout
@@ -458,7 +459,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="27dp">
+                    android:layout_height="27dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/tv9"

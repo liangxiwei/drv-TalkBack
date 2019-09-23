@@ -544,7 +544,7 @@
                     android:focusable="true"
                     android:paddingTop="7dp"
                     android:text="删除"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/normal_text_size" />
 
                 <Button
@@ -560,7 +560,7 @@
                     android:paddingBottom="7dp"
                     android:paddingTop="7dp"
                     android:text="发消息"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/normal_text_size" />
             </LinearLayout>
         </LinearLayout>

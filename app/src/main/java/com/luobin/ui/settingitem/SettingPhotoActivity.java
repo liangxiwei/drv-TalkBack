@@ -18,87 +18,77 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+//rs modifed for LBCJW-116
+import com.example.jrd48.chat.SharedPreferencesUtils;
+import android.util.Log;
+
+import cn.carbswang.android.numberpickerview.library.NumberPickerView;
+
 public class SettingPhotoActivity extends BaseDialogActivity {
 
     @BindView(R.id.imgClose)
     ImageView imgClose;
-    @BindView(R.id.rlAddSet)
-    RelativeLayout rlAddSet;
-    @BindView(R.id.tvNumSet)
-    TextView tvNumSet;
-    @BindView(R.id.rlReduceSet)
-    RelativeLayout rlReduceSet;
-    @BindView(R.id.tvtext)
-    TextView tvtext;
-    @BindView(R.id.rlAddTime)
-    RelativeLayout rlAddTime;
-    @BindView(R.id.tvNumTime)
-    TextView tvNumTime;
-    @BindView(R.id.rlReduceTime)
-    RelativeLayout rlReduceTime;
     @BindView(R.id.btnSure)
     Button btnSure;
 
-    String[] dataSet = {"1", "2", "3", "4", "5"};
-    ArrayList<String> dataSetList = new ArrayList<>();
-    int numSet = 0;
 
+	String[] takeCounts = {"0","1", "2", "3", "4", "5","6","7","8","9"};
+	
+	String[] takeInterval = {"1", "2", "3", "4", "5","6","7","8","9","10"};
 
-    String[] dataTime = {"1", "2", "3", "4", "5"};
-    ArrayList<String> dataListTime = new ArrayList<>();
-    int numTime = 0;
+	private NumberPickerView mPicTakeCountPicher = null;
+	private NumberPickerView mPicTakeIntervalPicher = null;
 
+	int mPicTakeCountNum;
+	int mPicTakeInterval;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_photo);
         ButterKnife.bind(this);
         getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
-        dataSetList = new ArrayList<>();
-        dataSetList.addAll(Arrays.asList(dataSet));
-        numSet = 0;
 
-        dataListTime = new ArrayList<>();
-        dataListTime.addAll(Arrays.asList(dataTime));
-        numTime = 0;
+		mPicTakeCountPicher = (NumberPickerView) findViewById(R.id.picPicker);
+    	mPicTakeIntervalPicher = (NumberPickerView) findViewById(R.id.secPicker);
 
+		mPicTakeCountNum = (int)SharedPreferencesUtils.get(this, SharedPreferencesUtils.TAKE_PIC_COUNT, 0);
+		mPicTakeInterval = (int)SharedPreferencesUtils.get(this, SharedPreferencesUtils.TAKE_PIC_INTERVAL, 10);
+
+		Log.d("rs", "get mPicTakeCountNum:"+mPicTakeCountNum+", mPicTakeInterval:"+mPicTakeInterval);
+		
+		init();
     }
 
-    @OnClick({R.id.imgClose, R.id.rlAddSet, R.id.rlReduceSet, R.id.rlAddTime, R.id.rlReduceTime, R.id.btnSure})
+	private void init(){
+     	mPicTakeCountPicher.refreshByNewDisplayedValues(takeCounts);
+        mPicTakeCountPicher.setMaxValue(9);
+        mPicTakeCountPicher.setMinValue(0);
+        mPicTakeCountPicher.setValue(mPicTakeCountNum);//默认时间
+
+		mPicTakeIntervalPicher.refreshByNewDisplayedValues(takeInterval);
+        mPicTakeIntervalPicher.setMaxValue(9);
+        mPicTakeIntervalPicher.setMinValue(0);
+        mPicTakeIntervalPicher.setValue(mPicTakeInterval);//默认时间
+	}
+
+	
+
+    @OnClick({R.id.imgClose, R.id.btnSure})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.imgClose:
                 finish();
                 break;
-            case R.id.rlAddSet://连拍++
-                if (numSet == 5) {
-                    return;
-                }
-                numSet++;
-                tvNumSet.setText(numSet + "");
-                break;
-            case R.id.rlReduceSet://连拍--
-                if (numSet == 0) {
-                    return;
-                }
-                numSet--;
-                tvNumSet.setText(numSet + "");
-                break;
-            case R.id.rlAddTime://连拍时间++
-                if (numTime == 5) {
-                    return;
-                }
-                numTime++;
-                tvNumTime.setText(numTime + "");
-                break;
-            case R.id.rlReduceTime://连拍时间--
-                if (numTime == 0) {
-                    return;
-                }
-                numTime--;
-                tvNumTime.setText(numTime + "");
-                break;
+            
             case R.id.btnSure:
+				mPicTakeCountNum = mPicTakeCountPicher.getValue();
+				mPicTakeInterval = mPicTakeIntervalPicher.getValue();
+			
+				Log.d("rs", "set mPicTakeCountNum:"+mPicTakeCountNum+", mPicTakeInterval:"+mPicTakeInterval);
+				SharedPreferencesUtils.put(this,SharedPreferencesUtils.TAKE_PIC_COUNT,mPicTakeCountNum);
+				SharedPreferencesUtils.put(this,SharedPreferencesUtils.TAKE_PIC_INTERVAL,mPicTakeInterval);
+				finish();
                 break;
             default:
                 break;

@@ -28,9 +28,10 @@ public class SetDrawVideoAdapter extends
 
     ArrayList<String> list = new ArrayList<>();
     int selectPosition = 0;
-    public SetDrawVideoAdapter(Context context, ArrayList<String> list) {
+    public SetDrawVideoAdapter(Context context, ArrayList<String> list, int selectedPosition) {
         this.context = context;
         this.list = list;
+		selectPosition = selectedPosition;
     }
 
 

@@ -41,6 +41,7 @@ import com.luobin.search.friends.DistanceSearchReturnActivity;
 import com.luobin.search.friends.SearchFriendsByConditionActivity;
 import com.luobin.search.friends.SearchReturnActivity;
 import com.luobin.ui.BaseDialogActivity;
+import com.luobin.ui.FriendDetailsDialogActivity;
 import com.luobin.ui.TalkBackSearch.adapter.TSConditionPersionAdapter;
 
 import java.util.ArrayList;
@@ -52,6 +53,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 
+import com.example.jrd48.chat.friend.AppliedFriends;
+import com.example.jrd48.chat.friend.DBHelperFriendsList;
+import com.example.jrd48.chat.friend.DBManagerFriendsList;
+import com.example.jrd48.chat.friend.FriendsDetailsActivity;
+import com.example.jrd48.chat.group.cache.DBTableName;
+
+import android.util.Log;
 /**
  * @author wangjunjie
  */
@@ -110,6 +118,28 @@ public class TSConditionPersonActivity extends BaseDialogActivity implements
             }
         });
 
+		//rs added for LBCJW-125
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view, int position,
+											long id) {
+								//String phoneNum = userInfoList.get(position).getPhoneNum();
+
+								SearchStrangers searchFriends = userInfoList.get(position - 1);
+
+								Log.d("rs","position:"+position);
+								Log.d("rs", "searchFriends.getPhoneNum():"+searchFriends.getPhoneNum());
+								if(searchFriends != null){
+									Intent i = new Intent(context, FriendDetailsDialogActivity.class);
+	        						i.putExtra("user_msg", searchFriends);
+	        						i.putExtra("userPhone", searchFriends.getPhoneNum());
+									startActivityForResult(i, 2);
+								}else{
+									Log.d("rs","searchFriends is null");
+								}
+					}
+			});
+		//end
         initDialog();
     }
 

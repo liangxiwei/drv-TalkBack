@@ -425,19 +425,24 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 moveList = MOVE_GROUP_LIST;
-                groupList.get(groupSelectPosition).setSelect(false);
-                groupSelectPosition = position;
-                groupList.get(groupSelectPosition).setSelect(true);
-                groupAdapter.seteData(groupList);
-                groupAdapter.notifyDataSetChanged();
-                tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
-                if (allMemberMap.size() > 0) {
-                    List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-                    memberList.get(memberSelectPosition).setSelect(false);
-                    memberSelectPosition = 0;
-                    memberAdapter.setData(memberList);
-                    memberAdapter.notifyDataSetChanged();
-                }
+				//rs added if for crash LBCJW-71
+				if(groupList.size() > 0){
+	                groupList.get(groupSelectPosition).setSelect(false);
+	                groupSelectPosition = position;
+	                groupList.get(groupSelectPosition).setSelect(true);
+	                groupAdapter.seteData(groupList);
+	                groupAdapter.notifyDataSetChanged();
+					//rs added for LBCJW-41
+					tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
+	                if (allMemberMap.size() > 0) {
+	                    List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
+	                    memberList.get(memberSelectPosition).setSelect(false);
+	                    memberSelectPosition = 0;
+	                    memberAdapter.setData(memberList);
+	                    memberAdapter.notifyDataSetChanged();
+	                }
+				}
+				//end
             }
         });
 

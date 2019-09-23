@@ -21,18 +21,31 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:background="@drawable/bg_button"
+            android:background="@drawable/button_selector"
             android:drawableLeft="@drawable/icon_return"
             android:paddingLeft="13dp"
             />
+            
+        <com.luobin.widget.FirstStatusBar
+        	android:id="@+id/statusBar"
+            android:layout_width="192dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="50dp"
+            android:layout_toLeftOf="@id/btn_return"
+            android:background="@drawable/bg_selector"/>
 
-
-        <com.luobin.widget.FirstActionBarDataView
+       <com.luobin.widget.FirstActionBarDataView
+        	android:id="@+id/timebar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_toLeftOf="@id/btn_return"
-            />
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@id/statusBar"
+            android:background="@drawable/bg_selector"
+            />    
 
 
     </RelativeLayout>
@@ -79,7 +92,7 @@
                 android:id="@+id/goto_map"
                 android:layout_width="119dp"
                 android:layout_height="38dp"
-                android:background="@drawable/bg_button"
+                android:background="@drawable/button_selector"
                 android:textSize="16dp"
                 android:text="地图查看"
                 android:textColor="@color/white"
@@ -92,7 +105,7 @@
                 android:id="@+id/do_not_disturb"
                 android:layout_width="80dp"
                 android:layout_height="38dp"
-                android:background="@drawable/bg_button"
+                android:background="@drawable/button_selector"
                 android:textSize="16dp"
                 android:text="免打扰"
                 android:textColor="@color/white"
@@ -148,7 +161,7 @@
                     android:layout_height="22dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="0dp"
-                    android:background="@drawable/bg_button"
+                    android:background="@drawable/button_selector"
                     android:text="添加"
                     android:textColor="@color/white"
                     android:visibility="gone"

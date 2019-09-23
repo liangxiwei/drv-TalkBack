@@ -113,6 +113,9 @@ public class ResponseErrorProcesser {
 				case 1124:
 					ToastR.setToast(context, "操作太快");
                     break;
+				case ProtoMessage.ErrorCode.CANNOT_ADD_FRIEND_SELF_VALUE://rs added for LBCJW-122:1026 error
+					ToastR.setToast(context, "不能加自己为好友");
+                    break;
                 default:
                     ToastR.setToast(context, "操作失败：" + errCode);
                     break;

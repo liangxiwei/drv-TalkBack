@@ -362,7 +362,7 @@
                 android:layout_marginBottom="20dp"
                 android:paddingTop="7dp"
                 android:text="申请加为好友"
-                android:textColor="@android:color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/normal_text_size" />
         </LinearLayout>
     </ScrollView>

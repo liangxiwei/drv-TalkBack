@@ -65,7 +65,7 @@ import me.lake.librestreaming.client.RESClient;
 
 public class GlobalStatus {
     public static final int MAX_TEXT_BYTE_COUNT = 32;
-    public static final int MIN_TEXT_BYTE_COUNT = 4;
+    public static final int MIN_TEXT_BYTE_COUNT = 2;//4; //rs modified
     public static final String TAG = "GlobalStatus";
     public static final int MAX_PLATE_NUMBER = 9;
     public static final int MAX_TEXT_COUNT = 16;
@@ -331,6 +331,8 @@ public class GlobalStatus {
                 int speakPosition = statusList.indexOf(ProtoMessage.ChatStatus.csSpeaking_VALUE);
                 ProtoMessage.ChatRoomMemberMsg memberMsg = msg.getMembers(speakPosition);
                 String selfAddr = null;
+                //rtmp://pili-live-rtmp.irobbing.com/dvrlive/group---   + phoneNum
+                //selfAddr = "rtmp://pili-live-rtmp.irobbing.com/dvrlive/group---13396420481";
                 if (msg.getTeamID() > 0) {
                     selfAddr = RESClient.PLAY_SERVER_URL + "group---" + GlobalStatus.getRoomID() + "---" + memberMsg.getPhoneNum();
                 } else {
@@ -342,6 +344,7 @@ public class GlobalStatus {
                 if(isVideo()){
                     if (!memberMsg.getPhoneNum().equals(myPhone)) {
                         DvrService.start(context, RESClient.ACTION_START_PLAY, selfAddr);
+                        Log.e("====", "========selfAddr=" + selfAddr);
                     }
                 } else {
                     DvrService.start(context, RESClient.ACTION_STOP_PLAY, null);

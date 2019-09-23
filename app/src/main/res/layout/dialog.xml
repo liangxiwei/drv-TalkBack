@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_below="@+id/tv_title"
         android:layout_centerHorizontal="true" />
 
@@ -30,7 +30,8 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/numberPicker1"
-        android:text="@string/prompt" />
+        android:text="@string/prompt"
+        android:textSize="20sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +48,9 @@
             android:nextFocusUp="@+id/button1"
             android:nextFocusDown="@+id/button1"
             android:background="@drawable/dvr_cancel_background"
-            android:text="取消" />
+            android:text="取消"
+            android:textSize="20dp"
+            android:textColor="@color/text_color_90white"/>
 
         <TextView
             android:layout_width="0.1px"
@@ -63,7 +66,9 @@
             android:nextFocusUp="@+id/button2"
             android:nextFocusDown="@+id/button2"
             android:background="@drawable/dvr_cancel_background"
-            android:text="确定" />
+            android:text="确定"
+            android:textSize="20dp"
+            android:textColor="@color/text_color_90white"/>
     </LinearLayout>
 
 </RelativeLayout>

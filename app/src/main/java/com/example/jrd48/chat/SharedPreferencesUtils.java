@@ -14,6 +14,14 @@ public class SharedPreferencesUtils {
      */
     public static final String FILE_NAME = "share_data";
 
+
+	//rs added for suishoupaizhaopian settings 
+	public static final String TAKE_PIC_COUNT = "take_pic_count";
+	public static final String TAKE_PIC_INTERVAL = "take_pic_interval";
+
+	public static final String TAKE_VIDEO_DURATION = "take_video_duration";
+	//end
+
     /**
      * 保存数据的方法，我们需要拿到保存数据的具体类型，然后根据类型调用不同的保存方法
      *

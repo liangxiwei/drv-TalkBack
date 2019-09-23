@@ -510,7 +510,7 @@
                         android:paddingTop="7dp"
                         android:text="发消息"
                         android:visibility="gone"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/normal_text_size" />
                 </LinearLayout>
 

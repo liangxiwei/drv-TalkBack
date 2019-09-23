@@ -45,6 +45,7 @@ public class UserAdapter extends ArrayAdapter<User> {
             viewHolder.image.setAlpha(1f);
             viewHolder.state.setBackgroundResource(R.drawable.speaking);
             viewHolder.state.setVisibility(View.VISIBLE);
+			viewHolder.name.setTextColor(0xffffffff);//rs added for LBCJW-114, highlight name
             AniDraw = (AnimationDrawable) viewHolder.state.getBackground();
             AniDraw.start();
             //viewHolder.name.setTextColor(0xff303F9F);

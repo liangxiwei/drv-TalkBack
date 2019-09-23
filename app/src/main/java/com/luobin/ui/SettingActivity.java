@@ -40,7 +40,7 @@ public class SettingActivity extends BaseActivity {
     SettingAdapter adapter = null;
 
     String[] data = {"账号", "背景墙", "蓝牙手咪", "系统升级",
-            "轨迹设置", "画中画", "随手拍照片", "随手拍视频", "无线电设置",
+            /*"轨迹设置"*/"恢复出厂设置", "画中画", "随手拍照片", "随手拍视频", "无线电设置",
             "离线地图"};
 
     @Override
@@ -79,14 +79,30 @@ public class SettingActivity extends BaseActivity {
                 break;
             //蓝牙手咪
             case 2:
+				startActivity(new Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS));
                 break;
             //系统升级
             case 3:
+				try{
+					Intent i = new Intent();
+					i.setClassName("com.qualcomm.update", "com.qualcomm.update.UpdateDialog");
+				    startActivity(i);
+					//Runtime.getRuntime().exec("am start -n com.qualcomm.update/.UpdateDialog");
+				}catch (Exception e){
+            		e.printStackTrace();
+					Log.d("rs","found system update exception: "+e.toString());
+        		}
                 break;
+			/*
             //轨迹设置
             case 4:
                 startActivity(new Intent(this, SettingTrajectoryActivity.class));
                 break;
+            */
+            //恢复出厂设置
+            case 4:
+				forceRecoveryDialog(this);
+				break;
             //画中画
             case 5:
                 startActivity(new Intent(this, SettingDrawVideoActivity.class));
@@ -101,9 +117,21 @@ public class SettingActivity extends BaseActivity {
                 break;
             //无线电设置
             case 8:
+				try{
+					startActivity(new Intent("com.benshikj.ht.jf.intent.action.RADIO_SETTINGS"));
+				}catch (Exception e){
+            		e.printStackTrace();
+					Log.d("rs","found RADIO_SETTINGS exception: "+e.toString());
+        		}
                 break;
             //离线地图
             case 9:
+				try{
+					startActivity(new Intent("com.benshikj.ht.jf.intent.action.OFFLINE_MAP_SETTINGS"));
+				}catch (Exception e){
+            		e.printStackTrace();
+					Log.d("rs","found OFFLINE_MAP_SETTINGS exception: "+e.toString());
+        		}
                 break;
             default:
                 break;
@@ -153,4 +181,33 @@ public class SettingActivity extends BaseActivity {
     }
 
 
+	//rs added for recovery dialog
+    private void forceRecoveryDialog(Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(context.getResources().getString(R.string.toast_tip));
+        builder.setMessage("确定要恢复出厂设置吗？");
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Intent intent = new Intent("android.intent.action.MASTER_CLEAR");
+                sendBroadcast(intent);
+            }
+        });
+
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        if (simplelistdialog != null && simplelistdialog.isShowing()) {
+            simplelistdialog.dismiss();
+        }
+        simplelistdialog = builder.create();
+        simplelistdialog.show();
+    }
+
+	//end
 }

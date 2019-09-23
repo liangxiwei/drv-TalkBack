@@ -21,6 +21,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import android.util.Log;
+
 public class SettingDrawVideoActivity extends BaseDialogActivity {
 
     @BindView(R.id.imgClose)
@@ -36,6 +38,8 @@ public class SettingDrawVideoActivity extends BaseDialogActivity {
 
     ArrayList<String> data = new ArrayList<>();
     String result = "";
+    int selectedPosition = 0;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +57,12 @@ public class SettingDrawVideoActivity extends BaseDialogActivity {
         data.add("3");
         data.add("4");
         data.add("5");
-        adapter = new SetDrawVideoAdapter(this, data);
+		
+		//rs modified for LBCJW-115
+		int savedPosition = (int)SharedPreferencesUtils.get(context,"picture_position",0);
+		Log.d("rs", "savedPosition:"+savedPosition);
+        adapter = new SetDrawVideoAdapter(this, data, savedPosition);
+		//end
 //布局管理器对象 参数1.上下文 2.规定一行显示几列的参数常量
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         //设置RecycleView显示的方向是水平还是垂直 GridLayout.HORIZONTAL水平  GridLayout.VERTICAL默认垂直
@@ -64,7 +73,8 @@ public class SettingDrawVideoActivity extends BaseDialogActivity {
         adapter.setOnItemClickListener(new SetDrawVideoAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(int position, String videoTag) {
-                result = videoTag;
+                result = videoTag; 
+                selectedPosition = position;
             }
         });
 
@@ -79,6 +89,7 @@ public class SettingDrawVideoActivity extends BaseDialogActivity {
                 break;
             case R.id.btnSure:
                 SharedPreferencesUtils.put(context,"picture",result);
+				SharedPreferencesUtils.put(context,"picture_position",(Integer)selectedPosition);
                 finish();
                 break;
             default:

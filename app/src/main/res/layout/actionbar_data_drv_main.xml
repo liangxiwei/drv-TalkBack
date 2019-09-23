@@ -19,39 +19,39 @@
             android:layout_height="@dimen/time_height"
             android:gravity="center"
             android:textColor="#ffffffff"
-            android:textSize="28dp" />
+            android:textSize="20dp"/>
 
         <TextView android:id="@+id/time2"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/time_height"
             android:gravity="center"
             android:textColor="#ffffffff"
-            android:layout_marginLeft="@dimen/time_margin"
-            android:textSize="@dimen/time_text_size" />
+            android:layout_marginLeft="2dp"
+            android:textSize="20dp"/>
 
         <TextView android:id="@+id/time3"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/time_height"
             android:gravity="center"
             android:textColor="#ffffffff"
-            android:layout_marginLeft="@dimen/time_margin"
-            android:textSize="@dimen/time_text_size"  />
+            android:layout_marginLeft="2dp"
+            android:textSize="20dp"/>
 
         <TextView android:id="@+id/time4"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/time_height"
             android:gravity="center"
             android:textColor="#ffffffff"
-            android:layout_marginLeft="@dimen/time_margin"
-            android:textSize="@dimen/time_text_size"  />
+            android:layout_marginLeft="2dp"
+            android:textSize="20dp"/>
 
         <TextView android:id="@+id/time5"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/time_height"
             android:gravity="center"
             android:textColor="#ffffffff"
-            android:layout_marginLeft="@dimen/time_margin"
-            android:textSize="@dimen/time_text_size"  />
+            android:layout_marginLeft="2dp"
+            android:textSize="20dp"/>
 
     </LinearLayout>
 
@@ -67,16 +67,16 @@
         <TextView android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:textColor="#ffffff"
-            android:textSize="14dp" />
+            android:textSize="14dp"/>
 
-        <TextView android:id="@+id/week"
+        <!--TextView android:id="@+id/week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:layout_marginLeft="10dp"
-            android:textSize="14dp" />
+            android:textSize="14dp" /-->
 
     </LinearLayout>
 

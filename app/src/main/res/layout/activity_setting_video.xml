@@ -13,7 +13,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
-        android:src="@mipmap/close" />
+        android:src="@mipmap/close"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="440dp"
@@ -32,70 +33,39 @@
             <TextView
                 android:id="@+id/tvtext"
                 android:layout_width="wrap_content"
-                android:layout_height="70dp"
+                android:layout_height="200dp"
                 android:gravity="center"
                 android:text="拍摄视频"
                 android:textColor="@color/text_color_90white"
                 android:textSize="16dp" />
 
-            <LinearLayout
-                android:id="@+id/rlSet"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:layout_toRightOf="@id/tvtext"
-                android:gravity="center"
-                android:orientation="vertical">
+          <cn.carbswang.android.numberpickerview.library.NumberPickerView
+	            	android:id="@+id/video_duration_picker"
+	                android:layout_width="wrap_content"
+	                android:layout_height="200dp"
+	                android:layout_gravity="center"
+	                android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@id/tvtext"
+	                app:npv_ItemPaddingHorizental="15dp"
+	                app:npv_ItemPaddingVertical="5dp"
+	                app:npv_ShowCount="10"
+	                app:npv_TextSizeNormal="18dp"
+	                app:npv_TextSizeSelected="24dp"
+	                app:npv_TextColorSelected="@color/text_color_90white"
+	                app:npv_TextColorNormal="#9d9d9d"
+	                app:npv_DividerColor="#d9d9d9"
+	                app:npv_WrapSelectorWheel="true"	                
+                />
 
-                <RelativeLayout
-                    android:id="@+id/rlAdd"
-                    android:layout_width="70dp"
-                    android:layout_height="22dp">
-
-                    <TextView
-                        android:layout_width="16dp"
-                        android:layout_height="12dp"
-                        android:layout_centerHorizontal="true"
-                        android:background="@drawable/icon_three_top" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="70dp"
-                    android:layout_height="24dp"
-                    android:background="@drawable/bg_panel_fang">
-
-                    <TextView
-                        android:id="@+id/tvNum"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="10秒"
-                        android:textColor="@color/text_color_90white"
-                        android:textSize="16dp" />
-
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rlReduce"
-                    android:layout_width="70dp"
-                    android:layout_height="22dp">
-
-
-                    <TextView
-                        android:layout_width="16dp"
-                        android:layout_height="12dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:background="@drawable/icon_three_botton" />
-
-                </RelativeLayout>
-
-
-            </LinearLayout>
-
-
+         <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@+id/video_duration_picker"
+                    android:gravity="center|left"
+                    android:text="秒"
+                    android:textColor="@color/text_color_90white"
+                    android:textSize="16dp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -110,8 +80,8 @@
                 android:background="@drawable/bg_panel_btn"
                 android:gravity="center"
                 android:text="确定"
-                android:textSize="16dp" />
-
+                android:textSize="16dp"
+                android:textColor="@color/text_color_90white"/>
         </RelativeLayout>
 
 
