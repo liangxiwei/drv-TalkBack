@@ -359,7 +359,9 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyEvent.getRepeatCount() == 0) {
                     switch (keyEvent.getKeyCode()) {
                         case KeyEvent.KEYCODE_F6:
-                            groupSelectPosition = groupListView.getSelectedItemPosition();
+                            if (groupListView.getSelectedItemPosition() != -1) {
+                                groupSelectPosition = groupListView.getSelectedItemPosition();
+                            }
                             if (isVisible){
                                 Log.i("TabFragmentLinkGroup", "KEYCODE_F6, groupSelectPosition = " + groupSelectPosition);
                                 Team msg = groupList.get(groupSelectPosition);
