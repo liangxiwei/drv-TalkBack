@@ -135,12 +135,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     ImageView imgHead;
 
     /**
-     * 修改我
-     */
-    @BindView(R.id.btnMyEdit)
-    Button btnMyEdit;
-
-    /**
      * 昵称
      */
     @BindView(R.id.tvName)
@@ -209,8 +203,8 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     /**
      * 选填信息修改
      */
-    @BindView(R.id.btnCarEdit)
-    Button btnCarEdit;
+    @BindView(R.id.btnEdit)
+    Button btnEdit;
     /**
      * 车型
      */
@@ -406,12 +400,10 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
      *
      * @param view
      */
-    @OnClick({R.id.btnMyEdit, R.id.btnCarEdit, R.id.imgClose, R.id.imgHead})
+    @OnClick({R.id.btnEdit, R.id.imgClose, R.id.imgHead})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btnMyEdit:
-                break;
-            case R.id.btnCarEdit:
+            case R.id.btnEdit:
                 selectBtnShow(selectCarIsShow);
                 break;
             case R.id.imgClose:

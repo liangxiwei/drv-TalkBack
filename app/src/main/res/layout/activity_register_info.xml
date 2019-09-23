@@ -45,18 +45,6 @@
                 android:layout_marginStart="90dp"
                 android:layout_marginTop="20dp" />
 
-            <Button
-                android:id="@+id/btnMyEdit"
-                android:layout_width="32dp"
-                android:layout_height="15dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="38dp"
-                android:background="@drawable/bg_panel_btn"
-                android:text="修改"
-                android:textColor="@color/text_color_90white"
-                android:textSize="10dp" />
-
             <LinearLayout
                 android:id="@+id/llItem"
                 android:layout_width="match_parent"
@@ -339,18 +327,6 @@
                 android:textColor="@color/text_color_90white"
                 android:textSize="9dp" />
 
-            <Button
-                android:id="@+id/btnCarEdit"
-                android:layout_width="32dp"
-                android:layout_height="15dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="35dp"
-                android:background="@drawable/bg_panel_btn"
-                android:text="修改"
-                android:textColor="@color/text_color_90white"
-                android:textSize="10dp" />
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -383,7 +359,6 @@
                         android:singleLine="true"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
-
 
                     <Button
                         android:id="@+id/btnCarModels"
@@ -602,22 +577,35 @@
                         android:textSize="10dp" />
 
                 </RelativeLayout>
-
-
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-        <RelativeLayout
+
+     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+         <Button
+             android:id="@+id/btnEdit"
+             android:layout_width="150dp"
+             android:layout_height="40dp"
+             android:layout_marginTop="5dp"
+             android:layout_marginBottom="5dp"
+             android:layout_centerVertical="true"
+             android:layout_alignParentStart="true"
+             android:layout_marginStart="50dp"
+             android:background="@drawable/bg_panel_btn"
+             android:text="修改注册信息"
+             android:textColor="@color/text_color_90white"
+             android:textSize="14dp" />
         <Button
             android:id="@+id/btnExit"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/bg_panel_btn"
             android:text="退出账号"
             android:textColor="@color/text_color_90white"
