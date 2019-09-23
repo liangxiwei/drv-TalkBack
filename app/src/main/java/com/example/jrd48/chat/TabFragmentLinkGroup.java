@@ -421,6 +421,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 groupList.get(groupSelectPosition).setSelect(true);
                 groupAdapter.seteData(groupList);
                 groupAdapter.notifyDataSetChanged();
+                tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
                 if (allMemberMap.size() > 0) {
                     List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
                     memberList.get(memberSelectPosition).setSelect(false);
