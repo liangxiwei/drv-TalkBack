@@ -60,7 +60,7 @@ public class PttKeyReceiver extends BroadcastReceiver {
         */
             context.startService(service);
             // set video chat default
-            //GlobalStatus.setIsVideo(true);
+            GlobalStatus.setIsVideo(true);
         }
 
     }
