@@ -102,7 +102,7 @@ public class SelectMemberAdapter extends BaseAdapter {
         holder.memberName.setText(memberInfo.getUserName());
         Bitmap bitmap = GlobalImg.getImage(context, memberInfo.getPhoneNum());
         holder.memberIcon.setImageBitmap(bitmap);
-		//rs modified for select wrong
+		//rs modified for select wrong�� LBCJW-157
 		/* 
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,18 +120,19 @@ public class SelectMemberAdapter extends BaseAdapter {
 							} else {
 								map.remove(position);
 							}
+							
+							ViewFriendsMsg viewFriendsMsg = list.get(position);
+							if (map != null && map.containsKey(position)) {
+								//holder.checkBox.setChecked(true);
+								viewFriendsMsg.setbChecked(true);
+								Log.d("rs", "selectMemberAdapter->set true->position:"+position);
+							} else {
+								//holder.checkBox.setChecked(false);
+								viewFriendsMsg.setbChecked(false);
+								Log.d("rs", "selectMemberAdapter->set false->position:"+position);
+							}
 						}
 					});
-		ViewFriendsMsg viewFriendsMsg = list.get(position);
-		if (map != null && map.containsKey(position)) {
-			holder.checkBox.setChecked(true);
-			viewFriendsMsg.setbChecked(true);
-			Log.d("rs", "selectMemberAdapter->set true->position:"+position);
-		} else {
-			holder.checkBox.setChecked(false);
-			viewFriendsMsg.setbChecked(false);
-			Log.d("rs", "selectMemberAdapter->set false->position:"+position);
-		}
 		//end
 		
         return view;

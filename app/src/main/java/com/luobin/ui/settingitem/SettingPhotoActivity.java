@@ -53,7 +53,7 @@ public class SettingPhotoActivity extends BaseDialogActivity {
     	mPicTakeIntervalPicher = (NumberPickerView) findViewById(R.id.secPicker);
 
 		mPicTakeCountNum = (int)SharedPreferencesUtils.get(this, SharedPreferencesUtils.TAKE_PIC_COUNT, 0);
-		mPicTakeInterval = (int)SharedPreferencesUtils.get(this, SharedPreferencesUtils.TAKE_PIC_INTERVAL, 10);
+		mPicTakeInterval = (int)SharedPreferencesUtils.get(this, SharedPreferencesUtils.TAKE_PIC_INTERVAL, 9);//rs set deefault interval is 10s
 
 		Log.d("rs", "get mPicTakeCountNum:"+mPicTakeCountNum+", mPicTakeInterval:"+mPicTakeInterval);
 		

@@ -26,7 +26,7 @@
             android:paddingLeft="13dp"
             />
             
-        <com.luobin.widget.FirstStatusBar
+        <!--com.luobin.widget.FirstStatusBar
         	android:id="@+id/statusBar"
             android:layout_width="192dp"
             android:layout_height="30dp"
@@ -45,7 +45,14 @@
             android:layout_marginRight="30dp"
             android:layout_toLeftOf="@id/statusBar"
             android:background="@drawable/bg_selector"
-            />    
+            /-->    
+
+       <com.luobin.widget.FirstActionBarDataView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_toLeftOf="@id/btn_return"
+            />
 
 
     </RelativeLayout>
