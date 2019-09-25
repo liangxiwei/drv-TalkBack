@@ -2,17 +2,18 @@ package me.lake.librestreaming.model;
 
 
 import android.hardware.Camera;
+import android.os.Build;
 
 /**
  * Created by lake on 16-3-16.
  */
 public class RESConfig {
-    public static final int VIDEO_WIDTH = 640;
-    public static final int VIDEO_HEIGHT = 360;
+    public static final int VIDEO_WIDTH = "LB1822".equals(Build.PRODUCT) ? 320 : 640;
+    public static final int VIDEO_HEIGHT = "LB1822".equals(Build.PRODUCT) ? 180 : 360;
     public static final int VIDEO_HEIGHT2 = 480;
     public static final int VIDEO_WIDTH_BIG = 1280;
     public static final int VIDEO_HEIGHT_BIG = 720;
-    public static final int BITRATE = 1024*1024;
+    public static final int BITRATE = "LB1822".equals(Build.PRODUCT) ? 400 * 1024 : 1024 * 1024;
     public static final int FPS = 30;
     public static class FilterMode {
         public static final int HARD = RESCoreParameters.FILTER_MODE_HARD;
