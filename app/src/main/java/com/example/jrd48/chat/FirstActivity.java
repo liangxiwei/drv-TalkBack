@@ -5121,7 +5121,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 startActivity(mapIntent);
                 break;
             case R.id.do_not_disturb:
-                //免打扰
+                //挂断
                 HungupClick();
                 break;
             case R.id.btn_add:

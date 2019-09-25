@@ -127,7 +127,7 @@
             android:textSize="@dimen/normal_text_size"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/white"
-            android:text="免打扰" />
+            android:text="挂断" />
     </LinearLayout>
 
     <RelativeLayout
