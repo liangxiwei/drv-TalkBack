@@ -983,7 +983,7 @@ public class DvrImpl extends DvrImplBase
                 } else {
                     GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
                     mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
-                    updateTimeStampBmpIfNeeded();
+                    //updateTimeStampBmpIfNeeded();
                     if (mWaterMarkTextureId >= 0) {
                         setWaterMarkViewport(mCamPrevWidth, mCamPrevHeight);
                         GLES20.glEnable(GLES20.GL_BLEND);
