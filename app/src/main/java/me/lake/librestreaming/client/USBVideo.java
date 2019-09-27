@@ -172,8 +172,8 @@ public class USBVideo extends VideoBase implements SurfaceHolder.Callback, UsbCa
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         Log.d(TAG, "surfaceCreated");
-        mCamPrevWidth = RESConfig.VIDEO_WIDTH;
-        mCamPrevHeight = RESConfig.VIDEO_HEIGHT2;///640x480
+        mCamPrevWidth = RESConfig.VIDEO_WIDTH_BIG;
+        mCamPrevHeight = RESConfig.VIDEO_HEIGHT_BIG;
         usbCamera = GlobalStatus.getUsbVideo1();
         Log.d(TAG, "usbCamera == null ," + (usbCamera == null));
         try {
@@ -514,10 +514,10 @@ public class USBVideo extends VideoBase implements SurfaceHolder.Callback, UsbCa
         Bitmap tempBmp = null;
         try {
             tempBmp = BitmapFactory.decodeByteArray(framebuf, 0, framebuf.length, options);
-            if (mCamPrevWidth != RESConfig.VIDEO_WIDTH || mCamPrevHeight != RESConfig.VIDEO_HEIGHT) {
-                tempBmp = Bitmap.createBitmap(BitmapFactory.decodeByteArray(framebuf, 0, framebuf.length, options), 0, 0, RESConfig.VIDEO_WIDTH, RESConfig.VIDEO_HEIGHT);
-                //Log.v(TAG,"tempBmp H = "+tempBmp.getHeight());
-            }
+//            if (mCamPrevWidth != RESConfig.VIDEO_WIDTH || mCamPrevHeight != RESConfig.VIDEO_HEIGHT) {
+//                tempBmp = Bitmap.createBitmap(BitmapFactory.decodeByteArray(framebuf, 0, framebuf.length, options), 0, 0, RESConfig.VIDEO_WIDTH, RESConfig.VIDEO_HEIGHT);
+//                //Log.v(TAG,"tempBmp H = "+tempBmp.getHeight());
+//            }
         } catch (Throwable e) {
             e.printStackTrace();
         }
