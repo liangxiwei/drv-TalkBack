@@ -102,7 +102,7 @@ public class SelectMemberAdapter extends BaseAdapter {
         holder.memberName.setText(memberInfo.getUserName());
         Bitmap bitmap = GlobalImg.getImage(context, memberInfo.getPhoneNum());
         holder.memberIcon.setImageBitmap(bitmap);
-		//rs modified for select wrong�� LBCJW-157
+		//rs modified for select wrong LBCJW-157
 		/* 
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
