@@ -547,6 +547,12 @@ public class DvrImpl extends DvrImplBase
         }
         String dev = mContext.getResources().getStringArray(R.array.video_devs)[1];
         String product = Build.PRODUCT;
+        if (true) {
+            String devs[] = mContext.getResources().getStringArray(R.array.video_devs);
+            for (String str : devs) {
+                Log.d(TAG, str + " exist: " + (new File(str)).exists());
+            }
+        }
         if (product != null && (product.equals("LB1728V4") || product.equals("LB1822"))) {
             dev = mContext.getResources().getStringArray(R.array.video_devs)[1];
         }
@@ -880,25 +886,25 @@ public class DvrImpl extends DvrImplBase
                         case 2:
                             switch (GlobalStatus.getPipMode()) {
                                 case 0:
-                                    GLES20.glViewport(0, 0, viewWidth, viewWidth);
+                                    GLES20.glViewport(0, 0, viewWidth, viewHeight);
                                     mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
                                     GLES20.glViewport(viewWidth / 2, 0, viewWidth / 2, viewHeight / 2);
                                     mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
                                     break;
                                 case 1:
-                                    GLES20.glViewport(0, 0, viewWidth, viewWidth);
+                                    GLES20.glViewport(0, 0, viewWidth, viewHeight);
                                     mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
                                     GLES20.glViewport(0, 0, viewWidth / 2, viewHeight / 2);
                                     mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
                                     break;
                                 case 2:
-                                    GLES20.glViewport(0, 0, viewWidth, viewWidth);
+                                    GLES20.glViewport(0, 0, viewWidth, viewHeight);
                                     mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
                                     GLES20.glViewport(viewWidth / 2, 0, viewWidth / 2, viewHeight / 2);
                                     mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
                                     break;
                                 case 3:
-                                    GLES20.glViewport(0, 0, viewWidth, viewWidth);
+                                    GLES20.glViewport(0, 0, viewWidth, viewHeight);
                                     mUsbFrameBlit.drawFrame(GlobalStatus.getUsbTextureId(), mTmpMatrix);
                                     GLES20.glViewport(0, 0, viewWidth / 2, viewHeight / 2);
                                     mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
