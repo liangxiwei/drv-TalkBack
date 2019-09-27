@@ -103,6 +103,7 @@ public class DvrImpl extends DvrImplBase
             0.0f, 1.0f, 0.0f, 1.0f};
 
     private long mFrameCount = 0;
+    private long mLastRtmpFrame = 0;
     private final int mRecordingFlagFlashRate = 20; // frames
     private int mCamTextureId;
     private int mWaterMarkTextureId = -1;
@@ -1059,7 +1060,8 @@ public class DvrImpl extends DvrImplBase
             }
         }
         if (!RESClient.getInstance().getSelf_video() && RESClient.getInstance().getStatus() == RESClient.STATUS_SUCCESS) {
-            if (globalMediaCodec != null && globalMediaCodec.isStarted()) {
+            if (globalMediaCodec != null && globalMediaCodec.isStarted() && ((int)(mFrameCount*(RESConfig.FPS*1.0/30)) != mLastRtmpFrame)) {
+                mLastRtmpFrame = (int)(mFrameCount*(RESConfig.FPS*1.0/30));
                 WindowSurface windowSurface = globalMediaCodec.getmEncoderSurface();
                 try {
                     windowSurface.makeCurrent();

@@ -13,8 +13,8 @@ public class RESConfig {
     public static final int VIDEO_HEIGHT2 = 480;
     public static final int VIDEO_WIDTH_BIG = 1280;
     public static final int VIDEO_HEIGHT_BIG = 720;
-    public static final int BITRATE = "LB1822".equals(Build.PRODUCT) ? 400 * 1024 : 1024 * 1024;
-    public static final int FPS = 30;
+    public static final int BITRATE = "LB1822".equals(Build.PRODUCT) ? 300 * 1024 : 1024 * 1024;
+    public static final int FPS = 20;
     public static class FilterMode {
         public static final int HARD = RESCoreParameters.FILTER_MODE_HARD;
         public static final int SOFT = RESCoreParameters.FILTER_MODE_SOFT;
