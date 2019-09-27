@@ -400,6 +400,7 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
         }
         // 确保Socket已经启动
 
+        ToastR.setToast(LoginActivity.this, "正在登录...");
         mHandler.postDelayed(mShowProgress, 500);
         tvLogin.setClickable(false);
         ProtoMessage.UserLogin.Builder builder = ProtoMessage.UserLogin.newBuilder();
