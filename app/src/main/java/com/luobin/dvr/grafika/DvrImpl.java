@@ -1059,7 +1059,7 @@ public class DvrImpl extends DvrImplBase
                 }
             }
         }
-        if (!RESClient.getInstance().getSelf_video() && RESClient.getInstance().getStatus() == RESClient.STATUS_SUCCESS) {
+        if (RESClient.getInstance().getStatus() == RESClient.STATUS_SUCCESS) {
             if (globalMediaCodec != null && globalMediaCodec.isStarted() && ((int)(mFrameCount*(RESConfig.FPS*1.0/30)) != mLastRtmpFrame)) {
                 mLastRtmpFrame = (int)(mFrameCount*(RESConfig.FPS*1.0/30));
                 WindowSurface windowSurface = globalMediaCodec.getmEncoderSurface();

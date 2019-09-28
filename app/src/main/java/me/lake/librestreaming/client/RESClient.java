@@ -201,7 +201,7 @@ public class RESClient {
      */
     public void startStreaming() {
         synchronized (SyncOp) {
-            if (self_video) {
+            if (false && self_video) {
                 showSurfaceView();
             }else{
                 if (dvrService != null) {
@@ -276,7 +276,7 @@ public class RESClient {
             if (rtmpSender != null) {
                 rtmpSender.destroy();
             }
-            if (self_video) {
+            if (false && self_video) {
                 if (mCamView != null && dvrService != null) {
                     hideSurfaceView();
                 }

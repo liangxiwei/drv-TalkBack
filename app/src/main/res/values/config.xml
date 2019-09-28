@@ -11,7 +11,7 @@
     <string name="default_thumbnail_view_rect" translatable="false">-10,-10,4,3</string>
     <string name="default_pip_thumbnail_view_rect" translatable="false">32,224,304,228</string>
     <integer name="default_pre_video_time" translatable="false">5</integer>
-    <integer name="default_video_bitrate" translatable="false">5000000</integer>
+    <integer name="default_video_bitrate" translatable="false">5120000</integer>
     <!-- default zxing code size -->
     <integer-array name="default_zxing_size">
         <item>480</item>
