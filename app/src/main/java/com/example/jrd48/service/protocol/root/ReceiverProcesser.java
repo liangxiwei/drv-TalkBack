@@ -248,14 +248,96 @@ public class ReceiverProcesser extends CommonProcesser {
 //                        db.close();
 //                        return;
 //                    } else
-                    if (resp.getMsgType() == ProtoMessage.MsgType.mtEnterTeam_VALUE
-                            || resp.getMsgType() == ProtoMessage.MsgType.mtLeaveTeam_VALUE) {
+                    if (resp.getMsgType() == ProtoMessage.MsgType.mtEnterTeam_VALUE) {
                         long groupIdTemp = groupId;
                         long joinTeamId = -1;
                         String teamName = "";
-                        TeamInfo teamInfo = null ;
+                        TeamInfo teamInfo = null;
+                        ProtoMessage.ChatRoomMsg chatRoomMsg = GlobalStatus.getChatRoomMsg();
+                        List<ProtoMessage.ChatRoomMemberMsg> memberMsgs = chatRoomMsg.getMembersList();
+                        int selectPosition = -1;
+                        ProtoMessage.ChatRoomMsg.Builder builder = chatRoomMsg.toBuilder();
+                        boolean isChange = false;
+                        //if (resp.getMsgType() == ProtoMessage.MsgType.mtEnterTeam_VALUE) {
+                        ProtoMessage.ChatRoomMemberMsg selectMember = null;
+                        for (int j = 0; j < memberMsgs.size(); j++) {
+                            ProtoMessage.ChatRoomMemberMsg memberMsg = memberMsgs.get(j);
+                            if (phone.equals(memberMsg.getPhoneNum())) {
+                                selectPosition = j;
+                            }
+                        }
+                        if (selectPosition == -1) {
+                            ProtoMessage.ChatRoomMemberMsg.Builder newBuilder = ProtoMessage.ChatRoomMemberMsg.newBuilder();
+                            newBuilder.setPhoneNum(phone);
+                            builder.addMembers(newBuilder.build());
+                            isChange = true;
+                        }
+
+                        if (builder.getMembersCount() > 1) {
+                            if (isChange) {
+                                GlobalStatus.updateChatRoomMsg(builder.build());
+                            }
+                        } else {
+                            ProtoMessage.AcceptVoice.Builder closeBuild = ProtoMessage.AcceptVoice.newBuilder();
+                            if (GlobalStatus.isStartRooming() && GlobalStatus.getChatRoomtempId() != 0) {
+                                closeBuild.setRoomID(GlobalStatus.getChatRoomtempId());
+                            } else {
+                                closeBuild.setRoomID(GlobalStatus.getRoomID());
+                            }
+                            if (builder.getRoomID() == -1) {
+                                GlobalStatus.setChatRoomtempId(-1);
+                            } else {
+                                GlobalStatus.setChatRoomtempId(0);
+                            }
+                            Log.v("wsDvr", "roomId:" + closeBuild.getRoomID());
+                            closeBuild.setAcceptType(ProtoMessage.AcceptType.atDeny_VALUE);
+                            MyService.start(context, ProtoMessage.Cmd.cmdAcceptVoice.getNumber(), closeBuild.build());
+
+                            VoiceHandler.doVoiceAction(context, false);
+                            Intent intent = new Intent(AutoCloseProcesser.ACTION);
+                            long roomId = GlobalStatus.getRoomID();
+                            GlobalStatus.equalRoomID(roomId);
+                            intent.putExtra("error_code", resp.getErrorCode());
+                            intent.putExtra("roomID", roomId);
+                            context.sendBroadcast(intent);
+                            ToastR.setToast(context, "当前成员只剩1个，对讲解散");
+                        }
+                        i.putExtra("group", groupIdTemp);
+                        i.putExtra("phone", phone);
+                        i.putExtra("msg_type", 4);
+                        context.sendBroadcast(i);
+                        mHandler.removeCallbacks(mRefreshTeamRunnable);
+                        mHandler.postDelayed(mRefreshTeamRunnable, 2000);
+
+                        if (dbTeam != null) {
+                            dbTeam.close();
+                        }
+
+                        if (resp.getMsgContent().toStringUtf8().equals(myPhone)) {
+                            Log.d("chat", "equals myphone");
+                            if (resp.getMsgType() == ProtoMessage.MsgType.mtEnterTeam_VALUE) {
+                                Log.d("chat", "mtEnterTeam_VALUE");
+                                DBManagerTeamList dblist = new DBManagerTeamList(context, true, DBTableName.getTableName(context, DBHelperTeamList.NAME));
+                                teamName = dblist.getTeamName(groupIdTemp);
+                                dblist.closeDB();
+                                if (!TextUtils.isEmpty(teamName)) {
+                                    Log.d("chat", "您加入了[" + teamName + "]群");
+                                    ToastR.setToast(context, "您加入了[" + teamName + "]群");
+                                } else {
+                                    joinTeamId = groupIdTemp;
+                                }
+                            }
+                            loadTeamListFromNet(joinTeamId);
+                        }
+                        confirm(resp.getMsgID());
+                        return;
+                    } else if (resp.getMsgType() == ProtoMessage.MsgType.mtLeaveTeam_VALUE) {
+                        long groupIdTemp = groupId;
+                        long joinTeamId = -1;
+                        String teamName = "";
+                        TeamInfo teamInfo = null;
                         //if (groupId == 0 || (resp.getMsgContent().toStringUtf8().equals(myPhone) && resp.getMsgType() == ProtoMessage.MsgType.mtLeaveTeam_VALUE)) {
-                        if (resp.getMsgContent().toStringUtf8().equals(myPhone) && resp.getMsgType() == ProtoMessage.MsgType.mtLeaveTeam_VALUE) {
+                        if (resp.getMsgContent().toStringUtf8().equals(myPhone)) {
                             try {
                                 if (groupId == 0) {
                                     groupIdTemp = Long.valueOf(resp.getMsgContent().toStringUtf8());
@@ -265,7 +347,7 @@ public class ReceiverProcesser extends CommonProcesser {
                                 DBManagerTeamList dblist = new DBManagerTeamList(context, true, DBTableName.getTableName(context, DBHelperTeamList.NAME));
                                 teamName = dblist.getTeamName(groupIdTemp);
                                 dblist.closeDB();
-                                if (!TextUtils.isEmpty(teamName) && resp.getMsgType() == ProtoMessage.MsgType.mtLeaveTeam_VALUE ) {
+                                if (!TextUtils.isEmpty(teamName) && resp.getMsgType() == ProtoMessage.MsgType.mtLeaveTeam_VALUE) {
                                     Log.d("chat", "您退出了[" + teamName + "]群");
                                     ToastR.setToast(context, "您退出了[" + teamName + "]群");
                                 }
@@ -280,7 +362,6 @@ public class ReceiverProcesser extends CommonProcesser {
                                     intent.putExtra("roomID", roomId);
                                     context.sendBroadcast(intent);
                                 }
-
                                 Intent in = new Intent("ACTION.refreshTeamList");
                                 in.putExtra("singout", FirstActivity.SING_OUT);
                                 in.putExtra("teamid", groupIdTemp);
@@ -301,32 +382,16 @@ public class ReceiverProcesser extends CommonProcesser {
                                 int selectPosition = -1;
                                 ProtoMessage.ChatRoomMsg.Builder builder = chatRoomMsg.toBuilder();
                                 boolean isChange = false;
-                                if (resp.getMsgType() == ProtoMessage.MsgType.mtEnterTeam_VALUE) {
-                                    ProtoMessage.ChatRoomMemberMsg selectMember = null;
-                                    for (int j = 0; j < memberMsgs.size(); j++) {
-                                        ProtoMessage.ChatRoomMemberMsg memberMsg = memberMsgs.get(j);
-                                        if (phone.equals(memberMsg.getPhoneNum())) {
-                                            selectPosition = j;
-                                        }
+                                ProtoMessage.ChatRoomMemberMsg selectMember = null;
+                                for (int j = 0; j < memberMsgs.size(); j++) {
+                                    ProtoMessage.ChatRoomMemberMsg memberMsg = memberMsgs.get(j);
+                                    if (phone.equals(memberMsg.getPhoneNum())) {
+                                        selectPosition = j;
                                     }
-                                    if (selectPosition == -1) {
-                                        ProtoMessage.ChatRoomMemberMsg.Builder newBuilder = ProtoMessage.ChatRoomMemberMsg.newBuilder();
-                                        newBuilder.setPhoneNum(phone);
-                                        builder.addMembers(newBuilder.build());
-                                        isChange = true;
-                                    }
-                                } else {
-                                    ProtoMessage.ChatRoomMemberMsg selectMember = null;
-                                    for (int j = 0; j < memberMsgs.size(); j++) {
-                                        ProtoMessage.ChatRoomMemberMsg memberMsg = memberMsgs.get(j);
-                                        if (phone.equals(memberMsg.getPhoneNum())) {
-                                            selectPosition = j;
-                                        }
-                                    }
-                                    if (selectPosition != -1) {
-                                        builder.removeMembers(selectPosition);
-                                        isChange = true;
-                                    }
+                                }
+                                if (selectPosition != -1) {
+                                    builder.removeMembers(selectPosition);
+                                    isChange = true;
                                 }
 
                                 if (builder.getMembersCount() > 1) {
@@ -366,25 +431,9 @@ public class ReceiverProcesser extends CommonProcesser {
                             mHandler.removeCallbacks(mRefreshTeamRunnable);
                             mHandler.postDelayed(mRefreshTeamRunnable, 2000);
 
-//                            getGroupMan(groupIdTemp, i);
-                            dbTeam.close();
-                        }
-
-                        if (resp.getMsgContent().toStringUtf8().equals(myPhone)) {
-                            Log.d("chat", "equals myphone");
-                            if (resp.getMsgType() == ProtoMessage.MsgType.mtEnterTeam_VALUE) {
-                                Log.d("chat", "mtEnterTeam_VALUE");
-                                DBManagerTeamList dblist = new DBManagerTeamList(context, true, DBTableName.getTableName(context, DBHelperTeamList.NAME));
-                                teamName = dblist.getTeamName(groupIdTemp);
-                                dblist.closeDB();
-                                if (!TextUtils.isEmpty(teamName)) {
-                                    Log.d("chat", "您加入了[" + teamName + "]群");
-                                    ToastR.setToast(context, "您加入了[" + teamName + "]群");
-                                }else{
-                                    joinTeamId = groupIdTemp;
-                                }
+                            if (dbTeam != null) {
+                                dbTeam.close();
                             }
-                            loadTeamListFromNet(joinTeamId);
                         }
                         confirm(resp.getMsgID());
                         return;
