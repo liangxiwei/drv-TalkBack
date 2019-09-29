@@ -82,16 +82,6 @@ public class SelectMemberToDeleteActivity extends BaseDialogActivity {
 
 		Log.d("rs", "teamID->" + teamID+", myType:"+myType);
 
-		if(curAllTeamMemberInfos != null){
-					for (TeamMemberInfo c : curAllTeamMemberInfos) {
-						if (!TextUtils.isEmpty(c.getUserPhone())) {
-							Log.d("rs", "added phone->" + c.getUserPhone());
-							//Log.d("rs", "added phone->"+	"nick name:"+c.getUserName());
-						}
-		
-					}
-				}
-
         initView();
     }
 
@@ -173,6 +163,13 @@ public class SelectMemberToDeleteActivity extends BaseDialogActivity {
 
                     //refreshLocalData(tm);
                     ToastR.setToast(context, "删除成员成功");
+					Intent intent = new Intent();
+		            //Bundle bundle = new Bundle();
+		            //bundle.putParcelable("del_team_info", tm);
+		            //bundle.putString("del_member_phone", tm.getUserPhone());
+		            intent.putExtra("del_member_phone", tm.getUserPhone());
+		            setResult(RESULT_OK, intent);
+					finish();
                 } else {
                     fail(i.getIntExtra("error_code", -1));
                 }
@@ -180,130 +177,6 @@ public class SelectMemberToDeleteActivity extends BaseDialogActivity {
         });
     }
 
-
-    /*
-   获取好友
-    */
-    /*
-    public void loadFriendsListFromNet() {
-        if (!ConnUtil.isConnected(context)) {
-            Log.w("drv", "没有网络");
-            OnlineSetTool.removeAll();
-		    tvLoadingMember.setText("无网络");
-            return;
-        }
-        ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
-        MyService.start(context, ProtoMessage.Cmd.cmdGetFriendList.getNumber(), builder.build());
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(FriendsListProcesser.ACTION);
-        new TimeoutBroadcast(context, filter, getBroadcastManager()).startReceiver(10, new ITimeoutBroadcast() {
-
-            @Override
-            public void onTimeout() {
-                ToastR.setToast(context, "连接超时");
-				tvLoadingMember.setText("获取成员列表超时，请重试");
-            }
-
-            @Override
-            public void onGot(Intent i) {
-
-                if (i.getIntExtra("error_code", -1) ==
-                        ProtoMessage.ErrorCode.OK.getNumber()) {
-                        //rs added for loading member
-                        tvLoadingMember.setVisibility(View.GONE);
-						selectMemberListView.setVisibility(View.VISIBLE);
-						buttonInvite.setVisibility(View.VISIBLE);
-						//end
-                    try {
-                        GlobalImg.clear();
-                        DBManagerFriendsList db = new DBManagerFriendsList(context, DBTableName.getTableName(context, DBHelperFriendsList.NAME));
-                        selectMemberList = db.getFriends(false);
-
-                        for (AppliedFriends c : selectMemberList) {
-                            if (TextUtils.isEmpty(c.getNickName())) {
-                                c.setNickName(c.getUserName());
-                            }
-
-							//rs added for remove duplicate in team,
-							//if(selectMemberPhoneList != null && selectMemberPhoneList.contains(c.getPhoneNum()) ){
-							  //  Log.d("rs", "remove phone:"+c.getPhoneNum());
-								//selectMemberList.remove(selectMemberList.indexOf(c));
-							//}
-							//end
-                        }
-
-						Iterator<AppliedFriends> iterator = selectMemberList.iterator();        
-						while (iterator.hasNext()) {            
-							String phoneNum = iterator.next().getPhoneNum();            
-							if ((selectMemberPhoneList != null) && (phoneNum != null) && (selectMemberPhoneList.contains(phoneNum))) {               
-								iterator.remove();                
-								//Log.d("rs", "remove phone:"+phoneNum);          
-							}        
-						}
-
-                        // 排序(实现了中英文混排)
-                        PinyinComparator comparator = new PinyinComparator();
-                        Collections.sort(selectMemberList, comparator);
-                        if (adapter == null){
-                            adapter = new SelectMemberAdapter(selectMemberList,context);
-                            selectMemberListView.setAdapter(adapter);
-                        }else{
-                            adapter.setData(selectMemberList);
-                            adapter.notifyDataSetChanged();
-                        }
-                        db.closeDB();
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    fail(i.getIntExtra("error_code", -1));
-					tvLoadingMember.setText("获取成员列表失败，请重试");
-                }
-            }
-        });
-    }
-	
-
-	
-    private void applyMember(final List<AppliedFriends> friend) {
-
-        for (AppliedFriends appliedFriends : friend){
-            Log.d("applyMember","name = " + appliedFriends.getPhoneNum());
-        }
-
-        ProtoMessage.ApplyTeam.Builder builder = ProtoMessage.ApplyTeam.newBuilder();
-        builder.setTeamID(teamID);
-        for (int i = 0; i < friend.size(); i++) {
-            builder.addPhoneList(friend.get(i).getPhoneNum());
-        }
-        MyService.start(context, ProtoMessage.Cmd.cmdApplyTeam.getNumber(), builder.build());
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(ApplyGroupProcesser.ACTION);
-        final TimeoutBroadcast b = new TimeoutBroadcast(context, filter, getBroadcastManager());
-
-        b.startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
-
-            @Override
-            public void onTimeout() {
-
-                ToastR.setToast(context, "连接超时");
-            }
-
-            @Override
-            public void onGot(Intent intent) {
-                int errorCode = intent.getIntExtra("error_code", -1);
-                if (errorCode == ProtoMessage.ErrorCode.OK.getNumber()) {
-                    ToastR.setToast(context, "邀请成功");
-                    setResult(APPLYTEAM);
-                    finish();
-                } else {
-                    fail(intent.getIntExtra("error_code", -1));
-                }
-            }
-        });
-    }
-    */
 
     public void fail(int i) {
         new ResponseErrorProcesser(context, i);

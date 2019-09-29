@@ -24,6 +24,7 @@ import com.example.jrd48.chat.SharedPreferencesUtils;
 import android.util.Log;
 
 import cn.carbswang.android.numberpickerview.library.NumberPickerView;
+import com.luobin.dvr.DvrConfig;
 
 public class SettingVideoActivity extends BaseDialogActivity {
 
@@ -33,7 +34,7 @@ public class SettingVideoActivity extends BaseDialogActivity {
     Button btnSure;
 
 
-    String[] dataNum = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+    String[] dataNum = {"10", "15", "30", "60"};
 
 	private NumberPickerView mVideoTakeDurationPicher = null;
 
@@ -50,12 +51,23 @@ public class SettingVideoActivity extends BaseDialogActivity {
         getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
 
 		mVideoTakeDurationPicher = (NumberPickerView) findViewById(R.id.video_duration_picker);
-		mVodeoTakeDurationNum = (int)SharedPreferencesUtils.get(this, SharedPreferencesUtils.TAKE_VIDEO_DURATION, 9);
+		mVodeoTakeDurationNum = DvrConfig.getVideoDuration()/1000;//convert to second
+		//(int)SharedPreferencesUtils.get(this, SharedPreferencesUtils.TAKE_VIDEO_DURATION, 9);
 
 		mVideoTakeDurationPicher.refreshByNewDisplayedValues(dataNum);
-		mVideoTakeDurationPicher.setMaxValue(9);
+		mVideoTakeDurationPicher.setMaxValue(3);
 		mVideoTakeDurationPicher.setMinValue(0);
-		mVideoTakeDurationPicher.setValue(mVodeoTakeDurationNum);//默认时常
+
+		int index = 0;
+		for(int i = 0; i<dataNum.length; i++){
+			if(mVodeoTakeDurationNum == Integer.parseInt(dataNum[i])){
+				index = i;
+				break;
+			}
+		}
+
+		Log.d("rs", "mVodeoTakeDurationNum->"+mVodeoTakeDurationNum+", index:"+index);
+		mVideoTakeDurationPicher.setValue(index);//默认时长
     }
 
     @OnClick({R.id.imgClose,R.id.btnSure})
@@ -65,10 +77,14 @@ public class SettingVideoActivity extends BaseDialogActivity {
                 finish();
                 break;
             case R.id.btnSure:
-				mVodeoTakeDurationNum = mVideoTakeDurationPicher.getValue();
+				int selectPosition = mVideoTakeDurationPicher.getValue();
 							
-				Log.d("rs", "set mVodeoTakeDurationNum:"+mVodeoTakeDurationNum);
-				SharedPreferencesUtils.put(this,SharedPreferencesUtils.TAKE_VIDEO_DURATION,mVodeoTakeDurationNum);
+				Log.d("rs", "set mVodeoTakeDurationNum:"+selectPosition);
+				mVodeoTakeDurationNum = Integer.parseInt(dataNum[selectPosition]);
+				//SharedPreferencesUtils.put(this,SharedPreferencesUtils.TAKE_VIDEO_DURATION,mVodeoTakeDurationNum);
+				int duration = mVodeoTakeDurationNum * 1000;//convert to ms
+                Log.d("rs", "set duration:"+duration);
+				DvrConfig.setVideoDuration(duration);
 				finish();
                 break;
             default:

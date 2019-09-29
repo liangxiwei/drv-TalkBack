@@ -190,8 +190,19 @@ public class SettingActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                Intent intent = new Intent("android.intent.action.MASTER_CLEAR");
-                sendBroadcast(intent);
+				//rs modified for LBCJW-187
+                //Intent intent = new Intent("android.intent.action.MASTER_CLEAR");
+                try{
+                //sendBroadcast(intent);
+	                Intent intent = new Intent("android.intent.action.FACTORY_RESET");
+	        		intent.setPackage("android");
+	        		intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+	        		intent.putExtra("android.intent.extra.REASON", "MasterClearConfirm");
+					sendBroadcast(intent);
+                }catch (Exception ex){
+					Log.d("rs", "found Exception:"+ex.toString());
+				}
+				//end
             }
         });
 

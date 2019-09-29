@@ -23,6 +23,7 @@ import com.example.jrd48.chat.SharedPreferencesUtils;
 import android.util.Log;
 
 import cn.carbswang.android.numberpickerview.library.NumberPickerView;
+import com.example.jrd48.GlobalStatus;
 
 public class SettingPhotoActivity extends BaseDialogActivity {
 
@@ -32,9 +33,9 @@ public class SettingPhotoActivity extends BaseDialogActivity {
     Button btnSure;
 
 
-	String[] takeCounts = {"0","1", "2", "3", "4", "5","6","7","8","9"};
+	String[] takeCounts = {"1", "2", "3", "4", "5"};
 	
-	String[] takeInterval = {"1", "2", "3", "4", "5","6","7","8","9","10"};
+	String[] takeInterval = {"1", "2", "3", "4", "5"};
 
 	private NumberPickerView mPicTakeCountPicher = null;
 	private NumberPickerView mPicTakeIntervalPicher = null;
@@ -52,24 +53,34 @@ public class SettingPhotoActivity extends BaseDialogActivity {
 		mPicTakeCountPicher = (NumberPickerView) findViewById(R.id.picPicker);
     	mPicTakeIntervalPicher = (NumberPickerView) findViewById(R.id.secPicker);
 
-		mPicTakeCountNum = (int)SharedPreferencesUtils.get(this, SharedPreferencesUtils.TAKE_PIC_COUNT, 0);
-		mPicTakeInterval = (int)SharedPreferencesUtils.get(this, SharedPreferencesUtils.TAKE_PIC_INTERVAL, 9);//rs set deefault interval is 10s
+		//mPicTakeCountNum = (int)SharedPreferencesUtils.get(this, SharedPreferencesUtils.TAKE_PIC_COUNT, 0);
+		//mPicTakeInterval = (int)SharedPreferencesUtils.get(this, SharedPreferencesUtils.TAKE_PIC_INTERVAL, 9);//rs set deefault interval is 10s
+		mPicTakeCountNum = GlobalStatus.getTakePhotoCount(this);
+        mPicTakeInterval = GlobalStatus.getTakePhotoIntervalMs(this)/1000;//convert to second
 
 		Log.d("rs", "get mPicTakeCountNum:"+mPicTakeCountNum+", mPicTakeInterval:"+mPicTakeInterval);
+
+		if(mPicTakeCountNum >5){//error number, set to default
+			mPicTakeCountNum = 1;
+		}
+
+		if(mPicTakeInterval > 5){//error number, set to default
+			mPicTakeInterval = 1;
+		}
 		
 		init();
     }
 
 	private void init(){
      	mPicTakeCountPicher.refreshByNewDisplayedValues(takeCounts);
-        mPicTakeCountPicher.setMaxValue(9);
+        mPicTakeCountPicher.setMaxValue(4);
         mPicTakeCountPicher.setMinValue(0);
-        mPicTakeCountPicher.setValue(mPicTakeCountNum);//默认时间
+        mPicTakeCountPicher.setValue(mPicTakeCountNum - 1);//默认时间
 
 		mPicTakeIntervalPicher.refreshByNewDisplayedValues(takeInterval);
-        mPicTakeIntervalPicher.setMaxValue(9);
+        mPicTakeIntervalPicher.setMaxValue(4);
         mPicTakeIntervalPicher.setMinValue(0);
-        mPicTakeIntervalPicher.setValue(mPicTakeInterval);//默认时间
+        mPicTakeIntervalPicher.setValue(mPicTakeInterval - 1);//默认时间
 	}
 
 	
@@ -82,12 +93,16 @@ public class SettingPhotoActivity extends BaseDialogActivity {
                 break;
             
             case R.id.btnSure:
-				mPicTakeCountNum = mPicTakeCountPicher.getValue();
-				mPicTakeInterval = mPicTakeIntervalPicher.getValue();
+				mPicTakeCountNum = mPicTakeCountPicher.getValue() + 1; //position is from 0
+				mPicTakeInterval = mPicTakeIntervalPicher.getValue() + 1; ////position is from 0
 			
 				Log.d("rs", "set mPicTakeCountNum:"+mPicTakeCountNum+", mPicTakeInterval:"+mPicTakeInterval);
-				SharedPreferencesUtils.put(this,SharedPreferencesUtils.TAKE_PIC_COUNT,mPicTakeCountNum);
-				SharedPreferencesUtils.put(this,SharedPreferencesUtils.TAKE_PIC_INTERVAL,mPicTakeInterval);
+				//SharedPreferencesUtils.put(this,SharedPreferencesUtils.TAKE_PIC_COUNT,mPicTakeCountNum);
+				//SharedPreferencesUtils.put(this,SharedPreferencesUtils.TAKE_PIC_INTERVAL,mPicTakeInterval);
+				GlobalStatus.setTakePhotoCount(this, mPicTakeCountNum);
+
+				int interval = mPicTakeInterval * 1000;//convert to ms
+                GlobalStatus.setTakePhotoIntervalMs(this, interval);
 				finish();
                 break;
             default:

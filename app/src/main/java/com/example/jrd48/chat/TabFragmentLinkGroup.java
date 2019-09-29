@@ -94,6 +94,7 @@ import android.view.View.OnClickListener;
 import com.luobin.ui.SelectMemberToDeleteActivity;
 
 import android.widget.ImageView;
+import android.app.Activity;
 
 
 /**
@@ -138,6 +139,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 	private ImageView addMember;
     private ImageView removeMember;
     private ProgressDialog mProgressDialog;
+
+	private static final int DELETE_TEAM_MEMBER = 2;
 	
     public boolean isPullRefresh() {
         return isPullRefresh;
@@ -566,7 +569,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 	                intent.putExtra("teamID", curTeam.getTeamID());
 	                intent.putExtra("type", curTeam.getMemberRole());
 	                intent.putParcelableArrayListExtra("curMemberList", (ArrayList<? extends Parcelable>) allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));
-					startActivityForResult(intent, 0);
+					startActivityForResult(intent, DELETE_TEAM_MEMBER);
 					} catch (Exception e) {
                         e.printStackTrace();
 						Log.d("rs", "found exception:"+e.toString());
@@ -1115,7 +1118,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         // builder.setTeamType(tm.getTeamType());
         // builder.setTeamDesc(tm.getTeamDesc());
         // builder.setTeamPriority(tm.getTeamPriority());
-        // builder.setTeamID(tm.getTeamID());
+		//rs modified for LBCJW-177:modify team name
+        builder.setTeamID(tm.getTeamID());
         MyService.start(mContext, ProtoMessage.Cmd.cmdModifyTeamInfo.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
         filter.addAction(ModifyTeamInfoProcesser.ACTION);
@@ -1132,7 +1136,9 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 dismissProgressDialog();
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
-                    modifyDBitem(tm);
+                    //modifyDBitem(tm);
+                	//groupAdapter.notifyDataSetChanged();//rs
+                	loadTeamListFromNet();
                     ToastR.setToast(mContext, "修改群组名称成功");
                 } else {
                     fail(i.getIntExtra("error_code", -1));
@@ -1209,6 +1215,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             }
             TeamInfo tmInfo = new TeamInfo();
             tmInfo.setTeamName(name);
+			tmInfo.setTeamID(team.getTeamID());
+			Log.d("rs", "toModifyTeamInfo->setTeamID:"+team.getTeamID());
             toModifyTeamInfo(tmInfo);
             dialog.dismiss();
             }
@@ -1220,4 +1228,47 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             }
         });
     }
+
+	    //rs added for LBCJW-181:refresh members after delete
+		@Override
+		public void onActivityResult(int requestCode, int resultCode, Intent data) {
+			switch (requestCode) {
+				case DELETE_TEAM_MEMBER:
+					Log.d("rs", "onActivityResult->DELETE_TEAM_MEMBER");
+
+					if (resultCode == Activity.RESULT_OK) {
+                        String delMemberPhone = data.getStringExtra("del_member_phone");
+						Log.d("rs", "onActivityResult->delMemberPhone:"+delMemberPhone);
+						refreshMemberListLocalData(delMemberPhone);
+					}
+					break;
+				default:
+					break;
+			}
+		}
+
+		
+		private void refreshMemberListLocalData(String phoneNum) {
+			int k = -1;
+			int i = -1;
+
+			List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
+			for (TeamMemberInfo mte : memberList) {
+				++i;
+				if (phoneNum.equals(mte.getUserPhone())) {
+					k = i;
+					Log.d("rs", "found phoneNum:"+phoneNum+", k:"+k);
+					break;
+				}
+			}
+			
+			if (k >= 0) {
+				if (memberList != null) {
+					memberList.remove(k);
+					memberAdapter.setData(memberList);
+                	memberAdapter.notifyDataSetChanged();
+				}
+			}
+		}
+		//end
 }
