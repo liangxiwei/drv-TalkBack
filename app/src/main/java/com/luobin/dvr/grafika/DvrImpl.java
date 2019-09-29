@@ -323,7 +323,7 @@ public class DvrImpl extends DvrImplBase
                     int[] rect = new int[4];
                     DvrConfig.getThumbnailViewRect(rect);
                     boolean firstActivityOntop = (boolean) SharedPreferencesUtils.get(mContext, "firstactivity_ontop", false);
-                    if (firstActivityOntop) {
+                    if (false && firstActivityOntop) { // xugq, 退出行车记录仪时应该隐藏camview
                         show(32, 224, 304, 228);
                     } else {
                         show(rect[0], rect[1], rect[2], rect[3]);
