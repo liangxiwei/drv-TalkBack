@@ -3054,7 +3054,10 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             if (memberName == null || memberName.equals("")) {
                 memberName = in.getUserName();
             }
-            int status = ProtoMessage.ChatStatus.csOk_VALUE;
+			//rs modified for LBCJW-164
+            //int status = ProtoMessage.ChatStatus.csOk_VALUE;
+            int status = ProtoMessage.ChatStatus.csOffline_VALUE;
+			//end
             if (r != null) {
                 List<ProtoMessage.ChatRoomMemberMsg> members = r.getMembersList();
                 for (ProtoMessage.ChatRoomMemberMsg member : members) {
