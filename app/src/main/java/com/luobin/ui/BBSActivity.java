@@ -102,6 +102,7 @@ public class BBSActivity extends BaseActivity {
                     }
                     bbsAdapter1 = new BBSAdapter(bbsList1,getContext());
                     bbsListview1.setAdapter(bbsAdapter1);
+					bbsListview1.setSelector(R.drawable.tab_list_item_selector);
                     bbsListview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -111,6 +112,7 @@ public class BBSActivity extends BaseActivity {
                     });
                     bbsAdapter2 = new BBSAdapter(bbsList2,getContext());
                     bbsListview2.setAdapter(bbsAdapter2);
+					bbsListview2.setSelector(R.drawable.tab_list_item_selector);
                     bbsListview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

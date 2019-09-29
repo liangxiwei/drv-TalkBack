@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:width="120dp" android:height="45dp">
         <shape android:shape="rectangle">
             <gradient android:endColor="#0065AD" android:startColor="#00D5F7" android:type="linear"
@@ -7,5 +7,17 @@
             <corners android:radius="5dp"/>
         </shape>
     </item>
+</selector-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true" android:drawable="@drawable/bg_select_stroke">
+    </item>
+    <item android:state_focused="true" android:drawable="@drawable/bg_select_stroke">
+    </item>
+    <item android:state_selected="true" android:drawable="@drawable/bg_select_stroke">
+    </item>
+    <item android:drawable="@drawable/bg_button"
+        android:state_focused="false" android:state_window_focused="false" />
+
 </selector>
 

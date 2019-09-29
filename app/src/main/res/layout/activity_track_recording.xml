@@ -15,7 +15,8 @@
         <com.luobin.widget.ActionBarDataView2
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_selector"/>
 
         <View
             android:layout_width="0dp"

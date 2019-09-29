@@ -540,6 +540,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         dataInit();
 
         List<View>  selectViews = new ArrayList<>();
+		selectViews.add(btnReturn);//rs
         selectViews.add(prefixCamera);
         selectViews.add(voice);
         selectViews.add(gotoMap);
