@@ -1,9 +1,10 @@
 package com.luobin.widget;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Handler;
-import android.provider.Settings;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ public class ActionBarDataViewDvrMain extends FrameLayout {
     private final String TAG = "ActionBarDataViewDvrMain";
     private TextView mTime1,mTime2,mTime3,mTime4,mTime5;
     private TextView mDate,mWeek;
+    private View timeView, dateView;
     private Context mContext;
 
     int second;
@@ -57,6 +59,8 @@ public class ActionBarDataViewDvrMain extends FrameLayout {
         View view = LayoutInflater.from(getContext()).inflate(
                 R.layout.actionbar_data_drv_main, this);
 
+        timeView = view.findViewById(R.id.time_view);
+        dateView = view.findViewById(R.id.date_view);
         mTime1 = (TextView) view.findViewById(R.id.time1);
         mTime2 = (TextView) view.findViewById(R.id.time2);
         mTime3 = (TextView) view.findViewById(R.id.time3);
@@ -75,14 +79,45 @@ public class ActionBarDataViewDvrMain extends FrameLayout {
         second = calendar.get(Calendar.SECOND);
         handler.sendMessageDelayed(handler.obtainMessage(),
                 (60 - second) * 1000);
-        this.setOnClickListener(new OnClickListener() {
+
+        dateView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Settings.ACTION_DATE_SETTINGS);
+                Intent intent = new Intent("android.luobin.ui.DATE_SETTINGS");
+                mContext.startActivity(intent);
+            }
+        });
+        timeView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("android.luobin.ui.TIME_SETTINGS");
                 mContext.startActivity(intent);
             }
         });
     }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("android.luobin.ui.TIME_RESET");
+        getContext().registerReceiver(mTimeResetReceiver, filter);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        getContext().unregisterReceiver(mTimeResetReceiver);
+    }
+
+    private BroadcastReceiver mTimeResetReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if ("android.luobin.ui.TIME_RESET".equals(intent.getAction())) {
+                init();
+            }
+        }
+    };
 
     public void init() {
         SimpleDateFormat timeFormat;

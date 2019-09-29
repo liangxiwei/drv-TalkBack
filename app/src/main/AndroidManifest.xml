@@ -38,7 +38,6 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.MASTER_CLEAR" />
-    
     <uses-permission
         android:name="android.permission.INJECT_EVENTS"
         tools:ignore="ProtectedPermissions" />
@@ -463,12 +462,29 @@
             android:name="com.luobin.ui.trajectory.TrackRecordingActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-
-       	<activity
+        <activity
             android:name="com.luobin.ui.SelectMemberToDeleteActivity"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
             android:theme="@style/MyDialogStyleBottom" />
+        <activity
+            android:name="com.luobin.ui.DateSettingActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom">
+            <intent-filter>
+                <action android:name="android.luobin.ui.DATE_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.luobin.ui.TimeSettingActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/MyDialogStyleBottom" >
+            <intent-filter>
+                <action android:name="android.luobin.ui.TIME_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="480dp"
+    android:layout_height="300dp"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_panel_relative_layout"
+    android:orientation="vertical">
+
+    <DatePicker
+        android:id="@+id/date_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:datePickerMode="calendar"
+        android:layout_marginTop="5dp"
+        android:visibility="visible" />
+
+    <RadioGroup
+        android:id="@+id/setting_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_above="@id/btns"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/btn_auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="卫星校准"
+            android:textColor="@color/colorWirte"
+            android:textSize="12dp" />
+
+        <RadioButton
+            android:id="@+id/btn_manual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手动设置"
+            android:textColor="@color/colorWirte"
+            android:textSize="12dp" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/btns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="14dp"
+            android:textColor="@color/colorWirte"
+            android:background="@drawable/bg_button"
+            android:text="取消"/>
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="14dp"
+            android:textColor="@color/colorWirte"
+            android:background="@drawable/bg_button"
+            android:text="确认"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
