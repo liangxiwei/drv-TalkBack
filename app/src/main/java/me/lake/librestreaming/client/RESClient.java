@@ -201,7 +201,7 @@ public class RESClient {
      */
     public void startStreaming() {
         synchronized (SyncOp) {
-            if (false && self_video) { // xugq, 所有摄像头都在DvrImpl中预览
+            if (false && self_video) {
                 showSurfaceView();
             }else{
                 if (dvrService != null) {
@@ -879,7 +879,7 @@ public class RESClient {
     }
 
     public void updateSurfaceView(final int left, final int top, final int width, final int height) {
-        if (false && dvrService != null) { // xugq, 所有摄像头都在DvrImpl中预览
+        if (dvrService != null) {
             dvrService.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
