@@ -367,12 +367,16 @@ public class NotifyProcesser extends CommonProcesser {
                                 if (!myPhone.equals(resp.getFriendPhoneNum())) {
                                     Log.i("wsDvr", "--------- chat status changed ----------");
                                     if (resp.getChatStatus() == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
-                                        MediaPlayerTool.getInstance().play(context, R.raw.notify_ptt2);
+                                        if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                                            MediaPlayerTool.getInstance().play(context, R.raw.notify_ptt2);
+                                        }
                                         mSpeaking = true;
                                         ConnUtil.screenOn(MyApplication.getContext());
                                     } else if (mSpeaking && resp.getChatStatus() == ProtoMessage.ChatStatus.csOk_VALUE) {
                                         mSpeaking = false;
-                                        MediaPlayerTool.getInstance().play(context, R.raw.notify_ptt2);
+                                        if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                                            MediaPlayerTool.getInstance().play(context, R.raw.notify_ptt2);
+                                        }
                                     }
                                 }
                             }

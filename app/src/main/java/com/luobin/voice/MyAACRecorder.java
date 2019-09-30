@@ -15,8 +15,10 @@ import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
 
+import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.SettingRW;
 import com.example.jrd48.chat.SharedPreferencesUtils;
+import com.example.jrd48.chat.crash.MyApplication;
 import com.example.jrd48.service.MyService;
 import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.google.protobuf.ByteString;
@@ -158,7 +160,9 @@ public class MyAACRecorder implements Runnable {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            MediaPlayerTool.getInstance().play(mContext, R.raw.notify_ptt2);
+                            if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                                MediaPlayerTool.getInstance().play(mContext, R.raw.notify_ptt2);
+                            }
                         }
                     });
 
@@ -322,7 +326,9 @@ public class MyAACRecorder implements Runnable {
             isRecording = false;
             Log.w(TAG, "录音结束");
 //            mAudioManager.setMode(AudioManager.MODE_NORMAL);
-            MediaPlayerTool.getInstance().play(mContext, R.raw.notify_ptt2);
+            if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                MediaPlayerTool.getInstance().play(mContext, R.raw.notify_ptt2);
+            }
             new AudioRecordStatusBroadcast(mContext).sendBroadcast("0");
         }
     }
