@@ -170,7 +170,7 @@ import static com.example.jrd48.service.protocol.root.ReceiverProcesser.getMyDat
 
 public class FirstActivity extends SelectActivity implements OnClickListener, OnTouchListener, PermissionUtil.PermissionCallBack
         , Animation.AnimationListener {
-
+    private static final String TAG = "FirstActivity";
     public static final int SWITCH_BTN_ALPHA = 200;
     @BindView(R.id.btn_return)
     Button btnReturn;
@@ -476,7 +476,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         // TODO Auto-generated method stub
-        Log.i("pocdemo", "onWindowFocusChanged");
+        Log.i(TAG, "onWindowFocusChanged");
         if (!isFinishing() && !pauseIs) {
             ChatManager.getInstance().showChatInfo(videoLayout);
         }
@@ -508,7 +508,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("pocdemo", "first activity created");
+        Log.i(TAG, "first activity created");
         mContext = this;
         hideSystemNaviBar();
         GlobalStatus.setFirstCreating(true);
@@ -551,7 +551,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
     private void checkRandomChat() {
         group = getIntent().getLongExtra("group", 0);
-        Log.d("chatJrd", "group = " + group);
+        Log.d(TAG, "group = " + group);
         if (group == 0) {
             //Log.d("chatJrd","setIsRandomChat 520");
             //GlobalStatus.setIsRandomChat(false);
@@ -649,7 +649,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     }
 
     private void initView1() {
-        Log.v("pocdemo", "initView1");
+        Log.v(TAG, "initView1");
 
         mPermissionUtil = PermissionUtil.getInstance();
         try {
@@ -692,7 +692,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             videoLayout.setOnTouchListener(new OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    Log.e("wsDvr", "videoLayout onTouch");
+                    Log.e(TAG, "videoLayout onTouch");
                     if (bottomLayoutManager != null) {
                         //   bottomLayoutManager.show(true);
                     }
@@ -859,7 +859,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
 		//rs added for get huazhonghua settings,show image with settings
 		int savedPosition = (int)SharedPreferencesUtils.get(mContext,"picture_position", 0);
-		Log.d("rs", "firstActivity->get settings position:"+savedPosition);
+		Log.d(TAG, "firstActivity->get settings position:"+savedPosition);
 		switch (savedPosition){
             case 0:
 				prefixCamera.setImageResource(R.mipmap.pic_pre_right);
@@ -935,13 +935,13 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             SharedPreferencesUtils.put(this, ReceiverProcesser.UPDATE_KEY, groupName);
             type = intent.getExtras().getInt("type");
             if (type == ProtoMessage.TeamRole.Owner_VALUE) {
-                Log.i("chatJrd", "我是群主");
+                Log.i(TAG, "我是群主");
                 //ToastR.setToast(FirstActivity.this, "我是群主");
             } else if (type == ProtoMessage.TeamRole.Manager_VALUE) {
-                Log.i("chatJrd", "我是管理员");
+                Log.i(TAG, "我是管理员");
                 //ToastR.setToast(FirstActivity.this, "我是管理员");
             } else {
-                Log.i("chatJrd", "我是群成员");
+                Log.i(TAG, "我是群成员");
                 //ToastR.setToast(FirstActivity.this, "我是群成员");
             }
             Message message = new Message();
@@ -1031,7 +1031,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             call.setVisibility(VISIBLE);
             //button.setBackgroundResource(R.drawable.speaker_3);
         } else if (call_hungon == 1) {
-            Log.i("chatjrd", roomId + "");
+            Log.i(TAG, roomId + "");
             /*if (roomId == -1) {*/
             hangup.setVisibility(GONE);
             call.setVisibility(VISIBLE);
@@ -1057,7 +1057,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         } else {
             GlobalStatus.setChatRoomtempId(0);
         }
-        Log.v("wsDvr", "roomId:" + builder.getRoomID());
+        Log.v(TAG, "roomId:" + builder.getRoomID());
         builder.setAcceptType(ProtoMessage.AcceptType.atDeny_VALUE);
         MyService.start(FirstActivity.this, ProtoMessage.Cmd.cmdAcceptVoice.getNumber(), builder.build());
 //        IntentFilter filter = new IntentFilter();
@@ -1124,7 +1124,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     }
 
     private void CallClick() {
-        Log.v("wsDvr", "CallClick:" + callType);
+        Log.v(TAG, "CallClick:" + callType);
         ChatManager.getInstance().setShow(false);
         if (bottomLayoutManager != null) {
             bottomLayoutManager.setPttEnable(false);
@@ -1133,14 +1133,14 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         if (chatRoomMsg != null && callType == 0) {
             if (chatRoomMsg.getTeamID() != 0 && group == chatRoomMsg.getTeamID()) {
                 call_hungon = 1;
-                Log.v("pocdemo", "call_hungon:" + call_hungon);
+                Log.v(TAG, "call_hungon:" + call_hungon);
                 roomId = chatRoomMsg.getRoomID();
                 r = chatRoomMsg;
                 notifyCallSuccess();
                 return;
             } else if (chatRoomMsg.getTeamID() == 0 && GlobalStatus.equalPhone(linkmanPhone)) {
                 call_hungon = 1;
-                Log.v("pocdemo", "call_hungon:" + call_hungon);
+                Log.v(TAG, "call_hungon:" + call_hungon);
                 roomId = chatRoomMsg.getRoomID();
                 r = chatRoomMsg;
                 notifyCallSuccess();
@@ -1163,14 +1163,14 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 MyService.start(mContext, ProtoMessage.Cmd.cmdAcceptVoice.getNumber(), builder.build());
                 IntentFilter filter = new IntentFilter();
                 filter.addAction(VoiceAcceptProcesser.ACTION);
-                Log.i("pocdemo", "accept voice action, want room id...");
+                Log.i(TAG, "accept voice action, want room id...");
                 roomId = callState.getRoomId();
                 new TimeoutBroadcast(mContext, filter, getBroadcastManager()).startReceiver(10, new ITimeoutBroadcast() {
                     @Override
                     public void onTimeout() {
                         ToastR.setToast(FirstActivity.this, "接收呼叫超时");
                         closeRoom(true);
-                        Log.v(FirstActivity.class.getSimpleName(), "accept timeout");
+                        Log.v(TAG, "accept timeout");
                     }
 
                     @Override
@@ -1214,7 +1214,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             MyService.start(FirstActivity.this, ProtoMessage.Cmd.cmdStartVoice.getNumber(), builder.build());
             IntentFilter filter = new IntentFilter();
             filter.addAction(VoiceStartProcesser.ACTION);
-            Log.i("pocdemo", "start voice action, want room id...");
+            Log.i(TAG, "start voice action, want room id...");
             final TimeoutBroadcast b = new TimeoutBroadcast(FirstActivity.this, filter, getBroadcastManager());
 
             b.startReceiver(10, new ITimeoutBroadcast() {
@@ -1224,19 +1224,19 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                     sendBroadcastAsUser(new Intent("com.erobbing.ACTION_STOP_THREAD"), UserHandle.ALL);
                     ToastR.setToast(FirstActivity.this, "发起呼叫失败");
                     closeRoom(true);
-                    Log.v(FirstActivity.class.getSimpleName(), "startVoice timeout");
+                    Log.v(TAG, "startVoice timeout");
                     sendBroadcastAsUser(new Intent("com.erobbing.ACTION_START_THREAD"), UserHandle.ALL);
                 }
 
                 @Override
                 public void onGot(Intent i) {
-                    Log.v("pocdemo", "VoiceStartProcesser onGot");
+                    Log.v(TAG, "VoiceStartProcesser onGot");
                     if (i.getIntExtra("error_code", -1) ==
                             ProtoMessage.ErrorCode.OK.getNumber()) {
                         //ProtoMessage.ChatRoomMsg resp = (ProtoMessage.ChatRoomMsg) i.getSerializableExtra("member");
                         //List<ProtoMessage.ChatRoomMemberMsg> list = resp.getMembersList();
                         call_hungon = 1;
-                        Log.v("pocdemo", "call_hungon:" + call_hungon);
+                        Log.v(TAG, "call_hungon:" + call_hungon);
                         roomId = i.getLongExtra("room_id", -1);
                         r = GlobalStatus.getChatRoomMsg();
 //                        GlobalStatus.clearChatRoomMsg();
@@ -1259,8 +1259,8 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         } else {
             hostOk = false;
         }
-        Log.v("wsDvr", "GlobalStatus.isPttBroadCast():" + GlobalStatus.isPttBroadCast());
-        Log.v("wsDvr", "GlobalStatus.isPttKeyDown():" + GlobalStatus.isPttKeyDown());
+        Log.v(TAG, "GlobalStatus.isPttBroadCast():" + GlobalStatus.isPttBroadCast());
+        Log.v(TAG, "GlobalStatus.isPttKeyDown():" + GlobalStatus.isPttKeyDown());
         if (GlobalStatus.isPttBroadCast() && !GlobalStatus.isPttKeyDown()) {
             Intent service = new Intent(this, MyService.class);
             service.putExtra("ptt_key_action", true);
@@ -1396,7 +1396,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 File file = new File(picAddress + filePath);
                 if (file != null && file.exists()) {
                     file.delete();
-                    Log.i("chatjrd", "删除成功：" + file);
+                    Log.i(TAG, "删除成功：" + file);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1493,7 +1493,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
     public void DeleteMsg(long sn) {
 
-        Log.i("jrdchat", "delete msg sn: " + sn);
+        Log.i(TAG, "delete msg sn: " + sn);
         if (single) {
             linkmanRecordHelper = new LinkmanRecordHelper(FirstActivity.this, myPhone + linkmanPhone + "LinkmanMsgShow.dp", null);
             dbMsg = linkmanRecordHelper.getWritableDatabase();
@@ -1711,7 +1711,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i("pocdemo", " first activity stop");
+        Log.i(TAG, " first activity stop");
         int[] rect = new int[4];
         DvrConfig.getThumbnailViewRect(rect);
         DvrService.updatePlayView(mContext, rect[0], rect[1], rect[2], rect[3]);
@@ -1723,7 +1723,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
     @Override
     public void finish() {
-        Log.i("pocdemo", " first activity finish");
+        Log.i(TAG, " first activity finish");
         ChatManager.getInstance().setIsFinishing(true);
         ChatManager.getInstance().hideView();
         if (bottomLayoutManager != null) {
@@ -1734,7 +1734,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
     @Override
     protected void onDestroy() {
-        Log.i("pocdemo", "first activity destroyed");
+        Log.i(TAG, "first activity destroyed");
         GlobalStatus.setTempChat("");
         SharedPreferencesUtils.put(this, NotifyProcesser.Call_KEY, "");
         if (getMsgReceiiver != null) {
@@ -2228,7 +2228,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             public void onGot(Intent i) {
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
-                    Log.i("chatjrd", "撤回成功");
+                    Log.i(TAG, "撤回成功");
                     ContentValues values = new ContentValues();
                     values.put("msg_type", ProtoMessage.MsgType.mtCancel_VALUE);
                     values.put("msg", "");
@@ -3198,7 +3198,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                         adapterU.notifyDataSetChanged();
                     }
                 } else {
-                    Log.e("jim", "firstactivity userFace  code:" + i.getIntExtra("error_code", -1));
+                    Log.e(TAG, "firstactivity userFace  code:" + i.getIntExtra("error_code", -1));
                     // fail(i.getIntExtra("error_code", -1));
                 }
             }
@@ -3208,7 +3208,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     //**********************退出键判断***********************************
     @Override
     public void onBackPressed() {
-        Log.i("pocdemo", "first activit onBackPress:" + additionType);
+        Log.i(TAG, "first activit onBackPress:" + additionType);
 
         if (GlobalStatus.isVideo()) {
             HungupClick();
@@ -3290,10 +3290,10 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     //*****************改变说话人信息*********************
     public synchronized void changespeaking(int judge, String changephone) {
         if (call_hungon == 0) {
-            Log.v("pocdemo", "call_hungon == 0");
+            Log.v(TAG, "call_hungon == 0");
             return;
         }
-        Log.v("pocdemo", "changespeaking:" + judge + ",phone:" + changephone);
+        Log.v(TAG, "changespeaking:" + judge + ",phone:" + changephone);
         if (judge == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
             for (int i = 0; i < userList.size(); i++) {
                 if (userList.get(i).getState() == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
@@ -3372,7 +3372,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     //******************title显示说话人信息********************
     public void changeTitle() {
         groupNullHint.setVisibility(GONE);
-        Log.v("pocdemo", "changeTitle speakingUser.getName():" + speakingUser.getName() + ",group:" + group);
+        Log.v(TAG, "changeTitle speakingUser.getName():" + speakingUser.getName() + ",group:" + group);
         if (speakingUser.getName().equals("")) {
 //            speakingimage.setVisibility(View.GONE);
             showSpeakMan.setVisibility(GONE);
@@ -3382,7 +3382,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             speakingname.setText("");
             videoLayout.hideVideo();
             groupNullHint.setVisibility(VISIBLE);
-            Log.v("pocdemo", "changeTitle no single");
+            Log.v(TAG, "changeTitle no single");
         } else {
             speakingname.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
             speakingname.setText(speakingUser.getName());
@@ -3426,7 +3426,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         SimpleDateFormat x = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
         String timeStamp = x.format(new Date());
         String imageFileName = "JPEG_" + timeStamp;
-        Log.i("jrdchat", "path: " + path.getAbsolutePath());
+        Log.i(TAG, "path: " + path.getAbsolutePath());
         //.getExternalFilesDir()方法可以获取到 SDCard/Android/data/你的应用的包名/files/ 目录，一般放一些长时间保存的数据
         //创建临时文件,文件前缀不能少于三个字符,后缀如果为空默认未".tmp"
         File image = File.createTempFile(
@@ -3448,7 +3448,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         SimpleDateFormat x = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
         String timeStamp = x.format(new Date());
         String imageFileName = "VIDEO_" + timeStamp;
-        Log.i("jrdchat", "time file name: " + imageFileName);
+        Log.i(TAG, "time file name: " + imageFileName);
         //.getExternalFilesDir()方法可以获取到 SDCard/Android/data/你的应用的包名/files/ 目录，一般放一些长时间保存的数据
         //创建临时文件,文件前缀不能少于三个字符,后缀如果为空默认未".tmp"
         File image = File.createTempFile(
@@ -3834,7 +3834,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 }
             }
         } catch (Exception e) {
-            Log.e("jrdchat", "清除图片未上传完成任务失败！ " + e.getMessage());
+            Log.e(TAG, "清除图片未上传完成任务失败！ " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -4683,7 +4683,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             public void onGot(Intent i) {
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
-                    Log.i("chatjrd", "发送成功");
+                    Log.i(TAG, "发送成功");
                     if (single) {
                         linkmanRecordHelper = new LinkmanRecordHelper(FirstActivity.this, myPhone + linkmanPhone + "LinkmanMsgShow.dp", null);
                         dbMsg = linkmanRecordHelper.getWritableDatabase();
@@ -4716,7 +4716,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                         intent.putExtra("msgid", i.getLongExtra("service_id", -1));
                         intent.putExtra("address", PicAddress);
                         startService(intent);
-                        Log.i("jrdchat", "图片缩略图发送成功");
+                        Log.i(TAG, "图片缩略图发送成功");
                         /*mUploadFile.startUpload(new TansferFileUp(group, linkmanPhone,
                                 i.getLongExtra("service_id", -1), PicAddress));*/
                     }
@@ -4788,7 +4788,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
     @Override
     protected void onResume() {
-        Log.v("pocdemo", "onResume");
+        Log.v(TAG, "onResume");
         // 设置地图参数及事件处理
         if (run) {
             hideSystemNaviBar();
@@ -4829,7 +4829,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
     private void _OnResume() {
         if (mapInitIs) {
-            Log.i("pocdemo", "first activity resume");
+            Log.i(TAG, "first activity resume");
             mAudioRecordStatusBroadcast = new AudioRecordStatusBroadcast(this);
             mAudioRecordStatusBroadcast.setReceiver(new MyBroadcastReceiver() {
                 @Override
@@ -4886,7 +4886,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                 mAudioBroadcast.setReceiver(new MyBroadcastReceiver() {
                     @Override
                     protected void onReceiveParam(String str) {
-                        Log.e("FirstActivity", "收到没有录音权限的广播");
+                        Log.e(TAG, "收到没有录音权限的广播");
                         ToastR.setToast(FirstActivity.this, "录音失败！请检查录音权限");
                     }
                 });
@@ -4904,10 +4904,10 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
      */
     private void changeSpeakSign(boolean bRecording) {
         if (bRecording) {
-            Log.i("pocdemo", "正在录音++++");
+            Log.i(TAG, "正在录音++++");
 
         } else {
-            Log.i("pocdemo", "停止录音----");
+            Log.i(TAG, "停止录音----");
 
         }
     }
@@ -4916,7 +4916,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
     @Override
     protected void onPause() {
-        Log.i("pocdemo", "first activity paused");
+        Log.i(TAG, "first activity paused");
         showSystemNaviBar();
         ChatManager.getInstance().hideView();
         if (single) {
@@ -5112,7 +5112,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             case R.id.goto_map:
                 // 地图查看
                 //rs modified for crash LBCJW-67
-                Log.d("rs", "firstactivity goto_map clicked->single:"+single+", linkmanPhone:"+linkmanPhone+", linkman:"+linkman);
+                Log.d(TAG, "firstactivity goto_map clicked->single:"+single+", linkmanPhone:"+linkmanPhone+", linkman:"+linkman);
                 Intent mapIntent = new Intent(mContext, TeamMemberLocationActivity.class);
 				if(single){
 					//mapIntent.putExtra("linkmanSex", appliedFriend.getUserSex());
@@ -5178,7 +5178,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     class RefreshReceiiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.v("pocdemo", "refreshReceiver action:" + intent.getAction());
+            Log.v(TAG, "refreshReceiver action:" + intent.getAction());
             if (call_hungon == 1) {
                 closeRoom(false);
             }
@@ -5189,8 +5189,8 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         if (GlobalStatus.getChatRoomMsg() != null && (GlobalStatus.equalPhone(linkmanPhone) || GlobalStatus.equalTeamID(group))) {
             return;
         }
-        Log.v("wsDvr", "closeRoom:" + isClose);
-        Log.v("wsDvr", "finish");
+        Log.v(TAG, "closeRoom:" + isClose);
+        Log.v(TAG, "finish");
         hangup.setVisibility(GONE);
         call.setVisibility(VISIBLE);
         if (isClose) {
@@ -5225,14 +5225,14 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         public void onReceive(Context context, Intent intent) {
             ProtoMessage.NotifyMsg resp = (ProtoMessage.NotifyMsg) intent.getSerializableExtra("chat_status");
 
-            Log.i("chatchat", "receiver come");
+            Log.i(TAG, "receiver come");
             if (resp == null) {
-                Log.i("chatjrd", "resp is null");
+                Log.i(TAG, "resp is null");
             } else {
                 if (roomId == resp.getRoomID()) {
                     FirstActivity.this.onChatStatusChanged(resp);
                 } else {
-                    Log.i("chatjrd", "不是本房间的消息: 房间号：" + roomId + ", 获得的房间号： " + resp.getRoomID());
+                    Log.i(TAG, "不是本房间的消息: 房间号：" + roomId + ", 获得的房间号： " + resp.getRoomID());
                 }
             }
         }
@@ -5245,12 +5245,12 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             String phone = intent.getStringExtra("linkmanPhone");
             String name = intent.getStringExtra("group_name");
             if ((phone != null && phone.equals(linkmanPhone)) || (name != null && name.equals(groupName))) {
-                Log.i("chatchat", "启动对讲");
+                Log.i(TAG, "启动对讲");
                 r = (ProtoMessage.ChatRoomMsg) intent.getSerializableExtra("member");
                 call_hungon = intent.getExtras().getInt("data");
                 initHungonData();
             } else {
-                Log.i("chatchat", "不是当前对讲页面");
+                Log.i(TAG, "不是当前对讲页面");
             }
         }
     }
