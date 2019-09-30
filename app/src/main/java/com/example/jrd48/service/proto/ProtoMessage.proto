@@ -885,6 +885,8 @@ enum TeamType {
     teamInGroup = 3; // 集团组
     teamRandom = 4; // 随机群（or 海聊群)（由系统自动分配，设置上限，满群后，自动切换新的海聊群，每人只能在一个海聊群中）
     teamMapSelector = 5; // 地图框选群
+    teamM1 = 6; // 我的是设备群
+    teamBBS = 7; // BBS公开群，可随意加入，不需要确认
 }
 
 /** 群信息(建群时的参数) */
@@ -1462,7 +1464,9 @@ message MsgTrackList {
 
 message MsgTrackQuery {
     int32 errorCode = 1;
-    int64 fromTrackID = 2;
+    // 以下为查询条件
+    // userPhone 和 trackIDs 只能2选1, 优先判断 userPhone
+    int64 fromTrackID = 2;// 从哪个TrackID以后（即：是查询条件为小于这个ID），不包含这个ID，每次最多取一定的条数，比如 100.// 对应窗口上拉刷新， 下拉刷新时传 0
     string userPhone = 3; // 查询 某个人的轨迹
     repeated int64 trackIDs = 4; // 查询某一些track_ID的轨迹
     // 以下为返回数据

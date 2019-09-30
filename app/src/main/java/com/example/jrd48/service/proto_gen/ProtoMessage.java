@@ -4955,6 +4955,22 @@ public final class ProtoMessage {
      * <code>teamMapSelector = 5;</code>
      */
     teamMapSelector(5),
+    /**
+     * <pre>
+     * 我的是设备群
+     * </pre>
+     *
+     * <code>teamM1 = 6;</code>
+     */
+    teamM1(6),
+    /**
+     * <pre>
+     * BBS公开群，可随意加入，不需要确认
+     * </pre>
+     *
+     * <code>teamBBS = 7;</code>
+     */
+    teamBBS(7),
     UNRECOGNIZED(-1),
     ;
 
@@ -5006,6 +5022,22 @@ public final class ProtoMessage {
      * <code>teamMapSelector = 5;</code>
      */
     public static final int teamMapSelector_VALUE = 5;
+    /**
+     * <pre>
+     * 我的是设备群
+     * </pre>
+     *
+     * <code>teamM1 = 6;</code>
+     */
+    public static final int teamM1_VALUE = 6;
+    /**
+     * <pre>
+     * BBS公开群，可随意加入，不需要确认
+     * </pre>
+     *
+     * <code>teamBBS = 7;</code>
+     */
+    public static final int teamBBS_VALUE = 7;
 
 
     public final int getNumber() {
@@ -5032,6 +5064,8 @@ public final class ProtoMessage {
         case 3: return teamInGroup;
         case 4: return teamRandom;
         case 5: return teamMapSelector;
+        case 6: return teamM1;
+        case 7: return teamBBS;
         default: return null;
       }
     }
@@ -7081,7 +7115,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -7125,7 +7159,7 @@ public final class ProtoMessage {
      * 1: 添加，2：删除
      * </pre>
      *
-     * <code>int32 opCode = 3;</code>
+     * <code>optional int32 opCode = 3;</code>
      */
     int getOpCode();
 
@@ -7311,7 +7345,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -7369,7 +7403,7 @@ public final class ProtoMessage {
      * 1: 添加，2：删除
      * </pre>
      *
-     * <code>int32 opCode = 3;</code>
+     * <code>optional int32 opCode = 3;</code>
      */
     public int getOpCode() {
       return opCode_;
@@ -7550,7 +7584,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getUnusedCount() > 0) {
@@ -7872,13 +7906,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -7887,7 +7921,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -8032,7 +8066,7 @@ public final class ProtoMessage {
        * 1: 添加，2：删除
        * </pre>
        *
-       * <code>int32 opCode = 3;</code>
+       * <code>optional int32 opCode = 3;</code>
        */
       public int getOpCode() {
         return opCode_;
@@ -8042,7 +8076,7 @@ public final class ProtoMessage {
        * 1: 添加，2：删除
        * </pre>
        *
-       * <code>int32 opCode = 3;</code>
+       * <code>optional int32 opCode = 3;</code>
        */
       public Builder setOpCode(int value) {
         
@@ -8055,7 +8089,7 @@ public final class ProtoMessage {
        * 1: 添加，2：删除
        * </pre>
        *
-       * <code>int32 opCode = 3;</code>
+       * <code>optional int32 opCode = 3;</code>
        */
       public Builder clearOpCode() {
         
@@ -8451,32 +8485,32 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string imei = 1;</code>
+     * <code>optional string imei = 1;</code>
      */
     java.lang.String getImei();
     /**
-     * <code>string imei = 1;</code>
+     * <code>optional string imei = 1;</code>
      */
     com.google.protobuf.ByteString
         getImeiBytes();
 
     /**
-     * <code>int64 regDate = 2;</code>
+     * <code>optional int64 regDate = 2;</code>
      */
     long getRegDate();
 
     /**
-     * <code>string desc = 3;</code>
+     * <code>optional string desc = 3;</code>
      */
     java.lang.String getDesc();
     /**
-     * <code>string desc = 3;</code>
+     * <code>optional string desc = 3;</code>
      */
     com.google.protobuf.ByteString
         getDescBytes();
 
     /**
-     * <code>int32 enableRecord = 4;</code>
+     * <code>optional int32 enableRecord = 4;</code>
      */
     int getEnableRecord();
   }
@@ -8571,7 +8605,7 @@ public final class ProtoMessage {
     public static final int IMEI_FIELD_NUMBER = 1;
     private volatile java.lang.Object imei_;
     /**
-     * <code>string imei = 1;</code>
+     * <code>optional string imei = 1;</code>
      */
     public java.lang.String getImei() {
       java.lang.Object ref = imei_;
@@ -8586,7 +8620,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string imei = 1;</code>
+     * <code>optional string imei = 1;</code>
      */
     public com.google.protobuf.ByteString
         getImeiBytes() {
@@ -8605,7 +8639,7 @@ public final class ProtoMessage {
     public static final int REGDATE_FIELD_NUMBER = 2;
     private long regDate_;
     /**
-     * <code>int64 regDate = 2;</code>
+     * <code>optional int64 regDate = 2;</code>
      */
     public long getRegDate() {
       return regDate_;
@@ -8614,7 +8648,7 @@ public final class ProtoMessage {
     public static final int DESC_FIELD_NUMBER = 3;
     private volatile java.lang.Object desc_;
     /**
-     * <code>string desc = 3;</code>
+     * <code>optional string desc = 3;</code>
      */
     public java.lang.String getDesc() {
       java.lang.Object ref = desc_;
@@ -8629,7 +8663,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string desc = 3;</code>
+     * <code>optional string desc = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDescBytes() {
@@ -8648,7 +8682,7 @@ public final class ProtoMessage {
     public static final int ENABLERECORD_FIELD_NUMBER = 4;
     private int enableRecord_;
     /**
-     * <code>int32 enableRecord = 4;</code>
+     * <code>optional int32 enableRecord = 4;</code>
      */
     public int getEnableRecord() {
       return enableRecord_;
@@ -8732,7 +8766,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + IMEI_FIELD_NUMBER;
       hash = (53 * hash) + getImei().hashCode();
       hash = (37 * hash) + REGDATE_FIELD_NUMBER;
@@ -8977,7 +9011,7 @@ public final class ProtoMessage {
 
       private java.lang.Object imei_ = "";
       /**
-       * <code>string imei = 1;</code>
+       * <code>optional string imei = 1;</code>
        */
       public java.lang.String getImei() {
         java.lang.Object ref = imei_;
@@ -8992,7 +9026,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string imei = 1;</code>
+       * <code>optional string imei = 1;</code>
        */
       public com.google.protobuf.ByteString
           getImeiBytes() {
@@ -9008,7 +9042,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string imei = 1;</code>
+       * <code>optional string imei = 1;</code>
        */
       public Builder setImei(
           java.lang.String value) {
@@ -9021,7 +9055,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string imei = 1;</code>
+       * <code>optional string imei = 1;</code>
        */
       public Builder clearImei() {
         
@@ -9030,7 +9064,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string imei = 1;</code>
+       * <code>optional string imei = 1;</code>
        */
       public Builder setImeiBytes(
           com.google.protobuf.ByteString value) {
@@ -9046,13 +9080,13 @@ public final class ProtoMessage {
 
       private long regDate_ ;
       /**
-       * <code>int64 regDate = 2;</code>
+       * <code>optional int64 regDate = 2;</code>
        */
       public long getRegDate() {
         return regDate_;
       }
       /**
-       * <code>int64 regDate = 2;</code>
+       * <code>optional int64 regDate = 2;</code>
        */
       public Builder setRegDate(long value) {
         
@@ -9061,7 +9095,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 regDate = 2;</code>
+       * <code>optional int64 regDate = 2;</code>
        */
       public Builder clearRegDate() {
         
@@ -9072,7 +9106,7 @@ public final class ProtoMessage {
 
       private java.lang.Object desc_ = "";
       /**
-       * <code>string desc = 3;</code>
+       * <code>optional string desc = 3;</code>
        */
       public java.lang.String getDesc() {
         java.lang.Object ref = desc_;
@@ -9087,7 +9121,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string desc = 3;</code>
+       * <code>optional string desc = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDescBytes() {
@@ -9103,7 +9137,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string desc = 3;</code>
+       * <code>optional string desc = 3;</code>
        */
       public Builder setDesc(
           java.lang.String value) {
@@ -9116,7 +9150,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string desc = 3;</code>
+       * <code>optional string desc = 3;</code>
        */
       public Builder clearDesc() {
         
@@ -9125,7 +9159,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string desc = 3;</code>
+       * <code>optional string desc = 3;</code>
        */
       public Builder setDescBytes(
           com.google.protobuf.ByteString value) {
@@ -9141,13 +9175,13 @@ public final class ProtoMessage {
 
       private int enableRecord_ ;
       /**
-       * <code>int32 enableRecord = 4;</code>
+       * <code>optional int32 enableRecord = 4;</code>
        */
       public int getEnableRecord() {
         return enableRecord_;
       }
       /**
-       * <code>int32 enableRecord = 4;</code>
+       * <code>optional int32 enableRecord = 4;</code>
        */
       public Builder setEnableRecord(int value) {
         
@@ -9156,7 +9190,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 enableRecord = 4;</code>
+       * <code>optional int32 enableRecord = 4;</code>
        */
       public Builder clearEnableRecord() {
         
@@ -9218,7 +9252,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -9331,7 +9365,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -9434,7 +9468,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getImeisCount() > 0) {
@@ -9702,13 +9736,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -9717,7 +9751,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -10019,66 +10053,66 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string prov = 2;</code>
+     * <code>optional string prov = 2;</code>
      */
     java.lang.String getProv();
     /**
-     * <code>string prov = 2;</code>
+     * <code>optional string prov = 2;</code>
      */
     com.google.protobuf.ByteString
         getProvBytes();
 
     /**
-     * <code>string city = 3;</code>
+     * <code>optional string city = 3;</code>
      */
     java.lang.String getCity();
     /**
-     * <code>string city = 3;</code>
+     * <code>optional string city = 3;</code>
      */
     com.google.protobuf.ByteString
         getCityBytes();
 
     /**
-     * <code>string town = 4;</code>
+     * <code>optional string town = 4;</code>
      */
     java.lang.String getTown();
     /**
-     * <code>string town = 4;</code>
+     * <code>optional string town = 4;</code>
      */
     com.google.protobuf.ByteString
         getTownBytes();
 
     /**
-     * <code>string car_type1 = 5;</code>
+     * <code>optional string car_type1 = 5;</code>
      */
     java.lang.String getCarType1();
     /**
-     * <code>string car_type1 = 5;</code>
+     * <code>optional string car_type1 = 5;</code>
      */
     com.google.protobuf.ByteString
         getCarType1Bytes();
 
     /**
-     * <code>string car_type2 = 6;</code>
+     * <code>optional string car_type2 = 6;</code>
      */
     java.lang.String getCarType2();
     /**
-     * <code>string car_type2 = 6;</code>
+     * <code>optional string car_type2 = 6;</code>
      */
     com.google.protobuf.ByteString
         getCarType2Bytes();
 
     /**
-     * <code>string car_type3 = 7;</code>
+     * <code>optional string car_type3 = 7;</code>
      */
     java.lang.String getCarType3();
     /**
-     * <code>string car_type3 = 7;</code>
+     * <code>optional string car_type3 = 7;</code>
      */
     com.google.protobuf.ByteString
         getCarType3Bytes();
@@ -10088,25 +10122,25 @@ public final class ProtoMessage {
      * 换一批，0从头搜索，非0：从上次搜索之后开始搜索。
      * </pre>
      *
-     * <code>int32 pos = 8;</code>
+     * <code>optional int32 pos = 8;</code>
      */
     int getPos();
 
     /**
-     * <code>.FriendList search_result = 9;</code>
+     * <code>optional .FriendList search_result = 9;</code>
      */
     boolean hasSearchResult();
     /**
-     * <code>.FriendList search_result = 9;</code>
+     * <code>optional .FriendList search_result = 9;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.FriendList getSearchResult();
     /**
-     * <code>.FriendList search_result = 9;</code>
+     * <code>optional .FriendList search_result = 9;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.FriendListOrBuilder getSearchResultOrBuilder();
 
     /**
-     * <code>int32 sex = 10;</code>
+     * <code>optional int32 sex = 10;</code>
      */
     int getSex();
 
@@ -10115,7 +10149,7 @@ public final class ProtoMessage {
      * 最少输入3项
      * </pre>
      *
-     * <code>string car_num = 11;</code>
+     * <code>optional string car_num = 11;</code>
      */
     java.lang.String getCarNum();
     /**
@@ -10123,7 +10157,7 @@ public final class ProtoMessage {
      * 最少输入3项
      * </pre>
      *
-     * <code>string car_num = 11;</code>
+     * <code>optional string car_num = 11;</code>
      */
     com.google.protobuf.ByteString
         getCarNumBytes();
@@ -10273,7 +10307,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -10282,7 +10316,7 @@ public final class ProtoMessage {
     public static final int PROV_FIELD_NUMBER = 2;
     private volatile java.lang.Object prov_;
     /**
-     * <code>string prov = 2;</code>
+     * <code>optional string prov = 2;</code>
      */
     public java.lang.String getProv() {
       java.lang.Object ref = prov_;
@@ -10297,7 +10331,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string prov = 2;</code>
+     * <code>optional string prov = 2;</code>
      */
     public com.google.protobuf.ByteString
         getProvBytes() {
@@ -10316,7 +10350,7 @@ public final class ProtoMessage {
     public static final int CITY_FIELD_NUMBER = 3;
     private volatile java.lang.Object city_;
     /**
-     * <code>string city = 3;</code>
+     * <code>optional string city = 3;</code>
      */
     public java.lang.String getCity() {
       java.lang.Object ref = city_;
@@ -10331,7 +10365,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string city = 3;</code>
+     * <code>optional string city = 3;</code>
      */
     public com.google.protobuf.ByteString
         getCityBytes() {
@@ -10350,7 +10384,7 @@ public final class ProtoMessage {
     public static final int TOWN_FIELD_NUMBER = 4;
     private volatile java.lang.Object town_;
     /**
-     * <code>string town = 4;</code>
+     * <code>optional string town = 4;</code>
      */
     public java.lang.String getTown() {
       java.lang.Object ref = town_;
@@ -10365,7 +10399,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string town = 4;</code>
+     * <code>optional string town = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTownBytes() {
@@ -10384,7 +10418,7 @@ public final class ProtoMessage {
     public static final int CAR_TYPE1_FIELD_NUMBER = 5;
     private volatile java.lang.Object carType1_;
     /**
-     * <code>string car_type1 = 5;</code>
+     * <code>optional string car_type1 = 5;</code>
      */
     public java.lang.String getCarType1() {
       java.lang.Object ref = carType1_;
@@ -10399,7 +10433,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string car_type1 = 5;</code>
+     * <code>optional string car_type1 = 5;</code>
      */
     public com.google.protobuf.ByteString
         getCarType1Bytes() {
@@ -10418,7 +10452,7 @@ public final class ProtoMessage {
     public static final int CAR_TYPE2_FIELD_NUMBER = 6;
     private volatile java.lang.Object carType2_;
     /**
-     * <code>string car_type2 = 6;</code>
+     * <code>optional string car_type2 = 6;</code>
      */
     public java.lang.String getCarType2() {
       java.lang.Object ref = carType2_;
@@ -10433,7 +10467,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string car_type2 = 6;</code>
+     * <code>optional string car_type2 = 6;</code>
      */
     public com.google.protobuf.ByteString
         getCarType2Bytes() {
@@ -10452,7 +10486,7 @@ public final class ProtoMessage {
     public static final int CAR_TYPE3_FIELD_NUMBER = 7;
     private volatile java.lang.Object carType3_;
     /**
-     * <code>string car_type3 = 7;</code>
+     * <code>optional string car_type3 = 7;</code>
      */
     public java.lang.String getCarType3() {
       java.lang.Object ref = carType3_;
@@ -10467,7 +10501,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string car_type3 = 7;</code>
+     * <code>optional string car_type3 = 7;</code>
      */
     public com.google.protobuf.ByteString
         getCarType3Bytes() {
@@ -10490,7 +10524,7 @@ public final class ProtoMessage {
      * 换一批，0从头搜索，非0：从上次搜索之后开始搜索。
      * </pre>
      *
-     * <code>int32 pos = 8;</code>
+     * <code>optional int32 pos = 8;</code>
      */
     public int getPos() {
       return pos_;
@@ -10499,19 +10533,19 @@ public final class ProtoMessage {
     public static final int SEARCH_RESULT_FIELD_NUMBER = 9;
     private com.example.jrd48.service.proto_gen.ProtoMessage.FriendList searchResult_;
     /**
-     * <code>.FriendList search_result = 9;</code>
+     * <code>optional .FriendList search_result = 9;</code>
      */
     public boolean hasSearchResult() {
       return searchResult_ != null;
     }
     /**
-     * <code>.FriendList search_result = 9;</code>
+     * <code>optional .FriendList search_result = 9;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.FriendList getSearchResult() {
       return searchResult_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.FriendList.getDefaultInstance() : searchResult_;
     }
     /**
-     * <code>.FriendList search_result = 9;</code>
+     * <code>optional .FriendList search_result = 9;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.FriendListOrBuilder getSearchResultOrBuilder() {
       return getSearchResult();
@@ -10520,7 +10554,7 @@ public final class ProtoMessage {
     public static final int SEX_FIELD_NUMBER = 10;
     private int sex_;
     /**
-     * <code>int32 sex = 10;</code>
+     * <code>optional int32 sex = 10;</code>
      */
     public int getSex() {
       return sex_;
@@ -10533,7 +10567,7 @@ public final class ProtoMessage {
      * 最少输入3项
      * </pre>
      *
-     * <code>string car_num = 11;</code>
+     * <code>optional string car_num = 11;</code>
      */
     public java.lang.String getCarNum() {
       java.lang.Object ref = carNum_;
@@ -10552,7 +10586,7 @@ public final class ProtoMessage {
      * 最少输入3项
      * </pre>
      *
-     * <code>string car_num = 11;</code>
+     * <code>optional string car_num = 11;</code>
      */
     public com.google.protobuf.ByteString
         getCarNumBytes() {
@@ -10707,7 +10741,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PROV_FIELD_NUMBER;
@@ -11022,13 +11056,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -11037,7 +11071,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -11048,7 +11082,7 @@ public final class ProtoMessage {
 
       private java.lang.Object prov_ = "";
       /**
-       * <code>string prov = 2;</code>
+       * <code>optional string prov = 2;</code>
        */
       public java.lang.String getProv() {
         java.lang.Object ref = prov_;
@@ -11063,7 +11097,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string prov = 2;</code>
+       * <code>optional string prov = 2;</code>
        */
       public com.google.protobuf.ByteString
           getProvBytes() {
@@ -11079,7 +11113,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string prov = 2;</code>
+       * <code>optional string prov = 2;</code>
        */
       public Builder setProv(
           java.lang.String value) {
@@ -11092,7 +11126,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string prov = 2;</code>
+       * <code>optional string prov = 2;</code>
        */
       public Builder clearProv() {
         
@@ -11101,7 +11135,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string prov = 2;</code>
+       * <code>optional string prov = 2;</code>
        */
       public Builder setProvBytes(
           com.google.protobuf.ByteString value) {
@@ -11117,7 +11151,7 @@ public final class ProtoMessage {
 
       private java.lang.Object city_ = "";
       /**
-       * <code>string city = 3;</code>
+       * <code>optional string city = 3;</code>
        */
       public java.lang.String getCity() {
         java.lang.Object ref = city_;
@@ -11132,7 +11166,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string city = 3;</code>
+       * <code>optional string city = 3;</code>
        */
       public com.google.protobuf.ByteString
           getCityBytes() {
@@ -11148,7 +11182,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string city = 3;</code>
+       * <code>optional string city = 3;</code>
        */
       public Builder setCity(
           java.lang.String value) {
@@ -11161,7 +11195,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string city = 3;</code>
+       * <code>optional string city = 3;</code>
        */
       public Builder clearCity() {
         
@@ -11170,7 +11204,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string city = 3;</code>
+       * <code>optional string city = 3;</code>
        */
       public Builder setCityBytes(
           com.google.protobuf.ByteString value) {
@@ -11186,7 +11220,7 @@ public final class ProtoMessage {
 
       private java.lang.Object town_ = "";
       /**
-       * <code>string town = 4;</code>
+       * <code>optional string town = 4;</code>
        */
       public java.lang.String getTown() {
         java.lang.Object ref = town_;
@@ -11201,7 +11235,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string town = 4;</code>
+       * <code>optional string town = 4;</code>
        */
       public com.google.protobuf.ByteString
           getTownBytes() {
@@ -11217,7 +11251,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string town = 4;</code>
+       * <code>optional string town = 4;</code>
        */
       public Builder setTown(
           java.lang.String value) {
@@ -11230,7 +11264,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string town = 4;</code>
+       * <code>optional string town = 4;</code>
        */
       public Builder clearTown() {
         
@@ -11239,7 +11273,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string town = 4;</code>
+       * <code>optional string town = 4;</code>
        */
       public Builder setTownBytes(
           com.google.protobuf.ByteString value) {
@@ -11255,7 +11289,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType1_ = "";
       /**
-       * <code>string car_type1 = 5;</code>
+       * <code>optional string car_type1 = 5;</code>
        */
       public java.lang.String getCarType1() {
         java.lang.Object ref = carType1_;
@@ -11270,7 +11304,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type1 = 5;</code>
+       * <code>optional string car_type1 = 5;</code>
        */
       public com.google.protobuf.ByteString
           getCarType1Bytes() {
@@ -11286,7 +11320,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type1 = 5;</code>
+       * <code>optional string car_type1 = 5;</code>
        */
       public Builder setCarType1(
           java.lang.String value) {
@@ -11299,7 +11333,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type1 = 5;</code>
+       * <code>optional string car_type1 = 5;</code>
        */
       public Builder clearCarType1() {
         
@@ -11308,7 +11342,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type1 = 5;</code>
+       * <code>optional string car_type1 = 5;</code>
        */
       public Builder setCarType1Bytes(
           com.google.protobuf.ByteString value) {
@@ -11324,7 +11358,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType2_ = "";
       /**
-       * <code>string car_type2 = 6;</code>
+       * <code>optional string car_type2 = 6;</code>
        */
       public java.lang.String getCarType2() {
         java.lang.Object ref = carType2_;
@@ -11339,7 +11373,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type2 = 6;</code>
+       * <code>optional string car_type2 = 6;</code>
        */
       public com.google.protobuf.ByteString
           getCarType2Bytes() {
@@ -11355,7 +11389,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type2 = 6;</code>
+       * <code>optional string car_type2 = 6;</code>
        */
       public Builder setCarType2(
           java.lang.String value) {
@@ -11368,7 +11402,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type2 = 6;</code>
+       * <code>optional string car_type2 = 6;</code>
        */
       public Builder clearCarType2() {
         
@@ -11377,7 +11411,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type2 = 6;</code>
+       * <code>optional string car_type2 = 6;</code>
        */
       public Builder setCarType2Bytes(
           com.google.protobuf.ByteString value) {
@@ -11393,7 +11427,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType3_ = "";
       /**
-       * <code>string car_type3 = 7;</code>
+       * <code>optional string car_type3 = 7;</code>
        */
       public java.lang.String getCarType3() {
         java.lang.Object ref = carType3_;
@@ -11408,7 +11442,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type3 = 7;</code>
+       * <code>optional string car_type3 = 7;</code>
        */
       public com.google.protobuf.ByteString
           getCarType3Bytes() {
@@ -11424,7 +11458,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type3 = 7;</code>
+       * <code>optional string car_type3 = 7;</code>
        */
       public Builder setCarType3(
           java.lang.String value) {
@@ -11437,7 +11471,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type3 = 7;</code>
+       * <code>optional string car_type3 = 7;</code>
        */
       public Builder clearCarType3() {
         
@@ -11446,7 +11480,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type3 = 7;</code>
+       * <code>optional string car_type3 = 7;</code>
        */
       public Builder setCarType3Bytes(
           com.google.protobuf.ByteString value) {
@@ -11466,7 +11500,7 @@ public final class ProtoMessage {
        * 换一批，0从头搜索，非0：从上次搜索之后开始搜索。
        * </pre>
        *
-       * <code>int32 pos = 8;</code>
+       * <code>optional int32 pos = 8;</code>
        */
       public int getPos() {
         return pos_;
@@ -11476,7 +11510,7 @@ public final class ProtoMessage {
        * 换一批，0从头搜索，非0：从上次搜索之后开始搜索。
        * </pre>
        *
-       * <code>int32 pos = 8;</code>
+       * <code>optional int32 pos = 8;</code>
        */
       public Builder setPos(int value) {
         
@@ -11489,7 +11523,7 @@ public final class ProtoMessage {
        * 换一批，0从头搜索，非0：从上次搜索之后开始搜索。
        * </pre>
        *
-       * <code>int32 pos = 8;</code>
+       * <code>optional int32 pos = 8;</code>
        */
       public Builder clearPos() {
         
@@ -11502,13 +11536,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.FriendList, com.example.jrd48.service.proto_gen.ProtoMessage.FriendList.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.FriendListOrBuilder> searchResultBuilder_;
       /**
-       * <code>.FriendList search_result = 9;</code>
+       * <code>optional .FriendList search_result = 9;</code>
        */
       public boolean hasSearchResult() {
         return searchResultBuilder_ != null || searchResult_ != null;
       }
       /**
-       * <code>.FriendList search_result = 9;</code>
+       * <code>optional .FriendList search_result = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.FriendList getSearchResult() {
         if (searchResultBuilder_ == null) {
@@ -11518,7 +11552,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.FriendList search_result = 9;</code>
+       * <code>optional .FriendList search_result = 9;</code>
        */
       public Builder setSearchResult(com.example.jrd48.service.proto_gen.ProtoMessage.FriendList value) {
         if (searchResultBuilder_ == null) {
@@ -11534,7 +11568,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.FriendList search_result = 9;</code>
+       * <code>optional .FriendList search_result = 9;</code>
        */
       public Builder setSearchResult(
           com.example.jrd48.service.proto_gen.ProtoMessage.FriendList.Builder builderForValue) {
@@ -11548,7 +11582,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.FriendList search_result = 9;</code>
+       * <code>optional .FriendList search_result = 9;</code>
        */
       public Builder mergeSearchResult(com.example.jrd48.service.proto_gen.ProtoMessage.FriendList value) {
         if (searchResultBuilder_ == null) {
@@ -11566,7 +11600,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.FriendList search_result = 9;</code>
+       * <code>optional .FriendList search_result = 9;</code>
        */
       public Builder clearSearchResult() {
         if (searchResultBuilder_ == null) {
@@ -11580,7 +11614,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.FriendList search_result = 9;</code>
+       * <code>optional .FriendList search_result = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.FriendList.Builder getSearchResultBuilder() {
         
@@ -11588,7 +11622,7 @@ public final class ProtoMessage {
         return getSearchResultFieldBuilder().getBuilder();
       }
       /**
-       * <code>.FriendList search_result = 9;</code>
+       * <code>optional .FriendList search_result = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.FriendListOrBuilder getSearchResultOrBuilder() {
         if (searchResultBuilder_ != null) {
@@ -11599,7 +11633,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.FriendList search_result = 9;</code>
+       * <code>optional .FriendList search_result = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.FriendList, com.example.jrd48.service.proto_gen.ProtoMessage.FriendList.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.FriendListOrBuilder> 
@@ -11617,13 +11651,13 @@ public final class ProtoMessage {
 
       private int sex_ ;
       /**
-       * <code>int32 sex = 10;</code>
+       * <code>optional int32 sex = 10;</code>
        */
       public int getSex() {
         return sex_;
       }
       /**
-       * <code>int32 sex = 10;</code>
+       * <code>optional int32 sex = 10;</code>
        */
       public Builder setSex(int value) {
         
@@ -11632,7 +11666,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 sex = 10;</code>
+       * <code>optional int32 sex = 10;</code>
        */
       public Builder clearSex() {
         
@@ -11647,7 +11681,7 @@ public final class ProtoMessage {
        * 最少输入3项
        * </pre>
        *
-       * <code>string car_num = 11;</code>
+       * <code>optional string car_num = 11;</code>
        */
       public java.lang.String getCarNum() {
         java.lang.Object ref = carNum_;
@@ -11666,7 +11700,7 @@ public final class ProtoMessage {
        * 最少输入3项
        * </pre>
        *
-       * <code>string car_num = 11;</code>
+       * <code>optional string car_num = 11;</code>
        */
       public com.google.protobuf.ByteString
           getCarNumBytes() {
@@ -11686,7 +11720,7 @@ public final class ProtoMessage {
        * 最少输入3项
        * </pre>
        *
-       * <code>string car_num = 11;</code>
+       * <code>optional string car_num = 11;</code>
        */
       public Builder setCarNum(
           java.lang.String value) {
@@ -11703,7 +11737,7 @@ public final class ProtoMessage {
        * 最少输入3项
        * </pre>
        *
-       * <code>string car_num = 11;</code>
+       * <code>optional string car_num = 11;</code>
        */
       public Builder clearCarNum() {
         
@@ -11716,7 +11750,7 @@ public final class ProtoMessage {
        * 最少输入3项
        * </pre>
        *
-       * <code>string car_num = 11;</code>
+       * <code>optional string car_num = 11;</code>
        */
       public Builder setCarNumBytes(
           com.google.protobuf.ByteString value) {
@@ -11783,12 +11817,12 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int64 msgID = 2;</code>
+     * <code>optional int64 msgID = 2;</code>
      */
     long getMsgID();
 
@@ -11797,7 +11831,7 @@ public final class ProtoMessage {
      * 附件的字节数
      * </pre>
      *
-     * <code>int64 msgSize = 3;</code>
+     * <code>optional int64 msgSize = 3;</code>
      */
     long getMsgSize();
 
@@ -11806,7 +11840,7 @@ public final class ProtoMessage {
      * 暂时固定为 64K （即：64*1024个字节）
      * </pre>
      *
-     * <code>int32 packSize = 4;</code>
+     * <code>optional int32 packSize = 4;</code>
      */
     int getPackSize();
 
@@ -11815,7 +11849,7 @@ public final class ProtoMessage {
      * 总包数
      * </pre>
      *
-     * <code>int32 packCnt = 5;</code>
+     * <code>optional int32 packCnt = 5;</code>
      */
     int getPackCnt();
 
@@ -11824,7 +11858,7 @@ public final class ProtoMessage {
      * 上传时：包号： 范围 ： [0..packCnt], 当packNum = 0 时，仅设置 msgSum, 而不需要传递 packData,
      * </pre>
      *
-     * <code>int32 packNum = 6;</code>
+     * <code>optional int32 packNum = 6;</code>
      */
     int getPackNum();
 
@@ -11834,7 +11868,7 @@ public final class ProtoMessage {
      * 下载时：包号： 范围 ： [0..packCnt]
      * </pre>
      *
-     * <code>bytes msgSum = 7;</code>
+     * <code>optional bytes msgSum = 7;</code>
      */
     com.google.protobuf.ByteString getMsgSum();
 
@@ -11843,7 +11877,7 @@ public final class ProtoMessage {
      * 当 packNum == [1.. packCnt] 时有效
      * </pre>
      *
-     * <code>bytes packData = 8;</code>
+     * <code>optional bytes packData = 8;</code>
      */
     com.google.protobuf.ByteString getPackData();
 
@@ -11852,7 +11886,7 @@ public final class ProtoMessage {
      * 方便客户端使用
      * </pre>
      *
-     * <code>int64 msgSN = 9;</code>
+     * <code>optional int64 msgSN = 9;</code>
      */
     long getMsgSN();
   }
@@ -11975,7 +12009,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -11984,7 +12018,7 @@ public final class ProtoMessage {
     public static final int MSGID_FIELD_NUMBER = 2;
     private long msgID_;
     /**
-     * <code>int64 msgID = 2;</code>
+     * <code>optional int64 msgID = 2;</code>
      */
     public long getMsgID() {
       return msgID_;
@@ -11997,7 +12031,7 @@ public final class ProtoMessage {
      * 附件的字节数
      * </pre>
      *
-     * <code>int64 msgSize = 3;</code>
+     * <code>optional int64 msgSize = 3;</code>
      */
     public long getMsgSize() {
       return msgSize_;
@@ -12010,7 +12044,7 @@ public final class ProtoMessage {
      * 暂时固定为 64K （即：64*1024个字节）
      * </pre>
      *
-     * <code>int32 packSize = 4;</code>
+     * <code>optional int32 packSize = 4;</code>
      */
     public int getPackSize() {
       return packSize_;
@@ -12023,7 +12057,7 @@ public final class ProtoMessage {
      * 总包数
      * </pre>
      *
-     * <code>int32 packCnt = 5;</code>
+     * <code>optional int32 packCnt = 5;</code>
      */
     public int getPackCnt() {
       return packCnt_;
@@ -12036,7 +12070,7 @@ public final class ProtoMessage {
      * 上传时：包号： 范围 ： [0..packCnt], 当packNum = 0 时，仅设置 msgSum, 而不需要传递 packData,
      * </pre>
      *
-     * <code>int32 packNum = 6;</code>
+     * <code>optional int32 packNum = 6;</code>
      */
     public int getPackNum() {
       return packNum_;
@@ -12050,7 +12084,7 @@ public final class ProtoMessage {
      * 下载时：包号： 范围 ： [0..packCnt]
      * </pre>
      *
-     * <code>bytes msgSum = 7;</code>
+     * <code>optional bytes msgSum = 7;</code>
      */
     public com.google.protobuf.ByteString getMsgSum() {
       return msgSum_;
@@ -12063,7 +12097,7 @@ public final class ProtoMessage {
      * 当 packNum == [1.. packCnt] 时有效
      * </pre>
      *
-     * <code>bytes packData = 8;</code>
+     * <code>optional bytes packData = 8;</code>
      */
     public com.google.protobuf.ByteString getPackData() {
       return packData_;
@@ -12076,7 +12110,7 @@ public final class ProtoMessage {
      * 方便客户端使用
      * </pre>
      *
-     * <code>int64 msgSN = 9;</code>
+     * <code>optional int64 msgSN = 9;</code>
      */
     public long getMsgSN() {
       return msgSN_;
@@ -12207,7 +12241,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + MSGID_FIELD_NUMBER;
@@ -12492,13 +12526,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -12507,7 +12541,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -12518,13 +12552,13 @@ public final class ProtoMessage {
 
       private long msgID_ ;
       /**
-       * <code>int64 msgID = 2;</code>
+       * <code>optional int64 msgID = 2;</code>
        */
       public long getMsgID() {
         return msgID_;
       }
       /**
-       * <code>int64 msgID = 2;</code>
+       * <code>optional int64 msgID = 2;</code>
        */
       public Builder setMsgID(long value) {
         
@@ -12533,7 +12567,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 msgID = 2;</code>
+       * <code>optional int64 msgID = 2;</code>
        */
       public Builder clearMsgID() {
         
@@ -12548,7 +12582,7 @@ public final class ProtoMessage {
        * 附件的字节数
        * </pre>
        *
-       * <code>int64 msgSize = 3;</code>
+       * <code>optional int64 msgSize = 3;</code>
        */
       public long getMsgSize() {
         return msgSize_;
@@ -12558,7 +12592,7 @@ public final class ProtoMessage {
        * 附件的字节数
        * </pre>
        *
-       * <code>int64 msgSize = 3;</code>
+       * <code>optional int64 msgSize = 3;</code>
        */
       public Builder setMsgSize(long value) {
         
@@ -12571,7 +12605,7 @@ public final class ProtoMessage {
        * 附件的字节数
        * </pre>
        *
-       * <code>int64 msgSize = 3;</code>
+       * <code>optional int64 msgSize = 3;</code>
        */
       public Builder clearMsgSize() {
         
@@ -12586,7 +12620,7 @@ public final class ProtoMessage {
        * 暂时固定为 64K （即：64*1024个字节）
        * </pre>
        *
-       * <code>int32 packSize = 4;</code>
+       * <code>optional int32 packSize = 4;</code>
        */
       public int getPackSize() {
         return packSize_;
@@ -12596,7 +12630,7 @@ public final class ProtoMessage {
        * 暂时固定为 64K （即：64*1024个字节）
        * </pre>
        *
-       * <code>int32 packSize = 4;</code>
+       * <code>optional int32 packSize = 4;</code>
        */
       public Builder setPackSize(int value) {
         
@@ -12609,7 +12643,7 @@ public final class ProtoMessage {
        * 暂时固定为 64K （即：64*1024个字节）
        * </pre>
        *
-       * <code>int32 packSize = 4;</code>
+       * <code>optional int32 packSize = 4;</code>
        */
       public Builder clearPackSize() {
         
@@ -12624,7 +12658,7 @@ public final class ProtoMessage {
        * 总包数
        * </pre>
        *
-       * <code>int32 packCnt = 5;</code>
+       * <code>optional int32 packCnt = 5;</code>
        */
       public int getPackCnt() {
         return packCnt_;
@@ -12634,7 +12668,7 @@ public final class ProtoMessage {
        * 总包数
        * </pre>
        *
-       * <code>int32 packCnt = 5;</code>
+       * <code>optional int32 packCnt = 5;</code>
        */
       public Builder setPackCnt(int value) {
         
@@ -12647,7 +12681,7 @@ public final class ProtoMessage {
        * 总包数
        * </pre>
        *
-       * <code>int32 packCnt = 5;</code>
+       * <code>optional int32 packCnt = 5;</code>
        */
       public Builder clearPackCnt() {
         
@@ -12662,7 +12696,7 @@ public final class ProtoMessage {
        * 上传时：包号： 范围 ： [0..packCnt], 当packNum = 0 时，仅设置 msgSum, 而不需要传递 packData,
        * </pre>
        *
-       * <code>int32 packNum = 6;</code>
+       * <code>optional int32 packNum = 6;</code>
        */
       public int getPackNum() {
         return packNum_;
@@ -12672,7 +12706,7 @@ public final class ProtoMessage {
        * 上传时：包号： 范围 ： [0..packCnt], 当packNum = 0 时，仅设置 msgSum, 而不需要传递 packData,
        * </pre>
        *
-       * <code>int32 packNum = 6;</code>
+       * <code>optional int32 packNum = 6;</code>
        */
       public Builder setPackNum(int value) {
         
@@ -12685,7 +12719,7 @@ public final class ProtoMessage {
        * 上传时：包号： 范围 ： [0..packCnt], 当packNum = 0 时，仅设置 msgSum, 而不需要传递 packData,
        * </pre>
        *
-       * <code>int32 packNum = 6;</code>
+       * <code>optional int32 packNum = 6;</code>
        */
       public Builder clearPackNum() {
         
@@ -12701,7 +12735,7 @@ public final class ProtoMessage {
        * 下载时：包号： 范围 ： [0..packCnt]
        * </pre>
        *
-       * <code>bytes msgSum = 7;</code>
+       * <code>optional bytes msgSum = 7;</code>
        */
       public com.google.protobuf.ByteString getMsgSum() {
         return msgSum_;
@@ -12712,7 +12746,7 @@ public final class ProtoMessage {
        * 下载时：包号： 范围 ： [0..packCnt]
        * </pre>
        *
-       * <code>bytes msgSum = 7;</code>
+       * <code>optional bytes msgSum = 7;</code>
        */
       public Builder setMsgSum(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -12729,7 +12763,7 @@ public final class ProtoMessage {
        * 下载时：包号： 范围 ： [0..packCnt]
        * </pre>
        *
-       * <code>bytes msgSum = 7;</code>
+       * <code>optional bytes msgSum = 7;</code>
        */
       public Builder clearMsgSum() {
         
@@ -12744,7 +12778,7 @@ public final class ProtoMessage {
        * 当 packNum == [1.. packCnt] 时有效
        * </pre>
        *
-       * <code>bytes packData = 8;</code>
+       * <code>optional bytes packData = 8;</code>
        */
       public com.google.protobuf.ByteString getPackData() {
         return packData_;
@@ -12754,7 +12788,7 @@ public final class ProtoMessage {
        * 当 packNum == [1.. packCnt] 时有效
        * </pre>
        *
-       * <code>bytes packData = 8;</code>
+       * <code>optional bytes packData = 8;</code>
        */
       public Builder setPackData(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -12770,7 +12804,7 @@ public final class ProtoMessage {
        * 当 packNum == [1.. packCnt] 时有效
        * </pre>
        *
-       * <code>bytes packData = 8;</code>
+       * <code>optional bytes packData = 8;</code>
        */
       public Builder clearPackData() {
         
@@ -12785,7 +12819,7 @@ public final class ProtoMessage {
        * 方便客户端使用
        * </pre>
        *
-       * <code>int64 msgSN = 9;</code>
+       * <code>optional int64 msgSN = 9;</code>
        */
       public long getMsgSN() {
         return msgSN_;
@@ -12795,7 +12829,7 @@ public final class ProtoMessage {
        * 方便客户端使用
        * </pre>
        *
-       * <code>int64 msgSN = 9;</code>
+       * <code>optional int64 msgSN = 9;</code>
        */
       public Builder setMsgSN(long value) {
         
@@ -12808,7 +12842,7 @@ public final class ProtoMessage {
        * 方便客户端使用
        * </pre>
        *
-       * <code>int64 msgSN = 9;</code>
+       * <code>optional int64 msgSN = 9;</code>
        */
       public Builder clearMsgSN() {
         
@@ -12870,21 +12904,21 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int32 codeType = 2;</code>
+     * <code>optional int32 codeType = 2;</code>
      */
     int getCodeType();
 
     /**
-     * <code>string phoneNum = 3;</code>
+     * <code>optional string phoneNum = 3;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 3;</code>
+     * <code>optional string phoneNum = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -12894,7 +12928,7 @@ public final class ProtoMessage {
      * 验证时使用
      * </pre>
      *
-     * <code>string code = 4;</code>
+     * <code>optional string code = 4;</code>
      */
     java.lang.String getCode();
     /**
@@ -12902,7 +12936,7 @@ public final class ProtoMessage {
      * 验证时使用
      * </pre>
      *
-     * <code>string code = 4;</code>
+     * <code>optional string code = 4;</code>
      */
     com.google.protobuf.ByteString
         getCodeBytes();
@@ -13002,7 +13036,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -13011,7 +13045,7 @@ public final class ProtoMessage {
     public static final int CODETYPE_FIELD_NUMBER = 2;
     private int codeType_;
     /**
-     * <code>int32 codeType = 2;</code>
+     * <code>optional int32 codeType = 2;</code>
      */
     public int getCodeType() {
       return codeType_;
@@ -13020,7 +13054,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 3;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 3;</code>
+     * <code>optional string phoneNum = 3;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -13035,7 +13069,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 3;</code>
+     * <code>optional string phoneNum = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -13058,7 +13092,7 @@ public final class ProtoMessage {
      * 验证时使用
      * </pre>
      *
-     * <code>string code = 4;</code>
+     * <code>optional string code = 4;</code>
      */
     public java.lang.String getCode() {
       java.lang.Object ref = code_;
@@ -13077,7 +13111,7 @@ public final class ProtoMessage {
      * 验证时使用
      * </pre>
      *
-     * <code>string code = 4;</code>
+     * <code>optional string code = 4;</code>
      */
     public com.google.protobuf.ByteString
         getCodeBytes() {
@@ -13171,7 +13205,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + CODETYPE_FIELD_NUMBER;
@@ -13419,13 +13453,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -13434,7 +13468,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -13445,13 +13479,13 @@ public final class ProtoMessage {
 
       private int codeType_ ;
       /**
-       * <code>int32 codeType = 2;</code>
+       * <code>optional int32 codeType = 2;</code>
        */
       public int getCodeType() {
         return codeType_;
       }
       /**
-       * <code>int32 codeType = 2;</code>
+       * <code>optional int32 codeType = 2;</code>
        */
       public Builder setCodeType(int value) {
         
@@ -13460,7 +13494,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 codeType = 2;</code>
+       * <code>optional int32 codeType = 2;</code>
        */
       public Builder clearCodeType() {
         
@@ -13471,7 +13505,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 3;</code>
+       * <code>optional string phoneNum = 3;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -13486,7 +13520,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 3;</code>
+       * <code>optional string phoneNum = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -13502,7 +13536,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 3;</code>
+       * <code>optional string phoneNum = 3;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -13515,7 +13549,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 3;</code>
+       * <code>optional string phoneNum = 3;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -13524,7 +13558,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 3;</code>
+       * <code>optional string phoneNum = 3;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -13544,7 +13578,7 @@ public final class ProtoMessage {
        * 验证时使用
        * </pre>
        *
-       * <code>string code = 4;</code>
+       * <code>optional string code = 4;</code>
        */
       public java.lang.String getCode() {
         java.lang.Object ref = code_;
@@ -13563,7 +13597,7 @@ public final class ProtoMessage {
        * 验证时使用
        * </pre>
        *
-       * <code>string code = 4;</code>
+       * <code>optional string code = 4;</code>
        */
       public com.google.protobuf.ByteString
           getCodeBytes() {
@@ -13583,7 +13617,7 @@ public final class ProtoMessage {
        * 验证时使用
        * </pre>
        *
-       * <code>string code = 4;</code>
+       * <code>optional string code = 4;</code>
        */
       public Builder setCode(
           java.lang.String value) {
@@ -13600,7 +13634,7 @@ public final class ProtoMessage {
        * 验证时使用
        * </pre>
        *
-       * <code>string code = 4;</code>
+       * <code>optional string code = 4;</code>
        */
       public Builder clearCode() {
         
@@ -13613,7 +13647,7 @@ public final class ProtoMessage {
        * 验证时使用
        * </pre>
        *
-       * <code>string code = 4;</code>
+       * <code>optional string code = 4;</code>
        */
       public Builder setCodeBytes(
           com.google.protobuf.ByteString value) {
@@ -13680,7 +13714,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bool reserved = 1;</code>
+     * <code>optional bool reserved = 1;</code>
      */
     boolean getReserved();
   }
@@ -13755,7 +13789,7 @@ public final class ProtoMessage {
     public static final int RESERVED_FIELD_NUMBER = 1;
     private boolean reserved_;
     /**
-     * <code>bool reserved = 1;</code>
+     * <code>optional bool reserved = 1;</code>
      */
     public boolean getReserved() {
       return reserved_;
@@ -13814,7 +13848,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + RESERVED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getReserved());
@@ -14033,13 +14067,13 @@ public final class ProtoMessage {
 
       private boolean reserved_ ;
       /**
-       * <code>bool reserved = 1;</code>
+       * <code>optional bool reserved = 1;</code>
        */
       public boolean getReserved() {
         return reserved_;
       }
       /**
-       * <code>bool reserved = 1;</code>
+       * <code>optional bool reserved = 1;</code>
        */
       public Builder setReserved(boolean value) {
         
@@ -14048,7 +14082,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>bool reserved = 1;</code>
+       * <code>optional bool reserved = 1;</code>
        */
       public Builder clearReserved() {
         
@@ -14110,7 +14144,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
   }
@@ -14189,7 +14223,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -14248,7 +14282,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -14470,13 +14504,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -14485,7 +14519,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -14547,12 +14581,12 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int32 serverType = 2;</code>
+     * <code>optional int32 serverType = 2;</code>
      */
     int getServerType();
   }
@@ -14633,7 +14667,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -14642,7 +14676,7 @@ public final class ProtoMessage {
     public static final int SERVERTYPE_FIELD_NUMBER = 2;
     private int serverType_;
     /**
-     * <code>int32 serverType = 2;</code>
+     * <code>optional int32 serverType = 2;</code>
      */
     public int getServerType() {
       return serverType_;
@@ -14710,7 +14744,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + SERVERTYPE_FIELD_NUMBER;
@@ -14936,13 +14970,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -14951,7 +14985,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -14962,13 +14996,13 @@ public final class ProtoMessage {
 
       private int serverType_ ;
       /**
-       * <code>int32 serverType = 2;</code>
+       * <code>optional int32 serverType = 2;</code>
        */
       public int getServerType() {
         return serverType_;
       }
       /**
-       * <code>int32 serverType = 2;</code>
+       * <code>optional int32 serverType = 2;</code>
        */
       public Builder setServerType(int value) {
         
@@ -14977,7 +15011,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 serverType = 2;</code>
+       * <code>optional int32 serverType = 2;</code>
        */
       public Builder clearServerType() {
         
@@ -15039,36 +15073,36 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>string password = 3;</code>
+     * <code>optional string password = 3;</code>
      */
     java.lang.String getPassword();
     /**
-     * <code>string password = 3;</code>
+     * <code>optional string password = 3;</code>
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
 
     /**
-     * <code>string smsCode = 4;</code>
+     * <code>optional string smsCode = 4;</code>
      */
     java.lang.String getSmsCode();
     /**
-     * <code>string smsCode = 4;</code>
+     * <code>optional string smsCode = 4;</code>
      */
     com.google.protobuf.ByteString
         getSmsCodeBytes();
@@ -15169,7 +15203,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -15178,7 +15212,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -15193,7 +15227,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -15212,7 +15246,7 @@ public final class ProtoMessage {
     public static final int PASSWORD_FIELD_NUMBER = 3;
     private volatile java.lang.Object password_;
     /**
-     * <code>string password = 3;</code>
+     * <code>optional string password = 3;</code>
      */
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
@@ -15227,7 +15261,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string password = 3;</code>
+     * <code>optional string password = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPasswordBytes() {
@@ -15246,7 +15280,7 @@ public final class ProtoMessage {
     public static final int SMSCODE_FIELD_NUMBER = 4;
     private volatile java.lang.Object smsCode_;
     /**
-     * <code>string smsCode = 4;</code>
+     * <code>optional string smsCode = 4;</code>
      */
     public java.lang.String getSmsCode() {
       java.lang.Object ref = smsCode_;
@@ -15261,7 +15295,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string smsCode = 4;</code>
+     * <code>optional string smsCode = 4;</code>
      */
     public com.google.protobuf.ByteString
         getSmsCodeBytes() {
@@ -15354,7 +15388,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -15603,13 +15637,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -15618,7 +15652,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -15629,7 +15663,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -15644,7 +15678,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -15660,7 +15694,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -15673,7 +15707,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -15682,7 +15716,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -15698,7 +15732,7 @@ public final class ProtoMessage {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>string password = 3;</code>
+       * <code>optional string password = 3;</code>
        */
       public java.lang.String getPassword() {
         java.lang.Object ref = password_;
@@ -15713,7 +15747,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>optional string password = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPasswordBytes() {
@@ -15729,7 +15763,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>optional string password = 3;</code>
        */
       public Builder setPassword(
           java.lang.String value) {
@@ -15742,7 +15776,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>optional string password = 3;</code>
        */
       public Builder clearPassword() {
         
@@ -15751,7 +15785,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>optional string password = 3;</code>
        */
       public Builder setPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -15767,7 +15801,7 @@ public final class ProtoMessage {
 
       private java.lang.Object smsCode_ = "";
       /**
-       * <code>string smsCode = 4;</code>
+       * <code>optional string smsCode = 4;</code>
        */
       public java.lang.String getSmsCode() {
         java.lang.Object ref = smsCode_;
@@ -15782,7 +15816,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string smsCode = 4;</code>
+       * <code>optional string smsCode = 4;</code>
        */
       public com.google.protobuf.ByteString
           getSmsCodeBytes() {
@@ -15798,7 +15832,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string smsCode = 4;</code>
+       * <code>optional string smsCode = 4;</code>
        */
       public Builder setSmsCode(
           java.lang.String value) {
@@ -15811,7 +15845,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string smsCode = 4;</code>
+       * <code>optional string smsCode = 4;</code>
        */
       public Builder clearSmsCode() {
         
@@ -15820,7 +15854,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string smsCode = 4;</code>
+       * <code>optional string smsCode = 4;</code>
        */
       public Builder setSmsCodeBytes(
           com.google.protobuf.ByteString value) {
@@ -15887,42 +15921,42 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>string password = 3;</code>
+     * <code>optional string password = 3;</code>
      */
     java.lang.String getPassword();
     /**
-     * <code>string password = 3;</code>
+     * <code>optional string password = 3;</code>
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
 
     /**
-     * <code>string token = 4;</code>
+     * <code>optional string token = 4;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>string token = 4;</code>
+     * <code>optional string token = 4;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>int32 appType = 5;</code>
+     * <code>optional int32 appType = 5;</code>
      */
     int getAppType();
 
@@ -15931,7 +15965,7 @@ public final class ProtoMessage {
      * 车机登录时必须提供 carID
      * </pre>
      *
-     * <code>string carID = 6;</code>
+     * <code>optional string carID = 6;</code>
      */
     java.lang.String getCarID();
     /**
@@ -15939,7 +15973,7 @@ public final class ProtoMessage {
      * 车机登录时必须提供 carID
      * </pre>
      *
-     * <code>string carID = 6;</code>
+     * <code>optional string carID = 6;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -15949,7 +15983,7 @@ public final class ProtoMessage {
      * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
      * </pre>
      *
-     * <code>string imei = 7;</code>
+     * <code>optional string imei = 7;</code>
      */
     java.lang.String getImei();
     /**
@@ -15957,23 +15991,23 @@ public final class ProtoMessage {
      * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
      * </pre>
      *
-     * <code>string imei = 7;</code>
+     * <code>optional string imei = 7;</code>
      */
     com.google.protobuf.ByteString
         getImeiBytes();
 
     /**
-     * <code>string sessionIP = 8;</code>
+     * <code>optional string sessionIP = 8;</code>
      */
     java.lang.String getSessionIP();
     /**
-     * <code>string sessionIP = 8;</code>
+     * <code>optional string sessionIP = 8;</code>
      */
     com.google.protobuf.ByteString
         getSessionIPBytes();
 
     /**
-     * <code>int32 sessionPort = 9;</code>
+     * <code>optional int32 sessionPort = 9;</code>
      */
     int getSessionPort();
 
@@ -15982,7 +16016,7 @@ public final class ProtoMessage {
      * 集团号
      * </pre>
      *
-     * <code>int64 groupID = 10;</code>
+     * <code>optional int64 groupID = 10;</code>
      */
     long getGroupID();
   }
@@ -16121,7 +16155,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -16130,7 +16164,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -16145,7 +16179,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -16164,7 +16198,7 @@ public final class ProtoMessage {
     public static final int PASSWORD_FIELD_NUMBER = 3;
     private volatile java.lang.Object password_;
     /**
-     * <code>string password = 3;</code>
+     * <code>optional string password = 3;</code>
      */
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
@@ -16179,7 +16213,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string password = 3;</code>
+     * <code>optional string password = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPasswordBytes() {
@@ -16198,7 +16232,7 @@ public final class ProtoMessage {
     public static final int TOKEN_FIELD_NUMBER = 4;
     private volatile java.lang.Object token_;
     /**
-     * <code>string token = 4;</code>
+     * <code>optional string token = 4;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
@@ -16213,7 +16247,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string token = 4;</code>
+     * <code>optional string token = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
@@ -16232,7 +16266,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 5;
     private int appType_;
     /**
-     * <code>int32 appType = 5;</code>
+     * <code>optional int32 appType = 5;</code>
      */
     public int getAppType() {
       return appType_;
@@ -16245,7 +16279,7 @@ public final class ProtoMessage {
      * 车机登录时必须提供 carID
      * </pre>
      *
-     * <code>string carID = 6;</code>
+     * <code>optional string carID = 6;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
@@ -16264,7 +16298,7 @@ public final class ProtoMessage {
      * 车机登录时必须提供 carID
      * </pre>
      *
-     * <code>string carID = 6;</code>
+     * <code>optional string carID = 6;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
@@ -16287,7 +16321,7 @@ public final class ProtoMessage {
      * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
      * </pre>
      *
-     * <code>string imei = 7;</code>
+     * <code>optional string imei = 7;</code>
      */
     public java.lang.String getImei() {
       java.lang.Object ref = imei_;
@@ -16306,7 +16340,7 @@ public final class ProtoMessage {
      * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
      * </pre>
      *
-     * <code>string imei = 7;</code>
+     * <code>optional string imei = 7;</code>
      */
     public com.google.protobuf.ByteString
         getImeiBytes() {
@@ -16325,7 +16359,7 @@ public final class ProtoMessage {
     public static final int SESSIONIP_FIELD_NUMBER = 8;
     private volatile java.lang.Object sessionIP_;
     /**
-     * <code>string sessionIP = 8;</code>
+     * <code>optional string sessionIP = 8;</code>
      */
     public java.lang.String getSessionIP() {
       java.lang.Object ref = sessionIP_;
@@ -16340,7 +16374,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string sessionIP = 8;</code>
+     * <code>optional string sessionIP = 8;</code>
      */
     public com.google.protobuf.ByteString
         getSessionIPBytes() {
@@ -16359,7 +16393,7 @@ public final class ProtoMessage {
     public static final int SESSIONPORT_FIELD_NUMBER = 9;
     private int sessionPort_;
     /**
-     * <code>int32 sessionPort = 9;</code>
+     * <code>optional int32 sessionPort = 9;</code>
      */
     public int getSessionPort() {
       return sessionPort_;
@@ -16372,7 +16406,7 @@ public final class ProtoMessage {
      * 集团号
      * </pre>
      *
-     * <code>int64 groupID = 10;</code>
+     * <code>optional int64 groupID = 10;</code>
      */
     public long getGroupID() {
       return groupID_;
@@ -16506,7 +16540,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -16807,13 +16841,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -16822,7 +16856,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -16833,7 +16867,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -16848,7 +16882,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -16864,7 +16898,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -16877,7 +16911,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -16886,7 +16920,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -16902,7 +16936,7 @@ public final class ProtoMessage {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>string password = 3;</code>
+       * <code>optional string password = 3;</code>
        */
       public java.lang.String getPassword() {
         java.lang.Object ref = password_;
@@ -16917,7 +16951,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>optional string password = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPasswordBytes() {
@@ -16933,7 +16967,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>optional string password = 3;</code>
        */
       public Builder setPassword(
           java.lang.String value) {
@@ -16946,7 +16980,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>optional string password = 3;</code>
        */
       public Builder clearPassword() {
         
@@ -16955,7 +16989,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>optional string password = 3;</code>
        */
       public Builder setPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -16971,7 +17005,7 @@ public final class ProtoMessage {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>string token = 4;</code>
+       * <code>optional string token = 4;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -16986,7 +17020,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string token = 4;</code>
+       * <code>optional string token = 4;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
@@ -17002,7 +17036,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string token = 4;</code>
+       * <code>optional string token = 4;</code>
        */
       public Builder setToken(
           java.lang.String value) {
@@ -17015,7 +17049,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string token = 4;</code>
+       * <code>optional string token = 4;</code>
        */
       public Builder clearToken() {
         
@@ -17024,7 +17058,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string token = 4;</code>
+       * <code>optional string token = 4;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -17040,13 +17074,13 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>int32 appType = 5;</code>
+       * <code>optional int32 appType = 5;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>int32 appType = 5;</code>
+       * <code>optional int32 appType = 5;</code>
        */
       public Builder setAppType(int value) {
         
@@ -17055,7 +17089,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 appType = 5;</code>
+       * <code>optional int32 appType = 5;</code>
        */
       public Builder clearAppType() {
         
@@ -17070,7 +17104,7 @@ public final class ProtoMessage {
        * 车机登录时必须提供 carID
        * </pre>
        *
-       * <code>string carID = 6;</code>
+       * <code>optional string carID = 6;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -17089,7 +17123,7 @@ public final class ProtoMessage {
        * 车机登录时必须提供 carID
        * </pre>
        *
-       * <code>string carID = 6;</code>
+       * <code>optional string carID = 6;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
@@ -17109,7 +17143,7 @@ public final class ProtoMessage {
        * 车机登录时必须提供 carID
        * </pre>
        *
-       * <code>string carID = 6;</code>
+       * <code>optional string carID = 6;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
@@ -17126,7 +17160,7 @@ public final class ProtoMessage {
        * 车机登录时必须提供 carID
        * </pre>
        *
-       * <code>string carID = 6;</code>
+       * <code>optional string carID = 6;</code>
        */
       public Builder clearCarID() {
         
@@ -17139,7 +17173,7 @@ public final class ProtoMessage {
        * 车机登录时必须提供 carID
        * </pre>
        *
-       * <code>string carID = 6;</code>
+       * <code>optional string carID = 6;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -17159,7 +17193,7 @@ public final class ProtoMessage {
        * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
        * </pre>
        *
-       * <code>string imei = 7;</code>
+       * <code>optional string imei = 7;</code>
        */
       public java.lang.String getImei() {
         java.lang.Object ref = imei_;
@@ -17178,7 +17212,7 @@ public final class ProtoMessage {
        * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
        * </pre>
        *
-       * <code>string imei = 7;</code>
+       * <code>optional string imei = 7;</code>
        */
       public com.google.protobuf.ByteString
           getImeiBytes() {
@@ -17198,7 +17232,7 @@ public final class ProtoMessage {
        * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
        * </pre>
        *
-       * <code>string imei = 7;</code>
+       * <code>optional string imei = 7;</code>
        */
       public Builder setImei(
           java.lang.String value) {
@@ -17215,7 +17249,7 @@ public final class ProtoMessage {
        * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
        * </pre>
        *
-       * <code>string imei = 7;</code>
+       * <code>optional string imei = 7;</code>
        */
       public Builder clearImei() {
         
@@ -17228,7 +17262,7 @@ public final class ProtoMessage {
        * 无屏对讲登录时使用IMEI号登录，并且由服务器自注册
        * </pre>
        *
-       * <code>string imei = 7;</code>
+       * <code>optional string imei = 7;</code>
        */
       public Builder setImeiBytes(
           com.google.protobuf.ByteString value) {
@@ -17244,7 +17278,7 @@ public final class ProtoMessage {
 
       private java.lang.Object sessionIP_ = "";
       /**
-       * <code>string sessionIP = 8;</code>
+       * <code>optional string sessionIP = 8;</code>
        */
       public java.lang.String getSessionIP() {
         java.lang.Object ref = sessionIP_;
@@ -17259,7 +17293,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string sessionIP = 8;</code>
+       * <code>optional string sessionIP = 8;</code>
        */
       public com.google.protobuf.ByteString
           getSessionIPBytes() {
@@ -17275,7 +17309,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string sessionIP = 8;</code>
+       * <code>optional string sessionIP = 8;</code>
        */
       public Builder setSessionIP(
           java.lang.String value) {
@@ -17288,7 +17322,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string sessionIP = 8;</code>
+       * <code>optional string sessionIP = 8;</code>
        */
       public Builder clearSessionIP() {
         
@@ -17297,7 +17331,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string sessionIP = 8;</code>
+       * <code>optional string sessionIP = 8;</code>
        */
       public Builder setSessionIPBytes(
           com.google.protobuf.ByteString value) {
@@ -17313,13 +17347,13 @@ public final class ProtoMessage {
 
       private int sessionPort_ ;
       /**
-       * <code>int32 sessionPort = 9;</code>
+       * <code>optional int32 sessionPort = 9;</code>
        */
       public int getSessionPort() {
         return sessionPort_;
       }
       /**
-       * <code>int32 sessionPort = 9;</code>
+       * <code>optional int32 sessionPort = 9;</code>
        */
       public Builder setSessionPort(int value) {
         
@@ -17328,7 +17362,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 sessionPort = 9;</code>
+       * <code>optional int32 sessionPort = 9;</code>
        */
       public Builder clearSessionPort() {
         
@@ -17343,7 +17377,7 @@ public final class ProtoMessage {
        * 集团号
        * </pre>
        *
-       * <code>int64 groupID = 10;</code>
+       * <code>optional int64 groupID = 10;</code>
        */
       public long getGroupID() {
         return groupID_;
@@ -17353,7 +17387,7 @@ public final class ProtoMessage {
        * 集团号
        * </pre>
        *
-       * <code>int64 groupID = 10;</code>
+       * <code>optional int64 groupID = 10;</code>
        */
       public Builder setGroupID(long value) {
         
@@ -17366,7 +17400,7 @@ public final class ProtoMessage {
        * 集团号
        * </pre>
        *
-       * <code>int64 groupID = 10;</code>
+       * <code>optional int64 groupID = 10;</code>
        */
       public Builder clearGroupID() {
         
@@ -17428,52 +17462,52 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string token = 2;</code>
+     * <code>optional string token = 2;</code>
      */
     java.lang.String getToken();
     /**
-     * <code>string token = 2;</code>
+     * <code>optional string token = 2;</code>
      */
     com.google.protobuf.ByteString
         getTokenBytes();
 
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     java.lang.String getPhone();
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneBytes();
 
     /**
-     * <code>int32 appType = 4;</code>
+     * <code>optional int32 appType = 4;</code>
      */
     int getAppType();
 
     /**
-     * <code>string sessionIP = 5;</code>
+     * <code>optional string sessionIP = 5;</code>
      */
     java.lang.String getSessionIP();
     /**
-     * <code>string sessionIP = 5;</code>
+     * <code>optional string sessionIP = 5;</code>
      */
     com.google.protobuf.ByteString
         getSessionIPBytes();
 
     /**
-     * <code>int32 sessionPort = 6;</code>
+     * <code>optional int32 sessionPort = 6;</code>
      */
     int getSessionPort();
 
     /**
-     * <code>int32 serverType = 7;</code>
+     * <code>optional int32 serverType = 7;</code>
      */
     int getServerType();
   }
@@ -17591,7 +17625,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -17600,7 +17634,7 @@ public final class ProtoMessage {
     public static final int TOKEN_FIELD_NUMBER = 2;
     private volatile java.lang.Object token_;
     /**
-     * <code>string token = 2;</code>
+     * <code>optional string token = 2;</code>
      */
     public java.lang.String getToken() {
       java.lang.Object ref = token_;
@@ -17615,7 +17649,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string token = 2;</code>
+     * <code>optional string token = 2;</code>
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
@@ -17634,7 +17668,7 @@ public final class ProtoMessage {
     public static final int PHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object phone_;
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     public java.lang.String getPhone() {
       java.lang.Object ref = phone_;
@@ -17649,7 +17683,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneBytes() {
@@ -17668,7 +17702,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 4;
     private int appType_;
     /**
-     * <code>int32 appType = 4;</code>
+     * <code>optional int32 appType = 4;</code>
      */
     public int getAppType() {
       return appType_;
@@ -17677,7 +17711,7 @@ public final class ProtoMessage {
     public static final int SESSIONIP_FIELD_NUMBER = 5;
     private volatile java.lang.Object sessionIP_;
     /**
-     * <code>string sessionIP = 5;</code>
+     * <code>optional string sessionIP = 5;</code>
      */
     public java.lang.String getSessionIP() {
       java.lang.Object ref = sessionIP_;
@@ -17692,7 +17726,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string sessionIP = 5;</code>
+     * <code>optional string sessionIP = 5;</code>
      */
     public com.google.protobuf.ByteString
         getSessionIPBytes() {
@@ -17711,7 +17745,7 @@ public final class ProtoMessage {
     public static final int SESSIONPORT_FIELD_NUMBER = 6;
     private int sessionPort_;
     /**
-     * <code>int32 sessionPort = 6;</code>
+     * <code>optional int32 sessionPort = 6;</code>
      */
     public int getSessionPort() {
       return sessionPort_;
@@ -17720,7 +17754,7 @@ public final class ProtoMessage {
     public static final int SERVERTYPE_FIELD_NUMBER = 7;
     private int serverType_;
     /**
-     * <code>int32 serverType = 7;</code>
+     * <code>optional int32 serverType = 7;</code>
      */
     public int getServerType() {
       return serverType_;
@@ -17830,7 +17864,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
@@ -18103,13 +18137,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -18118,7 +18152,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -18129,7 +18163,7 @@ public final class ProtoMessage {
 
       private java.lang.Object token_ = "";
       /**
-       * <code>string token = 2;</code>
+       * <code>optional string token = 2;</code>
        */
       public java.lang.String getToken() {
         java.lang.Object ref = token_;
@@ -18144,7 +18178,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string token = 2;</code>
+       * <code>optional string token = 2;</code>
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
@@ -18160,7 +18194,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string token = 2;</code>
+       * <code>optional string token = 2;</code>
        */
       public Builder setToken(
           java.lang.String value) {
@@ -18173,7 +18207,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string token = 2;</code>
+       * <code>optional string token = 2;</code>
        */
       public Builder clearToken() {
         
@@ -18182,7 +18216,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string token = 2;</code>
+       * <code>optional string token = 2;</code>
        */
       public Builder setTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -18198,7 +18232,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phone_ = "";
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public java.lang.String getPhone() {
         java.lang.Object ref = phone_;
@@ -18213,7 +18247,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneBytes() {
@@ -18229,7 +18263,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder setPhone(
           java.lang.String value) {
@@ -18242,7 +18276,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder clearPhone() {
         
@@ -18251,7 +18285,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder setPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -18267,13 +18301,13 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>int32 appType = 4;</code>
+       * <code>optional int32 appType = 4;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>int32 appType = 4;</code>
+       * <code>optional int32 appType = 4;</code>
        */
       public Builder setAppType(int value) {
         
@@ -18282,7 +18316,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 appType = 4;</code>
+       * <code>optional int32 appType = 4;</code>
        */
       public Builder clearAppType() {
         
@@ -18293,7 +18327,7 @@ public final class ProtoMessage {
 
       private java.lang.Object sessionIP_ = "";
       /**
-       * <code>string sessionIP = 5;</code>
+       * <code>optional string sessionIP = 5;</code>
        */
       public java.lang.String getSessionIP() {
         java.lang.Object ref = sessionIP_;
@@ -18308,7 +18342,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string sessionIP = 5;</code>
+       * <code>optional string sessionIP = 5;</code>
        */
       public com.google.protobuf.ByteString
           getSessionIPBytes() {
@@ -18324,7 +18358,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string sessionIP = 5;</code>
+       * <code>optional string sessionIP = 5;</code>
        */
       public Builder setSessionIP(
           java.lang.String value) {
@@ -18337,7 +18371,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string sessionIP = 5;</code>
+       * <code>optional string sessionIP = 5;</code>
        */
       public Builder clearSessionIP() {
         
@@ -18346,7 +18380,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string sessionIP = 5;</code>
+       * <code>optional string sessionIP = 5;</code>
        */
       public Builder setSessionIPBytes(
           com.google.protobuf.ByteString value) {
@@ -18362,13 +18396,13 @@ public final class ProtoMessage {
 
       private int sessionPort_ ;
       /**
-       * <code>int32 sessionPort = 6;</code>
+       * <code>optional int32 sessionPort = 6;</code>
        */
       public int getSessionPort() {
         return sessionPort_;
       }
       /**
-       * <code>int32 sessionPort = 6;</code>
+       * <code>optional int32 sessionPort = 6;</code>
        */
       public Builder setSessionPort(int value) {
         
@@ -18377,7 +18411,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 sessionPort = 6;</code>
+       * <code>optional int32 sessionPort = 6;</code>
        */
       public Builder clearSessionPort() {
         
@@ -18388,13 +18422,13 @@ public final class ProtoMessage {
 
       private int serverType_ ;
       /**
-       * <code>int32 serverType = 7;</code>
+       * <code>optional int32 serverType = 7;</code>
        */
       public int getServerType() {
         return serverType_;
       }
       /**
-       * <code>int32 serverType = 7;</code>
+       * <code>optional int32 serverType = 7;</code>
        */
       public Builder setServerType(int value) {
         
@@ -18403,7 +18437,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 serverType = 7;</code>
+       * <code>optional int32 serverType = 7;</code>
        */
       public Builder clearServerType() {
         
@@ -18465,26 +18499,26 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string password = 2;</code>
+     * <code>optional string password = 2;</code>
      */
     java.lang.String getPassword();
     /**
-     * <code>string password = 2;</code>
+     * <code>optional string password = 2;</code>
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
 
     /**
-     * <code>string smscode = 3;</code>
+     * <code>optional string smscode = 3;</code>
      */
     java.lang.String getSmscode();
     /**
-     * <code>string smscode = 3;</code>
+     * <code>optional string smscode = 3;</code>
      */
     com.google.protobuf.ByteString
         getSmscodeBytes();
@@ -18578,7 +18612,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -18587,7 +18621,7 @@ public final class ProtoMessage {
     public static final int PASSWORD_FIELD_NUMBER = 2;
     private volatile java.lang.Object password_;
     /**
-     * <code>string password = 2;</code>
+     * <code>optional string password = 2;</code>
      */
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
@@ -18602,7 +18636,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string password = 2;</code>
+     * <code>optional string password = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPasswordBytes() {
@@ -18621,7 +18655,7 @@ public final class ProtoMessage {
     public static final int SMSCODE_FIELD_NUMBER = 3;
     private volatile java.lang.Object smscode_;
     /**
-     * <code>string smscode = 3;</code>
+     * <code>optional string smscode = 3;</code>
      */
     public java.lang.String getSmscode() {
       java.lang.Object ref = smscode_;
@@ -18636,7 +18670,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string smscode = 3;</code>
+     * <code>optional string smscode = 3;</code>
      */
     public com.google.protobuf.ByteString
         getSmscodeBytes() {
@@ -18721,7 +18755,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
@@ -18961,13 +18995,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -18976,7 +19010,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -18987,7 +19021,7 @@ public final class ProtoMessage {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>string password = 2;</code>
+       * <code>optional string password = 2;</code>
        */
       public java.lang.String getPassword() {
         java.lang.Object ref = password_;
@@ -19002,7 +19036,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string password = 2;</code>
+       * <code>optional string password = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPasswordBytes() {
@@ -19018,7 +19052,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string password = 2;</code>
+       * <code>optional string password = 2;</code>
        */
       public Builder setPassword(
           java.lang.String value) {
@@ -19031,7 +19065,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string password = 2;</code>
+       * <code>optional string password = 2;</code>
        */
       public Builder clearPassword() {
         
@@ -19040,7 +19074,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string password = 2;</code>
+       * <code>optional string password = 2;</code>
        */
       public Builder setPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -19056,7 +19090,7 @@ public final class ProtoMessage {
 
       private java.lang.Object smscode_ = "";
       /**
-       * <code>string smscode = 3;</code>
+       * <code>optional string smscode = 3;</code>
        */
       public java.lang.String getSmscode() {
         java.lang.Object ref = smscode_;
@@ -19071,7 +19105,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string smscode = 3;</code>
+       * <code>optional string smscode = 3;</code>
        */
       public com.google.protobuf.ByteString
           getSmscodeBytes() {
@@ -19087,7 +19121,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string smscode = 3;</code>
+       * <code>optional string smscode = 3;</code>
        */
       public Builder setSmscode(
           java.lang.String value) {
@@ -19100,7 +19134,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string smscode = 3;</code>
+       * <code>optional string smscode = 3;</code>
        */
       public Builder clearSmscode() {
         
@@ -19109,7 +19143,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string smscode = 3;</code>
+       * <code>optional string smscode = 3;</code>
        */
       public Builder setSmscodeBytes(
           com.google.protobuf.ByteString value) {
@@ -19176,37 +19210,37 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     java.lang.String getUserName();
     /**
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
 
     /**
-     * <code>bytes userPic = 4;</code>
+     * <code>optional bytes userPic = 4;</code>
      */
     com.google.protobuf.ByteString getUserPic();
 
     /**
-     * <code>bool onlyPhoneNum = 5;</code>
+     * <code>optional bool onlyPhoneNum = 5;</code>
      */
     boolean getOnlyPhoneNum();
   }
@@ -19312,7 +19346,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -19321,7 +19355,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -19336,7 +19370,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -19355,7 +19389,7 @@ public final class ProtoMessage {
     public static final int USERNAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object userName_;
     /**
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
@@ -19370,7 +19404,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
@@ -19389,7 +19423,7 @@ public final class ProtoMessage {
     public static final int USERPIC_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString userPic_;
     /**
-     * <code>bytes userPic = 4;</code>
+     * <code>optional bytes userPic = 4;</code>
      */
     public com.google.protobuf.ByteString getUserPic() {
       return userPic_;
@@ -19398,7 +19432,7 @@ public final class ProtoMessage {
     public static final int ONLYPHONENUM_FIELD_NUMBER = 5;
     private boolean onlyPhoneNum_;
     /**
-     * <code>bool onlyPhoneNum = 5;</code>
+     * <code>optional bool onlyPhoneNum = 5;</code>
      */
     public boolean getOnlyPhoneNum() {
       return onlyPhoneNum_;
@@ -19491,7 +19525,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -19749,13 +19783,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -19764,7 +19798,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -19775,7 +19809,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -19790,7 +19824,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -19806,7 +19840,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -19819,7 +19853,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -19828,7 +19862,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -19844,7 +19878,7 @@ public final class ProtoMessage {
 
       private java.lang.Object userName_ = "";
       /**
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -19859,7 +19893,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
@@ -19875,7 +19909,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
@@ -19888,7 +19922,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public Builder clearUserName() {
         
@@ -19897,7 +19931,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -19913,13 +19947,13 @@ public final class ProtoMessage {
 
       private com.google.protobuf.ByteString userPic_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>bytes userPic = 4;</code>
+       * <code>optional bytes userPic = 4;</code>
        */
       public com.google.protobuf.ByteString getUserPic() {
         return userPic_;
       }
       /**
-       * <code>bytes userPic = 4;</code>
+       * <code>optional bytes userPic = 4;</code>
        */
       public Builder setUserPic(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -19931,7 +19965,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>bytes userPic = 4;</code>
+       * <code>optional bytes userPic = 4;</code>
        */
       public Builder clearUserPic() {
         
@@ -19942,13 +19976,13 @@ public final class ProtoMessage {
 
       private boolean onlyPhoneNum_ ;
       /**
-       * <code>bool onlyPhoneNum = 5;</code>
+       * <code>optional bool onlyPhoneNum = 5;</code>
        */
       public boolean getOnlyPhoneNum() {
         return onlyPhoneNum_;
       }
       /**
-       * <code>bool onlyPhoneNum = 5;</code>
+       * <code>optional bool onlyPhoneNum = 5;</code>
        */
       public Builder setOnlyPhoneNum(boolean value) {
         
@@ -19957,7 +19991,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>bool onlyPhoneNum = 5;</code>
+       * <code>optional bool onlyPhoneNum = 5;</code>
        */
       public Builder clearOnlyPhoneNum() {
         
@@ -20019,16 +20053,16 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string friendPhoneNum = 2;</code>
+     * <code>optional string friendPhoneNum = 2;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
-     * <code>string friendPhoneNum = 2;</code>
+     * <code>optional string friendPhoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
@@ -20038,7 +20072,7 @@ public final class ProtoMessage {
      * 附加消息
      * </pre>
      *
-     * <code>string applyInfo = 3;</code>
+     * <code>optional string applyInfo = 3;</code>
      */
     java.lang.String getApplyInfo();
     /**
@@ -20046,7 +20080,7 @@ public final class ProtoMessage {
      * 附加消息
      * </pre>
      *
-     * <code>string applyInfo = 3;</code>
+     * <code>optional string applyInfo = 3;</code>
      */
     com.google.protobuf.ByteString
         getApplyInfoBytes();
@@ -20056,7 +20090,7 @@ public final class ProtoMessage {
      * 要加的好友的名称，申请为空
      * </pre>
      *
-     * <code>string friendName = 4;</code>
+     * <code>optional string friendName = 4;</code>
      */
     java.lang.String getFriendName();
     /**
@@ -20064,7 +20098,7 @@ public final class ProtoMessage {
      * 要加的好友的名称，申请为空
      * </pre>
      *
-     * <code>string friendName = 4;</code>
+     * <code>optional string friendName = 4;</code>
      */
     com.google.protobuf.ByteString
         getFriendNameBytes();
@@ -20074,7 +20108,7 @@ public final class ProtoMessage {
      * 备注名
      * </pre>
      *
-     * <code>string applyRemark = 5;</code>
+     * <code>optional string applyRemark = 5;</code>
      */
     java.lang.String getApplyRemark();
     /**
@@ -20082,7 +20116,7 @@ public final class ProtoMessage {
      * 备注名
      * </pre>
      *
-     * <code>string applyRemark = 5;</code>
+     * <code>optional string applyRemark = 5;</code>
      */
     com.google.protobuf.ByteString
         getApplyRemarkBytes();
@@ -20190,7 +20224,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -20199,7 +20233,7 @@ public final class ProtoMessage {
     public static final int FRIENDPHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object friendPhoneNum_;
     /**
-     * <code>string friendPhoneNum = 2;</code>
+     * <code>optional string friendPhoneNum = 2;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
@@ -20214,7 +20248,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string friendPhoneNum = 2;</code>
+     * <code>optional string friendPhoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
@@ -20237,7 +20271,7 @@ public final class ProtoMessage {
      * 附加消息
      * </pre>
      *
-     * <code>string applyInfo = 3;</code>
+     * <code>optional string applyInfo = 3;</code>
      */
     public java.lang.String getApplyInfo() {
       java.lang.Object ref = applyInfo_;
@@ -20256,7 +20290,7 @@ public final class ProtoMessage {
      * 附加消息
      * </pre>
      *
-     * <code>string applyInfo = 3;</code>
+     * <code>optional string applyInfo = 3;</code>
      */
     public com.google.protobuf.ByteString
         getApplyInfoBytes() {
@@ -20279,7 +20313,7 @@ public final class ProtoMessage {
      * 要加的好友的名称，申请为空
      * </pre>
      *
-     * <code>string friendName = 4;</code>
+     * <code>optional string friendName = 4;</code>
      */
     public java.lang.String getFriendName() {
       java.lang.Object ref = friendName_;
@@ -20298,7 +20332,7 @@ public final class ProtoMessage {
      * 要加的好友的名称，申请为空
      * </pre>
      *
-     * <code>string friendName = 4;</code>
+     * <code>optional string friendName = 4;</code>
      */
     public com.google.protobuf.ByteString
         getFriendNameBytes() {
@@ -20321,7 +20355,7 @@ public final class ProtoMessage {
      * 备注名
      * </pre>
      *
-     * <code>string applyRemark = 5;</code>
+     * <code>optional string applyRemark = 5;</code>
      */
     public java.lang.String getApplyRemark() {
       java.lang.Object ref = applyRemark_;
@@ -20340,7 +20374,7 @@ public final class ProtoMessage {
      * 备注名
      * </pre>
      *
-     * <code>string applyRemark = 5;</code>
+     * <code>optional string applyRemark = 5;</code>
      */
     public com.google.protobuf.ByteString
         getApplyRemarkBytes() {
@@ -20441,7 +20475,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FRIENDPHONENUM_FIELD_NUMBER;
@@ -20699,13 +20733,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -20714,7 +20748,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -20725,7 +20759,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendPhoneNum_ = "";
       /**
-       * <code>string friendPhoneNum = 2;</code>
+       * <code>optional string friendPhoneNum = 2;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -20740,7 +20774,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendPhoneNum = 2;</code>
+       * <code>optional string friendPhoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
@@ -20756,7 +20790,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendPhoneNum = 2;</code>
+       * <code>optional string friendPhoneNum = 2;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
@@ -20769,7 +20803,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendPhoneNum = 2;</code>
+       * <code>optional string friendPhoneNum = 2;</code>
        */
       public Builder clearFriendPhoneNum() {
         
@@ -20778,7 +20812,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendPhoneNum = 2;</code>
+       * <code>optional string friendPhoneNum = 2;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -20798,7 +20832,7 @@ public final class ProtoMessage {
        * 附加消息
        * </pre>
        *
-       * <code>string applyInfo = 3;</code>
+       * <code>optional string applyInfo = 3;</code>
        */
       public java.lang.String getApplyInfo() {
         java.lang.Object ref = applyInfo_;
@@ -20817,7 +20851,7 @@ public final class ProtoMessage {
        * 附加消息
        * </pre>
        *
-       * <code>string applyInfo = 3;</code>
+       * <code>optional string applyInfo = 3;</code>
        */
       public com.google.protobuf.ByteString
           getApplyInfoBytes() {
@@ -20837,7 +20871,7 @@ public final class ProtoMessage {
        * 附加消息
        * </pre>
        *
-       * <code>string applyInfo = 3;</code>
+       * <code>optional string applyInfo = 3;</code>
        */
       public Builder setApplyInfo(
           java.lang.String value) {
@@ -20854,7 +20888,7 @@ public final class ProtoMessage {
        * 附加消息
        * </pre>
        *
-       * <code>string applyInfo = 3;</code>
+       * <code>optional string applyInfo = 3;</code>
        */
       public Builder clearApplyInfo() {
         
@@ -20867,7 +20901,7 @@ public final class ProtoMessage {
        * 附加消息
        * </pre>
        *
-       * <code>string applyInfo = 3;</code>
+       * <code>optional string applyInfo = 3;</code>
        */
       public Builder setApplyInfoBytes(
           com.google.protobuf.ByteString value) {
@@ -20887,7 +20921,7 @@ public final class ProtoMessage {
        * 要加的好友的名称，申请为空
        * </pre>
        *
-       * <code>string friendName = 4;</code>
+       * <code>optional string friendName = 4;</code>
        */
       public java.lang.String getFriendName() {
         java.lang.Object ref = friendName_;
@@ -20906,7 +20940,7 @@ public final class ProtoMessage {
        * 要加的好友的名称，申请为空
        * </pre>
        *
-       * <code>string friendName = 4;</code>
+       * <code>optional string friendName = 4;</code>
        */
       public com.google.protobuf.ByteString
           getFriendNameBytes() {
@@ -20926,7 +20960,7 @@ public final class ProtoMessage {
        * 要加的好友的名称，申请为空
        * </pre>
        *
-       * <code>string friendName = 4;</code>
+       * <code>optional string friendName = 4;</code>
        */
       public Builder setFriendName(
           java.lang.String value) {
@@ -20943,7 +20977,7 @@ public final class ProtoMessage {
        * 要加的好友的名称，申请为空
        * </pre>
        *
-       * <code>string friendName = 4;</code>
+       * <code>optional string friendName = 4;</code>
        */
       public Builder clearFriendName() {
         
@@ -20956,7 +20990,7 @@ public final class ProtoMessage {
        * 要加的好友的名称，申请为空
        * </pre>
        *
-       * <code>string friendName = 4;</code>
+       * <code>optional string friendName = 4;</code>
        */
       public Builder setFriendNameBytes(
           com.google.protobuf.ByteString value) {
@@ -20976,7 +21010,7 @@ public final class ProtoMessage {
        * 备注名
        * </pre>
        *
-       * <code>string applyRemark = 5;</code>
+       * <code>optional string applyRemark = 5;</code>
        */
       public java.lang.String getApplyRemark() {
         java.lang.Object ref = applyRemark_;
@@ -20995,7 +21029,7 @@ public final class ProtoMessage {
        * 备注名
        * </pre>
        *
-       * <code>string applyRemark = 5;</code>
+       * <code>optional string applyRemark = 5;</code>
        */
       public com.google.protobuf.ByteString
           getApplyRemarkBytes() {
@@ -21015,7 +21049,7 @@ public final class ProtoMessage {
        * 备注名
        * </pre>
        *
-       * <code>string applyRemark = 5;</code>
+       * <code>optional string applyRemark = 5;</code>
        */
       public Builder setApplyRemark(
           java.lang.String value) {
@@ -21032,7 +21066,7 @@ public final class ProtoMessage {
        * 备注名
        * </pre>
        *
-       * <code>string applyRemark = 5;</code>
+       * <code>optional string applyRemark = 5;</code>
        */
       public Builder clearApplyRemark() {
         
@@ -21045,7 +21079,7 @@ public final class ProtoMessage {
        * 备注名
        * </pre>
        *
-       * <code>string applyRemark = 5;</code>
+       * <code>optional string applyRemark = 5;</code>
        */
       public Builder setApplyRemarkBytes(
           com.google.protobuf.ByteString value) {
@@ -21112,26 +21146,26 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string friendPhoneNum = 2;</code>
+     * <code>optional string friendPhoneNum = 2;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
-     * <code>string friendPhoneNum = 2;</code>
+     * <code>optional string friendPhoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
 
     /**
-     * <code>string friendNewName = 3;</code>
+     * <code>optional string friendNewName = 3;</code>
      */
     java.lang.String getFriendNewName();
     /**
-     * <code>string friendNewName = 3;</code>
+     * <code>optional string friendNewName = 3;</code>
      */
     com.google.protobuf.ByteString
         getFriendNewNameBytes();
@@ -21141,7 +21175,7 @@ public final class ProtoMessage {
      * 星标，此时 friendNewName 要为空
      * </pre>
      *
-     * <code>int32 starred = 4;</code>
+     * <code>optional int32 starred = 4;</code>
      */
     int getStarred();
   }
@@ -21240,7 +21274,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -21249,7 +21283,7 @@ public final class ProtoMessage {
     public static final int FRIENDPHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object friendPhoneNum_;
     /**
-     * <code>string friendPhoneNum = 2;</code>
+     * <code>optional string friendPhoneNum = 2;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
@@ -21264,7 +21298,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string friendPhoneNum = 2;</code>
+     * <code>optional string friendPhoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
@@ -21283,7 +21317,7 @@ public final class ProtoMessage {
     public static final int FRIENDNEWNAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object friendNewName_;
     /**
-     * <code>string friendNewName = 3;</code>
+     * <code>optional string friendNewName = 3;</code>
      */
     public java.lang.String getFriendNewName() {
       java.lang.Object ref = friendNewName_;
@@ -21298,7 +21332,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string friendNewName = 3;</code>
+     * <code>optional string friendNewName = 3;</code>
      */
     public com.google.protobuf.ByteString
         getFriendNewNameBytes() {
@@ -21321,7 +21355,7 @@ public final class ProtoMessage {
      * 星标，此时 friendNewName 要为空
      * </pre>
      *
-     * <code>int32 starred = 4;</code>
+     * <code>optional int32 starred = 4;</code>
      */
     public int getStarred() {
       return starred_;
@@ -21405,7 +21439,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FRIENDPHONENUM_FIELD_NUMBER;
@@ -21653,13 +21687,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -21668,7 +21702,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -21679,7 +21713,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendPhoneNum_ = "";
       /**
-       * <code>string friendPhoneNum = 2;</code>
+       * <code>optional string friendPhoneNum = 2;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -21694,7 +21728,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendPhoneNum = 2;</code>
+       * <code>optional string friendPhoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
@@ -21710,7 +21744,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendPhoneNum = 2;</code>
+       * <code>optional string friendPhoneNum = 2;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
@@ -21723,7 +21757,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendPhoneNum = 2;</code>
+       * <code>optional string friendPhoneNum = 2;</code>
        */
       public Builder clearFriendPhoneNum() {
         
@@ -21732,7 +21766,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendPhoneNum = 2;</code>
+       * <code>optional string friendPhoneNum = 2;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -21748,7 +21782,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendNewName_ = "";
       /**
-       * <code>string friendNewName = 3;</code>
+       * <code>optional string friendNewName = 3;</code>
        */
       public java.lang.String getFriendNewName() {
         java.lang.Object ref = friendNewName_;
@@ -21763,7 +21797,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendNewName = 3;</code>
+       * <code>optional string friendNewName = 3;</code>
        */
       public com.google.protobuf.ByteString
           getFriendNewNameBytes() {
@@ -21779,7 +21813,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendNewName = 3;</code>
+       * <code>optional string friendNewName = 3;</code>
        */
       public Builder setFriendNewName(
           java.lang.String value) {
@@ -21792,7 +21826,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendNewName = 3;</code>
+       * <code>optional string friendNewName = 3;</code>
        */
       public Builder clearFriendNewName() {
         
@@ -21801,7 +21835,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendNewName = 3;</code>
+       * <code>optional string friendNewName = 3;</code>
        */
       public Builder setFriendNewNameBytes(
           com.google.protobuf.ByteString value) {
@@ -21821,7 +21855,7 @@ public final class ProtoMessage {
        * 星标，此时 friendNewName 要为空
        * </pre>
        *
-       * <code>int32 starred = 4;</code>
+       * <code>optional int32 starred = 4;</code>
        */
       public int getStarred() {
         return starred_;
@@ -21831,7 +21865,7 @@ public final class ProtoMessage {
        * 星标，此时 friendNewName 要为空
        * </pre>
        *
-       * <code>int32 starred = 4;</code>
+       * <code>optional int32 starred = 4;</code>
        */
       public Builder setStarred(int value) {
         
@@ -21844,7 +21878,7 @@ public final class ProtoMessage {
        * 星标，此时 friendNewName 要为空
        * </pre>
        *
-       * <code>int32 starred = 4;</code>
+       * <code>optional int32 starred = 4;</code>
        */
       public Builder clearStarred() {
         
@@ -21906,11 +21940,11 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string friendPhoneNum = 1;</code>
+     * <code>optional string friendPhoneNum = 1;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
-     * <code>string friendPhoneNum = 1;</code>
+     * <code>optional string friendPhoneNum = 1;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
@@ -21920,7 +21954,7 @@ public final class ProtoMessage {
      * &#64;see AcceptType
      * </pre>
      *
-     * <code>int32 acceptType = 2;</code>
+     * <code>optional int32 acceptType = 2;</code>
      */
     int getAcceptType();
 
@@ -21929,7 +21963,7 @@ public final class ProtoMessage {
      * 设置备注名
      * </pre>
      *
-     * <code>string friendRemark = 3;</code>
+     * <code>optional string friendRemark = 3;</code>
      */
     java.lang.String getFriendRemark();
     /**
@@ -21937,7 +21971,7 @@ public final class ProtoMessage {
      * 设置备注名
      * </pre>
      *
-     * <code>string friendRemark = 3;</code>
+     * <code>optional string friendRemark = 3;</code>
      */
     com.google.protobuf.ByteString
         getFriendRemarkBytes();
@@ -22031,7 +22065,7 @@ public final class ProtoMessage {
     public static final int FRIENDPHONENUM_FIELD_NUMBER = 1;
     private volatile java.lang.Object friendPhoneNum_;
     /**
-     * <code>string friendPhoneNum = 1;</code>
+     * <code>optional string friendPhoneNum = 1;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
@@ -22046,7 +22080,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string friendPhoneNum = 1;</code>
+     * <code>optional string friendPhoneNum = 1;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
@@ -22069,7 +22103,7 @@ public final class ProtoMessage {
      * &#64;see AcceptType
      * </pre>
      *
-     * <code>int32 acceptType = 2;</code>
+     * <code>optional int32 acceptType = 2;</code>
      */
     public int getAcceptType() {
       return acceptType_;
@@ -22082,7 +22116,7 @@ public final class ProtoMessage {
      * 设置备注名
      * </pre>
      *
-     * <code>string friendRemark = 3;</code>
+     * <code>optional string friendRemark = 3;</code>
      */
     public java.lang.String getFriendRemark() {
       java.lang.Object ref = friendRemark_;
@@ -22101,7 +22135,7 @@ public final class ProtoMessage {
      * 设置备注名
      * </pre>
      *
-     * <code>string friendRemark = 3;</code>
+     * <code>optional string friendRemark = 3;</code>
      */
     public com.google.protobuf.ByteString
         getFriendRemarkBytes() {
@@ -22186,7 +22220,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + FRIENDPHONENUM_FIELD_NUMBER;
       hash = (53 * hash) + getFriendPhoneNum().hashCode();
       hash = (37 * hash) + ACCEPTTYPE_FIELD_NUMBER;
@@ -22426,7 +22460,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendPhoneNum_ = "";
       /**
-       * <code>string friendPhoneNum = 1;</code>
+       * <code>optional string friendPhoneNum = 1;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -22441,7 +22475,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendPhoneNum = 1;</code>
+       * <code>optional string friendPhoneNum = 1;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
@@ -22457,7 +22491,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendPhoneNum = 1;</code>
+       * <code>optional string friendPhoneNum = 1;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
@@ -22470,7 +22504,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendPhoneNum = 1;</code>
+       * <code>optional string friendPhoneNum = 1;</code>
        */
       public Builder clearFriendPhoneNum() {
         
@@ -22479,7 +22513,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendPhoneNum = 1;</code>
+       * <code>optional string friendPhoneNum = 1;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -22499,7 +22533,7 @@ public final class ProtoMessage {
        * &#64;see AcceptType
        * </pre>
        *
-       * <code>int32 acceptType = 2;</code>
+       * <code>optional int32 acceptType = 2;</code>
        */
       public int getAcceptType() {
         return acceptType_;
@@ -22509,7 +22543,7 @@ public final class ProtoMessage {
        * &#64;see AcceptType
        * </pre>
        *
-       * <code>int32 acceptType = 2;</code>
+       * <code>optional int32 acceptType = 2;</code>
        */
       public Builder setAcceptType(int value) {
         
@@ -22522,7 +22556,7 @@ public final class ProtoMessage {
        * &#64;see AcceptType
        * </pre>
        *
-       * <code>int32 acceptType = 2;</code>
+       * <code>optional int32 acceptType = 2;</code>
        */
       public Builder clearAcceptType() {
         
@@ -22537,7 +22571,7 @@ public final class ProtoMessage {
        * 设置备注名
        * </pre>
        *
-       * <code>string friendRemark = 3;</code>
+       * <code>optional string friendRemark = 3;</code>
        */
       public java.lang.String getFriendRemark() {
         java.lang.Object ref = friendRemark_;
@@ -22556,7 +22590,7 @@ public final class ProtoMessage {
        * 设置备注名
        * </pre>
        *
-       * <code>string friendRemark = 3;</code>
+       * <code>optional string friendRemark = 3;</code>
        */
       public com.google.protobuf.ByteString
           getFriendRemarkBytes() {
@@ -22576,7 +22610,7 @@ public final class ProtoMessage {
        * 设置备注名
        * </pre>
        *
-       * <code>string friendRemark = 3;</code>
+       * <code>optional string friendRemark = 3;</code>
        */
       public Builder setFriendRemark(
           java.lang.String value) {
@@ -22593,7 +22627,7 @@ public final class ProtoMessage {
        * 设置备注名
        * </pre>
        *
-       * <code>string friendRemark = 3;</code>
+       * <code>optional string friendRemark = 3;</code>
        */
       public Builder clearFriendRemark() {
         
@@ -22606,7 +22640,7 @@ public final class ProtoMessage {
        * 设置备注名
        * </pre>
        *
-       * <code>string friendRemark = 3;</code>
+       * <code>optional string friendRemark = 3;</code>
        */
       public Builder setFriendRemarkBytes(
           com.google.protobuf.ByteString value) {
@@ -22673,11 +22707,11 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string friendPhoneNum = 1;</code>
+     * <code>optional string friendPhoneNum = 1;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
-     * <code>string friendPhoneNum = 1;</code>
+     * <code>optional string friendPhoneNum = 1;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
@@ -22758,7 +22792,7 @@ public final class ProtoMessage {
     public static final int FRIENDPHONENUM_FIELD_NUMBER = 1;
     private volatile java.lang.Object friendPhoneNum_;
     /**
-     * <code>string friendPhoneNum = 1;</code>
+     * <code>optional string friendPhoneNum = 1;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
@@ -22773,7 +22807,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string friendPhoneNum = 1;</code>
+     * <code>optional string friendPhoneNum = 1;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
@@ -22841,7 +22875,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + FRIENDPHONENUM_FIELD_NUMBER;
       hash = (53 * hash) + getFriendPhoneNum().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -23064,7 +23098,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendPhoneNum_ = "";
       /**
-       * <code>string friendPhoneNum = 1;</code>
+       * <code>optional string friendPhoneNum = 1;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -23079,7 +23113,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendPhoneNum = 1;</code>
+       * <code>optional string friendPhoneNum = 1;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
@@ -23095,7 +23129,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendPhoneNum = 1;</code>
+       * <code>optional string friendPhoneNum = 1;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
@@ -23108,7 +23142,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendPhoneNum = 1;</code>
+       * <code>optional string friendPhoneNum = 1;</code>
        */
       public Builder clearFriendPhoneNum() {
         
@@ -23117,7 +23151,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendPhoneNum = 1;</code>
+       * <code>optional string friendPhoneNum = 1;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -23184,57 +23218,57 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int32 notifyType = 2;</code>
+     * <code>optional int32 notifyType = 2;</code>
      */
     int getNotifyType();
 
     /**
-     * <code>string friendPhoneNum = 3;</code>
+     * <code>optional string friendPhoneNum = 3;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
-     * <code>string friendPhoneNum = 3;</code>
+     * <code>optional string friendPhoneNum = 3;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
 
     /**
-     * <code>string userName = 4;</code>
+     * <code>optional string userName = 4;</code>
      */
     java.lang.String getUserName();
     /**
-     * <code>string userName = 4;</code>
+     * <code>optional string userName = 4;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
 
     /**
-     * <code>string teamName = 5;</code>
+     * <code>optional string teamName = 5;</code>
      */
     java.lang.String getTeamName();
     /**
-     * <code>string teamName = 5;</code>
+     * <code>optional string teamName = 5;</code>
      */
     com.google.protobuf.ByteString
         getTeamNameBytes();
 
     /**
-     * <code>int64 teamID = 6;</code>
+     * <code>optional int64 teamID = 6;</code>
      */
     long getTeamID();
 
     /**
-     * <code>int32 teamAdmin = 7;</code>
+     * <code>optional int32 teamAdmin = 7;</code>
      */
     int getTeamAdmin();
 
     /**
-     * <code>int64 roomID = 8;</code>
+     * <code>optional int64 roomID = 8;</code>
      */
     long getRoomID();
 
@@ -23243,7 +23277,7 @@ public final class ProtoMessage {
      * ChatStatus
      * </pre>
      *
-     * <code>int32 chatStatus = 9;</code>
+     * <code>optional int32 chatStatus = 9;</code>
      */
     int getChatStatus();
 
@@ -23252,7 +23286,7 @@ public final class ProtoMessage {
      * 进入或退出
      * </pre>
      *
-     * <code>int32 enterType = 10;</code>
+     * <code>optional int32 enterType = 10;</code>
      */
     int getEnterType();
 
@@ -23261,12 +23295,12 @@ public final class ProtoMessage {
      * 申请或邀请
      * </pre>
      *
-     * <code>int32 applyType = 11;</code>
+     * <code>optional int32 applyType = 11;</code>
      */
     int getApplyType();
 
     /**
-     * <code>int32 appTypeFrom = 12;</code>
+     * <code>optional int32 appTypeFrom = 12;</code>
      */
     int getAppTypeFrom();
 
@@ -23275,7 +23309,7 @@ public final class ProtoMessage {
      * 通知到哪个应用中(-1全部, 不包含appTypeFrom)
      * </pre>
      *
-     * <code>int32 appTypeTo = 13;</code>
+     * <code>optional int32 appTypeTo = 13;</code>
      */
     int getAppTypeTo();
 
@@ -23284,7 +23318,7 @@ public final class ProtoMessage {
      * 通知URL
      * </pre>
      *
-     * <code>string videoUrl = 14;</code>
+     * <code>optional string videoUrl = 14;</code>
      */
     java.lang.String getVideoUrl();
     /**
@@ -23292,13 +23326,13 @@ public final class ProtoMessage {
      * 通知URL
      * </pre>
      *
-     * <code>string videoUrl = 14;</code>
+     * <code>optional string videoUrl = 14;</code>
      */
     com.google.protobuf.ByteString
         getVideoUrlBytes();
 
     /**
-     * <code>int32 serverType = 15;</code>
+     * <code>optional int32 serverType = 15;</code>
      */
     int getServerType();
 
@@ -23307,7 +23341,7 @@ public final class ProtoMessage {
      * 是否上线
      * </pre>
      *
-     * <code>bool online = 16;</code>
+     * <code>optional bool online = 16;</code>
      */
     boolean getOnline();
   }
@@ -23480,7 +23514,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -23489,7 +23523,7 @@ public final class ProtoMessage {
     public static final int NOTIFYTYPE_FIELD_NUMBER = 2;
     private int notifyType_;
     /**
-     * <code>int32 notifyType = 2;</code>
+     * <code>optional int32 notifyType = 2;</code>
      */
     public int getNotifyType() {
       return notifyType_;
@@ -23498,7 +23532,7 @@ public final class ProtoMessage {
     public static final int FRIENDPHONENUM_FIELD_NUMBER = 3;
     private volatile java.lang.Object friendPhoneNum_;
     /**
-     * <code>string friendPhoneNum = 3;</code>
+     * <code>optional string friendPhoneNum = 3;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
@@ -23513,7 +23547,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string friendPhoneNum = 3;</code>
+     * <code>optional string friendPhoneNum = 3;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
@@ -23532,7 +23566,7 @@ public final class ProtoMessage {
     public static final int USERNAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object userName_;
     /**
-     * <code>string userName = 4;</code>
+     * <code>optional string userName = 4;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
@@ -23547,7 +23581,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string userName = 4;</code>
+     * <code>optional string userName = 4;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
@@ -23566,7 +23600,7 @@ public final class ProtoMessage {
     public static final int TEAMNAME_FIELD_NUMBER = 5;
     private volatile java.lang.Object teamName_;
     /**
-     * <code>string teamName = 5;</code>
+     * <code>optional string teamName = 5;</code>
      */
     public java.lang.String getTeamName() {
       java.lang.Object ref = teamName_;
@@ -23581,7 +23615,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string teamName = 5;</code>
+     * <code>optional string teamName = 5;</code>
      */
     public com.google.protobuf.ByteString
         getTeamNameBytes() {
@@ -23600,7 +23634,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 6;
     private long teamID_;
     /**
-     * <code>int64 teamID = 6;</code>
+     * <code>optional int64 teamID = 6;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -23609,7 +23643,7 @@ public final class ProtoMessage {
     public static final int TEAMADMIN_FIELD_NUMBER = 7;
     private int teamAdmin_;
     /**
-     * <code>int32 teamAdmin = 7;</code>
+     * <code>optional int32 teamAdmin = 7;</code>
      */
     public int getTeamAdmin() {
       return teamAdmin_;
@@ -23618,7 +23652,7 @@ public final class ProtoMessage {
     public static final int ROOMID_FIELD_NUMBER = 8;
     private long roomID_;
     /**
-     * <code>int64 roomID = 8;</code>
+     * <code>optional int64 roomID = 8;</code>
      */
     public long getRoomID() {
       return roomID_;
@@ -23631,7 +23665,7 @@ public final class ProtoMessage {
      * ChatStatus
      * </pre>
      *
-     * <code>int32 chatStatus = 9;</code>
+     * <code>optional int32 chatStatus = 9;</code>
      */
     public int getChatStatus() {
       return chatStatus_;
@@ -23644,7 +23678,7 @@ public final class ProtoMessage {
      * 进入或退出
      * </pre>
      *
-     * <code>int32 enterType = 10;</code>
+     * <code>optional int32 enterType = 10;</code>
      */
     public int getEnterType() {
       return enterType_;
@@ -23657,7 +23691,7 @@ public final class ProtoMessage {
      * 申请或邀请
      * </pre>
      *
-     * <code>int32 applyType = 11;</code>
+     * <code>optional int32 applyType = 11;</code>
      */
     public int getApplyType() {
       return applyType_;
@@ -23666,7 +23700,7 @@ public final class ProtoMessage {
     public static final int APPTYPEFROM_FIELD_NUMBER = 12;
     private int appTypeFrom_;
     /**
-     * <code>int32 appTypeFrom = 12;</code>
+     * <code>optional int32 appTypeFrom = 12;</code>
      */
     public int getAppTypeFrom() {
       return appTypeFrom_;
@@ -23679,7 +23713,7 @@ public final class ProtoMessage {
      * 通知到哪个应用中(-1全部, 不包含appTypeFrom)
      * </pre>
      *
-     * <code>int32 appTypeTo = 13;</code>
+     * <code>optional int32 appTypeTo = 13;</code>
      */
     public int getAppTypeTo() {
       return appTypeTo_;
@@ -23692,7 +23726,7 @@ public final class ProtoMessage {
      * 通知URL
      * </pre>
      *
-     * <code>string videoUrl = 14;</code>
+     * <code>optional string videoUrl = 14;</code>
      */
     public java.lang.String getVideoUrl() {
       java.lang.Object ref = videoUrl_;
@@ -23711,7 +23745,7 @@ public final class ProtoMessage {
      * 通知URL
      * </pre>
      *
-     * <code>string videoUrl = 14;</code>
+     * <code>optional string videoUrl = 14;</code>
      */
     public com.google.protobuf.ByteString
         getVideoUrlBytes() {
@@ -23730,7 +23764,7 @@ public final class ProtoMessage {
     public static final int SERVERTYPE_FIELD_NUMBER = 15;
     private int serverType_;
     /**
-     * <code>int32 serverType = 15;</code>
+     * <code>optional int32 serverType = 15;</code>
      */
     public int getServerType() {
       return serverType_;
@@ -23743,7 +23777,7 @@ public final class ProtoMessage {
      * 是否上线
      * </pre>
      *
-     * <code>bool online = 16;</code>
+     * <code>optional bool online = 16;</code>
      */
     public boolean getOnline() {
       return online_;
@@ -23933,7 +23967,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + NOTIFYTYPE_FIELD_NUMBER;
@@ -24282,13 +24316,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -24297,7 +24331,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -24308,13 +24342,13 @@ public final class ProtoMessage {
 
       private int notifyType_ ;
       /**
-       * <code>int32 notifyType = 2;</code>
+       * <code>optional int32 notifyType = 2;</code>
        */
       public int getNotifyType() {
         return notifyType_;
       }
       /**
-       * <code>int32 notifyType = 2;</code>
+       * <code>optional int32 notifyType = 2;</code>
        */
       public Builder setNotifyType(int value) {
         
@@ -24323,7 +24357,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 notifyType = 2;</code>
+       * <code>optional int32 notifyType = 2;</code>
        */
       public Builder clearNotifyType() {
         
@@ -24334,7 +24368,7 @@ public final class ProtoMessage {
 
       private java.lang.Object friendPhoneNum_ = "";
       /**
-       * <code>string friendPhoneNum = 3;</code>
+       * <code>optional string friendPhoneNum = 3;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -24349,7 +24383,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendPhoneNum = 3;</code>
+       * <code>optional string friendPhoneNum = 3;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
@@ -24365,7 +24399,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string friendPhoneNum = 3;</code>
+       * <code>optional string friendPhoneNum = 3;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
@@ -24378,7 +24412,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendPhoneNum = 3;</code>
+       * <code>optional string friendPhoneNum = 3;</code>
        */
       public Builder clearFriendPhoneNum() {
         
@@ -24387,7 +24421,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string friendPhoneNum = 3;</code>
+       * <code>optional string friendPhoneNum = 3;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -24403,7 +24437,7 @@ public final class ProtoMessage {
 
       private java.lang.Object userName_ = "";
       /**
-       * <code>string userName = 4;</code>
+       * <code>optional string userName = 4;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -24418,7 +24452,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string userName = 4;</code>
+       * <code>optional string userName = 4;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
@@ -24434,7 +24468,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string userName = 4;</code>
+       * <code>optional string userName = 4;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
@@ -24447,7 +24481,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string userName = 4;</code>
+       * <code>optional string userName = 4;</code>
        */
       public Builder clearUserName() {
         
@@ -24456,7 +24490,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string userName = 4;</code>
+       * <code>optional string userName = 4;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -24472,7 +24506,7 @@ public final class ProtoMessage {
 
       private java.lang.Object teamName_ = "";
       /**
-       * <code>string teamName = 5;</code>
+       * <code>optional string teamName = 5;</code>
        */
       public java.lang.String getTeamName() {
         java.lang.Object ref = teamName_;
@@ -24487,7 +24521,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string teamName = 5;</code>
+       * <code>optional string teamName = 5;</code>
        */
       public com.google.protobuf.ByteString
           getTeamNameBytes() {
@@ -24503,7 +24537,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string teamName = 5;</code>
+       * <code>optional string teamName = 5;</code>
        */
       public Builder setTeamName(
           java.lang.String value) {
@@ -24516,7 +24550,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string teamName = 5;</code>
+       * <code>optional string teamName = 5;</code>
        */
       public Builder clearTeamName() {
         
@@ -24525,7 +24559,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string teamName = 5;</code>
+       * <code>optional string teamName = 5;</code>
        */
       public Builder setTeamNameBytes(
           com.google.protobuf.ByteString value) {
@@ -24541,13 +24575,13 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>int64 teamID = 6;</code>
+       * <code>optional int64 teamID = 6;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>int64 teamID = 6;</code>
+       * <code>optional int64 teamID = 6;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -24556,7 +24590,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 teamID = 6;</code>
+       * <code>optional int64 teamID = 6;</code>
        */
       public Builder clearTeamID() {
         
@@ -24567,13 +24601,13 @@ public final class ProtoMessage {
 
       private int teamAdmin_ ;
       /**
-       * <code>int32 teamAdmin = 7;</code>
+       * <code>optional int32 teamAdmin = 7;</code>
        */
       public int getTeamAdmin() {
         return teamAdmin_;
       }
       /**
-       * <code>int32 teamAdmin = 7;</code>
+       * <code>optional int32 teamAdmin = 7;</code>
        */
       public Builder setTeamAdmin(int value) {
         
@@ -24582,7 +24616,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 teamAdmin = 7;</code>
+       * <code>optional int32 teamAdmin = 7;</code>
        */
       public Builder clearTeamAdmin() {
         
@@ -24593,13 +24627,13 @@ public final class ProtoMessage {
 
       private long roomID_ ;
       /**
-       * <code>int64 roomID = 8;</code>
+       * <code>optional int64 roomID = 8;</code>
        */
       public long getRoomID() {
         return roomID_;
       }
       /**
-       * <code>int64 roomID = 8;</code>
+       * <code>optional int64 roomID = 8;</code>
        */
       public Builder setRoomID(long value) {
         
@@ -24608,7 +24642,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 roomID = 8;</code>
+       * <code>optional int64 roomID = 8;</code>
        */
       public Builder clearRoomID() {
         
@@ -24623,7 +24657,7 @@ public final class ProtoMessage {
        * ChatStatus
        * </pre>
        *
-       * <code>int32 chatStatus = 9;</code>
+       * <code>optional int32 chatStatus = 9;</code>
        */
       public int getChatStatus() {
         return chatStatus_;
@@ -24633,7 +24667,7 @@ public final class ProtoMessage {
        * ChatStatus
        * </pre>
        *
-       * <code>int32 chatStatus = 9;</code>
+       * <code>optional int32 chatStatus = 9;</code>
        */
       public Builder setChatStatus(int value) {
         
@@ -24646,7 +24680,7 @@ public final class ProtoMessage {
        * ChatStatus
        * </pre>
        *
-       * <code>int32 chatStatus = 9;</code>
+       * <code>optional int32 chatStatus = 9;</code>
        */
       public Builder clearChatStatus() {
         
@@ -24661,7 +24695,7 @@ public final class ProtoMessage {
        * 进入或退出
        * </pre>
        *
-       * <code>int32 enterType = 10;</code>
+       * <code>optional int32 enterType = 10;</code>
        */
       public int getEnterType() {
         return enterType_;
@@ -24671,7 +24705,7 @@ public final class ProtoMessage {
        * 进入或退出
        * </pre>
        *
-       * <code>int32 enterType = 10;</code>
+       * <code>optional int32 enterType = 10;</code>
        */
       public Builder setEnterType(int value) {
         
@@ -24684,7 +24718,7 @@ public final class ProtoMessage {
        * 进入或退出
        * </pre>
        *
-       * <code>int32 enterType = 10;</code>
+       * <code>optional int32 enterType = 10;</code>
        */
       public Builder clearEnterType() {
         
@@ -24699,7 +24733,7 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>int32 applyType = 11;</code>
+       * <code>optional int32 applyType = 11;</code>
        */
       public int getApplyType() {
         return applyType_;
@@ -24709,7 +24743,7 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>int32 applyType = 11;</code>
+       * <code>optional int32 applyType = 11;</code>
        */
       public Builder setApplyType(int value) {
         
@@ -24722,7 +24756,7 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>int32 applyType = 11;</code>
+       * <code>optional int32 applyType = 11;</code>
        */
       public Builder clearApplyType() {
         
@@ -24733,13 +24767,13 @@ public final class ProtoMessage {
 
       private int appTypeFrom_ ;
       /**
-       * <code>int32 appTypeFrom = 12;</code>
+       * <code>optional int32 appTypeFrom = 12;</code>
        */
       public int getAppTypeFrom() {
         return appTypeFrom_;
       }
       /**
-       * <code>int32 appTypeFrom = 12;</code>
+       * <code>optional int32 appTypeFrom = 12;</code>
        */
       public Builder setAppTypeFrom(int value) {
         
@@ -24748,7 +24782,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 appTypeFrom = 12;</code>
+       * <code>optional int32 appTypeFrom = 12;</code>
        */
       public Builder clearAppTypeFrom() {
         
@@ -24763,7 +24797,7 @@ public final class ProtoMessage {
        * 通知到哪个应用中(-1全部, 不包含appTypeFrom)
        * </pre>
        *
-       * <code>int32 appTypeTo = 13;</code>
+       * <code>optional int32 appTypeTo = 13;</code>
        */
       public int getAppTypeTo() {
         return appTypeTo_;
@@ -24773,7 +24807,7 @@ public final class ProtoMessage {
        * 通知到哪个应用中(-1全部, 不包含appTypeFrom)
        * </pre>
        *
-       * <code>int32 appTypeTo = 13;</code>
+       * <code>optional int32 appTypeTo = 13;</code>
        */
       public Builder setAppTypeTo(int value) {
         
@@ -24786,7 +24820,7 @@ public final class ProtoMessage {
        * 通知到哪个应用中(-1全部, 不包含appTypeFrom)
        * </pre>
        *
-       * <code>int32 appTypeTo = 13;</code>
+       * <code>optional int32 appTypeTo = 13;</code>
        */
       public Builder clearAppTypeTo() {
         
@@ -24801,7 +24835,7 @@ public final class ProtoMessage {
        * 通知URL
        * </pre>
        *
-       * <code>string videoUrl = 14;</code>
+       * <code>optional string videoUrl = 14;</code>
        */
       public java.lang.String getVideoUrl() {
         java.lang.Object ref = videoUrl_;
@@ -24820,7 +24854,7 @@ public final class ProtoMessage {
        * 通知URL
        * </pre>
        *
-       * <code>string videoUrl = 14;</code>
+       * <code>optional string videoUrl = 14;</code>
        */
       public com.google.protobuf.ByteString
           getVideoUrlBytes() {
@@ -24840,7 +24874,7 @@ public final class ProtoMessage {
        * 通知URL
        * </pre>
        *
-       * <code>string videoUrl = 14;</code>
+       * <code>optional string videoUrl = 14;</code>
        */
       public Builder setVideoUrl(
           java.lang.String value) {
@@ -24857,7 +24891,7 @@ public final class ProtoMessage {
        * 通知URL
        * </pre>
        *
-       * <code>string videoUrl = 14;</code>
+       * <code>optional string videoUrl = 14;</code>
        */
       public Builder clearVideoUrl() {
         
@@ -24870,7 +24904,7 @@ public final class ProtoMessage {
        * 通知URL
        * </pre>
        *
-       * <code>string videoUrl = 14;</code>
+       * <code>optional string videoUrl = 14;</code>
        */
       public Builder setVideoUrlBytes(
           com.google.protobuf.ByteString value) {
@@ -24886,13 +24920,13 @@ public final class ProtoMessage {
 
       private int serverType_ ;
       /**
-       * <code>int32 serverType = 15;</code>
+       * <code>optional int32 serverType = 15;</code>
        */
       public int getServerType() {
         return serverType_;
       }
       /**
-       * <code>int32 serverType = 15;</code>
+       * <code>optional int32 serverType = 15;</code>
        */
       public Builder setServerType(int value) {
         
@@ -24901,7 +24935,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 serverType = 15;</code>
+       * <code>optional int32 serverType = 15;</code>
        */
       public Builder clearServerType() {
         
@@ -24916,7 +24950,7 @@ public final class ProtoMessage {
        * 是否上线
        * </pre>
        *
-       * <code>bool online = 16;</code>
+       * <code>optional bool online = 16;</code>
        */
       public boolean getOnline() {
         return online_;
@@ -24926,7 +24960,7 @@ public final class ProtoMessage {
        * 是否上线
        * </pre>
        *
-       * <code>bool online = 16;</code>
+       * <code>optional bool online = 16;</code>
        */
       public Builder setOnline(boolean value) {
         
@@ -24939,7 +24973,7 @@ public final class ProtoMessage {
        * 是否上线
        * </pre>
        *
-       * <code>bool online = 16;</code>
+       * <code>optional bool online = 16;</code>
        */
       public Builder clearOnline() {
         
@@ -25001,7 +25035,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -25010,7 +25044,7 @@ public final class ProtoMessage {
      * 手机号
      * </pre>
      *
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -25018,7 +25052,7 @@ public final class ProtoMessage {
      * 手机号
      * </pre>
      *
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -25028,7 +25062,7 @@ public final class ProtoMessage {
      * 好友的名字
      * </pre>
      *
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     java.lang.String getUserName();
     /**
@@ -25036,7 +25070,7 @@ public final class ProtoMessage {
      * 好友的名字
      * </pre>
      *
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
@@ -25046,7 +25080,7 @@ public final class ProtoMessage {
      * 好友的备注名
      * </pre>
      *
-     * <code>string nickName = 4;</code>
+     * <code>optional string nickName = 4;</code>
      */
     java.lang.String getNickName();
     /**
@@ -25054,7 +25088,7 @@ public final class ProtoMessage {
      * 好友的备注名
      * </pre>
      *
-     * <code>string nickName = 4;</code>
+     * <code>optional string nickName = 4;</code>
      */
     com.google.protobuf.ByteString
         getNickNameBytes();
@@ -25064,7 +25098,7 @@ public final class ProtoMessage {
      * 是否星标
      * </pre>
      *
-     * <code>bool friendStar = 5;</code>
+     * <code>optional bool friendStar = 5;</code>
      */
     boolean getFriendStar();
 
@@ -25073,7 +25107,7 @@ public final class ProtoMessage {
      * 用户头像
      * </pre>
      *
-     * <code>bytes userPic = 6;</code>
+     * <code>optional bytes userPic = 6;</code>
      */
     com.google.protobuf.ByteString getUserPic();
 
@@ -25082,7 +25116,7 @@ public final class ProtoMessage {
      * 性别
      * </pre>
      *
-     * <code>int32 userSex = 7;</code>
+     * <code>optional int32 userSex = 7;</code>
      */
     int getUserSex();
 
@@ -25091,7 +25125,7 @@ public final class ProtoMessage {
      * 申请消息
      * </pre>
      *
-     * <code>string applyInfo = 8;</code>
+     * <code>optional string applyInfo = 8;</code>
      */
     java.lang.String getApplyInfo();
     /**
@@ -25099,7 +25133,7 @@ public final class ProtoMessage {
      * 申请消息
      * </pre>
      *
-     * <code>string applyInfo = 8;</code>
+     * <code>optional string applyInfo = 8;</code>
      */
     com.google.protobuf.ByteString
         getApplyInfoBytes();
@@ -25109,7 +25143,7 @@ public final class ProtoMessage {
      * 车机ID
      * </pre>
      *
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     java.lang.String getCarID();
     /**
@@ -25117,7 +25151,7 @@ public final class ProtoMessage {
      * 车机ID
      * </pre>
      *
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -25127,7 +25161,7 @@ public final class ProtoMessage {
      * 生日改为 “yyyy-MM-dd"
      * </pre>
      *
-     * <code>string birthday = 10;</code>
+     * <code>optional string birthday = 10;</code>
      */
     java.lang.String getBirthday();
     /**
@@ -25135,67 +25169,67 @@ public final class ProtoMessage {
      * 生日改为 “yyyy-MM-dd"
      * </pre>
      *
-     * <code>string birthday = 10;</code>
+     * <code>optional string birthday = 10;</code>
      */
     com.google.protobuf.ByteString
         getBirthdayBytes();
 
     /**
-     * <code>string prov = 11;</code>
+     * <code>optional string prov = 11;</code>
      */
     java.lang.String getProv();
     /**
-     * <code>string prov = 11;</code>
+     * <code>optional string prov = 11;</code>
      */
     com.google.protobuf.ByteString
         getProvBytes();
 
     /**
-     * <code>string city = 12;</code>
+     * <code>optional string city = 12;</code>
      */
     java.lang.String getCity();
     /**
-     * <code>string city = 12;</code>
+     * <code>optional string city = 12;</code>
      */
     com.google.protobuf.ByteString
         getCityBytes();
 
     /**
-     * <code>string town = 13;</code>
+     * <code>optional string town = 13;</code>
      */
     java.lang.String getTown();
     /**
-     * <code>string town = 13;</code>
+     * <code>optional string town = 13;</code>
      */
     com.google.protobuf.ByteString
         getTownBytes();
 
     /**
-     * <code>string car_type1 = 14;</code>
+     * <code>optional string car_type1 = 14;</code>
      */
     java.lang.String getCarType1();
     /**
-     * <code>string car_type1 = 14;</code>
+     * <code>optional string car_type1 = 14;</code>
      */
     com.google.protobuf.ByteString
         getCarType1Bytes();
 
     /**
-     * <code>string car_type2 = 15;</code>
+     * <code>optional string car_type2 = 15;</code>
      */
     java.lang.String getCarType2();
     /**
-     * <code>string car_type2 = 15;</code>
+     * <code>optional string car_type2 = 15;</code>
      */
     com.google.protobuf.ByteString
         getCarType2Bytes();
 
     /**
-     * <code>string car_type3 = 16;</code>
+     * <code>optional string car_type3 = 16;</code>
      */
     java.lang.String getCarType3();
     /**
-     * <code>string car_type3 = 16;</code>
+     * <code>optional string car_type3 = 16;</code>
      */
     com.google.protobuf.ByteString
         getCarType3Bytes();
@@ -25205,7 +25239,7 @@ public final class ProtoMessage {
      * 车牌号
      * </pre>
      *
-     * <code>string car_num = 17;</code>
+     * <code>optional string car_num = 17;</code>
      */
     java.lang.String getCarNum();
     /**
@@ -25213,7 +25247,7 @@ public final class ProtoMessage {
      * 车牌号
      * </pre>
      *
-     * <code>string car_num = 17;</code>
+     * <code>optional string car_num = 17;</code>
      */
     com.google.protobuf.ByteString
         getCarNumBytes();
@@ -25223,7 +25257,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_0 = 18;</code>
+     * <code>optional int32 hide_field_0 = 18;</code>
      */
     int getHideField0();
 
@@ -25232,7 +25266,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_1 = 19;</code>
+     * <code>optional int32 hide_field_1 = 19;</code>
      */
     int getHideField1();
 
@@ -25241,7 +25275,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_2 = 20;</code>
+     * <code>optional int32 hide_field_2 = 20;</code>
      */
     int getHideField2();
 
@@ -25250,7 +25284,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_3 = 21;</code>
+     * <code>optional int32 hide_field_3 = 21;</code>
      */
     int getHideField3();
 
@@ -25259,7 +25293,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_4 = 22;</code>
+     * <code>optional int32 hide_field_4 = 22;</code>
      */
     int getHideField4();
 
@@ -25268,7 +25302,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_5 = 23;</code>
+     * <code>optional int32 hide_field_5 = 23;</code>
      */
     int getHideField5();
 
@@ -25277,7 +25311,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_6 = 24;</code>
+     * <code>optional int32 hide_field_6 = 24;</code>
      */
     int getHideField6();
 
@@ -25286,7 +25320,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_7 = 25;</code>
+     * <code>optional int32 hide_field_7 = 25;</code>
      */
     int getHideField7();
 
@@ -25295,7 +25329,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_8 = 26;</code>
+     * <code>optional int32 hide_field_8 = 26;</code>
      */
     int getHideField8();
 
@@ -25304,7 +25338,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_9 = 27;</code>
+     * <code>optional int32 hide_field_9 = 27;</code>
      */
     int getHideField9();
 
@@ -25313,7 +25347,7 @@ public final class ProtoMessage {
      *兴趣
      * </pre>
      *
-     * <code>string interest = 36;</code>
+     * <code>optional string interest = 36;</code>
      */
     java.lang.String getInterest();
     /**
@@ -25321,7 +25355,7 @@ public final class ProtoMessage {
      *兴趣
      * </pre>
      *
-     * <code>string interest = 36;</code>
+     * <code>optional string interest = 36;</code>
      */
     com.google.protobuf.ByteString
         getInterestBytes();
@@ -25331,7 +25365,7 @@ public final class ProtoMessage {
      *行业
      * </pre>
      *
-     * <code>string career = 37;</code>
+     * <code>optional string career = 37;</code>
      */
     java.lang.String getCareer();
     /**
@@ -25339,7 +25373,7 @@ public final class ProtoMessage {
      *行业
      * </pre>
      *
-     * <code>string career = 37;</code>
+     * <code>optional string career = 37;</code>
      */
     com.google.protobuf.ByteString
         getCareerBytes();
@@ -25349,7 +25383,7 @@ public final class ProtoMessage {
      *个性签名
      * </pre>
      *
-     * <code>string signature = 38;</code>
+     * <code>optional string signature = 38;</code>
      */
     java.lang.String getSignature();
     /**
@@ -25357,7 +25391,7 @@ public final class ProtoMessage {
      *个性签名
      * </pre>
      *
-     * <code>string signature = 38;</code>
+     * <code>optional string signature = 38;</code>
      */
     com.google.protobuf.ByteString
         getSignatureBytes();
@@ -25627,7 +25661,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -25640,7 +25674,7 @@ public final class ProtoMessage {
      * 手机号
      * </pre>
      *
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -25659,7 +25693,7 @@ public final class ProtoMessage {
      * 手机号
      * </pre>
      *
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -25682,7 +25716,7 @@ public final class ProtoMessage {
      * 好友的名字
      * </pre>
      *
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
@@ -25701,7 +25735,7 @@ public final class ProtoMessage {
      * 好友的名字
      * </pre>
      *
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
@@ -25724,7 +25758,7 @@ public final class ProtoMessage {
      * 好友的备注名
      * </pre>
      *
-     * <code>string nickName = 4;</code>
+     * <code>optional string nickName = 4;</code>
      */
     public java.lang.String getNickName() {
       java.lang.Object ref = nickName_;
@@ -25743,7 +25777,7 @@ public final class ProtoMessage {
      * 好友的备注名
      * </pre>
      *
-     * <code>string nickName = 4;</code>
+     * <code>optional string nickName = 4;</code>
      */
     public com.google.protobuf.ByteString
         getNickNameBytes() {
@@ -25766,7 +25800,7 @@ public final class ProtoMessage {
      * 是否星标
      * </pre>
      *
-     * <code>bool friendStar = 5;</code>
+     * <code>optional bool friendStar = 5;</code>
      */
     public boolean getFriendStar() {
       return friendStar_;
@@ -25779,7 +25813,7 @@ public final class ProtoMessage {
      * 用户头像
      * </pre>
      *
-     * <code>bytes userPic = 6;</code>
+     * <code>optional bytes userPic = 6;</code>
      */
     public com.google.protobuf.ByteString getUserPic() {
       return userPic_;
@@ -25792,7 +25826,7 @@ public final class ProtoMessage {
      * 性别
      * </pre>
      *
-     * <code>int32 userSex = 7;</code>
+     * <code>optional int32 userSex = 7;</code>
      */
     public int getUserSex() {
       return userSex_;
@@ -25805,7 +25839,7 @@ public final class ProtoMessage {
      * 申请消息
      * </pre>
      *
-     * <code>string applyInfo = 8;</code>
+     * <code>optional string applyInfo = 8;</code>
      */
     public java.lang.String getApplyInfo() {
       java.lang.Object ref = applyInfo_;
@@ -25824,7 +25858,7 @@ public final class ProtoMessage {
      * 申请消息
      * </pre>
      *
-     * <code>string applyInfo = 8;</code>
+     * <code>optional string applyInfo = 8;</code>
      */
     public com.google.protobuf.ByteString
         getApplyInfoBytes() {
@@ -25847,7 +25881,7 @@ public final class ProtoMessage {
      * 车机ID
      * </pre>
      *
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
@@ -25866,7 +25900,7 @@ public final class ProtoMessage {
      * 车机ID
      * </pre>
      *
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
@@ -25889,7 +25923,7 @@ public final class ProtoMessage {
      * 生日改为 “yyyy-MM-dd"
      * </pre>
      *
-     * <code>string birthday = 10;</code>
+     * <code>optional string birthday = 10;</code>
      */
     public java.lang.String getBirthday() {
       java.lang.Object ref = birthday_;
@@ -25908,7 +25942,7 @@ public final class ProtoMessage {
      * 生日改为 “yyyy-MM-dd"
      * </pre>
      *
-     * <code>string birthday = 10;</code>
+     * <code>optional string birthday = 10;</code>
      */
     public com.google.protobuf.ByteString
         getBirthdayBytes() {
@@ -25927,7 +25961,7 @@ public final class ProtoMessage {
     public static final int PROV_FIELD_NUMBER = 11;
     private volatile java.lang.Object prov_;
     /**
-     * <code>string prov = 11;</code>
+     * <code>optional string prov = 11;</code>
      */
     public java.lang.String getProv() {
       java.lang.Object ref = prov_;
@@ -25942,7 +25976,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string prov = 11;</code>
+     * <code>optional string prov = 11;</code>
      */
     public com.google.protobuf.ByteString
         getProvBytes() {
@@ -25961,7 +25995,7 @@ public final class ProtoMessage {
     public static final int CITY_FIELD_NUMBER = 12;
     private volatile java.lang.Object city_;
     /**
-     * <code>string city = 12;</code>
+     * <code>optional string city = 12;</code>
      */
     public java.lang.String getCity() {
       java.lang.Object ref = city_;
@@ -25976,7 +26010,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string city = 12;</code>
+     * <code>optional string city = 12;</code>
      */
     public com.google.protobuf.ByteString
         getCityBytes() {
@@ -25995,7 +26029,7 @@ public final class ProtoMessage {
     public static final int TOWN_FIELD_NUMBER = 13;
     private volatile java.lang.Object town_;
     /**
-     * <code>string town = 13;</code>
+     * <code>optional string town = 13;</code>
      */
     public java.lang.String getTown() {
       java.lang.Object ref = town_;
@@ -26010,7 +26044,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string town = 13;</code>
+     * <code>optional string town = 13;</code>
      */
     public com.google.protobuf.ByteString
         getTownBytes() {
@@ -26029,7 +26063,7 @@ public final class ProtoMessage {
     public static final int CAR_TYPE1_FIELD_NUMBER = 14;
     private volatile java.lang.Object carType1_;
     /**
-     * <code>string car_type1 = 14;</code>
+     * <code>optional string car_type1 = 14;</code>
      */
     public java.lang.String getCarType1() {
       java.lang.Object ref = carType1_;
@@ -26044,7 +26078,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string car_type1 = 14;</code>
+     * <code>optional string car_type1 = 14;</code>
      */
     public com.google.protobuf.ByteString
         getCarType1Bytes() {
@@ -26063,7 +26097,7 @@ public final class ProtoMessage {
     public static final int CAR_TYPE2_FIELD_NUMBER = 15;
     private volatile java.lang.Object carType2_;
     /**
-     * <code>string car_type2 = 15;</code>
+     * <code>optional string car_type2 = 15;</code>
      */
     public java.lang.String getCarType2() {
       java.lang.Object ref = carType2_;
@@ -26078,7 +26112,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string car_type2 = 15;</code>
+     * <code>optional string car_type2 = 15;</code>
      */
     public com.google.protobuf.ByteString
         getCarType2Bytes() {
@@ -26097,7 +26131,7 @@ public final class ProtoMessage {
     public static final int CAR_TYPE3_FIELD_NUMBER = 16;
     private volatile java.lang.Object carType3_;
     /**
-     * <code>string car_type3 = 16;</code>
+     * <code>optional string car_type3 = 16;</code>
      */
     public java.lang.String getCarType3() {
       java.lang.Object ref = carType3_;
@@ -26112,7 +26146,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string car_type3 = 16;</code>
+     * <code>optional string car_type3 = 16;</code>
      */
     public com.google.protobuf.ByteString
         getCarType3Bytes() {
@@ -26135,7 +26169,7 @@ public final class ProtoMessage {
      * 车牌号
      * </pre>
      *
-     * <code>string car_num = 17;</code>
+     * <code>optional string car_num = 17;</code>
      */
     public java.lang.String getCarNum() {
       java.lang.Object ref = carNum_;
@@ -26154,7 +26188,7 @@ public final class ProtoMessage {
      * 车牌号
      * </pre>
      *
-     * <code>string car_num = 17;</code>
+     * <code>optional string car_num = 17;</code>
      */
     public com.google.protobuf.ByteString
         getCarNumBytes() {
@@ -26177,7 +26211,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_0 = 18;</code>
+     * <code>optional int32 hide_field_0 = 18;</code>
      */
     public int getHideField0() {
       return hideField0_;
@@ -26190,7 +26224,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_1 = 19;</code>
+     * <code>optional int32 hide_field_1 = 19;</code>
      */
     public int getHideField1() {
       return hideField1_;
@@ -26203,7 +26237,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_2 = 20;</code>
+     * <code>optional int32 hide_field_2 = 20;</code>
      */
     public int getHideField2() {
       return hideField2_;
@@ -26216,7 +26250,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_3 = 21;</code>
+     * <code>optional int32 hide_field_3 = 21;</code>
      */
     public int getHideField3() {
       return hideField3_;
@@ -26229,7 +26263,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_4 = 22;</code>
+     * <code>optional int32 hide_field_4 = 22;</code>
      */
     public int getHideField4() {
       return hideField4_;
@@ -26242,7 +26276,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_5 = 23;</code>
+     * <code>optional int32 hide_field_5 = 23;</code>
      */
     public int getHideField5() {
       return hideField5_;
@@ -26255,7 +26289,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_6 = 24;</code>
+     * <code>optional int32 hide_field_6 = 24;</code>
      */
     public int getHideField6() {
       return hideField6_;
@@ -26268,7 +26302,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_7 = 25;</code>
+     * <code>optional int32 hide_field_7 = 25;</code>
      */
     public int getHideField7() {
       return hideField7_;
@@ -26281,7 +26315,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_8 = 26;</code>
+     * <code>optional int32 hide_field_8 = 26;</code>
      */
     public int getHideField8() {
       return hideField8_;
@@ -26294,7 +26328,7 @@ public final class ProtoMessage {
      * 参照 UserHideField
      * </pre>
      *
-     * <code>int32 hide_field_9 = 27;</code>
+     * <code>optional int32 hide_field_9 = 27;</code>
      */
     public int getHideField9() {
       return hideField9_;
@@ -26307,7 +26341,7 @@ public final class ProtoMessage {
      *兴趣
      * </pre>
      *
-     * <code>string interest = 36;</code>
+     * <code>optional string interest = 36;</code>
      */
     public java.lang.String getInterest() {
       java.lang.Object ref = interest_;
@@ -26326,7 +26360,7 @@ public final class ProtoMessage {
      *兴趣
      * </pre>
      *
-     * <code>string interest = 36;</code>
+     * <code>optional string interest = 36;</code>
      */
     public com.google.protobuf.ByteString
         getInterestBytes() {
@@ -26349,7 +26383,7 @@ public final class ProtoMessage {
      *行业
      * </pre>
      *
-     * <code>string career = 37;</code>
+     * <code>optional string career = 37;</code>
      */
     public java.lang.String getCareer() {
       java.lang.Object ref = career_;
@@ -26368,7 +26402,7 @@ public final class ProtoMessage {
      *行业
      * </pre>
      *
-     * <code>string career = 37;</code>
+     * <code>optional string career = 37;</code>
      */
     public com.google.protobuf.ByteString
         getCareerBytes() {
@@ -26391,7 +26425,7 @@ public final class ProtoMessage {
      *个性签名
      * </pre>
      *
-     * <code>string signature = 38;</code>
+     * <code>optional string signature = 38;</code>
      */
     public java.lang.String getSignature() {
       java.lang.Object ref = signature_;
@@ -26410,7 +26444,7 @@ public final class ProtoMessage {
      *个性签名
      * </pre>
      *
-     * <code>string signature = 38;</code>
+     * <code>optional string signature = 38;</code>
      */
     public com.google.protobuf.ByteString
         getSignatureBytes() {
@@ -26724,7 +26758,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -27195,13 +27229,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -27210,7 +27244,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -27225,7 +27259,7 @@ public final class ProtoMessage {
        * 手机号
        * </pre>
        *
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -27244,7 +27278,7 @@ public final class ProtoMessage {
        * 手机号
        * </pre>
        *
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -27264,7 +27298,7 @@ public final class ProtoMessage {
        * 手机号
        * </pre>
        *
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -27281,7 +27315,7 @@ public final class ProtoMessage {
        * 手机号
        * </pre>
        *
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -27294,7 +27328,7 @@ public final class ProtoMessage {
        * 手机号
        * </pre>
        *
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -27314,7 +27348,7 @@ public final class ProtoMessage {
        * 好友的名字
        * </pre>
        *
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -27333,7 +27367,7 @@ public final class ProtoMessage {
        * 好友的名字
        * </pre>
        *
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
@@ -27353,7 +27387,7 @@ public final class ProtoMessage {
        * 好友的名字
        * </pre>
        *
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
@@ -27370,7 +27404,7 @@ public final class ProtoMessage {
        * 好友的名字
        * </pre>
        *
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public Builder clearUserName() {
         
@@ -27383,7 +27417,7 @@ public final class ProtoMessage {
        * 好友的名字
        * </pre>
        *
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -27403,7 +27437,7 @@ public final class ProtoMessage {
        * 好友的备注名
        * </pre>
        *
-       * <code>string nickName = 4;</code>
+       * <code>optional string nickName = 4;</code>
        */
       public java.lang.String getNickName() {
         java.lang.Object ref = nickName_;
@@ -27422,7 +27456,7 @@ public final class ProtoMessage {
        * 好友的备注名
        * </pre>
        *
-       * <code>string nickName = 4;</code>
+       * <code>optional string nickName = 4;</code>
        */
       public com.google.protobuf.ByteString
           getNickNameBytes() {
@@ -27442,7 +27476,7 @@ public final class ProtoMessage {
        * 好友的备注名
        * </pre>
        *
-       * <code>string nickName = 4;</code>
+       * <code>optional string nickName = 4;</code>
        */
       public Builder setNickName(
           java.lang.String value) {
@@ -27459,7 +27493,7 @@ public final class ProtoMessage {
        * 好友的备注名
        * </pre>
        *
-       * <code>string nickName = 4;</code>
+       * <code>optional string nickName = 4;</code>
        */
       public Builder clearNickName() {
         
@@ -27472,7 +27506,7 @@ public final class ProtoMessage {
        * 好友的备注名
        * </pre>
        *
-       * <code>string nickName = 4;</code>
+       * <code>optional string nickName = 4;</code>
        */
       public Builder setNickNameBytes(
           com.google.protobuf.ByteString value) {
@@ -27492,7 +27526,7 @@ public final class ProtoMessage {
        * 是否星标
        * </pre>
        *
-       * <code>bool friendStar = 5;</code>
+       * <code>optional bool friendStar = 5;</code>
        */
       public boolean getFriendStar() {
         return friendStar_;
@@ -27502,7 +27536,7 @@ public final class ProtoMessage {
        * 是否星标
        * </pre>
        *
-       * <code>bool friendStar = 5;</code>
+       * <code>optional bool friendStar = 5;</code>
        */
       public Builder setFriendStar(boolean value) {
         
@@ -27515,7 +27549,7 @@ public final class ProtoMessage {
        * 是否星标
        * </pre>
        *
-       * <code>bool friendStar = 5;</code>
+       * <code>optional bool friendStar = 5;</code>
        */
       public Builder clearFriendStar() {
         
@@ -27530,7 +27564,7 @@ public final class ProtoMessage {
        * 用户头像
        * </pre>
        *
-       * <code>bytes userPic = 6;</code>
+       * <code>optional bytes userPic = 6;</code>
        */
       public com.google.protobuf.ByteString getUserPic() {
         return userPic_;
@@ -27540,7 +27574,7 @@ public final class ProtoMessage {
        * 用户头像
        * </pre>
        *
-       * <code>bytes userPic = 6;</code>
+       * <code>optional bytes userPic = 6;</code>
        */
       public Builder setUserPic(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -27556,7 +27590,7 @@ public final class ProtoMessage {
        * 用户头像
        * </pre>
        *
-       * <code>bytes userPic = 6;</code>
+       * <code>optional bytes userPic = 6;</code>
        */
       public Builder clearUserPic() {
         
@@ -27571,7 +27605,7 @@ public final class ProtoMessage {
        * 性别
        * </pre>
        *
-       * <code>int32 userSex = 7;</code>
+       * <code>optional int32 userSex = 7;</code>
        */
       public int getUserSex() {
         return userSex_;
@@ -27581,7 +27615,7 @@ public final class ProtoMessage {
        * 性别
        * </pre>
        *
-       * <code>int32 userSex = 7;</code>
+       * <code>optional int32 userSex = 7;</code>
        */
       public Builder setUserSex(int value) {
         
@@ -27594,7 +27628,7 @@ public final class ProtoMessage {
        * 性别
        * </pre>
        *
-       * <code>int32 userSex = 7;</code>
+       * <code>optional int32 userSex = 7;</code>
        */
       public Builder clearUserSex() {
         
@@ -27609,7 +27643,7 @@ public final class ProtoMessage {
        * 申请消息
        * </pre>
        *
-       * <code>string applyInfo = 8;</code>
+       * <code>optional string applyInfo = 8;</code>
        */
       public java.lang.String getApplyInfo() {
         java.lang.Object ref = applyInfo_;
@@ -27628,7 +27662,7 @@ public final class ProtoMessage {
        * 申请消息
        * </pre>
        *
-       * <code>string applyInfo = 8;</code>
+       * <code>optional string applyInfo = 8;</code>
        */
       public com.google.protobuf.ByteString
           getApplyInfoBytes() {
@@ -27648,7 +27682,7 @@ public final class ProtoMessage {
        * 申请消息
        * </pre>
        *
-       * <code>string applyInfo = 8;</code>
+       * <code>optional string applyInfo = 8;</code>
        */
       public Builder setApplyInfo(
           java.lang.String value) {
@@ -27665,7 +27699,7 @@ public final class ProtoMessage {
        * 申请消息
        * </pre>
        *
-       * <code>string applyInfo = 8;</code>
+       * <code>optional string applyInfo = 8;</code>
        */
       public Builder clearApplyInfo() {
         
@@ -27678,7 +27712,7 @@ public final class ProtoMessage {
        * 申请消息
        * </pre>
        *
-       * <code>string applyInfo = 8;</code>
+       * <code>optional string applyInfo = 8;</code>
        */
       public Builder setApplyInfoBytes(
           com.google.protobuf.ByteString value) {
@@ -27698,7 +27732,7 @@ public final class ProtoMessage {
        * 车机ID
        * </pre>
        *
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -27717,7 +27751,7 @@ public final class ProtoMessage {
        * 车机ID
        * </pre>
        *
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
@@ -27737,7 +27771,7 @@ public final class ProtoMessage {
        * 车机ID
        * </pre>
        *
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
@@ -27754,7 +27788,7 @@ public final class ProtoMessage {
        * 车机ID
        * </pre>
        *
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public Builder clearCarID() {
         
@@ -27767,7 +27801,7 @@ public final class ProtoMessage {
        * 车机ID
        * </pre>
        *
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -27787,7 +27821,7 @@ public final class ProtoMessage {
        * 生日改为 “yyyy-MM-dd"
        * </pre>
        *
-       * <code>string birthday = 10;</code>
+       * <code>optional string birthday = 10;</code>
        */
       public java.lang.String getBirthday() {
         java.lang.Object ref = birthday_;
@@ -27806,7 +27840,7 @@ public final class ProtoMessage {
        * 生日改为 “yyyy-MM-dd"
        * </pre>
        *
-       * <code>string birthday = 10;</code>
+       * <code>optional string birthday = 10;</code>
        */
       public com.google.protobuf.ByteString
           getBirthdayBytes() {
@@ -27826,7 +27860,7 @@ public final class ProtoMessage {
        * 生日改为 “yyyy-MM-dd"
        * </pre>
        *
-       * <code>string birthday = 10;</code>
+       * <code>optional string birthday = 10;</code>
        */
       public Builder setBirthday(
           java.lang.String value) {
@@ -27843,7 +27877,7 @@ public final class ProtoMessage {
        * 生日改为 “yyyy-MM-dd"
        * </pre>
        *
-       * <code>string birthday = 10;</code>
+       * <code>optional string birthday = 10;</code>
        */
       public Builder clearBirthday() {
         
@@ -27856,7 +27890,7 @@ public final class ProtoMessage {
        * 生日改为 “yyyy-MM-dd"
        * </pre>
        *
-       * <code>string birthday = 10;</code>
+       * <code>optional string birthday = 10;</code>
        */
       public Builder setBirthdayBytes(
           com.google.protobuf.ByteString value) {
@@ -27872,7 +27906,7 @@ public final class ProtoMessage {
 
       private java.lang.Object prov_ = "";
       /**
-       * <code>string prov = 11;</code>
+       * <code>optional string prov = 11;</code>
        */
       public java.lang.String getProv() {
         java.lang.Object ref = prov_;
@@ -27887,7 +27921,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string prov = 11;</code>
+       * <code>optional string prov = 11;</code>
        */
       public com.google.protobuf.ByteString
           getProvBytes() {
@@ -27903,7 +27937,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string prov = 11;</code>
+       * <code>optional string prov = 11;</code>
        */
       public Builder setProv(
           java.lang.String value) {
@@ -27916,7 +27950,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string prov = 11;</code>
+       * <code>optional string prov = 11;</code>
        */
       public Builder clearProv() {
         
@@ -27925,7 +27959,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string prov = 11;</code>
+       * <code>optional string prov = 11;</code>
        */
       public Builder setProvBytes(
           com.google.protobuf.ByteString value) {
@@ -27941,7 +27975,7 @@ public final class ProtoMessage {
 
       private java.lang.Object city_ = "";
       /**
-       * <code>string city = 12;</code>
+       * <code>optional string city = 12;</code>
        */
       public java.lang.String getCity() {
         java.lang.Object ref = city_;
@@ -27956,7 +27990,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string city = 12;</code>
+       * <code>optional string city = 12;</code>
        */
       public com.google.protobuf.ByteString
           getCityBytes() {
@@ -27972,7 +28006,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string city = 12;</code>
+       * <code>optional string city = 12;</code>
        */
       public Builder setCity(
           java.lang.String value) {
@@ -27985,7 +28019,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string city = 12;</code>
+       * <code>optional string city = 12;</code>
        */
       public Builder clearCity() {
         
@@ -27994,7 +28028,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string city = 12;</code>
+       * <code>optional string city = 12;</code>
        */
       public Builder setCityBytes(
           com.google.protobuf.ByteString value) {
@@ -28010,7 +28044,7 @@ public final class ProtoMessage {
 
       private java.lang.Object town_ = "";
       /**
-       * <code>string town = 13;</code>
+       * <code>optional string town = 13;</code>
        */
       public java.lang.String getTown() {
         java.lang.Object ref = town_;
@@ -28025,7 +28059,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string town = 13;</code>
+       * <code>optional string town = 13;</code>
        */
       public com.google.protobuf.ByteString
           getTownBytes() {
@@ -28041,7 +28075,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string town = 13;</code>
+       * <code>optional string town = 13;</code>
        */
       public Builder setTown(
           java.lang.String value) {
@@ -28054,7 +28088,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string town = 13;</code>
+       * <code>optional string town = 13;</code>
        */
       public Builder clearTown() {
         
@@ -28063,7 +28097,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string town = 13;</code>
+       * <code>optional string town = 13;</code>
        */
       public Builder setTownBytes(
           com.google.protobuf.ByteString value) {
@@ -28079,7 +28113,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType1_ = "";
       /**
-       * <code>string car_type1 = 14;</code>
+       * <code>optional string car_type1 = 14;</code>
        */
       public java.lang.String getCarType1() {
         java.lang.Object ref = carType1_;
@@ -28094,7 +28128,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type1 = 14;</code>
+       * <code>optional string car_type1 = 14;</code>
        */
       public com.google.protobuf.ByteString
           getCarType1Bytes() {
@@ -28110,7 +28144,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type1 = 14;</code>
+       * <code>optional string car_type1 = 14;</code>
        */
       public Builder setCarType1(
           java.lang.String value) {
@@ -28123,7 +28157,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type1 = 14;</code>
+       * <code>optional string car_type1 = 14;</code>
        */
       public Builder clearCarType1() {
         
@@ -28132,7 +28166,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type1 = 14;</code>
+       * <code>optional string car_type1 = 14;</code>
        */
       public Builder setCarType1Bytes(
           com.google.protobuf.ByteString value) {
@@ -28148,7 +28182,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType2_ = "";
       /**
-       * <code>string car_type2 = 15;</code>
+       * <code>optional string car_type2 = 15;</code>
        */
       public java.lang.String getCarType2() {
         java.lang.Object ref = carType2_;
@@ -28163,7 +28197,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type2 = 15;</code>
+       * <code>optional string car_type2 = 15;</code>
        */
       public com.google.protobuf.ByteString
           getCarType2Bytes() {
@@ -28179,7 +28213,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type2 = 15;</code>
+       * <code>optional string car_type2 = 15;</code>
        */
       public Builder setCarType2(
           java.lang.String value) {
@@ -28192,7 +28226,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type2 = 15;</code>
+       * <code>optional string car_type2 = 15;</code>
        */
       public Builder clearCarType2() {
         
@@ -28201,7 +28235,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type2 = 15;</code>
+       * <code>optional string car_type2 = 15;</code>
        */
       public Builder setCarType2Bytes(
           com.google.protobuf.ByteString value) {
@@ -28217,7 +28251,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carType3_ = "";
       /**
-       * <code>string car_type3 = 16;</code>
+       * <code>optional string car_type3 = 16;</code>
        */
       public java.lang.String getCarType3() {
         java.lang.Object ref = carType3_;
@@ -28232,7 +28266,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type3 = 16;</code>
+       * <code>optional string car_type3 = 16;</code>
        */
       public com.google.protobuf.ByteString
           getCarType3Bytes() {
@@ -28248,7 +28282,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string car_type3 = 16;</code>
+       * <code>optional string car_type3 = 16;</code>
        */
       public Builder setCarType3(
           java.lang.String value) {
@@ -28261,7 +28295,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type3 = 16;</code>
+       * <code>optional string car_type3 = 16;</code>
        */
       public Builder clearCarType3() {
         
@@ -28270,7 +28304,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string car_type3 = 16;</code>
+       * <code>optional string car_type3 = 16;</code>
        */
       public Builder setCarType3Bytes(
           com.google.protobuf.ByteString value) {
@@ -28290,7 +28324,7 @@ public final class ProtoMessage {
        * 车牌号
        * </pre>
        *
-       * <code>string car_num = 17;</code>
+       * <code>optional string car_num = 17;</code>
        */
       public java.lang.String getCarNum() {
         java.lang.Object ref = carNum_;
@@ -28309,7 +28343,7 @@ public final class ProtoMessage {
        * 车牌号
        * </pre>
        *
-       * <code>string car_num = 17;</code>
+       * <code>optional string car_num = 17;</code>
        */
       public com.google.protobuf.ByteString
           getCarNumBytes() {
@@ -28329,7 +28363,7 @@ public final class ProtoMessage {
        * 车牌号
        * </pre>
        *
-       * <code>string car_num = 17;</code>
+       * <code>optional string car_num = 17;</code>
        */
       public Builder setCarNum(
           java.lang.String value) {
@@ -28346,7 +28380,7 @@ public final class ProtoMessage {
        * 车牌号
        * </pre>
        *
-       * <code>string car_num = 17;</code>
+       * <code>optional string car_num = 17;</code>
        */
       public Builder clearCarNum() {
         
@@ -28359,7 +28393,7 @@ public final class ProtoMessage {
        * 车牌号
        * </pre>
        *
-       * <code>string car_num = 17;</code>
+       * <code>optional string car_num = 17;</code>
        */
       public Builder setCarNumBytes(
           com.google.protobuf.ByteString value) {
@@ -28379,7 +28413,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_0 = 18;</code>
+       * <code>optional int32 hide_field_0 = 18;</code>
        */
       public int getHideField0() {
         return hideField0_;
@@ -28389,7 +28423,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_0 = 18;</code>
+       * <code>optional int32 hide_field_0 = 18;</code>
        */
       public Builder setHideField0(int value) {
         
@@ -28402,7 +28436,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_0 = 18;</code>
+       * <code>optional int32 hide_field_0 = 18;</code>
        */
       public Builder clearHideField0() {
         
@@ -28417,7 +28451,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_1 = 19;</code>
+       * <code>optional int32 hide_field_1 = 19;</code>
        */
       public int getHideField1() {
         return hideField1_;
@@ -28427,7 +28461,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_1 = 19;</code>
+       * <code>optional int32 hide_field_1 = 19;</code>
        */
       public Builder setHideField1(int value) {
         
@@ -28440,7 +28474,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_1 = 19;</code>
+       * <code>optional int32 hide_field_1 = 19;</code>
        */
       public Builder clearHideField1() {
         
@@ -28455,7 +28489,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_2 = 20;</code>
+       * <code>optional int32 hide_field_2 = 20;</code>
        */
       public int getHideField2() {
         return hideField2_;
@@ -28465,7 +28499,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_2 = 20;</code>
+       * <code>optional int32 hide_field_2 = 20;</code>
        */
       public Builder setHideField2(int value) {
         
@@ -28478,7 +28512,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_2 = 20;</code>
+       * <code>optional int32 hide_field_2 = 20;</code>
        */
       public Builder clearHideField2() {
         
@@ -28493,7 +28527,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_3 = 21;</code>
+       * <code>optional int32 hide_field_3 = 21;</code>
        */
       public int getHideField3() {
         return hideField3_;
@@ -28503,7 +28537,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_3 = 21;</code>
+       * <code>optional int32 hide_field_3 = 21;</code>
        */
       public Builder setHideField3(int value) {
         
@@ -28516,7 +28550,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_3 = 21;</code>
+       * <code>optional int32 hide_field_3 = 21;</code>
        */
       public Builder clearHideField3() {
         
@@ -28531,7 +28565,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_4 = 22;</code>
+       * <code>optional int32 hide_field_4 = 22;</code>
        */
       public int getHideField4() {
         return hideField4_;
@@ -28541,7 +28575,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_4 = 22;</code>
+       * <code>optional int32 hide_field_4 = 22;</code>
        */
       public Builder setHideField4(int value) {
         
@@ -28554,7 +28588,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_4 = 22;</code>
+       * <code>optional int32 hide_field_4 = 22;</code>
        */
       public Builder clearHideField4() {
         
@@ -28569,7 +28603,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_5 = 23;</code>
+       * <code>optional int32 hide_field_5 = 23;</code>
        */
       public int getHideField5() {
         return hideField5_;
@@ -28579,7 +28613,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_5 = 23;</code>
+       * <code>optional int32 hide_field_5 = 23;</code>
        */
       public Builder setHideField5(int value) {
         
@@ -28592,7 +28626,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_5 = 23;</code>
+       * <code>optional int32 hide_field_5 = 23;</code>
        */
       public Builder clearHideField5() {
         
@@ -28607,7 +28641,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_6 = 24;</code>
+       * <code>optional int32 hide_field_6 = 24;</code>
        */
       public int getHideField6() {
         return hideField6_;
@@ -28617,7 +28651,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_6 = 24;</code>
+       * <code>optional int32 hide_field_6 = 24;</code>
        */
       public Builder setHideField6(int value) {
         
@@ -28630,7 +28664,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_6 = 24;</code>
+       * <code>optional int32 hide_field_6 = 24;</code>
        */
       public Builder clearHideField6() {
         
@@ -28645,7 +28679,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_7 = 25;</code>
+       * <code>optional int32 hide_field_7 = 25;</code>
        */
       public int getHideField7() {
         return hideField7_;
@@ -28655,7 +28689,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_7 = 25;</code>
+       * <code>optional int32 hide_field_7 = 25;</code>
        */
       public Builder setHideField7(int value) {
         
@@ -28668,7 +28702,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_7 = 25;</code>
+       * <code>optional int32 hide_field_7 = 25;</code>
        */
       public Builder clearHideField7() {
         
@@ -28683,7 +28717,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_8 = 26;</code>
+       * <code>optional int32 hide_field_8 = 26;</code>
        */
       public int getHideField8() {
         return hideField8_;
@@ -28693,7 +28727,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_8 = 26;</code>
+       * <code>optional int32 hide_field_8 = 26;</code>
        */
       public Builder setHideField8(int value) {
         
@@ -28706,7 +28740,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_8 = 26;</code>
+       * <code>optional int32 hide_field_8 = 26;</code>
        */
       public Builder clearHideField8() {
         
@@ -28721,7 +28755,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_9 = 27;</code>
+       * <code>optional int32 hide_field_9 = 27;</code>
        */
       public int getHideField9() {
         return hideField9_;
@@ -28731,7 +28765,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_9 = 27;</code>
+       * <code>optional int32 hide_field_9 = 27;</code>
        */
       public Builder setHideField9(int value) {
         
@@ -28744,7 +28778,7 @@ public final class ProtoMessage {
        * 参照 UserHideField
        * </pre>
        *
-       * <code>int32 hide_field_9 = 27;</code>
+       * <code>optional int32 hide_field_9 = 27;</code>
        */
       public Builder clearHideField9() {
         
@@ -28759,7 +28793,7 @@ public final class ProtoMessage {
        *兴趣
        * </pre>
        *
-       * <code>string interest = 36;</code>
+       * <code>optional string interest = 36;</code>
        */
       public java.lang.String getInterest() {
         java.lang.Object ref = interest_;
@@ -28778,7 +28812,7 @@ public final class ProtoMessage {
        *兴趣
        * </pre>
        *
-       * <code>string interest = 36;</code>
+       * <code>optional string interest = 36;</code>
        */
       public com.google.protobuf.ByteString
           getInterestBytes() {
@@ -28798,7 +28832,7 @@ public final class ProtoMessage {
        *兴趣
        * </pre>
        *
-       * <code>string interest = 36;</code>
+       * <code>optional string interest = 36;</code>
        */
       public Builder setInterest(
           java.lang.String value) {
@@ -28815,7 +28849,7 @@ public final class ProtoMessage {
        *兴趣
        * </pre>
        *
-       * <code>string interest = 36;</code>
+       * <code>optional string interest = 36;</code>
        */
       public Builder clearInterest() {
         
@@ -28828,7 +28862,7 @@ public final class ProtoMessage {
        *兴趣
        * </pre>
        *
-       * <code>string interest = 36;</code>
+       * <code>optional string interest = 36;</code>
        */
       public Builder setInterestBytes(
           com.google.protobuf.ByteString value) {
@@ -28848,7 +28882,7 @@ public final class ProtoMessage {
        *行业
        * </pre>
        *
-       * <code>string career = 37;</code>
+       * <code>optional string career = 37;</code>
        */
       public java.lang.String getCareer() {
         java.lang.Object ref = career_;
@@ -28867,7 +28901,7 @@ public final class ProtoMessage {
        *行业
        * </pre>
        *
-       * <code>string career = 37;</code>
+       * <code>optional string career = 37;</code>
        */
       public com.google.protobuf.ByteString
           getCareerBytes() {
@@ -28887,7 +28921,7 @@ public final class ProtoMessage {
        *行业
        * </pre>
        *
-       * <code>string career = 37;</code>
+       * <code>optional string career = 37;</code>
        */
       public Builder setCareer(
           java.lang.String value) {
@@ -28904,7 +28938,7 @@ public final class ProtoMessage {
        *行业
        * </pre>
        *
-       * <code>string career = 37;</code>
+       * <code>optional string career = 37;</code>
        */
       public Builder clearCareer() {
         
@@ -28917,7 +28951,7 @@ public final class ProtoMessage {
        *行业
        * </pre>
        *
-       * <code>string career = 37;</code>
+       * <code>optional string career = 37;</code>
        */
       public Builder setCareerBytes(
           com.google.protobuf.ByteString value) {
@@ -28937,7 +28971,7 @@ public final class ProtoMessage {
        *个性签名
        * </pre>
        *
-       * <code>string signature = 38;</code>
+       * <code>optional string signature = 38;</code>
        */
       public java.lang.String getSignature() {
         java.lang.Object ref = signature_;
@@ -28956,7 +28990,7 @@ public final class ProtoMessage {
        *个性签名
        * </pre>
        *
-       * <code>string signature = 38;</code>
+       * <code>optional string signature = 38;</code>
        */
       public com.google.protobuf.ByteString
           getSignatureBytes() {
@@ -28976,7 +29010,7 @@ public final class ProtoMessage {
        *个性签名
        * </pre>
        *
-       * <code>string signature = 38;</code>
+       * <code>optional string signature = 38;</code>
        */
       public Builder setSignature(
           java.lang.String value) {
@@ -28993,7 +29027,7 @@ public final class ProtoMessage {
        *个性签名
        * </pre>
        *
-       * <code>string signature = 38;</code>
+       * <code>optional string signature = 38;</code>
        */
       public Builder clearSignature() {
         
@@ -29006,7 +29040,7 @@ public final class ProtoMessage {
        *个性签名
        * </pre>
        *
-       * <code>string signature = 38;</code>
+       * <code>optional string signature = 38;</code>
        */
       public Builder setSignatureBytes(
           com.google.protobuf.ByteString value) {
@@ -29073,7 +29107,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -29186,7 +29220,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -29289,7 +29323,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getFriendsCount() > 0) {
@@ -29557,13 +29591,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -29572,7 +29606,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -29874,42 +29908,42 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int64 teamID = 2;</code>
+     * <code>optional int64 teamID = 2;</code>
      */
     long getTeamID();
 
     /**
-     * <code>string teamName = 3;</code>
+     * <code>optional string teamName = 3;</code>
      */
     java.lang.String getTeamName();
     /**
-     * <code>string teamName = 3;</code>
+     * <code>optional string teamName = 3;</code>
      */
     com.google.protobuf.ByteString
         getTeamNameBytes();
 
     /**
-     * <code>string teamDesc = 4;</code>
+     * <code>optional string teamDesc = 4;</code>
      */
     java.lang.String getTeamDesc();
     /**
-     * <code>string teamDesc = 4;</code>
+     * <code>optional string teamDesc = 4;</code>
      */
     com.google.protobuf.ByteString
         getTeamDescBytes();
 
     /**
-     * <code>int32 teamType = 5;</code>
+     * <code>optional int32 teamType = 5;</code>
      */
     int getTeamType();
 
     /**
-     * <code>int64 groupID = 6;</code>
+     * <code>optional int64 groupID = 6;</code>
      */
     long getGroupID();
 
@@ -29918,7 +29952,7 @@ public final class ProtoMessage {
      * 我在群中的角色
      * </pre>
      *
-     * <code>int32 memberRole = 7;</code>
+     * <code>optional int32 memberRole = 7;</code>
      */
     int getMemberRole();
 
@@ -29927,7 +29961,7 @@ public final class ProtoMessage {
      * 群优先级
      * </pre>
      *
-     * <code>int32 teamPriority = 8;</code>
+     * <code>optional int32 teamPriority = 8;</code>
      */
     int getTeamPriority();
 
@@ -29936,7 +29970,7 @@ public final class ProtoMessage {
      * 我在群中的名称
      * </pre>
      *
-     * <code>string myTeamName = 9;</code>
+     * <code>optional string myTeamName = 9;</code>
      */
     java.lang.String getMyTeamName();
     /**
@@ -29944,7 +29978,7 @@ public final class ProtoMessage {
      * 我在群中的名称
      * </pre>
      *
-     * <code>string myTeamName = 9;</code>
+     * <code>optional string myTeamName = 9;</code>
      */
     com.google.protobuf.ByteString
         getMyTeamNameBytes();
@@ -30075,7 +30109,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -30084,7 +30118,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 2;
     private long teamID_;
     /**
-     * <code>int64 teamID = 2;</code>
+     * <code>optional int64 teamID = 2;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -30093,7 +30127,7 @@ public final class ProtoMessage {
     public static final int TEAMNAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object teamName_;
     /**
-     * <code>string teamName = 3;</code>
+     * <code>optional string teamName = 3;</code>
      */
     public java.lang.String getTeamName() {
       java.lang.Object ref = teamName_;
@@ -30108,7 +30142,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string teamName = 3;</code>
+     * <code>optional string teamName = 3;</code>
      */
     public com.google.protobuf.ByteString
         getTeamNameBytes() {
@@ -30127,7 +30161,7 @@ public final class ProtoMessage {
     public static final int TEAMDESC_FIELD_NUMBER = 4;
     private volatile java.lang.Object teamDesc_;
     /**
-     * <code>string teamDesc = 4;</code>
+     * <code>optional string teamDesc = 4;</code>
      */
     public java.lang.String getTeamDesc() {
       java.lang.Object ref = teamDesc_;
@@ -30142,7 +30176,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string teamDesc = 4;</code>
+     * <code>optional string teamDesc = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTeamDescBytes() {
@@ -30161,7 +30195,7 @@ public final class ProtoMessage {
     public static final int TEAMTYPE_FIELD_NUMBER = 5;
     private int teamType_;
     /**
-     * <code>int32 teamType = 5;</code>
+     * <code>optional int32 teamType = 5;</code>
      */
     public int getTeamType() {
       return teamType_;
@@ -30170,7 +30204,7 @@ public final class ProtoMessage {
     public static final int GROUPID_FIELD_NUMBER = 6;
     private long groupID_;
     /**
-     * <code>int64 groupID = 6;</code>
+     * <code>optional int64 groupID = 6;</code>
      */
     public long getGroupID() {
       return groupID_;
@@ -30183,7 +30217,7 @@ public final class ProtoMessage {
      * 我在群中的角色
      * </pre>
      *
-     * <code>int32 memberRole = 7;</code>
+     * <code>optional int32 memberRole = 7;</code>
      */
     public int getMemberRole() {
       return memberRole_;
@@ -30196,7 +30230,7 @@ public final class ProtoMessage {
      * 群优先级
      * </pre>
      *
-     * <code>int32 teamPriority = 8;</code>
+     * <code>optional int32 teamPriority = 8;</code>
      */
     public int getTeamPriority() {
       return teamPriority_;
@@ -30209,7 +30243,7 @@ public final class ProtoMessage {
      * 我在群中的名称
      * </pre>
      *
-     * <code>string myTeamName = 9;</code>
+     * <code>optional string myTeamName = 9;</code>
      */
     public java.lang.String getMyTeamName() {
       java.lang.Object ref = myTeamName_;
@@ -30228,7 +30262,7 @@ public final class ProtoMessage {
      * 我在群中的名称
      * </pre>
      *
-     * <code>string myTeamName = 9;</code>
+     * <code>optional string myTeamName = 9;</code>
      */
     public com.google.protobuf.ByteString
         getMyTeamNameBytes() {
@@ -30366,7 +30400,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TEAMID_FIELD_NUMBER;
@@ -30657,13 +30691,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -30672,7 +30706,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -30683,13 +30717,13 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>int64 teamID = 2;</code>
+       * <code>optional int64 teamID = 2;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>int64 teamID = 2;</code>
+       * <code>optional int64 teamID = 2;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -30698,7 +30732,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 teamID = 2;</code>
+       * <code>optional int64 teamID = 2;</code>
        */
       public Builder clearTeamID() {
         
@@ -30709,7 +30743,7 @@ public final class ProtoMessage {
 
       private java.lang.Object teamName_ = "";
       /**
-       * <code>string teamName = 3;</code>
+       * <code>optional string teamName = 3;</code>
        */
       public java.lang.String getTeamName() {
         java.lang.Object ref = teamName_;
@@ -30724,7 +30758,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string teamName = 3;</code>
+       * <code>optional string teamName = 3;</code>
        */
       public com.google.protobuf.ByteString
           getTeamNameBytes() {
@@ -30740,7 +30774,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string teamName = 3;</code>
+       * <code>optional string teamName = 3;</code>
        */
       public Builder setTeamName(
           java.lang.String value) {
@@ -30753,7 +30787,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string teamName = 3;</code>
+       * <code>optional string teamName = 3;</code>
        */
       public Builder clearTeamName() {
         
@@ -30762,7 +30796,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string teamName = 3;</code>
+       * <code>optional string teamName = 3;</code>
        */
       public Builder setTeamNameBytes(
           com.google.protobuf.ByteString value) {
@@ -30778,7 +30812,7 @@ public final class ProtoMessage {
 
       private java.lang.Object teamDesc_ = "";
       /**
-       * <code>string teamDesc = 4;</code>
+       * <code>optional string teamDesc = 4;</code>
        */
       public java.lang.String getTeamDesc() {
         java.lang.Object ref = teamDesc_;
@@ -30793,7 +30827,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string teamDesc = 4;</code>
+       * <code>optional string teamDesc = 4;</code>
        */
       public com.google.protobuf.ByteString
           getTeamDescBytes() {
@@ -30809,7 +30843,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string teamDesc = 4;</code>
+       * <code>optional string teamDesc = 4;</code>
        */
       public Builder setTeamDesc(
           java.lang.String value) {
@@ -30822,7 +30856,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string teamDesc = 4;</code>
+       * <code>optional string teamDesc = 4;</code>
        */
       public Builder clearTeamDesc() {
         
@@ -30831,7 +30865,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string teamDesc = 4;</code>
+       * <code>optional string teamDesc = 4;</code>
        */
       public Builder setTeamDescBytes(
           com.google.protobuf.ByteString value) {
@@ -30847,13 +30881,13 @@ public final class ProtoMessage {
 
       private int teamType_ ;
       /**
-       * <code>int32 teamType = 5;</code>
+       * <code>optional int32 teamType = 5;</code>
        */
       public int getTeamType() {
         return teamType_;
       }
       /**
-       * <code>int32 teamType = 5;</code>
+       * <code>optional int32 teamType = 5;</code>
        */
       public Builder setTeamType(int value) {
         
@@ -30862,7 +30896,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 teamType = 5;</code>
+       * <code>optional int32 teamType = 5;</code>
        */
       public Builder clearTeamType() {
         
@@ -30873,13 +30907,13 @@ public final class ProtoMessage {
 
       private long groupID_ ;
       /**
-       * <code>int64 groupID = 6;</code>
+       * <code>optional int64 groupID = 6;</code>
        */
       public long getGroupID() {
         return groupID_;
       }
       /**
-       * <code>int64 groupID = 6;</code>
+       * <code>optional int64 groupID = 6;</code>
        */
       public Builder setGroupID(long value) {
         
@@ -30888,7 +30922,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 groupID = 6;</code>
+       * <code>optional int64 groupID = 6;</code>
        */
       public Builder clearGroupID() {
         
@@ -30903,7 +30937,7 @@ public final class ProtoMessage {
        * 我在群中的角色
        * </pre>
        *
-       * <code>int32 memberRole = 7;</code>
+       * <code>optional int32 memberRole = 7;</code>
        */
       public int getMemberRole() {
         return memberRole_;
@@ -30913,7 +30947,7 @@ public final class ProtoMessage {
        * 我在群中的角色
        * </pre>
        *
-       * <code>int32 memberRole = 7;</code>
+       * <code>optional int32 memberRole = 7;</code>
        */
       public Builder setMemberRole(int value) {
         
@@ -30926,7 +30960,7 @@ public final class ProtoMessage {
        * 我在群中的角色
        * </pre>
        *
-       * <code>int32 memberRole = 7;</code>
+       * <code>optional int32 memberRole = 7;</code>
        */
       public Builder clearMemberRole() {
         
@@ -30941,7 +30975,7 @@ public final class ProtoMessage {
        * 群优先级
        * </pre>
        *
-       * <code>int32 teamPriority = 8;</code>
+       * <code>optional int32 teamPriority = 8;</code>
        */
       public int getTeamPriority() {
         return teamPriority_;
@@ -30951,7 +30985,7 @@ public final class ProtoMessage {
        * 群优先级
        * </pre>
        *
-       * <code>int32 teamPriority = 8;</code>
+       * <code>optional int32 teamPriority = 8;</code>
        */
       public Builder setTeamPriority(int value) {
         
@@ -30964,7 +30998,7 @@ public final class ProtoMessage {
        * 群优先级
        * </pre>
        *
-       * <code>int32 teamPriority = 8;</code>
+       * <code>optional int32 teamPriority = 8;</code>
        */
       public Builder clearTeamPriority() {
         
@@ -30979,7 +31013,7 @@ public final class ProtoMessage {
        * 我在群中的名称
        * </pre>
        *
-       * <code>string myTeamName = 9;</code>
+       * <code>optional string myTeamName = 9;</code>
        */
       public java.lang.String getMyTeamName() {
         java.lang.Object ref = myTeamName_;
@@ -30998,7 +31032,7 @@ public final class ProtoMessage {
        * 我在群中的名称
        * </pre>
        *
-       * <code>string myTeamName = 9;</code>
+       * <code>optional string myTeamName = 9;</code>
        */
       public com.google.protobuf.ByteString
           getMyTeamNameBytes() {
@@ -31018,7 +31052,7 @@ public final class ProtoMessage {
        * 我在群中的名称
        * </pre>
        *
-       * <code>string myTeamName = 9;</code>
+       * <code>optional string myTeamName = 9;</code>
        */
       public Builder setMyTeamName(
           java.lang.String value) {
@@ -31035,7 +31069,7 @@ public final class ProtoMessage {
        * 我在群中的名称
        * </pre>
        *
-       * <code>string myTeamName = 9;</code>
+       * <code>optional string myTeamName = 9;</code>
        */
       public Builder clearMyTeamName() {
         
@@ -31048,7 +31082,7 @@ public final class ProtoMessage {
        * 我在群中的名称
        * </pre>
        *
-       * <code>string myTeamName = 9;</code>
+       * <code>optional string myTeamName = 9;</code>
        */
       public Builder setMyTeamNameBytes(
           com.google.protobuf.ByteString value) {
@@ -31115,7 +31149,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -31232,7 +31266,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -31335,7 +31369,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getTeamsCount() > 0) {
@@ -31607,13 +31641,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -31622,7 +31656,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -31924,7 +31958,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -31933,7 +31967,7 @@ public final class ProtoMessage {
      * 申请或邀请都需要此参数
      * </pre>
      *
-     * <code>int64 teamID = 2;</code>
+     * <code>optional int64 teamID = 2;</code>
      */
     long getTeamID();
 
@@ -32067,7 +32101,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -32080,7 +32114,7 @@ public final class ProtoMessage {
      * 申请或邀请都需要此参数
      * </pre>
      *
-     * <code>int64 teamID = 2;</code>
+     * <code>optional int64 teamID = 2;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -32206,7 +32240,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TEAMID_FIELD_NUMBER;
@@ -32462,13 +32496,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -32477,7 +32511,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -32492,7 +32526,7 @@ public final class ProtoMessage {
        * 申请或邀请都需要此参数
        * </pre>
        *
-       * <code>int64 teamID = 2;</code>
+       * <code>optional int64 teamID = 2;</code>
        */
       public long getTeamID() {
         return teamID_;
@@ -32502,7 +32536,7 @@ public final class ProtoMessage {
        * 申请或邀请都需要此参数
        * </pre>
        *
-       * <code>int64 teamID = 2;</code>
+       * <code>optional int64 teamID = 2;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -32515,7 +32549,7 @@ public final class ProtoMessage {
        * 申请或邀请都需要此参数
        * </pre>
        *
-       * <code>int64 teamID = 2;</code>
+       * <code>optional int64 teamID = 2;</code>
        */
       public Builder clearTeamID() {
         
@@ -32707,22 +32741,22 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string teamName = 2;</code>
+     * <code>optional string teamName = 2;</code>
      */
     java.lang.String getTeamName();
     /**
-     * <code>string teamName = 2;</code>
+     * <code>optional string teamName = 2;</code>
      */
     com.google.protobuf.ByteString
         getTeamNameBytes();
 
     /**
-     * <code>int64 teamID = 3;</code>
+     * <code>optional int64 teamID = 3;</code>
      */
     long getTeamID();
 
@@ -32731,7 +32765,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
      * </pre>
      *
-     * <code>string userPhone = 4;</code>
+     * <code>optional string userPhone = 4;</code>
      */
     java.lang.String getUserPhone();
     /**
@@ -32739,7 +32773,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
      * </pre>
      *
-     * <code>string userPhone = 4;</code>
+     * <code>optional string userPhone = 4;</code>
      */
     com.google.protobuf.ByteString
         getUserPhoneBytes();
@@ -32749,7 +32783,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
      * </pre>
      *
-     * <code>string userName = 5;</code>
+     * <code>optional string userName = 5;</code>
      */
     java.lang.String getUserName();
     /**
@@ -32757,7 +32791,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
      * </pre>
      *
-     * <code>string userName = 5;</code>
+     * <code>optional string userName = 5;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
@@ -32767,7 +32801,7 @@ public final class ProtoMessage {
      * &#64;see ApplyTeamType
      * </pre>
      *
-     * <code>int32 applyType = 6;</code>
+     * <code>optional int32 applyType = 6;</code>
      */
     int getApplyType();
   }
@@ -32879,7 +32913,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -32888,7 +32922,7 @@ public final class ProtoMessage {
     public static final int TEAMNAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object teamName_;
     /**
-     * <code>string teamName = 2;</code>
+     * <code>optional string teamName = 2;</code>
      */
     public java.lang.String getTeamName() {
       java.lang.Object ref = teamName_;
@@ -32903,7 +32937,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string teamName = 2;</code>
+     * <code>optional string teamName = 2;</code>
      */
     public com.google.protobuf.ByteString
         getTeamNameBytes() {
@@ -32922,7 +32956,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 3;
     private long teamID_;
     /**
-     * <code>int64 teamID = 3;</code>
+     * <code>optional int64 teamID = 3;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -32935,7 +32969,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
      * </pre>
      *
-     * <code>string userPhone = 4;</code>
+     * <code>optional string userPhone = 4;</code>
      */
     public java.lang.String getUserPhone() {
       java.lang.Object ref = userPhone_;
@@ -32954,7 +32988,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
      * </pre>
      *
-     * <code>string userPhone = 4;</code>
+     * <code>optional string userPhone = 4;</code>
      */
     public com.google.protobuf.ByteString
         getUserPhoneBytes() {
@@ -32977,7 +33011,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
      * </pre>
      *
-     * <code>string userName = 5;</code>
+     * <code>optional string userName = 5;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
@@ -32996,7 +33030,7 @@ public final class ProtoMessage {
      * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
      * </pre>
      *
-     * <code>string userName = 5;</code>
+     * <code>optional string userName = 5;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
@@ -33019,7 +33053,7 @@ public final class ProtoMessage {
      * &#64;see ApplyTeamType
      * </pre>
      *
-     * <code>int32 applyType = 6;</code>
+     * <code>optional int32 applyType = 6;</code>
      */
     public int getApplyType() {
       return applyType_;
@@ -33120,7 +33154,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TEAMNAME_FIELD_NUMBER;
@@ -33386,13 +33420,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -33401,7 +33435,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -33412,7 +33446,7 @@ public final class ProtoMessage {
 
       private java.lang.Object teamName_ = "";
       /**
-       * <code>string teamName = 2;</code>
+       * <code>optional string teamName = 2;</code>
        */
       public java.lang.String getTeamName() {
         java.lang.Object ref = teamName_;
@@ -33427,7 +33461,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string teamName = 2;</code>
+       * <code>optional string teamName = 2;</code>
        */
       public com.google.protobuf.ByteString
           getTeamNameBytes() {
@@ -33443,7 +33477,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string teamName = 2;</code>
+       * <code>optional string teamName = 2;</code>
        */
       public Builder setTeamName(
           java.lang.String value) {
@@ -33456,7 +33490,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string teamName = 2;</code>
+       * <code>optional string teamName = 2;</code>
        */
       public Builder clearTeamName() {
         
@@ -33465,7 +33499,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string teamName = 2;</code>
+       * <code>optional string teamName = 2;</code>
        */
       public Builder setTeamNameBytes(
           com.google.protobuf.ByteString value) {
@@ -33481,13 +33515,13 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -33496,7 +33530,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public Builder clearTeamID() {
         
@@ -33511,7 +33545,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
        * </pre>
        *
-       * <code>string userPhone = 4;</code>
+       * <code>optional string userPhone = 4;</code>
        */
       public java.lang.String getUserPhone() {
         java.lang.Object ref = userPhone_;
@@ -33530,7 +33564,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
        * </pre>
        *
-       * <code>string userPhone = 4;</code>
+       * <code>optional string userPhone = 4;</code>
        */
       public com.google.protobuf.ByteString
           getUserPhoneBytes() {
@@ -33550,7 +33584,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
        * </pre>
        *
-       * <code>string userPhone = 4;</code>
+       * <code>optional string userPhone = 4;</code>
        */
       public Builder setUserPhone(
           java.lang.String value) {
@@ -33567,7 +33601,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
        * </pre>
        *
-       * <code>string userPhone = 4;</code>
+       * <code>optional string userPhone = 4;</code>
        */
       public Builder clearUserPhone() {
         
@@ -33580,7 +33614,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的手机号；邀请加入时为邀请者的手机号
        * </pre>
        *
-       * <code>string userPhone = 4;</code>
+       * <code>optional string userPhone = 4;</code>
        */
       public Builder setUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -33600,7 +33634,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
        * </pre>
        *
-       * <code>string userName = 5;</code>
+       * <code>optional string userName = 5;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -33619,7 +33653,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
        * </pre>
        *
-       * <code>string userName = 5;</code>
+       * <code>optional string userName = 5;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
@@ -33639,7 +33673,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
        * </pre>
        *
-       * <code>string userName = 5;</code>
+       * <code>optional string userName = 5;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
@@ -33656,7 +33690,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
        * </pre>
        *
-       * <code>string userName = 5;</code>
+       * <code>optional string userName = 5;</code>
        */
       public Builder clearUserName() {
         
@@ -33669,7 +33703,7 @@ public final class ProtoMessage {
        * 申请加入时，为成员的名称；邀请加入时为请邀者的名称
        * </pre>
        *
-       * <code>string userName = 5;</code>
+       * <code>optional string userName = 5;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -33689,7 +33723,7 @@ public final class ProtoMessage {
        * &#64;see ApplyTeamType
        * </pre>
        *
-       * <code>int32 applyType = 6;</code>
+       * <code>optional int32 applyType = 6;</code>
        */
       public int getApplyType() {
         return applyType_;
@@ -33699,7 +33733,7 @@ public final class ProtoMessage {
        * &#64;see ApplyTeamType
        * </pre>
        *
-       * <code>int32 applyType = 6;</code>
+       * <code>optional int32 applyType = 6;</code>
        */
       public Builder setApplyType(int value) {
         
@@ -33712,7 +33746,7 @@ public final class ProtoMessage {
        * &#64;see ApplyTeamType
        * </pre>
        *
-       * <code>int32 applyType = 6;</code>
+       * <code>optional int32 applyType = 6;</code>
        */
       public Builder clearApplyType() {
         
@@ -33774,7 +33808,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -33891,7 +33925,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -33994,7 +34028,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getApplyCount() > 0) {
@@ -34266,13 +34300,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -34281,7 +34315,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -34583,22 +34617,22 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>int64 teamID = 3;</code>
+     * <code>optional int64 teamID = 3;</code>
      */
     long getTeamID();
 
@@ -34607,7 +34641,7 @@ public final class ProtoMessage {
      * 接爱或拒绝
      * </pre>
      *
-     * <code>int32 acceptType = 4;</code>
+     * <code>optional int32 acceptType = 4;</code>
      */
     int getAcceptType();
 
@@ -34616,7 +34650,7 @@ public final class ProtoMessage {
      * 申请或邀请
      * </pre>
      *
-     * <code>int32 applyType = 5;</code>
+     * <code>optional int32 applyType = 5;</code>
      */
     int getApplyType();
 
@@ -34769,7 +34803,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -34778,7 +34812,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -34793,7 +34827,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -34812,7 +34846,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 3;
     private long teamID_;
     /**
-     * <code>int64 teamID = 3;</code>
+     * <code>optional int64 teamID = 3;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -34825,7 +34859,7 @@ public final class ProtoMessage {
      * 接爱或拒绝
      * </pre>
      *
-     * <code>int32 acceptType = 4;</code>
+     * <code>optional int32 acceptType = 4;</code>
      */
     public int getAcceptType() {
       return acceptType_;
@@ -34838,7 +34872,7 @@ public final class ProtoMessage {
      * 申请或邀请
      * </pre>
      *
-     * <code>int32 applyType = 5;</code>
+     * <code>optional int32 applyType = 5;</code>
      */
     public int getApplyType() {
       return applyType_;
@@ -34990,7 +35024,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -35271,13 +35305,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -35286,7 +35320,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -35297,7 +35331,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -35312,7 +35346,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -35328,7 +35362,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -35341,7 +35375,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -35350,7 +35384,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -35366,13 +35400,13 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -35381,7 +35415,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public Builder clearTeamID() {
         
@@ -35396,7 +35430,7 @@ public final class ProtoMessage {
        * 接爱或拒绝
        * </pre>
        *
-       * <code>int32 acceptType = 4;</code>
+       * <code>optional int32 acceptType = 4;</code>
        */
       public int getAcceptType() {
         return acceptType_;
@@ -35406,7 +35440,7 @@ public final class ProtoMessage {
        * 接爱或拒绝
        * </pre>
        *
-       * <code>int32 acceptType = 4;</code>
+       * <code>optional int32 acceptType = 4;</code>
        */
       public Builder setAcceptType(int value) {
         
@@ -35419,7 +35453,7 @@ public final class ProtoMessage {
        * 接爱或拒绝
        * </pre>
        *
-       * <code>int32 acceptType = 4;</code>
+       * <code>optional int32 acceptType = 4;</code>
        */
       public Builder clearAcceptType() {
         
@@ -35434,7 +35468,7 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>int32 applyType = 5;</code>
+       * <code>optional int32 applyType = 5;</code>
        */
       public int getApplyType() {
         return applyType_;
@@ -35444,7 +35478,7 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>int32 applyType = 5;</code>
+       * <code>optional int32 applyType = 5;</code>
        */
       public Builder setApplyType(int value) {
         
@@ -35457,7 +35491,7 @@ public final class ProtoMessage {
        * 申请或邀请
        * </pre>
        *
-       * <code>int32 applyType = 5;</code>
+       * <code>optional int32 applyType = 5;</code>
        */
       public Builder clearApplyType() {
         
@@ -35649,70 +35683,70 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string userPhone = 2;</code>
+     * <code>optional string userPhone = 2;</code>
      */
     java.lang.String getUserPhone();
     /**
-     * <code>string userPhone = 2;</code>
+     * <code>optional string userPhone = 2;</code>
      */
     com.google.protobuf.ByteString
         getUserPhoneBytes();
 
     /**
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     java.lang.String getUserName();
     /**
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
 
     /**
-     * <code>string nickName = 4;</code>
+     * <code>optional string nickName = 4;</code>
      */
     java.lang.String getNickName();
     /**
-     * <code>string nickName = 4;</code>
+     * <code>optional string nickName = 4;</code>
      */
     com.google.protobuf.ByteString
         getNickNameBytes();
 
     /**
-     * <code>int32 role = 5;</code>
+     * <code>optional int32 role = 5;</code>
      */
     int getRole();
 
     /**
-     * <code>int32 memberPriority = 6;</code>
+     * <code>optional int32 memberPriority = 6;</code>
      */
     int getMemberPriority();
 
     /**
-     * <code>int64 teamID = 7;</code>
+     * <code>optional int64 teamID = 7;</code>
      */
     long getTeamID();
 
     /**
-     * <code>int64 userID = 8;</code>
+     * <code>optional int64 userID = 8;</code>
      */
     long getUserID();
 
     /**
-     * <code>.UserInfo userInfo = 9;</code>
+     * <code>optional .UserInfo userInfo = 9;</code>
      */
     boolean hasUserInfo();
     /**
-     * <code>.UserInfo userInfo = 9;</code>
+     * <code>optional .UserInfo userInfo = 9;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo getUserInfo();
     /**
-     * <code>.UserInfo userInfo = 9;</code>
+     * <code>optional .UserInfo userInfo = 9;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder getUserInfoOrBuilder();
   }
@@ -35845,7 +35879,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -35854,7 +35888,7 @@ public final class ProtoMessage {
     public static final int USERPHONE_FIELD_NUMBER = 2;
     private volatile java.lang.Object userPhone_;
     /**
-     * <code>string userPhone = 2;</code>
+     * <code>optional string userPhone = 2;</code>
      */
     public java.lang.String getUserPhone() {
       java.lang.Object ref = userPhone_;
@@ -35869,7 +35903,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string userPhone = 2;</code>
+     * <code>optional string userPhone = 2;</code>
      */
     public com.google.protobuf.ByteString
         getUserPhoneBytes() {
@@ -35888,7 +35922,7 @@ public final class ProtoMessage {
     public static final int USERNAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object userName_;
     /**
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
@@ -35903,7 +35937,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string userName = 3;</code>
+     * <code>optional string userName = 3;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
@@ -35922,7 +35956,7 @@ public final class ProtoMessage {
     public static final int NICKNAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object nickName_;
     /**
-     * <code>string nickName = 4;</code>
+     * <code>optional string nickName = 4;</code>
      */
     public java.lang.String getNickName() {
       java.lang.Object ref = nickName_;
@@ -35937,7 +35971,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string nickName = 4;</code>
+     * <code>optional string nickName = 4;</code>
      */
     public com.google.protobuf.ByteString
         getNickNameBytes() {
@@ -35956,7 +35990,7 @@ public final class ProtoMessage {
     public static final int ROLE_FIELD_NUMBER = 5;
     private int role_;
     /**
-     * <code>int32 role = 5;</code>
+     * <code>optional int32 role = 5;</code>
      */
     public int getRole() {
       return role_;
@@ -35965,7 +35999,7 @@ public final class ProtoMessage {
     public static final int MEMBERPRIORITY_FIELD_NUMBER = 6;
     private int memberPriority_;
     /**
-     * <code>int32 memberPriority = 6;</code>
+     * <code>optional int32 memberPriority = 6;</code>
      */
     public int getMemberPriority() {
       return memberPriority_;
@@ -35974,7 +36008,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 7;
     private long teamID_;
     /**
-     * <code>int64 teamID = 7;</code>
+     * <code>optional int64 teamID = 7;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -35983,7 +36017,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 8;
     private long userID_;
     /**
-     * <code>int64 userID = 8;</code>
+     * <code>optional int64 userID = 8;</code>
      */
     public long getUserID() {
       return userID_;
@@ -35992,19 +36026,19 @@ public final class ProtoMessage {
     public static final int USERINFO_FIELD_NUMBER = 9;
     private com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo userInfo_;
     /**
-     * <code>.UserInfo userInfo = 9;</code>
+     * <code>optional .UserInfo userInfo = 9;</code>
      */
     public boolean hasUserInfo() {
       return userInfo_ != null;
     }
     /**
-     * <code>.UserInfo userInfo = 9;</code>
+     * <code>optional .UserInfo userInfo = 9;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo getUserInfo() {
       return userInfo_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.getDefaultInstance() : userInfo_;
     }
     /**
-     * <code>.UserInfo userInfo = 9;</code>
+     * <code>optional .UserInfo userInfo = 9;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder getUserInfoOrBuilder() {
       return getUserInfo();
@@ -36135,7 +36169,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + USERPHONE_FIELD_NUMBER;
@@ -36432,13 +36466,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -36447,7 +36481,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -36458,7 +36492,7 @@ public final class ProtoMessage {
 
       private java.lang.Object userPhone_ = "";
       /**
-       * <code>string userPhone = 2;</code>
+       * <code>optional string userPhone = 2;</code>
        */
       public java.lang.String getUserPhone() {
         java.lang.Object ref = userPhone_;
@@ -36473,7 +36507,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string userPhone = 2;</code>
+       * <code>optional string userPhone = 2;</code>
        */
       public com.google.protobuf.ByteString
           getUserPhoneBytes() {
@@ -36489,7 +36523,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string userPhone = 2;</code>
+       * <code>optional string userPhone = 2;</code>
        */
       public Builder setUserPhone(
           java.lang.String value) {
@@ -36502,7 +36536,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string userPhone = 2;</code>
+       * <code>optional string userPhone = 2;</code>
        */
       public Builder clearUserPhone() {
         
@@ -36511,7 +36545,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string userPhone = 2;</code>
+       * <code>optional string userPhone = 2;</code>
        */
       public Builder setUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -36527,7 +36561,7 @@ public final class ProtoMessage {
 
       private java.lang.Object userName_ = "";
       /**
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -36542,7 +36576,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
@@ -36558,7 +36592,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
@@ -36571,7 +36605,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public Builder clearUserName() {
         
@@ -36580,7 +36614,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string userName = 3;</code>
+       * <code>optional string userName = 3;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -36596,7 +36630,7 @@ public final class ProtoMessage {
 
       private java.lang.Object nickName_ = "";
       /**
-       * <code>string nickName = 4;</code>
+       * <code>optional string nickName = 4;</code>
        */
       public java.lang.String getNickName() {
         java.lang.Object ref = nickName_;
@@ -36611,7 +36645,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string nickName = 4;</code>
+       * <code>optional string nickName = 4;</code>
        */
       public com.google.protobuf.ByteString
           getNickNameBytes() {
@@ -36627,7 +36661,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string nickName = 4;</code>
+       * <code>optional string nickName = 4;</code>
        */
       public Builder setNickName(
           java.lang.String value) {
@@ -36640,7 +36674,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string nickName = 4;</code>
+       * <code>optional string nickName = 4;</code>
        */
       public Builder clearNickName() {
         
@@ -36649,7 +36683,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string nickName = 4;</code>
+       * <code>optional string nickName = 4;</code>
        */
       public Builder setNickNameBytes(
           com.google.protobuf.ByteString value) {
@@ -36665,13 +36699,13 @@ public final class ProtoMessage {
 
       private int role_ ;
       /**
-       * <code>int32 role = 5;</code>
+       * <code>optional int32 role = 5;</code>
        */
       public int getRole() {
         return role_;
       }
       /**
-       * <code>int32 role = 5;</code>
+       * <code>optional int32 role = 5;</code>
        */
       public Builder setRole(int value) {
         
@@ -36680,7 +36714,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 role = 5;</code>
+       * <code>optional int32 role = 5;</code>
        */
       public Builder clearRole() {
         
@@ -36691,13 +36725,13 @@ public final class ProtoMessage {
 
       private int memberPriority_ ;
       /**
-       * <code>int32 memberPriority = 6;</code>
+       * <code>optional int32 memberPriority = 6;</code>
        */
       public int getMemberPriority() {
         return memberPriority_;
       }
       /**
-       * <code>int32 memberPriority = 6;</code>
+       * <code>optional int32 memberPriority = 6;</code>
        */
       public Builder setMemberPriority(int value) {
         
@@ -36706,7 +36740,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 memberPriority = 6;</code>
+       * <code>optional int32 memberPriority = 6;</code>
        */
       public Builder clearMemberPriority() {
         
@@ -36717,13 +36751,13 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>int64 teamID = 7;</code>
+       * <code>optional int64 teamID = 7;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>int64 teamID = 7;</code>
+       * <code>optional int64 teamID = 7;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -36732,7 +36766,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 teamID = 7;</code>
+       * <code>optional int64 teamID = 7;</code>
        */
       public Builder clearTeamID() {
         
@@ -36743,13 +36777,13 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>int64 userID = 8;</code>
+       * <code>optional int64 userID = 8;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>int64 userID = 8;</code>
+       * <code>optional int64 userID = 8;</code>
        */
       public Builder setUserID(long value) {
         
@@ -36758,7 +36792,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 userID = 8;</code>
+       * <code>optional int64 userID = 8;</code>
        */
       public Builder clearUserID() {
         
@@ -36771,13 +36805,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder> userInfoBuilder_;
       /**
-       * <code>.UserInfo userInfo = 9;</code>
+       * <code>optional .UserInfo userInfo = 9;</code>
        */
       public boolean hasUserInfo() {
         return userInfoBuilder_ != null || userInfo_ != null;
       }
       /**
-       * <code>.UserInfo userInfo = 9;</code>
+       * <code>optional .UserInfo userInfo = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo getUserInfo() {
         if (userInfoBuilder_ == null) {
@@ -36787,7 +36821,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.UserInfo userInfo = 9;</code>
+       * <code>optional .UserInfo userInfo = 9;</code>
        */
       public Builder setUserInfo(com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo value) {
         if (userInfoBuilder_ == null) {
@@ -36803,7 +36837,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.UserInfo userInfo = 9;</code>
+       * <code>optional .UserInfo userInfo = 9;</code>
        */
       public Builder setUserInfo(
           com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder builderForValue) {
@@ -36817,7 +36851,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.UserInfo userInfo = 9;</code>
+       * <code>optional .UserInfo userInfo = 9;</code>
        */
       public Builder mergeUserInfo(com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo value) {
         if (userInfoBuilder_ == null) {
@@ -36835,7 +36869,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.UserInfo userInfo = 9;</code>
+       * <code>optional .UserInfo userInfo = 9;</code>
        */
       public Builder clearUserInfo() {
         if (userInfoBuilder_ == null) {
@@ -36849,7 +36883,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.UserInfo userInfo = 9;</code>
+       * <code>optional .UserInfo userInfo = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder getUserInfoBuilder() {
         
@@ -36857,7 +36891,7 @@ public final class ProtoMessage {
         return getUserInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>.UserInfo userInfo = 9;</code>
+       * <code>optional .UserInfo userInfo = 9;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder getUserInfoOrBuilder() {
         if (userInfoBuilder_ != null) {
@@ -36868,7 +36902,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.UserInfo userInfo = 9;</code>
+       * <code>optional .UserInfo userInfo = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfo.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.UserInfoOrBuilder> 
@@ -36937,7 +36971,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -36966,7 +37000,7 @@ public final class ProtoMessage {
         int index);
 
     /**
-     * <code>int64 teamID = 3;</code>
+     * <code>optional int64 teamID = 3;</code>
      */
     long getTeamID();
 
@@ -36975,7 +37009,7 @@ public final class ProtoMessage {
      * RequestFlag
      * </pre>
      *
-     * <code>int32 requestFlag = 4;</code>
+     * <code>optional int32 requestFlag = 4;</code>
      */
     int getRequestFlag();
   }
@@ -37076,7 +37110,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -37120,7 +37154,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 3;
     private long teamID_;
     /**
-     * <code>int64 teamID = 3;</code>
+     * <code>optional int64 teamID = 3;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -37133,7 +37167,7 @@ public final class ProtoMessage {
      * RequestFlag
      * </pre>
      *
-     * <code>int32 requestFlag = 4;</code>
+     * <code>optional int32 requestFlag = 4;</code>
      */
     public int getRequestFlag() {
       return requestFlag_;
@@ -37219,7 +37253,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getMembersCount() > 0) {
@@ -37504,13 +37538,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -37519,7 +37553,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -37770,13 +37804,13 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -37785,7 +37819,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public Builder clearTeamID() {
         
@@ -37800,7 +37834,7 @@ public final class ProtoMessage {
        * RequestFlag
        * </pre>
        *
-       * <code>int32 requestFlag = 4;</code>
+       * <code>optional int32 requestFlag = 4;</code>
        */
       public int getRequestFlag() {
         return requestFlag_;
@@ -37810,7 +37844,7 @@ public final class ProtoMessage {
        * RequestFlag
        * </pre>
        *
-       * <code>int32 requestFlag = 4;</code>
+       * <code>optional int32 requestFlag = 4;</code>
        */
       public Builder setRequestFlag(int value) {
         
@@ -37823,7 +37857,7 @@ public final class ProtoMessage {
        * RequestFlag
        * </pre>
        *
-       * <code>int32 requestFlag = 4;</code>
+       * <code>optional int32 requestFlag = 4;</code>
        */
       public Builder clearRequestFlag() {
         
@@ -37885,22 +37919,22 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>int64 teamID = 3;</code>
+     * <code>optional int64 teamID = 3;</code>
      */
     long getTeamID();
 
@@ -37909,7 +37943,7 @@ public final class ProtoMessage {
      ** 0 撤销，1：授予 
      * </pre>
      *
-     * <code>int32 admin = 4;</code>
+     * <code>optional int32 admin = 4;</code>
      */
     int getAdmin();
   }
@@ -38003,7 +38037,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -38012,7 +38046,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -38027,7 +38061,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -38046,7 +38080,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 3;
     private long teamID_;
     /**
-     * <code>int64 teamID = 3;</code>
+     * <code>optional int64 teamID = 3;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -38059,7 +38093,7 @@ public final class ProtoMessage {
      ** 0 撤销，1：授予 
      * </pre>
      *
-     * <code>int32 admin = 4;</code>
+     * <code>optional int32 admin = 4;</code>
      */
     public int getAdmin() {
       return admin_;
@@ -38144,7 +38178,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -38388,13 +38422,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -38403,7 +38437,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -38414,7 +38448,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -38429,7 +38463,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -38445,7 +38479,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -38458,7 +38492,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -38467,7 +38501,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -38483,13 +38517,13 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -38498,7 +38532,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public Builder clearTeamID() {
         
@@ -38513,7 +38547,7 @@ public final class ProtoMessage {
        ** 0 撤销，1：授予 
        * </pre>
        *
-       * <code>int32 admin = 4;</code>
+       * <code>optional int32 admin = 4;</code>
        */
       public int getAdmin() {
         return admin_;
@@ -38523,7 +38557,7 @@ public final class ProtoMessage {
        ** 0 撤销，1：授予 
        * </pre>
        *
-       * <code>int32 admin = 4;</code>
+       * <code>optional int32 admin = 4;</code>
        */
       public Builder setAdmin(int value) {
         
@@ -38536,7 +38570,7 @@ public final class ProtoMessage {
        ** 0 撤销，1：授予 
        * </pre>
        *
-       * <code>int32 admin = 4;</code>
+       * <code>optional int32 admin = 4;</code>
        */
       public Builder clearAdmin() {
         
@@ -38598,37 +38632,37 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string fromUserPhone = 2;</code>
+     * <code>optional string fromUserPhone = 2;</code>
      */
     java.lang.String getFromUserPhone();
     /**
-     * <code>string fromUserPhone = 2;</code>
+     * <code>optional string fromUserPhone = 2;</code>
      */
     com.google.protobuf.ByteString
         getFromUserPhoneBytes();
 
     /**
-     * <code>string toUserPhone = 3;</code>
+     * <code>optional string toUserPhone = 3;</code>
      */
     java.lang.String getToUserPhone();
     /**
-     * <code>string toUserPhone = 3;</code>
+     * <code>optional string toUserPhone = 3;</code>
      */
     com.google.protobuf.ByteString
         getToUserPhoneBytes();
 
     /**
-     * <code>int64 toTeamID = 4;</code>
+     * <code>optional int64 toTeamID = 4;</code>
      */
     long getToTeamID();
 
     /**
-     * <code>int32 msgType = 5;</code>
+     * <code>optional int32 msgType = 5;</code>
      */
     int getMsgType();
 
@@ -38638,17 +38672,17 @@ public final class ProtoMessage {
      *bytes msgImage = 7;
      * </pre>
      *
-     * <code>bytes msgContent = 6;</code>
+     * <code>optional bytes msgContent = 6;</code>
      */
     com.google.protobuf.ByteString getMsgContent();
 
     /**
-     * <code>int64 msgID = 7;</code>
+     * <code>optional int64 msgID = 7;</code>
      */
     long getMsgID();
 
     /**
-     * <code>int64 msgTime = 8;</code>
+     * <code>optional int64 msgTime = 8;</code>
      */
     long getMsgTime();
 
@@ -38657,7 +38691,7 @@ public final class ProtoMessage {
      * 由发送端传来的数据。再返回给客户端，有助于客户端找回原来发送的记录
      * </pre>
      *
-     * <code>int64 msgSN = 9;</code>
+     * <code>optional int64 msgSN = 9;</code>
      */
     long getMsgSN();
 
@@ -38666,7 +38700,7 @@ public final class ProtoMessage {
      * 附件真实大小
      * </pre>
      *
-     * <code>int64 msgSize = 10;</code>
+     * <code>optional int64 msgSize = 10;</code>
      */
     long getMsgSize();
 
@@ -38675,7 +38709,7 @@ public final class ProtoMessage {
      * 附件校验字
      * </pre>
      *
-     * <code>bytes msgSum = 11;</code>
+     * <code>optional bytes msgSum = 11;</code>
      */
     com.google.protobuf.ByteString getMsgSum();
   }
@@ -38816,7 +38850,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -38825,7 +38859,7 @@ public final class ProtoMessage {
     public static final int FROMUSERPHONE_FIELD_NUMBER = 2;
     private volatile java.lang.Object fromUserPhone_;
     /**
-     * <code>string fromUserPhone = 2;</code>
+     * <code>optional string fromUserPhone = 2;</code>
      */
     public java.lang.String getFromUserPhone() {
       java.lang.Object ref = fromUserPhone_;
@@ -38840,7 +38874,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string fromUserPhone = 2;</code>
+     * <code>optional string fromUserPhone = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFromUserPhoneBytes() {
@@ -38859,7 +38893,7 @@ public final class ProtoMessage {
     public static final int TOUSERPHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object toUserPhone_;
     /**
-     * <code>string toUserPhone = 3;</code>
+     * <code>optional string toUserPhone = 3;</code>
      */
     public java.lang.String getToUserPhone() {
       java.lang.Object ref = toUserPhone_;
@@ -38874,7 +38908,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string toUserPhone = 3;</code>
+     * <code>optional string toUserPhone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getToUserPhoneBytes() {
@@ -38893,7 +38927,7 @@ public final class ProtoMessage {
     public static final int TOTEAMID_FIELD_NUMBER = 4;
     private long toTeamID_;
     /**
-     * <code>int64 toTeamID = 4;</code>
+     * <code>optional int64 toTeamID = 4;</code>
      */
     public long getToTeamID() {
       return toTeamID_;
@@ -38902,7 +38936,7 @@ public final class ProtoMessage {
     public static final int MSGTYPE_FIELD_NUMBER = 5;
     private int msgType_;
     /**
-     * <code>int32 msgType = 5;</code>
+     * <code>optional int32 msgType = 5;</code>
      */
     public int getMsgType() {
       return msgType_;
@@ -38916,7 +38950,7 @@ public final class ProtoMessage {
      *bytes msgImage = 7;
      * </pre>
      *
-     * <code>bytes msgContent = 6;</code>
+     * <code>optional bytes msgContent = 6;</code>
      */
     public com.google.protobuf.ByteString getMsgContent() {
       return msgContent_;
@@ -38925,7 +38959,7 @@ public final class ProtoMessage {
     public static final int MSGID_FIELD_NUMBER = 7;
     private long msgID_;
     /**
-     * <code>int64 msgID = 7;</code>
+     * <code>optional int64 msgID = 7;</code>
      */
     public long getMsgID() {
       return msgID_;
@@ -38934,7 +38968,7 @@ public final class ProtoMessage {
     public static final int MSGTIME_FIELD_NUMBER = 8;
     private long msgTime_;
     /**
-     * <code>int64 msgTime = 8;</code>
+     * <code>optional int64 msgTime = 8;</code>
      */
     public long getMsgTime() {
       return msgTime_;
@@ -38947,7 +38981,7 @@ public final class ProtoMessage {
      * 由发送端传来的数据。再返回给客户端，有助于客户端找回原来发送的记录
      * </pre>
      *
-     * <code>int64 msgSN = 9;</code>
+     * <code>optional int64 msgSN = 9;</code>
      */
     public long getMsgSN() {
       return msgSN_;
@@ -38960,7 +38994,7 @@ public final class ProtoMessage {
      * 附件真实大小
      * </pre>
      *
-     * <code>int64 msgSize = 10;</code>
+     * <code>optional int64 msgSize = 10;</code>
      */
     public long getMsgSize() {
       return msgSize_;
@@ -38973,7 +39007,7 @@ public final class ProtoMessage {
      * 附件校验字
      * </pre>
      *
-     * <code>bytes msgSum = 11;</code>
+     * <code>optional bytes msgSum = 11;</code>
      */
     public com.google.protobuf.ByteString getMsgSum() {
       return msgSum_;
@@ -39120,7 +39154,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FROMUSERPHONE_FIELD_NUMBER;
@@ -39429,13 +39463,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -39444,7 +39478,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -39455,7 +39489,7 @@ public final class ProtoMessage {
 
       private java.lang.Object fromUserPhone_ = "";
       /**
-       * <code>string fromUserPhone = 2;</code>
+       * <code>optional string fromUserPhone = 2;</code>
        */
       public java.lang.String getFromUserPhone() {
         java.lang.Object ref = fromUserPhone_;
@@ -39470,7 +39504,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string fromUserPhone = 2;</code>
+       * <code>optional string fromUserPhone = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFromUserPhoneBytes() {
@@ -39486,7 +39520,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string fromUserPhone = 2;</code>
+       * <code>optional string fromUserPhone = 2;</code>
        */
       public Builder setFromUserPhone(
           java.lang.String value) {
@@ -39499,7 +39533,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string fromUserPhone = 2;</code>
+       * <code>optional string fromUserPhone = 2;</code>
        */
       public Builder clearFromUserPhone() {
         
@@ -39508,7 +39542,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string fromUserPhone = 2;</code>
+       * <code>optional string fromUserPhone = 2;</code>
        */
       public Builder setFromUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -39524,7 +39558,7 @@ public final class ProtoMessage {
 
       private java.lang.Object toUserPhone_ = "";
       /**
-       * <code>string toUserPhone = 3;</code>
+       * <code>optional string toUserPhone = 3;</code>
        */
       public java.lang.String getToUserPhone() {
         java.lang.Object ref = toUserPhone_;
@@ -39539,7 +39573,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string toUserPhone = 3;</code>
+       * <code>optional string toUserPhone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getToUserPhoneBytes() {
@@ -39555,7 +39589,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string toUserPhone = 3;</code>
+       * <code>optional string toUserPhone = 3;</code>
        */
       public Builder setToUserPhone(
           java.lang.String value) {
@@ -39568,7 +39602,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string toUserPhone = 3;</code>
+       * <code>optional string toUserPhone = 3;</code>
        */
       public Builder clearToUserPhone() {
         
@@ -39577,7 +39611,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string toUserPhone = 3;</code>
+       * <code>optional string toUserPhone = 3;</code>
        */
       public Builder setToUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -39593,13 +39627,13 @@ public final class ProtoMessage {
 
       private long toTeamID_ ;
       /**
-       * <code>int64 toTeamID = 4;</code>
+       * <code>optional int64 toTeamID = 4;</code>
        */
       public long getToTeamID() {
         return toTeamID_;
       }
       /**
-       * <code>int64 toTeamID = 4;</code>
+       * <code>optional int64 toTeamID = 4;</code>
        */
       public Builder setToTeamID(long value) {
         
@@ -39608,7 +39642,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 toTeamID = 4;</code>
+       * <code>optional int64 toTeamID = 4;</code>
        */
       public Builder clearToTeamID() {
         
@@ -39619,13 +39653,13 @@ public final class ProtoMessage {
 
       private int msgType_ ;
       /**
-       * <code>int32 msgType = 5;</code>
+       * <code>optional int32 msgType = 5;</code>
        */
       public int getMsgType() {
         return msgType_;
       }
       /**
-       * <code>int32 msgType = 5;</code>
+       * <code>optional int32 msgType = 5;</code>
        */
       public Builder setMsgType(int value) {
         
@@ -39634,7 +39668,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 msgType = 5;</code>
+       * <code>optional int32 msgType = 5;</code>
        */
       public Builder clearMsgType() {
         
@@ -39650,7 +39684,7 @@ public final class ProtoMessage {
        *bytes msgImage = 7;
        * </pre>
        *
-       * <code>bytes msgContent = 6;</code>
+       * <code>optional bytes msgContent = 6;</code>
        */
       public com.google.protobuf.ByteString getMsgContent() {
         return msgContent_;
@@ -39661,7 +39695,7 @@ public final class ProtoMessage {
        *bytes msgImage = 7;
        * </pre>
        *
-       * <code>bytes msgContent = 6;</code>
+       * <code>optional bytes msgContent = 6;</code>
        */
       public Builder setMsgContent(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -39678,7 +39712,7 @@ public final class ProtoMessage {
        *bytes msgImage = 7;
        * </pre>
        *
-       * <code>bytes msgContent = 6;</code>
+       * <code>optional bytes msgContent = 6;</code>
        */
       public Builder clearMsgContent() {
         
@@ -39689,13 +39723,13 @@ public final class ProtoMessage {
 
       private long msgID_ ;
       /**
-       * <code>int64 msgID = 7;</code>
+       * <code>optional int64 msgID = 7;</code>
        */
       public long getMsgID() {
         return msgID_;
       }
       /**
-       * <code>int64 msgID = 7;</code>
+       * <code>optional int64 msgID = 7;</code>
        */
       public Builder setMsgID(long value) {
         
@@ -39704,7 +39738,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 msgID = 7;</code>
+       * <code>optional int64 msgID = 7;</code>
        */
       public Builder clearMsgID() {
         
@@ -39715,13 +39749,13 @@ public final class ProtoMessage {
 
       private long msgTime_ ;
       /**
-       * <code>int64 msgTime = 8;</code>
+       * <code>optional int64 msgTime = 8;</code>
        */
       public long getMsgTime() {
         return msgTime_;
       }
       /**
-       * <code>int64 msgTime = 8;</code>
+       * <code>optional int64 msgTime = 8;</code>
        */
       public Builder setMsgTime(long value) {
         
@@ -39730,7 +39764,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 msgTime = 8;</code>
+       * <code>optional int64 msgTime = 8;</code>
        */
       public Builder clearMsgTime() {
         
@@ -39745,7 +39779,7 @@ public final class ProtoMessage {
        * 由发送端传来的数据。再返回给客户端，有助于客户端找回原来发送的记录
        * </pre>
        *
-       * <code>int64 msgSN = 9;</code>
+       * <code>optional int64 msgSN = 9;</code>
        */
       public long getMsgSN() {
         return msgSN_;
@@ -39755,7 +39789,7 @@ public final class ProtoMessage {
        * 由发送端传来的数据。再返回给客户端，有助于客户端找回原来发送的记录
        * </pre>
        *
-       * <code>int64 msgSN = 9;</code>
+       * <code>optional int64 msgSN = 9;</code>
        */
       public Builder setMsgSN(long value) {
         
@@ -39768,7 +39802,7 @@ public final class ProtoMessage {
        * 由发送端传来的数据。再返回给客户端，有助于客户端找回原来发送的记录
        * </pre>
        *
-       * <code>int64 msgSN = 9;</code>
+       * <code>optional int64 msgSN = 9;</code>
        */
       public Builder clearMsgSN() {
         
@@ -39783,7 +39817,7 @@ public final class ProtoMessage {
        * 附件真实大小
        * </pre>
        *
-       * <code>int64 msgSize = 10;</code>
+       * <code>optional int64 msgSize = 10;</code>
        */
       public long getMsgSize() {
         return msgSize_;
@@ -39793,7 +39827,7 @@ public final class ProtoMessage {
        * 附件真实大小
        * </pre>
        *
-       * <code>int64 msgSize = 10;</code>
+       * <code>optional int64 msgSize = 10;</code>
        */
       public Builder setMsgSize(long value) {
         
@@ -39806,7 +39840,7 @@ public final class ProtoMessage {
        * 附件真实大小
        * </pre>
        *
-       * <code>int64 msgSize = 10;</code>
+       * <code>optional int64 msgSize = 10;</code>
        */
       public Builder clearMsgSize() {
         
@@ -39821,7 +39855,7 @@ public final class ProtoMessage {
        * 附件校验字
        * </pre>
        *
-       * <code>bytes msgSum = 11;</code>
+       * <code>optional bytes msgSum = 11;</code>
        */
       public com.google.protobuf.ByteString getMsgSum() {
         return msgSum_;
@@ -39831,7 +39865,7 @@ public final class ProtoMessage {
        * 附件校验字
        * </pre>
        *
-       * <code>bytes msgSum = 11;</code>
+       * <code>optional bytes msgSum = 11;</code>
        */
       public Builder setMsgSum(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -39847,7 +39881,7 @@ public final class ProtoMessage {
        * 附件校验字
        * </pre>
        *
-       * <code>bytes msgSum = 11;</code>
+       * <code>optional bytes msgSum = 11;</code>
        */
       public Builder clearMsgSum() {
         
@@ -39909,17 +39943,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int64 msgID = 2;</code>
+     * <code>optional int64 msgID = 2;</code>
      */
     long getMsgID();
 
     /**
-     * <code>int64 msgTime = 3;</code>
+     * <code>optional int64 msgTime = 3;</code>
      */
     long getMsgTime();
   }
@@ -40006,7 +40040,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -40015,7 +40049,7 @@ public final class ProtoMessage {
     public static final int MSGID_FIELD_NUMBER = 2;
     private long msgID_;
     /**
-     * <code>int64 msgID = 2;</code>
+     * <code>optional int64 msgID = 2;</code>
      */
     public long getMsgID() {
       return msgID_;
@@ -40024,7 +40058,7 @@ public final class ProtoMessage {
     public static final int MSGTIME_FIELD_NUMBER = 3;
     private long msgTime_;
     /**
-     * <code>int64 msgTime = 3;</code>
+     * <code>optional int64 msgTime = 3;</code>
      */
     public long getMsgTime() {
       return msgTime_;
@@ -40101,7 +40135,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + MSGID_FIELD_NUMBER;
@@ -40337,13 +40371,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -40352,7 +40386,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -40363,13 +40397,13 @@ public final class ProtoMessage {
 
       private long msgID_ ;
       /**
-       * <code>int64 msgID = 2;</code>
+       * <code>optional int64 msgID = 2;</code>
        */
       public long getMsgID() {
         return msgID_;
       }
       /**
-       * <code>int64 msgID = 2;</code>
+       * <code>optional int64 msgID = 2;</code>
        */
       public Builder setMsgID(long value) {
         
@@ -40378,7 +40412,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 msgID = 2;</code>
+       * <code>optional int64 msgID = 2;</code>
        */
       public Builder clearMsgID() {
         
@@ -40389,13 +40423,13 @@ public final class ProtoMessage {
 
       private long msgTime_ ;
       /**
-       * <code>int64 msgTime = 3;</code>
+       * <code>optional int64 msgTime = 3;</code>
        */
       public long getMsgTime() {
         return msgTime_;
       }
       /**
-       * <code>int64 msgTime = 3;</code>
+       * <code>optional int64 msgTime = 3;</code>
        */
       public Builder setMsgTime(long value) {
         
@@ -40404,7 +40438,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 msgTime = 3;</code>
+       * <code>optional int64 msgTime = 3;</code>
        */
       public Builder clearMsgTime() {
         
@@ -40660,7 +40694,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       if (getMsgIDsCount() > 0) {
         hash = (37 * hash) + MSGIDS_FIELD_NUMBER;
         hash = (53 * hash) + getMsgIDsList().hashCode();
@@ -41018,7 +41052,7 @@ public final class ProtoMessage {
      * 从哪条消息开始读
      * </pre>
      *
-     * <code>int64 afterMsgID = 1;</code>
+     * <code>optional int64 afterMsgID = 1;</code>
      */
     long getAfterMsgID();
   }
@@ -41097,7 +41131,7 @@ public final class ProtoMessage {
      * 从哪条消息开始读
      * </pre>
      *
-     * <code>int64 afterMsgID = 1;</code>
+     * <code>optional int64 afterMsgID = 1;</code>
      */
     public long getAfterMsgID() {
       return afterMsgID_;
@@ -41156,7 +41190,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + AFTERMSGID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getAfterMsgID());
@@ -41379,7 +41413,7 @@ public final class ProtoMessage {
        * 从哪条消息开始读
        * </pre>
        *
-       * <code>int64 afterMsgID = 1;</code>
+       * <code>optional int64 afterMsgID = 1;</code>
        */
       public long getAfterMsgID() {
         return afterMsgID_;
@@ -41389,7 +41423,7 @@ public final class ProtoMessage {
        * 从哪条消息开始读
        * </pre>
        *
-       * <code>int64 afterMsgID = 1;</code>
+       * <code>optional int64 afterMsgID = 1;</code>
        */
       public Builder setAfterMsgID(long value) {
         
@@ -41402,7 +41436,7 @@ public final class ProtoMessage {
        * 从哪条消息开始读
        * </pre>
        *
-       * <code>int64 afterMsgID = 1;</code>
+       * <code>optional int64 afterMsgID = 1;</code>
        */
       public Builder clearAfterMsgID() {
         
@@ -41464,7 +41498,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -41577,7 +41611,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -41680,7 +41714,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getMsgListCount() > 0) {
@@ -41948,13 +41982,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -41963,7 +41997,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -42265,7 +42299,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -42274,7 +42308,7 @@ public final class ProtoMessage {
      * 单呼对象
      * </pre>
      *
-     * <code>string toUserPhone = 2;</code>
+     * <code>optional string toUserPhone = 2;</code>
      */
     java.lang.String getToUserPhone();
     /**
@@ -42282,13 +42316,13 @@ public final class ProtoMessage {
      * 单呼对象
      * </pre>
      *
-     * <code>string toUserPhone = 2;</code>
+     * <code>optional string toUserPhone = 2;</code>
      */
     com.google.protobuf.ByteString
         getToUserPhoneBytes();
 
     /**
-     * <code>int64 teamID = 3;</code>
+     * <code>optional int64 teamID = 3;</code>
      */
     long getTeamID();
 
@@ -42297,7 +42331,7 @@ public final class ProtoMessage {
      * 后台生成，从1开始，到最大值，然后循环使用
      * </pre>
      *
-     * <code>int64 roomID = 4;</code>
+     * <code>optional int64 roomID = 4;</code>
      */
     long getRoomID();
 
@@ -42305,14 +42339,14 @@ public final class ProtoMessage {
      * <pre>
      * </pre>
      *
-     * <code>string fromUserPhone = 5;</code>
+     * <code>optional string fromUserPhone = 5;</code>
      */
     java.lang.String getFromUserPhone();
     /**
      * <pre>
      * </pre>
      *
-     * <code>string fromUserPhone = 5;</code>
+     * <code>optional string fromUserPhone = 5;</code>
      */
     com.google.protobuf.ByteString
         getFromUserPhoneBytes();
@@ -42322,7 +42356,7 @@ public final class ProtoMessage {
      * 仅用于视频对讲
      * </pre>
      *
-     * <code>.AcceptType accept = 6;</code>
+     * <code>optional .AcceptType accept = 6;</code>
      */
     int getAcceptValue();
     /**
@@ -42330,7 +42364,7 @@ public final class ProtoMessage {
      * 仅用于视频对讲
      * </pre>
      *
-     * <code>.AcceptType accept = 6;</code>
+     * <code>optional .AcceptType accept = 6;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept();
   }
@@ -42438,7 +42472,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -42451,7 +42485,7 @@ public final class ProtoMessage {
      * 单呼对象
      * </pre>
      *
-     * <code>string toUserPhone = 2;</code>
+     * <code>optional string toUserPhone = 2;</code>
      */
     public java.lang.String getToUserPhone() {
       java.lang.Object ref = toUserPhone_;
@@ -42470,7 +42504,7 @@ public final class ProtoMessage {
      * 单呼对象
      * </pre>
      *
-     * <code>string toUserPhone = 2;</code>
+     * <code>optional string toUserPhone = 2;</code>
      */
     public com.google.protobuf.ByteString
         getToUserPhoneBytes() {
@@ -42489,7 +42523,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 3;
     private long teamID_;
     /**
-     * <code>int64 teamID = 3;</code>
+     * <code>optional int64 teamID = 3;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -42502,7 +42536,7 @@ public final class ProtoMessage {
      * 后台生成，从1开始，到最大值，然后循环使用
      * </pre>
      *
-     * <code>int64 roomID = 4;</code>
+     * <code>optional int64 roomID = 4;</code>
      */
     public long getRoomID() {
       return roomID_;
@@ -42514,7 +42548,7 @@ public final class ProtoMessage {
      * <pre>
      * </pre>
      *
-     * <code>string fromUserPhone = 5;</code>
+     * <code>optional string fromUserPhone = 5;</code>
      */
     public java.lang.String getFromUserPhone() {
       java.lang.Object ref = fromUserPhone_;
@@ -42532,7 +42566,7 @@ public final class ProtoMessage {
      * <pre>
      * </pre>
      *
-     * <code>string fromUserPhone = 5;</code>
+     * <code>optional string fromUserPhone = 5;</code>
      */
     public com.google.protobuf.ByteString
         getFromUserPhoneBytes() {
@@ -42555,7 +42589,7 @@ public final class ProtoMessage {
      * 仅用于视频对讲
      * </pre>
      *
-     * <code>.AcceptType accept = 6;</code>
+     * <code>optional .AcceptType accept = 6;</code>
      */
     public int getAcceptValue() {
       return accept_;
@@ -42565,7 +42599,7 @@ public final class ProtoMessage {
      * 仅用于视频对讲
      * </pre>
      *
-     * <code>.AcceptType accept = 6;</code>
+     * <code>optional .AcceptType accept = 6;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept() {
       com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType result = com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType.valueOf(accept_);
@@ -42667,7 +42701,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TOUSERPHONE_FIELD_NUMBER;
@@ -42929,13 +42963,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -42944,7 +42978,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -42959,7 +42993,7 @@ public final class ProtoMessage {
        * 单呼对象
        * </pre>
        *
-       * <code>string toUserPhone = 2;</code>
+       * <code>optional string toUserPhone = 2;</code>
        */
       public java.lang.String getToUserPhone() {
         java.lang.Object ref = toUserPhone_;
@@ -42978,7 +43012,7 @@ public final class ProtoMessage {
        * 单呼对象
        * </pre>
        *
-       * <code>string toUserPhone = 2;</code>
+       * <code>optional string toUserPhone = 2;</code>
        */
       public com.google.protobuf.ByteString
           getToUserPhoneBytes() {
@@ -42998,7 +43032,7 @@ public final class ProtoMessage {
        * 单呼对象
        * </pre>
        *
-       * <code>string toUserPhone = 2;</code>
+       * <code>optional string toUserPhone = 2;</code>
        */
       public Builder setToUserPhone(
           java.lang.String value) {
@@ -43015,7 +43049,7 @@ public final class ProtoMessage {
        * 单呼对象
        * </pre>
        *
-       * <code>string toUserPhone = 2;</code>
+       * <code>optional string toUserPhone = 2;</code>
        */
       public Builder clearToUserPhone() {
         
@@ -43028,7 +43062,7 @@ public final class ProtoMessage {
        * 单呼对象
        * </pre>
        *
-       * <code>string toUserPhone = 2;</code>
+       * <code>optional string toUserPhone = 2;</code>
        */
       public Builder setToUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -43044,13 +43078,13 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -43059,7 +43093,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 teamID = 3;</code>
+       * <code>optional int64 teamID = 3;</code>
        */
       public Builder clearTeamID() {
         
@@ -43074,7 +43108,7 @@ public final class ProtoMessage {
        * 后台生成，从1开始，到最大值，然后循环使用
        * </pre>
        *
-       * <code>int64 roomID = 4;</code>
+       * <code>optional int64 roomID = 4;</code>
        */
       public long getRoomID() {
         return roomID_;
@@ -43084,7 +43118,7 @@ public final class ProtoMessage {
        * 后台生成，从1开始，到最大值，然后循环使用
        * </pre>
        *
-       * <code>int64 roomID = 4;</code>
+       * <code>optional int64 roomID = 4;</code>
        */
       public Builder setRoomID(long value) {
         
@@ -43097,7 +43131,7 @@ public final class ProtoMessage {
        * 后台生成，从1开始，到最大值，然后循环使用
        * </pre>
        *
-       * <code>int64 roomID = 4;</code>
+       * <code>optional int64 roomID = 4;</code>
        */
       public Builder clearRoomID() {
         
@@ -43111,7 +43145,7 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>string fromUserPhone = 5;</code>
+       * <code>optional string fromUserPhone = 5;</code>
        */
       public java.lang.String getFromUserPhone() {
         java.lang.Object ref = fromUserPhone_;
@@ -43129,7 +43163,7 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>string fromUserPhone = 5;</code>
+       * <code>optional string fromUserPhone = 5;</code>
        */
       public com.google.protobuf.ByteString
           getFromUserPhoneBytes() {
@@ -43148,7 +43182,7 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>string fromUserPhone = 5;</code>
+       * <code>optional string fromUserPhone = 5;</code>
        */
       public Builder setFromUserPhone(
           java.lang.String value) {
@@ -43164,7 +43198,7 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>string fromUserPhone = 5;</code>
+       * <code>optional string fromUserPhone = 5;</code>
        */
       public Builder clearFromUserPhone() {
         
@@ -43176,7 +43210,7 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>string fromUserPhone = 5;</code>
+       * <code>optional string fromUserPhone = 5;</code>
        */
       public Builder setFromUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -43196,7 +43230,7 @@ public final class ProtoMessage {
        * 仅用于视频对讲
        * </pre>
        *
-       * <code>.AcceptType accept = 6;</code>
+       * <code>optional .AcceptType accept = 6;</code>
        */
       public int getAcceptValue() {
         return accept_;
@@ -43206,7 +43240,7 @@ public final class ProtoMessage {
        * 仅用于视频对讲
        * </pre>
        *
-       * <code>.AcceptType accept = 6;</code>
+       * <code>optional .AcceptType accept = 6;</code>
        */
       public Builder setAcceptValue(int value) {
         accept_ = value;
@@ -43218,7 +43252,7 @@ public final class ProtoMessage {
        * 仅用于视频对讲
        * </pre>
        *
-       * <code>.AcceptType accept = 6;</code>
+       * <code>optional .AcceptType accept = 6;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept() {
         com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType result = com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType.valueOf(accept_);
@@ -43229,7 +43263,7 @@ public final class ProtoMessage {
        * 仅用于视频对讲
        * </pre>
        *
-       * <code>.AcceptType accept = 6;</code>
+       * <code>optional .AcceptType accept = 6;</code>
        */
       public Builder setAccept(com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType value) {
         if (value == null) {
@@ -43245,7 +43279,7 @@ public final class ProtoMessage {
        * 仅用于视频对讲
        * </pre>
        *
-       * <code>.AcceptType accept = 6;</code>
+       * <code>optional .AcceptType accept = 6;</code>
        */
       public Builder clearAccept() {
         
@@ -43307,22 +43341,22 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>int32 status = 3;</code>
+     * <code>optional int32 status = 3;</code>
      */
     int getStatus();
   }
@@ -43410,7 +43444,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -43419,7 +43453,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -43434,7 +43468,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -43453,7 +43487,7 @@ public final class ProtoMessage {
     public static final int STATUS_FIELD_NUMBER = 3;
     private int status_;
     /**
-     * <code>int32 status = 3;</code>
+     * <code>optional int32 status = 3;</code>
      */
     public int getStatus() {
       return status_;
@@ -43529,7 +43563,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
@@ -43764,13 +43798,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -43779,7 +43813,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -43790,7 +43824,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -43805,7 +43839,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -43821,7 +43855,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -43834,7 +43868,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -43843,7 +43877,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -43859,13 +43893,13 @@ public final class ProtoMessage {
 
       private int status_ ;
       /**
-       * <code>int32 status = 3;</code>
+       * <code>optional int32 status = 3;</code>
        */
       public int getStatus() {
         return status_;
       }
       /**
-       * <code>int32 status = 3;</code>
+       * <code>optional int32 status = 3;</code>
        */
       public Builder setStatus(int value) {
         
@@ -43874,7 +43908,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 status = 3;</code>
+       * <code>optional int32 status = 3;</code>
        */
       public Builder clearStatus() {
         
@@ -43936,17 +43970,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int64 roomID = 2;</code>
+     * <code>optional int64 roomID = 2;</code>
      */
     long getRoomID();
 
     /**
-     * <code>int32 acceptType = 3;</code>
+     * <code>optional int32 acceptType = 3;</code>
      */
     int getAcceptType();
 
@@ -43955,7 +43989,7 @@ public final class ProtoMessage {
      * 当房间关闭后， roomClosed = 1; 其他时间为0
      * </pre>
      *
-     * <code>int32 roomClosed = 4;</code>
+     * <code>optional int32 roomClosed = 4;</code>
      */
     int getRoomClosed();
 
@@ -43988,7 +44022,7 @@ public final class ProtoMessage {
      * 组ID 单呼时为0
      * </pre>
      *
-     * <code>int64 teamID = 6;</code>
+     * <code>optional int64 teamID = 6;</code>
      */
     long getTeamID();
 
@@ -43997,7 +44031,7 @@ public final class ProtoMessage {
      * 发起者的号码
      * </pre>
      *
-     * <code>string phoneNum = 7;</code>
+     * <code>optional string phoneNum = 7;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -44005,7 +44039,7 @@ public final class ProtoMessage {
      * 发起者的号码
      * </pre>
      *
-     * <code>string phoneNum = 7;</code>
+     * <code>optional string phoneNum = 7;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -44015,7 +44049,7 @@ public final class ProtoMessage {
      * 对讲服务器的IP
      * </pre>
      *
-     * <code>string roomIP = 8;</code>
+     * <code>optional string roomIP = 8;</code>
      */
     java.lang.String getRoomIP();
     /**
@@ -44023,7 +44057,7 @@ public final class ProtoMessage {
      * 对讲服务器的IP
      * </pre>
      *
-     * <code>string roomIP = 8;</code>
+     * <code>optional string roomIP = 8;</code>
      */
     com.google.protobuf.ByteString
         getRoomIPBytes();
@@ -44033,7 +44067,7 @@ public final class ProtoMessage {
      * 对讲服务器的的Port
      * </pre>
      *
-     * <code>int32 roomPort = 9;</code>
+     * <code>optional int32 roomPort = 9;</code>
      */
     int getRoomPort();
 
@@ -44042,7 +44076,7 @@ public final class ProtoMessage {
      * 是哪个服务器的 响应，参照：ServerType
      * </pre>
      *
-     * <code>int32 serverType = 10;</code>
+     * <code>optional int32 serverType = 10;</code>
      */
     int getServerType();
 
@@ -44051,7 +44085,7 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>string toUserPhone = 11;</code>
+     * <code>optional string toUserPhone = 11;</code>
      */
     java.lang.String getToUserPhone();
     /**
@@ -44059,7 +44093,7 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>string toUserPhone = 11;</code>
+     * <code>optional string toUserPhone = 11;</code>
      */
     com.google.protobuf.ByteString
         getToUserPhoneBytes();
@@ -44069,7 +44103,7 @@ public final class ProtoMessage {
      * 保存房间的视频URL add by qhb at: 2018-03-19
      * </pre>
      *
-     * <code>string videoUrl = 12;</code>
+     * <code>optional string videoUrl = 12;</code>
      */
     java.lang.String getVideoUrl();
     /**
@@ -44077,7 +44111,7 @@ public final class ProtoMessage {
      * 保存房间的视频URL add by qhb at: 2018-03-19
      * </pre>
      *
-     * <code>string videoUrl = 12;</code>
+     * <code>optional string videoUrl = 12;</code>
      */
     com.google.protobuf.ByteString
         getVideoUrlBytes();
@@ -44231,7 +44265,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -44240,7 +44274,7 @@ public final class ProtoMessage {
     public static final int ROOMID_FIELD_NUMBER = 2;
     private long roomID_;
     /**
-     * <code>int64 roomID = 2;</code>
+     * <code>optional int64 roomID = 2;</code>
      */
     public long getRoomID() {
       return roomID_;
@@ -44249,7 +44283,7 @@ public final class ProtoMessage {
     public static final int ACCEPTTYPE_FIELD_NUMBER = 3;
     private int acceptType_;
     /**
-     * <code>int32 acceptType = 3;</code>
+     * <code>optional int32 acceptType = 3;</code>
      */
     public int getAcceptType() {
       return acceptType_;
@@ -44262,7 +44296,7 @@ public final class ProtoMessage {
      * 当房间关闭后， roomClosed = 1; 其他时间为0
      * </pre>
      *
-     * <code>int32 roomClosed = 4;</code>
+     * <code>optional int32 roomClosed = 4;</code>
      */
     public int getRoomClosed() {
       return roomClosed_;
@@ -44310,7 +44344,7 @@ public final class ProtoMessage {
      * 组ID 单呼时为0
      * </pre>
      *
-     * <code>int64 teamID = 6;</code>
+     * <code>optional int64 teamID = 6;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -44323,7 +44357,7 @@ public final class ProtoMessage {
      * 发起者的号码
      * </pre>
      *
-     * <code>string phoneNum = 7;</code>
+     * <code>optional string phoneNum = 7;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -44342,7 +44376,7 @@ public final class ProtoMessage {
      * 发起者的号码
      * </pre>
      *
-     * <code>string phoneNum = 7;</code>
+     * <code>optional string phoneNum = 7;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -44365,7 +44399,7 @@ public final class ProtoMessage {
      * 对讲服务器的IP
      * </pre>
      *
-     * <code>string roomIP = 8;</code>
+     * <code>optional string roomIP = 8;</code>
      */
     public java.lang.String getRoomIP() {
       java.lang.Object ref = roomIP_;
@@ -44384,7 +44418,7 @@ public final class ProtoMessage {
      * 对讲服务器的IP
      * </pre>
      *
-     * <code>string roomIP = 8;</code>
+     * <code>optional string roomIP = 8;</code>
      */
     public com.google.protobuf.ByteString
         getRoomIPBytes() {
@@ -44407,7 +44441,7 @@ public final class ProtoMessage {
      * 对讲服务器的的Port
      * </pre>
      *
-     * <code>int32 roomPort = 9;</code>
+     * <code>optional int32 roomPort = 9;</code>
      */
     public int getRoomPort() {
       return roomPort_;
@@ -44420,7 +44454,7 @@ public final class ProtoMessage {
      * 是哪个服务器的 响应，参照：ServerType
      * </pre>
      *
-     * <code>int32 serverType = 10;</code>
+     * <code>optional int32 serverType = 10;</code>
      */
     public int getServerType() {
       return serverType_;
@@ -44433,7 +44467,7 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>string toUserPhone = 11;</code>
+     * <code>optional string toUserPhone = 11;</code>
      */
     public java.lang.String getToUserPhone() {
       java.lang.Object ref = toUserPhone_;
@@ -44452,7 +44486,7 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>string toUserPhone = 11;</code>
+     * <code>optional string toUserPhone = 11;</code>
      */
     public com.google.protobuf.ByteString
         getToUserPhoneBytes() {
@@ -44475,7 +44509,7 @@ public final class ProtoMessage {
      * 保存房间的视频URL add by qhb at: 2018-03-19
      * </pre>
      *
-     * <code>string videoUrl = 12;</code>
+     * <code>optional string videoUrl = 12;</code>
      */
     public java.lang.String getVideoUrl() {
       java.lang.Object ref = videoUrl_;
@@ -44494,7 +44528,7 @@ public final class ProtoMessage {
      * 保存房间的视频URL add by qhb at: 2018-03-19
      * </pre>
      *
-     * <code>string videoUrl = 12;</code>
+     * <code>optional string videoUrl = 12;</code>
      */
     public com.google.protobuf.ByteString
         getVideoUrlBytes() {
@@ -44658,7 +44692,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + ROOMID_FIELD_NUMBER;
@@ -45012,13 +45046,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -45027,7 +45061,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -45038,13 +45072,13 @@ public final class ProtoMessage {
 
       private long roomID_ ;
       /**
-       * <code>int64 roomID = 2;</code>
+       * <code>optional int64 roomID = 2;</code>
        */
       public long getRoomID() {
         return roomID_;
       }
       /**
-       * <code>int64 roomID = 2;</code>
+       * <code>optional int64 roomID = 2;</code>
        */
       public Builder setRoomID(long value) {
         
@@ -45053,7 +45087,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 roomID = 2;</code>
+       * <code>optional int64 roomID = 2;</code>
        */
       public Builder clearRoomID() {
         
@@ -45064,13 +45098,13 @@ public final class ProtoMessage {
 
       private int acceptType_ ;
       /**
-       * <code>int32 acceptType = 3;</code>
+       * <code>optional int32 acceptType = 3;</code>
        */
       public int getAcceptType() {
         return acceptType_;
       }
       /**
-       * <code>int32 acceptType = 3;</code>
+       * <code>optional int32 acceptType = 3;</code>
        */
       public Builder setAcceptType(int value) {
         
@@ -45079,7 +45113,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 acceptType = 3;</code>
+       * <code>optional int32 acceptType = 3;</code>
        */
       public Builder clearAcceptType() {
         
@@ -45094,7 +45128,7 @@ public final class ProtoMessage {
        * 当房间关闭后， roomClosed = 1; 其他时间为0
        * </pre>
        *
-       * <code>int32 roomClosed = 4;</code>
+       * <code>optional int32 roomClosed = 4;</code>
        */
       public int getRoomClosed() {
         return roomClosed_;
@@ -45104,7 +45138,7 @@ public final class ProtoMessage {
        * 当房间关闭后， roomClosed = 1; 其他时间为0
        * </pre>
        *
-       * <code>int32 roomClosed = 4;</code>
+       * <code>optional int32 roomClosed = 4;</code>
        */
       public Builder setRoomClosed(int value) {
         
@@ -45117,7 +45151,7 @@ public final class ProtoMessage {
        * 当房间关闭后， roomClosed = 1; 其他时间为0
        * </pre>
        *
-       * <code>int32 roomClosed = 4;</code>
+       * <code>optional int32 roomClosed = 4;</code>
        */
       public Builder clearRoomClosed() {
         
@@ -45372,7 +45406,7 @@ public final class ProtoMessage {
        * 组ID 单呼时为0
        * </pre>
        *
-       * <code>int64 teamID = 6;</code>
+       * <code>optional int64 teamID = 6;</code>
        */
       public long getTeamID() {
         return teamID_;
@@ -45382,7 +45416,7 @@ public final class ProtoMessage {
        * 组ID 单呼时为0
        * </pre>
        *
-       * <code>int64 teamID = 6;</code>
+       * <code>optional int64 teamID = 6;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -45395,7 +45429,7 @@ public final class ProtoMessage {
        * 组ID 单呼时为0
        * </pre>
        *
-       * <code>int64 teamID = 6;</code>
+       * <code>optional int64 teamID = 6;</code>
        */
       public Builder clearTeamID() {
         
@@ -45410,7 +45444,7 @@ public final class ProtoMessage {
        * 发起者的号码
        * </pre>
        *
-       * <code>string phoneNum = 7;</code>
+       * <code>optional string phoneNum = 7;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -45429,7 +45463,7 @@ public final class ProtoMessage {
        * 发起者的号码
        * </pre>
        *
-       * <code>string phoneNum = 7;</code>
+       * <code>optional string phoneNum = 7;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -45449,7 +45483,7 @@ public final class ProtoMessage {
        * 发起者的号码
        * </pre>
        *
-       * <code>string phoneNum = 7;</code>
+       * <code>optional string phoneNum = 7;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -45466,7 +45500,7 @@ public final class ProtoMessage {
        * 发起者的号码
        * </pre>
        *
-       * <code>string phoneNum = 7;</code>
+       * <code>optional string phoneNum = 7;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -45479,7 +45513,7 @@ public final class ProtoMessage {
        * 发起者的号码
        * </pre>
        *
-       * <code>string phoneNum = 7;</code>
+       * <code>optional string phoneNum = 7;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -45499,7 +45533,7 @@ public final class ProtoMessage {
        * 对讲服务器的IP
        * </pre>
        *
-       * <code>string roomIP = 8;</code>
+       * <code>optional string roomIP = 8;</code>
        */
       public java.lang.String getRoomIP() {
         java.lang.Object ref = roomIP_;
@@ -45518,7 +45552,7 @@ public final class ProtoMessage {
        * 对讲服务器的IP
        * </pre>
        *
-       * <code>string roomIP = 8;</code>
+       * <code>optional string roomIP = 8;</code>
        */
       public com.google.protobuf.ByteString
           getRoomIPBytes() {
@@ -45538,7 +45572,7 @@ public final class ProtoMessage {
        * 对讲服务器的IP
        * </pre>
        *
-       * <code>string roomIP = 8;</code>
+       * <code>optional string roomIP = 8;</code>
        */
       public Builder setRoomIP(
           java.lang.String value) {
@@ -45555,7 +45589,7 @@ public final class ProtoMessage {
        * 对讲服务器的IP
        * </pre>
        *
-       * <code>string roomIP = 8;</code>
+       * <code>optional string roomIP = 8;</code>
        */
       public Builder clearRoomIP() {
         
@@ -45568,7 +45602,7 @@ public final class ProtoMessage {
        * 对讲服务器的IP
        * </pre>
        *
-       * <code>string roomIP = 8;</code>
+       * <code>optional string roomIP = 8;</code>
        */
       public Builder setRoomIPBytes(
           com.google.protobuf.ByteString value) {
@@ -45588,7 +45622,7 @@ public final class ProtoMessage {
        * 对讲服务器的的Port
        * </pre>
        *
-       * <code>int32 roomPort = 9;</code>
+       * <code>optional int32 roomPort = 9;</code>
        */
       public int getRoomPort() {
         return roomPort_;
@@ -45598,7 +45632,7 @@ public final class ProtoMessage {
        * 对讲服务器的的Port
        * </pre>
        *
-       * <code>int32 roomPort = 9;</code>
+       * <code>optional int32 roomPort = 9;</code>
        */
       public Builder setRoomPort(int value) {
         
@@ -45611,7 +45645,7 @@ public final class ProtoMessage {
        * 对讲服务器的的Port
        * </pre>
        *
-       * <code>int32 roomPort = 9;</code>
+       * <code>optional int32 roomPort = 9;</code>
        */
       public Builder clearRoomPort() {
         
@@ -45626,7 +45660,7 @@ public final class ProtoMessage {
        * 是哪个服务器的 响应，参照：ServerType
        * </pre>
        *
-       * <code>int32 serverType = 10;</code>
+       * <code>optional int32 serverType = 10;</code>
        */
       public int getServerType() {
         return serverType_;
@@ -45636,7 +45670,7 @@ public final class ProtoMessage {
        * 是哪个服务器的 响应，参照：ServerType
        * </pre>
        *
-       * <code>int32 serverType = 10;</code>
+       * <code>optional int32 serverType = 10;</code>
        */
       public Builder setServerType(int value) {
         
@@ -45649,7 +45683,7 @@ public final class ProtoMessage {
        * 是哪个服务器的 响应，参照：ServerType
        * </pre>
        *
-       * <code>int32 serverType = 10;</code>
+       * <code>optional int32 serverType = 10;</code>
        */
       public Builder clearServerType() {
         
@@ -45664,7 +45698,7 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>string toUserPhone = 11;</code>
+       * <code>optional string toUserPhone = 11;</code>
        */
       public java.lang.String getToUserPhone() {
         java.lang.Object ref = toUserPhone_;
@@ -45683,7 +45717,7 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>string toUserPhone = 11;</code>
+       * <code>optional string toUserPhone = 11;</code>
        */
       public com.google.protobuf.ByteString
           getToUserPhoneBytes() {
@@ -45703,7 +45737,7 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>string toUserPhone = 11;</code>
+       * <code>optional string toUserPhone = 11;</code>
        */
       public Builder setToUserPhone(
           java.lang.String value) {
@@ -45720,7 +45754,7 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>string toUserPhone = 11;</code>
+       * <code>optional string toUserPhone = 11;</code>
        */
       public Builder clearToUserPhone() {
         
@@ -45733,7 +45767,7 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>string toUserPhone = 11;</code>
+       * <code>optional string toUserPhone = 11;</code>
        */
       public Builder setToUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -45753,7 +45787,7 @@ public final class ProtoMessage {
        * 保存房间的视频URL add by qhb at: 2018-03-19
        * </pre>
        *
-       * <code>string videoUrl = 12;</code>
+       * <code>optional string videoUrl = 12;</code>
        */
       public java.lang.String getVideoUrl() {
         java.lang.Object ref = videoUrl_;
@@ -45772,7 +45806,7 @@ public final class ProtoMessage {
        * 保存房间的视频URL add by qhb at: 2018-03-19
        * </pre>
        *
-       * <code>string videoUrl = 12;</code>
+       * <code>optional string videoUrl = 12;</code>
        */
       public com.google.protobuf.ByteString
           getVideoUrlBytes() {
@@ -45792,7 +45826,7 @@ public final class ProtoMessage {
        * 保存房间的视频URL add by qhb at: 2018-03-19
        * </pre>
        *
-       * <code>string videoUrl = 12;</code>
+       * <code>optional string videoUrl = 12;</code>
        */
       public Builder setVideoUrl(
           java.lang.String value) {
@@ -45809,7 +45843,7 @@ public final class ProtoMessage {
        * 保存房间的视频URL add by qhb at: 2018-03-19
        * </pre>
        *
-       * <code>string videoUrl = 12;</code>
+       * <code>optional string videoUrl = 12;</code>
        */
       public Builder clearVideoUrl() {
         
@@ -45822,7 +45856,7 @@ public final class ProtoMessage {
        * 保存房间的视频URL add by qhb at: 2018-03-19
        * </pre>
        *
-       * <code>string videoUrl = 12;</code>
+       * <code>optional string videoUrl = 12;</code>
        */
       public Builder setVideoUrlBytes(
           com.google.protobuf.ByteString value) {
@@ -45889,12 +45923,12 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int64 roomID = 2;</code>
+     * <code>optional int64 roomID = 2;</code>
      */
     long getRoomID();
 
@@ -45903,7 +45937,7 @@ public final class ProtoMessage {
      * 接受或拒绝，当设置为免打扰的时候为拒绝
      * </pre>
      *
-     * <code>int32 acceptType = 3;</code>
+     * <code>optional int32 acceptType = 3;</code>
      */
     int getAcceptType();
 
@@ -45912,7 +45946,7 @@ public final class ProtoMessage {
      * added at 2017-12-21
      * </pre>
      *
-     * <code>int64 teamID = 4;</code>
+     * <code>optional int64 teamID = 4;</code>
      */
     long getTeamID();
 
@@ -45921,7 +45955,7 @@ public final class ProtoMessage {
      * 接收者的帐号
      * </pre>
      *
-     * <code>string phoneNum = 5;</code>
+     * <code>optional string phoneNum = 5;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -45929,7 +45963,7 @@ public final class ProtoMessage {
      * 接收者的帐号
      * </pre>
      *
-     * <code>string phoneNum = 5;</code>
+     * <code>optional string phoneNum = 5;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -45939,7 +45973,7 @@ public final class ProtoMessage {
      * 其他人的帐号
      * </pre>
      *
-     * <code>string friendPhoneNum = 6;</code>
+     * <code>optional string friendPhoneNum = 6;</code>
      */
     java.lang.String getFriendPhoneNum();
     /**
@@ -45947,7 +45981,7 @@ public final class ProtoMessage {
      * 其他人的帐号
      * </pre>
      *
-     * <code>string friendPhoneNum = 6;</code>
+     * <code>optional string friendPhoneNum = 6;</code>
      */
     com.google.protobuf.ByteString
         getFriendPhoneNumBytes();
@@ -46055,7 +46089,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -46064,7 +46098,7 @@ public final class ProtoMessage {
     public static final int ROOMID_FIELD_NUMBER = 2;
     private long roomID_;
     /**
-     * <code>int64 roomID = 2;</code>
+     * <code>optional int64 roomID = 2;</code>
      */
     public long getRoomID() {
       return roomID_;
@@ -46077,7 +46111,7 @@ public final class ProtoMessage {
      * 接受或拒绝，当设置为免打扰的时候为拒绝
      * </pre>
      *
-     * <code>int32 acceptType = 3;</code>
+     * <code>optional int32 acceptType = 3;</code>
      */
     public int getAcceptType() {
       return acceptType_;
@@ -46090,7 +46124,7 @@ public final class ProtoMessage {
      * added at 2017-12-21
      * </pre>
      *
-     * <code>int64 teamID = 4;</code>
+     * <code>optional int64 teamID = 4;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -46103,7 +46137,7 @@ public final class ProtoMessage {
      * 接收者的帐号
      * </pre>
      *
-     * <code>string phoneNum = 5;</code>
+     * <code>optional string phoneNum = 5;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -46122,7 +46156,7 @@ public final class ProtoMessage {
      * 接收者的帐号
      * </pre>
      *
-     * <code>string phoneNum = 5;</code>
+     * <code>optional string phoneNum = 5;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -46145,7 +46179,7 @@ public final class ProtoMessage {
      * 其他人的帐号
      * </pre>
      *
-     * <code>string friendPhoneNum = 6;</code>
+     * <code>optional string friendPhoneNum = 6;</code>
      */
     public java.lang.String getFriendPhoneNum() {
       java.lang.Object ref = friendPhoneNum_;
@@ -46164,7 +46198,7 @@ public final class ProtoMessage {
      * 其他人的帐号
      * </pre>
      *
-     * <code>string friendPhoneNum = 6;</code>
+     * <code>optional string friendPhoneNum = 6;</code>
      */
     public com.google.protobuf.ByteString
         getFriendPhoneNumBytes() {
@@ -46276,7 +46310,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + ROOMID_FIELD_NUMBER;
@@ -46538,13 +46572,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -46553,7 +46587,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -46564,13 +46598,13 @@ public final class ProtoMessage {
 
       private long roomID_ ;
       /**
-       * <code>int64 roomID = 2;</code>
+       * <code>optional int64 roomID = 2;</code>
        */
       public long getRoomID() {
         return roomID_;
       }
       /**
-       * <code>int64 roomID = 2;</code>
+       * <code>optional int64 roomID = 2;</code>
        */
       public Builder setRoomID(long value) {
         
@@ -46579,7 +46613,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 roomID = 2;</code>
+       * <code>optional int64 roomID = 2;</code>
        */
       public Builder clearRoomID() {
         
@@ -46594,7 +46628,7 @@ public final class ProtoMessage {
        * 接受或拒绝，当设置为免打扰的时候为拒绝
        * </pre>
        *
-       * <code>int32 acceptType = 3;</code>
+       * <code>optional int32 acceptType = 3;</code>
        */
       public int getAcceptType() {
         return acceptType_;
@@ -46604,7 +46638,7 @@ public final class ProtoMessage {
        * 接受或拒绝，当设置为免打扰的时候为拒绝
        * </pre>
        *
-       * <code>int32 acceptType = 3;</code>
+       * <code>optional int32 acceptType = 3;</code>
        */
       public Builder setAcceptType(int value) {
         
@@ -46617,7 +46651,7 @@ public final class ProtoMessage {
        * 接受或拒绝，当设置为免打扰的时候为拒绝
        * </pre>
        *
-       * <code>int32 acceptType = 3;</code>
+       * <code>optional int32 acceptType = 3;</code>
        */
       public Builder clearAcceptType() {
         
@@ -46632,7 +46666,7 @@ public final class ProtoMessage {
        * added at 2017-12-21
        * </pre>
        *
-       * <code>int64 teamID = 4;</code>
+       * <code>optional int64 teamID = 4;</code>
        */
       public long getTeamID() {
         return teamID_;
@@ -46642,7 +46676,7 @@ public final class ProtoMessage {
        * added at 2017-12-21
        * </pre>
        *
-       * <code>int64 teamID = 4;</code>
+       * <code>optional int64 teamID = 4;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -46655,7 +46689,7 @@ public final class ProtoMessage {
        * added at 2017-12-21
        * </pre>
        *
-       * <code>int64 teamID = 4;</code>
+       * <code>optional int64 teamID = 4;</code>
        */
       public Builder clearTeamID() {
         
@@ -46670,7 +46704,7 @@ public final class ProtoMessage {
        * 接收者的帐号
        * </pre>
        *
-       * <code>string phoneNum = 5;</code>
+       * <code>optional string phoneNum = 5;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -46689,7 +46723,7 @@ public final class ProtoMessage {
        * 接收者的帐号
        * </pre>
        *
-       * <code>string phoneNum = 5;</code>
+       * <code>optional string phoneNum = 5;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -46709,7 +46743,7 @@ public final class ProtoMessage {
        * 接收者的帐号
        * </pre>
        *
-       * <code>string phoneNum = 5;</code>
+       * <code>optional string phoneNum = 5;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -46726,7 +46760,7 @@ public final class ProtoMessage {
        * 接收者的帐号
        * </pre>
        *
-       * <code>string phoneNum = 5;</code>
+       * <code>optional string phoneNum = 5;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -46739,7 +46773,7 @@ public final class ProtoMessage {
        * 接收者的帐号
        * </pre>
        *
-       * <code>string phoneNum = 5;</code>
+       * <code>optional string phoneNum = 5;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -46759,7 +46793,7 @@ public final class ProtoMessage {
        * 其他人的帐号
        * </pre>
        *
-       * <code>string friendPhoneNum = 6;</code>
+       * <code>optional string friendPhoneNum = 6;</code>
        */
       public java.lang.String getFriendPhoneNum() {
         java.lang.Object ref = friendPhoneNum_;
@@ -46778,7 +46812,7 @@ public final class ProtoMessage {
        * 其他人的帐号
        * </pre>
        *
-       * <code>string friendPhoneNum = 6;</code>
+       * <code>optional string friendPhoneNum = 6;</code>
        */
       public com.google.protobuf.ByteString
           getFriendPhoneNumBytes() {
@@ -46798,7 +46832,7 @@ public final class ProtoMessage {
        * 其他人的帐号
        * </pre>
        *
-       * <code>string friendPhoneNum = 6;</code>
+       * <code>optional string friendPhoneNum = 6;</code>
        */
       public Builder setFriendPhoneNum(
           java.lang.String value) {
@@ -46815,7 +46849,7 @@ public final class ProtoMessage {
        * 其他人的帐号
        * </pre>
        *
-       * <code>string friendPhoneNum = 6;</code>
+       * <code>optional string friendPhoneNum = 6;</code>
        */
       public Builder clearFriendPhoneNum() {
         
@@ -46828,7 +46862,7 @@ public final class ProtoMessage {
        * 其他人的帐号
        * </pre>
        *
-       * <code>string friendPhoneNum = 6;</code>
+       * <code>optional string friendPhoneNum = 6;</code>
        */
       public Builder setFriendPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -46895,7 +46929,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -46904,7 +46938,7 @@ public final class ProtoMessage {
      * 音频数据
      * </pre>
      *
-     * <code>bytes audioData = 2;</code>
+     * <code>optional bytes audioData = 2;</code>
      */
     com.google.protobuf.ByteString getAudioData();
   }
@@ -46985,7 +47019,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -46998,7 +47032,7 @@ public final class ProtoMessage {
      * 音频数据
      * </pre>
      *
-     * <code>bytes audioData = 2;</code>
+     * <code>optional bytes audioData = 2;</code>
      */
     public com.google.protobuf.ByteString getAudioData() {
       return audioData_;
@@ -47066,7 +47100,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + AUDIODATA_FIELD_NUMBER;
@@ -47292,13 +47326,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -47307,7 +47341,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -47322,7 +47356,7 @@ public final class ProtoMessage {
        * 音频数据
        * </pre>
        *
-       * <code>bytes audioData = 2;</code>
+       * <code>optional bytes audioData = 2;</code>
        */
       public com.google.protobuf.ByteString getAudioData() {
         return audioData_;
@@ -47332,7 +47366,7 @@ public final class ProtoMessage {
        * 音频数据
        * </pre>
        *
-       * <code>bytes audioData = 2;</code>
+       * <code>optional bytes audioData = 2;</code>
        */
       public Builder setAudioData(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -47348,7 +47382,7 @@ public final class ProtoMessage {
        * 音频数据
        * </pre>
        *
-       * <code>bytes audioData = 2;</code>
+       * <code>optional bytes audioData = 2;</code>
        */
       public Builder clearAudioData() {
         
@@ -47410,17 +47444,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>double lat = 2;</code>
+     * <code>optional double lat = 2;</code>
      */
     double getLat();
 
     /**
-     * <code>double lng = 3;</code>
+     * <code>optional double lng = 3;</code>
      */
     double getLng();
 
@@ -47429,7 +47463,7 @@ public final class ProtoMessage {
      * 半径(米)
      * </pre>
      *
-     * <code>int32 radius = 4;</code>
+     * <code>optional int32 radius = 4;</code>
      */
     int getRadius();
 
@@ -47438,7 +47472,7 @@ public final class ProtoMessage {
      * 是否准确：1：准确， 0：模糊
      * </pre>
      *
-     * <code>int32 isAccurate = 5;</code>
+     * <code>optional int32 isAccurate = 5;</code>
      */
     int getIsAccurate();
 
@@ -47447,7 +47481,7 @@ public final class ProtoMessage {
      * 位置时间
      * </pre>
      *
-     * <code>int64 time = 6;</code>
+     * <code>optional int64 time = 6;</code>
      */
     long getTime();
 
@@ -47456,7 +47490,7 @@ public final class ProtoMessage {
      * 好友手机号
      * </pre>
      *
-     * <code>string phoneNum = 7;</code>
+     * <code>optional string phoneNum = 7;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -47464,7 +47498,7 @@ public final class ProtoMessage {
      * 好友手机号
      * </pre>
      *
-     * <code>string phoneNum = 7;</code>
+     * <code>optional string phoneNum = 7;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -47474,7 +47508,7 @@ public final class ProtoMessage {
      * 位置类型（0：高德，）
      * </pre>
      *
-     * <code>int32 latlngType = 8;</code>
+     * <code>optional int32 latlngType = 8;</code>
      */
     int getLatlngType();
 
@@ -47483,7 +47517,7 @@ public final class ProtoMessage {
      * 好友名称包括（陌生人）
      * </pre>
      *
-     * <code>string userName = 9;</code>
+     * <code>optional string userName = 9;</code>
      */
     java.lang.String getUserName();
     /**
@@ -47491,7 +47525,7 @@ public final class ProtoMessage {
      * 好友名称包括（陌生人）
      * </pre>
      *
-     * <code>string userName = 9;</code>
+     * <code>optional string userName = 9;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
@@ -47501,7 +47535,7 @@ public final class ProtoMessage {
      * 是否有位置
      * </pre>
      *
-     * <code>bool hasLocation = 10;</code>
+     * <code>optional bool hasLocation = 10;</code>
      */
     boolean getHasLocation();
 
@@ -47510,7 +47544,7 @@ public final class ProtoMessage {
      * 仅限于服务器内部使用，客户端不应使用，
      * </pre>
      *
-     * <code>int64 userID = 11;</code>
+     * <code>optional int64 userID = 11;</code>
      */
     long getUserID();
 
@@ -47519,7 +47553,7 @@ public final class ProtoMessage {
      * 0 自动上报，1：按键打卡，2：NFC打卡
      * </pre>
      *
-     * <code>int32 reportType = 12;</code>
+     * <code>optional int32 reportType = 12;</code>
      */
     int getReportType();
 
@@ -47528,7 +47562,7 @@ public final class ProtoMessage {
      * 自定义标志，表示 上班或下班等，暂时不用
      * </pre>
      *
-     * <code>int32 reportFlag = 13;</code>
+     * <code>optional int32 reportFlag = 13;</code>
      */
     int getReportFlag();
   }
@@ -47677,7 +47711,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -47686,7 +47720,7 @@ public final class ProtoMessage {
     public static final int LAT_FIELD_NUMBER = 2;
     private double lat_;
     /**
-     * <code>double lat = 2;</code>
+     * <code>optional double lat = 2;</code>
      */
     public double getLat() {
       return lat_;
@@ -47695,7 +47729,7 @@ public final class ProtoMessage {
     public static final int LNG_FIELD_NUMBER = 3;
     private double lng_;
     /**
-     * <code>double lng = 3;</code>
+     * <code>optional double lng = 3;</code>
      */
     public double getLng() {
       return lng_;
@@ -47708,7 +47742,7 @@ public final class ProtoMessage {
      * 半径(米)
      * </pre>
      *
-     * <code>int32 radius = 4;</code>
+     * <code>optional int32 radius = 4;</code>
      */
     public int getRadius() {
       return radius_;
@@ -47721,7 +47755,7 @@ public final class ProtoMessage {
      * 是否准确：1：准确， 0：模糊
      * </pre>
      *
-     * <code>int32 isAccurate = 5;</code>
+     * <code>optional int32 isAccurate = 5;</code>
      */
     public int getIsAccurate() {
       return isAccurate_;
@@ -47734,7 +47768,7 @@ public final class ProtoMessage {
      * 位置时间
      * </pre>
      *
-     * <code>int64 time = 6;</code>
+     * <code>optional int64 time = 6;</code>
      */
     public long getTime() {
       return time_;
@@ -47747,7 +47781,7 @@ public final class ProtoMessage {
      * 好友手机号
      * </pre>
      *
-     * <code>string phoneNum = 7;</code>
+     * <code>optional string phoneNum = 7;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -47766,7 +47800,7 @@ public final class ProtoMessage {
      * 好友手机号
      * </pre>
      *
-     * <code>string phoneNum = 7;</code>
+     * <code>optional string phoneNum = 7;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -47789,7 +47823,7 @@ public final class ProtoMessage {
      * 位置类型（0：高德，）
      * </pre>
      *
-     * <code>int32 latlngType = 8;</code>
+     * <code>optional int32 latlngType = 8;</code>
      */
     public int getLatlngType() {
       return latlngType_;
@@ -47802,7 +47836,7 @@ public final class ProtoMessage {
      * 好友名称包括（陌生人）
      * </pre>
      *
-     * <code>string userName = 9;</code>
+     * <code>optional string userName = 9;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
@@ -47821,7 +47855,7 @@ public final class ProtoMessage {
      * 好友名称包括（陌生人）
      * </pre>
      *
-     * <code>string userName = 9;</code>
+     * <code>optional string userName = 9;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
@@ -47844,7 +47878,7 @@ public final class ProtoMessage {
      * 是否有位置
      * </pre>
      *
-     * <code>bool hasLocation = 10;</code>
+     * <code>optional bool hasLocation = 10;</code>
      */
     public boolean getHasLocation() {
       return hasLocation_;
@@ -47857,7 +47891,7 @@ public final class ProtoMessage {
      * 仅限于服务器内部使用，客户端不应使用，
      * </pre>
      *
-     * <code>int64 userID = 11;</code>
+     * <code>optional int64 userID = 11;</code>
      */
     public long getUserID() {
       return userID_;
@@ -47870,7 +47904,7 @@ public final class ProtoMessage {
      * 0 自动上报，1：按键打卡，2：NFC打卡
      * </pre>
      *
-     * <code>int32 reportType = 12;</code>
+     * <code>optional int32 reportType = 12;</code>
      */
     public int getReportType() {
       return reportType_;
@@ -47883,7 +47917,7 @@ public final class ProtoMessage {
      * 自定义标志，表示 上班或下班等，暂时不用
      * </pre>
      *
-     * <code>int32 reportFlag = 13;</code>
+     * <code>optional int32 reportFlag = 13;</code>
      */
     public int getReportFlag() {
       return reportFlag_;
@@ -48052,7 +48086,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + LAT_FIELD_NUMBER;
@@ -48373,13 +48407,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -48388,7 +48422,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -48399,13 +48433,13 @@ public final class ProtoMessage {
 
       private double lat_ ;
       /**
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public double getLat() {
         return lat_;
       }
       /**
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public Builder setLat(double value) {
         
@@ -48414,7 +48448,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public Builder clearLat() {
         
@@ -48425,13 +48459,13 @@ public final class ProtoMessage {
 
       private double lng_ ;
       /**
-       * <code>double lng = 3;</code>
+       * <code>optional double lng = 3;</code>
        */
       public double getLng() {
         return lng_;
       }
       /**
-       * <code>double lng = 3;</code>
+       * <code>optional double lng = 3;</code>
        */
       public Builder setLng(double value) {
         
@@ -48440,7 +48474,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>double lng = 3;</code>
+       * <code>optional double lng = 3;</code>
        */
       public Builder clearLng() {
         
@@ -48455,7 +48489,7 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>int32 radius = 4;</code>
+       * <code>optional int32 radius = 4;</code>
        */
       public int getRadius() {
         return radius_;
@@ -48465,7 +48499,7 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>int32 radius = 4;</code>
+       * <code>optional int32 radius = 4;</code>
        */
       public Builder setRadius(int value) {
         
@@ -48478,7 +48512,7 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>int32 radius = 4;</code>
+       * <code>optional int32 radius = 4;</code>
        */
       public Builder clearRadius() {
         
@@ -48493,7 +48527,7 @@ public final class ProtoMessage {
        * 是否准确：1：准确， 0：模糊
        * </pre>
        *
-       * <code>int32 isAccurate = 5;</code>
+       * <code>optional int32 isAccurate = 5;</code>
        */
       public int getIsAccurate() {
         return isAccurate_;
@@ -48503,7 +48537,7 @@ public final class ProtoMessage {
        * 是否准确：1：准确， 0：模糊
        * </pre>
        *
-       * <code>int32 isAccurate = 5;</code>
+       * <code>optional int32 isAccurate = 5;</code>
        */
       public Builder setIsAccurate(int value) {
         
@@ -48516,7 +48550,7 @@ public final class ProtoMessage {
        * 是否准确：1：准确， 0：模糊
        * </pre>
        *
-       * <code>int32 isAccurate = 5;</code>
+       * <code>optional int32 isAccurate = 5;</code>
        */
       public Builder clearIsAccurate() {
         
@@ -48531,7 +48565,7 @@ public final class ProtoMessage {
        * 位置时间
        * </pre>
        *
-       * <code>int64 time = 6;</code>
+       * <code>optional int64 time = 6;</code>
        */
       public long getTime() {
         return time_;
@@ -48541,7 +48575,7 @@ public final class ProtoMessage {
        * 位置时间
        * </pre>
        *
-       * <code>int64 time = 6;</code>
+       * <code>optional int64 time = 6;</code>
        */
       public Builder setTime(long value) {
         
@@ -48554,7 +48588,7 @@ public final class ProtoMessage {
        * 位置时间
        * </pre>
        *
-       * <code>int64 time = 6;</code>
+       * <code>optional int64 time = 6;</code>
        */
       public Builder clearTime() {
         
@@ -48569,7 +48603,7 @@ public final class ProtoMessage {
        * 好友手机号
        * </pre>
        *
-       * <code>string phoneNum = 7;</code>
+       * <code>optional string phoneNum = 7;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -48588,7 +48622,7 @@ public final class ProtoMessage {
        * 好友手机号
        * </pre>
        *
-       * <code>string phoneNum = 7;</code>
+       * <code>optional string phoneNum = 7;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -48608,7 +48642,7 @@ public final class ProtoMessage {
        * 好友手机号
        * </pre>
        *
-       * <code>string phoneNum = 7;</code>
+       * <code>optional string phoneNum = 7;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -48625,7 +48659,7 @@ public final class ProtoMessage {
        * 好友手机号
        * </pre>
        *
-       * <code>string phoneNum = 7;</code>
+       * <code>optional string phoneNum = 7;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -48638,7 +48672,7 @@ public final class ProtoMessage {
        * 好友手机号
        * </pre>
        *
-       * <code>string phoneNum = 7;</code>
+       * <code>optional string phoneNum = 7;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -48658,7 +48692,7 @@ public final class ProtoMessage {
        * 位置类型（0：高德，）
        * </pre>
        *
-       * <code>int32 latlngType = 8;</code>
+       * <code>optional int32 latlngType = 8;</code>
        */
       public int getLatlngType() {
         return latlngType_;
@@ -48668,7 +48702,7 @@ public final class ProtoMessage {
        * 位置类型（0：高德，）
        * </pre>
        *
-       * <code>int32 latlngType = 8;</code>
+       * <code>optional int32 latlngType = 8;</code>
        */
       public Builder setLatlngType(int value) {
         
@@ -48681,7 +48715,7 @@ public final class ProtoMessage {
        * 位置类型（0：高德，）
        * </pre>
        *
-       * <code>int32 latlngType = 8;</code>
+       * <code>optional int32 latlngType = 8;</code>
        */
       public Builder clearLatlngType() {
         
@@ -48696,7 +48730,7 @@ public final class ProtoMessage {
        * 好友名称包括（陌生人）
        * </pre>
        *
-       * <code>string userName = 9;</code>
+       * <code>optional string userName = 9;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -48715,7 +48749,7 @@ public final class ProtoMessage {
        * 好友名称包括（陌生人）
        * </pre>
        *
-       * <code>string userName = 9;</code>
+       * <code>optional string userName = 9;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
@@ -48735,7 +48769,7 @@ public final class ProtoMessage {
        * 好友名称包括（陌生人）
        * </pre>
        *
-       * <code>string userName = 9;</code>
+       * <code>optional string userName = 9;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
@@ -48752,7 +48786,7 @@ public final class ProtoMessage {
        * 好友名称包括（陌生人）
        * </pre>
        *
-       * <code>string userName = 9;</code>
+       * <code>optional string userName = 9;</code>
        */
       public Builder clearUserName() {
         
@@ -48765,7 +48799,7 @@ public final class ProtoMessage {
        * 好友名称包括（陌生人）
        * </pre>
        *
-       * <code>string userName = 9;</code>
+       * <code>optional string userName = 9;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -48785,7 +48819,7 @@ public final class ProtoMessage {
        * 是否有位置
        * </pre>
        *
-       * <code>bool hasLocation = 10;</code>
+       * <code>optional bool hasLocation = 10;</code>
        */
       public boolean getHasLocation() {
         return hasLocation_;
@@ -48795,7 +48829,7 @@ public final class ProtoMessage {
        * 是否有位置
        * </pre>
        *
-       * <code>bool hasLocation = 10;</code>
+       * <code>optional bool hasLocation = 10;</code>
        */
       public Builder setHasLocation(boolean value) {
         
@@ -48808,7 +48842,7 @@ public final class ProtoMessage {
        * 是否有位置
        * </pre>
        *
-       * <code>bool hasLocation = 10;</code>
+       * <code>optional bool hasLocation = 10;</code>
        */
       public Builder clearHasLocation() {
         
@@ -48823,7 +48857,7 @@ public final class ProtoMessage {
        * 仅限于服务器内部使用，客户端不应使用，
        * </pre>
        *
-       * <code>int64 userID = 11;</code>
+       * <code>optional int64 userID = 11;</code>
        */
       public long getUserID() {
         return userID_;
@@ -48833,7 +48867,7 @@ public final class ProtoMessage {
        * 仅限于服务器内部使用，客户端不应使用，
        * </pre>
        *
-       * <code>int64 userID = 11;</code>
+       * <code>optional int64 userID = 11;</code>
        */
       public Builder setUserID(long value) {
         
@@ -48846,7 +48880,7 @@ public final class ProtoMessage {
        * 仅限于服务器内部使用，客户端不应使用，
        * </pre>
        *
-       * <code>int64 userID = 11;</code>
+       * <code>optional int64 userID = 11;</code>
        */
       public Builder clearUserID() {
         
@@ -48861,7 +48895,7 @@ public final class ProtoMessage {
        * 0 自动上报，1：按键打卡，2：NFC打卡
        * </pre>
        *
-       * <code>int32 reportType = 12;</code>
+       * <code>optional int32 reportType = 12;</code>
        */
       public int getReportType() {
         return reportType_;
@@ -48871,7 +48905,7 @@ public final class ProtoMessage {
        * 0 自动上报，1：按键打卡，2：NFC打卡
        * </pre>
        *
-       * <code>int32 reportType = 12;</code>
+       * <code>optional int32 reportType = 12;</code>
        */
       public Builder setReportType(int value) {
         
@@ -48884,7 +48918,7 @@ public final class ProtoMessage {
        * 0 自动上报，1：按键打卡，2：NFC打卡
        * </pre>
        *
-       * <code>int32 reportType = 12;</code>
+       * <code>optional int32 reportType = 12;</code>
        */
       public Builder clearReportType() {
         
@@ -48899,7 +48933,7 @@ public final class ProtoMessage {
        * 自定义标志，表示 上班或下班等，暂时不用
        * </pre>
        *
-       * <code>int32 reportFlag = 13;</code>
+       * <code>optional int32 reportFlag = 13;</code>
        */
       public int getReportFlag() {
         return reportFlag_;
@@ -48909,7 +48943,7 @@ public final class ProtoMessage {
        * 自定义标志，表示 上班或下班等，暂时不用
        * </pre>
        *
-       * <code>int32 reportFlag = 13;</code>
+       * <code>optional int32 reportFlag = 13;</code>
        */
       public Builder setReportFlag(int value) {
         
@@ -48922,7 +48956,7 @@ public final class ProtoMessage {
        * 自定义标志，表示 上班或下班等，暂时不用
        * </pre>
        *
-       * <code>int32 reportFlag = 13;</code>
+       * <code>optional int32 reportFlag = 13;</code>
        */
       public Builder clearReportFlag() {
         
@@ -48984,21 +49018,21 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int64 teamID = 2;</code>
+     * <code>optional int64 teamID = 2;</code>
      */
     long getTeamID();
 
     /**
-     * <code>string phoneNum = 3;</code>
+     * <code>optional string phoneNum = 3;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 3;</code>
+     * <code>optional string phoneNum = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -49125,7 +49159,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -49134,7 +49168,7 @@ public final class ProtoMessage {
     public static final int TEAMID_FIELD_NUMBER = 2;
     private long teamID_;
     /**
-     * <code>int64 teamID = 2;</code>
+     * <code>optional int64 teamID = 2;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -49143,7 +49177,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 3;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 3;</code>
+     * <code>optional string phoneNum = 3;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -49158,7 +49192,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 3;</code>
+     * <code>optional string phoneNum = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -49288,7 +49322,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TEAMID_FIELD_NUMBER;
@@ -49574,13 +49608,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -49589,7 +49623,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -49600,13 +49634,13 @@ public final class ProtoMessage {
 
       private long teamID_ ;
       /**
-       * <code>int64 teamID = 2;</code>
+       * <code>optional int64 teamID = 2;</code>
        */
       public long getTeamID() {
         return teamID_;
       }
       /**
-       * <code>int64 teamID = 2;</code>
+       * <code>optional int64 teamID = 2;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -49615,7 +49649,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 teamID = 2;</code>
+       * <code>optional int64 teamID = 2;</code>
        */
       public Builder clearTeamID() {
         
@@ -49626,7 +49660,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 3;</code>
+       * <code>optional string phoneNum = 3;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -49641,7 +49675,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 3;</code>
+       * <code>optional string phoneNum = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -49657,7 +49691,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 3;</code>
+       * <code>optional string phoneNum = 3;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -49670,7 +49704,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 3;</code>
+       * <code>optional string phoneNum = 3;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -49679,7 +49713,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 3;</code>
+       * <code>optional string phoneNum = 3;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -49986,7 +50020,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -49995,7 +50029,7 @@ public final class ProtoMessage {
      * imei
      * </pre>
      *
-     * <code>string carID = 2;</code>
+     * <code>optional string carID = 2;</code>
      */
     java.lang.String getCarID();
     /**
@@ -50003,7 +50037,7 @@ public final class ProtoMessage {
      * imei
      * </pre>
      *
-     * <code>string carID = 2;</code>
+     * <code>optional string carID = 2;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -50013,7 +50047,7 @@ public final class ProtoMessage {
      * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
      * </pre>
      *
-     * <code>string tempToken = 3;</code>
+     * <code>optional string tempToken = 3;</code>
      */
     java.lang.String getTempToken();
     /**
@@ -50021,7 +50055,7 @@ public final class ProtoMessage {
      * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
      * </pre>
      *
-     * <code>string tempToken = 3;</code>
+     * <code>optional string tempToken = 3;</code>
      */
     com.google.protobuf.ByteString
         getTempTokenBytes();
@@ -50031,7 +50065,7 @@ public final class ProtoMessage {
      * 返回手机号（即：帐号）
      * </pre>
      *
-     * <code>string phoneNum = 4;</code>
+     * <code>optional string phoneNum = 4;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -50039,7 +50073,7 @@ public final class ProtoMessage {
      * 返回手机号（即：帐号）
      * </pre>
      *
-     * <code>string phoneNum = 4;</code>
+     * <code>optional string phoneNum = 4;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -50049,7 +50083,7 @@ public final class ProtoMessage {
      * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
      * </pre>
      *
-     * <code>string carUrl = 5;</code>
+     * <code>optional string carUrl = 5;</code>
      */
     java.lang.String getCarUrl();
     /**
@@ -50057,28 +50091,28 @@ public final class ProtoMessage {
      * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
      * </pre>
      *
-     * <code>string carUrl = 5;</code>
+     * <code>optional string carUrl = 5;</code>
      */
     com.google.protobuf.ByteString
         getCarUrlBytes();
 
     /**
-     * <code>string sessionIP = 6;</code>
+     * <code>optional string sessionIP = 6;</code>
      */
     java.lang.String getSessionIP();
     /**
-     * <code>string sessionIP = 6;</code>
+     * <code>optional string sessionIP = 6;</code>
      */
     com.google.protobuf.ByteString
         getSessionIPBytes();
 
     /**
-     * <code>int32 sessionPort = 7;</code>
+     * <code>optional int32 sessionPort = 7;</code>
      */
     int getSessionPort();
 
     /**
-     * <code>int32 serverType = 8;</code>
+     * <code>optional int32 serverType = 8;</code>
      */
     int getServerType();
   }
@@ -50208,7 +50242,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -50221,7 +50255,7 @@ public final class ProtoMessage {
      * imei
      * </pre>
      *
-     * <code>string carID = 2;</code>
+     * <code>optional string carID = 2;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
@@ -50240,7 +50274,7 @@ public final class ProtoMessage {
      * imei
      * </pre>
      *
-     * <code>string carID = 2;</code>
+     * <code>optional string carID = 2;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
@@ -50263,7 +50297,7 @@ public final class ProtoMessage {
      * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
      * </pre>
      *
-     * <code>string tempToken = 3;</code>
+     * <code>optional string tempToken = 3;</code>
      */
     public java.lang.String getTempToken() {
       java.lang.Object ref = tempToken_;
@@ -50282,7 +50316,7 @@ public final class ProtoMessage {
      * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
      * </pre>
      *
-     * <code>string tempToken = 3;</code>
+     * <code>optional string tempToken = 3;</code>
      */
     public com.google.protobuf.ByteString
         getTempTokenBytes() {
@@ -50305,7 +50339,7 @@ public final class ProtoMessage {
      * 返回手机号（即：帐号）
      * </pre>
      *
-     * <code>string phoneNum = 4;</code>
+     * <code>optional string phoneNum = 4;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -50324,7 +50358,7 @@ public final class ProtoMessage {
      * 返回手机号（即：帐号）
      * </pre>
      *
-     * <code>string phoneNum = 4;</code>
+     * <code>optional string phoneNum = 4;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -50347,7 +50381,7 @@ public final class ProtoMessage {
      * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
      * </pre>
      *
-     * <code>string carUrl = 5;</code>
+     * <code>optional string carUrl = 5;</code>
      */
     public java.lang.String getCarUrl() {
       java.lang.Object ref = carUrl_;
@@ -50366,7 +50400,7 @@ public final class ProtoMessage {
      * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
      * </pre>
      *
-     * <code>string carUrl = 5;</code>
+     * <code>optional string carUrl = 5;</code>
      */
     public com.google.protobuf.ByteString
         getCarUrlBytes() {
@@ -50385,7 +50419,7 @@ public final class ProtoMessage {
     public static final int SESSIONIP_FIELD_NUMBER = 6;
     private volatile java.lang.Object sessionIP_;
     /**
-     * <code>string sessionIP = 6;</code>
+     * <code>optional string sessionIP = 6;</code>
      */
     public java.lang.String getSessionIP() {
       java.lang.Object ref = sessionIP_;
@@ -50400,7 +50434,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string sessionIP = 6;</code>
+     * <code>optional string sessionIP = 6;</code>
      */
     public com.google.protobuf.ByteString
         getSessionIPBytes() {
@@ -50419,7 +50453,7 @@ public final class ProtoMessage {
     public static final int SESSIONPORT_FIELD_NUMBER = 7;
     private int sessionPort_;
     /**
-     * <code>int32 sessionPort = 7;</code>
+     * <code>optional int32 sessionPort = 7;</code>
      */
     public int getSessionPort() {
       return sessionPort_;
@@ -50428,7 +50462,7 @@ public final class ProtoMessage {
     public static final int SERVERTYPE_FIELD_NUMBER = 8;
     private int serverType_;
     /**
-     * <code>int32 serverType = 8;</code>
+     * <code>optional int32 serverType = 8;</code>
      */
     public int getServerType() {
       return serverType_;
@@ -50545,7 +50579,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + CARID_FIELD_NUMBER;
@@ -50832,13 +50866,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -50847,7 +50881,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -50862,7 +50896,7 @@ public final class ProtoMessage {
        * imei
        * </pre>
        *
-       * <code>string carID = 2;</code>
+       * <code>optional string carID = 2;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -50881,7 +50915,7 @@ public final class ProtoMessage {
        * imei
        * </pre>
        *
-       * <code>string carID = 2;</code>
+       * <code>optional string carID = 2;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
@@ -50901,7 +50935,7 @@ public final class ProtoMessage {
        * imei
        * </pre>
        *
-       * <code>string carID = 2;</code>
+       * <code>optional string carID = 2;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
@@ -50918,7 +50952,7 @@ public final class ProtoMessage {
        * imei
        * </pre>
        *
-       * <code>string carID = 2;</code>
+       * <code>optional string carID = 2;</code>
        */
       public Builder clearCarID() {
         
@@ -50931,7 +50965,7 @@ public final class ProtoMessage {
        * imei
        * </pre>
        *
-       * <code>string carID = 2;</code>
+       * <code>optional string carID = 2;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -50951,7 +50985,7 @@ public final class ProtoMessage {
        * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
        * </pre>
        *
-       * <code>string tempToken = 3;</code>
+       * <code>optional string tempToken = 3;</code>
        */
       public java.lang.String getTempToken() {
         java.lang.Object ref = tempToken_;
@@ -50970,7 +51004,7 @@ public final class ProtoMessage {
        * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
        * </pre>
        *
-       * <code>string tempToken = 3;</code>
+       * <code>optional string tempToken = 3;</code>
        */
       public com.google.protobuf.ByteString
           getTempTokenBytes() {
@@ -50990,7 +51024,7 @@ public final class ProtoMessage {
        * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
        * </pre>
        *
-       * <code>string tempToken = 3;</code>
+       * <code>optional string tempToken = 3;</code>
        */
       public Builder setTempToken(
           java.lang.String value) {
@@ -51007,7 +51041,7 @@ public final class ProtoMessage {
        * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
        * </pre>
        *
-       * <code>string tempToken = 3;</code>
+       * <code>optional string tempToken = 3;</code>
        */
       public Builder clearTempToken() {
         
@@ -51020,7 +51054,7 @@ public final class ProtoMessage {
        * 临时串（用于服务器向设备返回， 车机拿到串以后，使用 "(此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]" 做为二维码内容）
        * </pre>
        *
-       * <code>string tempToken = 3;</code>
+       * <code>optional string tempToken = 3;</code>
        */
       public Builder setTempTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -51040,7 +51074,7 @@ public final class ProtoMessage {
        * 返回手机号（即：帐号）
        * </pre>
        *
-       * <code>string phoneNum = 4;</code>
+       * <code>optional string phoneNum = 4;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -51059,7 +51093,7 @@ public final class ProtoMessage {
        * 返回手机号（即：帐号）
        * </pre>
        *
-       * <code>string phoneNum = 4;</code>
+       * <code>optional string phoneNum = 4;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -51079,7 +51113,7 @@ public final class ProtoMessage {
        * 返回手机号（即：帐号）
        * </pre>
        *
-       * <code>string phoneNum = 4;</code>
+       * <code>optional string phoneNum = 4;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -51096,7 +51130,7 @@ public final class ProtoMessage {
        * 返回手机号（即：帐号）
        * </pre>
        *
-       * <code>string phoneNum = 4;</code>
+       * <code>optional string phoneNum = 4;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -51109,7 +51143,7 @@ public final class ProtoMessage {
        * 返回手机号（即：帐号）
        * </pre>
        *
-       * <code>string phoneNum = 4;</code>
+       * <code>optional string phoneNum = 4;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -51129,7 +51163,7 @@ public final class ProtoMessage {
        * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
        * </pre>
        *
-       * <code>string carUrl = 5;</code>
+       * <code>optional string carUrl = 5;</code>
        */
       public java.lang.String getCarUrl() {
         java.lang.Object ref = carUrl_;
@@ -51148,7 +51182,7 @@ public final class ProtoMessage {
        * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
        * </pre>
        *
-       * <code>string carUrl = 5;</code>
+       * <code>optional string carUrl = 5;</code>
        */
       public com.google.protobuf.ByteString
           getCarUrlBytes() {
@@ -51168,7 +51202,7 @@ public final class ProtoMessage {
        * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
        * </pre>
        *
-       * <code>string carUrl = 5;</code>
+       * <code>optional string carUrl = 5;</code>
        */
       public Builder setCarUrl(
           java.lang.String value) {
@@ -51185,7 +51219,7 @@ public final class ProtoMessage {
        * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
        * </pre>
        *
-       * <code>string carUrl = 5;</code>
+       * <code>optional string carUrl = 5;</code>
        */
       public Builder clearCarUrl() {
         
@@ -51198,7 +51232,7 @@ public final class ProtoMessage {
        * (此处可能有链接)...CARID=[&lt;carid&gt;_&lt;tempToken&gt;]
        * </pre>
        *
-       * <code>string carUrl = 5;</code>
+       * <code>optional string carUrl = 5;</code>
        */
       public Builder setCarUrlBytes(
           com.google.protobuf.ByteString value) {
@@ -51214,7 +51248,7 @@ public final class ProtoMessage {
 
       private java.lang.Object sessionIP_ = "";
       /**
-       * <code>string sessionIP = 6;</code>
+       * <code>optional string sessionIP = 6;</code>
        */
       public java.lang.String getSessionIP() {
         java.lang.Object ref = sessionIP_;
@@ -51229,7 +51263,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string sessionIP = 6;</code>
+       * <code>optional string sessionIP = 6;</code>
        */
       public com.google.protobuf.ByteString
           getSessionIPBytes() {
@@ -51245,7 +51279,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string sessionIP = 6;</code>
+       * <code>optional string sessionIP = 6;</code>
        */
       public Builder setSessionIP(
           java.lang.String value) {
@@ -51258,7 +51292,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string sessionIP = 6;</code>
+       * <code>optional string sessionIP = 6;</code>
        */
       public Builder clearSessionIP() {
         
@@ -51267,7 +51301,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string sessionIP = 6;</code>
+       * <code>optional string sessionIP = 6;</code>
        */
       public Builder setSessionIPBytes(
           com.google.protobuf.ByteString value) {
@@ -51283,13 +51317,13 @@ public final class ProtoMessage {
 
       private int sessionPort_ ;
       /**
-       * <code>int32 sessionPort = 7;</code>
+       * <code>optional int32 sessionPort = 7;</code>
        */
       public int getSessionPort() {
         return sessionPort_;
       }
       /**
-       * <code>int32 sessionPort = 7;</code>
+       * <code>optional int32 sessionPort = 7;</code>
        */
       public Builder setSessionPort(int value) {
         
@@ -51298,7 +51332,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 sessionPort = 7;</code>
+       * <code>optional int32 sessionPort = 7;</code>
        */
       public Builder clearSessionPort() {
         
@@ -51309,13 +51343,13 @@ public final class ProtoMessage {
 
       private int serverType_ ;
       /**
-       * <code>int32 serverType = 8;</code>
+       * <code>optional int32 serverType = 8;</code>
        */
       public int getServerType() {
         return serverType_;
       }
       /**
-       * <code>int32 serverType = 8;</code>
+       * <code>optional int32 serverType = 8;</code>
        */
       public Builder setServerType(int value) {
         
@@ -51324,7 +51358,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 serverType = 8;</code>
+       * <code>optional int32 serverType = 8;</code>
        */
       public Builder clearServerType() {
         
@@ -51386,25 +51420,25 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>.AcceptType accept = 2;</code>
+     * <code>optional .AcceptType accept = 2;</code>
      */
     int getAcceptValue();
     /**
-     * <code>.AcceptType accept = 2;</code>
+     * <code>optional .AcceptType accept = 2;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept();
 
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     java.lang.String getPhone();
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneBytes();
@@ -51414,7 +51448,7 @@ public final class ProtoMessage {
      * add by qhb at 2018-03-20
      * </pre>
      *
-     * <code>string videoUrl = 4;</code>
+     * <code>optional string videoUrl = 4;</code>
      */
     java.lang.String getVideoUrl();
     /**
@@ -51422,7 +51456,7 @@ public final class ProtoMessage {
      * add by qhb at 2018-03-20
      * </pre>
      *
-     * <code>string videoUrl = 4;</code>
+     * <code>optional string videoUrl = 4;</code>
      */
     com.google.protobuf.ByteString
         getVideoUrlBytes();
@@ -51523,7 +51557,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -51532,13 +51566,13 @@ public final class ProtoMessage {
     public static final int ACCEPT_FIELD_NUMBER = 2;
     private int accept_;
     /**
-     * <code>.AcceptType accept = 2;</code>
+     * <code>optional .AcceptType accept = 2;</code>
      */
     public int getAcceptValue() {
       return accept_;
     }
     /**
-     * <code>.AcceptType accept = 2;</code>
+     * <code>optional .AcceptType accept = 2;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept() {
       com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType result = com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType.valueOf(accept_);
@@ -51548,7 +51582,7 @@ public final class ProtoMessage {
     public static final int PHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object phone_;
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     public java.lang.String getPhone() {
       java.lang.Object ref = phone_;
@@ -51563,7 +51597,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneBytes() {
@@ -51586,7 +51620,7 @@ public final class ProtoMessage {
      * add by qhb at 2018-03-20
      * </pre>
      *
-     * <code>string videoUrl = 4;</code>
+     * <code>optional string videoUrl = 4;</code>
      */
     public java.lang.String getVideoUrl() {
       java.lang.Object ref = videoUrl_;
@@ -51605,7 +51639,7 @@ public final class ProtoMessage {
      * add by qhb at 2018-03-20
      * </pre>
      *
-     * <code>string videoUrl = 4;</code>
+     * <code>optional string videoUrl = 4;</code>
      */
     public com.google.protobuf.ByteString
         getVideoUrlBytes() {
@@ -51698,7 +51732,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + ACCEPT_FIELD_NUMBER;
@@ -51946,13 +51980,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -51961,7 +51995,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -51972,13 +52006,13 @@ public final class ProtoMessage {
 
       private int accept_ = 0;
       /**
-       * <code>.AcceptType accept = 2;</code>
+       * <code>optional .AcceptType accept = 2;</code>
        */
       public int getAcceptValue() {
         return accept_;
       }
       /**
-       * <code>.AcceptType accept = 2;</code>
+       * <code>optional .AcceptType accept = 2;</code>
        */
       public Builder setAcceptValue(int value) {
         accept_ = value;
@@ -51986,14 +52020,14 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.AcceptType accept = 2;</code>
+       * <code>optional .AcceptType accept = 2;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType getAccept() {
         com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType result = com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType.valueOf(accept_);
         return result == null ? com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.AcceptType accept = 2;</code>
+       * <code>optional .AcceptType accept = 2;</code>
        */
       public Builder setAccept(com.example.jrd48.service.proto_gen.ProtoMessage.AcceptType value) {
         if (value == null) {
@@ -52005,7 +52039,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.AcceptType accept = 2;</code>
+       * <code>optional .AcceptType accept = 2;</code>
        */
       public Builder clearAccept() {
         
@@ -52016,7 +52050,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phone_ = "";
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public java.lang.String getPhone() {
         java.lang.Object ref = phone_;
@@ -52031,7 +52065,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneBytes() {
@@ -52047,7 +52081,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder setPhone(
           java.lang.String value) {
@@ -52060,7 +52094,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder clearPhone() {
         
@@ -52069,7 +52103,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder setPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -52089,7 +52123,7 @@ public final class ProtoMessage {
        * add by qhb at 2018-03-20
        * </pre>
        *
-       * <code>string videoUrl = 4;</code>
+       * <code>optional string videoUrl = 4;</code>
        */
       public java.lang.String getVideoUrl() {
         java.lang.Object ref = videoUrl_;
@@ -52108,7 +52142,7 @@ public final class ProtoMessage {
        * add by qhb at 2018-03-20
        * </pre>
        *
-       * <code>string videoUrl = 4;</code>
+       * <code>optional string videoUrl = 4;</code>
        */
       public com.google.protobuf.ByteString
           getVideoUrlBytes() {
@@ -52128,7 +52162,7 @@ public final class ProtoMessage {
        * add by qhb at 2018-03-20
        * </pre>
        *
-       * <code>string videoUrl = 4;</code>
+       * <code>optional string videoUrl = 4;</code>
        */
       public Builder setVideoUrl(
           java.lang.String value) {
@@ -52145,7 +52179,7 @@ public final class ProtoMessage {
        * add by qhb at 2018-03-20
        * </pre>
        *
-       * <code>string videoUrl = 4;</code>
+       * <code>optional string videoUrl = 4;</code>
        */
       public Builder clearVideoUrl() {
         
@@ -52158,7 +52192,7 @@ public final class ProtoMessage {
        * add by qhb at 2018-03-20
        * </pre>
        *
-       * <code>string videoUrl = 4;</code>
+       * <code>optional string videoUrl = 4;</code>
        */
       public Builder setVideoUrlBytes(
           com.google.protobuf.ByteString value) {
@@ -52225,7 +52259,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -52234,7 +52268,7 @@ public final class ProtoMessage {
      * 中心点，纬度
      * </pre>
      *
-     * <code>double lat = 2;</code>
+     * <code>optional double lat = 2;</code>
      */
     double getLat();
 
@@ -52243,7 +52277,7 @@ public final class ProtoMessage {
      * 中心点，经度
      * </pre>
      *
-     * <code>double lng = 3;</code>
+     * <code>optional double lng = 3;</code>
      */
     double getLng();
 
@@ -52252,7 +52286,7 @@ public final class ProtoMessage {
      * 半径(米)
      * </pre>
      *
-     * <code>int32 radius = 4;</code>
+     * <code>optional int32 radius = 4;</code>
      */
     int getRadius();
 
@@ -52261,7 +52295,7 @@ public final class ProtoMessage {
      * 批次：0,第一批，1第二批，...， 每次100个
      * </pre>
      *
-     * <code>int32 pos = 5;</code>
+     * <code>optional int32 pos = 5;</code>
      */
     int getPos();
 
@@ -52418,7 +52452,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -52431,7 +52465,7 @@ public final class ProtoMessage {
      * 中心点，纬度
      * </pre>
      *
-     * <code>double lat = 2;</code>
+     * <code>optional double lat = 2;</code>
      */
     public double getLat() {
       return lat_;
@@ -52444,7 +52478,7 @@ public final class ProtoMessage {
      * 中心点，经度
      * </pre>
      *
-     * <code>double lng = 3;</code>
+     * <code>optional double lng = 3;</code>
      */
     public double getLng() {
       return lng_;
@@ -52457,7 +52491,7 @@ public final class ProtoMessage {
      * 半径(米)
      * </pre>
      *
-     * <code>int32 radius = 4;</code>
+     * <code>optional int32 radius = 4;</code>
      */
     public int getRadius() {
       return radius_;
@@ -52470,7 +52504,7 @@ public final class ProtoMessage {
      * 批次：0,第一批，1第二批，...， 每次100个
      * </pre>
      *
-     * <code>int32 pos = 5;</code>
+     * <code>optional int32 pos = 5;</code>
      */
     public int getPos() {
       return pos_;
@@ -52633,7 +52667,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + LAT_FIELD_NUMBER;
@@ -52935,13 +52969,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -52950,7 +52984,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -52965,7 +52999,7 @@ public final class ProtoMessage {
        * 中心点，纬度
        * </pre>
        *
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public double getLat() {
         return lat_;
@@ -52975,7 +53009,7 @@ public final class ProtoMessage {
        * 中心点，纬度
        * </pre>
        *
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public Builder setLat(double value) {
         
@@ -52988,7 +53022,7 @@ public final class ProtoMessage {
        * 中心点，纬度
        * </pre>
        *
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public Builder clearLat() {
         
@@ -53003,7 +53037,7 @@ public final class ProtoMessage {
        * 中心点，经度
        * </pre>
        *
-       * <code>double lng = 3;</code>
+       * <code>optional double lng = 3;</code>
        */
       public double getLng() {
         return lng_;
@@ -53013,7 +53047,7 @@ public final class ProtoMessage {
        * 中心点，经度
        * </pre>
        *
-       * <code>double lng = 3;</code>
+       * <code>optional double lng = 3;</code>
        */
       public Builder setLng(double value) {
         
@@ -53026,7 +53060,7 @@ public final class ProtoMessage {
        * 中心点，经度
        * </pre>
        *
-       * <code>double lng = 3;</code>
+       * <code>optional double lng = 3;</code>
        */
       public Builder clearLng() {
         
@@ -53041,7 +53075,7 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>int32 radius = 4;</code>
+       * <code>optional int32 radius = 4;</code>
        */
       public int getRadius() {
         return radius_;
@@ -53051,7 +53085,7 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>int32 radius = 4;</code>
+       * <code>optional int32 radius = 4;</code>
        */
       public Builder setRadius(int value) {
         
@@ -53064,7 +53098,7 @@ public final class ProtoMessage {
        * 半径(米)
        * </pre>
        *
-       * <code>int32 radius = 4;</code>
+       * <code>optional int32 radius = 4;</code>
        */
       public Builder clearRadius() {
         
@@ -53079,7 +53113,7 @@ public final class ProtoMessage {
        * 批次：0,第一批，1第二批，...， 每次100个
        * </pre>
        *
-       * <code>int32 pos = 5;</code>
+       * <code>optional int32 pos = 5;</code>
        */
       public int getPos() {
         return pos_;
@@ -53089,7 +53123,7 @@ public final class ProtoMessage {
        * 批次：0,第一批，1第二批，...， 每次100个
        * </pre>
        *
-       * <code>int32 pos = 5;</code>
+       * <code>optional int32 pos = 5;</code>
        */
       public Builder setPos(int value) {
         
@@ -53102,7 +53136,7 @@ public final class ProtoMessage {
        * 批次：0,第一批，1第二批，...， 每次100个
        * </pre>
        *
-       * <code>int32 pos = 5;</code>
+       * <code>optional int32 pos = 5;</code>
        */
       public Builder clearPos() {
         
@@ -53476,16 +53510,16 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string videoUrl = 2;</code>
+     * <code>optional string videoUrl = 2;</code>
      */
     java.lang.String getVideoUrl();
     /**
-     * <code>string videoUrl = 2;</code>
+     * <code>optional string videoUrl = 2;</code>
      */
     com.google.protobuf.ByteString
         getVideoUrlBytes();
@@ -53568,7 +53602,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -53577,7 +53611,7 @@ public final class ProtoMessage {
     public static final int VIDEOURL_FIELD_NUMBER = 2;
     private volatile java.lang.Object videoUrl_;
     /**
-     * <code>string videoUrl = 2;</code>
+     * <code>optional string videoUrl = 2;</code>
      */
     public java.lang.String getVideoUrl() {
       java.lang.Object ref = videoUrl_;
@@ -53592,7 +53626,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string videoUrl = 2;</code>
+     * <code>optional string videoUrl = 2;</code>
      */
     public com.google.protobuf.ByteString
         getVideoUrlBytes() {
@@ -53669,7 +53703,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + VIDEOURL_FIELD_NUMBER;
@@ -53896,13 +53930,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -53911,7 +53945,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -53922,7 +53956,7 @@ public final class ProtoMessage {
 
       private java.lang.Object videoUrl_ = "";
       /**
-       * <code>string videoUrl = 2;</code>
+       * <code>optional string videoUrl = 2;</code>
        */
       public java.lang.String getVideoUrl() {
         java.lang.Object ref = videoUrl_;
@@ -53937,7 +53971,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string videoUrl = 2;</code>
+       * <code>optional string videoUrl = 2;</code>
        */
       public com.google.protobuf.ByteString
           getVideoUrlBytes() {
@@ -53953,7 +53987,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string videoUrl = 2;</code>
+       * <code>optional string videoUrl = 2;</code>
        */
       public Builder setVideoUrl(
           java.lang.String value) {
@@ -53966,7 +54000,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string videoUrl = 2;</code>
+       * <code>optional string videoUrl = 2;</code>
        */
       public Builder clearVideoUrl() {
         
@@ -53975,7 +54009,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string videoUrl = 2;</code>
+       * <code>optional string videoUrl = 2;</code>
        */
       public Builder setVideoUrlBytes(
           com.google.protobuf.ByteString value) {
@@ -54042,7 +54076,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -54086,7 +54120,7 @@ public final class ProtoMessage {
      * 新密码
      * </pre>
      *
-     * <code>string newPassword = 3;</code>
+     * <code>optional string newPassword = 3;</code>
      */
     java.lang.String getNewPassword();
     /**
@@ -54094,7 +54128,7 @@ public final class ProtoMessage {
      * 新密码
      * </pre>
      *
-     * <code>string newPassword = 3;</code>
+     * <code>optional string newPassword = 3;</code>
      */
     com.google.protobuf.ByteString
         getNewPasswordBytes();
@@ -54195,7 +54229,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -54253,7 +54287,7 @@ public final class ProtoMessage {
      * 新密码
      * </pre>
      *
-     * <code>string newPassword = 3;</code>
+     * <code>optional string newPassword = 3;</code>
      */
     public java.lang.String getNewPassword() {
       java.lang.Object ref = newPassword_;
@@ -54272,7 +54306,7 @@ public final class ProtoMessage {
      * 新密码
      * </pre>
      *
-     * <code>string newPassword = 3;</code>
+     * <code>optional string newPassword = 3;</code>
      */
     public com.google.protobuf.ByteString
         getNewPasswordBytes() {
@@ -54362,7 +54396,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getPhoneListCount() > 0) {
@@ -54618,13 +54652,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -54633,7 +54667,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -54778,7 +54812,7 @@ public final class ProtoMessage {
        * 新密码
        * </pre>
        *
-       * <code>string newPassword = 3;</code>
+       * <code>optional string newPassword = 3;</code>
        */
       public java.lang.String getNewPassword() {
         java.lang.Object ref = newPassword_;
@@ -54797,7 +54831,7 @@ public final class ProtoMessage {
        * 新密码
        * </pre>
        *
-       * <code>string newPassword = 3;</code>
+       * <code>optional string newPassword = 3;</code>
        */
       public com.google.protobuf.ByteString
           getNewPasswordBytes() {
@@ -54817,7 +54851,7 @@ public final class ProtoMessage {
        * 新密码
        * </pre>
        *
-       * <code>string newPassword = 3;</code>
+       * <code>optional string newPassword = 3;</code>
        */
       public Builder setNewPassword(
           java.lang.String value) {
@@ -54834,7 +54868,7 @@ public final class ProtoMessage {
        * 新密码
        * </pre>
        *
-       * <code>string newPassword = 3;</code>
+       * <code>optional string newPassword = 3;</code>
        */
       public Builder clearNewPassword() {
         
@@ -54847,7 +54881,7 @@ public final class ProtoMessage {
        * 新密码
        * </pre>
        *
-       * <code>string newPassword = 3;</code>
+       * <code>optional string newPassword = 3;</code>
        */
       public Builder setNewPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -54914,17 +54948,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     java.lang.String getIp();
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     com.google.protobuf.ByteString
         getIpBytes();
 
     /**
-     * <code>int32 port = 2;</code>
+     * <code>optional int32 port = 2;</code>
      */
     int getPort();
   }
@@ -55006,7 +55040,7 @@ public final class ProtoMessage {
     public static final int IP_FIELD_NUMBER = 1;
     private volatile java.lang.Object ip_;
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     public java.lang.String getIp() {
       java.lang.Object ref = ip_;
@@ -55021,7 +55055,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIpBytes() {
@@ -55040,7 +55074,7 @@ public final class ProtoMessage {
     public static final int PORT_FIELD_NUMBER = 2;
     private int port_;
     /**
-     * <code>int32 port = 2;</code>
+     * <code>optional int32 port = 2;</code>
      */
     public int getPort() {
       return port_;
@@ -55107,7 +55141,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + IP_FIELD_NUMBER;
       hash = (53 * hash) + getIp().hashCode();
       hash = (37 * hash) + PORT_FIELD_NUMBER;
@@ -55334,7 +55368,7 @@ public final class ProtoMessage {
 
       private java.lang.Object ip_ = "";
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public java.lang.String getIp() {
         java.lang.Object ref = ip_;
@@ -55349,7 +55383,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIpBytes() {
@@ -55365,7 +55399,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public Builder setIp(
           java.lang.String value) {
@@ -55378,7 +55412,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public Builder clearIp() {
         
@@ -55387,7 +55421,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public Builder setIpBytes(
           com.google.protobuf.ByteString value) {
@@ -55403,13 +55437,13 @@ public final class ProtoMessage {
 
       private int port_ ;
       /**
-       * <code>int32 port = 2;</code>
+       * <code>optional int32 port = 2;</code>
        */
       public int getPort() {
         return port_;
       }
       /**
-       * <code>int32 port = 2;</code>
+       * <code>optional int32 port = 2;</code>
        */
       public Builder setPort(int value) {
         
@@ -55418,7 +55452,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 port = 2;</code>
+       * <code>optional int32 port = 2;</code>
        */
       public Builder clearPort() {
         
@@ -55480,25 +55514,25 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>.MsgIpPort ipport = 2;</code>
+     * <code>optional .MsgIpPort ipport = 2;</code>
      */
     boolean hasIpport();
     /**
-     * <code>.MsgIpPort ipport = 2;</code>
+     * <code>optional .MsgIpPort ipport = 2;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport();
     /**
-     * <code>.MsgIpPort ipport = 2;</code>
+     * <code>optional .MsgIpPort ipport = 2;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder();
 
     /**
-     * <code>int32 pullPort = 3;</code>
+     * <code>optional int32 pullPort = 3;</code>
      */
     int getPullPort();
   }
@@ -55592,7 +55626,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -55601,19 +55635,19 @@ public final class ProtoMessage {
     public static final int IPPORT_FIELD_NUMBER = 2;
     private com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort ipport_;
     /**
-     * <code>.MsgIpPort ipport = 2;</code>
+     * <code>optional .MsgIpPort ipport = 2;</code>
      */
     public boolean hasIpport() {
       return ipport_ != null;
     }
     /**
-     * <code>.MsgIpPort ipport = 2;</code>
+     * <code>optional .MsgIpPort ipport = 2;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
       return ipport_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.getDefaultInstance() : ipport_;
     }
     /**
-     * <code>.MsgIpPort ipport = 2;</code>
+     * <code>optional .MsgIpPort ipport = 2;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
       return getIpport();
@@ -55622,7 +55656,7 @@ public final class ProtoMessage {
     public static final int PULLPORT_FIELD_NUMBER = 3;
     private int pullPort_;
     /**
-     * <code>int32 pullPort = 3;</code>
+     * <code>optional int32 pullPort = 3;</code>
      */
     public int getPullPort() {
       return pullPort_;
@@ -55702,7 +55736,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (hasIpport()) {
@@ -55946,13 +55980,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -55961,7 +55995,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -55974,13 +56008,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> ipportBuilder_;
       /**
-       * <code>.MsgIpPort ipport = 2;</code>
+       * <code>optional .MsgIpPort ipport = 2;</code>
        */
       public boolean hasIpport() {
         return ipportBuilder_ != null || ipport_ != null;
       }
       /**
-       * <code>.MsgIpPort ipport = 2;</code>
+       * <code>optional .MsgIpPort ipport = 2;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
         if (ipportBuilder_ == null) {
@@ -55990,7 +56024,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.MsgIpPort ipport = 2;</code>
+       * <code>optional .MsgIpPort ipport = 2;</code>
        */
       public Builder setIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -56006,7 +56040,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 2;</code>
+       * <code>optional .MsgIpPort ipport = 2;</code>
        */
       public Builder setIpport(
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder builderForValue) {
@@ -56020,7 +56054,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 2;</code>
+       * <code>optional .MsgIpPort ipport = 2;</code>
        */
       public Builder mergeIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -56038,7 +56072,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 2;</code>
+       * <code>optional .MsgIpPort ipport = 2;</code>
        */
       public Builder clearIpport() {
         if (ipportBuilder_ == null) {
@@ -56052,7 +56086,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 2;</code>
+       * <code>optional .MsgIpPort ipport = 2;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder getIpportBuilder() {
         
@@ -56060,7 +56094,7 @@ public final class ProtoMessage {
         return getIpportFieldBuilder().getBuilder();
       }
       /**
-       * <code>.MsgIpPort ipport = 2;</code>
+       * <code>optional .MsgIpPort ipport = 2;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
         if (ipportBuilder_ != null) {
@@ -56071,7 +56105,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.MsgIpPort ipport = 2;</code>
+       * <code>optional .MsgIpPort ipport = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> 
@@ -56089,13 +56123,13 @@ public final class ProtoMessage {
 
       private int pullPort_ ;
       /**
-       * <code>int32 pullPort = 3;</code>
+       * <code>optional int32 pullPort = 3;</code>
        */
       public int getPullPort() {
         return pullPort_;
       }
       /**
-       * <code>int32 pullPort = 3;</code>
+       * <code>optional int32 pullPort = 3;</code>
        */
       public Builder setPullPort(int value) {
         
@@ -56104,7 +56138,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 pullPort = 3;</code>
+       * <code>optional int32 pullPort = 3;</code>
        */
       public Builder clearPullPort() {
         
@@ -56166,25 +56200,25 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int32 cmd = 2;</code>
+     * <code>optional int32 cmd = 2;</code>
      */
     int getCmd();
 
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     boolean hasIpport();
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport();
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder();
   }
@@ -56282,7 +56316,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -56291,7 +56325,7 @@ public final class ProtoMessage {
     public static final int CMD_FIELD_NUMBER = 2;
     private int cmd_;
     /**
-     * <code>int32 cmd = 2;</code>
+     * <code>optional int32 cmd = 2;</code>
      */
     public int getCmd() {
       return cmd_;
@@ -56300,19 +56334,19 @@ public final class ProtoMessage {
     public static final int IPPORT_FIELD_NUMBER = 3;
     private com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort ipport_;
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     public boolean hasIpport() {
       return ipport_ != null;
     }
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
       return ipport_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.getDefaultInstance() : ipport_;
     }
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
       return getIpport();
@@ -56392,7 +56426,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + CMD_FIELD_NUMBER;
@@ -56640,13 +56674,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -56655,7 +56689,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -56666,13 +56700,13 @@ public final class ProtoMessage {
 
       private int cmd_ ;
       /**
-       * <code>int32 cmd = 2;</code>
+       * <code>optional int32 cmd = 2;</code>
        */
       public int getCmd() {
         return cmd_;
       }
       /**
-       * <code>int32 cmd = 2;</code>
+       * <code>optional int32 cmd = 2;</code>
        */
       public Builder setCmd(int value) {
         
@@ -56681,7 +56715,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 cmd = 2;</code>
+       * <code>optional int32 cmd = 2;</code>
        */
       public Builder clearCmd() {
         
@@ -56694,13 +56728,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> ipportBuilder_;
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public boolean hasIpport() {
         return ipportBuilder_ != null || ipport_ != null;
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
         if (ipportBuilder_ == null) {
@@ -56710,7 +56744,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public Builder setIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -56726,7 +56760,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public Builder setIpport(
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder builderForValue) {
@@ -56740,7 +56774,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public Builder mergeIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -56758,7 +56792,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public Builder clearIpport() {
         if (ipportBuilder_ == null) {
@@ -56772,7 +56806,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder getIpportBuilder() {
         
@@ -56780,7 +56814,7 @@ public final class ProtoMessage {
         return getIpportFieldBuilder().getBuilder();
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
         if (ipportBuilder_ != null) {
@@ -56791,7 +56825,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> 
@@ -56860,39 +56894,39 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int32 cmd = 2;</code>
+     * <code>optional int32 cmd = 2;</code>
      */
     int getCmd();
 
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     boolean hasIpport();
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport();
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder();
 
     /**
-     * <code>int32 pullPort = 4;</code>
+     * <code>optional int32 pullPort = 4;</code>
      */
     int getPullPort();
 
     /**
-     * <code>string phonenum = 5;</code>
+     * <code>optional string phonenum = 5;</code>
      */
     java.lang.String getPhonenum();
     /**
-     * <code>string phonenum = 5;</code>
+     * <code>optional string phonenum = 5;</code>
      */
     com.google.protobuf.ByteString
         getPhonenumBytes();
@@ -56902,26 +56936,26 @@ public final class ProtoMessage {
      *0 login, 1: logout, 2: report_alive
      * </pre>
      *
-     * <code>int32 reportType = 6;</code>
+     * <code>optional int32 reportType = 6;</code>
      */
     int getReportType();
 
     /**
-     * <code>int64 userID = 7;</code>
+     * <code>optional int64 userID = 7;</code>
      */
     long getUserID();
 
     /**
-     * <code>int32 appType = 8;</code>
+     * <code>optional int32 appType = 8;</code>
      */
     int getAppType();
 
     /**
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     java.lang.String getCarID();
     /**
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -56931,7 +56965,7 @@ public final class ProtoMessage {
      * 车机的临时串
      * </pre>
      *
-     * <code>string tempToken = 10;</code>
+     * <code>optional string tempToken = 10;</code>
      */
     java.lang.String getTempToken();
     /**
@@ -56939,7 +56973,7 @@ public final class ProtoMessage {
      * 车机的临时串
      * </pre>
      *
-     * <code>string tempToken = 10;</code>
+     * <code>optional string tempToken = 10;</code>
      */
     com.google.protobuf.ByteString
         getTempTokenBytes();
@@ -57083,7 +57117,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -57092,7 +57126,7 @@ public final class ProtoMessage {
     public static final int CMD_FIELD_NUMBER = 2;
     private int cmd_;
     /**
-     * <code>int32 cmd = 2;</code>
+     * <code>optional int32 cmd = 2;</code>
      */
     public int getCmd() {
       return cmd_;
@@ -57101,19 +57135,19 @@ public final class ProtoMessage {
     public static final int IPPORT_FIELD_NUMBER = 3;
     private com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort ipport_;
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     public boolean hasIpport() {
       return ipport_ != null;
     }
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
       return ipport_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.getDefaultInstance() : ipport_;
     }
     /**
-     * <code>.MsgIpPort ipport = 3;</code>
+     * <code>optional .MsgIpPort ipport = 3;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
       return getIpport();
@@ -57122,7 +57156,7 @@ public final class ProtoMessage {
     public static final int PULLPORT_FIELD_NUMBER = 4;
     private int pullPort_;
     /**
-     * <code>int32 pullPort = 4;</code>
+     * <code>optional int32 pullPort = 4;</code>
      */
     public int getPullPort() {
       return pullPort_;
@@ -57131,7 +57165,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 5;
     private volatile java.lang.Object phonenum_;
     /**
-     * <code>string phonenum = 5;</code>
+     * <code>optional string phonenum = 5;</code>
      */
     public java.lang.String getPhonenum() {
       java.lang.Object ref = phonenum_;
@@ -57146,7 +57180,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phonenum = 5;</code>
+     * <code>optional string phonenum = 5;</code>
      */
     public com.google.protobuf.ByteString
         getPhonenumBytes() {
@@ -57169,7 +57203,7 @@ public final class ProtoMessage {
      *0 login, 1: logout, 2: report_alive
      * </pre>
      *
-     * <code>int32 reportType = 6;</code>
+     * <code>optional int32 reportType = 6;</code>
      */
     public int getReportType() {
       return reportType_;
@@ -57178,7 +57212,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 7;
     private long userID_;
     /**
-     * <code>int64 userID = 7;</code>
+     * <code>optional int64 userID = 7;</code>
      */
     public long getUserID() {
       return userID_;
@@ -57187,7 +57221,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 8;
     private int appType_;
     /**
-     * <code>int32 appType = 8;</code>
+     * <code>optional int32 appType = 8;</code>
      */
     public int getAppType() {
       return appType_;
@@ -57196,7 +57230,7 @@ public final class ProtoMessage {
     public static final int CARID_FIELD_NUMBER = 9;
     private volatile java.lang.Object carID_;
     /**
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
@@ -57211,7 +57245,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
@@ -57234,7 +57268,7 @@ public final class ProtoMessage {
      * 车机的临时串
      * </pre>
      *
-     * <code>string tempToken = 10;</code>
+     * <code>optional string tempToken = 10;</code>
      */
     public java.lang.String getTempToken() {
       java.lang.Object ref = tempToken_;
@@ -57253,7 +57287,7 @@ public final class ProtoMessage {
      * 车机的临时串
      * </pre>
      *
-     * <code>string tempToken = 10;</code>
+     * <code>optional string tempToken = 10;</code>
      */
     public com.google.protobuf.ByteString
         getTempTokenBytes() {
@@ -57403,7 +57437,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + CMD_FIELD_NUMBER;
@@ -57711,13 +57745,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -57726,7 +57760,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -57737,13 +57771,13 @@ public final class ProtoMessage {
 
       private int cmd_ ;
       /**
-       * <code>int32 cmd = 2;</code>
+       * <code>optional int32 cmd = 2;</code>
        */
       public int getCmd() {
         return cmd_;
       }
       /**
-       * <code>int32 cmd = 2;</code>
+       * <code>optional int32 cmd = 2;</code>
        */
       public Builder setCmd(int value) {
         
@@ -57752,7 +57786,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 cmd = 2;</code>
+       * <code>optional int32 cmd = 2;</code>
        */
       public Builder clearCmd() {
         
@@ -57765,13 +57799,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> ipportBuilder_;
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public boolean hasIpport() {
         return ipportBuilder_ != null || ipport_ != null;
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort getIpport() {
         if (ipportBuilder_ == null) {
@@ -57781,7 +57815,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public Builder setIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -57797,7 +57831,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public Builder setIpport(
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder builderForValue) {
@@ -57811,7 +57845,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public Builder mergeIpport(com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort value) {
         if (ipportBuilder_ == null) {
@@ -57829,7 +57863,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public Builder clearIpport() {
         if (ipportBuilder_ == null) {
@@ -57843,7 +57877,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder getIpportBuilder() {
         
@@ -57851,7 +57885,7 @@ public final class ProtoMessage {
         return getIpportFieldBuilder().getBuilder();
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder getIpportOrBuilder() {
         if (ipportBuilder_ != null) {
@@ -57862,7 +57896,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.MsgIpPort ipport = 3;</code>
+       * <code>optional .MsgIpPort ipport = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPort.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgIpPortOrBuilder> 
@@ -57880,13 +57914,13 @@ public final class ProtoMessage {
 
       private int pullPort_ ;
       /**
-       * <code>int32 pullPort = 4;</code>
+       * <code>optional int32 pullPort = 4;</code>
        */
       public int getPullPort() {
         return pullPort_;
       }
       /**
-       * <code>int32 pullPort = 4;</code>
+       * <code>optional int32 pullPort = 4;</code>
        */
       public Builder setPullPort(int value) {
         
@@ -57895,7 +57929,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 pullPort = 4;</code>
+       * <code>optional int32 pullPort = 4;</code>
        */
       public Builder clearPullPort() {
         
@@ -57906,7 +57940,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phonenum_ = "";
       /**
-       * <code>string phonenum = 5;</code>
+       * <code>optional string phonenum = 5;</code>
        */
       public java.lang.String getPhonenum() {
         java.lang.Object ref = phonenum_;
@@ -57921,7 +57955,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phonenum = 5;</code>
+       * <code>optional string phonenum = 5;</code>
        */
       public com.google.protobuf.ByteString
           getPhonenumBytes() {
@@ -57937,7 +57971,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phonenum = 5;</code>
+       * <code>optional string phonenum = 5;</code>
        */
       public Builder setPhonenum(
           java.lang.String value) {
@@ -57950,7 +57984,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phonenum = 5;</code>
+       * <code>optional string phonenum = 5;</code>
        */
       public Builder clearPhonenum() {
         
@@ -57959,7 +57993,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phonenum = 5;</code>
+       * <code>optional string phonenum = 5;</code>
        */
       public Builder setPhonenumBytes(
           com.google.protobuf.ByteString value) {
@@ -57979,7 +58013,7 @@ public final class ProtoMessage {
        *0 login, 1: logout, 2: report_alive
        * </pre>
        *
-       * <code>int32 reportType = 6;</code>
+       * <code>optional int32 reportType = 6;</code>
        */
       public int getReportType() {
         return reportType_;
@@ -57989,7 +58023,7 @@ public final class ProtoMessage {
        *0 login, 1: logout, 2: report_alive
        * </pre>
        *
-       * <code>int32 reportType = 6;</code>
+       * <code>optional int32 reportType = 6;</code>
        */
       public Builder setReportType(int value) {
         
@@ -58002,7 +58036,7 @@ public final class ProtoMessage {
        *0 login, 1: logout, 2: report_alive
        * </pre>
        *
-       * <code>int32 reportType = 6;</code>
+       * <code>optional int32 reportType = 6;</code>
        */
       public Builder clearReportType() {
         
@@ -58013,13 +58047,13 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>int64 userID = 7;</code>
+       * <code>optional int64 userID = 7;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>int64 userID = 7;</code>
+       * <code>optional int64 userID = 7;</code>
        */
       public Builder setUserID(long value) {
         
@@ -58028,7 +58062,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 userID = 7;</code>
+       * <code>optional int64 userID = 7;</code>
        */
       public Builder clearUserID() {
         
@@ -58039,13 +58073,13 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>int32 appType = 8;</code>
+       * <code>optional int32 appType = 8;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>int32 appType = 8;</code>
+       * <code>optional int32 appType = 8;</code>
        */
       public Builder setAppType(int value) {
         
@@ -58054,7 +58088,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 appType = 8;</code>
+       * <code>optional int32 appType = 8;</code>
        */
       public Builder clearAppType() {
         
@@ -58065,7 +58099,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carID_ = "";
       /**
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -58080,7 +58114,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
@@ -58096,7 +58130,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
@@ -58109,7 +58143,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public Builder clearCarID() {
         
@@ -58118,7 +58152,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -58138,7 +58172,7 @@ public final class ProtoMessage {
        * 车机的临时串
        * </pre>
        *
-       * <code>string tempToken = 10;</code>
+       * <code>optional string tempToken = 10;</code>
        */
       public java.lang.String getTempToken() {
         java.lang.Object ref = tempToken_;
@@ -58157,7 +58191,7 @@ public final class ProtoMessage {
        * 车机的临时串
        * </pre>
        *
-       * <code>string tempToken = 10;</code>
+       * <code>optional string tempToken = 10;</code>
        */
       public com.google.protobuf.ByteString
           getTempTokenBytes() {
@@ -58177,7 +58211,7 @@ public final class ProtoMessage {
        * 车机的临时串
        * </pre>
        *
-       * <code>string tempToken = 10;</code>
+       * <code>optional string tempToken = 10;</code>
        */
       public Builder setTempToken(
           java.lang.String value) {
@@ -58194,7 +58228,7 @@ public final class ProtoMessage {
        * 车机的临时串
        * </pre>
        *
-       * <code>string tempToken = 10;</code>
+       * <code>optional string tempToken = 10;</code>
        */
       public Builder clearTempToken() {
         
@@ -58207,7 +58241,7 @@ public final class ProtoMessage {
        * 车机的临时串
        * </pre>
        *
-       * <code>string tempToken = 10;</code>
+       * <code>optional string tempToken = 10;</code>
        */
       public Builder setTempTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -58274,7 +58308,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -58283,27 +58317,27 @@ public final class ProtoMessage {
      * &#64;ref sptToClient
      * </pre>
      *
-     * <code>int32 what = 2;</code>
+     * <code>optional int32 what = 2;</code>
      */
     int getWhat();
 
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     java.lang.String getPhone();
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneBytes();
 
     /**
-     * <code>int64 userID = 4;</code>
+     * <code>optional int64 userID = 4;</code>
      */
     long getUserID();
 
     /**
-     * <code>int32 apptype = 5;</code>
+     * <code>optional int32 apptype = 5;</code>
      */
     int getApptype();
 
@@ -58312,7 +58346,7 @@ public final class ProtoMessage {
      * 发给客户端的消息
      * </pre>
      *
-     * <code>bytes msg = 6;</code>
+     * <code>optional bytes msg = 6;</code>
      */
     com.google.protobuf.ByteString getMsg();
 
@@ -58320,26 +58354,26 @@ public final class ProtoMessage {
      * <pre>
      * </pre>
      *
-     * <code>int64 userID2 = 7;</code>
+     * <code>optional int64 userID2 = 7;</code>
      */
     long getUserID2();
 
     /**
-     * <code>string phone2 = 8;</code>
+     * <code>optional string phone2 = 8;</code>
      */
     java.lang.String getPhone2();
     /**
-     * <code>string phone2 = 8;</code>
+     * <code>optional string phone2 = 8;</code>
      */
     com.google.protobuf.ByteString
         getPhone2Bytes();
 
     /**
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     java.lang.String getCarID();
     /**
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -58349,7 +58383,7 @@ public final class ProtoMessage {
      * 车机二维码临时token
      * </pre>
      *
-     * <code>string tempToken = 10;</code>
+     * <code>optional string tempToken = 10;</code>
      */
     java.lang.String getTempToken();
     /**
@@ -58357,7 +58391,7 @@ public final class ProtoMessage {
      * 车机二维码临时token
      * </pre>
      *
-     * <code>string tempToken = 10;</code>
+     * <code>optional string tempToken = 10;</code>
      */
     com.google.protobuf.ByteString
         getTempTokenBytes();
@@ -58367,7 +58401,7 @@ public final class ProtoMessage {
      * 车机登录的Token
      * </pre>
      *
-     * <code>string carLoginToken = 11;</code>
+     * <code>optional string carLoginToken = 11;</code>
      */
     java.lang.String getCarLoginToken();
     /**
@@ -58375,7 +58409,7 @@ public final class ProtoMessage {
      * 车机登录的Token
      * </pre>
      *
-     * <code>string carLoginToken = 11;</code>
+     * <code>optional string carLoginToken = 11;</code>
      */
     com.google.protobuf.ByteString
         getCarLoginTokenBytes();
@@ -58520,7 +58554,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -58533,7 +58567,7 @@ public final class ProtoMessage {
      * &#64;ref sptToClient
      * </pre>
      *
-     * <code>int32 what = 2;</code>
+     * <code>optional int32 what = 2;</code>
      */
     public int getWhat() {
       return what_;
@@ -58542,7 +58576,7 @@ public final class ProtoMessage {
     public static final int PHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object phone_;
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     public java.lang.String getPhone() {
       java.lang.Object ref = phone_;
@@ -58557,7 +58591,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneBytes() {
@@ -58576,7 +58610,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 4;
     private long userID_;
     /**
-     * <code>int64 userID = 4;</code>
+     * <code>optional int64 userID = 4;</code>
      */
     public long getUserID() {
       return userID_;
@@ -58585,7 +58619,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 5;
     private int apptype_;
     /**
-     * <code>int32 apptype = 5;</code>
+     * <code>optional int32 apptype = 5;</code>
      */
     public int getApptype() {
       return apptype_;
@@ -58598,7 +58632,7 @@ public final class ProtoMessage {
      * 发给客户端的消息
      * </pre>
      *
-     * <code>bytes msg = 6;</code>
+     * <code>optional bytes msg = 6;</code>
      */
     public com.google.protobuf.ByteString getMsg() {
       return msg_;
@@ -58610,7 +58644,7 @@ public final class ProtoMessage {
      * <pre>
      * </pre>
      *
-     * <code>int64 userID2 = 7;</code>
+     * <code>optional int64 userID2 = 7;</code>
      */
     public long getUserID2() {
       return userID2_;
@@ -58619,7 +58653,7 @@ public final class ProtoMessage {
     public static final int PHONE2_FIELD_NUMBER = 8;
     private volatile java.lang.Object phone2_;
     /**
-     * <code>string phone2 = 8;</code>
+     * <code>optional string phone2 = 8;</code>
      */
     public java.lang.String getPhone2() {
       java.lang.Object ref = phone2_;
@@ -58634,7 +58668,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phone2 = 8;</code>
+     * <code>optional string phone2 = 8;</code>
      */
     public com.google.protobuf.ByteString
         getPhone2Bytes() {
@@ -58653,7 +58687,7 @@ public final class ProtoMessage {
     public static final int CARID_FIELD_NUMBER = 9;
     private volatile java.lang.Object carID_;
     /**
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
@@ -58668,7 +58702,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string carID = 9;</code>
+     * <code>optional string carID = 9;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
@@ -58691,7 +58725,7 @@ public final class ProtoMessage {
      * 车机二维码临时token
      * </pre>
      *
-     * <code>string tempToken = 10;</code>
+     * <code>optional string tempToken = 10;</code>
      */
     public java.lang.String getTempToken() {
       java.lang.Object ref = tempToken_;
@@ -58710,7 +58744,7 @@ public final class ProtoMessage {
      * 车机二维码临时token
      * </pre>
      *
-     * <code>string tempToken = 10;</code>
+     * <code>optional string tempToken = 10;</code>
      */
     public com.google.protobuf.ByteString
         getTempTokenBytes() {
@@ -58733,7 +58767,7 @@ public final class ProtoMessage {
      * 车机登录的Token
      * </pre>
      *
-     * <code>string carLoginToken = 11;</code>
+     * <code>optional string carLoginToken = 11;</code>
      */
     public java.lang.String getCarLoginToken() {
       java.lang.Object ref = carLoginToken_;
@@ -58752,7 +58786,7 @@ public final class ProtoMessage {
      * 车机登录的Token
      * </pre>
      *
-     * <code>string carLoginToken = 11;</code>
+     * <code>optional string carLoginToken = 11;</code>
      */
     public com.google.protobuf.ByteString
         getCarLoginTokenBytes() {
@@ -58906,7 +58940,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + WHAT_FIELD_NUMBER;
@@ -59215,13 +59249,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -59230,7 +59264,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -59245,7 +59279,7 @@ public final class ProtoMessage {
        * &#64;ref sptToClient
        * </pre>
        *
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public int getWhat() {
         return what_;
@@ -59255,7 +59289,7 @@ public final class ProtoMessage {
        * &#64;ref sptToClient
        * </pre>
        *
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public Builder setWhat(int value) {
         
@@ -59268,7 +59302,7 @@ public final class ProtoMessage {
        * &#64;ref sptToClient
        * </pre>
        *
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public Builder clearWhat() {
         
@@ -59279,7 +59313,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phone_ = "";
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public java.lang.String getPhone() {
         java.lang.Object ref = phone_;
@@ -59294,7 +59328,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneBytes() {
@@ -59310,7 +59344,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder setPhone(
           java.lang.String value) {
@@ -59323,7 +59357,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder clearPhone() {
         
@@ -59332,7 +59366,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder setPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -59348,13 +59382,13 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>int64 userID = 4;</code>
+       * <code>optional int64 userID = 4;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>int64 userID = 4;</code>
+       * <code>optional int64 userID = 4;</code>
        */
       public Builder setUserID(long value) {
         
@@ -59363,7 +59397,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 userID = 4;</code>
+       * <code>optional int64 userID = 4;</code>
        */
       public Builder clearUserID() {
         
@@ -59374,13 +59408,13 @@ public final class ProtoMessage {
 
       private int apptype_ ;
       /**
-       * <code>int32 apptype = 5;</code>
+       * <code>optional int32 apptype = 5;</code>
        */
       public int getApptype() {
         return apptype_;
       }
       /**
-       * <code>int32 apptype = 5;</code>
+       * <code>optional int32 apptype = 5;</code>
        */
       public Builder setApptype(int value) {
         
@@ -59389,7 +59423,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 apptype = 5;</code>
+       * <code>optional int32 apptype = 5;</code>
        */
       public Builder clearApptype() {
         
@@ -59404,7 +59438,7 @@ public final class ProtoMessage {
        * 发给客户端的消息
        * </pre>
        *
-       * <code>bytes msg = 6;</code>
+       * <code>optional bytes msg = 6;</code>
        */
       public com.google.protobuf.ByteString getMsg() {
         return msg_;
@@ -59414,7 +59448,7 @@ public final class ProtoMessage {
        * 发给客户端的消息
        * </pre>
        *
-       * <code>bytes msg = 6;</code>
+       * <code>optional bytes msg = 6;</code>
        */
       public Builder setMsg(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -59430,7 +59464,7 @@ public final class ProtoMessage {
        * 发给客户端的消息
        * </pre>
        *
-       * <code>bytes msg = 6;</code>
+       * <code>optional bytes msg = 6;</code>
        */
       public Builder clearMsg() {
         
@@ -59444,7 +59478,7 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>int64 userID2 = 7;</code>
+       * <code>optional int64 userID2 = 7;</code>
        */
       public long getUserID2() {
         return userID2_;
@@ -59453,7 +59487,7 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>int64 userID2 = 7;</code>
+       * <code>optional int64 userID2 = 7;</code>
        */
       public Builder setUserID2(long value) {
         
@@ -59465,7 +59499,7 @@ public final class ProtoMessage {
        * <pre>
        * </pre>
        *
-       * <code>int64 userID2 = 7;</code>
+       * <code>optional int64 userID2 = 7;</code>
        */
       public Builder clearUserID2() {
         
@@ -59476,7 +59510,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phone2_ = "";
       /**
-       * <code>string phone2 = 8;</code>
+       * <code>optional string phone2 = 8;</code>
        */
       public java.lang.String getPhone2() {
         java.lang.Object ref = phone2_;
@@ -59491,7 +59525,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phone2 = 8;</code>
+       * <code>optional string phone2 = 8;</code>
        */
       public com.google.protobuf.ByteString
           getPhone2Bytes() {
@@ -59507,7 +59541,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phone2 = 8;</code>
+       * <code>optional string phone2 = 8;</code>
        */
       public Builder setPhone2(
           java.lang.String value) {
@@ -59520,7 +59554,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phone2 = 8;</code>
+       * <code>optional string phone2 = 8;</code>
        */
       public Builder clearPhone2() {
         
@@ -59529,7 +59563,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phone2 = 8;</code>
+       * <code>optional string phone2 = 8;</code>
        */
       public Builder setPhone2Bytes(
           com.google.protobuf.ByteString value) {
@@ -59545,7 +59579,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carID_ = "";
       /**
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -59560,7 +59594,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
@@ -59576,7 +59610,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
@@ -59589,7 +59623,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public Builder clearCarID() {
         
@@ -59598,7 +59632,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string carID = 9;</code>
+       * <code>optional string carID = 9;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -59618,7 +59652,7 @@ public final class ProtoMessage {
        * 车机二维码临时token
        * </pre>
        *
-       * <code>string tempToken = 10;</code>
+       * <code>optional string tempToken = 10;</code>
        */
       public java.lang.String getTempToken() {
         java.lang.Object ref = tempToken_;
@@ -59637,7 +59671,7 @@ public final class ProtoMessage {
        * 车机二维码临时token
        * </pre>
        *
-       * <code>string tempToken = 10;</code>
+       * <code>optional string tempToken = 10;</code>
        */
       public com.google.protobuf.ByteString
           getTempTokenBytes() {
@@ -59657,7 +59691,7 @@ public final class ProtoMessage {
        * 车机二维码临时token
        * </pre>
        *
-       * <code>string tempToken = 10;</code>
+       * <code>optional string tempToken = 10;</code>
        */
       public Builder setTempToken(
           java.lang.String value) {
@@ -59674,7 +59708,7 @@ public final class ProtoMessage {
        * 车机二维码临时token
        * </pre>
        *
-       * <code>string tempToken = 10;</code>
+       * <code>optional string tempToken = 10;</code>
        */
       public Builder clearTempToken() {
         
@@ -59687,7 +59721,7 @@ public final class ProtoMessage {
        * 车机二维码临时token
        * </pre>
        *
-       * <code>string tempToken = 10;</code>
+       * <code>optional string tempToken = 10;</code>
        */
       public Builder setTempTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -59707,7 +59741,7 @@ public final class ProtoMessage {
        * 车机登录的Token
        * </pre>
        *
-       * <code>string carLoginToken = 11;</code>
+       * <code>optional string carLoginToken = 11;</code>
        */
       public java.lang.String getCarLoginToken() {
         java.lang.Object ref = carLoginToken_;
@@ -59726,7 +59760,7 @@ public final class ProtoMessage {
        * 车机登录的Token
        * </pre>
        *
-       * <code>string carLoginToken = 11;</code>
+       * <code>optional string carLoginToken = 11;</code>
        */
       public com.google.protobuf.ByteString
           getCarLoginTokenBytes() {
@@ -59746,7 +59780,7 @@ public final class ProtoMessage {
        * 车机登录的Token
        * </pre>
        *
-       * <code>string carLoginToken = 11;</code>
+       * <code>optional string carLoginToken = 11;</code>
        */
       public Builder setCarLoginToken(
           java.lang.String value) {
@@ -59763,7 +59797,7 @@ public final class ProtoMessage {
        * 车机登录的Token
        * </pre>
        *
-       * <code>string carLoginToken = 11;</code>
+       * <code>optional string carLoginToken = 11;</code>
        */
       public Builder clearCarLoginToken() {
         
@@ -59776,7 +59810,7 @@ public final class ProtoMessage {
        * 车机登录的Token
        * </pre>
        *
-       * <code>string carLoginToken = 11;</code>
+       * <code>optional string carLoginToken = 11;</code>
        */
       public Builder setCarLoginTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -59843,22 +59877,22 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     java.lang.String getIp();
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     com.google.protobuf.ByteString
         getIpBytes();
 
     /**
-     * <code>int32 port = 2;</code>
+     * <code>optional int32 port = 2;</code>
      */
     int getPort();
 
     /**
-     * <code>int32 appType = 3;</code>
+     * <code>optional int32 appType = 3;</code>
      */
     int getAppType();
   }
@@ -59946,7 +59980,7 @@ public final class ProtoMessage {
     public static final int IP_FIELD_NUMBER = 1;
     private volatile java.lang.Object ip_;
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     public java.lang.String getIp() {
       java.lang.Object ref = ip_;
@@ -59961,7 +59995,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIpBytes() {
@@ -59980,7 +60014,7 @@ public final class ProtoMessage {
     public static final int PORT_FIELD_NUMBER = 2;
     private int port_;
     /**
-     * <code>int32 port = 2;</code>
+     * <code>optional int32 port = 2;</code>
      */
     public int getPort() {
       return port_;
@@ -59989,7 +60023,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 3;
     private int appType_;
     /**
-     * <code>int32 appType = 3;</code>
+     * <code>optional int32 appType = 3;</code>
      */
     public int getAppType() {
       return appType_;
@@ -60065,7 +60099,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + IP_FIELD_NUMBER;
       hash = (53 * hash) + getIp().hashCode();
       hash = (37 * hash) + PORT_FIELD_NUMBER;
@@ -60300,7 +60334,7 @@ public final class ProtoMessage {
 
       private java.lang.Object ip_ = "";
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public java.lang.String getIp() {
         java.lang.Object ref = ip_;
@@ -60315,7 +60349,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIpBytes() {
@@ -60331,7 +60365,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public Builder setIp(
           java.lang.String value) {
@@ -60344,7 +60378,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public Builder clearIp() {
         
@@ -60353,7 +60387,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public Builder setIpBytes(
           com.google.protobuf.ByteString value) {
@@ -60369,13 +60403,13 @@ public final class ProtoMessage {
 
       private int port_ ;
       /**
-       * <code>int32 port = 2;</code>
+       * <code>optional int32 port = 2;</code>
        */
       public int getPort() {
         return port_;
       }
       /**
-       * <code>int32 port = 2;</code>
+       * <code>optional int32 port = 2;</code>
        */
       public Builder setPort(int value) {
         
@@ -60384,7 +60418,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 port = 2;</code>
+       * <code>optional int32 port = 2;</code>
        */
       public Builder clearPort() {
         
@@ -60395,13 +60429,13 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>int32 appType = 3;</code>
+       * <code>optional int32 appType = 3;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>int32 appType = 3;</code>
+       * <code>optional int32 appType = 3;</code>
        */
       public Builder setAppType(int value) {
         
@@ -60410,7 +60444,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 appType = 3;</code>
+       * <code>optional int32 appType = 3;</code>
        */
       public Builder clearAppType() {
         
@@ -60472,12 +60506,12 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int64 userID = 1;</code>
+     * <code>optional int64 userID = 1;</code>
      */
     long getUserID();
 
     /**
-     * <code>int32 appType = 2;</code>
+     * <code>optional int32 appType = 2;</code>
      */
     int getAppType();
   }
@@ -60558,7 +60592,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 1;
     private long userID_;
     /**
-     * <code>int64 userID = 1;</code>
+     * <code>optional int64 userID = 1;</code>
      */
     public long getUserID() {
       return userID_;
@@ -60567,7 +60601,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 2;
     private int appType_;
     /**
-     * <code>int32 appType = 2;</code>
+     * <code>optional int32 appType = 2;</code>
      */
     public int getAppType() {
       return appType_;
@@ -60635,7 +60669,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + USERID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getUserID());
@@ -60862,13 +60896,13 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>int64 userID = 1;</code>
+       * <code>optional int64 userID = 1;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>int64 userID = 1;</code>
+       * <code>optional int64 userID = 1;</code>
        */
       public Builder setUserID(long value) {
         
@@ -60877,7 +60911,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 userID = 1;</code>
+       * <code>optional int64 userID = 1;</code>
        */
       public Builder clearUserID() {
         
@@ -60888,13 +60922,13 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>int32 appType = 2;</code>
+       * <code>optional int32 appType = 2;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>int32 appType = 2;</code>
+       * <code>optional int32 appType = 2;</code>
        */
       public Builder setAppType(int value) {
         
@@ -60903,7 +60937,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 appType = 2;</code>
+       * <code>optional int32 appType = 2;</code>
        */
       public Builder clearAppType() {
         
@@ -60965,17 +60999,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     java.lang.String getIp();
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     com.google.protobuf.ByteString
         getIpBytes();
 
     /**
-     * <code>int32 port = 2;</code>
+     * <code>optional int32 port = 2;</code>
      */
     int getPort();
 
@@ -61095,7 +61129,7 @@ public final class ProtoMessage {
     public static final int IP_FIELD_NUMBER = 1;
     private volatile java.lang.Object ip_;
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     public java.lang.String getIp() {
       java.lang.Object ref = ip_;
@@ -61110,7 +61144,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string ip = 1;</code>
+     * <code>optional string ip = 1;</code>
      */
     public com.google.protobuf.ByteString
         getIpBytes() {
@@ -61129,7 +61163,7 @@ public final class ProtoMessage {
     public static final int PORT_FIELD_NUMBER = 2;
     private int port_;
     /**
-     * <code>int32 port = 2;</code>
+     * <code>optional int32 port = 2;</code>
      */
     public int getPort() {
       return port_;
@@ -61240,7 +61274,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + IP_FIELD_NUMBER;
       hash = (53 * hash) + getIp().hashCode();
       hash = (37 * hash) + PORT_FIELD_NUMBER;
@@ -61517,7 +61551,7 @@ public final class ProtoMessage {
 
       private java.lang.Object ip_ = "";
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public java.lang.String getIp() {
         java.lang.Object ref = ip_;
@@ -61532,7 +61566,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public com.google.protobuf.ByteString
           getIpBytes() {
@@ -61548,7 +61582,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public Builder setIp(
           java.lang.String value) {
@@ -61561,7 +61595,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public Builder clearIp() {
         
@@ -61570,7 +61604,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string ip = 1;</code>
+       * <code>optional string ip = 1;</code>
        */
       public Builder setIpBytes(
           com.google.protobuf.ByteString value) {
@@ -61586,13 +61620,13 @@ public final class ProtoMessage {
 
       private int port_ ;
       /**
-       * <code>int32 port = 2;</code>
+       * <code>optional int32 port = 2;</code>
        */
       public int getPort() {
         return port_;
       }
       /**
-       * <code>int32 port = 2;</code>
+       * <code>optional int32 port = 2;</code>
        */
       public Builder setPort(int value) {
         
@@ -61601,7 +61635,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 port = 2;</code>
+       * <code>optional int32 port = 2;</code>
        */
       public Builder clearPort() {
         
@@ -61903,7 +61937,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -61912,27 +61946,27 @@ public final class ProtoMessage {
      * MsgSessionReqWhat
      * </pre>
      *
-     * <code>int32 what = 2;</code>
+     * <code>optional int32 what = 2;</code>
      */
     int getWhat();
 
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     java.lang.String getPhone();
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     com.google.protobuf.ByteString
         getPhoneBytes();
 
     /**
-     * <code>int64 userID = 4;</code>
+     * <code>optional int64 userID = 4;</code>
      */
     long getUserID();
 
     /**
-     * <code>int32 appType = 5;</code>
+     * <code>optional int32 appType = 5;</code>
      */
     int getAppType();
 
@@ -62005,11 +62039,11 @@ public final class ProtoMessage {
         int index);
 
     /**
-     * <code>string carID = 8;</code>
+     * <code>optional string carID = 8;</code>
      */
     java.lang.String getCarID();
     /**
-     * <code>string carID = 8;</code>
+     * <code>optional string carID = 8;</code>
      */
     com.google.protobuf.ByteString
         getCarIDBytes();
@@ -62019,7 +62053,7 @@ public final class ProtoMessage {
      * 车机二维码所使用的临时串
      * </pre>
      *
-     * <code>string tempToken = 9;</code>
+     * <code>optional string tempToken = 9;</code>
      */
     java.lang.String getTempToken();
     /**
@@ -62027,7 +62061,7 @@ public final class ProtoMessage {
      * 车机二维码所使用的临时串
      * </pre>
      *
-     * <code>string tempToken = 9;</code>
+     * <code>optional string tempToken = 9;</code>
      */
     com.google.protobuf.ByteString
         getTempTokenBytes();
@@ -62169,7 +62203,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -62182,7 +62216,7 @@ public final class ProtoMessage {
      * MsgSessionReqWhat
      * </pre>
      *
-     * <code>int32 what = 2;</code>
+     * <code>optional int32 what = 2;</code>
      */
     public int getWhat() {
       return what_;
@@ -62191,7 +62225,7 @@ public final class ProtoMessage {
     public static final int PHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object phone_;
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     public java.lang.String getPhone() {
       java.lang.Object ref = phone_;
@@ -62206,7 +62240,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phone = 3;</code>
+     * <code>optional string phone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneBytes() {
@@ -62225,7 +62259,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 4;
     private long userID_;
     /**
-     * <code>int64 userID = 4;</code>
+     * <code>optional int64 userID = 4;</code>
      */
     public long getUserID() {
       return userID_;
@@ -62234,7 +62268,7 @@ public final class ProtoMessage {
     public static final int APPTYPE_FIELD_NUMBER = 5;
     private int appType_;
     /**
-     * <code>int32 appType = 5;</code>
+     * <code>optional int32 appType = 5;</code>
      */
     public int getAppType() {
       return appType_;
@@ -62333,7 +62367,7 @@ public final class ProtoMessage {
     public static final int CARID_FIELD_NUMBER = 8;
     private volatile java.lang.Object carID_;
     /**
-     * <code>string carID = 8;</code>
+     * <code>optional string carID = 8;</code>
      */
     public java.lang.String getCarID() {
       java.lang.Object ref = carID_;
@@ -62348,7 +62382,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string carID = 8;</code>
+     * <code>optional string carID = 8;</code>
      */
     public com.google.protobuf.ByteString
         getCarIDBytes() {
@@ -62371,7 +62405,7 @@ public final class ProtoMessage {
      * 车机二维码所使用的临时串
      * </pre>
      *
-     * <code>string tempToken = 9;</code>
+     * <code>optional string tempToken = 9;</code>
      */
     public java.lang.String getTempToken() {
       java.lang.Object ref = tempToken_;
@@ -62390,7 +62424,7 @@ public final class ProtoMessage {
      * 车机二维码所使用的临时串
      * </pre>
      *
-     * <code>string tempToken = 9;</code>
+     * <code>optional string tempToken = 9;</code>
      */
     public com.google.protobuf.ByteString
         getTempTokenBytes() {
@@ -62528,7 +62562,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + WHAT_FIELD_NUMBER;
@@ -62894,13 +62928,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -62909,7 +62943,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -62924,7 +62958,7 @@ public final class ProtoMessage {
        * MsgSessionReqWhat
        * </pre>
        *
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public int getWhat() {
         return what_;
@@ -62934,7 +62968,7 @@ public final class ProtoMessage {
        * MsgSessionReqWhat
        * </pre>
        *
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public Builder setWhat(int value) {
         
@@ -62947,7 +62981,7 @@ public final class ProtoMessage {
        * MsgSessionReqWhat
        * </pre>
        *
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public Builder clearWhat() {
         
@@ -62958,7 +62992,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phone_ = "";
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public java.lang.String getPhone() {
         java.lang.Object ref = phone_;
@@ -62973,7 +63007,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneBytes() {
@@ -62989,7 +63023,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder setPhone(
           java.lang.String value) {
@@ -63002,7 +63036,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder clearPhone() {
         
@@ -63011,7 +63045,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phone = 3;</code>
+       * <code>optional string phone = 3;</code>
        */
       public Builder setPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -63027,13 +63061,13 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>int64 userID = 4;</code>
+       * <code>optional int64 userID = 4;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>int64 userID = 4;</code>
+       * <code>optional int64 userID = 4;</code>
        */
       public Builder setUserID(long value) {
         
@@ -63042,7 +63076,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 userID = 4;</code>
+       * <code>optional int64 userID = 4;</code>
        */
       public Builder clearUserID() {
         
@@ -63053,13 +63087,13 @@ public final class ProtoMessage {
 
       private int appType_ ;
       /**
-       * <code>int32 appType = 5;</code>
+       * <code>optional int32 appType = 5;</code>
        */
       public int getAppType() {
         return appType_;
       }
       /**
-       * <code>int32 appType = 5;</code>
+       * <code>optional int32 appType = 5;</code>
        */
       public Builder setAppType(int value) {
         
@@ -63068,7 +63102,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 appType = 5;</code>
+       * <code>optional int32 appType = 5;</code>
        */
       public Builder clearAppType() {
         
@@ -63631,7 +63665,7 @@ public final class ProtoMessage {
 
       private java.lang.Object carID_ = "";
       /**
-       * <code>string carID = 8;</code>
+       * <code>optional string carID = 8;</code>
        */
       public java.lang.String getCarID() {
         java.lang.Object ref = carID_;
@@ -63646,7 +63680,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string carID = 8;</code>
+       * <code>optional string carID = 8;</code>
        */
       public com.google.protobuf.ByteString
           getCarIDBytes() {
@@ -63662,7 +63696,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string carID = 8;</code>
+       * <code>optional string carID = 8;</code>
        */
       public Builder setCarID(
           java.lang.String value) {
@@ -63675,7 +63709,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string carID = 8;</code>
+       * <code>optional string carID = 8;</code>
        */
       public Builder clearCarID() {
         
@@ -63684,7 +63718,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string carID = 8;</code>
+       * <code>optional string carID = 8;</code>
        */
       public Builder setCarIDBytes(
           com.google.protobuf.ByteString value) {
@@ -63704,7 +63738,7 @@ public final class ProtoMessage {
        * 车机二维码所使用的临时串
        * </pre>
        *
-       * <code>string tempToken = 9;</code>
+       * <code>optional string tempToken = 9;</code>
        */
       public java.lang.String getTempToken() {
         java.lang.Object ref = tempToken_;
@@ -63723,7 +63757,7 @@ public final class ProtoMessage {
        * 车机二维码所使用的临时串
        * </pre>
        *
-       * <code>string tempToken = 9;</code>
+       * <code>optional string tempToken = 9;</code>
        */
       public com.google.protobuf.ByteString
           getTempTokenBytes() {
@@ -63743,7 +63777,7 @@ public final class ProtoMessage {
        * 车机二维码所使用的临时串
        * </pre>
        *
-       * <code>string tempToken = 9;</code>
+       * <code>optional string tempToken = 9;</code>
        */
       public Builder setTempToken(
           java.lang.String value) {
@@ -63760,7 +63794,7 @@ public final class ProtoMessage {
        * 车机二维码所使用的临时串
        * </pre>
        *
-       * <code>string tempToken = 9;</code>
+       * <code>optional string tempToken = 9;</code>
        */
       public Builder clearTempToken() {
         
@@ -63773,7 +63807,7 @@ public final class ProtoMessage {
        * 车机二维码所使用的临时串
        * </pre>
        *
-       * <code>string tempToken = 9;</code>
+       * <code>optional string tempToken = 9;</code>
        */
       public Builder setTempTokenBytes(
           com.google.protobuf.ByteString value) {
@@ -63840,7 +63874,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -63849,22 +63883,22 @@ public final class ProtoMessage {
      * 命令号
      * </pre>
      *
-     * <code>int32 what = 2;</code>
+     * <code>optional int32 what = 2;</code>
      */
     int getWhat();
 
     /**
-     * <code>string roomip = 3;</code>
+     * <code>optional string roomip = 3;</code>
      */
     java.lang.String getRoomip();
     /**
-     * <code>string roomip = 3;</code>
+     * <code>optional string roomip = 3;</code>
      */
     com.google.protobuf.ByteString
         getRoomipBytes();
 
     /**
-     * <code>int32 roomport = 4;</code>
+     * <code>optional int32 roomport = 4;</code>
      */
     int getRoomport();
 
@@ -63873,7 +63907,7 @@ public final class ProtoMessage {
      * 发起者
      * </pre>
      *
-     * <code>int64 userID = 5;</code>
+     * <code>optional int64 userID = 5;</code>
      */
     long getUserID();
 
@@ -63882,7 +63916,7 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>int64 userID2 = 6;</code>
+     * <code>optional int64 userID2 = 6;</code>
      */
     long getUserID2();
 
@@ -63891,7 +63925,7 @@ public final class ProtoMessage {
      * 单呼是为0
      * </pre>
      *
-     * <code>int64 teamID = 7;</code>
+     * <code>optional int64 teamID = 7;</code>
      */
     long getTeamID();
 
@@ -63900,7 +63934,7 @@ public final class ProtoMessage {
      * 对应 userID2
      * </pre>
      *
-     * <code>int32 enterType = 8;</code>
+     * <code>optional int32 enterType = 8;</code>
      */
     int getEnterType();
 
@@ -63909,7 +63943,7 @@ public final class ProtoMessage {
      * 新的话权
      * </pre>
      *
-     * <code>int32 memberPriority = 9;</code>
+     * <code>optional int32 memberPriority = 9;</code>
      */
     int getMemberPriority();
 
@@ -63918,7 +63952,7 @@ public final class ProtoMessage {
      * 和 userid2 对应的 phone
      * </pre>
      *
-     * <code>string phoneNum2 = 10;</code>
+     * <code>optional string phoneNum2 = 10;</code>
      */
     java.lang.String getPhoneNum2();
     /**
@@ -63926,7 +63960,7 @@ public final class ProtoMessage {
      * 和 userid2 对应的 phone
      * </pre>
      *
-     * <code>string phoneNum2 = 10;</code>
+     * <code>optional string phoneNum2 = 10;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNum2Bytes();
@@ -64062,7 +64096,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -64075,7 +64109,7 @@ public final class ProtoMessage {
      * 命令号
      * </pre>
      *
-     * <code>int32 what = 2;</code>
+     * <code>optional int32 what = 2;</code>
      */
     public int getWhat() {
       return what_;
@@ -64084,7 +64118,7 @@ public final class ProtoMessage {
     public static final int ROOMIP_FIELD_NUMBER = 3;
     private volatile java.lang.Object roomip_;
     /**
-     * <code>string roomip = 3;</code>
+     * <code>optional string roomip = 3;</code>
      */
     public java.lang.String getRoomip() {
       java.lang.Object ref = roomip_;
@@ -64099,7 +64133,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string roomip = 3;</code>
+     * <code>optional string roomip = 3;</code>
      */
     public com.google.protobuf.ByteString
         getRoomipBytes() {
@@ -64118,7 +64152,7 @@ public final class ProtoMessage {
     public static final int ROOMPORT_FIELD_NUMBER = 4;
     private int roomport_;
     /**
-     * <code>int32 roomport = 4;</code>
+     * <code>optional int32 roomport = 4;</code>
      */
     public int getRoomport() {
       return roomport_;
@@ -64131,7 +64165,7 @@ public final class ProtoMessage {
      * 发起者
      * </pre>
      *
-     * <code>int64 userID = 5;</code>
+     * <code>optional int64 userID = 5;</code>
      */
     public long getUserID() {
       return userID_;
@@ -64144,7 +64178,7 @@ public final class ProtoMessage {
      * 单呼目标
      * </pre>
      *
-     * <code>int64 userID2 = 6;</code>
+     * <code>optional int64 userID2 = 6;</code>
      */
     public long getUserID2() {
       return userID2_;
@@ -64157,7 +64191,7 @@ public final class ProtoMessage {
      * 单呼是为0
      * </pre>
      *
-     * <code>int64 teamID = 7;</code>
+     * <code>optional int64 teamID = 7;</code>
      */
     public long getTeamID() {
       return teamID_;
@@ -64170,7 +64204,7 @@ public final class ProtoMessage {
      * 对应 userID2
      * </pre>
      *
-     * <code>int32 enterType = 8;</code>
+     * <code>optional int32 enterType = 8;</code>
      */
     public int getEnterType() {
       return enterType_;
@@ -64183,7 +64217,7 @@ public final class ProtoMessage {
      * 新的话权
      * </pre>
      *
-     * <code>int32 memberPriority = 9;</code>
+     * <code>optional int32 memberPriority = 9;</code>
      */
     public int getMemberPriority() {
       return memberPriority_;
@@ -64196,7 +64230,7 @@ public final class ProtoMessage {
      * 和 userid2 对应的 phone
      * </pre>
      *
-     * <code>string phoneNum2 = 10;</code>
+     * <code>optional string phoneNum2 = 10;</code>
      */
     public java.lang.String getPhoneNum2() {
       java.lang.Object ref = phoneNum2_;
@@ -64215,7 +64249,7 @@ public final class ProtoMessage {
      * 和 userid2 对应的 phone
      * </pre>
      *
-     * <code>string phoneNum2 = 10;</code>
+     * <code>optional string phoneNum2 = 10;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNum2Bytes() {
@@ -64363,7 +64397,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + WHAT_FIELD_NUMBER;
@@ -64662,13 +64696,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -64677,7 +64711,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -64692,7 +64726,7 @@ public final class ProtoMessage {
        * 命令号
        * </pre>
        *
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public int getWhat() {
         return what_;
@@ -64702,7 +64736,7 @@ public final class ProtoMessage {
        * 命令号
        * </pre>
        *
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public Builder setWhat(int value) {
         
@@ -64715,7 +64749,7 @@ public final class ProtoMessage {
        * 命令号
        * </pre>
        *
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public Builder clearWhat() {
         
@@ -64726,7 +64760,7 @@ public final class ProtoMessage {
 
       private java.lang.Object roomip_ = "";
       /**
-       * <code>string roomip = 3;</code>
+       * <code>optional string roomip = 3;</code>
        */
       public java.lang.String getRoomip() {
         java.lang.Object ref = roomip_;
@@ -64741,7 +64775,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string roomip = 3;</code>
+       * <code>optional string roomip = 3;</code>
        */
       public com.google.protobuf.ByteString
           getRoomipBytes() {
@@ -64757,7 +64791,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string roomip = 3;</code>
+       * <code>optional string roomip = 3;</code>
        */
       public Builder setRoomip(
           java.lang.String value) {
@@ -64770,7 +64804,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string roomip = 3;</code>
+       * <code>optional string roomip = 3;</code>
        */
       public Builder clearRoomip() {
         
@@ -64779,7 +64813,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string roomip = 3;</code>
+       * <code>optional string roomip = 3;</code>
        */
       public Builder setRoomipBytes(
           com.google.protobuf.ByteString value) {
@@ -64795,13 +64829,13 @@ public final class ProtoMessage {
 
       private int roomport_ ;
       /**
-       * <code>int32 roomport = 4;</code>
+       * <code>optional int32 roomport = 4;</code>
        */
       public int getRoomport() {
         return roomport_;
       }
       /**
-       * <code>int32 roomport = 4;</code>
+       * <code>optional int32 roomport = 4;</code>
        */
       public Builder setRoomport(int value) {
         
@@ -64810,7 +64844,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 roomport = 4;</code>
+       * <code>optional int32 roomport = 4;</code>
        */
       public Builder clearRoomport() {
         
@@ -64825,7 +64859,7 @@ public final class ProtoMessage {
        * 发起者
        * </pre>
        *
-       * <code>int64 userID = 5;</code>
+       * <code>optional int64 userID = 5;</code>
        */
       public long getUserID() {
         return userID_;
@@ -64835,7 +64869,7 @@ public final class ProtoMessage {
        * 发起者
        * </pre>
        *
-       * <code>int64 userID = 5;</code>
+       * <code>optional int64 userID = 5;</code>
        */
       public Builder setUserID(long value) {
         
@@ -64848,7 +64882,7 @@ public final class ProtoMessage {
        * 发起者
        * </pre>
        *
-       * <code>int64 userID = 5;</code>
+       * <code>optional int64 userID = 5;</code>
        */
       public Builder clearUserID() {
         
@@ -64863,7 +64897,7 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>int64 userID2 = 6;</code>
+       * <code>optional int64 userID2 = 6;</code>
        */
       public long getUserID2() {
         return userID2_;
@@ -64873,7 +64907,7 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>int64 userID2 = 6;</code>
+       * <code>optional int64 userID2 = 6;</code>
        */
       public Builder setUserID2(long value) {
         
@@ -64886,7 +64920,7 @@ public final class ProtoMessage {
        * 单呼目标
        * </pre>
        *
-       * <code>int64 userID2 = 6;</code>
+       * <code>optional int64 userID2 = 6;</code>
        */
       public Builder clearUserID2() {
         
@@ -64901,7 +64935,7 @@ public final class ProtoMessage {
        * 单呼是为0
        * </pre>
        *
-       * <code>int64 teamID = 7;</code>
+       * <code>optional int64 teamID = 7;</code>
        */
       public long getTeamID() {
         return teamID_;
@@ -64911,7 +64945,7 @@ public final class ProtoMessage {
        * 单呼是为0
        * </pre>
        *
-       * <code>int64 teamID = 7;</code>
+       * <code>optional int64 teamID = 7;</code>
        */
       public Builder setTeamID(long value) {
         
@@ -64924,7 +64958,7 @@ public final class ProtoMessage {
        * 单呼是为0
        * </pre>
        *
-       * <code>int64 teamID = 7;</code>
+       * <code>optional int64 teamID = 7;</code>
        */
       public Builder clearTeamID() {
         
@@ -64939,7 +64973,7 @@ public final class ProtoMessage {
        * 对应 userID2
        * </pre>
        *
-       * <code>int32 enterType = 8;</code>
+       * <code>optional int32 enterType = 8;</code>
        */
       public int getEnterType() {
         return enterType_;
@@ -64949,7 +64983,7 @@ public final class ProtoMessage {
        * 对应 userID2
        * </pre>
        *
-       * <code>int32 enterType = 8;</code>
+       * <code>optional int32 enterType = 8;</code>
        */
       public Builder setEnterType(int value) {
         
@@ -64962,7 +64996,7 @@ public final class ProtoMessage {
        * 对应 userID2
        * </pre>
        *
-       * <code>int32 enterType = 8;</code>
+       * <code>optional int32 enterType = 8;</code>
        */
       public Builder clearEnterType() {
         
@@ -64977,7 +65011,7 @@ public final class ProtoMessage {
        * 新的话权
        * </pre>
        *
-       * <code>int32 memberPriority = 9;</code>
+       * <code>optional int32 memberPriority = 9;</code>
        */
       public int getMemberPriority() {
         return memberPriority_;
@@ -64987,7 +65021,7 @@ public final class ProtoMessage {
        * 新的话权
        * </pre>
        *
-       * <code>int32 memberPriority = 9;</code>
+       * <code>optional int32 memberPriority = 9;</code>
        */
       public Builder setMemberPriority(int value) {
         
@@ -65000,7 +65034,7 @@ public final class ProtoMessage {
        * 新的话权
        * </pre>
        *
-       * <code>int32 memberPriority = 9;</code>
+       * <code>optional int32 memberPriority = 9;</code>
        */
       public Builder clearMemberPriority() {
         
@@ -65015,7 +65049,7 @@ public final class ProtoMessage {
        * 和 userid2 对应的 phone
        * </pre>
        *
-       * <code>string phoneNum2 = 10;</code>
+       * <code>optional string phoneNum2 = 10;</code>
        */
       public java.lang.String getPhoneNum2() {
         java.lang.Object ref = phoneNum2_;
@@ -65034,7 +65068,7 @@ public final class ProtoMessage {
        * 和 userid2 对应的 phone
        * </pre>
        *
-       * <code>string phoneNum2 = 10;</code>
+       * <code>optional string phoneNum2 = 10;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNum2Bytes() {
@@ -65054,7 +65088,7 @@ public final class ProtoMessage {
        * 和 userid2 对应的 phone
        * </pre>
        *
-       * <code>string phoneNum2 = 10;</code>
+       * <code>optional string phoneNum2 = 10;</code>
        */
       public Builder setPhoneNum2(
           java.lang.String value) {
@@ -65071,7 +65105,7 @@ public final class ProtoMessage {
        * 和 userid2 对应的 phone
        * </pre>
        *
-       * <code>string phoneNum2 = 10;</code>
+       * <code>optional string phoneNum2 = 10;</code>
        */
       public Builder clearPhoneNum2() {
         
@@ -65084,7 +65118,7 @@ public final class ProtoMessage {
        * 和 userid2 对应的 phone
        * </pre>
        *
-       * <code>string phoneNum2 = 10;</code>
+       * <code>optional string phoneNum2 = 10;</code>
        */
       public Builder setPhoneNum2Bytes(
           com.google.protobuf.ByteString value) {
@@ -65151,30 +65185,30 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int32 what = 2;</code>
+     * <code>optional int32 what = 2;</code>
      */
     int getWhat();
 
     /**
-     * <code>int64 userID = 3;</code>
+     * <code>optional int64 userID = 3;</code>
      */
     long getUserID();
 
     /**
-     * <code>.LocationMsg location = 4;</code>
+     * <code>optional .LocationMsg location = 4;</code>
      */
     boolean hasLocation();
     /**
-     * <code>.LocationMsg location = 4;</code>
+     * <code>optional .LocationMsg location = 4;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg getLocation();
     /**
-     * <code>.LocationMsg location = 4;</code>
+     * <code>optional .LocationMsg location = 4;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder getLocationOrBuilder();
 
@@ -65216,15 +65250,15 @@ public final class ProtoMessage {
         int index);
 
     /**
-     * <code>.MsgSearchAround search = 7;</code>
+     * <code>optional .MsgSearchAround search = 7;</code>
      */
     boolean hasSearch();
     /**
-     * <code>.MsgSearchAround search = 7;</code>
+     * <code>optional .MsgSearchAround search = 7;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround getSearch();
     /**
-     * <code>.MsgSearchAround search = 7;</code>
+     * <code>optional .MsgSearchAround search = 7;</code>
      */
     com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAroundOrBuilder getSearchOrBuilder();
   }
@@ -65380,7 +65414,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -65389,7 +65423,7 @@ public final class ProtoMessage {
     public static final int WHAT_FIELD_NUMBER = 2;
     private int what_;
     /**
-     * <code>int32 what = 2;</code>
+     * <code>optional int32 what = 2;</code>
      */
     public int getWhat() {
       return what_;
@@ -65398,7 +65432,7 @@ public final class ProtoMessage {
     public static final int USERID_FIELD_NUMBER = 3;
     private long userID_;
     /**
-     * <code>int64 userID = 3;</code>
+     * <code>optional int64 userID = 3;</code>
      */
     public long getUserID() {
       return userID_;
@@ -65407,19 +65441,19 @@ public final class ProtoMessage {
     public static final int LOCATION_FIELD_NUMBER = 4;
     private com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg location_;
     /**
-     * <code>.LocationMsg location = 4;</code>
+     * <code>optional .LocationMsg location = 4;</code>
      */
     public boolean hasLocation() {
       return location_ != null;
     }
     /**
-     * <code>.LocationMsg location = 4;</code>
+     * <code>optional .LocationMsg location = 4;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg getLocation() {
       return location_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.getDefaultInstance() : location_;
     }
     /**
-     * <code>.LocationMsg location = 4;</code>
+     * <code>optional .LocationMsg location = 4;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder getLocationOrBuilder() {
       return getLocation();
@@ -65486,19 +65520,19 @@ public final class ProtoMessage {
     public static final int SEARCH_FIELD_NUMBER = 7;
     private com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround search_;
     /**
-     * <code>.MsgSearchAround search = 7;</code>
+     * <code>optional .MsgSearchAround search = 7;</code>
      */
     public boolean hasSearch() {
       return search_ != null;
     }
     /**
-     * <code>.MsgSearchAround search = 7;</code>
+     * <code>optional .MsgSearchAround search = 7;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround getSearch() {
       return search_ == null ? com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround.getDefaultInstance() : search_;
     }
     /**
-     * <code>.MsgSearchAround search = 7;</code>
+     * <code>optional .MsgSearchAround search = 7;</code>
      */
     public com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAroundOrBuilder getSearchOrBuilder() {
       return getSearch();
@@ -65632,7 +65666,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + WHAT_FIELD_NUMBER;
@@ -65978,13 +66012,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -65993,7 +66027,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -66004,13 +66038,13 @@ public final class ProtoMessage {
 
       private int what_ ;
       /**
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public int getWhat() {
         return what_;
       }
       /**
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public Builder setWhat(int value) {
         
@@ -66019,7 +66053,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 what = 2;</code>
+       * <code>optional int32 what = 2;</code>
        */
       public Builder clearWhat() {
         
@@ -66030,13 +66064,13 @@ public final class ProtoMessage {
 
       private long userID_ ;
       /**
-       * <code>int64 userID = 3;</code>
+       * <code>optional int64 userID = 3;</code>
        */
       public long getUserID() {
         return userID_;
       }
       /**
-       * <code>int64 userID = 3;</code>
+       * <code>optional int64 userID = 3;</code>
        */
       public Builder setUserID(long value) {
         
@@ -66045,7 +66079,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 userID = 3;</code>
+       * <code>optional int64 userID = 3;</code>
        */
       public Builder clearUserID() {
         
@@ -66058,13 +66092,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> locationBuilder_;
       /**
-       * <code>.LocationMsg location = 4;</code>
+       * <code>optional .LocationMsg location = 4;</code>
        */
       public boolean hasLocation() {
         return locationBuilder_ != null || location_ != null;
       }
       /**
-       * <code>.LocationMsg location = 4;</code>
+       * <code>optional .LocationMsg location = 4;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg getLocation() {
         if (locationBuilder_ == null) {
@@ -66074,7 +66108,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.LocationMsg location = 4;</code>
+       * <code>optional .LocationMsg location = 4;</code>
        */
       public Builder setLocation(com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg value) {
         if (locationBuilder_ == null) {
@@ -66090,7 +66124,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.LocationMsg location = 4;</code>
+       * <code>optional .LocationMsg location = 4;</code>
        */
       public Builder setLocation(
           com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder builderForValue) {
@@ -66104,7 +66138,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.LocationMsg location = 4;</code>
+       * <code>optional .LocationMsg location = 4;</code>
        */
       public Builder mergeLocation(com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg value) {
         if (locationBuilder_ == null) {
@@ -66122,7 +66156,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.LocationMsg location = 4;</code>
+       * <code>optional .LocationMsg location = 4;</code>
        */
       public Builder clearLocation() {
         if (locationBuilder_ == null) {
@@ -66136,7 +66170,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.LocationMsg location = 4;</code>
+       * <code>optional .LocationMsg location = 4;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder getLocationBuilder() {
         
@@ -66144,7 +66178,7 @@ public final class ProtoMessage {
         return getLocationFieldBuilder().getBuilder();
       }
       /**
-       * <code>.LocationMsg location = 4;</code>
+       * <code>optional .LocationMsg location = 4;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder getLocationOrBuilder() {
         if (locationBuilder_ != null) {
@@ -66155,7 +66189,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.LocationMsg location = 4;</code>
+       * <code>optional .LocationMsg location = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsg.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.LocationMsgOrBuilder> 
@@ -66481,13 +66515,13 @@ public final class ProtoMessage {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround, com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAroundOrBuilder> searchBuilder_;
       /**
-       * <code>.MsgSearchAround search = 7;</code>
+       * <code>optional .MsgSearchAround search = 7;</code>
        */
       public boolean hasSearch() {
         return searchBuilder_ != null || search_ != null;
       }
       /**
-       * <code>.MsgSearchAround search = 7;</code>
+       * <code>optional .MsgSearchAround search = 7;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround getSearch() {
         if (searchBuilder_ == null) {
@@ -66497,7 +66531,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.MsgSearchAround search = 7;</code>
+       * <code>optional .MsgSearchAround search = 7;</code>
        */
       public Builder setSearch(com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround value) {
         if (searchBuilder_ == null) {
@@ -66513,7 +66547,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgSearchAround search = 7;</code>
+       * <code>optional .MsgSearchAround search = 7;</code>
        */
       public Builder setSearch(
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround.Builder builderForValue) {
@@ -66527,7 +66561,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgSearchAround search = 7;</code>
+       * <code>optional .MsgSearchAround search = 7;</code>
        */
       public Builder mergeSearch(com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround value) {
         if (searchBuilder_ == null) {
@@ -66545,7 +66579,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgSearchAround search = 7;</code>
+       * <code>optional .MsgSearchAround search = 7;</code>
        */
       public Builder clearSearch() {
         if (searchBuilder_ == null) {
@@ -66559,7 +66593,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>.MsgSearchAround search = 7;</code>
+       * <code>optional .MsgSearchAround search = 7;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround.Builder getSearchBuilder() {
         
@@ -66567,7 +66601,7 @@ public final class ProtoMessage {
         return getSearchFieldBuilder().getBuilder();
       }
       /**
-       * <code>.MsgSearchAround search = 7;</code>
+       * <code>optional .MsgSearchAround search = 7;</code>
        */
       public com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAroundOrBuilder getSearchOrBuilder() {
         if (searchBuilder_ != null) {
@@ -66578,7 +66612,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>.MsgSearchAround search = 7;</code>
+       * <code>optional .MsgSearchAround search = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround, com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAround.Builder, com.example.jrd48.service.proto_gen.ProtoMessage.MsgSearchAroundOrBuilder> 
@@ -66647,17 +66681,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string phoneNum = 1;</code>
+     * <code>optional string phoneNum = 1;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 1;</code>
+     * <code>optional string phoneNum = 1;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>bool online = 2;</code>
+     * <code>optional bool online = 2;</code>
      */
     boolean getOnline();
   }
@@ -66739,7 +66773,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 1;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 1;</code>
+     * <code>optional string phoneNum = 1;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -66754,7 +66788,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 1;</code>
+     * <code>optional string phoneNum = 1;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -66773,7 +66807,7 @@ public final class ProtoMessage {
     public static final int ONLINE_FIELD_NUMBER = 2;
     private boolean online_;
     /**
-     * <code>bool online = 2;</code>
+     * <code>optional bool online = 2;</code>
      */
     public boolean getOnline() {
       return online_;
@@ -66840,7 +66874,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
       hash = (53 * hash) + getPhoneNum().hashCode();
       hash = (37 * hash) + ONLINE_FIELD_NUMBER;
@@ -67068,7 +67102,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 1;</code>
+       * <code>optional string phoneNum = 1;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -67083,7 +67117,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 1;</code>
+       * <code>optional string phoneNum = 1;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -67099,7 +67133,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 1;</code>
+       * <code>optional string phoneNum = 1;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -67112,7 +67146,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 1;</code>
+       * <code>optional string phoneNum = 1;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -67121,7 +67155,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 1;</code>
+       * <code>optional string phoneNum = 1;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -67137,13 +67171,13 @@ public final class ProtoMessage {
 
       private boolean online_ ;
       /**
-       * <code>bool online = 2;</code>
+       * <code>optional bool online = 2;</code>
        */
       public boolean getOnline() {
         return online_;
       }
       /**
-       * <code>bool online = 2;</code>
+       * <code>optional bool online = 2;</code>
        */
       public Builder setOnline(boolean value) {
         
@@ -67152,7 +67186,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>bool online = 2;</code>
+       * <code>optional bool online = 2;</code>
        */
       public Builder clearOnline() {
         
@@ -67214,7 +67248,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -67327,7 +67361,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -67430,7 +67464,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getFriendsCount() > 0) {
@@ -67698,13 +67732,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -67713,7 +67747,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -68015,17 +68049,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string phoneNum = 1;</code>
+     * <code>optional string phoneNum = 1;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 1;</code>
+     * <code>optional string phoneNum = 1;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>int32 locationCnt = 2;</code>
+     * <code>optional int32 locationCnt = 2;</code>
      */
     int getLocationCnt();
   }
@@ -68107,7 +68141,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 1;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 1;</code>
+     * <code>optional string phoneNum = 1;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -68122,7 +68156,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 1;</code>
+     * <code>optional string phoneNum = 1;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -68141,7 +68175,7 @@ public final class ProtoMessage {
     public static final int LOCATIONCNT_FIELD_NUMBER = 2;
     private int locationCnt_;
     /**
-     * <code>int32 locationCnt = 2;</code>
+     * <code>optional int32 locationCnt = 2;</code>
      */
     public int getLocationCnt() {
       return locationCnt_;
@@ -68208,7 +68242,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
       hash = (53 * hash) + getPhoneNum().hashCode();
       hash = (37 * hash) + LOCATIONCNT_FIELD_NUMBER;
@@ -68435,7 +68469,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 1;</code>
+       * <code>optional string phoneNum = 1;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -68450,7 +68484,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 1;</code>
+       * <code>optional string phoneNum = 1;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -68466,7 +68500,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 1;</code>
+       * <code>optional string phoneNum = 1;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -68479,7 +68513,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 1;</code>
+       * <code>optional string phoneNum = 1;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -68488,7 +68522,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 1;</code>
+       * <code>optional string phoneNum = 1;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -68504,13 +68538,13 @@ public final class ProtoMessage {
 
       private int locationCnt_ ;
       /**
-       * <code>int32 locationCnt = 2;</code>
+       * <code>optional int32 locationCnt = 2;</code>
        */
       public int getLocationCnt() {
         return locationCnt_;
       }
       /**
-       * <code>int32 locationCnt = 2;</code>
+       * <code>optional int32 locationCnt = 2;</code>
        */
       public Builder setLocationCnt(int value) {
         
@@ -68519,7 +68553,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 locationCnt = 2;</code>
+       * <code>optional int32 locationCnt = 2;</code>
        */
       public Builder clearLocationCnt() {
         
@@ -68581,17 +68615,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int64 fromTime = 2;</code>
+     * <code>optional int64 fromTime = 2;</code>
      */
     long getFromTime();
 
     /**
-     * <code>int64 toTime = 3;</code>
+     * <code>optional int64 toTime = 3;</code>
      */
     long getToTime();
 
@@ -68600,7 +68634,7 @@ public final class ProtoMessage {
      * 要查询谁，只能查询调度员管辖范围内的帐号
      * </pre>
      *
-     * <code>string phoneNum = 4;</code>
+     * <code>optional string phoneNum = 4;</code>
      */
     java.lang.String getPhoneNum();
     /**
@@ -68608,7 +68642,7 @@ public final class ProtoMessage {
      * 要查询谁，只能查询调度员管辖范围内的帐号
      * </pre>
      *
-     * <code>string phoneNum = 4;</code>
+     * <code>optional string phoneNum = 4;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -68618,7 +68652,7 @@ public final class ProtoMessage {
      * 精度，单位米
      * </pre>
      *
-     * <code>int32 accuracy = 5;</code>
+     * <code>optional int32 accuracy = 5;</code>
      */
     int getAccuracy();
 
@@ -68797,7 +68831,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -68806,7 +68840,7 @@ public final class ProtoMessage {
     public static final int FROMTIME_FIELD_NUMBER = 2;
     private long fromTime_;
     /**
-     * <code>int64 fromTime = 2;</code>
+     * <code>optional int64 fromTime = 2;</code>
      */
     public long getFromTime() {
       return fromTime_;
@@ -68815,7 +68849,7 @@ public final class ProtoMessage {
     public static final int TOTIME_FIELD_NUMBER = 3;
     private long toTime_;
     /**
-     * <code>int64 toTime = 3;</code>
+     * <code>optional int64 toTime = 3;</code>
      */
     public long getToTime() {
       return toTime_;
@@ -68828,7 +68862,7 @@ public final class ProtoMessage {
      * 要查询谁，只能查询调度员管辖范围内的帐号
      * </pre>
      *
-     * <code>string phoneNum = 4;</code>
+     * <code>optional string phoneNum = 4;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -68847,7 +68881,7 @@ public final class ProtoMessage {
      * 要查询谁，只能查询调度员管辖范围内的帐号
      * </pre>
      *
-     * <code>string phoneNum = 4;</code>
+     * <code>optional string phoneNum = 4;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -68870,7 +68904,7 @@ public final class ProtoMessage {
      * 精度，单位米
      * </pre>
      *
-     * <code>int32 accuracy = 5;</code>
+     * <code>optional int32 accuracy = 5;</code>
      */
     public int getAccuracy() {
       return accuracy_;
@@ -69052,7 +69086,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FROMTIME_FIELD_NUMBER;
@@ -69405,13 +69439,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -69420,7 +69454,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -69431,13 +69465,13 @@ public final class ProtoMessage {
 
       private long fromTime_ ;
       /**
-       * <code>int64 fromTime = 2;</code>
+       * <code>optional int64 fromTime = 2;</code>
        */
       public long getFromTime() {
         return fromTime_;
       }
       /**
-       * <code>int64 fromTime = 2;</code>
+       * <code>optional int64 fromTime = 2;</code>
        */
       public Builder setFromTime(long value) {
         
@@ -69446,7 +69480,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 fromTime = 2;</code>
+       * <code>optional int64 fromTime = 2;</code>
        */
       public Builder clearFromTime() {
         
@@ -69457,13 +69491,13 @@ public final class ProtoMessage {
 
       private long toTime_ ;
       /**
-       * <code>int64 toTime = 3;</code>
+       * <code>optional int64 toTime = 3;</code>
        */
       public long getToTime() {
         return toTime_;
       }
       /**
-       * <code>int64 toTime = 3;</code>
+       * <code>optional int64 toTime = 3;</code>
        */
       public Builder setToTime(long value) {
         
@@ -69472,7 +69506,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 toTime = 3;</code>
+       * <code>optional int64 toTime = 3;</code>
        */
       public Builder clearToTime() {
         
@@ -69487,7 +69521,7 @@ public final class ProtoMessage {
        * 要查询谁，只能查询调度员管辖范围内的帐号
        * </pre>
        *
-       * <code>string phoneNum = 4;</code>
+       * <code>optional string phoneNum = 4;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -69506,7 +69540,7 @@ public final class ProtoMessage {
        * 要查询谁，只能查询调度员管辖范围内的帐号
        * </pre>
        *
-       * <code>string phoneNum = 4;</code>
+       * <code>optional string phoneNum = 4;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -69526,7 +69560,7 @@ public final class ProtoMessage {
        * 要查询谁，只能查询调度员管辖范围内的帐号
        * </pre>
        *
-       * <code>string phoneNum = 4;</code>
+       * <code>optional string phoneNum = 4;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -69543,7 +69577,7 @@ public final class ProtoMessage {
        * 要查询谁，只能查询调度员管辖范围内的帐号
        * </pre>
        *
-       * <code>string phoneNum = 4;</code>
+       * <code>optional string phoneNum = 4;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -69556,7 +69590,7 @@ public final class ProtoMessage {
        * 要查询谁，只能查询调度员管辖范围内的帐号
        * </pre>
        *
-       * <code>string phoneNum = 4;</code>
+       * <code>optional string phoneNum = 4;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -69576,7 +69610,7 @@ public final class ProtoMessage {
        * 精度，单位米
        * </pre>
        *
-       * <code>int32 accuracy = 5;</code>
+       * <code>optional int32 accuracy = 5;</code>
        */
       public int getAccuracy() {
         return accuracy_;
@@ -69586,7 +69620,7 @@ public final class ProtoMessage {
        * 精度，单位米
        * </pre>
        *
-       * <code>int32 accuracy = 5;</code>
+       * <code>optional int32 accuracy = 5;</code>
        */
       public Builder setAccuracy(int value) {
         
@@ -69599,7 +69633,7 @@ public final class ProtoMessage {
        * 精度，单位米
        * </pre>
        *
-       * <code>int32 accuracy = 5;</code>
+       * <code>optional int32 accuracy = 5;</code>
        */
       public Builder clearAccuracy() {
         
@@ -70145,17 +70179,17 @@ public final class ProtoMessage {
      * 距离0点的秒数
      * </pre>
      *
-     * <code>int32 sec = 1;</code>
+     * <code>optional int32 sec = 1;</code>
      */
     int getSec();
 
     /**
-     * <code>double lat = 2;</code>
+     * <code>optional double lat = 2;</code>
      */
     double getLat();
 
     /**
-     * <code>double lng = 3;</code>
+     * <code>optional double lng = 3;</code>
      */
     double getLng();
 
@@ -70164,7 +70198,7 @@ public final class ProtoMessage {
      * 地点名称
      * </pre>
      *
-     * <code>string addr = 4;</code>
+     * <code>optional string addr = 4;</code>
      */
     java.lang.String getAddr();
     /**
@@ -70172,7 +70206,7 @@ public final class ProtoMessage {
      * 地点名称
      * </pre>
      *
-     * <code>string addr = 4;</code>
+     * <code>optional string addr = 4;</code>
      */
     com.google.protobuf.ByteString
         getAddrBytes();
@@ -70182,7 +70216,7 @@ public final class ProtoMessage {
      * 打卡类型
      * </pre>
      *
-     * <code>int32 reportType = 5;</code>
+     * <code>optional int32 reportType = 5;</code>
      */
     int getReportType();
   }
@@ -70286,7 +70320,7 @@ public final class ProtoMessage {
      * 距离0点的秒数
      * </pre>
      *
-     * <code>int32 sec = 1;</code>
+     * <code>optional int32 sec = 1;</code>
      */
     public int getSec() {
       return sec_;
@@ -70295,7 +70329,7 @@ public final class ProtoMessage {
     public static final int LAT_FIELD_NUMBER = 2;
     private double lat_;
     /**
-     * <code>double lat = 2;</code>
+     * <code>optional double lat = 2;</code>
      */
     public double getLat() {
       return lat_;
@@ -70304,7 +70338,7 @@ public final class ProtoMessage {
     public static final int LNG_FIELD_NUMBER = 3;
     private double lng_;
     /**
-     * <code>double lng = 3;</code>
+     * <code>optional double lng = 3;</code>
      */
     public double getLng() {
       return lng_;
@@ -70317,7 +70351,7 @@ public final class ProtoMessage {
      * 地点名称
      * </pre>
      *
-     * <code>string addr = 4;</code>
+     * <code>optional string addr = 4;</code>
      */
     public java.lang.String getAddr() {
       java.lang.Object ref = addr_;
@@ -70336,7 +70370,7 @@ public final class ProtoMessage {
      * 地点名称
      * </pre>
      *
-     * <code>string addr = 4;</code>
+     * <code>optional string addr = 4;</code>
      */
     public com.google.protobuf.ByteString
         getAddrBytes() {
@@ -70359,7 +70393,7 @@ public final class ProtoMessage {
      * 打卡类型
      * </pre>
      *
-     * <code>int32 reportType = 5;</code>
+     * <code>optional int32 reportType = 5;</code>
      */
     public int getReportType() {
       return reportType_;
@@ -70457,7 +70491,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + SEC_FIELD_NUMBER;
       hash = (53 * hash) + getSec();
       hash = (37 * hash) + LAT_FIELD_NUMBER;
@@ -70714,7 +70748,7 @@ public final class ProtoMessage {
        * 距离0点的秒数
        * </pre>
        *
-       * <code>int32 sec = 1;</code>
+       * <code>optional int32 sec = 1;</code>
        */
       public int getSec() {
         return sec_;
@@ -70724,7 +70758,7 @@ public final class ProtoMessage {
        * 距离0点的秒数
        * </pre>
        *
-       * <code>int32 sec = 1;</code>
+       * <code>optional int32 sec = 1;</code>
        */
       public Builder setSec(int value) {
         
@@ -70737,7 +70771,7 @@ public final class ProtoMessage {
        * 距离0点的秒数
        * </pre>
        *
-       * <code>int32 sec = 1;</code>
+       * <code>optional int32 sec = 1;</code>
        */
       public Builder clearSec() {
         
@@ -70748,13 +70782,13 @@ public final class ProtoMessage {
 
       private double lat_ ;
       /**
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public double getLat() {
         return lat_;
       }
       /**
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public Builder setLat(double value) {
         
@@ -70763,7 +70797,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public Builder clearLat() {
         
@@ -70774,13 +70808,13 @@ public final class ProtoMessage {
 
       private double lng_ ;
       /**
-       * <code>double lng = 3;</code>
+       * <code>optional double lng = 3;</code>
        */
       public double getLng() {
         return lng_;
       }
       /**
-       * <code>double lng = 3;</code>
+       * <code>optional double lng = 3;</code>
        */
       public Builder setLng(double value) {
         
@@ -70789,7 +70823,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>double lng = 3;</code>
+       * <code>optional double lng = 3;</code>
        */
       public Builder clearLng() {
         
@@ -70804,7 +70838,7 @@ public final class ProtoMessage {
        * 地点名称
        * </pre>
        *
-       * <code>string addr = 4;</code>
+       * <code>optional string addr = 4;</code>
        */
       public java.lang.String getAddr() {
         java.lang.Object ref = addr_;
@@ -70823,7 +70857,7 @@ public final class ProtoMessage {
        * 地点名称
        * </pre>
        *
-       * <code>string addr = 4;</code>
+       * <code>optional string addr = 4;</code>
        */
       public com.google.protobuf.ByteString
           getAddrBytes() {
@@ -70843,7 +70877,7 @@ public final class ProtoMessage {
        * 地点名称
        * </pre>
        *
-       * <code>string addr = 4;</code>
+       * <code>optional string addr = 4;</code>
        */
       public Builder setAddr(
           java.lang.String value) {
@@ -70860,7 +70894,7 @@ public final class ProtoMessage {
        * 地点名称
        * </pre>
        *
-       * <code>string addr = 4;</code>
+       * <code>optional string addr = 4;</code>
        */
       public Builder clearAddr() {
         
@@ -70873,7 +70907,7 @@ public final class ProtoMessage {
        * 地点名称
        * </pre>
        *
-       * <code>string addr = 4;</code>
+       * <code>optional string addr = 4;</code>
        */
       public Builder setAddrBytes(
           com.google.protobuf.ByteString value) {
@@ -70893,7 +70927,7 @@ public final class ProtoMessage {
        * 打卡类型
        * </pre>
        *
-       * <code>int32 reportType = 5;</code>
+       * <code>optional int32 reportType = 5;</code>
        */
       public int getReportType() {
         return reportType_;
@@ -70903,7 +70937,7 @@ public final class ProtoMessage {
        * 打卡类型
        * </pre>
        *
-       * <code>int32 reportType = 5;</code>
+       * <code>optional int32 reportType = 5;</code>
        */
       public Builder setReportType(int value) {
         
@@ -70916,7 +70950,7 @@ public final class ProtoMessage {
        * 打卡类型
        * </pre>
        *
-       * <code>int32 reportType = 5;</code>
+       * <code>optional int32 reportType = 5;</code>
        */
       public Builder clearReportType() {
         
@@ -70978,36 +71012,36 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int64 kqID = 1;</code>
+     * <code>optional int64 kqID = 1;</code>
      */
     long getKqID();
 
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
 
     /**
-     * <code>int32 timeType = 3;</code>
+     * <code>optional int32 timeType = 3;</code>
      */
     int getTimeType();
 
     /**
-     * <code>int32 weekData = 4;</code>
+     * <code>optional int32 weekData = 4;</code>
      */
     int getWeekData();
 
     /**
-     * <code>string timeDesc = 5;</code>
+     * <code>optional string timeDesc = 5;</code>
      */
     java.lang.String getTimeDesc();
     /**
-     * <code>string timeDesc = 5;</code>
+     * <code>optional string timeDesc = 5;</code>
      */
     com.google.protobuf.ByteString
         getTimeDescBytes();
@@ -71147,7 +71181,7 @@ public final class ProtoMessage {
     public static final int KQID_FIELD_NUMBER = 1;
     private long kqID_;
     /**
-     * <code>int64 kqID = 1;</code>
+     * <code>optional int64 kqID = 1;</code>
      */
     public long getKqID() {
       return kqID_;
@@ -71156,7 +71190,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -71171,7 +71205,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -71190,7 +71224,7 @@ public final class ProtoMessage {
     public static final int TIMETYPE_FIELD_NUMBER = 3;
     private int timeType_;
     /**
-     * <code>int32 timeType = 3;</code>
+     * <code>optional int32 timeType = 3;</code>
      */
     public int getTimeType() {
       return timeType_;
@@ -71199,7 +71233,7 @@ public final class ProtoMessage {
     public static final int WEEKDATA_FIELD_NUMBER = 4;
     private int weekData_;
     /**
-     * <code>int32 weekData = 4;</code>
+     * <code>optional int32 weekData = 4;</code>
      */
     public int getWeekData() {
       return weekData_;
@@ -71208,7 +71242,7 @@ public final class ProtoMessage {
     public static final int TIMEDESC_FIELD_NUMBER = 5;
     private volatile java.lang.Object timeDesc_;
     /**
-     * <code>string timeDesc = 5;</code>
+     * <code>optional string timeDesc = 5;</code>
      */
     public java.lang.String getTimeDesc() {
       java.lang.Object ref = timeDesc_;
@@ -71223,7 +71257,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string timeDesc = 5;</code>
+     * <code>optional string timeDesc = 5;</code>
      */
     public com.google.protobuf.ByteString
         getTimeDescBytes() {
@@ -71370,7 +71404,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + KQID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getKqID());
@@ -71673,13 +71707,13 @@ public final class ProtoMessage {
 
       private long kqID_ ;
       /**
-       * <code>int64 kqID = 1;</code>
+       * <code>optional int64 kqID = 1;</code>
        */
       public long getKqID() {
         return kqID_;
       }
       /**
-       * <code>int64 kqID = 1;</code>
+       * <code>optional int64 kqID = 1;</code>
        */
       public Builder setKqID(long value) {
         
@@ -71688,7 +71722,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 kqID = 1;</code>
+       * <code>optional int64 kqID = 1;</code>
        */
       public Builder clearKqID() {
         
@@ -71699,7 +71733,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -71714,7 +71748,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -71730,7 +71764,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -71743,7 +71777,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -71752,7 +71786,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -71768,13 +71802,13 @@ public final class ProtoMessage {
 
       private int timeType_ ;
       /**
-       * <code>int32 timeType = 3;</code>
+       * <code>optional int32 timeType = 3;</code>
        */
       public int getTimeType() {
         return timeType_;
       }
       /**
-       * <code>int32 timeType = 3;</code>
+       * <code>optional int32 timeType = 3;</code>
        */
       public Builder setTimeType(int value) {
         
@@ -71783,7 +71817,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 timeType = 3;</code>
+       * <code>optional int32 timeType = 3;</code>
        */
       public Builder clearTimeType() {
         
@@ -71794,13 +71828,13 @@ public final class ProtoMessage {
 
       private int weekData_ ;
       /**
-       * <code>int32 weekData = 4;</code>
+       * <code>optional int32 weekData = 4;</code>
        */
       public int getWeekData() {
         return weekData_;
       }
       /**
-       * <code>int32 weekData = 4;</code>
+       * <code>optional int32 weekData = 4;</code>
        */
       public Builder setWeekData(int value) {
         
@@ -71809,7 +71843,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 weekData = 4;</code>
+       * <code>optional int32 weekData = 4;</code>
        */
       public Builder clearWeekData() {
         
@@ -71820,7 +71854,7 @@ public final class ProtoMessage {
 
       private java.lang.Object timeDesc_ = "";
       /**
-       * <code>string timeDesc = 5;</code>
+       * <code>optional string timeDesc = 5;</code>
        */
       public java.lang.String getTimeDesc() {
         java.lang.Object ref = timeDesc_;
@@ -71835,7 +71869,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string timeDesc = 5;</code>
+       * <code>optional string timeDesc = 5;</code>
        */
       public com.google.protobuf.ByteString
           getTimeDescBytes() {
@@ -71851,7 +71885,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string timeDesc = 5;</code>
+       * <code>optional string timeDesc = 5;</code>
        */
       public Builder setTimeDesc(
           java.lang.String value) {
@@ -71864,7 +71898,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string timeDesc = 5;</code>
+       * <code>optional string timeDesc = 5;</code>
        */
       public Builder clearTimeDesc() {
         
@@ -71873,7 +71907,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string timeDesc = 5;</code>
+       * <code>optional string timeDesc = 5;</code>
        */
       public Builder setTimeDescBytes(
           com.google.protobuf.ByteString value) {
@@ -72180,7 +72214,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -72189,7 +72223,7 @@ public final class ProtoMessage {
      * 获得所有(opNone)/添加/删除/...
      * </pre>
      *
-     * <code>int32 opCode = 2;</code>
+     * <code>optional int32 opCode = 2;</code>
      */
     int getOpCode();
 
@@ -72328,7 +72362,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -72341,7 +72375,7 @@ public final class ProtoMessage {
      * 获得所有(opNone)/添加/删除/...
      * </pre>
      *
-     * <code>int32 opCode = 2;</code>
+     * <code>optional int32 opCode = 2;</code>
      */
     public int getOpCode() {
       return opCode_;
@@ -72473,7 +72507,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + OPCODE_FIELD_NUMBER;
@@ -72749,13 +72783,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -72764,7 +72798,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -72779,7 +72813,7 @@ public final class ProtoMessage {
        * 获得所有(opNone)/添加/删除/...
        * </pre>
        *
-       * <code>int32 opCode = 2;</code>
+       * <code>optional int32 opCode = 2;</code>
        */
       public int getOpCode() {
         return opCode_;
@@ -72789,7 +72823,7 @@ public final class ProtoMessage {
        * 获得所有(opNone)/添加/删除/...
        * </pre>
        *
-       * <code>int32 opCode = 2;</code>
+       * <code>optional int32 opCode = 2;</code>
        */
       public Builder setOpCode(int value) {
         
@@ -72802,7 +72836,7 @@ public final class ProtoMessage {
        * 获得所有(opNone)/添加/删除/...
        * </pre>
        *
-       * <code>int32 opCode = 2;</code>
+       * <code>optional int32 opCode = 2;</code>
        */
       public Builder clearOpCode() {
         
@@ -73176,12 +73210,12 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int64 kqTime = 1;</code>
+     * <code>optional int64 kqTime = 1;</code>
      */
     long getKqTime();
 
     /**
-     * <code>int64 location_id = 2;</code>
+     * <code>optional int64 location_id = 2;</code>
      */
     long getLocationId();
   }
@@ -73262,7 +73296,7 @@ public final class ProtoMessage {
     public static final int KQTIME_FIELD_NUMBER = 1;
     private long kqTime_;
     /**
-     * <code>int64 kqTime = 1;</code>
+     * <code>optional int64 kqTime = 1;</code>
      */
     public long getKqTime() {
       return kqTime_;
@@ -73271,7 +73305,7 @@ public final class ProtoMessage {
     public static final int LOCATION_ID_FIELD_NUMBER = 2;
     private long locationId_;
     /**
-     * <code>int64 location_id = 2;</code>
+     * <code>optional int64 location_id = 2;</code>
      */
     public long getLocationId() {
       return locationId_;
@@ -73339,7 +73373,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + KQTIME_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getKqTime());
@@ -73567,13 +73601,13 @@ public final class ProtoMessage {
 
       private long kqTime_ ;
       /**
-       * <code>int64 kqTime = 1;</code>
+       * <code>optional int64 kqTime = 1;</code>
        */
       public long getKqTime() {
         return kqTime_;
       }
       /**
-       * <code>int64 kqTime = 1;</code>
+       * <code>optional int64 kqTime = 1;</code>
        */
       public Builder setKqTime(long value) {
         
@@ -73582,7 +73616,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 kqTime = 1;</code>
+       * <code>optional int64 kqTime = 1;</code>
        */
       public Builder clearKqTime() {
         
@@ -73593,13 +73627,13 @@ public final class ProtoMessage {
 
       private long locationId_ ;
       /**
-       * <code>int64 location_id = 2;</code>
+       * <code>optional int64 location_id = 2;</code>
        */
       public long getLocationId() {
         return locationId_;
       }
       /**
-       * <code>int64 location_id = 2;</code>
+       * <code>optional int64 location_id = 2;</code>
        */
       public Builder setLocationId(long value) {
         
@@ -73608,7 +73642,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 location_id = 2;</code>
+       * <code>optional int64 location_id = 2;</code>
        */
       public Builder clearLocationId() {
         
@@ -73670,11 +73704,11 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     java.lang.String getPhoneNum();
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     com.google.protobuf.ByteString
         getPhoneNumBytes();
@@ -73789,7 +73823,7 @@ public final class ProtoMessage {
     public static final int PHONENUM_FIELD_NUMBER = 2;
     private volatile java.lang.Object phoneNum_;
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public java.lang.String getPhoneNum() {
       java.lang.Object ref = phoneNum_;
@@ -73804,7 +73838,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string phoneNum = 2;</code>
+     * <code>optional string phoneNum = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPhoneNumBytes() {
@@ -73916,7 +73950,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + PHONENUM_FIELD_NUMBER;
       hash = (53 * hash) + getPhoneNum().hashCode();
       if (getTimeStaticsCount() > 0) {
@@ -74185,7 +74219,7 @@ public final class ProtoMessage {
 
       private java.lang.Object phoneNum_ = "";
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public java.lang.String getPhoneNum() {
         java.lang.Object ref = phoneNum_;
@@ -74200,7 +74234,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPhoneNumBytes() {
@@ -74216,7 +74250,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNum(
           java.lang.String value) {
@@ -74229,7 +74263,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder clearPhoneNum() {
         
@@ -74238,7 +74272,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string phoneNum = 2;</code>
+       * <code>optional string phoneNum = 2;</code>
        */
       public Builder setPhoneNumBytes(
           com.google.protobuf.ByteString value) {
@@ -74545,17 +74579,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int64 fromTime = 2;</code>
+     * <code>optional int64 fromTime = 2;</code>
      */
     long getFromTime();
 
     /**
-     * <code>int64 toTime = 3;</code>
+     * <code>optional int64 toTime = 3;</code>
      */
     long getToTime();
 
@@ -74564,7 +74598,7 @@ public final class ProtoMessage {
      * 时间误差
      * </pre>
      *
-     * <code>int32 timeError = 4;</code>
+     * <code>optional int32 timeError = 4;</code>
      */
     int getTimeError();
 
@@ -74573,7 +74607,7 @@ public final class ProtoMessage {
      * 距离误差
      * </pre>
      *
-     * <code>int32 distError = 5;</code>
+     * <code>optional int32 distError = 5;</code>
      */
     int getDistError();
 
@@ -74710,7 +74744,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -74719,7 +74753,7 @@ public final class ProtoMessage {
     public static final int FROMTIME_FIELD_NUMBER = 2;
     private long fromTime_;
     /**
-     * <code>int64 fromTime = 2;</code>
+     * <code>optional int64 fromTime = 2;</code>
      */
     public long getFromTime() {
       return fromTime_;
@@ -74728,7 +74762,7 @@ public final class ProtoMessage {
     public static final int TOTIME_FIELD_NUMBER = 3;
     private long toTime_;
     /**
-     * <code>int64 toTime = 3;</code>
+     * <code>optional int64 toTime = 3;</code>
      */
     public long getToTime() {
       return toTime_;
@@ -74741,7 +74775,7 @@ public final class ProtoMessage {
      * 时间误差
      * </pre>
      *
-     * <code>int32 timeError = 4;</code>
+     * <code>optional int32 timeError = 4;</code>
      */
     public int getTimeError() {
       return timeError_;
@@ -74754,7 +74788,7 @@ public final class ProtoMessage {
      * 距离误差
      * </pre>
      *
-     * <code>int32 distError = 5;</code>
+     * <code>optional int32 distError = 5;</code>
      */
     public int getDistError() {
       return distError_;
@@ -74893,7 +74927,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FROMTIME_FIELD_NUMBER;
@@ -75195,13 +75229,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -75210,7 +75244,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -75221,13 +75255,13 @@ public final class ProtoMessage {
 
       private long fromTime_ ;
       /**
-       * <code>int64 fromTime = 2;</code>
+       * <code>optional int64 fromTime = 2;</code>
        */
       public long getFromTime() {
         return fromTime_;
       }
       /**
-       * <code>int64 fromTime = 2;</code>
+       * <code>optional int64 fromTime = 2;</code>
        */
       public Builder setFromTime(long value) {
         
@@ -75236,7 +75270,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 fromTime = 2;</code>
+       * <code>optional int64 fromTime = 2;</code>
        */
       public Builder clearFromTime() {
         
@@ -75247,13 +75281,13 @@ public final class ProtoMessage {
 
       private long toTime_ ;
       /**
-       * <code>int64 toTime = 3;</code>
+       * <code>optional int64 toTime = 3;</code>
        */
       public long getToTime() {
         return toTime_;
       }
       /**
-       * <code>int64 toTime = 3;</code>
+       * <code>optional int64 toTime = 3;</code>
        */
       public Builder setToTime(long value) {
         
@@ -75262,7 +75296,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 toTime = 3;</code>
+       * <code>optional int64 toTime = 3;</code>
        */
       public Builder clearToTime() {
         
@@ -75277,7 +75311,7 @@ public final class ProtoMessage {
        * 时间误差
        * </pre>
        *
-       * <code>int32 timeError = 4;</code>
+       * <code>optional int32 timeError = 4;</code>
        */
       public int getTimeError() {
         return timeError_;
@@ -75287,7 +75321,7 @@ public final class ProtoMessage {
        * 时间误差
        * </pre>
        *
-       * <code>int32 timeError = 4;</code>
+       * <code>optional int32 timeError = 4;</code>
        */
       public Builder setTimeError(int value) {
         
@@ -75300,7 +75334,7 @@ public final class ProtoMessage {
        * 时间误差
        * </pre>
        *
-       * <code>int32 timeError = 4;</code>
+       * <code>optional int32 timeError = 4;</code>
        */
       public Builder clearTimeError() {
         
@@ -75315,7 +75349,7 @@ public final class ProtoMessage {
        * 距离误差
        * </pre>
        *
-       * <code>int32 distError = 5;</code>
+       * <code>optional int32 distError = 5;</code>
        */
       public int getDistError() {
         return distError_;
@@ -75325,7 +75359,7 @@ public final class ProtoMessage {
        * 距离误差
        * </pre>
        *
-       * <code>int32 distError = 5;</code>
+       * <code>optional int32 distError = 5;</code>
        */
       public Builder setDistError(int value) {
         
@@ -75338,7 +75372,7 @@ public final class ProtoMessage {
        * 距离误差
        * </pre>
        *
-       * <code>int32 distError = 5;</code>
+       * <code>optional int32 distError = 5;</code>
        */
       public Builder clearDistError() {
         
@@ -75640,7 +75674,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -75649,16 +75683,16 @@ public final class ProtoMessage {
      * 操作码，参见 EditCode
      * </pre>
      *
-     * <code>int32 editCode = 2;</code>
+     * <code>optional int32 editCode = 2;</code>
      */
     int getEditCode();
 
     /**
-     * <code>string iccid = 3;</code>
+     * <code>optional string iccid = 3;</code>
      */
     java.lang.String getIccid();
     /**
-     * <code>string iccid = 3;</code>
+     * <code>optional string iccid = 3;</code>
      */
     com.google.protobuf.ByteString
         getIccidBytes();
@@ -75747,7 +75781,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -75760,7 +75794,7 @@ public final class ProtoMessage {
      * 操作码，参见 EditCode
      * </pre>
      *
-     * <code>int32 editCode = 2;</code>
+     * <code>optional int32 editCode = 2;</code>
      */
     public int getEditCode() {
       return editCode_;
@@ -75769,7 +75803,7 @@ public final class ProtoMessage {
     public static final int ICCID_FIELD_NUMBER = 3;
     private volatile java.lang.Object iccid_;
     /**
-     * <code>string iccid = 3;</code>
+     * <code>optional string iccid = 3;</code>
      */
     public java.lang.String getIccid() {
       java.lang.Object ref = iccid_;
@@ -75784,7 +75818,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string iccid = 3;</code>
+     * <code>optional string iccid = 3;</code>
      */
     public com.google.protobuf.ByteString
         getIccidBytes() {
@@ -75870,7 +75904,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + EDITCODE_FIELD_NUMBER;
@@ -76105,13 +76139,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -76120,7 +76154,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -76135,7 +76169,7 @@ public final class ProtoMessage {
        * 操作码，参见 EditCode
        * </pre>
        *
-       * <code>int32 editCode = 2;</code>
+       * <code>optional int32 editCode = 2;</code>
        */
       public int getEditCode() {
         return editCode_;
@@ -76145,7 +76179,7 @@ public final class ProtoMessage {
        * 操作码，参见 EditCode
        * </pre>
        *
-       * <code>int32 editCode = 2;</code>
+       * <code>optional int32 editCode = 2;</code>
        */
       public Builder setEditCode(int value) {
         
@@ -76158,7 +76192,7 @@ public final class ProtoMessage {
        * 操作码，参见 EditCode
        * </pre>
        *
-       * <code>int32 editCode = 2;</code>
+       * <code>optional int32 editCode = 2;</code>
        */
       public Builder clearEditCode() {
         
@@ -76169,7 +76203,7 @@ public final class ProtoMessage {
 
       private java.lang.Object iccid_ = "";
       /**
-       * <code>string iccid = 3;</code>
+       * <code>optional string iccid = 3;</code>
        */
       public java.lang.String getIccid() {
         java.lang.Object ref = iccid_;
@@ -76184,7 +76218,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string iccid = 3;</code>
+       * <code>optional string iccid = 3;</code>
        */
       public com.google.protobuf.ByteString
           getIccidBytes() {
@@ -76200,7 +76234,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string iccid = 3;</code>
+       * <code>optional string iccid = 3;</code>
        */
       public Builder setIccid(
           java.lang.String value) {
@@ -76213,7 +76247,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string iccid = 3;</code>
+       * <code>optional string iccid = 3;</code>
        */
       public Builder clearIccid() {
         
@@ -76222,7 +76256,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string iccid = 3;</code>
+       * <code>optional string iccid = 3;</code>
        */
       public Builder setIccidBytes(
           com.google.protobuf.ByteString value) {
@@ -76289,26 +76323,26 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string imei = 2;</code>
+     * <code>optional string imei = 2;</code>
      */
     java.lang.String getImei();
     /**
-     * <code>string imei = 2;</code>
+     * <code>optional string imei = 2;</code>
      */
     com.google.protobuf.ByteString
         getImeiBytes();
 
     /**
-     * <code>string desc = 3;</code>
+     * <code>optional string desc = 3;</code>
      */
     java.lang.String getDesc();
     /**
-     * <code>string desc = 3;</code>
+     * <code>optional string desc = 3;</code>
      */
     com.google.protobuf.ByteString
         getDescBytes();
@@ -76398,7 +76432,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -76407,7 +76441,7 @@ public final class ProtoMessage {
     public static final int IMEI_FIELD_NUMBER = 2;
     private volatile java.lang.Object imei_;
     /**
-     * <code>string imei = 2;</code>
+     * <code>optional string imei = 2;</code>
      */
     public java.lang.String getImei() {
       java.lang.Object ref = imei_;
@@ -76422,7 +76456,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string imei = 2;</code>
+     * <code>optional string imei = 2;</code>
      */
     public com.google.protobuf.ByteString
         getImeiBytes() {
@@ -76441,7 +76475,7 @@ public final class ProtoMessage {
     public static final int DESC_FIELD_NUMBER = 3;
     private volatile java.lang.Object desc_;
     /**
-     * <code>string desc = 3;</code>
+     * <code>optional string desc = 3;</code>
      */
     public java.lang.String getDesc() {
       java.lang.Object ref = desc_;
@@ -76456,7 +76490,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string desc = 3;</code>
+     * <code>optional string desc = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDescBytes() {
@@ -76541,7 +76575,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + IMEI_FIELD_NUMBER;
@@ -76777,13 +76811,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -76792,7 +76826,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -76803,7 +76837,7 @@ public final class ProtoMessage {
 
       private java.lang.Object imei_ = "";
       /**
-       * <code>string imei = 2;</code>
+       * <code>optional string imei = 2;</code>
        */
       public java.lang.String getImei() {
         java.lang.Object ref = imei_;
@@ -76818,7 +76852,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string imei = 2;</code>
+       * <code>optional string imei = 2;</code>
        */
       public com.google.protobuf.ByteString
           getImeiBytes() {
@@ -76834,7 +76868,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string imei = 2;</code>
+       * <code>optional string imei = 2;</code>
        */
       public Builder setImei(
           java.lang.String value) {
@@ -76847,7 +76881,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string imei = 2;</code>
+       * <code>optional string imei = 2;</code>
        */
       public Builder clearImei() {
         
@@ -76856,7 +76890,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string imei = 2;</code>
+       * <code>optional string imei = 2;</code>
        */
       public Builder setImeiBytes(
           com.google.protobuf.ByteString value) {
@@ -76872,7 +76906,7 @@ public final class ProtoMessage {
 
       private java.lang.Object desc_ = "";
       /**
-       * <code>string desc = 3;</code>
+       * <code>optional string desc = 3;</code>
        */
       public java.lang.String getDesc() {
         java.lang.Object ref = desc_;
@@ -76887,7 +76921,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string desc = 3;</code>
+       * <code>optional string desc = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDescBytes() {
@@ -76903,7 +76937,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string desc = 3;</code>
+       * <code>optional string desc = 3;</code>
        */
       public Builder setDesc(
           java.lang.String value) {
@@ -76916,7 +76950,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string desc = 3;</code>
+       * <code>optional string desc = 3;</code>
        */
       public Builder clearDesc() {
         
@@ -76925,7 +76959,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string desc = 3;</code>
+       * <code>optional string desc = 3;</code>
        */
       public Builder setDescBytes(
           com.google.protobuf.ByteString value) {
@@ -76992,32 +77026,32 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>string fromPhone = 2;</code>
+     * <code>optional string fromPhone = 2;</code>
      */
     java.lang.String getFromPhone();
     /**
-     * <code>string fromPhone = 2;</code>
+     * <code>optional string fromPhone = 2;</code>
      */
     com.google.protobuf.ByteString
         getFromPhoneBytes();
 
     /**
-     * <code>string toPhone = 3;</code>
+     * <code>optional string toPhone = 3;</code>
      */
     java.lang.String getToPhone();
     /**
-     * <code>string toPhone = 3;</code>
+     * <code>optional string toPhone = 3;</code>
      */
     com.google.protobuf.ByteString
         getToPhoneBytes();
 
     /**
-     * <code>int64 toTeamID = 4;</code>
+     * <code>optional int64 toTeamID = 4;</code>
      */
     long getToTeamID();
 
@@ -77026,7 +77060,7 @@ public final class ProtoMessage {
      * 是从哪个应用里发出来的。
      * </pre>
      *
-     * <code>int32 fromAppType = 5;</code>
+     * <code>optional int32 fromAppType = 5;</code>
      */
     int getFromAppType();
 
@@ -77035,31 +77069,31 @@ public final class ProtoMessage {
      * -1 表示全部
      * </pre>
      *
-     * <code>int32 toAppType = 6;</code>
+     * <code>optional int32 toAppType = 6;</code>
      */
     int getToAppType();
 
     /**
-     * <code>int32 remoteCmd = 7;</code>
+     * <code>optional int32 remoteCmd = 7;</code>
      */
     int getRemoteCmd();
 
     /**
-     * <code>double lat = 8;</code>
+     * <code>optional double lat = 8;</code>
      */
     double getLat();
 
     /**
-     * <code>double lng = 9;</code>
+     * <code>optional double lng = 9;</code>
      */
     double getLng();
 
     /**
-     * <code>string cmdStr = 10;</code>
+     * <code>optional string cmdStr = 10;</code>
      */
     java.lang.String getCmdStr();
     /**
-     * <code>string cmdStr = 10;</code>
+     * <code>optional string cmdStr = 10;</code>
      */
     com.google.protobuf.ByteString
         getCmdStrBytes();
@@ -77196,7 +77230,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -77205,7 +77239,7 @@ public final class ProtoMessage {
     public static final int FROMPHONE_FIELD_NUMBER = 2;
     private volatile java.lang.Object fromPhone_;
     /**
-     * <code>string fromPhone = 2;</code>
+     * <code>optional string fromPhone = 2;</code>
      */
     public java.lang.String getFromPhone() {
       java.lang.Object ref = fromPhone_;
@@ -77220,7 +77254,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string fromPhone = 2;</code>
+     * <code>optional string fromPhone = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFromPhoneBytes() {
@@ -77239,7 +77273,7 @@ public final class ProtoMessage {
     public static final int TOPHONE_FIELD_NUMBER = 3;
     private volatile java.lang.Object toPhone_;
     /**
-     * <code>string toPhone = 3;</code>
+     * <code>optional string toPhone = 3;</code>
      */
     public java.lang.String getToPhone() {
       java.lang.Object ref = toPhone_;
@@ -77254,7 +77288,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string toPhone = 3;</code>
+     * <code>optional string toPhone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getToPhoneBytes() {
@@ -77273,7 +77307,7 @@ public final class ProtoMessage {
     public static final int TOTEAMID_FIELD_NUMBER = 4;
     private long toTeamID_;
     /**
-     * <code>int64 toTeamID = 4;</code>
+     * <code>optional int64 toTeamID = 4;</code>
      */
     public long getToTeamID() {
       return toTeamID_;
@@ -77286,7 +77320,7 @@ public final class ProtoMessage {
      * 是从哪个应用里发出来的。
      * </pre>
      *
-     * <code>int32 fromAppType = 5;</code>
+     * <code>optional int32 fromAppType = 5;</code>
      */
     public int getFromAppType() {
       return fromAppType_;
@@ -77299,7 +77333,7 @@ public final class ProtoMessage {
      * -1 表示全部
      * </pre>
      *
-     * <code>int32 toAppType = 6;</code>
+     * <code>optional int32 toAppType = 6;</code>
      */
     public int getToAppType() {
       return toAppType_;
@@ -77308,7 +77342,7 @@ public final class ProtoMessage {
     public static final int REMOTECMD_FIELD_NUMBER = 7;
     private int remoteCmd_;
     /**
-     * <code>int32 remoteCmd = 7;</code>
+     * <code>optional int32 remoteCmd = 7;</code>
      */
     public int getRemoteCmd() {
       return remoteCmd_;
@@ -77317,7 +77351,7 @@ public final class ProtoMessage {
     public static final int LAT_FIELD_NUMBER = 8;
     private double lat_;
     /**
-     * <code>double lat = 8;</code>
+     * <code>optional double lat = 8;</code>
      */
     public double getLat() {
       return lat_;
@@ -77326,7 +77360,7 @@ public final class ProtoMessage {
     public static final int LNG_FIELD_NUMBER = 9;
     private double lng_;
     /**
-     * <code>double lng = 9;</code>
+     * <code>optional double lng = 9;</code>
      */
     public double getLng() {
       return lng_;
@@ -77335,7 +77369,7 @@ public final class ProtoMessage {
     public static final int CMDSTR_FIELD_NUMBER = 10;
     private volatile java.lang.Object cmdStr_;
     /**
-     * <code>string cmdStr = 10;</code>
+     * <code>optional string cmdStr = 10;</code>
      */
     public java.lang.String getCmdStr() {
       java.lang.Object ref = cmdStr_;
@@ -77350,7 +77384,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string cmdStr = 10;</code>
+     * <code>optional string cmdStr = 10;</code>
      */
     public com.google.protobuf.ByteString
         getCmdStrBytes() {
@@ -77501,7 +77535,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FROMPHONE_FIELD_NUMBER;
@@ -77801,13 +77835,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -77816,7 +77850,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -77827,7 +77861,7 @@ public final class ProtoMessage {
 
       private java.lang.Object fromPhone_ = "";
       /**
-       * <code>string fromPhone = 2;</code>
+       * <code>optional string fromPhone = 2;</code>
        */
       public java.lang.String getFromPhone() {
         java.lang.Object ref = fromPhone_;
@@ -77842,7 +77876,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string fromPhone = 2;</code>
+       * <code>optional string fromPhone = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFromPhoneBytes() {
@@ -77858,7 +77892,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string fromPhone = 2;</code>
+       * <code>optional string fromPhone = 2;</code>
        */
       public Builder setFromPhone(
           java.lang.String value) {
@@ -77871,7 +77905,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string fromPhone = 2;</code>
+       * <code>optional string fromPhone = 2;</code>
        */
       public Builder clearFromPhone() {
         
@@ -77880,7 +77914,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string fromPhone = 2;</code>
+       * <code>optional string fromPhone = 2;</code>
        */
       public Builder setFromPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -77896,7 +77930,7 @@ public final class ProtoMessage {
 
       private java.lang.Object toPhone_ = "";
       /**
-       * <code>string toPhone = 3;</code>
+       * <code>optional string toPhone = 3;</code>
        */
       public java.lang.String getToPhone() {
         java.lang.Object ref = toPhone_;
@@ -77911,7 +77945,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string toPhone = 3;</code>
+       * <code>optional string toPhone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getToPhoneBytes() {
@@ -77927,7 +77961,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string toPhone = 3;</code>
+       * <code>optional string toPhone = 3;</code>
        */
       public Builder setToPhone(
           java.lang.String value) {
@@ -77940,7 +77974,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string toPhone = 3;</code>
+       * <code>optional string toPhone = 3;</code>
        */
       public Builder clearToPhone() {
         
@@ -77949,7 +77983,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string toPhone = 3;</code>
+       * <code>optional string toPhone = 3;</code>
        */
       public Builder setToPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -77965,13 +77999,13 @@ public final class ProtoMessage {
 
       private long toTeamID_ ;
       /**
-       * <code>int64 toTeamID = 4;</code>
+       * <code>optional int64 toTeamID = 4;</code>
        */
       public long getToTeamID() {
         return toTeamID_;
       }
       /**
-       * <code>int64 toTeamID = 4;</code>
+       * <code>optional int64 toTeamID = 4;</code>
        */
       public Builder setToTeamID(long value) {
         
@@ -77980,7 +78014,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 toTeamID = 4;</code>
+       * <code>optional int64 toTeamID = 4;</code>
        */
       public Builder clearToTeamID() {
         
@@ -77995,7 +78029,7 @@ public final class ProtoMessage {
        * 是从哪个应用里发出来的。
        * </pre>
        *
-       * <code>int32 fromAppType = 5;</code>
+       * <code>optional int32 fromAppType = 5;</code>
        */
       public int getFromAppType() {
         return fromAppType_;
@@ -78005,7 +78039,7 @@ public final class ProtoMessage {
        * 是从哪个应用里发出来的。
        * </pre>
        *
-       * <code>int32 fromAppType = 5;</code>
+       * <code>optional int32 fromAppType = 5;</code>
        */
       public Builder setFromAppType(int value) {
         
@@ -78018,7 +78052,7 @@ public final class ProtoMessage {
        * 是从哪个应用里发出来的。
        * </pre>
        *
-       * <code>int32 fromAppType = 5;</code>
+       * <code>optional int32 fromAppType = 5;</code>
        */
       public Builder clearFromAppType() {
         
@@ -78033,7 +78067,7 @@ public final class ProtoMessage {
        * -1 表示全部
        * </pre>
        *
-       * <code>int32 toAppType = 6;</code>
+       * <code>optional int32 toAppType = 6;</code>
        */
       public int getToAppType() {
         return toAppType_;
@@ -78043,7 +78077,7 @@ public final class ProtoMessage {
        * -1 表示全部
        * </pre>
        *
-       * <code>int32 toAppType = 6;</code>
+       * <code>optional int32 toAppType = 6;</code>
        */
       public Builder setToAppType(int value) {
         
@@ -78056,7 +78090,7 @@ public final class ProtoMessage {
        * -1 表示全部
        * </pre>
        *
-       * <code>int32 toAppType = 6;</code>
+       * <code>optional int32 toAppType = 6;</code>
        */
       public Builder clearToAppType() {
         
@@ -78067,13 +78101,13 @@ public final class ProtoMessage {
 
       private int remoteCmd_ ;
       /**
-       * <code>int32 remoteCmd = 7;</code>
+       * <code>optional int32 remoteCmd = 7;</code>
        */
       public int getRemoteCmd() {
         return remoteCmd_;
       }
       /**
-       * <code>int32 remoteCmd = 7;</code>
+       * <code>optional int32 remoteCmd = 7;</code>
        */
       public Builder setRemoteCmd(int value) {
         
@@ -78082,7 +78116,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 remoteCmd = 7;</code>
+       * <code>optional int32 remoteCmd = 7;</code>
        */
       public Builder clearRemoteCmd() {
         
@@ -78093,13 +78127,13 @@ public final class ProtoMessage {
 
       private double lat_ ;
       /**
-       * <code>double lat = 8;</code>
+       * <code>optional double lat = 8;</code>
        */
       public double getLat() {
         return lat_;
       }
       /**
-       * <code>double lat = 8;</code>
+       * <code>optional double lat = 8;</code>
        */
       public Builder setLat(double value) {
         
@@ -78108,7 +78142,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>double lat = 8;</code>
+       * <code>optional double lat = 8;</code>
        */
       public Builder clearLat() {
         
@@ -78119,13 +78153,13 @@ public final class ProtoMessage {
 
       private double lng_ ;
       /**
-       * <code>double lng = 9;</code>
+       * <code>optional double lng = 9;</code>
        */
       public double getLng() {
         return lng_;
       }
       /**
-       * <code>double lng = 9;</code>
+       * <code>optional double lng = 9;</code>
        */
       public Builder setLng(double value) {
         
@@ -78134,7 +78168,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>double lng = 9;</code>
+       * <code>optional double lng = 9;</code>
        */
       public Builder clearLng() {
         
@@ -78145,7 +78179,7 @@ public final class ProtoMessage {
 
       private java.lang.Object cmdStr_ = "";
       /**
-       * <code>string cmdStr = 10;</code>
+       * <code>optional string cmdStr = 10;</code>
        */
       public java.lang.String getCmdStr() {
         java.lang.Object ref = cmdStr_;
@@ -78160,7 +78194,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string cmdStr = 10;</code>
+       * <code>optional string cmdStr = 10;</code>
        */
       public com.google.protobuf.ByteString
           getCmdStrBytes() {
@@ -78176,7 +78210,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string cmdStr = 10;</code>
+       * <code>optional string cmdStr = 10;</code>
        */
       public Builder setCmdStr(
           java.lang.String value) {
@@ -78189,7 +78223,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string cmdStr = 10;</code>
+       * <code>optional string cmdStr = 10;</code>
        */
       public Builder clearCmdStr() {
         
@@ -78198,7 +78232,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string cmdStr = 10;</code>
+       * <code>optional string cmdStr = 10;</code>
        */
       public Builder setCmdStrBytes(
           com.google.protobuf.ByteString value) {
@@ -78265,17 +78299,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int64 time = 1;</code>
+     * <code>optional int64 time = 1;</code>
      */
     long getTime();
 
     /**
-     * <code>double lat = 2;</code>
+     * <code>optional double lat = 2;</code>
      */
     double getLat();
 
     /**
-     * <code>double Ing = 3;</code>
+     * <code>optional double Ing = 3;</code>
      */
     double getIng();
   }
@@ -78366,7 +78400,7 @@ public final class ProtoMessage {
     public static final int TIME_FIELD_NUMBER = 1;
     private long time_;
     /**
-     * <code>int64 time = 1;</code>
+     * <code>optional int64 time = 1;</code>
      */
     public long getTime() {
       return time_;
@@ -78375,7 +78409,7 @@ public final class ProtoMessage {
     public static final int LAT_FIELD_NUMBER = 2;
     private double lat_;
     /**
-     * <code>double lat = 2;</code>
+     * <code>optional double lat = 2;</code>
      */
     public double getLat() {
       return lat_;
@@ -78384,7 +78418,7 @@ public final class ProtoMessage {
     public static final int ING_FIELD_NUMBER = 3;
     private double ing_;
     /**
-     * <code>double Ing = 3;</code>
+     * <code>optional double Ing = 3;</code>
      */
     public double getIng() {
       return ing_;
@@ -78465,7 +78499,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + TIME_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTime());
@@ -78706,13 +78740,13 @@ public final class ProtoMessage {
 
       private long time_ ;
       /**
-       * <code>int64 time = 1;</code>
+       * <code>optional int64 time = 1;</code>
        */
       public long getTime() {
         return time_;
       }
       /**
-       * <code>int64 time = 1;</code>
+       * <code>optional int64 time = 1;</code>
        */
       public Builder setTime(long value) {
         
@@ -78721,7 +78755,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 time = 1;</code>
+       * <code>optional int64 time = 1;</code>
        */
       public Builder clearTime() {
         
@@ -78732,13 +78766,13 @@ public final class ProtoMessage {
 
       private double lat_ ;
       /**
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public double getLat() {
         return lat_;
       }
       /**
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public Builder setLat(double value) {
         
@@ -78747,7 +78781,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>double lat = 2;</code>
+       * <code>optional double lat = 2;</code>
        */
       public Builder clearLat() {
         
@@ -78758,13 +78792,13 @@ public final class ProtoMessage {
 
       private double ing_ ;
       /**
-       * <code>double Ing = 3;</code>
+       * <code>optional double Ing = 3;</code>
        */
       public double getIng() {
         return ing_;
       }
       /**
-       * <code>double Ing = 3;</code>
+       * <code>optional double Ing = 3;</code>
        */
       public Builder setIng(double value) {
         
@@ -78773,7 +78807,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>double Ing = 3;</code>
+       * <code>optional double Ing = 3;</code>
        */
       public Builder clearIng() {
         
@@ -78835,31 +78869,31 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int64 track_id = 2;</code>
+     * <code>optional int64 track_id = 2;</code>
      */
     long getTrackId();
 
     /**
-     * <code>string title = 3;</code>
+     * <code>optional string title = 3;</code>
      */
     java.lang.String getTitle();
     /**
-     * <code>string title = 3;</code>
+     * <code>optional string title = 3;</code>
      */
     com.google.protobuf.ByteString
         getTitleBytes();
 
     /**
-     * <code>string desc = 4;</code>
+     * <code>optional string desc = 4;</code>
      */
     java.lang.String getDesc();
     /**
-     * <code>string desc = 4;</code>
+     * <code>optional string desc = 4;</code>
      */
     com.google.protobuf.ByteString
         getDescBytes();
@@ -78869,7 +78903,7 @@ public final class ProtoMessage {
      *轨迹开始时间
      * </pre>
      *
-     * <code>int64 time = 5;</code>
+     * <code>optional int64 time = 5;</code>
      */
     long getTime();
 
@@ -78878,7 +78912,7 @@ public final class ProtoMessage {
      *轨迹上传时间
      * </pre>
      *
-     * <code>int64 systime = 6;</code>
+     * <code>optional int64 systime = 6;</code>
      */
     long getSystime();
 
@@ -78887,7 +78921,7 @@ public final class ProtoMessage {
      *是否公开
      * </pre>
      *
-     * <code>int32 visible = 7;</code>
+     * <code>optional int32 visible = 7;</code>
      */
     int getVisible();
 
@@ -78896,7 +78930,7 @@ public final class ProtoMessage {
      *图片统一为JPG或PNG
      * </pre>
      *
-     * <code>bytes img = 8;</code>
+     * <code>optional bytes img = 8;</code>
      */
     com.google.protobuf.ByteString getImg();
 
@@ -78929,7 +78963,7 @@ public final class ProtoMessage {
      * 上传者账号
      * </pre>
      *
-     * <code>string userPhone = 10;</code>
+     * <code>optional string userPhone = 10;</code>
      */
     java.lang.String getUserPhone();
     /**
@@ -78937,7 +78971,7 @@ public final class ProtoMessage {
      * 上传者账号
      * </pre>
      *
-     * <code>string userPhone = 10;</code>
+     * <code>optional string userPhone = 10;</code>
      */
     com.google.protobuf.ByteString
         getUserPhoneBytes();
@@ -78947,7 +78981,7 @@ public final class ProtoMessage {
      * 上传者的名称
      * </pre>
      *
-     * <code>string userName = 11;</code>
+     * <code>optional string userName = 11;</code>
      */
     java.lang.String getUserName();
     /**
@@ -78955,7 +78989,7 @@ public final class ProtoMessage {
      * 上传者的名称
      * </pre>
      *
-     * <code>string userName = 11;</code>
+     * <code>optional string userName = 11;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
@@ -79107,7 +79141,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -79116,7 +79150,7 @@ public final class ProtoMessage {
     public static final int TRACK_ID_FIELD_NUMBER = 2;
     private long trackId_;
     /**
-     * <code>int64 track_id = 2;</code>
+     * <code>optional int64 track_id = 2;</code>
      */
     public long getTrackId() {
       return trackId_;
@@ -79125,7 +79159,7 @@ public final class ProtoMessage {
     public static final int TITLE_FIELD_NUMBER = 3;
     private volatile java.lang.Object title_;
     /**
-     * <code>string title = 3;</code>
+     * <code>optional string title = 3;</code>
      */
     public java.lang.String getTitle() {
       java.lang.Object ref = title_;
@@ -79140,7 +79174,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string title = 3;</code>
+     * <code>optional string title = 3;</code>
      */
     public com.google.protobuf.ByteString
         getTitleBytes() {
@@ -79159,7 +79193,7 @@ public final class ProtoMessage {
     public static final int DESC_FIELD_NUMBER = 4;
     private volatile java.lang.Object desc_;
     /**
-     * <code>string desc = 4;</code>
+     * <code>optional string desc = 4;</code>
      */
     public java.lang.String getDesc() {
       java.lang.Object ref = desc_;
@@ -79174,7 +79208,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string desc = 4;</code>
+     * <code>optional string desc = 4;</code>
      */
     public com.google.protobuf.ByteString
         getDescBytes() {
@@ -79197,7 +79231,7 @@ public final class ProtoMessage {
      *轨迹开始时间
      * </pre>
      *
-     * <code>int64 time = 5;</code>
+     * <code>optional int64 time = 5;</code>
      */
     public long getTime() {
       return time_;
@@ -79210,7 +79244,7 @@ public final class ProtoMessage {
      *轨迹上传时间
      * </pre>
      *
-     * <code>int64 systime = 6;</code>
+     * <code>optional int64 systime = 6;</code>
      */
     public long getSystime() {
       return systime_;
@@ -79223,7 +79257,7 @@ public final class ProtoMessage {
      *是否公开
      * </pre>
      *
-     * <code>int32 visible = 7;</code>
+     * <code>optional int32 visible = 7;</code>
      */
     public int getVisible() {
       return visible_;
@@ -79236,7 +79270,7 @@ public final class ProtoMessage {
      *图片统一为JPG或PNG
      * </pre>
      *
-     * <code>bytes img = 8;</code>
+     * <code>optional bytes img = 8;</code>
      */
     public com.google.protobuf.ByteString getImg() {
       return img_;
@@ -79284,7 +79318,7 @@ public final class ProtoMessage {
      * 上传者账号
      * </pre>
      *
-     * <code>string userPhone = 10;</code>
+     * <code>optional string userPhone = 10;</code>
      */
     public java.lang.String getUserPhone() {
       java.lang.Object ref = userPhone_;
@@ -79303,7 +79337,7 @@ public final class ProtoMessage {
      * 上传者账号
      * </pre>
      *
-     * <code>string userPhone = 10;</code>
+     * <code>optional string userPhone = 10;</code>
      */
     public com.google.protobuf.ByteString
         getUserPhoneBytes() {
@@ -79326,7 +79360,7 @@ public final class ProtoMessage {
      * 上传者的名称
      * </pre>
      *
-     * <code>string userName = 11;</code>
+     * <code>optional string userName = 11;</code>
      */
     public java.lang.String getUserName() {
       java.lang.Object ref = userName_;
@@ -79345,7 +79379,7 @@ public final class ProtoMessage {
      * 上传者的名称
      * </pre>
      *
-     * <code>string userName = 11;</code>
+     * <code>optional string userName = 11;</code>
      */
     public com.google.protobuf.ByteString
         getUserNameBytes() {
@@ -79500,7 +79534,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TRACK_ID_FIELD_NUMBER;
@@ -79851,13 +79885,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -79866,7 +79900,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -79877,13 +79911,13 @@ public final class ProtoMessage {
 
       private long trackId_ ;
       /**
-       * <code>int64 track_id = 2;</code>
+       * <code>optional int64 track_id = 2;</code>
        */
       public long getTrackId() {
         return trackId_;
       }
       /**
-       * <code>int64 track_id = 2;</code>
+       * <code>optional int64 track_id = 2;</code>
        */
       public Builder setTrackId(long value) {
         
@@ -79892,7 +79926,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 track_id = 2;</code>
+       * <code>optional int64 track_id = 2;</code>
        */
       public Builder clearTrackId() {
         
@@ -79903,7 +79937,7 @@ public final class ProtoMessage {
 
       private java.lang.Object title_ = "";
       /**
-       * <code>string title = 3;</code>
+       * <code>optional string title = 3;</code>
        */
       public java.lang.String getTitle() {
         java.lang.Object ref = title_;
@@ -79918,7 +79952,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string title = 3;</code>
+       * <code>optional string title = 3;</code>
        */
       public com.google.protobuf.ByteString
           getTitleBytes() {
@@ -79934,7 +79968,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string title = 3;</code>
+       * <code>optional string title = 3;</code>
        */
       public Builder setTitle(
           java.lang.String value) {
@@ -79947,7 +79981,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string title = 3;</code>
+       * <code>optional string title = 3;</code>
        */
       public Builder clearTitle() {
         
@@ -79956,7 +79990,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string title = 3;</code>
+       * <code>optional string title = 3;</code>
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
@@ -79972,7 +80006,7 @@ public final class ProtoMessage {
 
       private java.lang.Object desc_ = "";
       /**
-       * <code>string desc = 4;</code>
+       * <code>optional string desc = 4;</code>
        */
       public java.lang.String getDesc() {
         java.lang.Object ref = desc_;
@@ -79987,7 +80021,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string desc = 4;</code>
+       * <code>optional string desc = 4;</code>
        */
       public com.google.protobuf.ByteString
           getDescBytes() {
@@ -80003,7 +80037,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string desc = 4;</code>
+       * <code>optional string desc = 4;</code>
        */
       public Builder setDesc(
           java.lang.String value) {
@@ -80016,7 +80050,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string desc = 4;</code>
+       * <code>optional string desc = 4;</code>
        */
       public Builder clearDesc() {
         
@@ -80025,7 +80059,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string desc = 4;</code>
+       * <code>optional string desc = 4;</code>
        */
       public Builder setDescBytes(
           com.google.protobuf.ByteString value) {
@@ -80045,7 +80079,7 @@ public final class ProtoMessage {
        *轨迹开始时间
        * </pre>
        *
-       * <code>int64 time = 5;</code>
+       * <code>optional int64 time = 5;</code>
        */
       public long getTime() {
         return time_;
@@ -80055,7 +80089,7 @@ public final class ProtoMessage {
        *轨迹开始时间
        * </pre>
        *
-       * <code>int64 time = 5;</code>
+       * <code>optional int64 time = 5;</code>
        */
       public Builder setTime(long value) {
         
@@ -80068,7 +80102,7 @@ public final class ProtoMessage {
        *轨迹开始时间
        * </pre>
        *
-       * <code>int64 time = 5;</code>
+       * <code>optional int64 time = 5;</code>
        */
       public Builder clearTime() {
         
@@ -80083,7 +80117,7 @@ public final class ProtoMessage {
        *轨迹上传时间
        * </pre>
        *
-       * <code>int64 systime = 6;</code>
+       * <code>optional int64 systime = 6;</code>
        */
       public long getSystime() {
         return systime_;
@@ -80093,7 +80127,7 @@ public final class ProtoMessage {
        *轨迹上传时间
        * </pre>
        *
-       * <code>int64 systime = 6;</code>
+       * <code>optional int64 systime = 6;</code>
        */
       public Builder setSystime(long value) {
         
@@ -80106,7 +80140,7 @@ public final class ProtoMessage {
        *轨迹上传时间
        * </pre>
        *
-       * <code>int64 systime = 6;</code>
+       * <code>optional int64 systime = 6;</code>
        */
       public Builder clearSystime() {
         
@@ -80121,7 +80155,7 @@ public final class ProtoMessage {
        *是否公开
        * </pre>
        *
-       * <code>int32 visible = 7;</code>
+       * <code>optional int32 visible = 7;</code>
        */
       public int getVisible() {
         return visible_;
@@ -80131,7 +80165,7 @@ public final class ProtoMessage {
        *是否公开
        * </pre>
        *
-       * <code>int32 visible = 7;</code>
+       * <code>optional int32 visible = 7;</code>
        */
       public Builder setVisible(int value) {
         
@@ -80144,7 +80178,7 @@ public final class ProtoMessage {
        *是否公开
        * </pre>
        *
-       * <code>int32 visible = 7;</code>
+       * <code>optional int32 visible = 7;</code>
        */
       public Builder clearVisible() {
         
@@ -80159,7 +80193,7 @@ public final class ProtoMessage {
        *图片统一为JPG或PNG
        * </pre>
        *
-       * <code>bytes img = 8;</code>
+       * <code>optional bytes img = 8;</code>
        */
       public com.google.protobuf.ByteString getImg() {
         return img_;
@@ -80169,7 +80203,7 @@ public final class ProtoMessage {
        *图片统一为JPG或PNG
        * </pre>
        *
-       * <code>bytes img = 8;</code>
+       * <code>optional bytes img = 8;</code>
        */
       public Builder setImg(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -80185,7 +80219,7 @@ public final class ProtoMessage {
        *图片统一为JPG或PNG
        * </pre>
        *
-       * <code>bytes img = 8;</code>
+       * <code>optional bytes img = 8;</code>
        */
       public Builder clearImg() {
         
@@ -80440,7 +80474,7 @@ public final class ProtoMessage {
        * 上传者账号
        * </pre>
        *
-       * <code>string userPhone = 10;</code>
+       * <code>optional string userPhone = 10;</code>
        */
       public java.lang.String getUserPhone() {
         java.lang.Object ref = userPhone_;
@@ -80459,7 +80493,7 @@ public final class ProtoMessage {
        * 上传者账号
        * </pre>
        *
-       * <code>string userPhone = 10;</code>
+       * <code>optional string userPhone = 10;</code>
        */
       public com.google.protobuf.ByteString
           getUserPhoneBytes() {
@@ -80479,7 +80513,7 @@ public final class ProtoMessage {
        * 上传者账号
        * </pre>
        *
-       * <code>string userPhone = 10;</code>
+       * <code>optional string userPhone = 10;</code>
        */
       public Builder setUserPhone(
           java.lang.String value) {
@@ -80496,7 +80530,7 @@ public final class ProtoMessage {
        * 上传者账号
        * </pre>
        *
-       * <code>string userPhone = 10;</code>
+       * <code>optional string userPhone = 10;</code>
        */
       public Builder clearUserPhone() {
         
@@ -80509,7 +80543,7 @@ public final class ProtoMessage {
        * 上传者账号
        * </pre>
        *
-       * <code>string userPhone = 10;</code>
+       * <code>optional string userPhone = 10;</code>
        */
       public Builder setUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -80529,7 +80563,7 @@ public final class ProtoMessage {
        * 上传者的名称
        * </pre>
        *
-       * <code>string userName = 11;</code>
+       * <code>optional string userName = 11;</code>
        */
       public java.lang.String getUserName() {
         java.lang.Object ref = userName_;
@@ -80548,7 +80582,7 @@ public final class ProtoMessage {
        * 上传者的名称
        * </pre>
        *
-       * <code>string userName = 11;</code>
+       * <code>optional string userName = 11;</code>
        */
       public com.google.protobuf.ByteString
           getUserNameBytes() {
@@ -80568,7 +80602,7 @@ public final class ProtoMessage {
        * 上传者的名称
        * </pre>
        *
-       * <code>string userName = 11;</code>
+       * <code>optional string userName = 11;</code>
        */
       public Builder setUserName(
           java.lang.String value) {
@@ -80585,7 +80619,7 @@ public final class ProtoMessage {
        * 上传者的名称
        * </pre>
        *
-       * <code>string userName = 11;</code>
+       * <code>optional string userName = 11;</code>
        */
       public Builder clearUserName() {
         
@@ -80598,7 +80632,7 @@ public final class ProtoMessage {
        * 上传者的名称
        * </pre>
        *
-       * <code>string userName = 11;</code>
+       * <code>optional string userName = 11;</code>
        */
       public Builder setUserNameBytes(
           com.google.protobuf.ByteString value) {
@@ -80665,7 +80699,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -80778,7 +80812,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -80881,7 +80915,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       if (getTracksCount() > 0) {
@@ -81149,13 +81183,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -81164,7 +81198,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -81466,12 +81500,17 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
     /**
-     * <code>int64 fromTrackID = 2;</code>
+     * <pre>
+     * 以下为查询条件
+     * userPhone 和 trackIDs 只能2选1, 优先判断 userPhone
+     * </pre>
+     *
+     * <code>optional int64 fromTrackID = 2;</code>
      */
     long getFromTrackID();
 
@@ -81480,7 +81519,7 @@ public final class ProtoMessage {
      * 查询 某个人的轨迹
      * </pre>
      *
-     * <code>string userPhone = 3;</code>
+     * <code>optional string userPhone = 3;</code>
      */
     java.lang.String getUserPhone();
     /**
@@ -81488,7 +81527,7 @@ public final class ProtoMessage {
      * 查询 某个人的轨迹
      * </pre>
      *
-     * <code>string userPhone = 3;</code>
+     * <code>optional string userPhone = 3;</code>
      */
     com.google.protobuf.ByteString
         getUserPhoneBytes();
@@ -81685,7 +81724,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -81694,7 +81733,12 @@ public final class ProtoMessage {
     public static final int FROMTRACKID_FIELD_NUMBER = 2;
     private long fromTrackID_;
     /**
-     * <code>int64 fromTrackID = 2;</code>
+     * <pre>
+     * 以下为查询条件
+     * userPhone 和 trackIDs 只能2选1, 优先判断 userPhone
+     * </pre>
+     *
+     * <code>optional int64 fromTrackID = 2;</code>
      */
     public long getFromTrackID() {
       return fromTrackID_;
@@ -81707,7 +81751,7 @@ public final class ProtoMessage {
      * 查询 某个人的轨迹
      * </pre>
      *
-     * <code>string userPhone = 3;</code>
+     * <code>optional string userPhone = 3;</code>
      */
     public java.lang.String getUserPhone() {
       java.lang.Object ref = userPhone_;
@@ -81726,7 +81770,7 @@ public final class ProtoMessage {
      * 查询 某个人的轨迹
      * </pre>
      *
-     * <code>string userPhone = 3;</code>
+     * <code>optional string userPhone = 3;</code>
      */
     public com.google.protobuf.ByteString
         getUserPhoneBytes() {
@@ -81935,7 +81979,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + FROMTRACKID_FIELD_NUMBER;
@@ -82242,13 +82286,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -82257,7 +82301,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -82268,13 +82312,23 @@ public final class ProtoMessage {
 
       private long fromTrackID_ ;
       /**
-       * <code>int64 fromTrackID = 2;</code>
+       * <pre>
+       * 以下为查询条件
+       * userPhone 和 trackIDs 只能2选1, 优先判断 userPhone
+       * </pre>
+       *
+       * <code>optional int64 fromTrackID = 2;</code>
        */
       public long getFromTrackID() {
         return fromTrackID_;
       }
       /**
-       * <code>int64 fromTrackID = 2;</code>
+       * <pre>
+       * 以下为查询条件
+       * userPhone 和 trackIDs 只能2选1, 优先判断 userPhone
+       * </pre>
+       *
+       * <code>optional int64 fromTrackID = 2;</code>
        */
       public Builder setFromTrackID(long value) {
         
@@ -82283,7 +82337,12 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int64 fromTrackID = 2;</code>
+       * <pre>
+       * 以下为查询条件
+       * userPhone 和 trackIDs 只能2选1, 优先判断 userPhone
+       * </pre>
+       *
+       * <code>optional int64 fromTrackID = 2;</code>
        */
       public Builder clearFromTrackID() {
         
@@ -82298,7 +82357,7 @@ public final class ProtoMessage {
        * 查询 某个人的轨迹
        * </pre>
        *
-       * <code>string userPhone = 3;</code>
+       * <code>optional string userPhone = 3;</code>
        */
       public java.lang.String getUserPhone() {
         java.lang.Object ref = userPhone_;
@@ -82317,7 +82376,7 @@ public final class ProtoMessage {
        * 查询 某个人的轨迹
        * </pre>
        *
-       * <code>string userPhone = 3;</code>
+       * <code>optional string userPhone = 3;</code>
        */
       public com.google.protobuf.ByteString
           getUserPhoneBytes() {
@@ -82337,7 +82396,7 @@ public final class ProtoMessage {
        * 查询 某个人的轨迹
        * </pre>
        *
-       * <code>string userPhone = 3;</code>
+       * <code>optional string userPhone = 3;</code>
        */
       public Builder setUserPhone(
           java.lang.String value) {
@@ -82354,7 +82413,7 @@ public final class ProtoMessage {
        * 查询 某个人的轨迹
        * </pre>
        *
-       * <code>string userPhone = 3;</code>
+       * <code>optional string userPhone = 3;</code>
        */
       public Builder clearUserPhone() {
         
@@ -82367,7 +82426,7 @@ public final class ProtoMessage {
        * 查询 某个人的轨迹
        * </pre>
        *
-       * <code>string userPhone = 3;</code>
+       * <code>optional string userPhone = 3;</code>
        */
       public Builder setUserPhoneBytes(
           com.google.protobuf.ByteString value) {
@@ -82840,7 +82899,7 @@ public final class ProtoMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     int getErrorCode();
 
@@ -82849,7 +82908,7 @@ public final class ProtoMessage {
      * 需要修改的的TrackID，只能是自己的
      * </pre>
      *
-     * <code>int64 trackID = 2;</code>
+     * <code>optional int64 trackID = 2;</code>
      */
     long getTrackID();
 
@@ -82858,26 +82917,26 @@ public final class ProtoMessage {
      * &#64;link TrackModifyCode
      * </pre>
      *
-     * <code>int32 modifyCode = 3;</code>
+     * <code>optional int32 modifyCode = 3;</code>
      */
     int getModifyCode();
 
     /**
-     * <code>string title = 4;</code>
+     * <code>optional string title = 4;</code>
      */
     java.lang.String getTitle();
     /**
-     * <code>string title = 4;</code>
+     * <code>optional string title = 4;</code>
      */
     com.google.protobuf.ByteString
         getTitleBytes();
 
     /**
-     * <code>string desc = 5;</code>
+     * <code>optional string desc = 5;</code>
      */
     java.lang.String getDesc();
     /**
-     * <code>string desc = 5;</code>
+     * <code>optional string desc = 5;</code>
      */
     com.google.protobuf.ByteString
         getDescBytes();
@@ -82979,7 +83038,7 @@ public final class ProtoMessage {
     public static final int ERRORCODE_FIELD_NUMBER = 1;
     private int errorCode_;
     /**
-     * <code>int32 errorCode = 1;</code>
+     * <code>optional int32 errorCode = 1;</code>
      */
     public int getErrorCode() {
       return errorCode_;
@@ -82992,7 +83051,7 @@ public final class ProtoMessage {
      * 需要修改的的TrackID，只能是自己的
      * </pre>
      *
-     * <code>int64 trackID = 2;</code>
+     * <code>optional int64 trackID = 2;</code>
      */
     public long getTrackID() {
       return trackID_;
@@ -83005,7 +83064,7 @@ public final class ProtoMessage {
      * &#64;link TrackModifyCode
      * </pre>
      *
-     * <code>int32 modifyCode = 3;</code>
+     * <code>optional int32 modifyCode = 3;</code>
      */
     public int getModifyCode() {
       return modifyCode_;
@@ -83014,7 +83073,7 @@ public final class ProtoMessage {
     public static final int TITLE_FIELD_NUMBER = 4;
     private volatile java.lang.Object title_;
     /**
-     * <code>string title = 4;</code>
+     * <code>optional string title = 4;</code>
      */
     public java.lang.String getTitle() {
       java.lang.Object ref = title_;
@@ -83029,7 +83088,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string title = 4;</code>
+     * <code>optional string title = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTitleBytes() {
@@ -83048,7 +83107,7 @@ public final class ProtoMessage {
     public static final int DESC_FIELD_NUMBER = 5;
     private volatile java.lang.Object desc_;
     /**
-     * <code>string desc = 5;</code>
+     * <code>optional string desc = 5;</code>
      */
     public java.lang.String getDesc() {
       java.lang.Object ref = desc_;
@@ -83063,7 +83122,7 @@ public final class ProtoMessage {
       }
     }
     /**
-     * <code>string desc = 5;</code>
+     * <code>optional string desc = 5;</code>
      */
     public com.google.protobuf.ByteString
         getDescBytes() {
@@ -83166,7 +83225,7 @@ public final class ProtoMessage {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ERRORCODE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + TRACKID_FIELD_NUMBER;
@@ -83419,13 +83478,13 @@ public final class ProtoMessage {
 
       private int errorCode_ ;
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public int getErrorCode() {
         return errorCode_;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder setErrorCode(int value) {
         
@@ -83434,7 +83493,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>int32 errorCode = 1;</code>
+       * <code>optional int32 errorCode = 1;</code>
        */
       public Builder clearErrorCode() {
         
@@ -83449,7 +83508,7 @@ public final class ProtoMessage {
        * 需要修改的的TrackID，只能是自己的
        * </pre>
        *
-       * <code>int64 trackID = 2;</code>
+       * <code>optional int64 trackID = 2;</code>
        */
       public long getTrackID() {
         return trackID_;
@@ -83459,7 +83518,7 @@ public final class ProtoMessage {
        * 需要修改的的TrackID，只能是自己的
        * </pre>
        *
-       * <code>int64 trackID = 2;</code>
+       * <code>optional int64 trackID = 2;</code>
        */
       public Builder setTrackID(long value) {
         
@@ -83472,7 +83531,7 @@ public final class ProtoMessage {
        * 需要修改的的TrackID，只能是自己的
        * </pre>
        *
-       * <code>int64 trackID = 2;</code>
+       * <code>optional int64 trackID = 2;</code>
        */
       public Builder clearTrackID() {
         
@@ -83487,7 +83546,7 @@ public final class ProtoMessage {
        * &#64;link TrackModifyCode
        * </pre>
        *
-       * <code>int32 modifyCode = 3;</code>
+       * <code>optional int32 modifyCode = 3;</code>
        */
       public int getModifyCode() {
         return modifyCode_;
@@ -83497,7 +83556,7 @@ public final class ProtoMessage {
        * &#64;link TrackModifyCode
        * </pre>
        *
-       * <code>int32 modifyCode = 3;</code>
+       * <code>optional int32 modifyCode = 3;</code>
        */
       public Builder setModifyCode(int value) {
         
@@ -83510,7 +83569,7 @@ public final class ProtoMessage {
        * &#64;link TrackModifyCode
        * </pre>
        *
-       * <code>int32 modifyCode = 3;</code>
+       * <code>optional int32 modifyCode = 3;</code>
        */
       public Builder clearModifyCode() {
         
@@ -83521,7 +83580,7 @@ public final class ProtoMessage {
 
       private java.lang.Object title_ = "";
       /**
-       * <code>string title = 4;</code>
+       * <code>optional string title = 4;</code>
        */
       public java.lang.String getTitle() {
         java.lang.Object ref = title_;
@@ -83536,7 +83595,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string title = 4;</code>
+       * <code>optional string title = 4;</code>
        */
       public com.google.protobuf.ByteString
           getTitleBytes() {
@@ -83552,7 +83611,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string title = 4;</code>
+       * <code>optional string title = 4;</code>
        */
       public Builder setTitle(
           java.lang.String value) {
@@ -83565,7 +83624,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string title = 4;</code>
+       * <code>optional string title = 4;</code>
        */
       public Builder clearTitle() {
         
@@ -83574,7 +83633,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string title = 4;</code>
+       * <code>optional string title = 4;</code>
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
@@ -83590,7 +83649,7 @@ public final class ProtoMessage {
 
       private java.lang.Object desc_ = "";
       /**
-       * <code>string desc = 5;</code>
+       * <code>optional string desc = 5;</code>
        */
       public java.lang.String getDesc() {
         java.lang.Object ref = desc_;
@@ -83605,7 +83664,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string desc = 5;</code>
+       * <code>optional string desc = 5;</code>
        */
       public com.google.protobuf.ByteString
           getDescBytes() {
@@ -83621,7 +83680,7 @@ public final class ProtoMessage {
         }
       }
       /**
-       * <code>string desc = 5;</code>
+       * <code>optional string desc = 5;</code>
        */
       public Builder setDesc(
           java.lang.String value) {
@@ -83634,7 +83693,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string desc = 5;</code>
+       * <code>optional string desc = 5;</code>
        */
       public Builder clearDesc() {
         
@@ -83643,7 +83702,7 @@ public final class ProtoMessage {
         return this;
       }
       /**
-       * <code>string desc = 5;</code>
+       * <code>optional string desc = 5;</code>
        */
       public Builder setDescBytes(
           com.google.protobuf.ByteString value) {
@@ -84458,42 +84517,42 @@ public final class ProtoMessage {
       "\016\n\nhfAddrInfo\020\004\022\r\n\thfCarType\020\005\022\014\n\010hfCarN" +
       "um\020\006\022\t\n\005hfGps\020\007\022\020\n\014hfTeamRandom\020\010\022\025\n\021hfT" +
       "eamRandomVideo\020\t*2\n\010TeamRole\022\016\n\nmemberOn" +
-      "ly\020\000\022\013\n\007Manager\020\001\022\t\n\005Owner\020\002*p\n\010TeamType" +
-      "\022\016\n\nteamPublic\020\000\022\r\n\tteamTempo\020\001\022\017\n\013teamP" +
-      "rivate\020\002\022\017\n\013teamInGroup\020\003\022\016\n\nteamRandom\020" +
-      "\004\022\023\n\017teamMapSelector\020\005*,\n\rApplyTeamType\022" +
-      "\r\n\tattInvite\020\000\022\014\n\010attApply\020\001*)\n\013RequestF" +
-      "lag\022\017\n\013rfAllMember\020\000\022\t\n\005rfOne\020\001*\326\001\n\007MsgT",
-      "ype\022\n\n\006mtText\020\000\022\013\n\007mtImage\020\001\022\013\n\007mtVoice\020" +
-      "\002\022\014\n\010mtCancel\020\003\022\017\n\013mtEnterTeam\020\004\022\017\n\013mtLe" +
-      "aveTeam\020\005\022\025\n\021mtChangeHeadImage\020\006\022\022\n\016mtAc" +
-      "ceptFriend\020\007\022\022\n\016mtDeleteFriend\020\010\022\017\n\013mtVi" +
-      "deoFile\020\t\022\017\n\013mtVoiceFile\020\n\022\024\n\020mtVoiceSho" +
-      "rtFile\020\013*B\n\nChatStatus\022\r\n\tcsOffline\020\000\022\013\n" +
-      "\007csNotIn\020\001\022\010\n\004csOk\020\002\022\016\n\ncsSpeaking\020\003*&\n\003" +
-      "Sex\022\t\n\005noset\020\000\022\010\n\004male\020\001\022\n\n\006female\020\002*3\n\014" +
-      "KqReportType\022\013\n\007krtAuto\020\000\022\n\n\006krtKey\020\001\022\n\n" +
-      "\006krtNfc\020\002*M\n\nReportType\022\013\n\007rtLogin\020\000\022\014\n\010",
-      "rtLogout\020\001\022\013\n\007rtAlive\020\002\022\014\n\010rtCarReg\020\003\022\t\n" +
-      "\005rtMax\020\004*N\n\017SessionPullType\022\017\n\013sptToClie" +
-      "nt\020\000\022\023\n\017sptForceOffline\020\001\022\025\n\021sptNotifyCa" +
-      "rLogin\020\002*K\n\020CmdMsgSessionReq\022\033\n\027SessionG" +
-      "etUserSessionIP\020\000\022\032\n\026SessionQueryWhoWatc" +
-      "hMe\020\001*6\n\021MsgSessionReqWhat\022\r\n\tsrwNormal\020" +
-      "\000\022\022\n\016srwCarRegister\020\001*\200\001\n\007RoomCmd\022\025\n\021rcR" +
-      "oomReportAlive\020\000\022\020\n\014rcStartVoice\020\001\022\021\n\rrc" +
-      "AcceptVoice\020\002\022\020\n\014rcCreateRoom\020\003\022\017\n\013rcClo" +
-      "seRoom\020\004\022\026\n\022rcTeamMemberChange\020\005*[\n\013Loca",
-      "tionCmd\022\020\n\014LOCATION_PUT\020\000\022\022\n\016LOCATION_ST" +
-      "ART\020\001\022\021\n\rLOCATION_STOP\020\002\022\023\n\017LOCATION_SEA" +
-      "RCH\020\003*&\n\nKqTimeType\022\013\n\007kttNone\020\000\022\013\n\007kttW" +
-      "eek\020\001*.\n\010EditCode\022\t\n\005ecGet\020\000\022\014\n\010ecUpdate" +
-      "\020\001\022\t\n\005ecDel\020\002*\'\n\tRemoteCmd\022\n\n\006rcNone\020\000\022\016" +
-      "\n\nrcNavigate\020\001*e\n\017TrackModifyCode\022\017\n\013_tr" +
-      "ackDummy\020\000\022\017\n\013trackModify\020\001\022\020\n\014trackVisi" +
-      "ble\020\002\022\r\n\ttrackHide\020\003\022\017\n\013trackDelete\020\004B%\n" +
-      "#com.example.jrd48.service.proto_genb\006pr" +
-      "oto3"
+      "ly\020\000\022\013\n\007Manager\020\001\022\t\n\005Owner\020\002*\211\001\n\010TeamTyp" +
+      "e\022\016\n\nteamPublic\020\000\022\r\n\tteamTempo\020\001\022\017\n\013team" +
+      "Private\020\002\022\017\n\013teamInGroup\020\003\022\016\n\nteamRandom" +
+      "\020\004\022\023\n\017teamMapSelector\020\005\022\n\n\006teamM1\020\006\022\013\n\007t" +
+      "eamBBS\020\007*,\n\rApplyTeamType\022\r\n\tattInvite\020\000" +
+      "\022\014\n\010attApply\020\001*)\n\013RequestFlag\022\017\n\013rfAllMe",
+      "mber\020\000\022\t\n\005rfOne\020\001*\326\001\n\007MsgType\022\n\n\006mtText\020" +
+      "\000\022\013\n\007mtImage\020\001\022\013\n\007mtVoice\020\002\022\014\n\010mtCancel\020" +
+      "\003\022\017\n\013mtEnterTeam\020\004\022\017\n\013mtLeaveTeam\020\005\022\025\n\021m" +
+      "tChangeHeadImage\020\006\022\022\n\016mtAcceptFriend\020\007\022\022" +
+      "\n\016mtDeleteFriend\020\010\022\017\n\013mtVideoFile\020\t\022\017\n\013m" +
+      "tVoiceFile\020\n\022\024\n\020mtVoiceShortFile\020\013*B\n\nCh" +
+      "atStatus\022\r\n\tcsOffline\020\000\022\013\n\007csNotIn\020\001\022\010\n\004" +
+      "csOk\020\002\022\016\n\ncsSpeaking\020\003*&\n\003Sex\022\t\n\005noset\020\000" +
+      "\022\010\n\004male\020\001\022\n\n\006female\020\002*3\n\014KqReportType\022\013" +
+      "\n\007krtAuto\020\000\022\n\n\006krtKey\020\001\022\n\n\006krtNfc\020\002*M\n\nR",
+      "eportType\022\013\n\007rtLogin\020\000\022\014\n\010rtLogout\020\001\022\013\n\007" +
+      "rtAlive\020\002\022\014\n\010rtCarReg\020\003\022\t\n\005rtMax\020\004*N\n\017Se" +
+      "ssionPullType\022\017\n\013sptToClient\020\000\022\023\n\017sptFor" +
+      "ceOffline\020\001\022\025\n\021sptNotifyCarLogin\020\002*K\n\020Cm" +
+      "dMsgSessionReq\022\033\n\027SessionGetUserSessionI" +
+      "P\020\000\022\032\n\026SessionQueryWhoWatchMe\020\001*6\n\021MsgSe" +
+      "ssionReqWhat\022\r\n\tsrwNormal\020\000\022\022\n\016srwCarReg" +
+      "ister\020\001*\200\001\n\007RoomCmd\022\025\n\021rcRoomReportAlive" +
+      "\020\000\022\020\n\014rcStartVoice\020\001\022\021\n\rrcAcceptVoice\020\002\022" +
+      "\020\n\014rcCreateRoom\020\003\022\017\n\013rcCloseRoom\020\004\022\026\n\022rc",
+      "TeamMemberChange\020\005*[\n\013LocationCmd\022\020\n\014LOC" +
+      "ATION_PUT\020\000\022\022\n\016LOCATION_START\020\001\022\021\n\rLOCAT" +
+      "ION_STOP\020\002\022\023\n\017LOCATION_SEARCH\020\003*&\n\nKqTim" +
+      "eType\022\013\n\007kttNone\020\000\022\013\n\007kttWeek\020\001*.\n\010EditC" +
+      "ode\022\t\n\005ecGet\020\000\022\014\n\010ecUpdate\020\001\022\t\n\005ecDel\020\002*" +
+      "\'\n\tRemoteCmd\022\n\n\006rcNone\020\000\022\016\n\nrcNavigate\020\001" +
+      "*e\n\017TrackModifyCode\022\017\n\013_trackDummy\020\000\022\017\n\013" +
+      "trackModify\020\001\022\020\n\014trackVisible\020\002\022\r\n\ttrack" +
+      "Hide\020\003\022\017\n\013trackDelete\020\004B%\n#com.example.j" +
+      "rd48.service.proto_genb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
