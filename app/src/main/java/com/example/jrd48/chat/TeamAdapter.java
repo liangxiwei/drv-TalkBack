@@ -141,7 +141,7 @@ class TeamAdapter extends ArrayAdapter<Team> {
 //            viewHolder.background.setBackground(getContext().getResources().getDrawable(R.drawable.listview_item_change));
 //        }
             viewHolder.linkmanName.setText(msg.getLinkmanName());
-            if(msg.getTeamType() == ProtoMessage.TeamType.teamRandom_VALUE){
+            if(msg.getTeamType() == ProtoMessage.TeamType.teamBBS_VALUE){
                 if(msg.getLinkmanName().contains("海聊群")){
                     viewHolder.linkmanName.setText("海聊群");
                 }

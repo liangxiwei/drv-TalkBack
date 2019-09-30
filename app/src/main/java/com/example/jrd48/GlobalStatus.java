@@ -212,7 +212,7 @@ public class GlobalStatus {
             } else {
                 Settings.System.putString(MyApplication.getContext().getContentResolver(), Settings.System.CALL_NAME, t.getTeamName());
             }
-            if(t != null && t.getTeamType() == ProtoMessage.TeamType.teamRandom.getNumber()){
+            if(t != null && t.getTeamType() == ProtoMessage.TeamType.teamBBS.getNumber()){
                 //Log.d(TAG,"setIsRandomChat 202");
                 //setIsRandomChat(true);
                 SharedPreferences preference = context.getSharedPreferences("token", Context.MODE_PRIVATE);

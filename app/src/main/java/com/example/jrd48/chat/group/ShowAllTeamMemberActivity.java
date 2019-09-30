@@ -335,7 +335,7 @@ public class ShowAllTeamMemberActivity extends BaseActivity implements View.OnCl
                 String name = userList.get(position - 1).getName();
                 String nickName = userList.get(position - 1).getNickName();
                 if (str == null || str.length() <= 0) {
-                    if (mTeamType == ProtoMessage.TeamType.teamRandom.getNumber()){
+                    if (mTeamType == ProtoMessage.TeamType.teamBBS.getNumber()){
                         ToastR.setToast(mContext,"当前为海聊群，不可邀请好友添加");
                     } else {
                         onItemType(userList.get(position - 1).getName());
@@ -1447,7 +1447,7 @@ public class ShowAllTeamMemberActivity extends BaseActivity implements View.OnCl
             if (user.getName().equals(AllTeamMember.ADD)) {
                 view = layoutInflater.inflate(R.layout.member_singleuser_add, null);
                 holder.imageInviteAdd = (ImageView) view.findViewById(R.id.iv_invite_add);
-                if (mTeamType == ProtoMessage.TeamType.teamRandom.getNumber()){
+                if (mTeamType == ProtoMessage.TeamType.teamBBS.getNumber()){
                     holder.imageInviteAdd.setImageDrawable(getDrawable(R.drawable.ic_add_button_not_clickable));
                 } else {
                     holder.imageInviteAdd.setImageDrawable(getDrawable(R.drawable.ic_add_button));

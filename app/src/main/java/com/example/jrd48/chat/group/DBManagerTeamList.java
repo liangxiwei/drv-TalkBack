@@ -58,7 +58,7 @@ public class DBManagerTeamList {
                     try {
                         String teamName  = c.getTeamName();
                         if (!TextUtils.isEmpty(teamName)) {
-                            if(c.getTeamType() == ProtoMessage.TeamType.teamRandom_VALUE && teamName.contains("海聊群")){
+                            if(c.getTeamType() == ProtoMessage.TeamType.teamBBS_VALUE && teamName.contains("海聊群")){
                                 Log.i("CHAT", "Save friends teamName="+teamName);
                                 teamName = "海聊群";
                             }
