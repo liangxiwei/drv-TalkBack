@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Gravity;
 
 import com.example.jrd48.GlobalStatus;
+import com.example.jrd48.service.MyService;
 import com.example.jrd48.service.protocol.root.AutoCloseProcesser;
 import com.luobin.dvr.R;
 import com.example.jrd48.chat.ToastR;
@@ -115,6 +116,11 @@ public class ResponseErrorProcesser {
                     break;
 				case ProtoMessage.ErrorCode.CANNOT_ADD_FRIEND_SELF_VALUE://rs added for LBCJW-122:1026 error
 					ToastR.setToast(context, "不能加自己为好友");
+                    break;
+                case ProtoMessage.ErrorCode.NOT_FOUND_THIS_ROOM_USER_VALUE:
+                    ToastR.setToast(context, "错误1037,停止对讲");
+                    Intent i = new Intent(context, MyService.class);
+                    context.stopService(i);
                     break;
                 default:
                     ToastR.setToast(context, "操作失败：" + errCode);

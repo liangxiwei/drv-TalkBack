@@ -381,7 +381,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                                 intent.putExtra("data", 1);
                                 CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + msg.getTeamID());
                                 if (GlobalStatus.equalTeamID(msg.getTeamID())) {
-                                    intent.putExtra("callType", 0);
+                                    //intent.putExtra("callType", 0);
+                                    intent.putExtra("callType", 2);
                                 } else if (callState != null && callState.getState() == GlobalStatus.STATE_CALL) {
                                     intent.putExtra("callType", 1);
                                 } else {
@@ -872,7 +873,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             typedesc = in.getTeamDesc();
             name = in.getTeamName();
             //过滤掉海聊群
-            if (in.getTeamType() == ProtoMessage.TeamType.teamRandom.getNumber()) {
+            if (in.getTeamType() == ProtoMessage.TeamType.teamBBS.getNumber()) {
                 continue;
             }
             Team msg = new Team(name, typedesc, in.getTeamID(), in.getMemberRole(), false, in.getTeamType());

@@ -56,6 +56,7 @@ public class BBSActivity extends BaseActivity {
     List<TeamInfo> bbsList1 = new ArrayList<>();
     List<TeamInfo> bbsList2 = new ArrayList<>();
     String userPhone = "";
+    private static final String TAG = "BBSActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -159,9 +160,13 @@ public class BBSActivity extends BaseActivity {
     private void jumpFirstActivity(TeamInfo info){
         Intent intent = new Intent(getContext(), FirstActivity.class);
         intent.putExtra("data", 1);
+        Log.d(TAG, "jumpFirstActivity.TeamInfo.group="
+                + info.getGroupID() + "--getTeamName="
+                + info.getTeamName() + "-getTeamID=" + info.getTeamID());
         CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + info.getTeamID());
         if (GlobalStatus.equalTeamID(info.getTeamID())) {
-            intent.putExtra("callType", 0);
+            //intent.putExtra("callType", 0);
+            intent.putExtra("callType", 2);
         } else if (callState != null && callState.getState() == GlobalStatus.STATE_CALL) {
             intent.putExtra("callType", 1);
         } else {

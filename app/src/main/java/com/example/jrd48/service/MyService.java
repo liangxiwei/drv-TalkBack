@@ -1015,7 +1015,7 @@ public class MyService extends Service {
                 byte[] bTemp = DiagramParser.packData(ProtoMessage.Cmd.cmdAcceptVoice_VALUE, builder.build());
                 mSocketRunable.putData(new SendDataParcelable(bTemp, ProtoMessage.Cmd.cmdAcceptVoice_VALUE));
             }
-            ToastR.setToast(context, "网络断开，对讲暂停");
+            ToastR.setToast(context, "对讲暂停");
             Log.d(TAG, "stopService--network disconnected, stop chating");
             Intent i = new Intent(AutoCloseProcesser.ACTION);
             i.putExtra("roomID", GlobalStatus.getRoomID());
