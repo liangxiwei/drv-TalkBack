@@ -1783,7 +1783,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
 
         if (isBBS){
             // 如果是海聊群，退出群
-            groupQuit();
+            //groupQuit();
         }
         super.onDestroy();
 
