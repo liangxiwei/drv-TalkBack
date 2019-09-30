@@ -1407,6 +1407,7 @@ public class DvrImpl extends DvrImplBase
         }
     }
 
+    private int mJpegFrameErrCount = 0;
     @Override
     public void onJpegFrame(byte[] framebuf) {
 //        if (mFrameBuf == null) {
@@ -1432,6 +1433,18 @@ public class DvrImpl extends DvrImplBase
             tempBmp = BitmapFactory.decodeByteArray(framebuf, 0, framebuf.length, options);
         } catch (Throwable e) {
             e.printStackTrace();
+        }
+
+        if (tempBmp == null) {
+            mJpegFrameErrCount++;
+            Log.d(TAG, "camera data invalid");
+        } else {
+            mJpegFrameErrCount = 0;
+        }
+
+        if (mJpegFrameErrCount > 100) {
+            ToastR.setToast(mContext, "摄像头数据异常");
+            throw new NullPointerException();
         }
 
         synchronized (mUsbLock) {
