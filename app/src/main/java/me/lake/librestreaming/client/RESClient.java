@@ -276,11 +276,12 @@ public class RESClient {
             if (rtmpSender != null) {
                 rtmpSender.destroy();
             }
-            if (false && self_video) {
+            if (self_video) {
                 if (mCamView != null && dvrService != null) {
                     hideSurfaceView();
                 }
-            } else if (Settings.System.getInt(MyApplication.getContext().getContentResolver(), MainActivity.DVR_FULLSCREEN_SHOW, 0) == 0) {
+            }
+            if (Settings.System.getInt(MyApplication.getContext().getContentResolver(), MainActivity.DVR_FULLSCREEN_SHOW, 0) == 0) {
                 if (dvrService != null) {
                     dvrService.startThumbnailPreview();
                 }
