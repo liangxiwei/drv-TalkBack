@@ -167,8 +167,10 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.example.jrd48.service.protocol.root.ReceiverProcesser.getMyDataRoot;
 
+import com.example.jrd48.chat.BaseActivity;
 
-public class FirstActivity extends SelectActivity implements OnClickListener, OnTouchListener, PermissionUtil.PermissionCallBack
+
+public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnClickListener, OnTouchListener, PermissionUtil.PermissionCallBack
         , Animation.AnimationListener {
     private static final String TAG = "FirstActivity";
     public static final int SWITCH_BTN_ALPHA = 200;
@@ -538,6 +540,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         dataInit();
 
+		/*
         List<View>  selectViews = new ArrayList<>();
 		selectViews.add(btnReturn);//rs
         selectViews.add(prefixCamera);
@@ -545,7 +548,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         selectViews.add(gotoMap);
         selectViews.add(doNotDisturb);
         setSelectViewManager(new SelectViewManager(selectViews));
-
+		*/
     }
 
     private void checkRandomChat() {
@@ -1791,6 +1794,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
     //***********************设置GridView显示*******************************
     public void setGridView() {
         memberListView = (ListView) findViewById(R.id.member_list);
+		memberListView.setSelector(R.drawable.tab_list_item_selector);
         adapterU = new UserAdapter(FirstActivity.this, R.layout.singleuser, userList);
         //initGridView();//初始化GridView
         memberListView.setAdapter(adapterU);

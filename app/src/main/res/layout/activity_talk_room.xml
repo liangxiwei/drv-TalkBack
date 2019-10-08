@@ -24,6 +24,8 @@
             android:background="@drawable/button_selector"
             android:drawableLeft="@drawable/icon_return"
             android:paddingLeft="13dp"
+            android:nextFocusUp="@+id/action_bar_view"
+            android:nextFocusDown="@+id/prefix_camera"
             />
             
         <!--com.luobin.widget.FirstStatusBar
@@ -48,6 +50,7 @@
             /-->    
 
        <com.luobin.widget.FirstActionBarDataView
+       		android:id="@+id/action_bar_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
@@ -81,19 +84,21 @@
                 android:layout_width="119dp"
                 android:layout_height="97dp"
                 android:scaleType="fitXY"
-                android:background="@drawable/icon_video"
+                android:src="@drawable/icon_video"
                 android:layout_marginTop="19dp"
                 android:layout_marginLeft="19dp"
+                android:background="@drawable/bg_selector"
                 />
 
             <ImageView
                 android:id="@+id/voice"
                 android:layout_width="61dp"
                 android:layout_height="97dp"
-                android:background="@drawable/icon_mac"
+                android:src="@drawable/icon_mac"
                 android:layout_toRightOf="@id/prefix_camera"
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="21dp"
+                android:background="@drawable/bg_selector"
                 />
 
             <Button
