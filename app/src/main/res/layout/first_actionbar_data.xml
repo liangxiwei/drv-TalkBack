@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_selector"
             >
 
             <TextView android:id="@+id/time1"
@@ -63,6 +64,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="31dp"
             android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_selector"
             />
 
     </LinearLayout>
@@ -74,6 +76,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
         android:visibility="gone"
+        android:background="@drawable/bg_selector"
         >
 
         <TextView android:id="@+id/date"

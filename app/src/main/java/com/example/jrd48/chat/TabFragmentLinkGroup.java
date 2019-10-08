@@ -599,7 +599,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 } else {
 					try {
 						Team curTeam = groupList.get(groupSelectPosition);
-						mDelMemberTeamID = curTeam.getTeamID();
+						//mDelMemberTeamID = curTeam.getTeamID();
 		                Intent intent = new Intent(mContext, SelectMemberToDeleteActivity.class);
 		                intent.putExtra("teamID", curTeam.getTeamID());
 		                intent.putExtra("type", curTeam.getMemberRole());

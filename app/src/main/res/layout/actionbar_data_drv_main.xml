@@ -13,6 +13,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="3dp"
         android:layout_marginLeft="10dp"
+        android:background="@drawable/bg_selector"
         >
 
         <TextView android:id="@+id/time1"
@@ -64,6 +65,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
+        android:background="@drawable/bg_selector"
         >
 
         <TextView android:id="@+id/date"

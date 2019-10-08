@@ -13,7 +13,8 @@
         android:layout_centerHorizontal="true"
         android:datePickerMode="calendar"
         android:layout_marginTop="5dp"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:background="@drawable/bg_selector"/>
 
     <LinearLayout
         android:id="@+id/btns"
@@ -30,8 +31,8 @@
             android:layout_margin="10dp"
             android:textSize="14dp"
             android:textColor="@color/colorWirte"
-            android:background="@drawable/bg_button"
-            android:text="取消"/>
+			android:background="@drawable/button_selector"            
+			android:text="取消"/>
 
         <Button
             android:id="@+id/btn_confirm"
@@ -40,7 +41,7 @@
             android:layout_margin="10dp"
             android:textSize="14dp"
             android:textColor="@color/colorWirte"
-            android:background="@drawable/bg_button"
+            android:background="@drawable/button_selector"
             android:text="确认"/>
 
     </LinearLayout>
@@ -61,7 +62,9 @@
             android:layout_height="wrap_content"
             android:text="卫星校准"
             android:textColor="@color/colorWirte"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            android:background="@drawable/bg_selector"
+        />
 
         <RadioButton
             android:id="@+id/btn_manual"
@@ -69,7 +72,9 @@
             android:layout_height="wrap_content"
             android:text="手动设置"
             android:textColor="@color/colorWirte"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            android:background="@drawable/bg_selector"
+       />
 
     </RadioGroup>
 
