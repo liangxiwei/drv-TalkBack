@@ -36,6 +36,9 @@ import android.widget.TextView;
 import com.baoyz.widget.PullRefreshLayout;
 import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.SQLite.TeamMemberHelper;
+import com.example.jrd48.chat.friend.AppliedFriends;
+import com.example.jrd48.chat.friend.DBHelperFriendsList;
+import com.example.jrd48.chat.friend.DBManagerFriendsList;
 import com.example.jrd48.chat.group.DBHelperTeamList;
 import com.example.jrd48.chat.group.DBManagerTeamList;
 import com.example.jrd48.chat.group.MsgTool;
@@ -167,6 +170,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                             groupListView.setAdapter(groupAdapter);
                             groupListView.requestFocus();
                             memberAdapter = new ContactsMemberAdapter(allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()), mContext);
+                            List<AppliedFriends> listFriends = getlistMembersCache();
+                            memberAdapter.setAppliedFriends(listFriends);
                             memberListView.setAdapter(memberAdapter);
                             groupListView.setSelection(groupSelectPosition);
                             tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
@@ -184,10 +189,14 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
                         if (groupList.size() > 0) {
                             memberAdapter.setData(allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));
+                            List<AppliedFriends> listFriends = getlistMembersCache();
+                            memberAdapter.setAppliedFriends(listFriends);
                             memberAdapter.notifyDataSetChanged();
                             groupListView.setSelection(groupSelectPosition);
                             tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
                         } else {//如果当前没有群组，清空群成员列表
+                            List<AppliedFriends> listFriends = getlistMembersCache();
+                            memberAdapter.setAppliedFriends(listFriends);
                             memberAdapter.setData(new ArrayList<TeamMemberInfo>());
                             memberAdapter.notifyDataSetChanged();
                         }
@@ -348,7 +357,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 groupSelectPosition = position;
                 List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-
+                List<AppliedFriends> listFriends = getlistMembersCache();
+                memberAdapter.setAppliedFriends(listFriends);
                 memberAdapter.setData(memberList);
                 memberAdapter.notifyDataSetChanged();
                 tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
@@ -442,6 +452,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 	                    List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
 	                    //memberList.get(memberSelectPosition).setSelect(false);//rs del for crash:LBCJW-71
 	                    memberSelectPosition = 0;
+	                    List<AppliedFriends> listFriends = getlistMembersCache();
+	                    memberAdapter.setAppliedFriends(listFriends);
 	                    memberAdapter.setData(memberList);
 	                    memberAdapter.notifyDataSetChanged();
 	                }
@@ -500,6 +512,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 memberSelectPosition = position;
                 memberList.get(memberSelectPosition).setSelect(true);
 
+                List<AppliedFriends> listFriends = getlistMembersCache();
+                memberAdapter.setAppliedFriends(listFriends);
                 memberAdapter.setData(memberList);
                 memberAdapter.notifyDataSetChanged();
 
@@ -808,6 +822,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
                 if (allMemberMap.containsKey(l)) {
                     allMemberMap.remove(l);
+                    List<AppliedFriends> listFriends = getlistMembersCache();
+                    memberAdapter.setAppliedFriends(listFriends);
                     memberAdapter.setData(allMemberMap.get(groupList.get(groupSelectPosition)));
                 }
                 break;
@@ -1230,46 +1246,59 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         });
     }
 
-	    //rs added for LBCJW-181:refresh members after delete
-		@Override
-		public void onActivityResult(int requestCode, int resultCode, Intent data) {
-			switch (requestCode) {
-				case DELETE_TEAM_MEMBER:
-					Log.d("rs", "onActivityResult->DELETE_TEAM_MEMBER");
+    //rs added for LBCJW-181:refresh members after delete
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case DELETE_TEAM_MEMBER:
+                Log.d("rs", "onActivityResult->DELETE_TEAM_MEMBER");
 
-					if (resultCode == Activity.RESULT_OK) {
-                        String delMemberPhone = data.getStringExtra("del_member_phone");
-						Log.d("rs", "onActivityResult->delMemberPhone:"+delMemberPhone);
-						refreshMemberListLocalData(delMemberPhone);
-					}
-					break;
-				default:
-					break;
-			}
-		}
+                if (resultCode == Activity.RESULT_OK) {
+                    String delMemberPhone = data.getStringExtra("del_member_phone");
+                    Log.d("rs", "onActivityResult->delMemberPhone:"+delMemberPhone);
+                    refreshMemberListLocalData(delMemberPhone);
+                }
+                break;
+            default:
+                break;
+        }
+    }
 
-		
-		private void refreshMemberListLocalData(String phoneNum) {
-			int k = -1;
-			int i = -1;
+    private void refreshMemberListLocalData(String phoneNum) {
+        int k = -1;
+        int i = -1;
 
-			List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-			for (TeamMemberInfo mte : memberList) {
-				++i;
-				if (phoneNum.equals(mte.getUserPhone())) {
-					k = i;
-					Log.d("rs", "found phoneNum:"+phoneNum+", k:"+k);
-					break;
-				}
-			}
-			
-			if (k >= 0) {
-				if (memberList != null) {
-					memberList.remove(k);
-					memberAdapter.setData(memberList);
-                	memberAdapter.notifyDataSetChanged();
-				}
-			}
-		}
-		//end
+        List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
+        for (TeamMemberInfo mte : memberList) {
+            ++i;
+            if (phoneNum.equals(mte.getUserPhone())) {
+                k = i;
+                Log.d("rs", "found phoneNum:"+phoneNum+", k:"+k);
+                break;
+            }
+        }
+
+        if (k >= 0) {
+            if (memberList != null) {
+                memberList.remove(k);
+                List<AppliedFriends> listFriends = getlistMembersCache();
+                memberAdapter.setAppliedFriends(listFriends);
+                memberAdapter.setData(memberList);
+                memberAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+    //end
+
+    private List<AppliedFriends> getlistMembersCache() {
+        List<AppliedFriends> list = null;
+        try {
+            DBManagerFriendsList db = new DBManagerFriendsList(getContext(), DBTableName.getTableName(mContext, DBHelperFriendsList.NAME));
+            list = db.getFriends(false);
+            db.closeDB();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

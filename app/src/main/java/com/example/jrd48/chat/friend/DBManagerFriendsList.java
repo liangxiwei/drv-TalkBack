@@ -221,7 +221,6 @@ public class DBManagerFriendsList {
 //                    friendsMsg.setUserPic(FriendFaceUtill.getFriendsFace(mContext, friendsMsg.getPhoneNum()));
 //                }
                 friendsMsgs.add(friendsMsg);
-
             }
         } catch (Exception e) {
             e.printStackTrace();

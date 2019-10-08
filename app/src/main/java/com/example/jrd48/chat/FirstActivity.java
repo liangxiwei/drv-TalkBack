@@ -464,7 +464,6 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             button.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.FloatingActionButton_false)));
             button.setImageResource(R.drawable.speak);
             record = 3;
-
         }
     }
 
@@ -3073,6 +3072,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                     }
                 }
             }
+
             userT(memberName, status, in.getUserPhone(), sex);
 //            Message message = new Message();
 //            message.what = 3;
@@ -3321,9 +3321,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
                     speakingstate.setVisibility(VISIBLE);
                     String time = saveMsgRemind("您在话权中");
                     msgList.add(new Msg("您在话权中", Msg.TYPE_MSG_RECORD, time, 0, 0, changephone, 0, 0));
-
                 }
-
             }
         } else {
             for (int i = 0; i < userList.size(); i++) {
