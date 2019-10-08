@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:width="40dp" android:height="20dp">
-        <shape android:shape="rectangle">
-            <solid android:color="#FF2B76DD" />
-            <gradient android:angle="-90" android:endColor="#FF0065AD" android:startColor="#FF00D5F7" android:useLevel="false" />
-            <corners android:bottomLeftRadius="4dp" android:bottomRightRadius="4dp" android:topLeftRadius="4dp" android:topRightRadius="4dp" />
-        </shape>
+
+    <item android:state_pressed="true" android:drawable="@drawable/bg_select_stroke">
     </item>
+    <item android:state_focused="true" android:drawable="@drawable/bg_select_stroke">
+    </item>
+    <item android:state_selected="true" android:drawable="@drawable/bg_select_stroke">
+    </item>
+    <item android:drawable="@drawable/bg_button"
+        android:state_focused="false" android:state_window_focused="false" />
+
 </selector>
 

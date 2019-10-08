@@ -18,7 +18,8 @@
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_panel_edittext">
+            android:background="@drawable/bg_panel_edittext"
+	    android:nextFocusDown="@+id/btnSearch">
 
 
             <ImageView
@@ -41,7 +42,8 @@
                 android:hint="名称/群号/手机号/车牌号"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+            	android:nextFocusDown="@+id/imgSearchDel"/>
 
             <ImageView
                 android:id="@+id/imgSearchDel"
@@ -50,7 +52,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
-                android:src="@mipmap/icon_search_del" />
+                android:src="@mipmap/icon_search_del"
+                android:nextFocusUp="@+id/edContent"
+            	android:nextFocusDown="@+id/btnSearch"/>
 
         </RelativeLayout>
 
@@ -64,8 +68,9 @@
             android:background="@drawable/bg_panel_setting"
             android:text="搜索"
             android:textColor="@color/text_color_90white"
-            android:textSize="16dp" />
-
+            android:textSize="16dp"
+            android:nextFocusUp="@+id/imgSearchDel"
+            android:nextFocusDown="@+id/btnSearchPerson"/>
 
         <RelativeLayout
             android:id="@+id/rlbtnIsShow"
@@ -82,7 +87,9 @@
                 android:background="@drawable/bg_panel_setting"
                 android:text="按条件查找陌生人"
                 android:textColor="@color/text_color_90white"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:nextFocusUp="@+id/btnSearch"
+            	android:nextFocusDown="@+id/btnSearchCar"/>
 
             <Button
                 android:id="@+id/btnSearchCar"
@@ -92,9 +99,10 @@
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/bg_panel_setting"
                 android:text="查看附近的车"
-
                 android:textColor="@color/text_color_90white"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:nextFocusUp="@+id/btnSearchPerson"
+            	android:nextFocusDown="@+id/rlbtnIsShow"/>
 
         </RelativeLayout>
 

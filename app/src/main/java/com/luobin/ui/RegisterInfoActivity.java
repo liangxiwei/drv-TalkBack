@@ -541,11 +541,14 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
     @Override
     public void onPermissionSuccess(String type) {
+    	//rs modified for LBCJW-145:remove paichao
         if (type.equals(PermissionUtil.PERMISSIONS_STORAGE)) {
-            headDialog();
-        } else if (type.equals(PermissionUtil.PERMISSIONS_CAMERA)) {
+            //headDialog();
+            openPicture();
+        } /*else if (type.equals(PermissionUtil.PERMISSIONS_CAMERA)) {
             openCamera();
         }
+        */
     }
     @Override
     protected void onPause() {
@@ -1111,6 +1114,45 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         });
     }
 
+	//rs added for set carNum LBCJW-196
+    private void setCarNumber (final String carnumber){
+        ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
+        builder.setCarNum(carnumber);
+
+        MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdSetMyInfo.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SetUserInfoProcesser.ACTION);
+        final TimeoutBroadcast b = new TimeoutBroadcast(RegisterInfoActivity.this, filter, getBroadcastManager());
+
+        b.startReceiver(BaseDialogActivity.REQUEST_TIME_OUT, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                ToastR.setToast(RegisterInfoActivity.this, "设置失败");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+
+                int code = i.getIntExtra("error_code", -1);
+                if (code == ProtoMessage.ErrorCode.OK.getNumber()) {
+                    ToastR.setToast(RegisterInfoActivity.this, "设置成功");
+                    tvCarNo.setText(carnumber);
+                    SharedPreferences preference = mContext.getSharedPreferences("token", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preference.edit();
+                    //int
+                    editor.putString("car_num", carnumber);
+                    editor.commit();
+
+                } else {
+                    new ResponseErrorProcesser(RegisterInfoActivity.this, code);
+                }
+            }
+        });
+
+    }
+	//end
+
+
     /**
      * 获取个人信息
      */
@@ -1240,7 +1282,8 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                                 setPhone(password);
                                 break;
                             case CAR_NO:
-                                tvCarNo.setText(password);
+								setCarNumber(password);
+                                //tvCarNo.setText(password);
                                 break;
                             default:
                                 break;
@@ -1257,7 +1300,10 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                     RegisterInfoActivity.this, PermissionUtil.PERMISSIONS_STORAGE,
                     PermissionUtil.PERMISSIONS_STORAGE);
         } else {
-            headDialog();
+			//rs modified for LBCJW-145:remove paichao
+            //headDialog();
+            openPicture();
+			//end
         }
     }
 

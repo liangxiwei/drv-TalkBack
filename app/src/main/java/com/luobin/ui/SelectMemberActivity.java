@@ -42,6 +42,10 @@ import java.util.List;
 import com.example.jrd48.chat.TeamMemberInfo;
 import java.util.Iterator;
 
+import com.example.jrd48.chat.SQLite.TeamMemberHelper;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+
 public class SelectMemberActivity extends BaseDialogActivity {
 
     ListView selectMemberListView;
@@ -106,7 +110,13 @@ public class SelectMemberActivity extends BaseDialogActivity {
             @Override
             public void onClick(View v) {
                 if (adapter != null){
-                    applyMember(adapter.getSelect());
+					//rs added for LBCJW-199:check selected first
+					if(adapter.getSelect() != null && adapter.getSelect().size()>0){
+                    	applyMember(adapter.getSelect());
+					}else{
+						ToastR.setToast(context, "请先选择邀请对象");
+					}
+					//end
                 }
             }
         });
@@ -225,7 +235,36 @@ public class SelectMemberActivity extends BaseDialogActivity {
                 int errorCode = intent.getIntExtra("error_code", -1);
                 if (errorCode == ProtoMessage.ErrorCode.OK.getNumber()) {
                     ToastR.setToast(context, "邀请成功");
-                    setResult(APPLYTEAM);
+                    //setResult(APPLYTEAM);
+					//update database
+					//rs added for sync members, LBCJW-158
+					{
+                    				TeamMemberHelper teamMemberHelper = new TeamMemberHelper(context, teamID + "TeamMember.dp", null);
+                                    SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
+                                    ContentValues values = new ContentValues();
+                                    for (AppliedFriends te : friend) {
+                                        String userPhone = te.getPhoneNum();
+                                        String userName = te.getUserName();
+                                        String nickName = te.getNickName();
+                                        if (userName != null && userName.equals("-")){
+                                            userName = userPhone;
+                                        }
+
+                                        values.put("user_phone", userPhone);
+                                        values.put("user_name", userName);
+                                        values.put("nick_name", nickName);
+                                        db.insert("LinkmanMember", null, values);
+                                        Log.i("rs", "TeamMember UserInfo:" + userPhone);
+                                    }
+                                    db.close();
+                    }
+					//end
+
+
+				
+                    Intent respIntent = new Intent();
+                    respIntent.putExtra("data", 0);
+            		setResult(RESULT_OK, respIntent);
                     finish();
                 } else {
                     fail(intent.getIntExtra("error_code", -1));

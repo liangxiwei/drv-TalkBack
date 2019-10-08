@@ -324,10 +324,10 @@ public class RegisterAndForGetActivity extends BaseActivity {
         code = edCode.getText().toString();
         pass = edPass.getText().toString();
         if (phone.length() < 1) {
-            ToastR.setToast(this, "请输入手机号！");
+            ToastR.setToastLong(this, "请输入手机号！");
             return false;
         } else if (phone.length() < 11) {
-            ToastR.setToast(this, "请输入正确的手机号！");
+            ToastR.setToastLong(this, "请输入正确的手机号！");
             return false;
         } else if (code.length() < 1) {
             ToastR.setToastLong(this, "请输入验证码");
@@ -343,13 +343,18 @@ public class RegisterAndForGetActivity extends BaseActivity {
     @OnClick(R.id.btnSure)
     public void btnSureClick() {
 
+		//rs modified for LBCJW-160,161
         if (regOrFor) {
-            checkData();
-            register();
+            if(checkData()){
+            	register();
+            }
         } else {
-            forget();
+            //forget();
+            if(checkData()){
+				checkCode();
+			}
         }
-
+		//end
     }
 
     class MessageReceiver extends BroadcastReceiver {

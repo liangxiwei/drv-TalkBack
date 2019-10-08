@@ -44,6 +44,10 @@ import java.util.Iterator;
 
 import com.example.jrd48.service.protocol.root.DeleteTeamMemberProcesser;
 
+import com.example.jrd48.chat.SQLite.TeamMemberHelper;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+
 public class SelectMemberToDeleteActivity extends BaseDialogActivity {
 
     ListView selectMemberListView;
@@ -163,6 +167,8 @@ public class SelectMemberToDeleteActivity extends BaseDialogActivity {
 
                     //refreshLocalData(tm);
                     ToastR.setToast(context, "删除成员成功");
+					updateDeleteMember(teamID, tm.getUserPhone());
+						
 					Intent intent = new Intent();
 		            //Bundle bundle = new Bundle();
 		            //bundle.putParcelable("del_team_info", tm);
@@ -171,6 +177,7 @@ public class SelectMemberToDeleteActivity extends BaseDialogActivity {
 		            setResult(RESULT_OK, intent);
 					finish();
                 } else {
+					ToastR.setToast(context, "删除成员失败");
                     fail(i.getIntExtra("error_code", -1));
                 }
             }
@@ -181,5 +188,17 @@ public class SelectMemberToDeleteActivity extends BaseDialogActivity {
     public void fail(int i) {
         new ResponseErrorProcesser(context, i);
     }
-    
+
+	public void updateDeleteMember(long tID, String userPhoneNum) {
+			Log.d("rs", "updateDeleteMember:"+userPhoneNum);
+	        try {
+	            TeamMemberHelper teamMemberHelper = new TeamMemberHelper(context, tID + "TeamMember.dp", null);
+	            SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
+	            db.delete("LinkmanMember", "user_phone == ?", new String[]{userPhoneNum});
+	            db.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+				Log.d("rs", "updateDeleteMember->exception:"+e.toString());
+	        }
+    	}
 }

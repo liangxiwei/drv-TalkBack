@@ -143,6 +143,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     private ImageView removeMember;
     private ProgressDialog mProgressDialog;
 
+	private static final int ADD_TEAM_MEMBER = 1;
 	private static final int DELETE_TEAM_MEMBER = 2;
 	
     public boolean isPullRefresh() {
@@ -440,23 +441,39 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 moveList = MOVE_GROUP_LIST;
 				//rs added if for crash LBCJW-71
-				if(groupList.size() > 0){
-	                groupList.get(groupSelectPosition).setSelect(false);
-	                groupSelectPosition = position;
-	                groupList.get(groupSelectPosition).setSelect(true);
-	                groupAdapter.seteData(groupList);
-	                groupAdapter.notifyDataSetChanged();
-					//rs added for LBCJW-41
-					tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
-	                if (allMemberMap.size() > 0) {
-	                    List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
-	                    //memberList.get(memberSelectPosition).setSelect(false);//rs del for crash:LBCJW-71
-	                    memberSelectPosition = 0;
-	                    List<AppliedFriends> listFriends = getlistMembersCache();
-	                    memberAdapter.setAppliedFriends(listFriends);
-	                    memberAdapter.setData(memberList);
-	                    memberAdapter.notifyDataSetChanged();
-	                }
+				try{
+					if(groupList.size() > 0){
+		                groupList.get(groupSelectPosition).setSelect(false);
+		                groupSelectPosition = position;
+		                groupList.get(groupSelectPosition).setSelect(true);
+						
+		                groupAdapter.seteData(groupList);
+		                groupAdapter.notifyDataSetChanged();
+
+						//rs added for LBCJW-170
+						if (groupSelectPosition >= groupList.size()) {
+	                            groupSelectPosition = groupList.size() - 1;
+	                            if (groupSelectPosition < 0) {
+	                                groupSelectPosition = 0;
+	                            }
+	                    }
+						//end
+						
+						//rs added for LBCJW-41,
+						tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
+		                if (allMemberMap.size() > 0) {
+		                    List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
+		                    //memberList.get(memberSelectPosition).setSelect(false);//rs del for crash:LBCJW-71
+		                    memberSelectPosition = 0;
+	                    	List<AppliedFriends> listFriends = getlistMembersCache();
+	                    	memberAdapter.setAppliedFriends(listFriends);
+		                    memberAdapter.setData(memberList);
+		                    memberAdapter.notifyDataSetChanged();
+		                }
+					}
+				}catch(Exception ex){
+					ex.printStackTrace();
+					Log.d("rs", "found Exception:"+ex.toString());
 				}
 				//end
             }
@@ -563,7 +580,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                         Intent intent = new Intent(mContext, SelectMemberActivity.class);
                         intent.putExtra("teamID", groupList.get(groupSelectPosition).getTeamID());
 					    intent.putParcelableArrayListExtra("curMemberList", (ArrayList<? extends Parcelable>) allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));//rs added for LBCJW-68
-                        startActivityForResult(intent, 0);
+                        startActivityForResult(intent, ADD_TEAM_MEMBER);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -577,21 +594,22 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 			public void onClick(View view) {
 				//ToastR.setToast(getContext(), "删除群组成员");			
 				Log.d("rs", "removeMember clicked:");
-				Team curTeam = groupList.get(groupSelectPosition);
-				//if(curTeam.getMemberRole() == ProtoMessage.TeamRole.Owner_VALUE || curTeam.getMemberRole() == ProtoMessage.TeamRole.Manager_VALUE){
-				try {
-	                Intent intent = new Intent(mContext, SelectMemberToDeleteActivity.class);
-	                intent.putExtra("teamID", curTeam.getTeamID());
-	                intent.putExtra("type", curTeam.getMemberRole());
-	                intent.putParcelableArrayListExtra("curMemberList", (ArrayList<? extends Parcelable>) allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));
-					startActivityForResult(intent, DELETE_TEAM_MEMBER);
-					} catch (Exception e) {
-                        e.printStackTrace();
-						Log.d("rs", "found exception:"+e.toString());
-                    }
-				//}else{
-				//	ToastR.setToast(getContext(), "没有删除群组成员的权限");			
-				//}
+				if (groupList == null || groupList.size() == 0) {
+                    ToastR.setToast(getContext(), "暂无群组可以删除成员");
+                } else {
+					try {
+						Team curTeam = groupList.get(groupSelectPosition);
+						mDelMemberTeamID = curTeam.getTeamID();
+		                Intent intent = new Intent(mContext, SelectMemberToDeleteActivity.class);
+		                intent.putExtra("teamID", curTeam.getTeamID());
+		                intent.putExtra("type", curTeam.getMemberRole());
+		                intent.putParcelableArrayListExtra("curMemberList", (ArrayList<? extends Parcelable>) allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));
+						startActivityForResult(intent, DELETE_TEAM_MEMBER);
+						} catch (Exception e) {
+	                        e.printStackTrace();
+							Log.d("rs", "found exception:"+e.toString());
+	                    }
+                }
 			}
 		});
 		//end	
@@ -1002,6 +1020,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                             }
                         }
                     }
+
+					db.close();//rs added
                 }
 
                 @Override
@@ -1049,6 +1069,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                                 }
                             }, 1000);
                         }
+
+						db.close();//rs added
                     } else {
                         Log.e(TAG, "getGroupMan groupMan code:" + code);
                         new ResponseErrorProcesser(mContext, code);
@@ -1246,24 +1268,35 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         });
     }
 
-    //rs added for LBCJW-181:refresh members after delete
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case DELETE_TEAM_MEMBER:
-                Log.d("rs", "onActivityResult->DELETE_TEAM_MEMBER");
+	    //rs added for LBCJW-181:refresh members after delete
+		@Override
+		public void onActivityResult(int requestCode, int resultCode, Intent data) {
+			switch (requestCode) {
+				case DELETE_TEAM_MEMBER:
+					Log.d("rs", "onActivityResult->DELETE_TEAM_MEMBER");
 
-                if (resultCode == Activity.RESULT_OK) {
-                    String delMemberPhone = data.getStringExtra("del_member_phone");
-                    Log.d("rs", "onActivityResult->delMemberPhone:"+delMemberPhone);
-                    refreshMemberListLocalData(delMemberPhone);
-                }
-                break;
-            default:
-                break;
-        }
-    }
+					if (resultCode == Activity.RESULT_OK) {
+                        String delMemberPhone = data.getStringExtra("del_member_phone");
+						Log.d("rs", "onActivityResult->delMemberPhone:"+delMemberPhone);
+						//refreshMemberListLocalData(delMemberPhone);
+						//loadTeamListFromNet();
+					}
+					break;
+                case ADD_TEAM_MEMBER:
+					//rs added for LBCJW-158, after added, sync the team members
+					Log.d("rs", "onActivityResult->ADD_TEAM_MEMBER");
 
+					if (resultCode == Activity.RESULT_OK) {
+						Log.d("rs", "onActivityResult->ADD_TEAM_MEMBER->RESULT_OK");
+						//loadTeamListFromNet();
+					}
+					break;
+				default:
+					break;
+			}
+		}
+
+	/*
     private void refreshMemberListLocalData(String phoneNum) {
         int k = -1;
         int i = -1;
@@ -1288,6 +1321,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             }
         }
     }
+	*/
     //end
 
     private List<AppliedFriends> getlistMembersCache() {

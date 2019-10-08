@@ -1070,7 +1070,13 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
                 } else {
                     progressDialogDismiss();
                     Log.d("hhh","获取位置失败 errorCode:"+errorCode);
-                    ToastR.setToast(mContext, "获取位置失败（请检查网络是否连接或者网络质量差）");
+					//rs added NOT_FRIEND check for LBCJW-197
+					if(errorCode == ProtoMessage.ErrorCode.NOT_FRIEND.getNumber()){
+						ToastR.setToast(mContext, "请先添加对方为好友，才能获取位置");
+					}else{
+                    	ToastR.setToast(mContext, "获取位置失败（请检查网络是否连接或者网络质量差）");
+					}
+					//end
                 }
             }
         });

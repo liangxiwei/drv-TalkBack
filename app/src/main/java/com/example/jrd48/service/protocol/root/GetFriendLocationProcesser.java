@@ -41,7 +41,7 @@ public class GetFriendLocationProcesser extends CommonProcesser {
                         ProtoMessage.LocationMsgList resp = ProtoMessage.LocationMsgList.parseFrom(ArrayUtils.subarray(data, 4, data.length));
                         if(resp == null || resp.getErrorCode() != ProtoMessage.ErrorCode.OK_VALUE){
                             intent.putExtra("error_code", resp.getErrorCode());
-                            Log.i("chat", "错误码: " + resp.getErrorCode());
+                            Log.i("chat", "GetFriendLocationProcesser errcode:" + resp.getErrorCode());
                         }else {
                             intent.putExtra("error_code", resp.getErrorCode());
                             List<ProtoMessage.LocationMsg> locationMsgLists = resp.getLocationsList();
