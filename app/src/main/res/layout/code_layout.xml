@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg_icon">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -14,15 +15,15 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:background="@color/bg_icon">
             <TextView
                 android:id="@+id/custom_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:textColor="@color/dvr_title_colro"
+                android:textColor="@color/white"
                 android:textSize="@dimen/normal_title_size" />
         </android.support.v7.widget.Toolbar>
 
@@ -55,7 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="验证码:"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/code"
@@ -78,7 +80,7 @@
             android:ems="5"
             android:maxLines="2"
             android:text="点击获取验证码"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:textSize="14dp" />
 
     </LinearLayout>
@@ -89,10 +91,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/btn_reg"
-        android:listSelector="@drawable/btn_reg"
+        android:background="@drawable/button_selector"
         android:text="注册"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
 

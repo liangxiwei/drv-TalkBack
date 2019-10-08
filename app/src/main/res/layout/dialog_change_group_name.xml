@@ -62,7 +62,7 @@
             android:textSize="16dp"
             android:textColor="@color/white"
             android:layout_margin="10dp"
-            android:background="@drawable/bg_button"
+            android:background="@drawable/button_selector"
             android:text="取消"/>
 
         <Button
@@ -73,7 +73,7 @@
             android:textSize="16dp"
             android:textColor="@color/white"
             android:layout_margin="10dp"
-            android:background="@drawable/bg_button"
+            android:background="@drawable/button_selector"
             android:text="确定"/>
 
     </LinearLayout>

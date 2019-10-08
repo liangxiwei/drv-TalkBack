@@ -65,14 +65,20 @@ public class SelectMemberToDeleteAdapter extends BaseAdapter {
 
     public TeamMemberInfo  getSelect(){
         TeamMemberInfo selectMember = new TeamMemberInfo();
+		boolean memberSelected = false;
         for (TeamMemberInfo tmember : list){
             if (tmember.isSelect()){
 				selectMember = tmember;
+				memberSelected = true;
 				break;
             }
         }
 
-        return selectMember;
+		if(memberSelected){
+        	return selectMember;
+		}else{
+			return null;
+		}
     }
 
     @Override

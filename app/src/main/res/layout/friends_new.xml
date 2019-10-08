@@ -42,7 +42,7 @@
             android:layout_marginLeft="14dp"
             android:layout_toRightOf="@id/iv_back"
             android:text="通知消息"
-            android:textColor="@color/dvr_title_colro"
+            android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"  />
 
         <Button

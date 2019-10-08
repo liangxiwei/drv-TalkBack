@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:textColor="@color/dvr_title_colro"
+            android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"
             android:text="详细资料" />
 
@@ -488,7 +488,7 @@
                         android:layout_marginLeft="12dp"
                         android:layout_marginRight="12dp"
                         android:layout_weight="1"
-                        android:background="@drawable/dvr_button_background"
+                        android:background="@drawable/button_selector"
                         android:paddingBottom="7dp"
                         android:paddingTop="7dp"
                         android:text="删除"
@@ -505,12 +505,12 @@
                         android:layout_marginLeft="12dp"
                         android:layout_marginRight="12dp"
                         android:layout_weight="1"
-                        android:background="@drawable/dvr_button_background"
+                        android:background="@drawable/button_selector"
                         android:paddingBottom="7dp"
                         android:paddingTop="7dp"
                         android:text="发消息"
                         android:visibility="gone"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/normal_text_size" />
                 </LinearLayout>
 

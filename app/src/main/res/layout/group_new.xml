@@ -3,15 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="#f0f0f0"
     android:fitsSystemWindows="true"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/bg_icon">
 
     <RelativeLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorAccent" >
+        android:layout_height="?attr/actionBarSize">
 
         <ImageView
             android:id="@+id/iv_back"
@@ -23,7 +22,8 @@
             android:layout_marginRight="15dip"
             android:onClick="back"
             android:scaleType="centerInside"
-            android:src="@drawable/top_bar_back" />
+            android:src="@drawable/top_bar_back"
+            android:visibility="gone"/>
 
 
         <TextView
@@ -34,7 +34,7 @@
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@id/iv_back"
             android:text="新的群组"
-            android:textColor="@color/dvr_title_colro"
+            android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"  />
 
         <Button
@@ -44,13 +44,20 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="2dp"
-            android:background="@drawable/btn_show_color"
+            android:background="@drawable/button_selector"
             android:gravity="center"
             android:text="创建群组"
             android:textColor="#fff"
             android:textSize="16sp" />
 
     </RelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/title"
+        android:background="@color/white"/>
 
     <LinearLayout
         android:layout_width="match_parent"

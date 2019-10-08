@@ -17,10 +17,10 @@
             android:id="@+id/accept"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/simple_background_selector"
             android:textSize="@dimen/normal_text_size"
             android:text="@string/accept"
-            android:textColor="@color/black"/>
+            android:textColor="@color/white"
+            android:background="@drawable/button_selector"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -36,9 +36,9 @@
             android:id="@+id/refuse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/simple_background_selector"
             android:textSize="@dimen/normal_text_size"
             android:text="@string/refuse"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:background="@drawable/button_selector"/>
     </RelativeLayout>
 </LinearLayout>

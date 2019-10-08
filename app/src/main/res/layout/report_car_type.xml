@@ -5,7 +5,8 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:minWidth="250dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg_icon">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
             android:minHeight="35dp"
             android:paddingLeft="10dp"
             android:text="@string/report_car_type"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp" />
 
         <View
@@ -65,10 +66,11 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/middle"
-            android:background="@drawable/btn_change_color"
+            android:background="@drawable/button_selector"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
-            android:text="@string/report" />
+            android:text="@string/report"
+            android:textColor="@color/white"/>
 
         <View
             android:id="@+id/middle"
@@ -85,10 +87,11 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
             android:layout_toRightOf="@+id/middle"
-            android:background="@drawable/btn_change_color"
+            android:background="@drawable/button_selector"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
-            android:text="@string/cancel" />
+            android:text="取消"
+            android:textColor="@color/white"/>
     </RelativeLayout>
 
 </LinearLayout>

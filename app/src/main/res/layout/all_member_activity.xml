@@ -7,7 +7,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/window_background_color">
+        android:background="@color/bg_icon">
 
         <ImageView
             android:id="@+id/iv_back"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:textColor="@color/dvr_title_colro"
+            android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"
             android:text="详细资料" />
 
@@ -122,6 +122,7 @@
                 android:textSize="@dimen/normal_text_size"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:textColor="@color/white"
                 android:text="未设置" />
         </LinearLayout>
     </RelativeLayout>

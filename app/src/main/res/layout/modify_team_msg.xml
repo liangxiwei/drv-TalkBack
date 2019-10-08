@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg_icon">
 
     <RelativeLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary">
+        android:layout_height="?attr/actionBarSize">
 
         <ImageView
             android:id="@+id/iv_back"
@@ -32,7 +32,7 @@
             android:layout_toRightOf="@id/iv_back"
             android:text="群信息修改"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/dvr_title_colro"
+            android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"  />
 
         <ImageView
@@ -43,12 +43,14 @@
             android:layout_centerVertical="true"
             android:scaleType="centerInside" />
     </RelativeLayout>
+
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/title"
         android:background="@color/white"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,7 +81,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="80dp"
                 android:gravity="center"
-                android:background="@drawable/dvr_cancel_background"
                 android:focusable="true"
                 android:nextFocusUp="@+id/btn_sure_modify"
                 android:nextFocusDown="@+id/change_et_group_describe"
@@ -147,7 +148,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="80dp"
                 android:gravity="center"
-                android:background="@drawable/dvr_cancel_background"
                 android:focusable="true"
                 android:nextFocusUp="@+id/change_et_group_name"
                 android:nextFocusDown="@+id/btn_sure_modify"
@@ -217,7 +217,7 @@
             android:focusable="true"
             android:nextFocusUp="@+id/change_et_group_describe"
             android:nextFocusDown="@+id/change_et_group_name"
-            android:background="@drawable/dvr_button_background"
+            android:background="@drawable/button_selector"
             android:textColor="@android:color/white"
             android:textSize="@dimen/normal_text_size" />
     </LinearLayout>

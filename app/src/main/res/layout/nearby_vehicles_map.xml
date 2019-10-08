@@ -9,7 +9,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary">
+        android:background="@color/bg_icon">
 
         <ImageView
             android:id="@+id/iv_back"
@@ -32,7 +32,7 @@
             android:layout_toRightOf="@id/iv_back"
             android:text="附近车辆"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/dvr_title_colro"
+            android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size" />
 
         <TextView

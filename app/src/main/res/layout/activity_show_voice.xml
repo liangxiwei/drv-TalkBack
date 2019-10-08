@@ -41,7 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#0099cc"
-                android:text="@string/dummy_button" />
+                android:text="@string/dummy_button"
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </FrameLayout>

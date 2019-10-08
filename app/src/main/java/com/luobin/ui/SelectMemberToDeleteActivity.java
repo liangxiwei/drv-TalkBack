@@ -123,7 +123,11 @@ public class SelectMemberToDeleteActivity extends BaseDialogActivity {
             public void onClick(View v) {
                 if (adapter != null){
                     //applyMember(adapter.getSelect());
-                    deleteTeamMember(adapter.getSelect());
+                    if(adapter.getSelect() != null){
+                    	deleteTeamMember(adapter.getSelect());
+					}else{
+						ToastR.setToast(context, "请先选择删除对象");
+					}
                 }
             }
         });

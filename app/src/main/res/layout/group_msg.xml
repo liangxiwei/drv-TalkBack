@@ -2,15 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ebebeb"
     android:fitsSystemWindows="true"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/bg_icon">
 
     <RelativeLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorAccent" >
+        android:layout_height="?attr/actionBarSize">
 
         <ImageView
             android:id="@+id/iv_back"
@@ -31,7 +30,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/iv_back"
             android:text="详细资料"
-            android:textColor="@color/dvr_title_colro"
+            android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"  />
 
         <ImageView
@@ -43,6 +42,13 @@
             android:scaleType="centerInside"
             />
     </RelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/title"
+        android:background="@color/white"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -77,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="未设置"
-                    android:textColor="#353535"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
                 <ImageView
@@ -94,7 +100,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="#ffffff"
             android:paddingLeft="12dp"
             android:paddingRight="12dp" >
 
@@ -106,7 +111,7 @@
                 android:layout_centerVertical="true"
                 android:paddingLeft="8dp"
                 android:text="性别"
-                android:textColor="#353535"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
@@ -142,7 +147,7 @@
                 android:layout_centerVertical="true"
                 android:paddingLeft="8dp"
                 android:text="省份"
-                android:textColor="#353535"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
@@ -178,7 +183,7 @@
                 android:layout_centerVertical="true"
                 android:paddingLeft="8dp"
                 android:text="城市"
-                android:textColor="#353535"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <TextView
@@ -205,7 +210,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:layout_marginTop="32dp"
-            android:background="@drawable/btn_change_color"
+            android:background="@drawable/button_selector"
             android:paddingBottom="7dp"
             android:paddingTop="7dp"
             android:text="申请加为群组"

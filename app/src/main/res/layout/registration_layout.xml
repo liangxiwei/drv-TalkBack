@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:stretchColumns="1">
+    android:stretchColumns="1"
+    android:background="@color/bg_icon">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -14,15 +15,16 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:background="@color/bg_icon">
+
             <TextView
                 android:id="@+id/custom_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:textColor="@color/dvr_title_colro"
+                android:textColor="@color/white"
                 android:textSize="@dimen/normal_title_size" />
         </android.support.v7.widget.Toolbar>
 
@@ -48,7 +50,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:text="+86"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/phonenumber"
@@ -80,7 +83,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:text="密码"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/password"
@@ -120,9 +124,8 @@
                 android:id="@+id/registration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_gravity="center"
-                android:background="@drawable/reg0"
+                android:background="@drawable/button_selector"
                 android:listSelector="@drawable/btn_reg"
                 android:text="注册"
                 android:textColor="#ffffff"
