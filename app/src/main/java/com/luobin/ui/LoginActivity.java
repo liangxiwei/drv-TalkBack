@@ -394,6 +394,10 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
             ToastR.setToastLong(LoginActivity.this, "请输入密码");
             return;
         }
+        if (edPass.getText().length() < 4) {
+            ToastR.setToastLong(LoginActivity.this, "密码不少于4位，请重新输入");
+            return;
+        }
         if (!ConnUtil.isConnected(LoginActivity.this)) {
             ToastR.setToast(LoginActivity.this, getResources().getString(R.string.network_show));
             return;

@@ -72,6 +72,9 @@ public class ResponseErrorProcesser {
                 case ProtoMessage.ErrorCode.OTHER_SPEAKING_NOW_VALUE:
                     ToastR.setToast(context, "其他人在讲话中，未能抢占话权", Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
                     break;
+                case ProtoMessage.ErrorCode.PASS_TOO_SHORT_VALUE:
+                    ToastR.setToast(context, "密码太短", Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+                    break;
                 case ProtoMessage.ErrorCode.NOT_FOUND_USER_NAME_OR_PHONE_VALUE:
                     ToastR.setToast(context, "未找到相关好友");
                     break;
