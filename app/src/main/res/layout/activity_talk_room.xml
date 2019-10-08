@@ -11,6 +11,26 @@
         android:orientation="horizontal"
         >
 
+        <com.luobin.widget.FirstActionBarDataView
+            android:id="@+id/action_bar_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_selector"
+            />
+
+      	<com.luobin.widget.FirstStatusBar
+      		android:id="@+id/statusBar"
+            android:layout_width="192dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="31dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_selector"
+            android:layout_toRightOf="@id/action_bar_view"
+            android:nextFocusDown="@+id/voice"
+            android:nextFocusRight="@+id/btn_return"
+            />
+
         <Button
             android:id="@+id/btn_return"
             android:layout_width="80dp"
@@ -23,39 +43,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/button_selector"
             android:drawableLeft="@drawable/icon_return"
-            android:paddingLeft="13dp"
-            android:nextFocusUp="@+id/action_bar_view"
-            android:nextFocusDown="@+id/prefix_camera"
-            />
-            
-        <!--com.luobin.widget.FirstStatusBar
-        	android:id="@+id/statusBar"
-            android:layout_width="192dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="50dp"
-            android:layout_toLeftOf="@id/btn_return"
-            android:background="@drawable/bg_selector"/>
-
-       <com.luobin.widget.FirstActionBarDataView
-        	android:id="@+id/timebar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginRight="30dp"
-            android:layout_toLeftOf="@id/statusBar"
-            android:background="@drawable/bg_selector"
-            /-->    
-
-       <com.luobin.widget.FirstActionBarDataView
-       		android:id="@+id/action_bar_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_toLeftOf="@id/btn_return"
-            android:background="@drawable/bg_selector"
+            android:nextFocusLeft="@+id/statusBar"
             />
 
 
@@ -65,13 +53,13 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/border_color"
-        />
+   	/>
 
-        <LinearLayout
+   	<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        >
+  	>
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -199,7 +187,9 @@
                 android:layout_marginTop="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="none" />
+                android:scrollbars="none"
+                android:nextFocusLeft="@id/voice"
+                />
         </LinearLayout>
 
 

@@ -247,10 +247,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 return;
             }
 
-			//rs added if
-			if (!phone.equals(myPhone)) {
-            	getDBMsg();
-			}
+			getDBMsg();
         }
 
     };
@@ -322,7 +319,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         myPhone = getMyPhone();
         if (!run) {
             run = true;
-            //getDBMsg(); //rs del
+            getDBMsg(); 
         }
     }
 

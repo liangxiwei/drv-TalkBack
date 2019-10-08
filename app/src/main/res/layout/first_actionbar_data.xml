@@ -59,13 +59,13 @@
 
         </LinearLayout>
 
-        <com.luobin.widget.FirstStatusBar
+        <!--com.luobin.widget.FirstStatusBar
             android:layout_width="192dp"
             android:layout_height="30dp"
             android:layout_marginLeft="31dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/bg_selector"
-            />
+            /-->
 
     </LinearLayout>
 
