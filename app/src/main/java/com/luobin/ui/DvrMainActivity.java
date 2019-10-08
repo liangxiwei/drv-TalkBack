@@ -30,6 +30,7 @@ import com.example.jrd48.chat.TabFragmentLinkGroup;
 import com.example.jrd48.chat.TabFragmentLinkmans;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.friend.AppliedFriendsList;
+import com.example.jrd48.chat.group.AppliedTeamsList;
 import com.example.jrd48.chat.group.CreateGroupActivity;
 import com.example.jrd48.chat.permission.PermissionUtil;
 import com.example.jrd48.chat.receiver.NotifyFriendBroadcast;
@@ -39,6 +40,7 @@ import com.example.jrd48.service.MyService;
 import com.example.jrd48.service.TimeoutBroadcast;
 import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.example.jrd48.service.protocol.ResponseErrorProcesser;
+import com.example.jrd48.service.protocol.root.AppliedGroupListProcesser;
 import com.example.jrd48.service.protocol.root.AppliedListProcesser;
 import com.example.jrd48.service.protocol.root.NotifyProcesser;
 import com.luobin.dvr.DvrConfig;
@@ -69,6 +71,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     BadgeView badgeView;
     ImageView btnImage;
     NotifyFriendBroadcast mNotifyFriendBroadcast;
+    private int mCountMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +126,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
             @Override
             protected void onReceiveParam(String str) {
                 loadFriendsListFromNet();
+                loadGroupListFromNet();
             }
         });
         mNotifyFriendBroadcast.start();
@@ -131,6 +135,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onResume() {
         loadFriendsListFromNet();
+        loadGroupListFromNet();
         super.onResume();
     }
 
@@ -297,6 +302,8 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
 
             @Override
             public void onTimeout() {
+                mCountMessage = 0;
+                btnImage.setImageResource(R.drawable.message_icon);
             }
 
             @Override
@@ -305,18 +312,64 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
                         ProtoMessage.ErrorCode.OK.getNumber()) {
                     AppliedFriendsList list = i.getParcelableExtra("get_applied_msg");
                     if ((list != null) && (list.getAppliedFriends() != null)) {
-                        Log.i(DvrMainActivity.class.getSimpleName(), "list = " + list.getAppliedFriends().size());
+                        Log.i(DvrMainActivity.class.getSimpleName(), "friends list = " + list.getAppliedFriends().size());
                     }
                     if ((list != null) && (list.getAppliedFriends() != null)
                             && list.getAppliedFriends().size() > 0) {
-                        int size = list.getAppliedFriends().size();
-                        btnImage.setImageBitmap(generatorMesssageCountIcon(size));
+                        mCountMessage = list.getAppliedFriends().size();
                     } else {
-                        btnImage.setImageResource(R.drawable.message_icon);
+                        mCountMessage = 0;
                     }
                 } else {
                     fail(i.getIntExtra("error_code", -1));
+                    mCountMessage = 0;
+                }
+                if (mCountMessage == 0) {
                     btnImage.setImageResource(R.drawable.message_icon);
+                } else {
+                    btnImage.setImageBitmap(generatorMesssageCountIcon(mCountMessage));
+                }
+            }
+        });
+    }
+
+    private void loadGroupListFromNet() {
+        ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
+        MyService.start(context, ProtoMessage.Cmd.cmdAppliedTeamList.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(AppliedGroupListProcesser.ACTION);
+        new TimeoutBroadcast(mContext, filter, getBroadcastManager()).startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                mCountMessage = mCountMessage + 0;
+                if (mCountMessage == 0) {
+                    btnImage.setImageResource(R.drawable.message_icon);
+                } else {
+                    btnImage.setImageBitmap(generatorMesssageCountIcon(mCountMessage));
+                }
+            }
+
+            @Override
+            public void onGot(Intent i) {
+                if (i.getIntExtra("error_code", -1) ==
+                        ProtoMessage.ErrorCode.OK.getNumber()) {
+                    AppliedTeamsList list = i.getParcelableExtra("get_applied_group_list");
+                    if ((list != null) && (list.getAppliedTeams() != null)) {
+                        Log.i(DvrMainActivity.class.getSimpleName(), "team list = " + list.getAppliedTeams().size());
+                    }
+                    if (list != null && list.getAppliedTeams() != null && list.getAppliedTeams().size() > 0) {
+                        mCountMessage = mCountMessage + list.getAppliedTeams().size();
+                    } else {
+                        mCountMessage = mCountMessage + 0;
+                    }
+                } else {
+                    fail(i.getIntExtra("error_code", -1));
+                    mCountMessage = mCountMessage + 0;
+                }
+                if (mCountMessage == 0) {
+                    btnImage.setImageResource(R.drawable.message_icon);
+                } else {
+                    btnImage.setImageBitmap(generatorMesssageCountIcon(mCountMessage));
                 }
             }
         });

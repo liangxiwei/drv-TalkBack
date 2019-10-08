@@ -140,14 +140,19 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
                 refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
                 checkPullRefresh = true;
                 loadFriendsListFromNet(mContext);
-                // loadGroupListFromNet();
+                loadGroupListFromNet();
             }
         });
         registerForContextMenu(listView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                acceptOrRefuseDialog(position);
+                final FriendsAndTeams friendsMsg = mFriendsAndTeams.get(position - 1);
+                if (friendsMsg.getTypePic().equals(teamType)) {
+                    accepGroupsRequest(position, friendsMsg, friendsMsg.getApplyType());
+                } else {
+                    acceptOrRefuseDialog(position);
+                }
             }
         });
 
@@ -182,7 +187,7 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
             @Override
             protected void onReceiveParam(String str) {
                 loadFriendsListFromNet(mContext);
-                // loadGroupListFromNet();
+                loadGroupListFromNet();
             }
         });
         mNotifyFriendBroadcast.start();
@@ -193,7 +198,7 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
         super.onResume();
         // loadFriendsFromCache();
         loadFriendsListFromNet(mContext);
-        // loadGroupListFromNet();
+        loadGroupListFromNet();
     }
 
     private void loadGroupListFromNet() {
@@ -593,7 +598,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
 
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
