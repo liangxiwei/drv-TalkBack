@@ -1822,7 +1822,7 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
             memberListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                    if (position == (userList.size() - 1)) {
+                    if (position > (userList.size() - 1)) {
                         return true;
                     }
                     phone = userList.get(position).getPhone();
@@ -3130,7 +3130,6 @@ public class FirstActivity extends SelectActivity implements OnClickListener, On
         Collections.sort(userList, new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
-
                 // 加号图标永远排在最后
                 if (o2.isAddIcon())
                     return -1;
