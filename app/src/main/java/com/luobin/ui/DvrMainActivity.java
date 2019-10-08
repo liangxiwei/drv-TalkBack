@@ -6,24 +6,40 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.jrd48.GlobalNotice;
 import com.example.jrd48.PolyphonePinYin;
 import com.example.jrd48.chat.BadgeView;
 import com.example.jrd48.chat.BaseActivity;
+import com.example.jrd48.chat.MainActivity;
 import com.example.jrd48.chat.TabFragmentLinkGroup;
 import com.example.jrd48.chat.TabFragmentLinkmans;
 import com.example.jrd48.chat.ToastR;
+import com.example.jrd48.chat.friend.AppliedFriendsList;
 import com.example.jrd48.chat.group.CreateGroupActivity;
 import com.example.jrd48.chat.permission.PermissionUtil;
 import com.example.jrd48.chat.receiver.NotifyFriendBroadcast;
+import com.example.jrd48.service.ITimeoutBroadcast;
 import com.example.jrd48.service.MyBroadcastReceiver;
+import com.example.jrd48.service.MyService;
+import com.example.jrd48.service.TimeoutBroadcast;
+import com.example.jrd48.service.proto_gen.ProtoMessage;
+import com.example.jrd48.service.protocol.ResponseErrorProcesser;
+import com.example.jrd48.service.protocol.root.AppliedListProcesser;
 import com.example.jrd48.service.protocol.root.NotifyProcesser;
 import com.luobin.dvr.DvrConfig;
 import com.luobin.dvr.R;
@@ -40,7 +56,6 @@ import java.util.List;
  */
 
 public class DvrMainActivity extends BaseActivity implements View.OnClickListener, PermissionUtil.PermissionCallBack {
-
     private Context context;
     protected PermissionUtil mPermissionUtil;
     private LinearLayout actionbarMessage, actionbarAdd, actionbarSearch;
@@ -52,6 +67,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     Button btnChange;
     Button btnReturn;
     BadgeView badgeView;
+    ImageView btnImage;
     NotifyFriendBroadcast mNotifyFriendBroadcast;
 
     @Override
@@ -61,6 +77,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_dvr_main);
         actionbarMessage = (LinearLayout) findViewById(R.id.actionbar_message);
         actionbarMessage.setOnClickListener(this);
+        btnImage = (ImageView) findViewById(R.id.message_icon);
         btnChange = (Button) findViewById(R.id.btn_change);
         btnChange.setOnClickListener(this);
         btnReturn = (Button) findViewById(R.id.btn_return);
@@ -102,15 +119,15 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         mNotifyFriendBroadcast.setReceiver(new MyBroadcastReceiver() {
             @Override
             protected void onReceiveParam(String str) {
-
+                loadFriendsListFromNet();
             }
         });
         mNotifyFriendBroadcast.start();
-
     }
 
     @Override
     protected void onResume() {
+        loadFriendsListFromNet();
         super.onResume();
     }
 
@@ -150,14 +167,12 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.actionbar_message:
-
                 Intent messageIntent = new Intent();
                 messageIntent.setClass(mContext, NotificationActivity.class);
                 startActivity(messageIntent);
-
-
                 // logoutDialog(context);
                 break;
+
             case R.id.actionbar_add:
                 //TODO 添加群组
                 Intent addIntent = new Intent(context, CreateGroupActivity.class);
@@ -229,11 +244,9 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
             if (friendStatus != null) {
                 unregisterReceiver(friendStatus);
             }
-
             if (mNotifyFriendBroadcast != null) {
                 mNotifyFriendBroadcast.stop();
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -271,4 +284,67 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         simplelistdialog.show();
     }
 
+    public void loadFriendsListFromNet() {
+        ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
+        MyService.start(context, ProtoMessage.Cmd.cmdAppliedList.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(AppliedListProcesser.ACTION);
+        final TimeoutBroadcast b = new TimeoutBroadcast(mContext, filter, getBroadcastManager());
+        b.startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
+
+            @Override
+            public void onTimeout() {
+            }
+
+            @Override
+            public void onGot(Intent i) {
+                if (i.getIntExtra("error_code", -1) ==
+                        ProtoMessage.ErrorCode.OK.getNumber()) {
+                    AppliedFriendsList list = i.getParcelableExtra("get_applied_msg");
+                    if ((list != null) && (list.getAppliedFriends() != null)) {
+                        Log.i(DvrMainActivity.class.getSimpleName(), "list = " + list.getAppliedFriends().size());
+                    }
+                    if ((list != null) && (list.getAppliedFriends() != null)
+                            && list.getAppliedFriends().size() > 0) {
+                        int size = list.getAppliedFriends().size();
+                        btnImage.setImageBitmap(generatorMesssageCountIcon(size));
+                    } else {
+                        btnImage.setImageResource(R.drawable.message_icon);
+                    }
+                } else {
+                    fail(i.getIntExtra("error_code", -1));
+                    btnImage.setImageResource(R.drawable.message_icon);
+                }
+            }
+        });
+    }
+
+    public void fail(int i) {
+        new ResponseErrorProcesser(mContext, i);
+    }
+
+    private Bitmap generatorMesssageCountIcon(int count){
+        //初始化画布
+        Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.message_icon);
+        int iconSize=(int)getResources().getDimension(android.R.dimen.app_icon_size);
+        Log.d(DvrMainActivity.class.getSimpleName(), "the icon size is "+iconSize);
+        Bitmap contactIcon=Bitmap.createBitmap(iconSize, iconSize, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(contactIcon);
+
+        //拷贝图片
+        Paint iconPaint = new Paint();
+        iconPaint.setDither(true);//防抖动
+        iconPaint.setFilterBitmap(true);//用来对Bitmap进行滤波处理，这样，当你选择Drawable时，会有抗锯齿的效果
+        Rect src=new Rect(0, 0, icon.getWidth(), icon.getHeight());
+        Rect dst=new Rect(0, 0, iconSize, iconSize);
+        canvas.drawBitmap(icon, src, dst, iconPaint);
+
+        //启用抗锯齿和使用设备的文本字距
+        Paint countPaint=new Paint(Paint.ANTI_ALIAS_FLAG|Paint.DEV_KERN_TEXT_FLAG);
+        countPaint.setColor(Color.RED);
+        countPaint.setTextSize(40f);
+        countPaint.setTypeface(Typeface.DEFAULT_BOLD);
+        canvas.drawText(String.valueOf(count), iconSize-30, 30, countPaint);
+        return contactIcon;
+    }
 }

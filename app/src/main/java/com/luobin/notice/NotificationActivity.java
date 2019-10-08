@@ -131,19 +131,16 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
         //********************************************弹窗设置****************************************************
         initBroadcast();
 
-
         mPullRefreshListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 String label = DateUtils.formatDateTime(getApplicationContext(), System.currentTimeMillis(),
                         DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
-
                 refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
                 checkPullRefresh = true;
                 loadFriendsListFromNet(mContext);
-//                loadGroupListFromNet();
-
+                // loadGroupListFromNet();
             }
         });
         registerForContextMenu(listView);
@@ -185,19 +182,18 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
             @Override
             protected void onReceiveParam(String str) {
                 loadFriendsListFromNet(mContext);
-//                loadGroupListFromNet();
+                // loadGroupListFromNet();
             }
         });
         mNotifyFriendBroadcast.start();
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        loadFriendsFromCache();
+        // loadFriendsFromCache();
         loadFriendsListFromNet(mContext);
-//        loadGroupListFromNet();
+        // loadGroupListFromNet();
     }
 
     private void loadGroupListFromNet() {
@@ -249,12 +245,12 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
 
 
     private void convertViewGroupList(List<AppliedTeams> teamList, List<AppliedTeams> appliedTeams) {
-//        teamList.clear();
+        // teamList.clear();
         if (appliedTeams.size() > 0) {
-//            FriendsAndTeams aat = new FriendsAndTeams();
-//            aat.setType(teamType);
-//            aat.setUserName(teamType);
-//            mFriendsAndTeams.add(aat);
+        // FriendsAndTeams aat = new FriendsAndTeams();
+        // aat.setType(teamType);
+        // aat.setUserName(teamType);
+        // mFriendsAndTeams.add(aat);
             for (AppliedTeams c : appliedTeams) {
                 AppliedTeams temp = new AppliedTeams();
                 temp = c;
@@ -268,11 +264,10 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
                 at.setInviteUserName(c.getInviteUserName());
                 at.setInviteUserPhone(c.getInviteUserPhone());
                 mFriendsAndTeams.add(at);
-//                teamList.add(temp);
+                // teamList.add(temp);
             }
         }
     }
-
 
     /**
      * 按钮onClick事件重写
@@ -304,7 +299,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
      * @param context
      */
     public void loadFriendsListFromNet(Context context) {
-
         ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
         MyService.start(mContext, ProtoMessage.Cmd.cmdAppliedList.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
@@ -339,7 +333,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
                         isShowView(mFriendsAndTeams.size());
                     } else {
                         convertViewFriendList(mFriend, list.getAppliedFriends());
-
 //                        setList();
 //                        if (checkPullRefresh == true) {
 //                            ToastR.setToast(mContext, "获取好友成功");
@@ -352,13 +345,11 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
                 }
             }
         });
-
     }
 
     public void fail(int i) {
         new ResponseErrorProcesser(mContext, i);
     }
-
 
     /**
      * 缓存数据到本地
@@ -374,7 +365,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
 //            aat.setUserName(friendType);
 //            mFriendsAndTeams.add(aat);
             for (AppliedFriends c : list) {
-
                 FriendsAndTeams at = new FriendsAndTeams();
                 at.setPhoneNum(c.getPhoneNum());
                 at.setUserName(c.getUserName());
@@ -390,17 +380,13 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
         refreshListData(mFriendsAndTeams);
     }
 
-
     /**
      * 自定义DbAdapter
      */
-
     public class FriendRequestAdapter extends BaseAdapter {
-
         private List<FriendsAndTeams> mArrayList;
         private Context context;
         private LayoutInflater layoutInflater;
-
         public List<FriendsAndTeams> getList() {
             return mArrayList;
         }
@@ -444,12 +430,8 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-
             final FriendsAndTeams friendsMsg = mArrayList.get(position);
-
             ViewHolder holder = new ViewHolder();
-            ;
-
             if (friendsMsg.getType() != null && friendsMsg.getType().length() > 0) {
                 convertView = LayoutInflater.from(context).inflate(R.layout.notification_activity_index, null);
                 convertView.setBackgroundColor(context.getResources().getColor(R.color.search_bg));
@@ -574,7 +556,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
                 bmp = FriendFaceUtill.drawableToBitmap(drawable);
             }
 
-
             Bitmap bitmap1 = Bitmap.createScaledBitmap(bmp, 96, 96,
                     false); // 将图片缩小
             ImageTool ll = new ImageTool(); // 图片头像变成圆型
@@ -601,7 +582,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         String remark = editRemark.getText().toString();
                         if (remark.length() > GlobalStatus.MAX_TEXT_COUNT){
                             ToastR.setToast(mContext, "备注输入过长（最大只能设置16个字符）");
@@ -632,7 +612,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
         refuseOrAcceptFriend(position, friendsMsg, 0, remark);
     }
 
-
     /**
      * 拒绝请求弹框
      *
@@ -641,7 +620,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
      */
     public void refuseAdd(final int position, final FriendsAndTeams friendsMsg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext); // 先得到构造器
-
         builder.setMessage("确定拒绝将" + friendsMsg.getPhoneNum() + "加为好友？").setTitle("提示：").setPositiveButton("确定", new AlertDialog.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -655,7 +633,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
                 dialog.dismiss();
             }
         }).create().show();
-
     }
 
     public void refuseOrAcceptFriend(final int position, final FriendsAndTeams friendsMsg, final int type, String remark) {
@@ -674,12 +651,12 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
             @Override
             public void onTimeout() {
                 ToastR.setToast(mContext, "连接超时");
-//				m_pDialog.dismiss();
+                // m_pDialog.dismiss();
             }
 
             @Override
             public void onGot(Intent i) {
-//				m_pDialog.dismiss();
+                // m_pDialog.dismiss();
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
                     backSuccess(type, friendsMsg.getPhoneNum(), friendsMsg, position);
@@ -705,13 +682,12 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
             clearListorCache(position, friendsMsg);
             ToastR.setToast(mContext, "拒绝成功");
         } else {
-//            new MsgTool().getAcceptInfo(phone, mContext,mBroadcastManger);
+            // new MsgTool().getAcceptInfo(phone, mContext,mBroadcastManger);
             getNewFriend(phone, mContext, friendsMsg, position);
-//            mContext.sendBroadcast(new Intent(MainActivity.FRIEND_ACTION));
+            // mContext.sendBroadcast(new Intent(MainActivity.FRIEND_ACTION));
             ToastR.setToast(mContext, "接受成功");
         }
     }
-
 
     public void getNewFriend(final String phone, final Context context, final FriendsAndTeams friendsMsg, final int position) {
         ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
@@ -746,10 +722,8 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
      */
 
     public void deleteRequest(final int position, final FriendsAndTeams friendsMsg) {
-
         refuseOrAcceptFriend(position, friendsMsg, 1, "");
     }
-
 
     /*
     拒绝添加组
@@ -757,7 +731,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
     private void refuseAddGroup(int position, FriendsAndTeams friendsMsg) {
         String remark = "";
         refuseOrAcceptTeam(position, friendsMsg, ProtoMessage.AcceptType.atDeny_VALUE, remark);
-
     }
 
     /*
@@ -776,9 +749,7 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        String remark = "";
-                        //= editRemark.getText().toString().trim();
+                        String remark = ""; //= editRemark.getText().toString().trim();
                         refuseOrAcceptTeam(position, friendsMsg, ProtoMessage.AcceptType.atAccept_VALUE, remark);
                         dialog.dismiss();
                     }
@@ -821,7 +792,7 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
             public void onGot(Intent i) {
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
-//                    backSuccess(type);
+                    // backSuccess(type);
                     clearListorCache(position, friendsMsg);
                 } else {
                     fail(i.getIntExtra("error_code", -1));
@@ -912,7 +883,7 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
      * @param friendsMsg
      */
     private void doDeleteCarByCarID(FriendsAndTeams friendsMsg) {
-//		GlobalData.getInstance().removeFriendList(friendsMsg.friends.getUserID());
+        // GlobalData.getInstance().removeFriendList(friendsMsg.friends.getUserID());
     }
 
     public void isShowView(int size) {
@@ -946,7 +917,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.btn_create_group:
                 Intent i = new Intent(mContext, CreateGroupActivity.class);
@@ -962,7 +932,6 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
-
         switch (requestCode) {
             case 2:
                 if (resultCode == RESULT_OK) {

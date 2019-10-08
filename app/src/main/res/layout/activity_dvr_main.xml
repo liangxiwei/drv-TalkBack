@@ -55,9 +55,10 @@
                 >
 
                 <ImageView
+                    android:id="@+id/message_icon"
                     android:layout_width="42dp"
                     android:layout_height="44dp"
-                    android:background="@drawable/message_icon"
+                    android:src="@drawable/message_icon"
                     />
 
                 <TextView
