@@ -174,6 +174,7 @@ public class SelectMemberToDeleteActivity extends BaseDialogActivity {
 		            //bundle.putParcelable("del_team_info", tm);
 		            //bundle.putString("del_member_phone", tm.getUserPhone());
 		            intent.putExtra("del_member_phone", tm.getUserPhone());
+					intent.putExtra("group_id", teamID);
 		            setResult(RESULT_OK, intent);
 					finish();
                 } else {

@@ -145,6 +145,9 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
 	private static final int ADD_TEAM_MEMBER = 1;
 	private static final int DELETE_TEAM_MEMBER = 2;
+
+	private long mDelMemberTeamID = -1;
+	private String mDelMemberPhone = "";
 	
     public boolean isPullRefresh() {
         return isPullRefresh;
@@ -1044,6 +1047,16 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                                     int role = mCursor.getInt(mCursor.getColumnIndex("role"));
                                     int member_priority = mCursor.getInt(mCursor.getColumnIndex("member_priority"));
 
+									
+									//rs added for check the del phoneNum show in the current member list LBCJW-203
+									if(((mDelMemberTeamID != -1) && teamInfo.getTeamID() == mDelMemberTeamID) 
+										&&(user_phone != null && mDelMemberPhone != null && user_phone.equals(mDelMemberPhone))){
+										Log.d("rs", "found delete phoneNum:"+user_phone+"  with teamId:"+mDelMemberTeamID);
+										mDelMemberTeamID = -1;
+										continue;
+									}
+									//end
+
                                     TeamMemberInfo memberInfo = new TeamMemberInfo();
                                     memberInfo.setUserPhone(user_phone);
                                     memberInfo.setUserName(user_name);
@@ -1276,8 +1289,9 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 					Log.d("rs", "onActivityResult->DELETE_TEAM_MEMBER");
 
 					if (resultCode == Activity.RESULT_OK) {
-                        String delMemberPhone = data.getStringExtra("del_member_phone");
-						Log.d("rs", "onActivityResult->delMemberPhone:"+delMemberPhone);
+                        mDelMemberPhone = data.getStringExtra("del_member_phone");
+						mDelMemberTeamID = data.getLongExtra("group_id",-1);
+						Log.d("rs", "onActivityResult->mDelMemberPhone:"+mDelMemberPhone+", mDelMemberTeamID:"+mDelMemberTeamID);
 						//refreshMemberListLocalData(delMemberPhone);
 						//loadTeamListFromNet();
 					}
