@@ -109,32 +109,41 @@
 
             <TextView
                 android:id="@+id/tvRegister"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
                 android:layout_toStartOf="@+id/tvLogin"
                 android:text="注册账号"
                 android:textColor="#ffffffff"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:background="@drawable/button_selector"
+                android:gravity="center"
+                android:layout_centerVertical="true"/>
 
             <TextView
                 android:id="@+id/tvLogin"
-                android:layout_width="32dp"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="50dp"
                 android:text="登录"
                 android:textColor="#ffffffff"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:background="@drawable/button_selector"
+                android:gravity="center"
+                android:layout_centerVertical="true"/>
 
             <TextView
                 android:id="@+id/tvForget"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="50dp"
                 android:layout_toEndOf="@+id/tvLogin"
                 android:text="忘记密码"
                 android:textColor="#ffffffff"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:background="@drawable/button_selector"
+                android:gravity="center"
+                android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 

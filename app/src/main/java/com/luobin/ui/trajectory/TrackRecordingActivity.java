@@ -90,7 +90,7 @@ public class TrackRecordingActivity extends AppCompatActivity {
                 //TODO 删除
                 break;
             case R.id.tvShare:
-                //TODO 焚香
+                //TODO 分享
                 break;
             case R.id.tvMap:
                 //TODO 地图显示

@@ -260,7 +260,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     /**
      * 选填的修改
      */
-    boolean selectCarIsShow = true;
+    boolean selectCarIsShow = false;
 
     /**
      * 个人信息的修改
@@ -338,7 +338,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
 		waitDialog();
 
-        //initView();
+        initView();
         initData();
 
 		/*
@@ -375,7 +375,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 
     private void initView() {
 
-        selectBtnShow(true);
+        selectBtnShow(false);
     }
 
     /**
@@ -480,28 +480,28 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             R.id.tvPhone, R.id.tvCarNo})
     void myInfoClick(View view) {
         switch (view.getId()) {
-            case R.id.tvName:
+            case R.id.tvName: //昵称
                 if (!checkNetWork()) {
                     return;
                 }
                 inputDialog("昵称", NAME, InputTextDialog.Type.TEXT);
                 break;
-            case R.id.tvSign:
+            case R.id.tvSign: //个性签名
                 if (!checkNetWork()) {
                     return;
                 }
                 inputDialog("个性签名", SIGN, InputTextDialog.Type.TEXT);
                 break;
-            case R.id.tvSex:
+            case R.id.tvSex:  //性别
                 if (!checkNetWork()) {
                     return;
                 }
                 sexDialog();
                 break;
-            case R.id.tvPhone:
+            case R.id.tvPhone: //手机号
                 inputDialog("手机号码",PHONE, InputTextDialog.Type.NUMBER);
                 break;
-            case R.id.tvCarNo:
+            case R.id.tvCarNo: //车牌号
                 if (!checkNetWork()) {
                     return;
                 }
@@ -931,7 +931,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                     tvIndustry.setText(career);
                     SharedPreferences preference = mContext.getSharedPreferences("token", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preference.edit();
-                    //int
                     editor.putString("career", career);
                     editor.commit();
 
@@ -950,9 +949,6 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     private void setSex(final int sexdata, final int sexdefual) {
         ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
         builder.setUserSex(sexdata);
-      /*  builder.setInterest("兴趣");
-        builder.setCareer("行业");
-        builder.setSignature("备注");*/
         MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdSetMyInfo.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
         filter.addAction(SetUserInfoProcesser.ACTION);
@@ -1420,9 +1416,10 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         tpTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View view) {
-                tvBirth.setText(getTime(date));
+                //tvBirth.setText(getTime(date));
                 //TODO 设置出生年月
-                SharedPreferencesUtils.put(context,Birthday,getTime(date));//rs added
+                //SharedPreferencesUtils.put(context,Birthday,getTime(date));//rs added
+                setBirthday(getTime(date));
 
             }
         }).setLayoutRes(R.layout.dialog_select_time, new CustomListener() {
@@ -1541,25 +1538,22 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                 }
 
                 if (type == DIALOG_TYPE.CARTYPE) {
-                    SharedPreferencesUtils.put(context,VehicleType,tx);
-                    tvCarModels.setText(tx);
-                    //TODO 在这里进行发送数据
+					//设置车型
+					setCarType(one, two);
                 } else if (type == DIALOG_TYPE.ADDRESS) {
-                    tvLocation.setText(tx);
-                    SharedPreferencesUtils.put(context,Location,tx);
-                    //TODO 在这里进行发送数据
+                	//所在地
+					setLocation(one, two);
                 } else if (type == DIALOG_TYPE.INDUSTRY) {
+                	//行业
                  /*   tvIndustry.setText(tx);
                     SharedPreferencesUtils.put(context,Industry,tx);*/
                  setCareer(tx);
-
-                    //TODO 在这里进行发送数据
                 } else if (type == DIALOG_TYPE.HOME) {
                     tvHome.setText(tx);
                     SharedPreferencesUtils.put(context,Hometown,tx);
                 } else if(type == DIALOG_TYPE.INTEREST){
-					tvInterest.setText(tx);
-					SharedPreferencesUtils.put(context,Interest,tx);
+					//兴趣爱好
+					setInterest(tx);
 				}
 
 
@@ -1822,6 +1816,170 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
     }
 
 
+	//rs added for set additional info to server
+    private void setCarType(final String carType1, final String carType2) {
+        ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
+		String showCarInfo = "";
+		if("".equals(carType1) && "".equals(carType2)){
+			Log.d("rs", "car type info is null");
+			return;
+		}
+
+		if(! "".equals(carType1)){
+			builder.setCarType1(carType1);
+			showCarInfo = carType1;
+			
+			if(! "".equals(carType2)){
+				builder.setCarType2(carType2);
+				showCarInfo += "-" + carType2;
+			}
+		}
+
+		final String carTypeInfo = showCarInfo;
+
+        MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdSetMyInfo.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SetUserInfoProcesser.ACTION);
+        final TimeoutBroadcast b = new TimeoutBroadcast(RegisterInfoActivity.this, filter, getBroadcastManager());
+
+        b.startReceiver(BaseDialogActivity.REQUEST_TIME_OUT, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                ToastR.setToast(RegisterInfoActivity.this, "设置失败");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+                int code = i.getIntExtra("error_code", -1);
+                if (code == ProtoMessage.ErrorCode.OK.getNumber()) {
+                    ToastR.setToast(RegisterInfoActivity.this, "设置成功");
+					SharedPreferencesUtils.put(context,VehicleType,carTypeInfo);
+                    tvCarModels.setText(carTypeInfo);
+                } else {
+
+                    new ResponseErrorProcesser(RegisterInfoActivity.this, code);
+                }
+            }
+        });
+    }
+
+	
+    private void setBirthday(final String birthday) {
+        ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
+		if(birthday == null ||"".equals(birthday)){
+			Log.d("rs", "birthday info is null");
+			return;
+		}
+
+		builder.setBirthday(birthday);		
+
+        MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdSetMyInfo.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SetUserInfoProcesser.ACTION);
+        final TimeoutBroadcast b = new TimeoutBroadcast(RegisterInfoActivity.this, filter, getBroadcastManager());
+
+        b.startReceiver(BaseDialogActivity.REQUEST_TIME_OUT, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                ToastR.setToast(RegisterInfoActivity.this, "设置失败");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+                int code = i.getIntExtra("error_code", -1);
+                if (code == ProtoMessage.ErrorCode.OK.getNumber()) {
+                    ToastR.setToast(RegisterInfoActivity.this, "设置成功");
+					SharedPreferencesUtils.put(context,Birthday,birthday);
+                    tvBirth.setText(birthday);
+                } else {
+
+                    new ResponseErrorProcesser(RegisterInfoActivity.this, code);
+                }
+            }
+        });
+    }
+
+    private void setLocation(final String province, final String city) {
+        ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
+		String locationInfo = "";
+		if("".equals(province) && "".equals(city)){
+			Log.d("rs", "location info is null");
+			return;
+		}
+		
+		if(! "".equals(province)){
+			builder.setProv(province);
+			locationInfo = province;
+					
+			if(! "".equals(city)){
+				builder.setCity(city);
+				locationInfo += city;
+			}
+		}
+
+		final String location = locationInfo;
+        MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdSetMyInfo.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SetUserInfoProcesser.ACTION);
+        final TimeoutBroadcast b = new TimeoutBroadcast(RegisterInfoActivity.this, filter, getBroadcastManager());
+
+        b.startReceiver(BaseDialogActivity.REQUEST_TIME_OUT, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                ToastR.setToast(RegisterInfoActivity.this, "设置失败");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+                int code = i.getIntExtra("error_code", -1);
+                if (code == ProtoMessage.ErrorCode.OK.getNumber()) {
+                    ToastR.setToast(RegisterInfoActivity.this, "设置成功");
+					SharedPreferencesUtils.put(context,Location,location);
+                    tvLocation.setText(location);
+                } else {
+                    new ResponseErrorProcesser(RegisterInfoActivity.this, code);
+                }
+            }
+        });
+    }
+
+	
+    private void setInterest(final String interest) {
+        ProtoMessage.UserInfo.Builder builder = ProtoMessage.UserInfo.newBuilder();
+		if(interest == null ||"".equals(interest)){
+			Log.d("rs", "interest info is null");
+			return;
+		}
+
+		builder.setInterest(interest);		
+
+		Log.d("rs", "set Interest:"+interest);
+
+        MyService.start(RegisterInfoActivity.this, ProtoMessage.Cmd.cmdSetMyInfo.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SetUserInfoProcesser.ACTION);
+        final TimeoutBroadcast b = new TimeoutBroadcast(RegisterInfoActivity.this, filter, getBroadcastManager());
+
+        b.startReceiver(BaseDialogActivity.REQUEST_TIME_OUT, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                ToastR.setToast(RegisterInfoActivity.this, "设置失败");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+                int code = i.getIntExtra("error_code", -1);
+                if (code == ProtoMessage.ErrorCode.OK.getNumber()) {
+                    ToastR.setToast(RegisterInfoActivity.this, "设置成功");
+					tvInterest.setText(interest);
+					SharedPreferencesUtils.put(context,Interest,interest);
+                } else {
+                    new ResponseErrorProcesser(RegisterInfoActivity.this, code);
+                }
+            }
+        });
+    }
+	//end
 
 }
 

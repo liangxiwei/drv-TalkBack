@@ -92,13 +92,16 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
 
 
         //TODO 在这添加数据 个人信息
+        //rs added for LBCJW-200:toast for username invalid
+        /*
         MyInforTool myInforTool = new MyInforTool(DvrMainActivity.this, true);
         Log.i("myInforTool", myInforTool.toString());
-		//rs added for LBCJW-200:toast for username invalid
-        if (myInforTool.getUserName() == null || "".equals(myInforTool.getUserName()) /*|| myInforTool.getUserName().equals(myInforTool.getPhone())*/) {
+		
+        if (myInforTool.getUserName() == null || "".equals(myInforTool.getUserName()) || myInforTool.getUserName().equals(myInforTool.getPhone())) {
 			ToastR.setToastLong(DvrMainActivity.this, "昵称无效，请重新设置！");
             startActivity(new Intent(DvrMainActivity.this, RegisterInfoActivity.class));
         }
+		*/
 		//end
 
         tabFragmentLinkGroup = new TabFragmentLinkGroup();

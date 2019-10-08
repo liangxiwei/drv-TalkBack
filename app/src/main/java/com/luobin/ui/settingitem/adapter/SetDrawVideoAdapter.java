@@ -87,6 +87,14 @@ public class SetDrawVideoAdapter extends
             }
         });
 
+		//rs added for LBCJW-182:shoumi select
+		holder.rlitem.setOnFocusChangeListener(new View.OnFocusChangeListener() { 			   
+			@Override				
+				public void onFocusChange(View view, boolean hasFocus) {					
+					selectPosition = position;
+				}			  
+		});
+		//end
     }
 
     @Override

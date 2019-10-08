@@ -45,7 +45,8 @@
                 android:layout_height="wrap_content"
                 android:text="te"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
         <RelativeLayout

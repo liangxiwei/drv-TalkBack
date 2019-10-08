@@ -49,6 +49,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import android.util.Log;
 
 /**
  * @author wangjunjie
@@ -404,7 +405,7 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
         }
         // 确保Socket已经启动
 
-        ToastR.setToast(LoginActivity.this, "正在登录...");
+        //ToastR.setToast(LoginActivity.this, "正在登录...");
         mHandler.postDelayed(mShowProgress, 500);
         tvLogin.setClickable(false);
         ProtoMessage.UserLogin.Builder builder = ProtoMessage.UserLogin.newBuilder();
@@ -441,6 +442,9 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
                     editor.putString("token", i.getStringExtra("token"));
                     editor.putString("phone", edName.getText().toString());
                     editor.commit();
+
+					//rs del for login shortly, LBCJW-173
+					/*
                     DBManagerCarList carListDB = new DBManagerCarList(LoginActivity.this);
                     try {
                         ArrayList<CarBrands> date = carListDB.getCarBrandsList(true);
@@ -462,6 +466,9 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
                     } finally {
                         carListDB.closeDB();
                     }
+                    */
+					//end
+
 
 
                     Intent intent = new Intent(LoginActivity.this, DvrMainActivity.class);

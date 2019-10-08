@@ -246,7 +246,11 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             if (TextUtils.isEmpty(phone)) {
                 return;
             }
-            getDBMsg();
+
+			//rs added if
+			if (!phone.equals(myPhone)) {
+            	getDBMsg();
+			}
         }
 
     };
@@ -318,7 +322,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         myPhone = getMyPhone();
         if (!run) {
             run = true;
-            getDBMsg();
+            //getDBMsg(); //rs del
         }
     }
 
@@ -527,7 +531,20 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 groupList.get(groupSelectPosition).setSelect(false);
                 groupAdapter.notifyDataSetChanged();
 
+				if(groupList.get(groupSelectPosition) == null){
+					//rs added for null exception
+					Log.d("rs", "memberListView.setOnItemClickListener groupList found null");
+					return;
+
+				}
+				
                 List<TeamMemberInfo> memberList = allMemberMap.get(groupList.get(groupSelectPosition).getTeamID());
+
+				if(memberList.get(memberSelectPosition) == null){
+                    //rs added for null exception
+                    Log.d("rs", "memberListView.setOnItemClickListener memberList found null");
+                    return;
+                }
                 memberList.get(memberSelectPosition).setSelect(false);
                 memberSelectPosition = position;
                 memberList.get(memberSelectPosition).setSelect(true);

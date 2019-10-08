@@ -47,7 +47,7 @@
             android:focusable="true"
             android:nextFocusUp="@+id/button1"
             android:nextFocusDown="@+id/button1"
-            android:background="@drawable/dvr_cancel_background"
+            android:background="@drawable/button_selector"
             android:text="取消"
             android:textSize="20dp"
             android:textColor="@color/text_color_90white"/>
@@ -65,7 +65,7 @@
             android:layout_height="60dp"
             android:nextFocusUp="@+id/button2"
             android:nextFocusDown="@+id/button2"
-            android:background="@drawable/dvr_cancel_background"
+            android:background="@drawable/button_selector"
             android:text="确定"
             android:textSize="20dp"
             android:textColor="@color/text_color_90white"/>
