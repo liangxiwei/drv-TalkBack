@@ -6,6 +6,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -111,6 +112,32 @@ public class BBSActivity extends BaseActivity {
                             applyBBS(bbsList1.get(position));
                         }
                     });
+                    bbsListview1.setOnKeyListener(new View.OnKeyListener() {
+                        @Override
+                        public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                            if (!bbsListview1.hasFocus()){
+                                Log.i("BBSActivity","not focusable");
+                                return false;
+                            }
+                            if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyEvent.getRepeatCount() == 0) {
+                                switch (keyEvent.getKeyCode()) {
+                                    case KeyEvent.KEYCODE_F6:
+                                        int position = 0;
+                                        if (bbsListview1.getSelectedItemPosition() != -1) {
+                                            position = bbsListview1.getSelectedItemPosition();
+                                        }
+                                        if (bbsList1.size() > 0 && position >= 0 && position <= (bbsList1.size() - 1)) {
+                                            applyBBS(bbsList1.get(position));
+                                            return true;
+                                        }
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            return false;
+                        }
+                    });
                     bbsAdapter2 = new BBSAdapter(bbsList2,getContext());
                     bbsListview2.setAdapter(bbsAdapter2);
 					bbsListview2.setSelector(R.drawable.tab_list_item_selector);
@@ -119,6 +146,32 @@ public class BBSActivity extends BaseActivity {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             //加入群组，跳转到对讲界面
                             applyBBS(bbsList2.get(position));
+                        }
+                    });
+                    bbsListview2.setOnKeyListener(new View.OnKeyListener() {
+                        @Override
+                        public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                            if (!bbsListview2.hasFocus()){
+                                Log.i("BBSActivity","not focusable");
+                                return false;
+                            }
+                            if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyEvent.getRepeatCount() == 0) {
+                                switch (keyEvent.getKeyCode()) {
+                                    case KeyEvent.KEYCODE_F6:
+                                        int position = 0;
+                                        if (bbsListview2.getSelectedItemPosition() != -1) {
+                                            position = bbsListview2.getSelectedItemPosition();
+                                        }
+                                        if (bbsList2.size() > 0 && position >= 0 && position <= (bbsList2.size() - 1)) {
+                                            applyBBS(bbsList2.get(position));
+                                            return true;
+                                        }
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            return false;
                         }
                     });
                 } else {
@@ -140,7 +193,6 @@ public class BBSActivity extends BaseActivity {
         b.startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
             @Override
             public void onTimeout() {
-
                 ToastR.setToast(mContext, "加入海聊群失败，请检查网络");
             }
 

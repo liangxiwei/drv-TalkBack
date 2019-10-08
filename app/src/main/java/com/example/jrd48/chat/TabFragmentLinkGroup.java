@@ -404,11 +404,11 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                                 intent.putParcelableArrayListExtra("memberList", (ArrayList<? extends Parcelable>) allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));
                                 VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(getContext(), intent);
                                 dialog.show();
+                                return true;
                             }
                             break;
                         default:
                             break;
-
                     }
                 }
                 return false;
