@@ -1,7 +1,9 @@
 package com.luobin.widget;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Handler;
 import android.provider.Settings;
 import android.util.AttributeSet;
@@ -22,6 +24,8 @@ public class FirstActionBarDataView extends FrameLayout {
     private TextView mTime1, mTime2, mTime3, mTime4, mTime5;
     private TextView mDate, mWeek;
     private Context mContext;
+    private View mTimeView;
+    private View mDateWeekView;
 
     int second;
 
@@ -57,6 +61,7 @@ public class FirstActionBarDataView extends FrameLayout {
         View view = LayoutInflater.from(getContext()).inflate(
                 R.layout.first_actionbar_data, this);
 
+        mTimeView = view.findViewById(R.id.time_view);
         mTime1 = (TextView) view.findViewById(R.id.time1);
         mTime2 = (TextView) view.findViewById(R.id.time2);
         mTime3 = (TextView) view.findViewById(R.id.time3);
@@ -66,6 +71,7 @@ public class FirstActionBarDataView extends FrameLayout {
         //mTime.setTypeface(typeFace);
         //mTime.getPaint().setFakeBoldText(true);//equals to android:textStyle="bold" in xml
         //tv_week = (TextView) view.findViewById(R.id.tv_week);
+        mDateWeekView = view.findViewById(R.id.date_week_view);
         mDate = (TextView) view.findViewById(R.id.date);
         mWeek = (TextView) view.findViewById(R.id.week);
         init();
@@ -73,14 +79,46 @@ public class FirstActionBarDataView extends FrameLayout {
         second = calendar.get(Calendar.SECOND);
         handler.sendMessageDelayed(handler.obtainMessage(),
                 (60 - second) * 1000);
-        this.setOnClickListener(new OnClickListener() {
+
+        mTimeView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Settings.ACTION_DATE_SETTINGS);
+                Intent intent = new Intent("android.luobin.ui.TIME_SETTINGS");
+                mContext.startActivity(intent);
+            }
+        });
+
+        mDateWeekView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("android.luobin.ui.DATE_SETTINGS");
                 mContext.startActivity(intent);
             }
         });
     }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("android.luobin.ui.TIME_RESET");
+        getContext().registerReceiver(mTimeResetReceiver, filter);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        getContext().unregisterReceiver(mTimeResetReceiver);
+    }
+
+    private BroadcastReceiver mTimeResetReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if ("android.luobin.ui.TIME_RESET".equals(intent.getAction())) {
+                init();
+            }
+        }
+    };
 
     public void init() {
         SimpleDateFormat timeFormat;
