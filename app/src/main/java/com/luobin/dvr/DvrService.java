@@ -368,6 +368,7 @@ public class DvrService extends Service {
         @Override
         public void startPipVideoCapture() throws RemoteException {
             Log.d(TAG, "=========aidl-startPipVideoCapture");
+            ToastR.setToastCust(getResources().getString(R.string.video_capture_started), 300000);
             mPipHandler.sendEmptyMessage(MSG_STOP_PIP_RECORD);
             mPipHandler.sendEmptyMessageDelayed(MSG_START_PIP_RECORD, 100);
         }
@@ -375,6 +376,7 @@ public class DvrService extends Service {
         @Override
         public void startTakePipPhoto() throws RemoteException {
             Log.e(TAG, "=========aidl-startTakePipPhoto");
+            ToastR.setToastCust(getResources().getString(R.string.photo_capture_started), 1000);
             mPipHandler.removeCallbacks(mTakePhotoRunnable);
             mPipHandler.postDelayed(mTakePhotoRunnable, 100);
         }
@@ -434,6 +436,7 @@ public class DvrService extends Service {
             } else if (msg.what == MSG_STOP_PIP_VIDEO) {
                 stopRecord();
                 Settings.System.putInt(getContentResolver(), "dvr_switch_to_pip", 0);
+                ToastR.cancelToast();
                 ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.video_capture_succeed));
                 return true;
             }

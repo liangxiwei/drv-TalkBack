@@ -57,6 +57,24 @@ public class AppToast {
         layout.setVisibility(View.GONE);
     }
 
+    public AppToast(Context application, int resID) {
+        handler = new Handler(Looper.getMainLooper());
+        wm = (WindowManager) application.getSystemService(Context.WINDOW_SERVICE);
+        layout = (ViewGroup) LayoutInflater.from(application).inflate(R.layout.super_toast_transparent, null);
+        textView = (TextView) layout.getChildAt(0);
+        params = new WindowManager.LayoutParams();
+        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        params.width = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        params.gravity = Gravity.BOTTOM | Gravity.LEFT;
+        params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+        params.format = PixelFormat.TRANSLUCENT;
+        params.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+
+        layout.setVisibility(View.GONE);
+    }
+
     public void setGravity(int gravity,int x,int y){
         params.gravity = gravity;
     }
@@ -108,7 +126,7 @@ public class AppToast {
     /**
      * 结束
      */
-    private void end() {
+    public void end() {
         layout.setVisibility(View.GONE);
         try {
             wm.removeView(layout);
