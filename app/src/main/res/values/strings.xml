@@ -204,5 +204,7 @@
     <string name="manual_input">manual input</string>
     <string name="video_capture_succeed">Video capture succeed</string>
     <string name="photo_capture_succeed">Photo capture succeed</string>
+    <string name="switch_not_allowed_when_ptt_pressed">Switch not allowed when ptt pressed</string>
+    <string name="pip_not_allowed_when_ptt_pressed">Pip switch not allowed when ptt pressed</string>
 
 </resources>

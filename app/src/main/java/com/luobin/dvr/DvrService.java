@@ -847,6 +847,10 @@ public class DvrService extends Service {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }*/
+            } else if ("erobbing.ptt.pressed.switch_not_allowed".equals(intent.getAction())) {
+                ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.switch_not_allowed_when_ptt_pressed));
+            } else if ("erobbing.ptt.pressed.pip_not_allowed".equals(intent.getAction())) {
+                ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.pip_not_allowed_when_ptt_pressed));
             }
         }
     };
@@ -869,6 +873,8 @@ public class DvrService extends Service {
         intentFilter.addAction("erobbing.video_record_test");
         intentFilter.addAction("erobbing.firstactivity_test");
         intentFilter.addAction("erobbing.video_record_test_dvr");
+        intentFilter.addAction("erobbing.ptt.pressed.switch_not_allowed");
+        intentFilter.addAction("erobbing.ptt.pressed.pip_not_allowed");
         registerReceiver(shutDownReceiver,intentFilter);
         DvrConfig.init(getApplicationContext());
         if (mImpl == null) {

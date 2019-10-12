@@ -201,5 +201,7 @@
     <string name="manual_input">manual input</string>
     <string name="video_capture_succeed">随手拍视频录制完成</string>
     <string name="photo_capture_succeed">拍照完成</string>
+    <string name="switch_not_allowed_when_ptt_pressed">PTT 键按下时禁止切换对讲！</string>
+    <string name="pip_not_allowed_when_ptt_pressed">PTT 键按下时禁止切换画中画模式！</string>
 
 </resources>
