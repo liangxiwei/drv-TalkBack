@@ -1177,7 +1177,7 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
                             mPullRefreshView.setRefreshing(false);
                     }
                     if (checkPullRefresh == true) {
-                        ToastR.setToast(getContext(), "获取好友成功");
+                        ToastR.setToast(getContext(), "已完成刷新");
                         checkPullRefresh = false;
                     }
                 } else {

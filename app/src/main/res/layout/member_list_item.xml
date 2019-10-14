@@ -70,7 +70,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:visibility="visible"
-        android:textColor="@color/gray"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:text="取消跟踪" />
 

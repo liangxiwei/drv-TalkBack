@@ -433,6 +433,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     public static String mText;
     public String maction;
 
+	private boolean mStartVideoCall = false;
+	
     @Override
     public void onAnimationStart(Animation animation) {
         // TODO Auto-generated method stub
@@ -4804,6 +4806,15 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             }
 
         }
+
+		//rs added for request focus after start video call(LBCJW-42)
+		if(mStartVideoCall){
+			Log.d("rs", "mStartVideoCall requestFocus");
+			mStartVideoCall = false;
+			prefixCamera.requestFocus();
+		}
+		//end
+
         run = true;
         pauseIs = false;
         GlobalStatus.setIsFirstPause(false);
@@ -5354,6 +5365,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             @Override
             public void onGot(Intent i) {
                 if (i.getIntExtra("error_code", -1) == ProtoMessage.ErrorCode.OK.getNumber()) {
+					mStartVideoCall = true;
+					
                     if (single) {
                         VideoCallActivity.startActivity(mContext, linkmanPhone);
                     } else {

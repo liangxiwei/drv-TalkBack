@@ -56,14 +56,14 @@ public class UserAdapter extends ArrayAdapter<User> {
             viewHolder.name.setTextColor(0xffffffff);
         } else if (user.getState() == ProtoMessage.ChatStatus.csNotIn_VALUE) {
             viewHolder.image.setAlpha(0.5f);
-            viewHolder.state.setBackgroundResource(R.drawable.off_line);
-            viewHolder.state.setVisibility(View.VISIBLE);
+            //viewHolder.state.setBackgroundResource(R.drawable.off_line);
+            viewHolder.state.setVisibility(View.GONE);
             viewHolder.name.setTextColor(0xff888888);
         } else if (user.getState() == ProtoMessage.ChatStatus.csOffline_VALUE) {
-            viewHolder.state.setBackgroundResource(R.drawable.unknow);
-            viewHolder.state.setVisibility(View.VISIBLE);
+			viewHolder.image.setAlpha(0.5f);
+            //viewHolder.state.setBackgroundResource(R.drawable.unknow);
+            viewHolder.state.setVisibility(View.GONE);
             viewHolder.name.setTextColor(0xff888888);
-            viewHolder.image.setAlpha(0.5f);
         }
         viewHolder.name.setText(user.getName());
         Bitmap bitmap = GlobalImg.getImage(getContext(), user.getPhone());

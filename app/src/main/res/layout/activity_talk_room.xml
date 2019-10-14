@@ -71,7 +71,7 @@
                 android:id="@+id/prefix_camera"
                 android:layout_width="119dp"
                 android:layout_height="97dp"
-                android:scaleType="fitXY"
+                android:scaleType="centerInside"
                 android:src="@drawable/icon_video"
                 android:layout_marginTop="19dp"
                 android:layout_marginLeft="19dp"

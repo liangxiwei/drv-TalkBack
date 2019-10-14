@@ -1628,9 +1628,9 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             if (type == DIALOG_TYPE.CARTYPE) {
 
                 if (car1items == null || car1items.size() < 1) {
-                    ToastR.setToast(mContext, "数据为空正在获取汽车品牌");
+                    ToastR.setToast(mContext, "正在获取汽车品牌数据...");
                     getCarList();
-                    return;
+                    //return;
                 }
 
                 pvOptions.setPicker(car1items, car2items);

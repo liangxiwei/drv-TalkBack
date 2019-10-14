@@ -8,7 +8,8 @@
     android:fadingEdge="horizontal|vertical"
     android:fadingEdgeLength="5dp"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg_icon">
 
     <TextView
         android:id="@+id/tv_shap"
@@ -41,7 +42,8 @@
             android:gravity="center_vertical"
             android:layout_marginLeft="5dp"
             style="@style/Base.DialogWindowTitle.AppCompat"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <TextView
@@ -56,7 +58,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/simple_background_selector"
+        android:background="@drawable/button_selector"
         android:nextFocusUp="@+id/layout_add_friend"
         android:nextFocusDown="@+id/layout_detailed"
         android:focusable="true"
@@ -75,7 +77,8 @@
             android:layout_height="48dp"
             android:gravity="center"
             android:text="@string/road_inquiry"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <TextView
@@ -90,11 +93,11 @@
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:orientation="horizontal"
-        android:background="@drawable/simple_background_selector"
         android:nextFocusUp="@+id/layout_look"
         android:nextFocusDown="@+id/layout_add_friend"
         android:focusable="true"
-        android:visibility="visible">
+        android:visibility="visible"
+        android:background="@drawable/button_selector">
 
         <ImageView
             android:layout_width="35dp"
@@ -110,7 +113,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/detailed_information"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <TextView
@@ -123,7 +127,7 @@
         android:id="@+id/layout_add_friend"
         android:layout_width="fill_parent"
         android:layout_height="48dp"
-        android:background="@drawable/simple_background_selector"
+        android:background="@drawable/button_selector"
         android:nextFocusUp="@+id/layout_detailed"
         android:nextFocusDown="@+id/layout_look"
         android:focusable="true"
@@ -144,7 +148,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/add_friend"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <LinearLayout
