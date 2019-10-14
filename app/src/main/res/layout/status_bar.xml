@@ -35,6 +35,7 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/tv_mobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWirte"
@@ -43,6 +44,7 @@
             />
 
         <ImageView
+            android:id="@+id/iv_mobile"
             android:layout_width="12dp"
             android:layout_height="13dp"
             android:background="@drawable/icon_4g"
@@ -59,6 +61,7 @@
         android:gravity="center">
 
         <ImageView
+            android:id="@+id/iv_wifi"
             android:layout_width="18dp"
             android:layout_height="13dp"
             android:background="@drawable/icon_wifi"
