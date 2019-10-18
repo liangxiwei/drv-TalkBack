@@ -31,6 +31,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 
 import me.lake.librestreaming.client.RESClient;
 
@@ -67,6 +68,7 @@ public class MyAACRecorder implements Runnable {
 //    private NoiseSuppressor suppressor;
     private AudioManager mAudioManager;
 
+    private ArrayList aacFileList = new ArrayList();
 
     private volatile boolean mStopFlag = false;
 
@@ -348,6 +350,17 @@ public class MyAACRecorder implements Runnable {
         if (!objFile.exists()) {
             try {
                 objFile.createNewFile();
+                //avoid creating too many acc files
+                if (aacFileList != null) {
+                    aacFileList.add(filePath);
+                    if (aacFileList.size() > 100) {
+                        File willDel = new File(aacFileList.get(1).toString());
+                        if (willDel.exists()) {
+                            willDel.delete();
+                        }
+                        aacFileList.remove(1);
+                    }
+                }
                 return objFile;
             } catch (IOException e) {
                 e.printStackTrace();
