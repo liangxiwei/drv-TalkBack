@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -291,9 +292,13 @@ public class MapMemberListDialog {
                 if (friendsMsg.getState() == ProtoMessage.ChatStatus.csNotIn_VALUE) {
                     holder.imgeOnLine.setVisibility(View.VISIBLE);
                     holder.images.setAlpha(0.5f);
-                    holder.imgeOnLine.setBackgroundResource(R.drawable.off_line);
+                    if (!"LB1822".equals(Build.PRODUCT)) {
+                        holder.imgeOnLine.setBackgroundResource(R.drawable.off_line);
+                    }
                 } else if (friendsMsg.getState() == ProtoMessage.ChatStatus.csOffline_VALUE) {
-                    holder.imgeOnLine.setBackgroundResource(R.drawable.unknow);
+                    if (!"LB1822".equals(Build.PRODUCT)) {
+                        holder.imgeOnLine.setBackgroundResource(R.drawable.unknow);
+                    }
                     holder.images.setAlpha(0.5f);
                     holder.imgeOnLine.setVisibility(View.VISIBLE);
                 } else {
