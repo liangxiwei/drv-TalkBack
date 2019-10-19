@@ -398,6 +398,11 @@ enum Cmd {
      */
     cmdGotAnsRemoteControl = 0x0001004E;
 
+    /** 上传历史位置接口
+     * in, out, LocationMsgList
+     */
+    cmdReportLocationHistory = 0x0001005B;
+
     /**
     * 上传轨迹
     * in, MsgTrack

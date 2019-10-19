@@ -782,6 +782,15 @@ public final class ProtoMessage {
     cmdGotAnsRemoteControl(65614),
     /**
      * <pre>
+     ** 上传历史位置接口
+     * in, out, LocationMsgList
+     * </pre>
+     *
+     * <code>cmdReportLocationHistory = 65627;</code>
+     */
+    cmdReportLocationHistory(65627),
+    /**
+     * <pre>
      **
      * 上传轨迹
      * in, MsgTrack
@@ -1588,6 +1597,15 @@ public final class ProtoMessage {
     public static final int cmdGotAnsRemoteControl_VALUE = 65614;
     /**
      * <pre>
+     ** 上传历史位置接口
+     * in, out, LocationMsgList
+     * </pre>
+     *
+     * <code>cmdReportLocationHistory = 65627;</code>
+     */
+    public static final int cmdReportLocationHistory_VALUE = 65627;
+    /**
+     * <pre>
      **
      * 上传轨迹
      * in, MsgTrack
@@ -1729,6 +1747,7 @@ public final class ProtoMessage {
         case 65612: return cmdGotRemoteControl;
         case 65613: return cmdAnsRemoteControl;
         case 65614: return cmdGotAnsRemoteControl;
+        case 65627: return cmdReportLocationHistory;
         case 65629: return cmdUploadTrack;
         case 65630: return cmdGetTrackList;
         case 65631: return cmdDownloadTrack;
@@ -84374,7 +84393,7 @@ public final class ProtoMessage {
       "cks\030\005 \003(\0132\t.MsgTrack\"e\n\016MsgTrackModify\022\021" +
       "\n\terrorCode\030\001 \001(\005\022\017\n\007trackID\030\002 \001(\003\022\022\n\nmo",
       "difyCode\030\003 \001(\005\022\r\n\005title\030\004 \001(\t\022\014\n\004desc\030\005 " +
-      "\001(\t*\225\017\n\003Cmd\022\014\n\010cmdDummy\020\000\022\022\n\014cmdHeartbea" +
+      "\001(\t*\265\017\n\003Cmd\022\014\n\010cmdDummy\020\000\022\022\n\014cmdHeartbea" +
       "t\020\200\200\004\022\020\n\ncmdSmsCode\020\201\200\004\022\014\n\006cmdReg\020\202\200\004\022\016\n" +
       "\010cmdLogin\020\203\200\004\022\021\n\013cmdSendText\020\204\200\004\022\022\n\014cmdS" +
       "endVoice\020\205\200\004\022\034\n\026cmdChangePasswordBySms\020\206" +
@@ -84420,139 +84439,140 @@ public final class ProtoMessage {
       "et\020\311\200\004\022\024\n\016cmdSetImeiName\020\312\200\004\022\026\n\020cmdRemot" +
       "eControl\020\313\200\004\022\031\n\023cmdGotRemoteControl\020\314\200\004\022" +
       "\031\n\023cmdAnsRemoteControl\020\315\200\004\022\034\n\026cmdGotAnsR" +
-      "emoteControl\020\316\200\004\022\024\n\016cmdUploadTrack\020\335\200\004\022\025" +
-      "\n\017cmdGetTrackList\020\336\200\004\022\026\n\020cmdDownloadTrac" +
-      "k\020\337\200\004\022\024\n\016cmdModifyTrack\020\340\200\004*M\n\006OpCode\022\n\n",
-      "\006opNone\020\000\022\t\n\005opAdd\020\001\022\t\n\005opDel\020\002\022\r\n\topDis" +
-      "able\020\003\022\022\n\016opEnableRecord\020\004*C\n\007AppType\022\016\n" +
-      "\nappDefault\020\000\022\n\n\006appWeb\020\001\022\020\n\014appPocCente" +
-      "r\020\002\022\n\n\006appCar\020\003*\200\025\n\tErrorCode\022\006\n\002OK\020\000\022\013\n" +
-      "\007UNKNOWN\020\001\022\024\n\017SMS_CODE_FAILED\020\350\007\022\025\n\020SMS_" +
-      "CODE_NOT_GOT\020\351\007\022\027\n\022SMS_CODE_NOT_MATCH\020\352\007" +
-      "\022\023\n\016PASS_TOO_SHORT\020\353\007\022\022\n\rREG_DB_FAILED\020\354" +
-      "\007\022\027\n\022DATA_LEN_TOO_SHORT\020\355\007\022\036\n\031LOGIN_PHON" +
-      "E_OR_PASS_WRONG\020\356\007\022\026\n\021LOGIN_TOKEN_WRONG\020" +
-      "\357\007\022\032\n\025LOGIN_TOKEN_NOT_EXIST\020\360\007\022\016\n\tNOT_LO",
-      "GIN\020\361\007\022\024\n\017PHONE_NOT_FOUND\020\362\007\022\030\n\023FRIEND_N" +
-      "OT_INVITIED\020\363\007\022\023\n\016CHANGE_NOTHING\020\364\007\022\020\n\013N" +
-      "OT_MY_TEAM\020\365\007\022\034\n\027CANNOT_APPLY_GROUP_TEAM" +
-      "\020\366\007\022\023\n\016TEAM_NOT_EXIST\020\367\007\022\024\n\017CURR_USER_WR" +
-      "ONG\020\370\007\022\023\n\016INNER_DB_ERROR\020\371\007\022\023\n\016NOT_TEAM_" +
-      "ADMIN\020\372\007\022\027\n\022CANNOT_DELETE_SELF\020\373\007\022\035\n\030CAN" +
-      "NOT_DELETE_TEAM_OWNER\020\374\007\022\024\n\017NOT_TEAM_MEM" +
-      "BER\020\375\007\022\023\n\016NOT_TEAM_OWNER\020\376\007\022\030\n\023TEAM_NAME" +
-      "_TOO_SHORT\020\377\007\022\"\n\035CANNOT_ASSIGN_TEAM_ADMI" +
-      "N_SELF\020\200\010\022#\n\036CANNOT_ASSIGN_TEAM_OWNER_AD",
-      "MIN\020\201\010\022\033\n\026CANNOT_ADD_FRIEND_SELF\020\202\010\022\026\n\021N" +
-      "OT_FOUND_USER_ID\020\203\010\022\032\n\025DUPLICATED_APPLY_" +
-      "TEAM\020\204\010\022\033\n\026CANNOT_EXIT_TEAM_OWNER\020\205\010\022\017\n\n" +
-      "NOT_FRIEND\020\206\010\022\032\n\025CHAT_ROOM_INNER_ERROR\020\207" +
-      "\010\022\031\n\024ALREADY_IN_CHAT_ROOM\020\210\010\022\034\n\027CANNOT_G" +
-      "ET_NEW_ROOM_NUM\020\211\010\022\027\n\022NO_ANY_TEAM_MEMBER" +
-      "\020\212\010\022\027\n\022CANNOT_CALL_FRIEND\020\213\010\022\030\n\023NOT_FOUN" +
-      "D_THIS_ROOM\020\214\010\022\035\n\030NOT_FOUND_THIS_ROOM_US" +
-      "ER\020\215\010\022\033\n\026ENTER_CHAT_ROOM_FAILED\020\220\010\022\031\n\024NO" +
-      "T_IN_ANY_CHAT_ROOM\020\221\010\022\027\n\022OTHER_SPEAKING_",
-      "NOW\020\222\010\022\020\n\013INNER_ERROR\020\223\010\022\027\n\022DIDNOT_SPEAK" +
-      "_BEGIN\020\224\010\022\023\n\016NAME_TOO_SHORT\020\225\010\022\023\n\016TOO_MA" +
-      "NY_TEAMS\020\226\010\022\027\n\022TEAM_OR_USER_WRONG\020\227\010\022!\n\034" +
-      "NOT_FOUND_USER_NAME_OR_PHONE\020\230\010\022\024\n\017USER_" +
-      "NAME_EXIST\020\231\010\022\017\n\nNOT_MY_MSG\020\232\010\022\034\n\027MSG_AT" +
-      "TACHMENT_UPLOADED\020\233\010\022&\n!MSG_ATTACHMENT_U" +
-      "PLOAD_PARAM_ERROR\020\234\010\022%\n MSG_ATTACHMENT_U" +
-      "PLOAD_FILE_ERROR\020\235\010\022$\n\037MSG_ATTACHMENT_UP" +
-      "LOAD_SUM_ERROR\020\236\010\022\'\n\"MSG_ATTACHMENT_UPLO" +
-      "AD_UPDATE_ERROR\020\237\010\022*\n%MSG_ATTACHMENT_DOW",
-      "NLOAD_NO_ATTACHMENT\020\240\010\022\'\n\"MSG_ATTACHMENT" +
-      "_DOWNLOAD_NO_MSG_SUM\020\253\010\022%\n MSG_ATTACHMEN" +
-      "T_DOWNOAD_NO_EXISTS\020\254\010\022(\n#MSG_ATTACHMENT" +
-      "_DOWNLOAD_PARAM_ERROR\020\255\010\022\'\n\"MSG_ATTACHME" +
-      "NT_DOWNLOAD_READ_ERROR\020\256\010\022$\n\037MSG_ATTACHM" +
-      "ENT_UPLOAD_LEN_ERROR\020\257\010\022\032\n\025CHAT_NOT_FROM" +
-      "_MY_CALL\020\260\010\022\025\n\020USER_PHONE_EXIST\020\261\010\022\024\n\017TE" +
-      "AM_NAME_EXIST\020\262\010\022\024\n\017NOT_GROUP_ADMIN\020\263\010\022\020" +
-      "\n\013NO_GROUP_ID\020\264\010\022\026\n\021NO_GROUP_ADMIN_AD\020\265\010" +
-      "\022\026\n\021NOT_CAR_SCAN_CODE\020\266\010\022\026\n\021NOT_CAR_CONN",
-      "ECTED\020\267\010\022\017\n\nNOT_MY_CAR\020\270\010\022\025\n\020NOT_VALID_C" +
-      "AR_ID\020\271\010\022\024\n\017NOT_HAS_ANY_CAR\020\272\010\022\026\n\021CAR_NU" +
-      "M_TOO_SHORT\020\273\010\022\026\n\021CAR_NUM_DUPLICATE\020\274\010\022\023" +
-      "\n\016NOT_VALID_IMEI\020\275\010\022\023\n\016IMEI_TOO_SHORT\020\276\010" +
-      "\022\024\n\017UNKNOWN_OP_CODE\020\277\010\022\024\n\017NOT_MY_SUB_USE" +
-      "R\020\300\010\022\034\n\027NOT_FRIEND_OR_SAME_TEAM\020\301\010\022\026\n\021NO" +
-      "_SESSION_SERVER\020\302\010\022\024\n\017NO_TEAM_OR_USER\020\303\010" +
-      "\022\030\n\023NO_CHAT_ROOM_SERVER\020\304\010\022\026\n\021CHAT_MAIN_" +
-      "TIMEOUT\020\305\010\022\024\n\017BAD_SERVER_TYPE\020\306\010\022\032\n\025NOT_" +
-      "FOUND_ROOM_SERVER\020\307\010\022\033\n\026LOCATION_SERVER_",
-      "FAILED\020\310\010\022\034\n\027LOCATION_SERVER_TIMEOUT\020\311\010\022" +
-      "\023\n\016NO_MY_LOCATION\020\312\010\022\031\n\024SEARCH_AROUND_FA" +
-      "ILED\020\313\010\022\022\n\rNAME_TOO_LONG\020\314\010\022\025\n\020HDFS_OPEN" +
-      "_FAILED\020\315\010\022\021\n\014USER_DISABLE\020\316\010\022\030\n\023SMS_COD" +
-      "E_TYPE_WRONG\020\317\010\022\023\n\016PHONE_TOO_LONG\020\320\010\022\026\n\021" +
-      "VOICE_UNSUPPORTED\020\321\010\022\027\n\022PHONE_FORMAT_WRO" +
-      "NG\020\322\010\022\031\n\024ACCOUNT_PREFIX_WRONG\020\323\010\022\020\n\013KQ_N" +
-      "O_PARAM\020\324\010\022\r\n\010KQ_NO_ID\020\325\010\022\031\n\024KQ_ID_OR_PH" +
-      "ONE_WRONG\020\326\010\022\024\n\017KQ_NOT_FOUND_ID\020\327\010\022\027\n\022NO" +
-      "T_VALID_GROUP_ID\020\330\010\022\031\n\024TOO_MANY_TEAM_MEM",
-      "BER\020\331\010\022\022\n\rTOO_MANY_IMEI\020\332\010*A\n\013SmsCodeTyp" +
-      "e\022\016\n\nsmsCodeReg\020\000\022\020\n\014smsCodeReset\020\001\022\020\n\014s" +
-      "msCodeCheck\020\002*I\n\nServerType\022\r\n\tstSession" +
-      "\020\000\022\n\n\006stRoot\020\001\022\n\n\006stRoom\020\002\022\024\n\007stOther\020\377\377" +
-      "\377\377\377\377\377\377\377\001*&\n\nAcceptType\022\014\n\010atAccept\020\000\022\n\n\006" +
-      "atDeny\020\001*G\n\tEnterType\022\t\n\005Enter\020\000\022\t\n\005Leav" +
-      "e\020\001\022\023\n\017PriorityChanged\020\002\022\017\n\013DismissTeam\020" +
-      "\003*\332\003\n\nNotifyType\022\017\n\013NotifyDummy\020\000\022\025\n\021Not" +
-      "ifyApplyFriend\020\001\022\026\n\022NotifyAcceptFriend\020\002" +
-      "\022\026\n\022NotifyDeleteFriend\020\003\022\023\n\017NotifyApplyT",
-      "eam\020\004\022\024\n\020NotifyAcceptTeam\020\005\022\032\n\026NotifyDel" +
-      "eteTeamMember\020\006\022\025\n\021NotifyDismissTeam\020\007\022\031" +
-      "\n\025NotifyAssignTeamAdmin\020\010\022\030\n\024NotifyModif" +
-      "yTeamInfo\020\t\022\022\n\016NotifyQuitTeam\020\n\022\022\n\016Notif" +
-      "yTeamCall\020\013\022\024\n\020NotifySingleCall\020\014\022\024\n\020Not" +
-      "ifyChatStatus\020\r\022\026\n\022NotifySaveVariable\020\016\022" +
-      "\016\n\nNotifyCall\020\017\022\030\n\024NotifyChangeTeamNick\020" +
-      "\020\022\027\n\023NotifyLiveVideoCall\020\021\022\032\n\026NotifyLive" +
-      "VideoCallAns\020\022\022\026\n\022NotifyFriendStatus\020\023*\257" +
-      "\001\n\rUserHideField\022\016\n\nhfPhoneNum\020\000\022\016\n\nhfUs",
-      "ername\020\001\022\r\n\thfUserSex\020\002\022\016\n\nhfBirthday\020\003\022" +
-      "\016\n\nhfAddrInfo\020\004\022\r\n\thfCarType\020\005\022\014\n\010hfCarN" +
-      "um\020\006\022\t\n\005hfGps\020\007\022\020\n\014hfTeamRandom\020\010\022\025\n\021hfT" +
-      "eamRandomVideo\020\t*2\n\010TeamRole\022\016\n\nmemberOn" +
-      "ly\020\000\022\013\n\007Manager\020\001\022\t\n\005Owner\020\002*\211\001\n\010TeamTyp" +
-      "e\022\016\n\nteamPublic\020\000\022\r\n\tteamTempo\020\001\022\017\n\013team" +
-      "Private\020\002\022\017\n\013teamInGroup\020\003\022\016\n\nteamRandom" +
-      "\020\004\022\023\n\017teamMapSelector\020\005\022\n\n\006teamM1\020\006\022\013\n\007t" +
-      "eamBBS\020\007*,\n\rApplyTeamType\022\r\n\tattInvite\020\000" +
-      "\022\014\n\010attApply\020\001*)\n\013RequestFlag\022\017\n\013rfAllMe",
-      "mber\020\000\022\t\n\005rfOne\020\001*\326\001\n\007MsgType\022\n\n\006mtText\020" +
-      "\000\022\013\n\007mtImage\020\001\022\013\n\007mtVoice\020\002\022\014\n\010mtCancel\020" +
-      "\003\022\017\n\013mtEnterTeam\020\004\022\017\n\013mtLeaveTeam\020\005\022\025\n\021m" +
-      "tChangeHeadImage\020\006\022\022\n\016mtAcceptFriend\020\007\022\022" +
-      "\n\016mtDeleteFriend\020\010\022\017\n\013mtVideoFile\020\t\022\017\n\013m" +
-      "tVoiceFile\020\n\022\024\n\020mtVoiceShortFile\020\013*B\n\nCh" +
-      "atStatus\022\r\n\tcsOffline\020\000\022\013\n\007csNotIn\020\001\022\010\n\004" +
-      "csOk\020\002\022\016\n\ncsSpeaking\020\003*&\n\003Sex\022\t\n\005noset\020\000" +
-      "\022\010\n\004male\020\001\022\n\n\006female\020\002*3\n\014KqReportType\022\013" +
-      "\n\007krtAuto\020\000\022\n\n\006krtKey\020\001\022\n\n\006krtNfc\020\002*M\n\nR",
-      "eportType\022\013\n\007rtLogin\020\000\022\014\n\010rtLogout\020\001\022\013\n\007" +
-      "rtAlive\020\002\022\014\n\010rtCarReg\020\003\022\t\n\005rtMax\020\004*N\n\017Se" +
-      "ssionPullType\022\017\n\013sptToClient\020\000\022\023\n\017sptFor" +
-      "ceOffline\020\001\022\025\n\021sptNotifyCarLogin\020\002*K\n\020Cm" +
-      "dMsgSessionReq\022\033\n\027SessionGetUserSessionI" +
-      "P\020\000\022\032\n\026SessionQueryWhoWatchMe\020\001*6\n\021MsgSe" +
-      "ssionReqWhat\022\r\n\tsrwNormal\020\000\022\022\n\016srwCarReg" +
-      "ister\020\001*\200\001\n\007RoomCmd\022\025\n\021rcRoomReportAlive" +
-      "\020\000\022\020\n\014rcStartVoice\020\001\022\021\n\rrcAcceptVoice\020\002\022" +
-      "\020\n\014rcCreateRoom\020\003\022\017\n\013rcCloseRoom\020\004\022\026\n\022rc",
-      "TeamMemberChange\020\005*[\n\013LocationCmd\022\020\n\014LOC" +
-      "ATION_PUT\020\000\022\022\n\016LOCATION_START\020\001\022\021\n\rLOCAT" +
-      "ION_STOP\020\002\022\023\n\017LOCATION_SEARCH\020\003*&\n\nKqTim" +
-      "eType\022\013\n\007kttNone\020\000\022\013\n\007kttWeek\020\001*.\n\010EditC" +
-      "ode\022\t\n\005ecGet\020\000\022\014\n\010ecUpdate\020\001\022\t\n\005ecDel\020\002*" +
-      "\'\n\tRemoteCmd\022\n\n\006rcNone\020\000\022\016\n\nrcNavigate\020\001" +
-      "*e\n\017TrackModifyCode\022\017\n\013_trackDummy\020\000\022\017\n\013" +
-      "trackModify\020\001\022\020\n\014trackVisible\020\002\022\r\n\ttrack" +
-      "Hide\020\003\022\017\n\013trackDelete\020\004B%\n#com.example.j" +
-      "rd48.service.proto_genb\006proto3"
+      "emoteControl\020\316\200\004\022\036\n\030cmdReportLocationHis" +
+      "tory\020\333\200\004\022\024\n\016cmdUploadTrack\020\335\200\004\022\025\n\017cmdGet" +
+      "TrackList\020\336\200\004\022\026\n\020cmdDownloadTrack\020\337\200\004\022\024\n",
+      "\016cmdModifyTrack\020\340\200\004*M\n\006OpCode\022\n\n\006opNone\020" +
+      "\000\022\t\n\005opAdd\020\001\022\t\n\005opDel\020\002\022\r\n\topDisable\020\003\022\022" +
+      "\n\016opEnableRecord\020\004*C\n\007AppType\022\016\n\nappDefa" +
+      "ult\020\000\022\n\n\006appWeb\020\001\022\020\n\014appPocCenter\020\002\022\n\n\006a" +
+      "ppCar\020\003*\200\025\n\tErrorCode\022\006\n\002OK\020\000\022\013\n\007UNKNOWN" +
+      "\020\001\022\024\n\017SMS_CODE_FAILED\020\350\007\022\025\n\020SMS_CODE_NOT" +
+      "_GOT\020\351\007\022\027\n\022SMS_CODE_NOT_MATCH\020\352\007\022\023\n\016PASS" +
+      "_TOO_SHORT\020\353\007\022\022\n\rREG_DB_FAILED\020\354\007\022\027\n\022DAT" +
+      "A_LEN_TOO_SHORT\020\355\007\022\036\n\031LOGIN_PHONE_OR_PAS" +
+      "S_WRONG\020\356\007\022\026\n\021LOGIN_TOKEN_WRONG\020\357\007\022\032\n\025LO",
+      "GIN_TOKEN_NOT_EXIST\020\360\007\022\016\n\tNOT_LOGIN\020\361\007\022\024" +
+      "\n\017PHONE_NOT_FOUND\020\362\007\022\030\n\023FRIEND_NOT_INVIT" +
+      "IED\020\363\007\022\023\n\016CHANGE_NOTHING\020\364\007\022\020\n\013NOT_MY_TE" +
+      "AM\020\365\007\022\034\n\027CANNOT_APPLY_GROUP_TEAM\020\366\007\022\023\n\016T" +
+      "EAM_NOT_EXIST\020\367\007\022\024\n\017CURR_USER_WRONG\020\370\007\022\023" +
+      "\n\016INNER_DB_ERROR\020\371\007\022\023\n\016NOT_TEAM_ADMIN\020\372\007" +
+      "\022\027\n\022CANNOT_DELETE_SELF\020\373\007\022\035\n\030CANNOT_DELE" +
+      "TE_TEAM_OWNER\020\374\007\022\024\n\017NOT_TEAM_MEMBER\020\375\007\022\023" +
+      "\n\016NOT_TEAM_OWNER\020\376\007\022\030\n\023TEAM_NAME_TOO_SHO" +
+      "RT\020\377\007\022\"\n\035CANNOT_ASSIGN_TEAM_ADMIN_SELF\020\200",
+      "\010\022#\n\036CANNOT_ASSIGN_TEAM_OWNER_ADMIN\020\201\010\022\033" +
+      "\n\026CANNOT_ADD_FRIEND_SELF\020\202\010\022\026\n\021NOT_FOUND" +
+      "_USER_ID\020\203\010\022\032\n\025DUPLICATED_APPLY_TEAM\020\204\010\022" +
+      "\033\n\026CANNOT_EXIT_TEAM_OWNER\020\205\010\022\017\n\nNOT_FRIE" +
+      "ND\020\206\010\022\032\n\025CHAT_ROOM_INNER_ERROR\020\207\010\022\031\n\024ALR" +
+      "EADY_IN_CHAT_ROOM\020\210\010\022\034\n\027CANNOT_GET_NEW_R" +
+      "OOM_NUM\020\211\010\022\027\n\022NO_ANY_TEAM_MEMBER\020\212\010\022\027\n\022C" +
+      "ANNOT_CALL_FRIEND\020\213\010\022\030\n\023NOT_FOUND_THIS_R" +
+      "OOM\020\214\010\022\035\n\030NOT_FOUND_THIS_ROOM_USER\020\215\010\022\033\n" +
+      "\026ENTER_CHAT_ROOM_FAILED\020\220\010\022\031\n\024NOT_IN_ANY",
+      "_CHAT_ROOM\020\221\010\022\027\n\022OTHER_SPEAKING_NOW\020\222\010\022\020" +
+      "\n\013INNER_ERROR\020\223\010\022\027\n\022DIDNOT_SPEAK_BEGIN\020\224" +
+      "\010\022\023\n\016NAME_TOO_SHORT\020\225\010\022\023\n\016TOO_MANY_TEAMS" +
+      "\020\226\010\022\027\n\022TEAM_OR_USER_WRONG\020\227\010\022!\n\034NOT_FOUN" +
+      "D_USER_NAME_OR_PHONE\020\230\010\022\024\n\017USER_NAME_EXI" +
+      "ST\020\231\010\022\017\n\nNOT_MY_MSG\020\232\010\022\034\n\027MSG_ATTACHMENT" +
+      "_UPLOADED\020\233\010\022&\n!MSG_ATTACHMENT_UPLOAD_PA" +
+      "RAM_ERROR\020\234\010\022%\n MSG_ATTACHMENT_UPLOAD_FI" +
+      "LE_ERROR\020\235\010\022$\n\037MSG_ATTACHMENT_UPLOAD_SUM" +
+      "_ERROR\020\236\010\022\'\n\"MSG_ATTACHMENT_UPLOAD_UPDAT",
+      "E_ERROR\020\237\010\022*\n%MSG_ATTACHMENT_DOWNLOAD_NO" +
+      "_ATTACHMENT\020\240\010\022\'\n\"MSG_ATTACHMENT_DOWNLOA" +
+      "D_NO_MSG_SUM\020\253\010\022%\n MSG_ATTACHMENT_DOWNOA" +
+      "D_NO_EXISTS\020\254\010\022(\n#MSG_ATTACHMENT_DOWNLOA" +
+      "D_PARAM_ERROR\020\255\010\022\'\n\"MSG_ATTACHMENT_DOWNL" +
+      "OAD_READ_ERROR\020\256\010\022$\n\037MSG_ATTACHMENT_UPLO" +
+      "AD_LEN_ERROR\020\257\010\022\032\n\025CHAT_NOT_FROM_MY_CALL" +
+      "\020\260\010\022\025\n\020USER_PHONE_EXIST\020\261\010\022\024\n\017TEAM_NAME_" +
+      "EXIST\020\262\010\022\024\n\017NOT_GROUP_ADMIN\020\263\010\022\020\n\013NO_GRO" +
+      "UP_ID\020\264\010\022\026\n\021NO_GROUP_ADMIN_AD\020\265\010\022\026\n\021NOT_",
+      "CAR_SCAN_CODE\020\266\010\022\026\n\021NOT_CAR_CONNECTED\020\267\010" +
+      "\022\017\n\nNOT_MY_CAR\020\270\010\022\025\n\020NOT_VALID_CAR_ID\020\271\010" +
+      "\022\024\n\017NOT_HAS_ANY_CAR\020\272\010\022\026\n\021CAR_NUM_TOO_SH" +
+      "ORT\020\273\010\022\026\n\021CAR_NUM_DUPLICATE\020\274\010\022\023\n\016NOT_VA" +
+      "LID_IMEI\020\275\010\022\023\n\016IMEI_TOO_SHORT\020\276\010\022\024\n\017UNKN" +
+      "OWN_OP_CODE\020\277\010\022\024\n\017NOT_MY_SUB_USER\020\300\010\022\034\n\027" +
+      "NOT_FRIEND_OR_SAME_TEAM\020\301\010\022\026\n\021NO_SESSION" +
+      "_SERVER\020\302\010\022\024\n\017NO_TEAM_OR_USER\020\303\010\022\030\n\023NO_C" +
+      "HAT_ROOM_SERVER\020\304\010\022\026\n\021CHAT_MAIN_TIMEOUT\020" +
+      "\305\010\022\024\n\017BAD_SERVER_TYPE\020\306\010\022\032\n\025NOT_FOUND_RO",
+      "OM_SERVER\020\307\010\022\033\n\026LOCATION_SERVER_FAILED\020\310" +
+      "\010\022\034\n\027LOCATION_SERVER_TIMEOUT\020\311\010\022\023\n\016NO_MY" +
+      "_LOCATION\020\312\010\022\031\n\024SEARCH_AROUND_FAILED\020\313\010\022" +
+      "\022\n\rNAME_TOO_LONG\020\314\010\022\025\n\020HDFS_OPEN_FAILED\020" +
+      "\315\010\022\021\n\014USER_DISABLE\020\316\010\022\030\n\023SMS_CODE_TYPE_W" +
+      "RONG\020\317\010\022\023\n\016PHONE_TOO_LONG\020\320\010\022\026\n\021VOICE_UN" +
+      "SUPPORTED\020\321\010\022\027\n\022PHONE_FORMAT_WRONG\020\322\010\022\031\n" +
+      "\024ACCOUNT_PREFIX_WRONG\020\323\010\022\020\n\013KQ_NO_PARAM\020" +
+      "\324\010\022\r\n\010KQ_NO_ID\020\325\010\022\031\n\024KQ_ID_OR_PHONE_WRON" +
+      "G\020\326\010\022\024\n\017KQ_NOT_FOUND_ID\020\327\010\022\027\n\022NOT_VALID_",
+      "GROUP_ID\020\330\010\022\031\n\024TOO_MANY_TEAM_MEMBER\020\331\010\022\022" +
+      "\n\rTOO_MANY_IMEI\020\332\010*A\n\013SmsCodeType\022\016\n\nsms" +
+      "CodeReg\020\000\022\020\n\014smsCodeReset\020\001\022\020\n\014smsCodeCh" +
+      "eck\020\002*I\n\nServerType\022\r\n\tstSession\020\000\022\n\n\006st" +
+      "Root\020\001\022\n\n\006stRoom\020\002\022\024\n\007stOther\020\377\377\377\377\377\377\377\377\377\001" +
+      "*&\n\nAcceptType\022\014\n\010atAccept\020\000\022\n\n\006atDeny\020\001" +
+      "*G\n\tEnterType\022\t\n\005Enter\020\000\022\t\n\005Leave\020\001\022\023\n\017P" +
+      "riorityChanged\020\002\022\017\n\013DismissTeam\020\003*\332\003\n\nNo" +
+      "tifyType\022\017\n\013NotifyDummy\020\000\022\025\n\021NotifyApply" +
+      "Friend\020\001\022\026\n\022NotifyAcceptFriend\020\002\022\026\n\022Noti",
+      "fyDeleteFriend\020\003\022\023\n\017NotifyApplyTeam\020\004\022\024\n" +
+      "\020NotifyAcceptTeam\020\005\022\032\n\026NotifyDeleteTeamM" +
+      "ember\020\006\022\025\n\021NotifyDismissTeam\020\007\022\031\n\025Notify" +
+      "AssignTeamAdmin\020\010\022\030\n\024NotifyModifyTeamInf" +
+      "o\020\t\022\022\n\016NotifyQuitTeam\020\n\022\022\n\016NotifyTeamCal" +
+      "l\020\013\022\024\n\020NotifySingleCall\020\014\022\024\n\020NotifyChatS" +
+      "tatus\020\r\022\026\n\022NotifySaveVariable\020\016\022\016\n\nNotif" +
+      "yCall\020\017\022\030\n\024NotifyChangeTeamNick\020\020\022\027\n\023Not" +
+      "ifyLiveVideoCall\020\021\022\032\n\026NotifyLiveVideoCal" +
+      "lAns\020\022\022\026\n\022NotifyFriendStatus\020\023*\257\001\n\rUserH",
+      "ideField\022\016\n\nhfPhoneNum\020\000\022\016\n\nhfUsername\020\001" +
+      "\022\r\n\thfUserSex\020\002\022\016\n\nhfBirthday\020\003\022\016\n\nhfAdd" +
+      "rInfo\020\004\022\r\n\thfCarType\020\005\022\014\n\010hfCarNum\020\006\022\t\n\005" +
+      "hfGps\020\007\022\020\n\014hfTeamRandom\020\010\022\025\n\021hfTeamRando" +
+      "mVideo\020\t*2\n\010TeamRole\022\016\n\nmemberOnly\020\000\022\013\n\007" +
+      "Manager\020\001\022\t\n\005Owner\020\002*\211\001\n\010TeamType\022\016\n\ntea" +
+      "mPublic\020\000\022\r\n\tteamTempo\020\001\022\017\n\013teamPrivate\020" +
+      "\002\022\017\n\013teamInGroup\020\003\022\016\n\nteamRandom\020\004\022\023\n\017te" +
+      "amMapSelector\020\005\022\n\n\006teamM1\020\006\022\013\n\007teamBBS\020\007" +
+      "*,\n\rApplyTeamType\022\r\n\tattInvite\020\000\022\014\n\010attA",
+      "pply\020\001*)\n\013RequestFlag\022\017\n\013rfAllMember\020\000\022\t" +
+      "\n\005rfOne\020\001*\326\001\n\007MsgType\022\n\n\006mtText\020\000\022\013\n\007mtI" +
+      "mage\020\001\022\013\n\007mtVoice\020\002\022\014\n\010mtCancel\020\003\022\017\n\013mtE" +
+      "nterTeam\020\004\022\017\n\013mtLeaveTeam\020\005\022\025\n\021mtChangeH" +
+      "eadImage\020\006\022\022\n\016mtAcceptFriend\020\007\022\022\n\016mtDele" +
+      "teFriend\020\010\022\017\n\013mtVideoFile\020\t\022\017\n\013mtVoiceFi" +
+      "le\020\n\022\024\n\020mtVoiceShortFile\020\013*B\n\nChatStatus" +
+      "\022\r\n\tcsOffline\020\000\022\013\n\007csNotIn\020\001\022\010\n\004csOk\020\002\022\016" +
+      "\n\ncsSpeaking\020\003*&\n\003Sex\022\t\n\005noset\020\000\022\010\n\004male" +
+      "\020\001\022\n\n\006female\020\002*3\n\014KqReportType\022\013\n\007krtAut",
+      "o\020\000\022\n\n\006krtKey\020\001\022\n\n\006krtNfc\020\002*M\n\nReportTyp" +
+      "e\022\013\n\007rtLogin\020\000\022\014\n\010rtLogout\020\001\022\013\n\007rtAlive\020" +
+      "\002\022\014\n\010rtCarReg\020\003\022\t\n\005rtMax\020\004*N\n\017SessionPul" +
+      "lType\022\017\n\013sptToClient\020\000\022\023\n\017sptForceOfflin" +
+      "e\020\001\022\025\n\021sptNotifyCarLogin\020\002*K\n\020CmdMsgSess" +
+      "ionReq\022\033\n\027SessionGetUserSessionIP\020\000\022\032\n\026S" +
+      "essionQueryWhoWatchMe\020\001*6\n\021MsgSessionReq" +
+      "What\022\r\n\tsrwNormal\020\000\022\022\n\016srwCarRegister\020\001*" +
+      "\200\001\n\007RoomCmd\022\025\n\021rcRoomReportAlive\020\000\022\020\n\014rc" +
+      "StartVoice\020\001\022\021\n\rrcAcceptVoice\020\002\022\020\n\014rcCre",
+      "ateRoom\020\003\022\017\n\013rcCloseRoom\020\004\022\026\n\022rcTeamMemb" +
+      "erChange\020\005*[\n\013LocationCmd\022\020\n\014LOCATION_PU" +
+      "T\020\000\022\022\n\016LOCATION_START\020\001\022\021\n\rLOCATION_STOP" +
+      "\020\002\022\023\n\017LOCATION_SEARCH\020\003*&\n\nKqTimeType\022\013\n" +
+      "\007kttNone\020\000\022\013\n\007kttWeek\020\001*.\n\010EditCode\022\t\n\005e" +
+      "cGet\020\000\022\014\n\010ecUpdate\020\001\022\t\n\005ecDel\020\002*\'\n\tRemot" +
+      "eCmd\022\n\n\006rcNone\020\000\022\016\n\nrcNavigate\020\001*e\n\017Trac" +
+      "kModifyCode\022\017\n\013_trackDummy\020\000\022\017\n\013trackMod" +
+      "ify\020\001\022\020\n\014trackVisible\020\002\022\r\n\ttrackHide\020\003\022\017" +
+      "\n\013trackDelete\020\004B%\n#com.example.jrd48.ser",
+      "vice.proto_genb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
