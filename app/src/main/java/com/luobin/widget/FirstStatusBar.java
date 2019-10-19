@@ -226,27 +226,21 @@ public class FirstStatusBar extends FrameLayout {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction() == WifiManager.RSSI_CHANGED_ACTION) {
-                    WifiManager wifiManager = (WifiManager) context
-                            .getSystemService(Context.WIFI_SERVICE);
-                    WifiInfo info = wifiManager.getConnectionInfo();
-                    int strength = WifiManager.calculateSignalLevel(info.getRssi(), 5);
-                    switch (strength) {
-                        case 1:
-                            ivWifi.setBackgroundResource(R.drawable.ic_wifi_signal_one);
-                            break;
-                        case 2:
-                            ivWifi.setBackgroundResource(R.drawable.ic_wifi_signal_two);
-                            break;
-                        case 3:
-                            ivWifi.setBackgroundResource(R.drawable.ic_wifi_signal_three);
-                            break;
-                        case 4:
-                            break;
-                        case 5:
-                            break;
-                        default:
-                            break;
-                    }
+                WifiManager wifiManager = (WifiManager) context
+                        .getSystemService(Context.WIFI_SERVICE);
+                WifiInfo info = wifiManager.getConnectionInfo();
+                int signalLevel = WifiManager.calculateSignalLevel(info.getRssi(), 4);
+                //rs added for show wifi sinal level
+                Log.d(TAG, "signalLevel:"+signalLevel);
+                if (signalLevel <= 0) {
+                    ivWifi.setImageResource(R.drawable.ic_wifi_signal_0_white);
+                } else if (signalLevel == 1) {
+                    ivWifi.setImageResource(R.drawable.ic_wifi_signal_one);
+                } else if (signalLevel == 2) {
+                    ivWifi.setImageResource(R.drawable.ic_wifi_signal_two);
+                } else if (signalLevel >= 3) {
+                    ivWifi.setImageResource(R.drawable.ic_wifi_signal_three);
+                }
             }
         }
     };

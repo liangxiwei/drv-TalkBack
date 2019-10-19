@@ -47,7 +47,7 @@
             android:id="@+id/iv_mobile"
             android:layout_width="12dp"
             android:layout_height="13dp"
-            android:background="@drawable/icon_4g"
+            android:src="@drawable/icon_4g"
             android:layout_marginLeft="2dp"
             />
 
@@ -64,7 +64,7 @@
             android:id="@+id/iv_wifi"
             android:layout_width="18dp"
             android:layout_height="13dp"
-            android:background="@drawable/icon_wifi"
+            android:src="@drawable/icon_wifi"
             />
         <TextView
             android:layout_width="wrap_content"
