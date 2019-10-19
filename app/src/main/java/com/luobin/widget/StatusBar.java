@@ -144,13 +144,13 @@ public class StatusBar extends FrameLayout {
                 tvMobile.setText("4G");
             }
             if (mMobileNetworkState.signalLevel == 4) {
-                ivMobile.setImageResource(R.drawable.icon_4g);
+                ivMobile.setImageResource(R.drawable.ic_4g_signal_four);
             } else if (mMobileNetworkState.signalLevel == 3) {
-                ivMobile.setImageResource(R.drawable.icon_4g);
+                ivMobile.setImageResource(R.drawable.ic_4g_signal_three);
             } else if (mMobileNetworkState.signalLevel == 2) {
-                ivMobile.setImageResource(R.drawable.icon_4g);
+                ivMobile.setImageResource(R.drawable.ic_4g_signal_two);
             } else if (mMobileNetworkState.signalLevel == 1) {
-                ivMobile.setImageResource(R.drawable.icon_4g);
+                ivMobile.setImageResource(R.drawable.ic_4g_signal_one);
             } else {
                 ivMobile.setImageResource(R.drawable.ic_qs_signal_0);
             }
@@ -225,20 +225,19 @@ public class StatusBar extends FrameLayout {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction() == WifiManager.RSSI_CHANGED_ACTION) {
-                    /*
                     WifiManager wifiManager = (WifiManager) context
                             .getSystemService(Context.WIFI_SERVICE);
                     WifiInfo info = wifiManager.getConnectionInfo();
                     int strength = WifiManager.calculateSignalLevel(info.getRssi(), 5);
                     switch (strength) {
                         case 1:
-                            ivWifi.setBackgroundResource(R.drawable.icon_wifi1);
+                            ivWifi.setBackgroundResource(R.drawable.ic_wifi_signal_one);
                             break;
                         case 2:
-                            ivWifi.setBackgroundResource(R.drawable.icon_wifi2);
+                            ivWifi.setBackgroundResource(R.drawable.ic_wifi_signal_two);
                             break;
                         case 3:
-                            ivWifi.setBackgroundResource(R.drawable.icon_wifi3);
+                            ivWifi.setBackgroundResource(R.drawable.ic_wifi_signal_three);
                             break;
                         case 4:
                             break;
@@ -247,7 +246,6 @@ public class StatusBar extends FrameLayout {
                         default:
                             break;
                     }
-                     */
             }
         }
     };
