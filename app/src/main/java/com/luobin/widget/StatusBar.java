@@ -4,8 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.provider.Settings;
 import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
@@ -20,8 +24,11 @@ import android.widget.TextView;
 
 import com.luobin.dvr.R;
 
+import java.lang.reflect.Method;
+
 public class StatusBar extends FrameLayout {
     private static final String TAG = "DvrStatusBar";
+    ImageView ivGps;
     ImageView ivWifi;
     ImageView ivMobile;
     TextView tvMobile;
@@ -66,9 +73,20 @@ public class StatusBar extends FrameLayout {
 
     private void initView(final Context context){
         View view = LayoutInflater.from(context).inflate(R.layout.status_bar,null);
+        ivGps = (ImageView) view.findViewById(R.id.iv_gps);
         ivWifi = (ImageView) view.findViewById(R.id.iv_wifi);
         tvMobile = (TextView) view.findViewById(R.id.tv_mobile);
         ivMobile = (ImageView) view.findViewById(R.id.iv_mobile);
+        if (isGpsOpened()) {
+            ivGps.setImageResource(R.drawable.icon_gps);
+        } else {
+            ivGps.setImageResource(R.drawable.ic_ban_gps);
+        }
+        if (isMobileDataEnabled()) {
+            ivMobile.setImageResource(R.drawable.icon_4g);
+        } else {
+            ivMobile.setImageResource(R.drawable.ic_ban_4g);
+        }
         this.addView(view);
         this.setOnClickListener(new OnClickListener() {
             @Override
@@ -135,7 +153,10 @@ public class StatusBar extends FrameLayout {
         mMobileNetworkState.signalLevel = getSingalLevel();
         Log.d(TAG, "networkType = " + mMobileNetworkState.networkType
                 + "; mMobileNetworkState.signalLevel = " + mMobileNetworkState.signalLevel);
-        if (mMobileNetworkState.dataInService) {
+        if (!isMobileDataEnabled()) {
+            tvMobile.setText("4G");
+            ivMobile.setImageResource(R.drawable.ic_ban_4g);
+        } else if (mMobileNetworkState.dataInService) {
             if (mMobileNetworkState.networkType == 2) {
                 tvMobile.setText("2G");
             } else if (mMobileNetworkState.networkType == 3) {
@@ -218,6 +239,8 @@ public class StatusBar extends FrameLayout {
     private void registerBroadcast(Context context) {
         IntentFilter filter = new IntentFilter();
         filter.addAction(WifiManager.RSSI_CHANGED_ACTION);
+        filter.addAction(LocationManager.PROVIDERS_CHANGED_ACTION);
+        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         context.registerReceiver(mWifiStateBroadcastReceiver, filter);
     }
 
@@ -240,7 +263,43 @@ public class StatusBar extends FrameLayout {
                 } else if (signalLevel >= 3) {
                     ivWifi.setImageResource(R.drawable.ic_wifi_signal_three);
                 }
+            } else if (intent.getAction() == LocationManager.PROVIDERS_CHANGED_ACTION) {
+                if (isGpsOpened()) {
+                    ivGps.setImageResource(R.drawable.icon_gps);
+                } else {
+                    ivGps.setImageResource(R.drawable.ic_ban_gps);
+                }
+            } else if (intent.getAction() == ConnectivityManager.CONNECTIVITY_ACTION) {
+                updateTelephony();
             }
         }
     };
+
+    public  boolean isGpsOpened() {
+        if (Build.VERSION.SDK_INT <19) {
+            LocationManager myLocationManager = (LocationManager)getContext().getSystemService(Context.LOCATION_SERVICE);
+            return myLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } else {
+            int state = Settings.Secure.getInt(getContext().getContentResolver(), Settings.Secure.LOCATION_MODE,
+                    Settings.Secure.LOCATION_MODE_OFF);
+            if (state== Settings.Secure.LOCATION_MODE_OFF) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+    public boolean isMobileDataEnabled() {
+        TelephonyManager telephonyService = (TelephonyManager) getContext().getSystemService(Context.TELEPHONY_SERVICE);
+        try {
+            Method getDataEnabled = telephonyService.getClass().getDeclaredMethod("getDataEnabled");
+            if (null != getDataEnabled) {
+                return (Boolean) getDataEnabled.invoke(telephonyService);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
