@@ -31,6 +31,7 @@ import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.google.protobuf.ByteString;
 import com.luobin.dvr.DvrConfig;
 import com.luobin.dvr.DvrService;
+import com.luobin.dvr.R;
 import com.luobin.dvr.ui.MainActivity;
 import com.luobin.voice.DefaultSetting;
 import com.luobin.voice.VolatileBool;
@@ -671,7 +672,7 @@ public class RESClient {
                     }
                 }
                 Intent intent = new Intent(ToastReceiver.TOAST_ACTION);
-                intent.putExtra(ToastReceiver.TOAST_CONTENT, "当前对讲使用车外摄像头");
+                intent.putExtra(ToastReceiver.TOAST_CONTENT, MyApplication.getContext().getResources().getString(R.string.toast_current_video_screen_mode_outer));
                 MyApplication.getContext().sendBroadcast(intent);
             } else {
                 oldSelf = true;
@@ -695,7 +696,7 @@ public class RESClient {
                     }).start();
                 }
                 Intent intent = new Intent(ToastReceiver.TOAST_ACTION);
-                intent.putExtra(ToastReceiver.TOAST_CONTENT, "当前对讲使用车内摄像头");
+                intent.putExtra(ToastReceiver.TOAST_CONTENT, MyApplication.getContext().getResources().getString(R.string.toast_current_video_screen_mode_inner));
                 MyApplication.getContext().sendBroadcast(intent);
             }
             Log.e(TAG, "switchCamera Now self:" + self_video);

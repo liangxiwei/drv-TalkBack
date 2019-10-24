@@ -1676,6 +1676,9 @@ public class DvrImpl extends DvrImplBase
             try {
                 int lastVideoScreenMode = mCurrentVideoScreenMode;
                 mCurrentVideoScreenMode = Settings.System.getInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_VIDEO_SCREEN_MODE);
+                if (mCurrentVideoScreenMode == 2) {
+                    ToastR.setToast(MyApplication.getContext(), MyApplication.getContext().getResources().getString(R.string.toast_current_video_screen_mode_pip));
+                }
                 Log.d("ChatVideoScreenMode", "=mCurrentVideoScreenMode=" + mCurrentVideoScreenMode);
                 Log.e("====", "=mCurrentVideoScreenMode=" + mCurrentVideoScreenMode);
                 if (lastVideoScreenMode == 0 && mCurrentVideoScreenMode != 0 || lastVideoScreenMode != 0 && mCurrentVideoScreenMode == 0) {
