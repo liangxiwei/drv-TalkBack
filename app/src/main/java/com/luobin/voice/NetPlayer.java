@@ -7,7 +7,9 @@ import android.media.AudioTrack;
 import android.media.audiofx.Equalizer;
 import android.util.Log;
 
+import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.SettingRW;
+import com.example.jrd48.chat.crash.MyApplication;
 import com.example.jrd48.service.MyLogger;
 import com.luobin.log.DBMyLogHelper;
 import com.luobin.log.LogCode;
@@ -65,6 +67,7 @@ public class NetPlayer implements Consumer, Runnable {
 
     private void startAudioTrack() {
         mLog.i("player begin.");
+        Log.d(TAG, "audio player begin.");
         mSettings.load();
         am.setSpeakerphoneOn(true);
 //        am.setMode(AudioManager.MODE_IN_COMMUNICATION);
@@ -181,7 +184,9 @@ public class NetPlayer implements Consumer, Runnable {
                 // clear decodeList avoid playing last audio
                 decodeList.clear();
                 // 开始播放语音
-                startAudioTrack();
+                if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                    startAudioTrack();
+                }
                 DBMyLogHelper.insertLog(context, LogCode.PLAU, "NetPlayer startAudioTrack", null);
 
                 // 启动解码器
