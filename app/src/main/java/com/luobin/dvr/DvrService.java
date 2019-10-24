@@ -116,7 +116,10 @@ public class DvrService extends Service {
                 case MSG_TAKE_PHOTO:
                     break;
                 case MSG_DVR_SWITCH_VIDEO:
-                    mCircleRecordHelper.switchVideo();
+					if(mCircleRecordHelper != null){
+						//rs added null check
+                    	mCircleRecordHelper.switchVideo();
+					}
                     break;
             }
         }

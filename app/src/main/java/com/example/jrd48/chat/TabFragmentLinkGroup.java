@@ -987,7 +987,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             IntentFilter filter = new IntentFilter();
             filter.addAction(TeamMemberProcesser.ACTION);
             final TimeoutBroadcast b = new TimeoutBroadcast(mContext, filter, getBroadcastManager());
-            b.startReceiver(TimeoutBroadcast.TIME_OUT_IIME, new ITimeoutBroadcast() {
+            b.startReceiver(5/*TimeoutBroadcast.TIME_OUT_IIME*/, new ITimeoutBroadcast() { //rs change timeout from 60s->5s
                 @Override
                 public void onTimeout() {
                     //ToastR.setToast(mContext, "连接超时");
@@ -1101,6 +1101,59 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     } else {
                         Log.e(TAG, "getGroupMan groupMan code:" + code);
                         new ResponseErrorProcesser(mContext, code);
+
+						//rs added for get member from database if response is error
+						Log.d(TAG, "Error response: Cmd.cmdGetTeamMember teamId = " + teamInfo.getTeamID());
+	                    //网络返回错误，从数据库中获取
+	                    TeamMemberHelper teamMemberHelper = new TeamMemberHelper(getContext(), teamInfo.getTeamID() + "TeamMember.dp", null);
+	                    SQLiteDatabase db = teamMemberHelper.getWritableDatabase();
+	                    final Cursor cursor = db.query("LinkmanMember", null, null, null, null, null, null);
+	                    Log.d(TAG, "cursor=" + cursor.getCount());
+	                    if (cursor != null && cursor.getCount() > 0) { // 如果数据库里有，从数据库里取出群成员
+	                        List<TeamMemberInfo> memberInfos = new ArrayList<>();
+	                        if (cursor.moveToFirst()) {
+	                            do {
+	                                String user_phone = cursor.getString(cursor.getColumnIndex("user_phone"));
+	                                String user_name = cursor.getString(cursor.getColumnIndex("user_name"));
+	                                String nick_name = cursor.getString(cursor.getColumnIndex("nick_name"));
+	                                int role = cursor.getInt(cursor.getColumnIndex("role"));
+	                                int member_priority = cursor.getInt(cursor.getColumnIndex("member_priority"));
+
+	                                TeamMemberInfo memberInfo = new TeamMemberInfo();
+	                                memberInfo.setUserPhone(user_phone);
+	                                memberInfo.setUserName(user_name);
+	                                memberInfo.setNickName(nick_name);
+	                                memberInfo.setRole(role);
+	                                memberInfo.setMemberPriority(member_priority);
+	                                memberInfos.add(memberInfo);
+	                            } while (cursor.moveToNext());
+								
+	                            allMemberMap.put(teamInfo.getTeamID(), memberInfos);
+	                            Log.d(TAG, "allMemberMap.size() = " + allMemberMap.size());
+	                            Log.d(TAG, "mTeamInfo.size() = " + mTeamInfo.size());
+	                            if (allMemberMap.size() == mTeamInfo.size()) {
+	                                if (mHandler != null) {
+	                                    mHandler.sendEmptyMessage(UPDATE_UI);
+	                                }
+	                            }
+	                        } else {
+	                            Log.d(TAG, "cursor.moveToFirst() = false");
+	                        }
+	                    } else {
+	                        //数据库中没有，放入空联系人
+	                        allMemberMap.put(teamInfo.getTeamID(), new ArrayList<TeamMemberInfo>());
+	                        Log.d(TAG, "allMemberMap.size() = " + allMemberMap.size());
+	                        Log.d(TAG, "mTeamInfo.size() = " + mTeamInfo.size());
+	                        if (allMemberMap.size() == mTeamInfo.size()) {
+	                            if (mHandler != null) {
+	                                mHandler.sendEmptyMessage(UPDATE_UI);
+	                            }
+	                        }
+	                    }
+
+						db.close();//rs added
+						//end
+	                    
                     }
                 }
             });

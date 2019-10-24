@@ -444,11 +444,11 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
                     editor.commit();
 
 					//rs del for login shortly, LBCJW-173
-					/*
                     DBManagerCarList carListDB = new DBManagerCarList(LoginActivity.this);
                     try {
                         ArrayList<CarBrands> date = carListDB.getCarBrandsList(true);
                         if (date == null || date.size() <= 0) {
+							Log.d("rs", "login start CheckAndUpdateCarTypeThread");
                             new CheckAndUpdateCarTypeThread((MyApplication) getApplication()).start();
                         } else {
                             for (CarBrands carBrands : date) {
@@ -466,7 +466,7 @@ public class LoginActivity extends BaseDialogActivity implements PermissionUtil.
                     } finally {
                         carListDB.closeDB();
                     }
-                    */
+					Log.d("rs", "login end check car brand");
 					//end
 
 

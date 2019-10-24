@@ -27,7 +27,7 @@
         android:focusable="true"
         android:nextFocusUp="@+id/tv_cancel"
         android:nextFocusDown="@+id/tv_cancel"
-        android:layout_height="226dp"></ListView>
+        android:layout_height="190dp"></ListView>
 
     <TextView
         android:layout_width="match_parent"

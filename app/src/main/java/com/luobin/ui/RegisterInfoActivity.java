@@ -355,6 +355,20 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
 		if(dialog != null){
 			dialog.show();
 		}
+
+		//rs added for get car data first
+		new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+					getCarList();
+                }catch (Exception e){
+                    e.printStackTrace();
+                };
+            }
+        }).start();
+		//end
+		
         mPermissionUtil = PermissionUtil.getInstance();
 
         myInforTool = new MyInforTool(mContext, true);
@@ -636,6 +650,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
         }
     }
 
+	/*
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
@@ -649,6 +664,7 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             }
         }
     };
+    */
 
 
     /**
@@ -1627,10 +1643,10 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
             //二级选择器*/
             if (type == DIALOG_TYPE.CARTYPE) {
 
-                if (car1items == null || car1items.size() < 1) {
-                    ToastR.setToast(mContext, "正在获取汽车品牌数据...");
-                    getCarList();
-                    //return;
+                if (car1items == null || car1items.size() < 1 || car2items == null || car2items.size() < 1) {
+                    ToastR.setToast(mContext, "正在获取汽车品牌数据，请稍候重试");
+                    //getCarList();
+                    return;
                 }
 
                 pvOptions.setPicker(car1items, car2items);

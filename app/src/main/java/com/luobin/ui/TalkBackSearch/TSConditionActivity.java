@@ -132,6 +132,18 @@ public class TSConditionActivity extends BaseDialogActivity implements
     private void initData() {
         searchFriendsCondition = new SearchFriendsCondition();
 
+		//rs added for get car data first
+		new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+					getCarList();
+                }catch (Exception e){
+                    e.printStackTrace();
+                };
+            }
+        }).start();
+		//end
     }
 
     private void initDialog() {
@@ -452,13 +464,13 @@ public class TSConditionActivity extends BaseDialogActivity implements
             //二级选择器*/
             if (type == DIALOG_TYPE.CARTYPE) {
 
-                if (car1items == null || car1items.size() < 1) {
-                    ToastR.setToast(context, "正在获取汽车品牌数据...");
-                    getCarList();
-                    //return;
+                if (car1items == null || car1items.size() < 1 || car2items == null || car2items.size() < 1) {
+                    ToastR.setToast(context, "正在获取汽车品牌数据，请稍候重试");
+					//getCarList();
+					return;
+                }else{
+                	pvOptions.setPicker(car1items, car2items);
                 }
-
-                pvOptions.setPicker(car1items, car2items);
             } else {
                 pvOptions.setPicker(options1Items, options2Items);
             }
@@ -504,8 +516,7 @@ public class TSConditionActivity extends BaseDialogActivity implements
 
 
         for (int i = 0; i < carDataNew.size(); i++) {
-            carFirstData = new DBManagerCarList(this).
-                    getCarFristTypesList(carDataNew.get(i).getCarBrandID());
+            carFirstData = new DBManagerCarList(this).getCarFristTypesList(carDataNew.get(i).getCarBrandID());
             CarInfoBean_New carInfoBean = new CarInfoBean_New();
             carInfoBean.setCarFirstTypes(carFirstData);
             carInfoBean.setVersion(carDataNew.get(i).getVersion());
@@ -520,11 +531,10 @@ public class TSConditionActivity extends BaseDialogActivity implements
 
             for (int i1 = 0; i1 < carDataNew.get(i).getCarFirstTypes().size(); i1++) {
                 data.add(carDataNew.get(i).getCarFirstTypes().get(i1).getCarFirstTypeName());
-                Log.i("data is Show >", carDataNew.get(i).getCarFirstTypes().get(i1)
-                        .getCarFirstTypeName());
+                //Log.i("data is Show >", carDataNew.get(i).getCarFirstTypes().get(i1)
+                //        .getCarFirstTypeName());
             }
             car2items.add(data);
-
         }
     }
 
