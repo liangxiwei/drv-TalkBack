@@ -72,6 +72,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class NotificationActivity extends BaseDialogActivity implements OnClickListener {
+    private final static String TAG = "NotificationActivity";
     private PullToRefreshListView mPullRefreshListView;
     ListView listView;
     private FriendRequestAdapter adapter;
@@ -798,6 +799,8 @@ public class NotificationActivity extends BaseDialogActivity implements OnClickL
                         ProtoMessage.ErrorCode.OK.getNumber()) {
                     // backSuccess(type);
                     clearListorCache(position, friendsMsg);
+                    Log.i(TAG, "received servier result");
+                    sendBroadcast(new Intent("ACTION.refreshTeamList"));
                 } else {
                     fail(i.getIntExtra("error_code", -1));
                 }

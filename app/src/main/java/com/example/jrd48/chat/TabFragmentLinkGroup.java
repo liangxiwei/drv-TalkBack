@@ -233,7 +233,12 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     private BroadcastReceiver refreshTeamReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            loadTeamListFromNet();
+            if (intent == null) {
+                return;
+            }
+            if ("ACTION.refreshTeamList".equals(intent.getAction())) {
+                loadTeamListFromNet();
+            }
         }
 
     };
