@@ -13,6 +13,7 @@ import com.example.jrd48.service.MyService;
 
 public class PttKeyReceiver extends BroadcastReceiver {
 
+    private final static String TAG = "PttKeyReceiver";
     public final static int KEY_DOWN = 1;
     public final static int KEY_UP = 2;
 
@@ -22,7 +23,7 @@ public class PttKeyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         boolean pttKeyDown = false;
-        Log.v("wsDvr","PttKeyReceiver action:" + intent.getAction());
+        Log.v(TAG,"PttKeyReceiver action:" + intent.getAction());
 //        NotifyManager.getInstance().showNotification("123");
         if (intent.getAction().equals("com.android.action.ptt")) {
             pttKeyDown = (intent.getIntExtra("ptt_action", 0) == 1);
@@ -38,6 +39,7 @@ public class PttKeyReceiver extends BroadcastReceiver {
             wl.setReferenceCounted(false);
             wl.acquire(5000);
         }
+
 
         if(GlobalStatus.getChatRoomMsg() != null) {
             Intent service = new Intent(context, MyService.class);

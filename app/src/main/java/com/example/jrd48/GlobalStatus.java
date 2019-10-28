@@ -395,8 +395,7 @@ public class GlobalStatus {
     }
 
     public synchronized static void clearChatRoomMsg() {
-        Log.v(TAG, "clearChatRoomMsg");
-
+        Log.i(TAG, "clearChatRoomMsg");
         if (msg != null) {
             DvrService.start(MyApplication.getContext(), RESClient.ACTION_STOP_RTMP, null);
             DvrService.start(MyApplication.getContext(), RESClient.ACTION_STOP_PLAY, null);

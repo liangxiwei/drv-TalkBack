@@ -3216,7 +3216,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         Log.i(TAG, "first activit onBackPress:" + additionType);
 
         if (GlobalStatus.isVideo()) {
-            HungupClick();
+            // HungupClick();
+            finish();
         } else if (additionType == 1) {
             additionLayout.setVisibility(GONE);
             additionType = 0;
