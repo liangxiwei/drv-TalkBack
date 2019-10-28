@@ -78,7 +78,16 @@ public class ContactsMemberAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
 
-        TeamMemberInfo memberInfo = list.get(position);
+		//rs added for crash LBCJW-258
+        TeamMemberInfo memberInfo = null;
+		try{
+			memberInfo = list.get(position);
+		}catch (Exception ex){
+			Log.d("rs", "found Exception:"+ex.toString());
+			return view;
+		}
+		//end
+		
         String name = null;
         if (listFriendMembers != null && listFriendMembers.size() > 0) {
             for (AppliedFriends appliedFriends : listFriendMembers) {

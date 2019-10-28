@@ -862,7 +862,7 @@ public class DvrService extends Service {
     };
     @Override
     public void onCreate() {
-        Log.d(TAG, "onCreate：" + Build.PRODUCT);
+        Log.d(TAG, "onCreate:" + Build.PRODUCT);
         shutDownObserver = new ShutDownObserver(new Handler());
         shutDownObserver.startObserving();
         Settings.System.putInt(MyApplication.getContext().getContentResolver(), MainActivity.DVR_FULLSCREEN_SHOW, 0);
