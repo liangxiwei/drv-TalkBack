@@ -3136,6 +3136,19 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         Collections.sort(userList, new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
+            	//rs added for show online first
+				if((o1.getState() == ProtoMessage.ChatStatus.csSpeaking_VALUE || o1.getState() == ProtoMessage.ChatStatus.csOk_VALUE)
+					&&(o2.getState() != ProtoMessage.ChatStatus.csSpeaking_VALUE && o2.getState() != ProtoMessage.ChatStatus.csOk_VALUE)){
+					//Log.d("rsss", "o1 online o1:"+o1.getPhone()+", o2:"+o2.getPhone());
+					return -1;
+				}else if((o1.getState() != ProtoMessage.ChatStatus.csSpeaking_VALUE && o1.getState() != ProtoMessage.ChatStatus.csOk_VALUE)
+					&&(o2.getState() == ProtoMessage.ChatStatus.csSpeaking_VALUE || o2.getState() == ProtoMessage.ChatStatus.csOk_VALUE)){
+					//Log.d("rsss", "o2 online->o1:"+o1.getPhone()+", o2:"+o2.getPhone());
+					return 1;
+				}
+				//end
+
+				
                 // 加号图标永远排在最后
                 if (o2.isAddIcon())
                     return -1;
