@@ -69,6 +69,8 @@
                 android:layout_toEndOf="@+id/tvName"
                 android:background="@drawable/bg_panel_edittext"
                 android:inputType="number"
+                android:hint="请输入账号"
+                android:imeOptions="actionDone"
                 android:textColor="@color/white" />
         </RelativeLayout>
 
@@ -97,6 +99,8 @@
                 android:layout_toEndOf="@+id/tvPass"
                 android:background="@drawable/bg_panel_edittext"
                 android:inputType="textPassword"
+                android:hint="请输入密码"
+                android:imeOptions="actionDone"
                 android:textColor="@color/white" />
         </RelativeLayout>
 
