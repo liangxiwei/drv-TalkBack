@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -34,8 +35,10 @@ public class StatusBar extends FrameLayout {
     TextView tvMobile;
     SignalStrength mSignalStrength;
     ServiceState mServiceState;
+    NetworkInfo mWifiNetworkInfo;
     int mDataState = TelephonyManager.DATA_DISCONNECTED;
     int mDataNetType = TelephonyManager.NETWORK_TYPE_UNKNOWN;
+    int mWifiSignalLevel = 0;
     MobileNetworkState mMobileNetworkState;
 
     private class MobileNetworkState {
@@ -86,6 +89,11 @@ public class StatusBar extends FrameLayout {
             ivMobile.setImageResource(R.drawable.icon_4g);
         } else {
             ivMobile.setImageResource(R.drawable.ic_ban_4g);
+        }
+        if (isWifiEnabled()) {
+            ivWifi.setImageResource(R.drawable.icon_wifi);
+        } else {
+            ivWifi.setImageResource(R.drawable.ic_ban_wifi);
         }
         this.addView(view);
         this.setOnClickListener(new OnClickListener() {
@@ -239,6 +247,8 @@ public class StatusBar extends FrameLayout {
     private void registerBroadcast(Context context) {
         IntentFilter filter = new IntentFilter();
         filter.addAction(WifiManager.RSSI_CHANGED_ACTION);
+        filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
+        filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         filter.addAction(LocationManager.PROVIDERS_CHANGED_ACTION);
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         context.registerReceiver(mWifiStateBroadcastReceiver, filter);
@@ -251,18 +261,16 @@ public class StatusBar extends FrameLayout {
                 WifiManager wifiManager = (WifiManager) context
                         .getSystemService(Context.WIFI_SERVICE);
                 WifiInfo info = wifiManager.getConnectionInfo();
-                int signalLevel = WifiManager.calculateSignalLevel(info.getRssi(), 4);
-                //rs added for show wifi sinal level
-                Log.d(TAG, "signalLevel:"+signalLevel);
-                if (signalLevel <= 0) {
-                    ivWifi.setImageResource(R.drawable.ic_wifi_signal_0_white);
-                } else if (signalLevel == 1) {
-                    ivWifi.setImageResource(R.drawable.ic_wifi_signal_one);
-                } else if (signalLevel == 2) {
-                    ivWifi.setImageResource(R.drawable.ic_wifi_signal_two);
-                } else if (signalLevel >= 3) {
-                    ivWifi.setImageResource(R.drawable.ic_wifi_signal_three);
+                mWifiSignalLevel = WifiManager.calculateSignalLevel(info.getRssi(), 4);
+                updateWifiState();
+            } else if (intent.getAction() == WifiManager.WIFI_STATE_CHANGED_ACTION) {
+                updateWifiState();
+            } else if (intent.getAction() == WifiManager.NETWORK_STATE_CHANGED_ACTION) {
+                mWifiNetworkInfo = (NetworkInfo) intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
+                if (mWifiNetworkInfo != null) {
+                    Log.d(TAG, "mWifiStateBroadcastReceiver mWifiNetworkInfo.isConnected():" + mWifiNetworkInfo.isConnected());
                 }
+                updateWifiState();
             } else if (intent.getAction() == LocationManager.PROVIDERS_CHANGED_ACTION) {
                 if (isGpsOpened()) {
                     ivGps.setImageResource(R.drawable.icon_gps);
@@ -301,5 +309,27 @@ public class StatusBar extends FrameLayout {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public boolean isWifiEnabled() {
+        WifiManager mWifiManager = (WifiManager) getContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        return mWifiManager.isWifiEnabled();
+    }
+
+    public void updateWifiState() {
+        Log.d(TAG, "updateWifiState: mWifiSignalLevel:" + mWifiSignalLevel);
+        if (!isWifiEnabled()) {
+            ivWifi.setImageResource(R.drawable.ic_ban_wifi);
+        } else if ((mWifiNetworkInfo == null) || !mWifiNetworkInfo.isConnected()) {
+            ivWifi.setImageResource(R.drawable.ic_wifi_signal_0_white);
+        } else if (mWifiSignalLevel <= 0) {
+            ivWifi.setImageResource(R.drawable.ic_wifi_signal_0_white);
+        } else if (mWifiSignalLevel == 1) {
+            ivWifi.setImageResource(R.drawable.ic_wifi_signal_one);
+        } else if (mWifiSignalLevel == 2) {
+            ivWifi.setImageResource(R.drawable.ic_wifi_signal_two);
+        } else if (mWifiSignalLevel >= 3) {
+            ivWifi.setImageResource(R.drawable.ic_wifi_signal_three);
+        }
     }
 }
