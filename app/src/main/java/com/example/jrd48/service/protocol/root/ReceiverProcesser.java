@@ -50,6 +50,7 @@ import me.lake.librestreaming.client.RESClient;
  */
 
 public class ReceiverProcesser extends CommonProcesser {
+    private final static String TAG = "ReceiverProcesser";
     public final static String KEY = "notify";
     public final static String UPDATE_KEY = "msg_number_update";
     public final static String ACTION = "ACTION.ReceiverProcesser";
@@ -119,7 +120,7 @@ public class ReceiverProcesser extends CommonProcesser {
                 }
                 i.putExtra("error_code", resp.getErrorCode());
                 if (resp.getErrorCode() == ProtoMessage.ErrorCode.OK_VALUE) {
-                    Log.i("jim", "获得正确应答:" + resp.toString());
+                    Log.i(TAG, "获得正确应答:" + resp.toString());
                     // TODO: 这里处理添加 其他正确的数据
                     // i.putExtra(other useful value);
 
@@ -248,6 +249,7 @@ public class ReceiverProcesser extends CommonProcesser {
 //                        db.close();
 //                        return;
 //                    } else
+
                     if (resp.getMsgType() == ProtoMessage.MsgType.mtEnterTeam_VALUE) {
                         long groupIdTemp = groupId;
                         long joinTeamId = -1;
@@ -289,7 +291,7 @@ public class ReceiverProcesser extends CommonProcesser {
                             } else {
                                 GlobalStatus.setChatRoomtempId(0);
                             }
-                            Log.v("wsDvr", "roomId:" + closeBuild.getRoomID());
+                            Log.v(TAG, "roomId:" + closeBuild.getRoomID());
                             closeBuild.setAcceptType(ProtoMessage.AcceptType.atDeny_VALUE);
                             MyService.start(context, ProtoMessage.Cmd.cmdAcceptVoice.getNumber(), closeBuild.build());
 
@@ -314,14 +316,14 @@ public class ReceiverProcesser extends CommonProcesser {
                         }
 
                         if (resp.getMsgContent().toStringUtf8().equals(myPhone)) {
-                            Log.d("chat", "equals myphone");
+                            Log.d(TAG, "equals myphone");
                             if (resp.getMsgType() == ProtoMessage.MsgType.mtEnterTeam_VALUE) {
-                                Log.d("chat", "mtEnterTeam_VALUE");
+                                Log.d(TAG, "mtEnterTeam_VALUE");
                                 DBManagerTeamList dblist = new DBManagerTeamList(context, true, DBTableName.getTableName(context, DBHelperTeamList.NAME));
                                 teamName = dblist.getTeamName(groupIdTemp);
                                 dblist.closeDB();
                                 if (!TextUtils.isEmpty(teamName)) {
-                                    Log.d("chat", "您加入了[" + teamName + "]群");
+                                    Log.d(TAG, "您加入了[" + teamName + "]群");
                                     ToastR.setToast(context, "您加入了[" + teamName + "]群");
                                 } else {
                                     joinTeamId = groupIdTemp;
@@ -348,7 +350,7 @@ public class ReceiverProcesser extends CommonProcesser {
                                 teamName = dblist.getTeamName(groupIdTemp);
                                 dblist.closeDB();
                                 if (!TextUtils.isEmpty(teamName) && resp.getMsgType() == ProtoMessage.MsgType.mtLeaveTeam_VALUE) {
-                                    Log.d("chat", "您退出了[" + teamName + "]群");
+                                    Log.d(TAG, "您退出了[" + teamName + "]群");
                                     ToastR.setToast(context, "您退出了[" + teamName + "]群");
                                 }
                                 new CancelNotify(context, groupIdTemp, manager, phone);
@@ -410,7 +412,7 @@ public class ReceiverProcesser extends CommonProcesser {
                                     } else {
                                         GlobalStatus.setChatRoomtempId(0);
                                     }
-                                    Log.v("wsDvr", "roomId:" + closeBuild.getRoomID());
+                                    Log.v(TAG, "roomId:" + closeBuild.getRoomID());
                                     closeBuild.setAcceptType(ProtoMessage.AcceptType.atDeny_VALUE);
                                     MyService.start(context, ProtoMessage.Cmd.cmdAcceptVoice.getNumber(), closeBuild.build());
 
@@ -517,7 +519,7 @@ public class ReceiverProcesser extends CommonProcesser {
                     } else if (resp.getMsgType() == ProtoMessage.MsgType.mtDeleteFriend_VALUE) {
                         final String deletePhone = resp.getMsgContent().toStringUtf8();
                         new CancelNotify(context, groupId, manager, deletePhone);
-                        Log.v("wsDvr", "delete:" + deletePhone);
+                        Log.v(TAG, "delete:" + deletePhone);
                         MsgTool.deleteFriendsMsg(context, deletePhone);
                         Intent intent = new Intent(MainActivity.FRIEND_ACTION);
                         intent.putExtra("phone", deletePhone);
@@ -689,7 +691,7 @@ public class ReceiverProcesser extends CommonProcesser {
 
 
                 } else {
-                    Log.i("chat", "错误码: " + resp.getErrorCode());
+                    Log.i(TAG, "错误码: " + resp.getErrorCode());
                     new ResponseErrorProcesser(context, resp.getErrorCode());
                 }
 
@@ -725,7 +727,7 @@ public class ReceiverProcesser extends CommonProcesser {
 
             @Override
             public void onTimeout() {
-                Log.e("code", "连接超时");
+                Log.e(TAG, "连接超时");
 //                ToastR.setToast(context, "连接超时");
             }
 
@@ -735,7 +737,7 @@ public class ReceiverProcesser extends CommonProcesser {
                 if (code == ProtoMessage.ErrorCode.OK.getNumber()) {
                     context.sendBroadcast(intent);
                 } else {
-                    Log.e("code", "error code:" + code);
+                    Log.e(TAG, "error code:" + code);
                     //  new ResponseErrorProcesser(context, i.getIntExtra("error_code", -1));
                 }
             }
@@ -767,16 +769,16 @@ public class ReceiverProcesser extends CommonProcesser {
 
                     Intent in = new Intent("ACTION.refreshTeamList");
                     context.sendBroadcast(in);
-                    Log.d("chat", "joinTeamId="+joinTeamId);
+                    Log.d(TAG, "joinTeamId="+joinTeamId);
                     if(joinTeamId >0){
                         DBManagerTeamList dblist = new DBManagerTeamList(context, true, DBTableName.getTableName(context, DBHelperTeamList.NAME));
                         String teamName = dblist.getTeamName(joinTeamId);
                         dblist.closeDB();
                         if (!TextUtils.isEmpty(teamName)) {
-                            Log.d("chat", "您加入了[" + teamName + "]群1");
+                            Log.d(TAG, "您加入了[" + teamName + "]群1");
                             ToastR.setToast(context, "您加入了[" + teamName + "]群");
                         }
-                        Log.d("chat", "joinTeamId end");
+                        Log.d(TAG, "joinTeamId end");
                     }
                 } else {
                     new ResponseErrorProcesser(context, i.getIntExtra("error_code", -1));
@@ -788,7 +790,7 @@ public class ReceiverProcesser extends CommonProcesser {
 
     @Override
     public void onSent() {
-        Log.i("chat", "pack sent: sms");
+        Log.i(TAG, "pack sent: sms");
     }
 
 }

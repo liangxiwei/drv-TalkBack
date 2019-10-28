@@ -4769,6 +4769,19 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
      */
     private void onChatStatusChanged(ProtoMessage.NotifyMsg resp) {
         changespeaking(resp.getChatStatus(), resp.getFriendPhoneNum());
+        List<Integer> statusList = GlobalStatus.getStatusList();
+        int numberOnline = 0;
+        for (int status : statusList) {
+            if (status == ProtoMessage.ChatStatus.csOk_VALUE ||
+                    status == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
+                numberOnline = numberOnline + 1;
+            }
+        }
+        if (numberOnline != nowMansNum) {
+            Log.i(TAG, "onChatStatusChanged, online number changed");
+            refreshHandler.removeCallbacks(mRefreshTeamRunnable);
+            refreshHandler.post(mRefreshTeamRunnable);
+        }
     }
 
     //****************触摸操作（双指下滑，上滑）***************
@@ -5288,7 +5301,6 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
 
                 }
             } else if (gotGroup == group) {
-
                 if (intent.getIntExtra("msg_type", -1) == 4) {
 //                    getGroupMan(group);
                     refreshHandler.removeCallbacks(mRefreshTeamRunnable);

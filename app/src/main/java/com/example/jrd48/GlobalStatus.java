@@ -370,7 +370,6 @@ public class GlobalStatus {
                                 }
                             }
                         }
-
                         Settings.System.putString(MyApplication.getContext().getContentResolver(), Settings.System.CALL_INFO, showName);
                     }
                 }
