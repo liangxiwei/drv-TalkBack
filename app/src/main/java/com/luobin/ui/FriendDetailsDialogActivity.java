@@ -88,13 +88,15 @@ public class FriendDetailsDialogActivity extends BaseActivity {
     Button btnTrail;
     @BindView(R.id.btn_add_friend)
     Button btnAddFriend;
-
+    @BindView(R.id.btn_delete_friend)
+    Button btnDeteleFriend;
+    @BindView(R.id.friend_opt_btns)
+    View friendOptBtns;
 
     String userPhone;
     @BindView(R.id.tv_sex)
     TextView tvSex;
-    @BindView(R.id.btn_delete_friend)
-    Button btnDeteleFriend;
+
     private String myPhone;
     private String userName;
     private long teamID = -1;
@@ -122,7 +124,6 @@ public class FriendDetailsDialogActivity extends BaseActivity {
         initProgress();
         getIntentMsg();
         initData();
-
     }
 
     @Override
@@ -180,6 +181,7 @@ public class FriendDetailsDialogActivity extends BaseActivity {
             }
             btnAddFriend.setVisibility(View.GONE);
             btnDeteleFriend.setVisibility(View.VISIBLE);
+            friendOptBtns.setVisibility(View.VISIBLE);
         } else {
             // 如果不是好友
             if (userInfo != null) {
@@ -233,16 +235,15 @@ public class FriendDetailsDialogActivity extends BaseActivity {
                 setMyLocalMsg(mSearchStrangers.getProv(), mSearchStrangers.getCity(), mSearchStrangers.getTown());
 
             }
-
-            if (userPhone != myPhone){
+            if (!TextUtils.equals(userPhone, myPhone)){
                 btnAddFriend.setVisibility(View.VISIBLE);
                 btnDeteleFriend.setVisibility(View.GONE);
-            }else{
+                friendOptBtns.setVisibility(View.VISIBLE);
+            } else {
                 btnAddFriend.setVisibility(View.GONE);
                 btnDeteleFriend.setVisibility(View.GONE);
+                friendOptBtns.setVisibility(View.GONE);
             }
-
-
         }
     }
 
@@ -283,7 +284,6 @@ public class FriendDetailsDialogActivity extends BaseActivity {
                         mapIntent.putExtra("linkNickName", mSearchStrangers.getUserName());
                     }
                 }
-
                 startActivity(mapIntent);
                 break;
             case R.id.btn_trail:
@@ -299,7 +299,7 @@ public class FriendDetailsDialogActivity extends BaseActivity {
                 deleteFriendDialog();
                 break;
 
-    }
+        }
     }
 
 

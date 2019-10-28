@@ -101,6 +101,7 @@ import java.util.List;
 
 public class TeamMemberLocationActivity extends BaseActivity implements PermissionUtil.PermissionCallBack, View.OnClickListener
         , AMap.OnMyLocationChangeListener, AMap.OnMarkerClickListener ,AMap.OnMapTouchListener{
+    private final static String TAG = "TeamMemberLocation";
     protected PermissionUtil mPermissionUtil;
     int MY_PERMISSIONS_REQUEST_LOCATION = 10021;
     List<AppliedFriends> listMembersCache;
@@ -282,7 +283,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
             return;
         }
         aMap.setMyLocationStyle(myLocationStyle);
-      //  aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
+        // aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
 
         aMap.getUiSettings().setMyLocationButtonEnabled(false);// 设置默认定位按钮是否显示
         aMap.getUiSettings().setCompassEnabled(true);
@@ -301,15 +302,15 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
             }
         });
 
-        //设置SDK 自带定位消息监听
-//        aMap.setOnMyLocationChangeListener(this);
+        // 设置SDK 自带定位消息监听
+        // aMap.setOnMyLocationChangeListener(this);
         aMap.setOnMarkerClickListener(this);
         aMap.setOnMapTouchListener(this);
     }
 
     @Override
     public void onTouch(MotionEvent motionEvent) {
-//        getMapCenterPoint();
+        // getMapCenterPoint();
     }
 
 
@@ -377,7 +378,6 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
         myIntentFilter.addAction(FriendLocationChangedProcesser.ACTION);
         //注册广播
         registerReceiver(mBroadcastReceiver, myIntentFilter);
-
     }
 
     private void getIntentMsg() {
@@ -402,7 +402,6 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
             int sex = intent.getIntExtra("linkmanSex", 0);
             userT(linkman, ProtoMessage.ChatStatus.csOk_VALUE, linkmanPhone, sex,linkNickName);
         }
-
     }
 
     public void getGroupMan(final long id) {
@@ -411,7 +410,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
             convertViewTeamMember(mTeamMemberInfoList);
             return;
         }
-//        mansNum = userList.size();
+        // mansNum = userList.size();
 
         ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
         builder.setTeamID(id);
@@ -430,9 +429,9 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
             public void onGot(Intent i) {
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
-//                    TeamMemberInfoList list = i.getParcelableExtra("get_teamMember_list");
+                    // TeamMemberInfoList list = i.getParcelableExtra("get_teamMember_list");
                     convertViewTeamMember(SQLiteTool.getAllTeamMembers(mContext, id));
-                    //	ToastR.setToast(FirstActivity.this, "获取群成员成功");
+                    // ToastR.setToast(FirstActivity.this, "获取群成员成功");
                 } else {
                     new ResponseErrorProcesser(mContext, i.getIntExtra("error_code", -1));
                 }
@@ -472,7 +471,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
             }
 
             if (myPhone.equals(in.getUserPhone())) {
-//                mTeamInfo.setMemberRole(in.getRole());
+                // mTeamInfo.setMemberRole(in.getRole());
                 memberRole = in.getRole();
             }
 
@@ -538,7 +537,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
                     }
                 } else {
                     Log.e("jim","team member userFace  code:"+i.getIntExtra("error_code", -1));
-                  //  new ResponseErrorProcesser(mContext, i.getIntExtra("error_code", -1));
+                    // new ResponseErrorProcesser(mContext, i.getIntExtra("error_code", -1));
                 }
             }
         });
@@ -557,8 +556,8 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        //权限申请结果
+        // super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // 权限申请结果
         if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION) {
             mPermissionUtil.requestResult(this, permissions, grantResults, this, PermissionUtil.PERMISSIONS_LOCATION);
         }
@@ -582,7 +581,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
     }
 
     private void getlistMembersCache() {
-        //获取好友列表
+        // 获取好友列表
         try {
             DBManagerFriendsList db = new DBManagerFriendsList(mContext, DBTableName.getTableName(mContext, DBHelperFriendsList.NAME));
             listMembersCache = db.getFriends(false);
@@ -599,7 +598,6 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
                 resultData("");
                 break;
             case R.id.img_location:
-
                 Marker marker = mMarkers.get(myPhone);
                 if (marker != null){
                     marker.setToTop();
@@ -639,7 +637,6 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
 
     //选择跟踪目标
     private void selecteTrack() {
-
         if (aMap == null) {
             ToastR.setToast(mContext, "当前不能选择跟踪目标");
             return;
@@ -684,7 +681,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
                                 name = user.getName();
                             }
                             if (mTrackPhoneNum.equals(user.getPhone())) {
-//                                ToastR.setToast(mContext, "取消跟踪 " + name + " " + user.getPhone());
+                                // ToastR.setToast(mContext, "取消跟踪 " + name + " " + user.getPhone());
                                 cancelTrack();
                             } else {
                                 ToastR.setToast(mContext, "跟踪 " + name + " " + user.getPhone());
@@ -762,7 +759,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
                 errorInfo
                 locationType
                 */
-//                addMarkersToMap();
+                // addMarkersToMap();
                 Log.i("myAmap", "定位信息， code: " + errorCode + " errorInfo: " + errorInfo + " locationType: " + locationType);
             } else {
                 Log.e("myAmap", "定位信息， bundle is null ");
@@ -783,7 +780,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
 
             String str1 = Cn2Spell.getPinYin(str);
             String str2 = Cn2Spell.getPinYin(str3);
-//        Log.i("log", "str1:  " + str1 + "-----------------str2:  " + str2);
+            // Log.i("log", "str1:  " + str1 + "-----------------str2:  " + str2);
             int flag = str1.compareTo(str2);
 
             return flag;
@@ -803,7 +800,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
     //获取头像边框颜色
     public View getViewBorderColor(String userPhone, boolean isTrackPhone) {
 
-//        isOrNoShowCrearTrack();
+        // isOrNoShowCrearTrack();
 
         View view = getLayoutInflater().inflate(R.layout.marker_icon_layout, null);
         ImageView img_user = (ImageView) view.findViewById(R.id.badge);
@@ -813,8 +810,8 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
         if (isTrackPhone) {
             ViewGroup.LayoutParams params = layout.getLayoutParams();
             layout.setBackground(getResources().getDrawable(R.drawable.location_face_frame));
-//            params.height = dip2px(mContext, 55);
-//            params.width = dip2px(mContext, 55);
+            // params.height = dip2px(mContext, 55);
+            // params.width = dip2px(mContext, 55);
             layout.setLayoutParams(params);
             if (userPhone.equals(myPhone)) {
                 img_mylocation.setBackground(getResources().getDrawable(R.drawable.my_location_light));
@@ -886,8 +883,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
 
     private void setTrackPhoneNum(String phoneNum) {
         mTrackPhoneNum = phoneNum;
-
-//        setTrackImageViewIcon(phoneNum);
+        // setTrackImageViewIcon(phoneNum);
     }
 
     private void onClickMarkerDialog(final Marker marker, final String phoneNum, final String names) {
@@ -1041,6 +1037,10 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
      */
     public void startGetLocation() {
         Log.i("pocdemo", "开始获取群组位置。。。。");
+        if (single && TextUtils.equals(myPhone, linkmanPhone)) {
+            Log.i(TAG, "my own location, get from gps");
+            return;
+        }
         progressDialogShow();
         ProtoMessage.LocationMsgList.Builder builder = ProtoMessage.LocationMsgList.newBuilder();
         if (single) {
@@ -1118,23 +1118,22 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
                 view = getViewBorderColor(friendLocationStatusesList.get(i).getPhoneNum(), isTrackPhone);
                 latlng = new LatLng(friendLocationStatusesList.get(i).getLat(), friendLocationStatusesList.get(i).getLng());
                 markerOptions = new MarkerOptions().position(latlng).icon(BitmapDescriptorFactory.fromView(view)).zIndex(2);
-                //创建Marker对象
+                // 创建Marker对象
                 Log.i("GetFriendLocation", "-------friendLocationStatus.getPhoneNum------" + friendLocationStatusesList.get(i).getPhoneNum());
                 mMarkerOptionsList.add(markerOptions);
                 phoneList.add(friendLocationStatusesList.get(i).getPhoneNum());
-//                marker = aMap.addMarker(markerOptions);
-
+                // marker = aMap.addMarker(markerOptions);
             }
         }
         if (myPhone != null) {
-            //mTrackPhoneNum = myPhone;
+            // mTrackPhoneNum = myPhone;
             view = getViewBorderColor(myPhone, isTrackPhone);
             latlng = new LatLng(latitude, longitude);
             MarkerOptions markerOptions1 = new MarkerOptions().position(latlng)
                     .icon(BitmapDescriptorFactory.fromView(view)).zIndex(2).anchor(0.5f, 0.5f);
             mMarkerOptionsList.add(markerOptions1);
             phoneList.add(myPhone);
-//            marker = aMap.addMarker(markerOptions);
+            // marker = aMap.addMarker(markerOptions);
         }
         //批量加载Marker
         mMarkersList = aMap.addMarkers(mMarkerOptionsList, false);
@@ -1143,7 +1142,6 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
             mMarkersList.get(i).setObject(phoneList.get(i));
             mMarkers.put(phoneList.get(i), mMarkersList.get(i));
         }
-
         recoveryTrack();
     }
 
@@ -1174,7 +1172,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
             return;
         }
         //TODO 目前取消了地图上的清除图标
-/*
+        /*
         if (phone != null && phone.length() > 0) {
             mClearTrack.setImageResource(R.drawable.location_tail);
         } else {
@@ -1196,11 +1194,11 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
             locationOption.setGpsFirst(true);
             locationOption.setNeedAddress(false);
             locationOption.setOnceLocation(false);
-            //locationOption.setOnceLocationLatest(true);
-            //locationOption.setInterval(intervar * 60 * 1000);
+            // locationOption.setOnceLocationLatest(true);
+            // locationOption.setInterval(intervar * 60 * 1000);
 
             locationOption.setInterval(5 * 1000);
-            //设置定位参数
+            // 设置定位参数
             locationClient.setLocationOption(locationOption);
             // 设置定位监听
             locationClient.setLocationListener(new AMapLocationListener() {
@@ -1211,7 +1209,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
                     longitude = arg0.getLongitude();
                     if (arg0.getLatitude() != 0 && arg0.getLongitude() != 0 ) {
                         isFistLcation = true;
-//                    Log.i(ServiceCheckUserEvent.TAG, "正在启动高德(gaode)定位服务...");
+                        // Log.i(ServiceCheckUserEvent.TAG, "正在启动高德(gaode)定位服务...");
                         View view = getViewBorderColor(myPhone, isTrackPhone);
                         LatLng latlng = new LatLng(latitude, longitude);
                         MarkerOptions markerOptions = new MarkerOptions().position(latlng)
@@ -1276,7 +1274,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
     public void stop() {
         try {
             if (null != locationClient) {
-                Log.i(ServiceCheckUserEvent.TAG, "高德 （gaode） location stop");
+                Log.i(TAG, "高德 （gaode） location stop");
                 locationClient.stopLocation();
                 /**
                  * 如果AMapLocationClient是在当前Activity实例化的，
@@ -1393,7 +1391,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
                         AppliedFriends appliedFriend = data.getParcelableExtra("friend_detail");
                         updateLocalData(appliedFriend, "");
                         if (data.getIntExtra("map", 0) == 2) {
-//                            viewPager.setCurrentItem(0);
+                            // viewPager.setCurrentItem(0);
                         }
                     }
                     if (resultData == 2) {
@@ -1431,15 +1429,15 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
         if (teamInfo == null) {
             return;
         }
-//        groupName = teamInfo.getTeamName();
-//        name.setText(teamInfo.getTeamName());
+        // groupName = teamInfo.getTeamName();
+        // name.setText(teamInfo.getTeamName());
     }
 
     private void updateLocalData(final AppliedFriends af, String str) {
         if (!(str.equals(changeType))) {
             linkman = af.getNickName();
-//            name.setText(linkman);
-//            sta_num.setVisibility(GONE);
+            // name.setText(linkman);
+            // sta_num.setVisibility(GONE);
             userList.get(0).setName(af.getNickName());
         } else {
             for (User user : userList) {
