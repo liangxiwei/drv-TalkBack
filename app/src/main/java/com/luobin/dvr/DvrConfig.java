@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.example.jrd48.chat.crash.MyApplication;
 import com.luobin.utils.PathUtlis;
+import com.luobin.utils.ShellUtils;
 
 import java.io.File;
 import java.lang.reflect.Array;
@@ -37,6 +38,11 @@ public class DvrConfig {
     public final static String TAKE_VIDEOS = "/dvr/handy/video";
     private static final int DEFAULT_PHOTO_COUNT = 1;
     private static final long DEFAULT_PHOTO_INTERVAL_MS = 1000;
+
+    //video node address
+    public static final String VIDEO1_ADDRESS = "/sys/bus/usb/devices/1-1.1.1:1.0/video4linux";//video1
+    public static final String VIDEO2_ADDRESS = "/sys/bus/usb/devices/1-1.1.1:1.0/video4linux";//video2
+    public static final String VIDEO3_ADDRESS = "/sys/bus/usb/devices/1-1.1.2:1.0/video4linux";//video3
 
     public static void init(Context context) {
         if (mContext == null) {
@@ -298,5 +304,18 @@ public class DvrConfig {
         SharedPreferences sp = mContext.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
         sp.edit().putInt(KEY_VIDEO_BITRATE, bitrate).commit();
         Log.d(TAG, "DvrConfig setVideoBitrate: " + bitrate);
+    }
+
+    public static String getVideoNode(String videoNode) {
+        int succeed = ShellUtils.execCommand("ls " + videoNode, false).result;
+        String result;
+        if (succeed == 0) {
+            String[] split = ShellUtils.execCommand("ls " + videoNode, false).successMsg.split("video");
+            result = "/dev/video" + split[1];
+        } else {
+            result = "";
+        }
+        Log.d(TAG, "getVideoNode=" + result);
+        return result;
     }
 }

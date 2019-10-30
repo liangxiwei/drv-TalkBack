@@ -19,6 +19,7 @@ import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.crash.MyApplication;
 import com.example.jrd48.chat.receiver.ToastReceiver;
+import com.luobin.dvr.DvrConfig;
 import com.luobin.dvr.DvrService;
 import com.luobin.dvr.R;
 import com.luobin.dvr.grafika.gles.EglCore;
@@ -127,6 +128,9 @@ public class USBVideo extends VideoBase implements SurfaceHolder.Callback, UsbCa
         String product = Build.PRODUCT;
         if (product != null && product.equals("LB1728V4")) {
             dev = getResources().getStringArray(R.array.video_devs)[3];
+        }
+        if ("LB1822".equals(product)) {
+            dev = DvrConfig.getVideoNode(DvrConfig.VIDEO3_ADDRESS);
         }
         File file = new File(dev);
         if (!file.exists()) {

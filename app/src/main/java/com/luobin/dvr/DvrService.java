@@ -1422,6 +1422,9 @@ public class DvrService extends Service {
             if (product != null && product.equals("LB1728V4")) {
                 dev = getResources().getStringArray(R.array.video_devs)[1];//no use? 1 //chat 1->front,3->nonwork
             }
+            if ("LB1822".equals(product)) {
+                dev = DvrConfig.getVideoNode(DvrConfig.VIDEO1_ADDRESS);
+            }
             boolean isOpen = usbCamera.open(dev, size);
             if (!isOpen) {
                 usbCamera = null;

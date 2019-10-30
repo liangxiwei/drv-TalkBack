@@ -554,8 +554,11 @@ public class DvrImpl extends DvrImplBase
                 Log.d(TAG, str + " exist: " + (new File(str)).exists());
             }
         }
-        if (product != null && (product.equals("LB1728V4") || product.equals("LB1822"))) {
+        if (product != null && (product.equals("LB1728V4"))) {
             dev = mContext.getResources().getStringArray(R.array.video_devs)[1];
+        }
+        if ("LB1822".equals(product)) {
+            dev = DvrConfig.getVideoNode(DvrConfig.VIDEO1_ADDRESS);
         }
         File file = new File(dev);
         if (!file.exists()) {
