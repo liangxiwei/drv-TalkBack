@@ -131,6 +131,8 @@ public class MyService extends Service {
     private static final String TAG = "MyService";
     private final static int GET_DEVICE_ID_DELAY_TIME = 3000;
     private final static int GET_DEVICE_ID_DELAY = 0x01;
+    private static final int MSG_VIDEO_RADIO_SWITCH_START_VIDEO = 2;
+    private static final int MSG_VIDEO_RADIO_SWITCH_START_RADIO = 3;
     private static final String CHECK_HEART_RESP_ACTION = "check_heart_resp_action";
     private final static int HEART_INTERVAL = 4 * 60 * 1000;
     //    private MyConnectionBroadcast myConnectionBroadcast;
@@ -162,6 +164,20 @@ public class MyService extends Service {
                     } else {
                         register(imei);
                     }
+                    break;
+                case MSG_VIDEO_RADIO_SWITCH_START_VIDEO:
+                    Intent intentVideo = new Intent();
+                    intentVideo.setClassName("com.luobin.dvr",
+                            "com.example.jrd48.chat.WelcomeActivity");
+                    intentVideo.putExtra("className", "bbs");
+                    startActivity(intentVideo);
+                    break;
+                case MSG_VIDEO_RADIO_SWITCH_START_RADIO:
+                    goHome(MyApplication.getContext());
+                    Intent intentRadio = new Intent();
+                    intentRadio.setClassName("com.benshikj.ht.jf",
+                            "com.dw.ht.JFMainActivity");
+                    MyApplication.getContext().startActivity(intentRadio);
                     break;
             }
             super.handleMessage(msg);
@@ -959,16 +975,9 @@ public class MyService extends Service {
                 int currentMode = GlobalStatus.getChatVideoMode(context);
                 Log.d(TAG, "ChatVideoMode switch=" + currentMode);
                 if (currentMode == 1) {
-                    goHome(context);
-                    Intent intent = new Intent();
-                    intent.setClassName("com.benshikj.ht.jf",
-                            "com.dw.ht.JFMainActivity");
-                    context.startActivity(intent);
+                    mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_RADIO, 800);
                 } else if (currentMode == 0) {
-                    Intent intent = new Intent();
-                    intent.setClassName("com.luobin.dvr",
-                            "com.example.jrd48.chat.WelcomeActivity");
-                    context.startActivity(intent);
+                    mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_VIDEO, 800);
                 }
             }
         }

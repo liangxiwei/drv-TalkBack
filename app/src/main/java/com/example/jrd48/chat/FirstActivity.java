@@ -9,6 +9,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.ClipboardManager;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,6 +18,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -281,6 +283,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     private SQLiteDatabase dbMsg;
     private List<TeamMemberInfo> allTeamMemberInfos;
     boolean isBBS = false;
+    private VideoRadioSwitchObserver mVideoRadioSwitchObserver;
 
     private Handler refreshHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -552,6 +555,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         selectViews.add(doNotDisturb);
         setSelectViewManager(new SelectViewManager(selectViews));
 		*/
+        mVideoRadioSwitchObserver = new VideoRadioSwitchObserver(new Handler());
+        mVideoRadioSwitchObserver.startObserving();
     }
 
     private void checkRandomChat() {
@@ -1789,6 +1794,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             // 如果是海聊群，退出群
             //groupQuit();
         }
+        mVideoRadioSwitchObserver.stopObserving();
         super.onDestroy();
     }
 
@@ -5024,6 +5030,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             GlobalStatus.setOldChat(0, "", 0);
             GlobalStatus.clearChatRoomMsg();
             SharedPreferencesUtils.put(MyApplication.getContext(), "cur_teamId", "");
+            isBBS = false;
         }
         super.onPause();
     }
@@ -5483,5 +5490,58 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         Settings.System.putInt(mContext.getContentResolver(), NAVIGATION_BAR_CTRL, 1);
     }
 
+    private class VideoRadioSwitchObserver extends ContentObserver {
+        private final Uri NAVI_START_STOP_URI =
+                Settings.System.getUriFor(GlobalStatus.NAVI_START_STOP);
+        private final Uri CHAT_VIDEO_RADIO_SWITCH_URI =
+                Settings.System.getUriFor(GlobalStatus.CHAT_VIDEO_RADIO_SWITCH);
 
+        public VideoRadioSwitchObserver(Handler handler) {
+            super(handler);
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            onChange(selfChange, null);
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            if (NAVI_START_STOP_URI.equals(uri)) {
+                if (isBBS) {
+                    // 如果是海聊群，退出群
+                    groupQuit();
+                    GlobalStatus.setOldChat(0, "", 0);
+                    GlobalStatus.clearChatRoomMsg();
+                    SharedPreferencesUtils.put(MyApplication.getContext(), "cur_teamId", "");
+                    isBBS = false;
+                }
+            } else if (CHAT_VIDEO_RADIO_SWITCH_URI.equals(uri)) {
+                if (isBBS) {
+                    // 如果是海聊群，退出群
+                    groupQuit();
+                    GlobalStatus.setOldChat(0, "", 0);
+                    GlobalStatus.clearChatRoomMsg();
+                    SharedPreferencesUtils.put(MyApplication.getContext(), "cur_teamId", "");
+                    isBBS = false;
+                }
+            }
+        }
+
+        public void startObserving() {
+            final ContentResolver cr = getContentResolver();
+            cr.unregisterContentObserver(this);
+            cr.registerContentObserver(
+                    NAVI_START_STOP_URI,
+                    false, this);
+            cr.registerContentObserver(
+                    CHAT_VIDEO_RADIO_SWITCH_URI,
+                    false, this);
+        }
+
+        public void stopObserving() {
+            final ContentResolver cr = getContentResolver();
+            cr.unregisterContentObserver(this);
+        }
+    }
 }

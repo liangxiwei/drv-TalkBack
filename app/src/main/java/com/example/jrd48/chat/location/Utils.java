@@ -148,4 +148,15 @@ public class Utils {
         }
         return false;
     }
+
+    public static void setTopApp(Context context) {
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> taskInfoList = activityManager.getRunningTasks(100);
+        for (ActivityManager.RunningTaskInfo taskInfo : taskInfoList) {
+            if (taskInfo.topActivity.getPackageName().equals("")) {
+                activityManager.moveTaskToFront(taskInfo.id, 0);
+                break;
+            }
+        }
+    }
 }
