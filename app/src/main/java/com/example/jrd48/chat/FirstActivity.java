@@ -3060,6 +3060,19 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             //int status = ProtoMessage.ChatStatus.csOk_VALUE;
             int status = ProtoMessage.ChatStatus.csOffline_VALUE;
 			//end
+            if (r == null) {
+                if (single) {
+                    if (GlobalStatus.equalPhone(linkmanPhone)) {
+                        r = GlobalStatus.getChatRoomMsg();
+                        Log.i(TAG, "single, get chat room msg");
+                    }
+                } else {
+                    if (GlobalStatus.equalTeamID(group)) {
+                        r = GlobalStatus.getChatRoomMsg();
+                        Log.i(TAG, "group, get chat room msg");
+                    }
+                }
+            }
             if (r != null) {
                 List<ProtoMessage.ChatRoomMemberMsg> members = r.getMembersList();
                 for (ProtoMessage.ChatRoomMemberMsg member : members) {
