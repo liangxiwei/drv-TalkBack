@@ -4792,7 +4792,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
      */
     private void onChatStatusChanged(ProtoMessage.NotifyMsg resp) {
         changespeaking(resp.getChatStatus(), resp.getFriendPhoneNum());
-        List<Integer> statusList = GlobalStatus.getStatusList();
+        //cause 1117 error
+        /*List<Integer> statusList = GlobalStatus.getStatusList();
         int numberOnline = 0;
         for (int status : statusList) {
             if (status == ProtoMessage.ChatStatus.csOk_VALUE ||
@@ -4804,7 +4805,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             Log.i(TAG, "onChatStatusChanged, online number changed");
             refreshHandler.removeCallbacks(mRefreshTeamRunnable);
             refreshHandler.post(mRefreshTeamRunnable);
-        }
+        }*/
     }
 
     //****************触摸操作（双指下滑，上滑）***************
