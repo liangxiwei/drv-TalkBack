@@ -1039,6 +1039,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
         Log.i("pocdemo", "开始获取群组位置。。。。");
         if (single && TextUtils.equals(myPhone, linkmanPhone)) {
             Log.i(TAG, "my own location, get from gps");
+            progressDialogDismiss();
             return;
         }
         progressDialogShow();
