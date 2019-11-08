@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Environment;
 import android.util.Log;
 
+import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.SharedPreferencesUtils;
 
 import java.io.File;
@@ -29,6 +30,7 @@ public class DvrReceiver extends BroadcastReceiver {
             SharedPreferencesUtils.put(context, "group_booting", true);
             SharedPreferencesUtils.put(context, "member_booting", true);
             context.startService(new Intent(context, DvrService.class));
+            GlobalStatus.setBBSPageActivated(false);
             clearAudioRecord();//avoid too many acc files
         }
 

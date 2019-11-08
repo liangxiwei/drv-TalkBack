@@ -401,8 +401,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                                 intent.putExtra("data", 1);
                                 CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + msg.getTeamID());
                                 if (GlobalStatus.equalTeamID(msg.getTeamID())) {
-                                    //intent.putExtra("callType", 0);
-                                    intent.putExtra("callType", 2);
+                                    intent.putExtra("callType", 0);
+                                    //intent.putExtra("callType", 2);
                                 } else if (callState != null && callState.getState() == GlobalStatus.STATE_CALL) {
                                     intent.putExtra("callType", 1);
                                 } else {

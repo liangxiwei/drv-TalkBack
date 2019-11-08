@@ -122,8 +122,8 @@ public class ResponseErrorProcesser {
                     break;
                 case ProtoMessage.ErrorCode.NOT_FOUND_THIS_ROOM_USER_VALUE:
                     ToastR.setToast(context, "错误1037,停止对讲");
-                    Intent i = new Intent(context, MyService.class);
-                    context.stopService(i);
+                    //Intent i = new Intent(context, MyService.class);
+                    //context.stopService(i);
                     break;
 				case 1083: //rs added for LBCJW-276
 					ToastR.setToast(context, "车牌号太短，不得少于4位");

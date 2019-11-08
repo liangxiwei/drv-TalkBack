@@ -20,6 +20,7 @@ import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.bean.Track;
 import com.example.jrd48.chat.group.TeamInfo;
 import com.example.jrd48.chat.group.TeamInfoList;
+import com.example.jrd48.chat.location.Utils;
 import com.example.jrd48.service.ITimeoutBroadcast;
 import com.example.jrd48.service.MyService;
 import com.example.jrd48.service.TimeoutBroadcast;
@@ -68,12 +69,19 @@ public class BBSActivity extends BaseActivity {
         initData();
     }
 
+    @Override
+    protected void onPause() {
+        GlobalStatus.setBBSPageActivated(false);
+        super.onPause();
+    }
+
     @OnClick(R.id.btn_return)
     public void onBtnReturnClick(View view) {
         finish();
     }
 
     private void initData(){
+        GlobalStatus.setBBSPageActivated(true);
         ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
         MyService.start(getContext(), ProtoMessage.Cmd.cmdGetBBSList.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
@@ -120,7 +128,7 @@ public class BBSActivity extends BaseActivity {
                                 return false;
                             }
                             if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyEvent.getRepeatCount() == 0) {
-                                switch (keyEvent.getKeyCode()) {
+                                /*switch (keyEvent.getKeyCode()) {
                                     case KeyEvent.KEYCODE_F6:
                                         int position = 0;
                                         if (bbsListview1.getSelectedItemPosition() != -1) {
@@ -133,7 +141,7 @@ public class BBSActivity extends BaseActivity {
                                         break;
                                     default:
                                         break;
-                                }
+                                }*/
                             }
                             return false;
                         }
@@ -156,7 +164,7 @@ public class BBSActivity extends BaseActivity {
                                 return false;
                             }
                             if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyEvent.getRepeatCount() == 0) {
-                                switch (keyEvent.getKeyCode()) {
+                                /*switch (keyEvent.getKeyCode()) {
                                     case KeyEvent.KEYCODE_F6:
                                         int position = 0;
                                         if (bbsListview2.getSelectedItemPosition() != -1) {
@@ -169,7 +177,7 @@ public class BBSActivity extends BaseActivity {
                                         break;
                                     default:
                                         break;
-                                }
+                                }*/
                             }
                             return false;
                         }
@@ -217,8 +225,8 @@ public class BBSActivity extends BaseActivity {
                 + info.getTeamName() + "-getTeamID=" + info.getTeamID());
         CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + info.getTeamID());
         if (GlobalStatus.equalTeamID(info.getTeamID())) {
-            //intent.putExtra("callType", 0);
-            intent.putExtra("callType", 2);
+            intent.putExtra("callType", 0);
+            //intent.putExtra("callType", 2);
         } else if (callState != null && callState.getState() == GlobalStatus.STATE_CALL) {
             intent.putExtra("callType", 1);
         } else {

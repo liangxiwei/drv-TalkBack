@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Utils {
-
+    private static final String TAG = "Utils";
     /**
      * 判断进程是否运行
      *
@@ -123,6 +123,23 @@ public class Utils {
             switch (componentInfo.getClassName()){
                 case "com.luobin.ui.OtherVideoSetting":
                 case "com.video.VideoCallActivity":
+                    return true;
+                default:
+                    break;
+
+            }
+        }
+        return false;
+    }
+
+    public static boolean getBBSTopActivity(Context mContext) {
+        ActivityManager am = (ActivityManager) mContext.getSystemService(Activity.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
+        if (taskInfo != null && taskInfo.size() > 0) {
+            ComponentName componentInfo = taskInfo.get(0).topActivity;
+            Log.d(TAG, "getBBSTopActivity componentInfo.getClassName();" + componentInfo.getClassName());
+            switch (componentInfo.getClassName()) {
+                case "com.luobin.ui.BBSActivity":
                     return true;
                 default:
                     break;

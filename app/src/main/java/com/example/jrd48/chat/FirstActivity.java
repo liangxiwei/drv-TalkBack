@@ -95,6 +95,7 @@ import com.example.jrd48.chat.group.ShowAllTeamMemberActivity;
 import com.example.jrd48.chat.group.ShowTeamInfoPrompt;
 import com.example.jrd48.chat.group.TeamInfo;
 import com.example.jrd48.chat.group.cache.DBTableName;
+import com.example.jrd48.chat.location.Utils;
 import com.example.jrd48.chat.permission.PermissionUtil;
 import com.example.jrd48.chat.wiget.VideoLayout;
 import com.example.jrd48.service.BluetoothMonitor;
@@ -5016,6 +5017,13 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
 
         ChatManager.getInstance().hideView();
         SharedPreferencesUtils.put(this, "firstactivity_ontop", false);
+        if (isBBS) {
+            // 如果是海聊群，退出群
+            groupQuit();
+            GlobalStatus.setOldChat(0, "", 0);
+            GlobalStatus.clearChatRoomMsg();
+            SharedPreferencesUtils.put(MyApplication.getContext(), "cur_teamId", "");
+        }
         super.onPause();
     }
 

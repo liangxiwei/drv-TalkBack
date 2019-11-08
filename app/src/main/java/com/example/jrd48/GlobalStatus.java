@@ -978,6 +978,16 @@ public class GlobalStatus {
         GlobalStatus.isAcceptRooming = isAcceptRooming;
     }
 
+    public static boolean getBBSPageActivated() {
+        Log.v(TAG, "get BBS page activated");
+        return (boolean) SharedPreferencesUtils.get(MyApplication.getContext(), "bbs_page_activated", false);
+    }
+
+    public static void setBBSPageActivated(boolean isBBSPageActivated) {
+        Log.v(TAG, "set BBS page activated=" + isBBSPageActivated);
+        SharedPreferencesUtils.put(MyApplication.getContext(), "bbs_page_activated", isBBSPageActivated);
+    }
+
     public static void findError(String str){
         Log.e(TAG,"findError:" + str);
         DBMyLogHelper.insertLog(MyApplication.getContext(), LogCode.BUG, str, null);

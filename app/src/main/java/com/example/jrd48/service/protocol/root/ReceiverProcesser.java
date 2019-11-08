@@ -280,7 +280,7 @@ public class ReceiverProcesser extends CommonProcesser {
                                 GlobalStatus.updateChatRoomMsg(builder.build());
                             }
                         } else {
-                            ProtoMessage.AcceptVoice.Builder closeBuild = ProtoMessage.AcceptVoice.newBuilder();
+                            /*ProtoMessage.AcceptVoice.Builder closeBuild = ProtoMessage.AcceptVoice.newBuilder();
                             if (GlobalStatus.isStartRooming() && GlobalStatus.getChatRoomtempId() != 0) {
                                 closeBuild.setRoomID(GlobalStatus.getChatRoomtempId());
                             } else {
@@ -301,8 +301,8 @@ public class ReceiverProcesser extends CommonProcesser {
                             GlobalStatus.equalRoomID(roomId);
                             intent.putExtra("error_code", resp.getErrorCode());
                             intent.putExtra("roomID", roomId);
-                            context.sendBroadcast(intent);
-                            ToastR.setToast(context, "当前成员只剩1个，对讲解散");
+                            context.sendBroadcast(intent);*/
+                            ToastR.setToast(context, "当前成员只剩1个");//，对讲解散
                         }
                         i.putExtra("group", groupIdTemp);
                         i.putExtra("phone", phone);
@@ -401,7 +401,7 @@ public class ReceiverProcesser extends CommonProcesser {
                                         GlobalStatus.updateChatRoomMsg(builder.build());
                                     }
                                 } else {
-                                    ProtoMessage.AcceptVoice.Builder closeBuild = ProtoMessage.AcceptVoice.newBuilder();
+                                    /*ProtoMessage.AcceptVoice.Builder closeBuild = ProtoMessage.AcceptVoice.newBuilder();
                                     if (GlobalStatus.isStartRooming() && GlobalStatus.getChatRoomtempId() != 0) {
                                         closeBuild.setRoomID(GlobalStatus.getChatRoomtempId());
                                     } else {
@@ -422,8 +422,8 @@ public class ReceiverProcesser extends CommonProcesser {
                                     GlobalStatus.equalRoomID(roomId);
                                     intent.putExtra("error_code", resp.getErrorCode());
                                     intent.putExtra("roomID", roomId);
-                                    context.sendBroadcast(intent);
-                                    ToastR.setToast(context, "当前成员只剩1个，对讲解散");
+                                    context.sendBroadcast(intent);*/
+                                    ToastR.setToast(context, "当前成员只剩1个");//，对讲解散
                                 }
                             }
                             i.putExtra("group", groupIdTemp);

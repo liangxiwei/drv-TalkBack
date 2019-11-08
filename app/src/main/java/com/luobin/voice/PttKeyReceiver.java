@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.SharedPreferencesUtils;
+import com.example.jrd48.chat.location.Utils;
 import com.example.jrd48.service.MyService;
 
 
@@ -22,31 +23,33 @@ public class PttKeyReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        boolean pttKeyDown = false;
-        Log.v(TAG,"PttKeyReceiver action:" + intent.getAction());
+        //if (!GlobalStatus.getBBSPageActivated()) {
+        if (!Utils.getBBSTopActivity(context)) {
+            boolean pttKeyDown = false;
+            Log.v(TAG, "PttKeyReceiver action:" + intent.getAction());
 //        NotifyManager.getInstance().showNotification("123");
-        if (intent.getAction().equals("com.android.action.ptt")) {
-            pttKeyDown = (intent.getIntExtra("ptt_action", 0) == 1);
-        } else if (intent.getAction().equals("com.agold.hy.ptt.down")) {
-            pttKeyDown = true;
-        }
+            if (intent.getAction().equals("com.android.action.ptt")) {
+                pttKeyDown = (intent.getIntExtra("ptt_action", 0) == 1);
+            } else if (intent.getAction().equals("com.agold.hy.ptt.down")) {
+                pttKeyDown = true;
+            }
 
-        GlobalStatus.setPttBroadCast(pttKeyDown);
-        if (pttKeyDown) {
-            // 唤醒
-            PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-            final PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "pocdemo");
-            wl.setReferenceCounted(false);
-            wl.acquire(5000);
-        }
+            GlobalStatus.setPttBroadCast(pttKeyDown);
+            if (pttKeyDown) {
+                // 唤醒
+                PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+                final PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "pocdemo");
+                wl.setReferenceCounted(false);
+                wl.acquire(5000);
+            }
 
 
-        if(GlobalStatus.getChatRoomMsg() != null) {
-            Intent service = new Intent(context, MyService.class);
+            if (GlobalStatus.getChatRoomMsg() != null) {
+                Intent service = new Intent(context, MyService.class);
 
-            service.putExtra("ptt_key_action", pttKeyDown);
-            // record ptt status
-            SharedPreferencesUtils.put(context, "pttKeyDown", pttKeyDown);
+                service.putExtra("ptt_key_action", pttKeyDown);
+                // record ptt status
+                SharedPreferencesUtils.put(context, "pttKeyDown", pttKeyDown);
         /*
          改到z服务中运行
 
@@ -60,8 +63,11 @@ public class PttKeyReceiver extends BroadcastReceiver {
             VoiceHandler.speakEndAndRecroding(context);
         }
         */
-            context.startService(service);
-            // set video chat default
+                context.startService(service);
+                // set video chat default
+                //GlobalStatus.setIsVideo(true);
+            }
+        }
             GlobalStatus.setIsVideo(true);
         }
 
