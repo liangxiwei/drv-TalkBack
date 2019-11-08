@@ -513,7 +513,8 @@ public class RegisterInfoActivity extends BaseDialogActivity implements
                 sexDialog();
                 break;
             case R.id.tvPhone: //手机号
-                inputDialog("手机号码",PHONE, InputTextDialog.Type.NUMBER);
+            	//rs del for LBCJW-272
+                //inputDialog("手机号码",PHONE, InputTextDialog.Type.NUMBER);
                 break;
             case R.id.tvCarNo: //车牌号
                 if (!checkNetWork()) {
