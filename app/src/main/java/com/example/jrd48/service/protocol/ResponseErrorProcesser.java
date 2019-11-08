@@ -125,6 +125,9 @@ public class ResponseErrorProcesser {
                     Intent i = new Intent(context, MyService.class);
                     context.stopService(i);
                     break;
+				case 1083: //rs added for LBCJW-276
+					ToastR.setToast(context, "车牌号太短，不得少于4位");
+					break;
                 default:
                     ToastR.setToast(context, "操作失败：" + errCode);
                     break;
