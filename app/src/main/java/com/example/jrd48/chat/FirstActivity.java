@@ -926,8 +926,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 call_hungon = 1;
                 temp_exist = true;
                 videoLayout.showVideo(FirstActivity.this);
-//                videoLayout.showSingle(FirstActivity.this, linkmanPhone);
-
+                // videoLayout.showSingle(FirstActivity.this, linkmanPhone);
             }
 
             SharedPreferencesUtils.put(this, ReceiverProcesser.UPDATE_KEY, linkmanPhone);
@@ -1773,7 +1772,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         clearUnfinishedUploadImage();
         chatCallReceiver = null;
         if (mapInitIs) {
-//            mMap.onDestroy();
+            // mMap.onDestroy();
         }
         videoLayout.hideVideo();
         if (bottomLayoutManager != null) {
@@ -1790,7 +1789,6 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             //groupQuit();
         }
         super.onDestroy();
-
     }
 
     //***********************设置GridView显示*******************************
@@ -1819,7 +1817,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                         }
                     }
                 } else {
-//					linkmanPhone
+                    // linkmanPhone
                     showLinkManPhone();
                 }
             }
@@ -2160,7 +2158,6 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 return true;
             case 2:
                 showChangePriorityDilog(mTeamMemberInfo);
-//					}
                 //	ToastR.setToast(FirstActivity.this, "修改成员优先级");
                 return true;
             case 3:
@@ -2709,7 +2706,6 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     显示修改成员优先级的弹框
      */
     private void showChangePriorityDilog(final TeamMemberInfo tm) {
-
         new ModifyPriorityPrompt().dialogModifyPriorityRequest(mContext, "话权", tm.getMemberPriority(), new ModifyPrioritytListener() {
             @Override
             public void onOk(int data) {
@@ -2740,6 +2736,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
                     ToastR.setToast(FirstActivity.this, "话权修改成功");
+                    r = GlobalStatus.getChatRoomMsg();
                     getGroupMan(group);
                 } else {
                     fail(i.getIntExtra("error_code", -1));
@@ -2934,6 +2931,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                         ProtoMessage.ErrorCode.OK.getNumber()) {
                     TeamMemberInfo teamMemberInfo = i.getParcelableExtra("get_team_member_info");
                     mTeamMemberInfo.setRole(role);
+                    r = GlobalStatus.getChatRoomMsg();
                     getGroupMan(group);
                     ToastR.setToast(FirstActivity.this, "修改权限成功");
                 } else {
@@ -2944,11 +2942,9 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     }
 
     public void getGroupMan(final long id) {
-
         //convertViewTeamMember(allTeamMemberInfos);
         readSql();
         mansNum = userList.size();
-
         ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
         builder.setTeamID(id);
         MyService.start(FirstActivity.this, ProtoMessage.Cmd.cmdGetTeamMember.getNumber(), builder.build());
@@ -3078,7 +3074,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                     }
                 }
             }
-
+            Log.i(TAG, "getGroupMan nowMansNum = " + nowMansNum);
             userT(memberName, status, in.getUserPhone(), sex);
 //            Message message = new Message();
 //            message.what = 3;
@@ -3125,7 +3121,6 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         setGridViewClick(true);
         rankList(0);
         //adapterU.notifyDataSetChanged();
-
     }
 
     private void rankList(int ii) {

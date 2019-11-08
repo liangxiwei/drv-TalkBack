@@ -17,7 +17,7 @@ import com.luobin.dvr.R;
 import java.util.List;
 
 public class UserAdapter extends ArrayAdapter<User> {
-
+    private final static String TAG = "UserAdapter";
     private int resourceId;
 
     public UserAdapter(Context context, int textViewResourceId, List<User> objects) {
@@ -42,6 +42,7 @@ public class UserAdapter extends ArrayAdapter<User> {
             view = convertView;
             viewHolder = (ViewHolder) view.getTag();
         }
+        Log.i(TAG, "user.getState() = " + user.getState());
         if (user.getState() == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
             viewHolder.image.setAlpha(1f);
             viewHolder.state.setBackgroundResource(R.drawable.speaking);
