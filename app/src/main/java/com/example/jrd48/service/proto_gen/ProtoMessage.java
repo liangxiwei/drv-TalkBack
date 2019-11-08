@@ -2866,6 +2866,94 @@ public final class ProtoMessage {
      * <code>TOO_MANY_IMEI = 1114;</code>
      */
     TOO_MANY_IMEI(1114),
+    /**
+     * <pre>
+     * M1 群组不支持该操作
+     * </pre>
+     *
+     * <code>TEAM_M1_WRONG_OPERATION = 1115;</code>
+     */
+    TEAM_M1_WRONG_OPERATION(1115),
+    /**
+     * <pre>
+     * 不是我的设备
+     * </pre>
+     *
+     * <code>NOT_MY_DEVICE = 1116;</code>
+     */
+    NOT_MY_DEVICE(1116),
+    /**
+     * <pre>
+     * 查询群成员的时候参数错误
+     * </pre>
+     *
+     * <code>GET_TEAM_MEMBER_PARAM_WRONG = 1117;</code>
+     */
+    GET_TEAM_MEMBER_PARAM_WRONG(1117),
+    /**
+     * <pre>
+     * 好友号码为空
+     * </pre>
+     *
+     * <code>EMPTY_FRIEND_PHONE = 1118;</code>
+     */
+    EMPTY_FRIEND_PHONE(1118),
+    /**
+     * <pre>
+     * 不是我的对讲机
+     * </pre>
+     *
+     * <code>NOT_MY_M1 = 1119;</code>
+     */
+    NOT_MY_M1(1119),
+    /**
+     * <pre>
+     * 参数为空
+     * </pre>
+     *
+     * <code>EMPTY_M1_IMEI = 1120;</code>
+     */
+    EMPTY_M1_IMEI(1120),
+    /**
+     * <pre>
+     * 绑定在多M1了
+     * </pre>
+     *
+     * <code>TOO_MANY_M1 = 1121;</code>
+     */
+    TOO_MANY_M1(1121),
+    /**
+     * <pre>
+     * 未知的摇一摇代码
+     * </pre>
+     *
+     * <code>UNKNOWN_SHAKE_CODE = 1122;</code>
+     */
+    UNKNOWN_SHAKE_CODE(1122),
+    /**
+     * <pre>
+     * 时间错误
+     * </pre>
+     *
+     * <code>TIME_WRONG = 1123;</code>
+     */
+    TIME_WRONG(1123),
+    /**
+     * <pre>
+     * 按PTT太快：两次间隔要大于1秒
+     * </pre>
+     *
+     * <code>SPEAK_TOO_QUICKLY = 1124;</code>
+     */
+    SPEAK_TOO_QUICKLY(1124),
+    /**
+     * <pre>
+     * 没有轨迹点位。
+     * </pre>
+     *
+     * <code>NO_TRACK_POINT = 1125;</code>
+     */
+    NO_TRACK_POINT(1125),
     UNRECOGNIZED(-1),
     ;
 
@@ -3633,6 +3721,94 @@ public final class ProtoMessage {
      * <code>TOO_MANY_IMEI = 1114;</code>
      */
     public static final int TOO_MANY_IMEI_VALUE = 1114;
+    /**
+     * <pre>
+     * M1 群组不支持该操作
+     * </pre>
+     *
+     * <code>TEAM_M1_WRONG_OPERATION = 1115;</code>
+     */
+    public static final int TEAM_M1_WRONG_OPERATION_VALUE = 1115;
+    /**
+     * <pre>
+     * 不是我的设备
+     * </pre>
+     *
+     * <code>NOT_MY_DEVICE = 1116;</code>
+     */
+    public static final int NOT_MY_DEVICE_VALUE = 1116;
+    /**
+     * <pre>
+     * 查询群成员的时候参数错误
+     * </pre>
+     *
+     * <code>GET_TEAM_MEMBER_PARAM_WRONG = 1117;</code>
+     */
+    public static final int GET_TEAM_MEMBER_PARAM_WRONG_VALUE = 1117;
+    /**
+     * <pre>
+     * 好友号码为空
+     * </pre>
+     *
+     * <code>EMPTY_FRIEND_PHONE = 1118;</code>
+     */
+    public static final int EMPTY_FRIEND_PHONE_VALUE = 1118;
+    /**
+     * <pre>
+     * 不是我的对讲机
+     * </pre>
+     *
+     * <code>NOT_MY_M1 = 1119;</code>
+     */
+    public static final int NOT_MY_M1_VALUE = 1119;
+    /**
+     * <pre>
+     * 参数为空
+     * </pre>
+     *
+     * <code>EMPTY_M1_IMEI = 1120;</code>
+     */
+    public static final int EMPTY_M1_IMEI_VALUE = 1120;
+    /**
+     * <pre>
+     * 绑定在多M1了
+     * </pre>
+     *
+     * <code>TOO_MANY_M1 = 1121;</code>
+     */
+    public static final int TOO_MANY_M1_VALUE = 1121;
+    /**
+     * <pre>
+     * 未知的摇一摇代码
+     * </pre>
+     *
+     * <code>UNKNOWN_SHAKE_CODE = 1122;</code>
+     */
+    public static final int UNKNOWN_SHAKE_CODE_VALUE = 1122;
+    /**
+     * <pre>
+     * 时间错误
+     * </pre>
+     *
+     * <code>TIME_WRONG = 1123;</code>
+     */
+    public static final int TIME_WRONG_VALUE = 1123;
+    /**
+     * <pre>
+     * 按PTT太快：两次间隔要大于1秒
+     * </pre>
+     *
+     * <code>SPEAK_TOO_QUICKLY = 1124;</code>
+     */
+    public static final int SPEAK_TOO_QUICKLY_VALUE = 1124;
+    /**
+     * <pre>
+     * 没有轨迹点位。
+     * </pre>
+     *
+     * <code>NO_TRACK_POINT = 1125;</code>
+     */
+    public static final int NO_TRACK_POINT_VALUE = 1125;
 
 
     public final int getNumber() {
@@ -3758,6 +3934,17 @@ public final class ProtoMessage {
         case 1112: return NOT_VALID_GROUP_ID;
         case 1113: return TOO_MANY_TEAM_MEMBER;
         case 1114: return TOO_MANY_IMEI;
+        case 1115: return TEAM_M1_WRONG_OPERATION;
+        case 1116: return NOT_MY_DEVICE;
+        case 1117: return GET_TEAM_MEMBER_PARAM_WRONG;
+        case 1118: return EMPTY_FRIEND_PHONE;
+        case 1119: return NOT_MY_M1;
+        case 1120: return EMPTY_M1_IMEI;
+        case 1121: return TOO_MANY_M1;
+        case 1122: return UNKNOWN_SHAKE_CODE;
+        case 1123: return TIME_WRONG;
+        case 1124: return SPEAK_TOO_QUICKLY;
+        case 1125: return NO_TRACK_POINT;
         default: return null;
       }
     }
@@ -84446,7 +84633,7 @@ public final class ProtoMessage {
       "\000\022\t\n\005opAdd\020\001\022\t\n\005opDel\020\002\022\r\n\topDisable\020\003\022\022" +
       "\n\016opEnableRecord\020\004*C\n\007AppType\022\016\n\nappDefa" +
       "ult\020\000\022\n\n\006appWeb\020\001\022\020\n\014appPocCenter\020\002\022\n\n\006a" +
-      "ppCar\020\003*\200\025\n\tErrorCode\022\006\n\002OK\020\000\022\013\n\007UNKNOWN" +
+      "ppCar\020\003*\372\026\n\tErrorCode\022\006\n\002OK\020\000\022\013\n\007UNKNOWN" +
       "\020\001\022\024\n\017SMS_CODE_FAILED\020\350\007\022\025\n\020SMS_CODE_NOT" +
       "_GOT\020\351\007\022\027\n\022SMS_CODE_NOT_MATCH\020\352\007\022\023\n\016PASS" +
       "_TOO_SHORT\020\353\007\022\022\n\rREG_DB_FAILED\020\354\007\022\027\n\022DAT" +
@@ -84513,66 +84700,72 @@ public final class ProtoMessage {
       "\324\010\022\r\n\010KQ_NO_ID\020\325\010\022\031\n\024KQ_ID_OR_PHONE_WRON" +
       "G\020\326\010\022\024\n\017KQ_NOT_FOUND_ID\020\327\010\022\027\n\022NOT_VALID_",
       "GROUP_ID\020\330\010\022\031\n\024TOO_MANY_TEAM_MEMBER\020\331\010\022\022" +
-      "\n\rTOO_MANY_IMEI\020\332\010*A\n\013SmsCodeType\022\016\n\nsms" +
-      "CodeReg\020\000\022\020\n\014smsCodeReset\020\001\022\020\n\014smsCodeCh" +
-      "eck\020\002*I\n\nServerType\022\r\n\tstSession\020\000\022\n\n\006st" +
-      "Root\020\001\022\n\n\006stRoom\020\002\022\024\n\007stOther\020\377\377\377\377\377\377\377\377\377\001" +
-      "*&\n\nAcceptType\022\014\n\010atAccept\020\000\022\n\n\006atDeny\020\001" +
-      "*G\n\tEnterType\022\t\n\005Enter\020\000\022\t\n\005Leave\020\001\022\023\n\017P" +
-      "riorityChanged\020\002\022\017\n\013DismissTeam\020\003*\332\003\n\nNo" +
-      "tifyType\022\017\n\013NotifyDummy\020\000\022\025\n\021NotifyApply" +
-      "Friend\020\001\022\026\n\022NotifyAcceptFriend\020\002\022\026\n\022Noti",
-      "fyDeleteFriend\020\003\022\023\n\017NotifyApplyTeam\020\004\022\024\n" +
-      "\020NotifyAcceptTeam\020\005\022\032\n\026NotifyDeleteTeamM" +
-      "ember\020\006\022\025\n\021NotifyDismissTeam\020\007\022\031\n\025Notify" +
-      "AssignTeamAdmin\020\010\022\030\n\024NotifyModifyTeamInf" +
-      "o\020\t\022\022\n\016NotifyQuitTeam\020\n\022\022\n\016NotifyTeamCal" +
-      "l\020\013\022\024\n\020NotifySingleCall\020\014\022\024\n\020NotifyChatS" +
-      "tatus\020\r\022\026\n\022NotifySaveVariable\020\016\022\016\n\nNotif" +
-      "yCall\020\017\022\030\n\024NotifyChangeTeamNick\020\020\022\027\n\023Not" +
-      "ifyLiveVideoCall\020\021\022\032\n\026NotifyLiveVideoCal" +
-      "lAns\020\022\022\026\n\022NotifyFriendStatus\020\023*\257\001\n\rUserH",
-      "ideField\022\016\n\nhfPhoneNum\020\000\022\016\n\nhfUsername\020\001" +
-      "\022\r\n\thfUserSex\020\002\022\016\n\nhfBirthday\020\003\022\016\n\nhfAdd" +
-      "rInfo\020\004\022\r\n\thfCarType\020\005\022\014\n\010hfCarNum\020\006\022\t\n\005" +
-      "hfGps\020\007\022\020\n\014hfTeamRandom\020\010\022\025\n\021hfTeamRando" +
-      "mVideo\020\t*2\n\010TeamRole\022\016\n\nmemberOnly\020\000\022\013\n\007" +
-      "Manager\020\001\022\t\n\005Owner\020\002*\211\001\n\010TeamType\022\016\n\ntea" +
-      "mPublic\020\000\022\r\n\tteamTempo\020\001\022\017\n\013teamPrivate\020" +
-      "\002\022\017\n\013teamInGroup\020\003\022\016\n\nteamRandom\020\004\022\023\n\017te" +
-      "amMapSelector\020\005\022\n\n\006teamM1\020\006\022\013\n\007teamBBS\020\007" +
-      "*,\n\rApplyTeamType\022\r\n\tattInvite\020\000\022\014\n\010attA",
-      "pply\020\001*)\n\013RequestFlag\022\017\n\013rfAllMember\020\000\022\t" +
-      "\n\005rfOne\020\001*\326\001\n\007MsgType\022\n\n\006mtText\020\000\022\013\n\007mtI" +
-      "mage\020\001\022\013\n\007mtVoice\020\002\022\014\n\010mtCancel\020\003\022\017\n\013mtE" +
-      "nterTeam\020\004\022\017\n\013mtLeaveTeam\020\005\022\025\n\021mtChangeH" +
-      "eadImage\020\006\022\022\n\016mtAcceptFriend\020\007\022\022\n\016mtDele" +
-      "teFriend\020\010\022\017\n\013mtVideoFile\020\t\022\017\n\013mtVoiceFi" +
-      "le\020\n\022\024\n\020mtVoiceShortFile\020\013*B\n\nChatStatus" +
-      "\022\r\n\tcsOffline\020\000\022\013\n\007csNotIn\020\001\022\010\n\004csOk\020\002\022\016" +
-      "\n\ncsSpeaking\020\003*&\n\003Sex\022\t\n\005noset\020\000\022\010\n\004male" +
-      "\020\001\022\n\n\006female\020\002*3\n\014KqReportType\022\013\n\007krtAut",
-      "o\020\000\022\n\n\006krtKey\020\001\022\n\n\006krtNfc\020\002*M\n\nReportTyp" +
-      "e\022\013\n\007rtLogin\020\000\022\014\n\010rtLogout\020\001\022\013\n\007rtAlive\020" +
-      "\002\022\014\n\010rtCarReg\020\003\022\t\n\005rtMax\020\004*N\n\017SessionPul" +
-      "lType\022\017\n\013sptToClient\020\000\022\023\n\017sptForceOfflin" +
-      "e\020\001\022\025\n\021sptNotifyCarLogin\020\002*K\n\020CmdMsgSess" +
-      "ionReq\022\033\n\027SessionGetUserSessionIP\020\000\022\032\n\026S" +
-      "essionQueryWhoWatchMe\020\001*6\n\021MsgSessionReq" +
-      "What\022\r\n\tsrwNormal\020\000\022\022\n\016srwCarRegister\020\001*" +
-      "\200\001\n\007RoomCmd\022\025\n\021rcRoomReportAlive\020\000\022\020\n\014rc" +
-      "StartVoice\020\001\022\021\n\rrcAcceptVoice\020\002\022\020\n\014rcCre",
-      "ateRoom\020\003\022\017\n\013rcCloseRoom\020\004\022\026\n\022rcTeamMemb" +
-      "erChange\020\005*[\n\013LocationCmd\022\020\n\014LOCATION_PU" +
-      "T\020\000\022\022\n\016LOCATION_START\020\001\022\021\n\rLOCATION_STOP" +
-      "\020\002\022\023\n\017LOCATION_SEARCH\020\003*&\n\nKqTimeType\022\013\n" +
-      "\007kttNone\020\000\022\013\n\007kttWeek\020\001*.\n\010EditCode\022\t\n\005e" +
-      "cGet\020\000\022\014\n\010ecUpdate\020\001\022\t\n\005ecDel\020\002*\'\n\tRemot" +
-      "eCmd\022\n\n\006rcNone\020\000\022\016\n\nrcNavigate\020\001*e\n\017Trac" +
-      "kModifyCode\022\017\n\013_trackDummy\020\000\022\017\n\013trackMod" +
-      "ify\020\001\022\020\n\014trackVisible\020\002\022\r\n\ttrackHide\020\003\022\017" +
-      "\n\013trackDelete\020\004B%\n#com.example.jrd48.ser",
-      "vice.proto_genb\006proto3"
+      "\n\rTOO_MANY_IMEI\020\332\010\022\034\n\027TEAM_M1_WRONG_OPER" +
+      "ATION\020\333\010\022\022\n\rNOT_MY_DEVICE\020\334\010\022 \n\033GET_TEAM" +
+      "_MEMBER_PARAM_WRONG\020\335\010\022\027\n\022EMPTY_FRIEND_P" +
+      "HONE\020\336\010\022\016\n\tNOT_MY_M1\020\337\010\022\022\n\rEMPTY_M1_IMEI" +
+      "\020\340\010\022\020\n\013TOO_MANY_M1\020\341\010\022\027\n\022UNKNOWN_SHAKE_C" +
+      "ODE\020\342\010\022\017\n\nTIME_WRONG\020\343\010\022\026\n\021SPEAK_TOO_QUI" +
+      "CKLY\020\344\010\022\023\n\016NO_TRACK_POINT\020\345\010*A\n\013SmsCodeT" +
+      "ype\022\016\n\nsmsCodeReg\020\000\022\020\n\014smsCodeReset\020\001\022\020\n" +
+      "\014smsCodeCheck\020\002*I\n\nServerType\022\r\n\tstSessi",
+      "on\020\000\022\n\n\006stRoot\020\001\022\n\n\006stRoom\020\002\022\024\n\007stOther\020" +
+      "\377\377\377\377\377\377\377\377\377\001*&\n\nAcceptType\022\014\n\010atAccept\020\000\022\n" +
+      "\n\006atDeny\020\001*G\n\tEnterType\022\t\n\005Enter\020\000\022\t\n\005Le" +
+      "ave\020\001\022\023\n\017PriorityChanged\020\002\022\017\n\013DismissTea" +
+      "m\020\003*\332\003\n\nNotifyType\022\017\n\013NotifyDummy\020\000\022\025\n\021N" +
+      "otifyApplyFriend\020\001\022\026\n\022NotifyAcceptFriend" +
+      "\020\002\022\026\n\022NotifyDeleteFriend\020\003\022\023\n\017NotifyAppl" +
+      "yTeam\020\004\022\024\n\020NotifyAcceptTeam\020\005\022\032\n\026NotifyD" +
+      "eleteTeamMember\020\006\022\025\n\021NotifyDismissTeam\020\007" +
+      "\022\031\n\025NotifyAssignTeamAdmin\020\010\022\030\n\024NotifyMod",
+      "ifyTeamInfo\020\t\022\022\n\016NotifyQuitTeam\020\n\022\022\n\016Not" +
+      "ifyTeamCall\020\013\022\024\n\020NotifySingleCall\020\014\022\024\n\020N" +
+      "otifyChatStatus\020\r\022\026\n\022NotifySaveVariable\020" +
+      "\016\022\016\n\nNotifyCall\020\017\022\030\n\024NotifyChangeTeamNic" +
+      "k\020\020\022\027\n\023NotifyLiveVideoCall\020\021\022\032\n\026NotifyLi" +
+      "veVideoCallAns\020\022\022\026\n\022NotifyFriendStatus\020\023" +
+      "*\257\001\n\rUserHideField\022\016\n\nhfPhoneNum\020\000\022\016\n\nhf" +
+      "Username\020\001\022\r\n\thfUserSex\020\002\022\016\n\nhfBirthday\020" +
+      "\003\022\016\n\nhfAddrInfo\020\004\022\r\n\thfCarType\020\005\022\014\n\010hfCa" +
+      "rNum\020\006\022\t\n\005hfGps\020\007\022\020\n\014hfTeamRandom\020\010\022\025\n\021h",
+      "fTeamRandomVideo\020\t*2\n\010TeamRole\022\016\n\nmember" +
+      "Only\020\000\022\013\n\007Manager\020\001\022\t\n\005Owner\020\002*\211\001\n\010TeamT" +
+      "ype\022\016\n\nteamPublic\020\000\022\r\n\tteamTempo\020\001\022\017\n\013te" +
+      "amPrivate\020\002\022\017\n\013teamInGroup\020\003\022\016\n\nteamRand" +
+      "om\020\004\022\023\n\017teamMapSelector\020\005\022\n\n\006teamM1\020\006\022\013\n" +
+      "\007teamBBS\020\007*,\n\rApplyTeamType\022\r\n\tattInvite" +
+      "\020\000\022\014\n\010attApply\020\001*)\n\013RequestFlag\022\017\n\013rfAll" +
+      "Member\020\000\022\t\n\005rfOne\020\001*\326\001\n\007MsgType\022\n\n\006mtTex" +
+      "t\020\000\022\013\n\007mtImage\020\001\022\013\n\007mtVoice\020\002\022\014\n\010mtCance" +
+      "l\020\003\022\017\n\013mtEnterTeam\020\004\022\017\n\013mtLeaveTeam\020\005\022\025\n",
+      "\021mtChangeHeadImage\020\006\022\022\n\016mtAcceptFriend\020\007" +
+      "\022\022\n\016mtDeleteFriend\020\010\022\017\n\013mtVideoFile\020\t\022\017\n" +
+      "\013mtVoiceFile\020\n\022\024\n\020mtVoiceShortFile\020\013*B\n\n" +
+      "ChatStatus\022\r\n\tcsOffline\020\000\022\013\n\007csNotIn\020\001\022\010" +
+      "\n\004csOk\020\002\022\016\n\ncsSpeaking\020\003*&\n\003Sex\022\t\n\005noset" +
+      "\020\000\022\010\n\004male\020\001\022\n\n\006female\020\002*3\n\014KqReportType" +
+      "\022\013\n\007krtAuto\020\000\022\n\n\006krtKey\020\001\022\n\n\006krtNfc\020\002*M\n" +
+      "\nReportType\022\013\n\007rtLogin\020\000\022\014\n\010rtLogout\020\001\022\013" +
+      "\n\007rtAlive\020\002\022\014\n\010rtCarReg\020\003\022\t\n\005rtMax\020\004*N\n\017" +
+      "SessionPullType\022\017\n\013sptToClient\020\000\022\023\n\017sptF",
+      "orceOffline\020\001\022\025\n\021sptNotifyCarLogin\020\002*K\n\020" +
+      "CmdMsgSessionReq\022\033\n\027SessionGetUserSessio" +
+      "nIP\020\000\022\032\n\026SessionQueryWhoWatchMe\020\001*6\n\021Msg" +
+      "SessionReqWhat\022\r\n\tsrwNormal\020\000\022\022\n\016srwCarR" +
+      "egister\020\001*\200\001\n\007RoomCmd\022\025\n\021rcRoomReportAli" +
+      "ve\020\000\022\020\n\014rcStartVoice\020\001\022\021\n\rrcAcceptVoice\020" +
+      "\002\022\020\n\014rcCreateRoom\020\003\022\017\n\013rcCloseRoom\020\004\022\026\n\022" +
+      "rcTeamMemberChange\020\005*[\n\013LocationCmd\022\020\n\014L" +
+      "OCATION_PUT\020\000\022\022\n\016LOCATION_START\020\001\022\021\n\rLOC" +
+      "ATION_STOP\020\002\022\023\n\017LOCATION_SEARCH\020\003*&\n\nKqT",
+      "imeType\022\013\n\007kttNone\020\000\022\013\n\007kttWeek\020\001*.\n\010Edi" +
+      "tCode\022\t\n\005ecGet\020\000\022\014\n\010ecUpdate\020\001\022\t\n\005ecDel\020" +
+      "\002*\'\n\tRemoteCmd\022\n\n\006rcNone\020\000\022\016\n\nrcNavigate" +
+      "\020\001*e\n\017TrackModifyCode\022\017\n\013_trackDummy\020\000\022\017" +
+      "\n\013trackModify\020\001\022\020\n\014trackVisible\020\002\022\r\n\ttra" +
+      "ckHide\020\003\022\017\n\013trackDelete\020\004B%\n#com.example" +
+      ".jrd48.service.proto_genb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

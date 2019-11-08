@@ -626,6 +626,21 @@ enum ErrorCode {
     NOT_VALID_GROUP_ID = 1112; // 没有有效的集团号
     TOO_MANY_TEAM_MEMBER = 1113; // 群组添加成员时超出限制
     TOO_MANY_IMEI = 1114; // 创建帐号时，帐号数量超出限制
+
+    TEAM_M1_WRONG_OPERATION = 1115; // M1 群组不支持该操作
+    NOT_MY_DEVICE = 1116; // 不是我的设备
+    GET_TEAM_MEMBER_PARAM_WRONG = 1117; // 查询群成员的时候参数错误
+    EMPTY_FRIEND_PHONE = 1118; // 好友号码为空
+
+    NOT_MY_M1 = 1119; // 不是我的对讲机
+    EMPTY_M1_IMEI = 1120; // 参数为空
+    TOO_MANY_M1 = 1121; // 绑定在多M1了
+
+    UNKNOWN_SHAKE_CODE = 1122; // 未知的摇一摇代码
+    TIME_WRONG = 1123; // 时间错误
+
+    SPEAK_TOO_QUICKLY = 1124; // 按PTT太快：两次间隔要大于1秒
+    NO_TRACK_POINT = 1125; // 没有轨迹点位。
 };
 
 /** 短信验证码请求，返回通用响应包 -> 改为返回与请求相同的数据 */
