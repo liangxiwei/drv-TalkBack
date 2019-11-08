@@ -865,6 +865,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     List<AppliedFriends> listFriends = getlistMembersCache();
                     memberAdapter.setAppliedFriends(listFriends);
                     memberAdapter.setData(allMemberMap.get(groupList.get(groupSelectPosition)));
+					memberAdapter.notifyDataSetChanged();//rs added for crash (LBCJW-258)
                 }
                 break;
             }
