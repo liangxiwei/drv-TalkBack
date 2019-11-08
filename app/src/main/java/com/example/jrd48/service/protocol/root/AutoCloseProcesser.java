@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.UserHandle;
 import android.util.Log;
 
 import com.example.jrd48.GlobalStatus;
@@ -46,7 +47,7 @@ public class AutoCloseProcesser extends CommonProcesser {
                         GlobalStatus.equalRoomID(resp.getRoomID());
                         i.putExtra("error_code", resp.getErrorCode());
                         i.putExtra("roomID", resp.getRoomID());
-                        context.sendBroadcast(i);
+                        context.sendBroadcastAsUser(i, UserHandle.ALL);
                         NotificationManager nm = (NotificationManager) (context.getSystemService(Context.NOTIFICATION_SERVICE));
                         nm.cancel(-1);//消除对应ID的通知
                         // TODO: 0 OK，其他值，失败

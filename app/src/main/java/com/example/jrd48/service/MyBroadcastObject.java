@@ -3,6 +3,7 @@ package com.example.jrd48.service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.UserHandle;
 import android.util.Log;
 
 public class MyBroadcastObject extends StartableObject {
@@ -58,7 +59,7 @@ public class MyBroadcastObject extends StartableObject {
 		intent.setPackage(packageName);
 		intent.setAction(actionName);
 		intent.putExtra("param", response);
-		context.sendBroadcast(intent);
+		context.sendBroadcastAsUser(intent, UserHandle.ALL);
 	}
 
 	@Override

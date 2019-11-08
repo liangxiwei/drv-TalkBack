@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.UserHandle;
 import android.util.Log;
 
 import com.example.jrd48.GlobalNotice;
@@ -239,7 +240,7 @@ public class MsgTool {
                 GlobalImg.reloadImg(context, phone);
                 Intent intent = new Intent(MainActivity.FRIEND_ACTION);
                 intent.putExtra("phone", phone);
-                context.sendBroadcast(intent);
+                context.sendBroadcastAsUser(intent, UserHandle.ALL);
                 if (GlobalNotice.isSameNumber(phone)){
                     Log.d("refuse","refuse success ...");
                   //  refuseAddFriend(phone,context);

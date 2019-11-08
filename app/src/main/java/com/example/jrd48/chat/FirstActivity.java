@@ -3637,7 +3637,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                     File f = new File(mCurrentPhotoPath);
                     Uri contentUri = Uri.fromFile(f);
                     mediaScanIntent.setData(contentUri);
-                    sendBroadcast(mediaScanIntent);
+                    sendBroadcastAsUser(mediaScanIntent, UserHandle.ALL);
 //                    saveI(bmp, Msg.TYPE_SENT_IMAGE, saveBitmap(bmp));
                     /*Intent intent = new Intent("com.android.camera.action.CROP");
                     intent.setDataAndType(imageUri, "image*//*");
@@ -3666,7 +3666,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                     File f = new File(mCurrentVideoPath);
                     Uri contentUri = Uri.fromFile(f);
                     mediaScanIntent.setData(contentUri);
-                    sendBroadcast(mediaScanIntent);
+                    sendBroadcastAsUser(mediaScanIntent, UserHandle.ALL);
                     saveI(bmp, Msg.TYPE_SENT_VIDEO, mCurrentVideoPath);
                     /*Intent intent = new Intent("com.android.camera.action.CROP");
                     intent.setDataAndType(imageUri, "image*//*");
@@ -5034,12 +5034,12 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             case KeyEvent.KEYCODE_CAMERA:
                 Intent intent = new Intent( DvrService.keyDonwBroadcastAction);
                 intent.putExtra("keyCode",KeyEvent.KEYCODE_CAMERA);
-                sendBroadcast(intent);
+                sendBroadcastAsUser(intent, UserHandle.ALL);
                 break;
             case KeyEvent.KEYCODE_F9:
                 Intent intent1 = new Intent( DvrService.keyDonwBroadcastAction);
                 intent1.putExtra("keyCode",KeyEvent.KEYCODE_F9);
-                sendBroadcast(intent1);
+                sendBroadcastAsUser(intent1, UserHandle.ALL);
                 break;
             default:
                 break;

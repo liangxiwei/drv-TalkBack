@@ -14,6 +14,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -273,7 +274,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
                 dialog.dismiss();
                 Intent intent = new Intent("com.example.jrd48.chat.FORCE_OFFLINE");
                 intent.putExtra("toast", false);
-                sendBroadcast(intent);
+                sendBroadcastAsUser(intent, UserHandle.ALL);
                 finish();
             }
         });

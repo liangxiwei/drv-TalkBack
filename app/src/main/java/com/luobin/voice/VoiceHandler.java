@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.SystemClock;
+import android.os.UserHandle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -155,7 +156,7 @@ public class VoiceHandler {
                 //if (!Utils.getTopActivity(context)) {
                 if ("LB1822".equals(Build.PRODUCT)) {
                     if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
-                        context.sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP));
+                        context.sendBroadcastAsUser(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP), UserHandle.ALL);
                     }
                 }
         }

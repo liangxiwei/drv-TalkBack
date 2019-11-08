@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
@@ -117,7 +118,7 @@ public class RESClient {
                     if(dvrService!=null){
                         Intent ii = new Intent(ACTION_VIDEO_VOIDE_SWITCH);
                         ii.putExtra("isVideo",false);
-                        dvrService.sendBroadcast(ii);
+                        dvrService.sendBroadcastAsUser(ii, UserHandle.ALL);
                     }
                     //ToastR.setToastLong(MyApplication.getContext(), "当前网络质量不好，切换为语音对讲模式");
                 }
@@ -467,7 +468,7 @@ public class RESClient {
             startRecording(path, true);
             Intent intent = new Intent(ToastReceiver.TOAST_ACTION);
             intent.putExtra(ToastReceiver.TOAST_CONTENT, "设备不支持打开记录仪视频以外的摄像头");
-            MyApplication.getContext().sendBroadcast(intent);
+            MyApplication.getContext().sendBroadcastAsUser(intent, UserHandle.ALL);
             return;
         }
         prepared = true;
@@ -673,7 +674,7 @@ public class RESClient {
                 }
                 Intent intent = new Intent(ToastReceiver.TOAST_ACTION);
                 intent.putExtra(ToastReceiver.TOAST_CONTENT, MyApplication.getContext().getResources().getString(R.string.toast_current_video_screen_mode_outer));
-                MyApplication.getContext().sendBroadcast(intent);
+                MyApplication.getContext().sendBroadcastAsUser(intent, UserHandle.ALL);
             } else {
                 oldSelf = true;
                 int[] rect = new int[4];
@@ -697,7 +698,7 @@ public class RESClient {
                 }
                 Intent intent = new Intent(ToastReceiver.TOAST_ACTION);
                 intent.putExtra(ToastReceiver.TOAST_CONTENT, MyApplication.getContext().getResources().getString(R.string.toast_current_video_screen_mode_inner));
-                MyApplication.getContext().sendBroadcast(intent);
+                MyApplication.getContext().sendBroadcastAsUser(intent, UserHandle.ALL);
             }
             Log.e(TAG, "switchCamera Now self:" + self_video);
             if (getStatus() == STATUS_SUCCESS && !isRoad) {
@@ -708,7 +709,7 @@ public class RESClient {
                     startRecording(resConfig.getRtmpAddr(), true);
                     Intent intent = new Intent(ToastReceiver.TOAST_ACTION);
                     intent.putExtra(ToastReceiver.TOAST_CONTENT, "设备不支持打开记录仪视频以外的摄像头");
-                    MyApplication.getContext().sendBroadcast(intent);
+                    MyApplication.getContext().sendBroadcastAsUser(intent, UserHandle.ALL);
                     return;
                 }
                 startStreaming();
@@ -760,11 +761,11 @@ public class RESClient {
                         public void onClick(View v) {
                             int[] rect = new int[4];
                             DvrConfig.getThumbnailViewRect(rect);
-                            dvrService.sendBroadcast(new Intent(BottomLayoutManager.ACTION_VIDEO_CONTROL_SHOW));
+                            dvrService.sendBroadcastAsUser(new Intent(BottomLayoutManager.ACTION_VIDEO_CONTROL_SHOW), UserHandle.ALL);
                             if (oldSelf) {
-                                dvrService.sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP));
+                                dvrService.sendBroadcastAsUser(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP), UserHandle.ALL);
                             } else {
-                                dvrService.sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_DVR));
+                                dvrService.sendBroadcastAsUser(new Intent(RESClient.ACTION_ONCLICK_DVR), UserHandle.ALL);
                             }
                         }
                     });

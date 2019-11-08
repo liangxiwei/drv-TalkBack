@@ -25,6 +25,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
@@ -381,8 +382,8 @@ public class DvrImpl extends DvrImplBase
                             public void onClick(View v) {
                                 Log.v(TAG, "mCamView onClick");
 //                                int[] rect = new int[4];
-                                MyApplication.getContext().sendBroadcast(new Intent(BottomLayoutManager.ACTION_VIDEO_CONTROL_SHOW));
-                                MyApplication.getContext().sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_DVR));
+                                MyApplication.getContext().sendBroadcastAsUser(new Intent(BottomLayoutManager.ACTION_VIDEO_CONTROL_SHOW), UserHandle.ALL);
+                                MyApplication.getContext().sendBroadcastAsUser(new Intent(RESClient.ACTION_ONCLICK_DVR), UserHandle.ALL);
 
 //                                DvrConfig.getThumbnailViewRect(rect);
 //                                if (RESClient.getInstance().getStatus() != RESClient.STATUS_NULL_PREPARED) {
@@ -590,7 +591,7 @@ public class DvrImpl extends DvrImplBase
             if (!isOpen) {
                 Intent intent = new Intent(ToastReceiver.TOAST_ACTION);
                 intent.putExtra(ToastReceiver.TOAST_CONTENT, dev + MyApplication.getContext().getString(R.string.usb_open_failed));
-                MyApplication.getContext().sendBroadcast(intent);
+                MyApplication.getContext().sendBroadcastAsUser(intent, UserHandle.ALL);
                 usbCamera = null;
                 GlobalStatus.setUsbVideo2(null);
             } else {

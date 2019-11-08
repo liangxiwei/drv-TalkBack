@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.util.Log;
 
 import com.example.jrd48.chat.GlobalImg;
@@ -138,7 +139,7 @@ public class TeamMemberProcesser extends CommonProcesser {
                             e.printStackTrace();
                             i.putExtra("error_code", ProtoMessage.ErrorCode.UNKNOWN_VALUE);
                         }
-                        context.sendBroadcast(i);
+                        context.sendBroadcastAsUser(i, UserHandle.ALL);
 
                         // TODO: 0 OK，其他值，失败
                         //

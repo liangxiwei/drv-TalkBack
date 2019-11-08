@@ -20,6 +20,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PowerManager;
 import android.os.SystemClock;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
@@ -839,7 +840,7 @@ public class MyService extends Service {
                             ProtoMessage.ErrorCode.LOGIN_TOKEN_NOT_EXIST_VALUE) {
                         ToastR.setToast(getBaseContext(), "连接失败");
                         Intent intent = new Intent("com.example.jrd48.chat.FORCE_OFFLINE");//测试强制下线功能
-                        sendBroadcast(intent);
+                        sendBroadcastAsUser(intent, UserHandle.ALL);
                     } else if (i.getIntExtra("error_code", 0) ==
                             ProtoMessage.ErrorCode.OK_VALUE) {
                         //
@@ -1019,7 +1020,7 @@ public class MyService extends Service {
             Log.d(TAG, "stopService--network disconnected, stop chating");
             Intent i = new Intent(AutoCloseProcesser.ACTION);
             i.putExtra("roomID", GlobalStatus.getRoomID());
-            context.sendBroadcast(i);
+            context.sendBroadcastAsUser(i, UserHandle.ALL);
             GlobalStatus.clearChatRoomMsg();
             NotificationManager nm = (NotificationManager) (context.getSystemService(context.NOTIFICATION_SERVICE));
             nm.cancel(-1);//消除对应ID的通知

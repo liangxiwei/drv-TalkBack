@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -100,7 +101,7 @@ public class ConnectionChangeReceiver extends BroadcastReceiver {
 			OnlineSetTool.removeAll();
 			Intent intent = new Intent(NETWORK_CHANGE_ACTION);
 			intent.putExtra(NETWORK_CHANGE_KEY, ConnUtil.isConnected(context));
-			context.sendBroadcast(intent);
+			context.sendBroadcastAsUser(intent, UserHandle.ALL);
 		}
 
 	}
@@ -112,7 +113,7 @@ public class ConnectionChangeReceiver extends BroadcastReceiver {
 			Log.d(TAG, "disconnectHandle--network disconnect, stop chating");
 			Intent i = new Intent(AutoCloseProcesser.ACTION);
 			i.putExtra("roomID", GlobalStatus.getRoomID());
-			context.sendBroadcast(i);
+			context.sendBroadcastAsUser(i, UserHandle.ALL);
 			GlobalStatus.clearChatRoomMsg();
 			NotificationManager nm = (NotificationManager) (context.getSystemService(context.NOTIFICATION_SERVICE));
 			nm.cancel(-1);//消除对应ID的通知

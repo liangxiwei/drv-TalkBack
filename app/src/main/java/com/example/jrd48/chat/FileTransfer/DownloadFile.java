@@ -3,6 +3,7 @@ package com.example.jrd48.chat.FileTransfer;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.UserHandle;
 import android.util.Log;
 
 import com.example.jrd48.service.ITimeoutBroadcast;
@@ -65,7 +66,7 @@ public class DownloadFile {
                 Intent intent = new Intent("download.percent");
                 intent.putExtra("msgid", fileList.get(0).getMsgID());
                 intent.putExtra("success", false);
-                context.sendBroadcast(intent);
+                context.sendBroadcastAsUser(intent, UserHandle.ALL);
                 removeList();
             }
 
@@ -118,13 +119,13 @@ public class DownloadFile {
                                         Intent intent = new Intent("download.percent");
                                         intent.putExtra("msgid", fileList.get(0).getMsgID());
                                         intent.putExtra("success", true);
-                                        context.sendBroadcast(intent);
+                                        context.sendBroadcastAsUser(intent, UserHandle.ALL);
                                         removeList();
                                     } else {
                                         Intent intent = new Intent("download.percent");
                                         intent.putExtra("msgid", fileList.get(0).getMsgID());
                                         intent.putExtra("success", false);
-                                        context.sendBroadcast(intent);
+                                        context.sendBroadcastAsUser(intent, UserHandle.ALL);
                                         Log.i("jrdchat", "下载失败, 校验字失败，删除文件. 文件大小：" + tempFile.length());
                                         tempFile.delete();
                                         removeList();
@@ -136,7 +137,7 @@ public class DownloadFile {
                                 intent.putExtra("msgid", fileList.get(0).getMsgID());
                                 intent.putExtra("percent", (int) (100.0 * packNum / fileList.get(0).getPackCnt()));
                                 intent.putExtra("success", false);
-                                context.sendBroadcast(intent);
+                                context.sendBroadcastAsUser(intent, UserHandle.ALL);
                             } catch (Exception e) {
                                 Log.i("jrdchat", "抓住异常文件被删除");
                                 tempFile.delete();
@@ -152,7 +153,7 @@ public class DownloadFile {
                         Intent intent = new Intent("download.percent");
                         intent.putExtra("msgid", fileList.get(0).getMsgID());
                         intent.putExtra("success", false);
-                        context.sendBroadcast(intent);
+                        context.sendBroadcastAsUser(intent, UserHandle.ALL);
                         removeList();
                     }
                 } catch (Exception e) {
@@ -178,7 +179,7 @@ public class DownloadFile {
             Intent intent = new Intent("download.percent");
             intent.putExtra("msgid", fileList.get(0).getMsgID());
             intent.putExtra("success", false);
-            context.sendBroadcast(intent);
+            context.sendBroadcastAsUser(intent, UserHandle.ALL);
         }
         fileList = null;
     }

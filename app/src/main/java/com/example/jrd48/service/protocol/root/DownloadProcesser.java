@@ -2,6 +2,7 @@ package com.example.jrd48.service.protocol.root;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.UserHandle;
 import android.util.Log;
 
 import com.example.jrd48.service.proto_gen.ProtoMessage;
@@ -29,7 +30,7 @@ public class DownloadProcesser extends CommonProcesser {
 
             i.putExtra("resp", resp);
             i.putExtra("error_code", resp.getErrorCode());
-            context.sendBroadcast(i);
+            context.sendBroadcastAsUser(i, UserHandle.ALL);
         } catch (Exception e) {
             e.printStackTrace();
         }

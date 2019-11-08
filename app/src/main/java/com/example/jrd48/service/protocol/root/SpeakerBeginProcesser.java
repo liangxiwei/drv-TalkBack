@@ -3,6 +3,7 @@ package com.example.jrd48.service.protocol.root;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.UserHandle;
 import android.util.Log;
 import android.view.Gravity;
 
@@ -43,7 +44,7 @@ public class SpeakerBeginProcesser extends CommonProcesser {
             }
             Intent i = new Intent(ACTION);
             i.putExtra("error_code", resp.getErrorCode());
-            context.sendBroadcast(i);
+            context.sendBroadcastAsUser(i, UserHandle.ALL);
 
             // TODO: 0 OK，其他值，失败
             //

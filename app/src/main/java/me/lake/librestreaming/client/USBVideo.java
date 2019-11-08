@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.UserHandle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -162,7 +163,7 @@ public class USBVideo extends VideoBase implements SurfaceHolder.Callback, UsbCa
             if (!isOpen) {
                 Intent intent = new Intent(ToastReceiver.TOAST_ACTION);
                 intent.putExtra(ToastReceiver.TOAST_CONTENT, dev + MyApplication.getContext().getString(R.string.usb_open_failed));
-                MyApplication.getContext().sendBroadcast(intent);
+                MyApplication.getContext().sendBroadcastAsUser(intent, UserHandle.ALL);
                 usbCamera = null;
                 GlobalStatus.setUsbVideo1(null);
             } else {

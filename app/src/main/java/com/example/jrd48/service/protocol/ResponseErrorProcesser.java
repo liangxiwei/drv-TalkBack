@@ -3,6 +3,7 @@ package com.example.jrd48.service.protocol;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.UserHandle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -43,7 +44,7 @@ public class ResponseErrorProcesser {
                     SharedPreferences preferences=context.getSharedPreferences("token", Context.MODE_PRIVATE);
                     if(TextUtils.isEmpty(preferences.getString("token",""))) {
                         Intent intent = new Intent("com.example.jrd48.chat.FORCE_OFFLINE");//测试强制下线功能
-                        context.sendBroadcast(intent);
+                        context.sendBroadcastAsUser(intent, UserHandle.ALL);
                     }
                     break;
                 case ProtoMessage.ErrorCode.TOO_MANY_TEAMS_VALUE:
@@ -62,7 +63,7 @@ public class ResponseErrorProcesser {
                     GlobalStatus.equalRoomID(roomId);
                     i.putExtra("error_code", ProtoMessage.ErrorCode.OK_VALUE);
                     i.putExtra("roomID", roomId);
-                    context.sendBroadcast(i);
+                    context.sendBroadcastAsUser(i, UserHandle.ALL);
                     MediaPlayerTool.getInstance().play(context, R.raw.failed);
                     break;
                 }

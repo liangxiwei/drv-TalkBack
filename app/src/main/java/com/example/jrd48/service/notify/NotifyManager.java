@@ -16,6 +16,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
@@ -308,7 +309,7 @@ public class NotifyManager {
                     GlobalStatus.equalRoomID(roomId);
                     intent.putExtra("error_code", ProtoMessage.ErrorCode.OK.getNumber());
                     intent.putExtra("roomID", roomId);
-                    context.sendBroadcast(intent);
+                    context.sendBroadcastAsUser(intent, UserHandle.ALL);
                     NotificationManager nm = (NotificationManager) (context.getSystemService(Context.NOTIFICATION_SERVICE));
                     nm.cancel(-1);//消除对应ID的通知
                 }
@@ -353,7 +354,7 @@ public class NotifyManager {
         o2.cancel();
         showSound();
         if (type == 1) {
-            MyApplication.getContext().sendBroadcast(new Intent(ACTION_REQUEST_TIMEOUT).putExtra("phone", name.substring(1)));
+            MyApplication.getContext().sendBroadcastAsUser(new Intent(ACTION_REQUEST_TIMEOUT).putExtra("phone", name.substring(1)), UserHandle.ALL);
         }
         if (notifyAdapter == null) {
             notifyAdapter = new NotifyAdapter();

@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
@@ -54,6 +55,6 @@ public class ContactsActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
         GlobalStatus.setIsFirstPause(true);
-        sendBroadcast(new Intent(VideoOrVoiceDialog.DISMISS_ACTION));
+        sendBroadcastAsUser(new Intent(VideoOrVoiceDialog.DISMISS_ACTION), UserHandle.ALL);
     }
 }

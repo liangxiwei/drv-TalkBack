@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.UserHandle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -209,7 +210,7 @@ public class ShowPhotoActivity extends BaseActivity {
                     File f = new File(image.getAbsolutePath());
                     Uri contentUri = Uri.fromFile(f);
                     mediaScanIntent.setData(contentUri);
-                    sendBroadcast(mediaScanIntent);
+                    sendBroadcastAsUser(mediaScanIntent, UserHandle.ALL);
                     ToastR.setToastLong(this,"图片已经保存在："+image.getAbsolutePath());
                 }else{
                     ToastR.setToast(this,"大图还未下载");

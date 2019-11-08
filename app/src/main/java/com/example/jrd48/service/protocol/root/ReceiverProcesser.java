@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.UserHandle;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -307,7 +308,7 @@ public class ReceiverProcesser extends CommonProcesser {
                         i.putExtra("group", groupIdTemp);
                         i.putExtra("phone", phone);
                         i.putExtra("msg_type", 4);
-                        context.sendBroadcast(i);
+                        context.sendBroadcastAsUser(i, UserHandle.ALL);
                         mHandler.removeCallbacks(mRefreshTeamRunnable);
                         mHandler.postDelayed(mRefreshTeamRunnable, 2000);
 
@@ -362,12 +363,12 @@ public class ReceiverProcesser extends CommonProcesser {
                                     GlobalStatus.equalRoomID(roomId);
                                     intent.putExtra("error_code", resp.getErrorCode());
                                     intent.putExtra("roomID", roomId);
-                                    context.sendBroadcast(intent);
+                                    context.sendBroadcastAsUser(intent, UserHandle.ALL);
                                 }
                                 Intent in = new Intent("ACTION.refreshTeamList");
                                 in.putExtra("singout", FirstActivity.SING_OUT);
                                 in.putExtra("teamid", groupIdTemp);
-                                context.sendBroadcast(in);
+                                context.sendBroadcastAsUser(in, UserHandle.ALL);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -429,7 +430,7 @@ public class ReceiverProcesser extends CommonProcesser {
                             i.putExtra("group", groupIdTemp);
                             i.putExtra("phone", phone);
                             i.putExtra("msg_type", 4);
-                            context.sendBroadcast(i);
+                            context.sendBroadcastAsUser(i, UserHandle.ALL);
                             mHandler.removeCallbacks(mRefreshTeamRunnable);
                             mHandler.postDelayed(mRefreshTeamRunnable, 2000);
 
@@ -472,7 +473,7 @@ public class ReceiverProcesser extends CommonProcesser {
                                     GlobalImg.reloadImg(context, changePhone);
                                     Intent in = new Intent("ACTION.changeImage");
                                     in.putExtra(PHONE_NUMBER, changePhone);
-                                    context.sendBroadcast(in);
+                                    context.sendBroadcastAsUser(in, UserHandle.ALL);
                                 }
                             });
                         } else {
@@ -492,7 +493,7 @@ public class ReceiverProcesser extends CommonProcesser {
                                     GlobalImg.reloadImg(context, changePhone);
                                     Intent in = new Intent("ACTION.changeImage");
                                     in.putExtra(PHONE_NUMBER, changePhone);
-                                    context.sendBroadcast(in);
+                                    context.sendBroadcastAsUser(in, UserHandle.ALL);
                                 }
                             });
                         }
@@ -524,7 +525,7 @@ public class ReceiverProcesser extends CommonProcesser {
                         Intent intent = new Intent(MainActivity.FRIEND_ACTION);
                         intent.putExtra("phone", deletePhone);
                         intent.putExtra("delete", MainActivity.deleteStr);
-                        context.sendBroadcast(intent);
+                        context.sendBroadcastAsUser(intent, UserHandle.ALL);
                         if (deletePhone.equals(GlobalStatus.getSingleLinkManPhone())) {
                             NotifyManager.endCall(context);
                         }
@@ -735,7 +736,7 @@ public class ReceiverProcesser extends CommonProcesser {
             public void onGot(Intent i) {
                 int code = i.getIntExtra("error_code", -1);
                 if (code == ProtoMessage.ErrorCode.OK.getNumber()) {
-                    context.sendBroadcast(intent);
+                    context.sendBroadcastAsUser(intent, UserHandle.ALL);
                 } else {
                     Log.e(TAG, "error code:" + code);
                     //  new ResponseErrorProcesser(context, i.getIntExtra("error_code", -1));
@@ -768,7 +769,7 @@ public class ReceiverProcesser extends CommonProcesser {
                     SharedPreferencesUtils.put(context, "data_init", true);
 
                     Intent in = new Intent("ACTION.refreshTeamList");
-                    context.sendBroadcast(in);
+                    context.sendBroadcastAsUser(in, UserHandle.ALL);
                     Log.d(TAG, "joinTeamId="+joinTeamId);
                     if(joinTeamId >0){
                         DBManagerTeamList dblist = new DBManagerTeamList(context, true, DBTableName.getTableName(context, DBHelperTeamList.NAME));

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.UserHandle;
 import android.util.Log;
 
 import com.example.jrd48.chat.SQLite.LinkmanRecordHelper;
@@ -90,7 +91,7 @@ public class UploadFile {
                 Intent intent = new Intent("upload.percent");
                 intent.putExtra("msgid", fileList.get(0).getMsgID());
                 intent.putExtra("uploading", false);
-                context.sendBroadcast(intent);
+                context.sendBroadcastAsUser(intent, UserHandle.ALL);
                 removeList();
             }
 
@@ -129,7 +130,7 @@ public class UploadFile {
                                 intent.putExtra("percent", percent);
                                 intent.putExtra("msgid", fileList.get(0).getMsgID());
                                 intent.putExtra("uploading", true);
-                                context.sendBroadcast(intent);
+                                context.sendBroadcastAsUser(intent, UserHandle.ALL);
                             } else {
                                 SharedPreferences preferences = context.getSharedPreferences("token", Context.MODE_PRIVATE);
                                 String myphone = preferences.getString("phone", "");
@@ -155,7 +156,7 @@ public class UploadFile {
                                 Intent intent = new Intent("upload.percent");
                                 intent.putExtra("msgid", fileList.get(0).getMsgID());
                                 intent.putExtra("uploading", false);
-                                context.sendBroadcast(intent);
+                                context.sendBroadcastAsUser(intent, UserHandle.ALL);
                                 removeList();
                                 Log.i("chatjrd", "上传成功");
                             }
@@ -191,7 +192,7 @@ public class UploadFile {
                     Intent intent = new Intent("upload.percent");
                     intent.putExtra("msgid", fileList.get(0).getMsgID());
                     intent.putExtra("uploading", false);
-                    context.sendBroadcast(intent);
+                    context.sendBroadcastAsUser(intent, UserHandle.ALL);
                     removeList();
                     Log.i("chatjrd", "上传成功");
                 } else {
@@ -218,7 +219,7 @@ public class UploadFile {
                     Intent intent = new Intent("upload.percent");
                     intent.putExtra("msgid", fileList.get(0).getMsgID());
                     intent.putExtra("uploading", false);
-                    context.sendBroadcast(intent);
+                    context.sendBroadcastAsUser(intent, UserHandle.ALL);
                     removeList();
                     Log.i("chatjrd", "上传失败");
                     }
@@ -270,7 +271,7 @@ public class UploadFile {
                 Intent intent = new Intent("upload.percent");
                 intent.putExtra("msgid", fileList.get(0).getMsgID());
                 intent.putExtra("uploading", false);
-                context.sendBroadcast(intent);
+                context.sendBroadcastAsUser(intent, UserHandle.ALL);
             }
         } catch (Exception e) {
             e.printStackTrace();

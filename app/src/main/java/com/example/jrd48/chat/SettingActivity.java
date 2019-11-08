@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
@@ -258,7 +259,7 @@ public class SettingActivity extends BaseActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Intent intent = new Intent(ServiceCheckUserEvent.ACTION);
         intent.putExtra("type", ServiceCheckUserEvent.START_AMAP);
-        sendBroadcast(intent);
+        sendBroadcastAsUser(intent, UserHandle.ALL);
     }
 
     @Override
@@ -339,7 +340,7 @@ public class SettingActivity extends BaseActivity {
                         Intent intent = new Intent(ServiceCheckUserEvent.ACTION);
                         intent.putExtra("time", mPicker.getValue());
                         intent.putExtra("type", ServiceCheckUserEvent.CHANGE_TIME);
-                        sendBroadcast(intent);
+                        sendBroadcastAsUser(intent, UserHandle.ALL);
                     }
                 }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override

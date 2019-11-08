@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.util.Log;
 
 import com.example.jrd48.GlobalStatus;
@@ -65,7 +66,7 @@ public class BluetoothMonitor {
 
                     Intent in = new Intent(UPDATE_CHAT_VIEW);
                     in.putExtra("keyDown", bStart);
-                    context.sendBroadcast(in);
+                    context.sendBroadcastAsUser(in, UserHandle.ALL);
                 }
             }
         }
@@ -90,7 +91,7 @@ public class BluetoothMonitor {
                             VoiceHandler.speakEndAndRecroding(context);
                             Intent in = new Intent(UPDATE_CHAT_VIEW);
                             in.putExtra("keyDown", false);
-                            context.sendBroadcast(in);
+                            context.sendBroadcastAsUser(in, UserHandle.ALL);
                         }
                         break;
                     case BluetoothDevice.BOND_BONDING:

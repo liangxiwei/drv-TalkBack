@@ -12,6 +12,7 @@ import android.hardware.Camera;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
@@ -457,7 +458,7 @@ public class GlobalStatus {
             Log.d(TAG, "closeCurChat--network disconnected, stop chating");
             Intent i = new Intent(AutoCloseProcesser.ACTION);
             i.putExtra("roomID", GlobalStatus.getRoomID());
-            context.sendBroadcast(i);
+            context.sendBroadcastAsUser(i, UserHandle.ALL);
             GlobalStatus.clearChatRoomMsg();
             NotificationManager nm = (NotificationManager) (context.getSystemService(Context.NOTIFICATION_SERVICE));
             nm.cancel(-1);//消除对应ID的通知
@@ -561,7 +562,7 @@ public class GlobalStatus {
     public static void putCallCallStatus(String number, CallState state) {
         Log.e(TAG,"putCallCallStatus:" + state.toString());
         getCallCallStatus().put(number, state);
-        MyApplication.getContext().sendBroadcast(new Intent(NOTIFY_CALL_ACTION));
+        MyApplication.getContext().sendBroadcastAsUser(new Intent(NOTIFY_CALL_ACTION), UserHandle.ALL);
     }
 
     public static CallState getCallSatte(String number) {
@@ -593,7 +594,7 @@ public class GlobalStatus {
     public static void addViewRoadPhone(String viewRoadPhone) {
         Log.v(TAG,"addViewRoadPhone:" + viewRoadPhone);
         getViewRoadPhones().put(viewRoadPhone,SystemClock.elapsedRealtime() + 30000);
-        MyApplication.getContext().sendBroadcast(new Intent(REQUEST_CALL_ACTION));
+        MyApplication.getContext().sendBroadcastAsUser(new Intent(REQUEST_CALL_ACTION), UserHandle.ALL);
     }
 
     public static void removeViewRoadPhone(String viewRoadPhone) {
@@ -603,7 +604,7 @@ public class GlobalStatus {
             NotifyManager.getInstance().removeNames("0" + viewRoadPhone);
             VideoRoadUtils.DenyLiveCall(MyApplication.getContext(),viewRoadPhone);
         }
-        MyApplication.getContext().sendBroadcast(new Intent(REQUEST_CALL_ACTION));
+        MyApplication.getContext().sendBroadcastAsUser(new Intent(REQUEST_CALL_ACTION), UserHandle.ALL);
     }
 
     public static String getCurViewPhone() {
@@ -625,7 +626,7 @@ public class GlobalStatus {
             ToastR.setToast(MyApplication.getContext(), "结束了对用户 " + showPhone + "的路况分享");
         }
         GlobalStatus.curViewPhone = curViewPhone;
-        MyApplication.getContext().sendBroadcast(new Intent(REQUEST_CALL_ACTION));
+        MyApplication.getContext().sendBroadcastAsUser(new Intent(REQUEST_CALL_ACTION), UserHandle.ALL);
     }
 
     public static ProtoMessage.CarRegister getCarRegister() {

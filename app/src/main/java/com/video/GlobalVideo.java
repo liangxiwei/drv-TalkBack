@@ -10,6 +10,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Handler;
 import android.os.Message;
+import android.os.UserHandle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -150,9 +151,9 @@ public class GlobalVideo {
             public void onClick(View v) {
                 int[] rect = new int[4];
                 DvrConfig.getThumbnailViewRect(rect);
-                context.sendBroadcast(new Intent(BottomLayoutManager.ACTION_VIDEO_CONTROL_SHOW));
+                context.sendBroadcastAsUser(new Intent(BottomLayoutManager.ACTION_VIDEO_CONTROL_SHOW), UserHandle.ALL);
                 if (params.x == rect[0]) {
-                    context.sendBroadcast(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP));
+                    context.sendBroadcastAsUser(new Intent(RESClient.ACTION_ONCLICK_LEFT_TOP), UserHandle.ALL);
                 } else {
                     Log.e(TAG, "contentView.onClick");
                 }

@@ -2,6 +2,7 @@ package com.example.jrd48.service.protocol.root;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.UserHandle;
 import android.util.Log;
 
 import com.example.jrd48.chat.ToastR;
@@ -89,7 +90,7 @@ public class GetFriendInfoProcesser extends CommonProcesser {
             e.printStackTrace();
             i.putExtra("error_code", ProtoMessage.ErrorCode.UNKNOWN_VALUE);
         }
-        context.sendBroadcast(i);
+        context.sendBroadcastAsUser(i, UserHandle.ALL);
     }
 
     @Override
