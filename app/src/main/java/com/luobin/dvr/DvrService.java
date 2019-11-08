@@ -107,7 +107,7 @@ public class DvrService extends Service {
             super.handleMessage(msg);
             switch (msg.what) {
                 case MSG_START_PIP_RECORD:
-                    Settings.System.putInt(getContentResolver(), "dvr_switch_to_pip", 1);
+                    //Settings.System.putInt(getContentResolver(), "dvr_switch_to_pip", 1);
                     startCircleRecord();
                     break;
                 case MSG_STOP_PIP_RECORD:
@@ -373,7 +373,8 @@ public class DvrService extends Service {
             Log.d(TAG, "=========aidl-startPipVideoCapture");
             ToastR.setToastCust(getResources().getString(R.string.video_capture_started), 300000);
             mPipHandler.sendEmptyMessage(MSG_STOP_PIP_RECORD);
-            mPipHandler.sendEmptyMessageDelayed(MSG_START_PIP_RECORD, 100);
+            Settings.System.putInt(getContentResolver(), "dvr_switch_to_pip", 1);
+            mPipHandler.sendEmptyMessageDelayed(MSG_START_PIP_RECORD, 200);
         }
 
         @Override
@@ -839,7 +840,8 @@ public class DvrService extends Service {
                 }*/
             } else if ("erobbing.video_record_test".equals(intent.getAction())) {
                 mPipHandler.sendEmptyMessage(MSG_STOP_PIP_RECORD);
-                mPipHandler.sendEmptyMessageDelayed(MSG_START_PIP_RECORD, 100);
+                Settings.System.putInt(getContentResolver(), "dvr_switch_to_pip", 1);
+                mPipHandler.sendEmptyMessageDelayed(MSG_START_PIP_RECORD, 200);
             } else if ("erobbing.firstactivity_test".equals(intent.getAction())) {
                 try {
                     mServiceBinder.hide();
