@@ -20,6 +20,7 @@ import com.example.jrd48.chat.FirstActivity;
 import com.example.jrd48.chat.GlobalImg;
 import com.example.jrd48.chat.MainActivity;
 import com.example.jrd48.service.MyLogger;
+import com.luobin.dvr.DvrConfig;
 import com.luobin.dvr.R;
 import com.example.jrd48.chat.SQLite.LinkmanRecordHelper;
 import com.example.jrd48.chat.SQLite.MsgRecordHelper;
@@ -62,6 +63,25 @@ public class GetHistoryMsgProcesser extends CommonProcesser {
         super(context);
         mHandler = new Handler(Looper.getMainLooper());
     }
+
+    public Handler mGetHistoryHandler = new Handler(Looper.getMainLooper()) {
+        public void handleMessage(android.os.Message msg) {
+            Log.d("GetHistoryMsgProcesser", "mHandler what = " + msg.what);
+            switch (msg.what) {
+                case DvrConfig.MSG_GET_HISTORY_PROCESSOR:
+                    try {
+                        ProtoMessage.CommonRequest.Builder builderTeamList = ProtoMessage.CommonRequest.newBuilder();
+                        MyService.start(context, ProtoMessage.Cmd.cmdGetTeamList.getNumber(), builderTeamList.build());
+
+                        ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
+                        MyService.start(context, ProtoMessage.Cmd.cmdGetAllTeamMember.getNumber(), builder.build());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
+        }
+    };
 
     private Runnable mRefreshTeamRunnable = new Runnable() {
         @Override
@@ -277,7 +297,9 @@ public class GetHistoryMsgProcesser extends CommonProcesser {
                                 i.putExtra("msg_type", 4);
                                 context.sendBroadcast(i);
                                 mHandler.removeCallbacks(mRefreshTeamRunnable);
-                                mHandler.postDelayed(mRefreshTeamRunnable, 2000);
+                                mHandler.postDelayed(mRefreshTeamRunnable, 500);
+                                //mGetHistoryHandler.removeMessages(DvrConfig.MSG_GET_HISTORY_PROCESSOR);
+                                //mGetHistoryHandler.sendEmptyMessageDelayed(DvrConfig.MSG_GET_HISTORY_PROCESSOR, 500);
                                 if (groupId == 0) {
                                     dbMan.close();
                                 } else {

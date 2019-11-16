@@ -14,12 +14,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import com.example.jrd48.chat.MyFileUtil;
 import com.example.jrd48.chat.friend.AppliedFriends;
 import com.example.jrd48.chat.friend.DBHelperFriendsList;
 import com.example.jrd48.chat.group.cache.DBTableName;
+import com.luobin.dvr.DvrConfig;
 
 public class DBManagerFriendsList {
     private DBHelperFriendsList helper;
@@ -100,6 +104,12 @@ public class DBManagerFriendsList {
                         return 0;
                     }
                 }.execute("");
+                /*Message msg = mHandler.obtainMessage();
+                msg.what = DvrConfig.MSG_DBMANAGER_FRIEND_LIST;
+                Bundle bundle = new Bundle();
+                bundle.putParcelableList("db_manager_friend_list_data", friends);
+                msg.setData(bundle);
+                mHandler.sendMessage(msg);*/
 
                 db.setTransactionSuccessful(); // 设置事务成功完成
             } catch (Exception e) {
@@ -109,6 +119,24 @@ public class DBManagerFriendsList {
             db.endTransaction(); // 结束事务
         }
     }
+
+    public Handler mHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            Log.d("DBManagerFriendsList", "mHandler what = " + msg.what);
+            switch (msg.what) {
+                case DvrConfig.MSG_DBMANAGER_FRIEND_LIST:
+                    List<AppliedFriends> friends = msg.getData().getParcelableArrayList("db_manager_friend_list_data");
+                    for (AppliedFriends c : friends) {
+                        try {
+                            FriendFaceUtill.saveFriendFaceImg(c.getUserName(), c.getPhoneNum(), c.getUserPic(), mContext);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    break;
+            }
+        }
+    };
 
     /**
      * update person's age

@@ -1198,7 +1198,9 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                             CallClick();
                         } else {
                             ToastR.setToast(FirstActivity.this, "接收呼叫失败");
-                            closeRoom(true);
+                            //closeRoom(true);
+                            forceCloseRoom();
+                            //groupQuit();
                             fail(i.getIntExtra("error_code", -1));
                         }
                     }
@@ -1793,7 +1795,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
 
         if (isBBS){
             // 如果是海聊群，退出群
-            //groupQuit();
+            groupQuit();
         }
         mVideoRadioSwitchObserver.stopObserving();
         super.onDestroy();

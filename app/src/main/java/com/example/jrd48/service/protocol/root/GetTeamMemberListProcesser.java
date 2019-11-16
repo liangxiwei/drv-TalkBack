@@ -3,12 +3,16 @@ package com.example.jrd48.service.protocol.root;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import com.example.jrd48.chat.group.sqlite.DataBaseTool;
 import com.example.jrd48.chat.group.sqlite.TeamMemberInfoManager;
 import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.example.jrd48.service.protocol.CommonProcesser;
+import com.luobin.dvr.DvrConfig;
 
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -82,11 +86,69 @@ public class GetTeamMemberListProcesser extends CommonProcesser {
                 }
             }
         }.execute("");
-
+        /*Message msg = mHandler.obtainMessage();
+        msg.what = DvrConfig.MSG_GET_TEAM_MEMBER_LIST;
+        Bundle bundle = new Bundle();
+        bundle.putByteArray("get_team_member_list_data", data);
+        msg.setData(bundle);
+        mHandler.sendMessage(msg);*/
     }
 
     @Override
     public void onSent() {
 
     }
+
+    public Handler mHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            Log.d(TAG, "mHandler what = " + msg.what);
+            switch (msg.what) {
+                case DvrConfig.MSG_GET_TEAM_MEMBER_LIST:
+                    byte[] data = msg.getData().getByteArray("get_team_member_list_data");
+                    synchronized (GetTeamMemberListProcesser.class) {
+                        Intent i = new Intent(ACTION);
+                        try {
+                            ProtoMessage.TeamMemberList teamMemberListList = ProtoMessage.TeamMemberList.parseFrom(ArrayUtils.subarray(data, 4, data.length));
+                            if (teamMemberListList == null || teamMemberListList.getErrorCode() != ProtoMessage.ErrorCode.OK_VALUE) {
+                                Log.i(TAG, "got resp code: " + teamMemberListList.getErrorCode());
+                                i.putExtra("error_code", teamMemberListList.getErrorCode());
+                            } else {
+                                i.putExtra("error_code", ProtoMessage.ErrorCode.OK.getNumber());
+//                            List<Integer> list = new ArrayList<>();
+//                            ProtoMessage.UserInfo userInfo = teamMemberListList.getUserInfo();
+                                List<TeamMemberInfoManager> infoList = new ArrayList<>();
+                                for (int t = 0; t < teamMemberListList.getMembersCount(); t++) {
+//                                Log.d("tttt",teamMemberListList.getMembers(t).getTeamID()+"    "+teamMemberListList.getMembers(t).getUserName());
+                                    ProtoMessage.TeamMember teamInfo = teamMemberListList.getMembers(t);
+                                    if (t == 0) {
+                                        infoList.add(new TeamMemberInfoManager(teamInfo, teamInfo.getTeamID()));// 100根据自己需求调整
+                                    } else {
+                                        boolean isIn = false;
+                                        for (TeamMemberInfoManager item : infoList) {
+                                            if (item.getTeamId() == teamInfo.getTeamID()) {
+                                                item.addTeamMemberInfo(teamInfo);
+                                                isIn = true;
+                                                break;
+                                            }
+                                        }
+                                        if (!isIn) {
+                                            infoList.add(new TeamMemberInfoManager(teamInfo, teamInfo.getTeamID()));
+                                        }
+                                    }
+                                }
+                                //将群成员分别保存在对应的群组里
+                                for (TeamMemberInfoManager item : infoList) {
+                                    DataBaseTool.saveData(item.getTeamMemberInfoList(), item.getTeamId(), context);
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            i.putExtra("error_code", ProtoMessage.ErrorCode.UNKNOWN_VALUE);
+                        }
+                        context.sendBroadcast(i);
+                    }
+                    break;
+            }
+        }
+    };
 }

@@ -44,6 +44,15 @@ public class DvrConfig {
     public static final String VIDEO2_ADDRESS = "/sys/bus/usb/devices/1-1.1.1:1.0/video4linux";//video2
     public static final String VIDEO3_ADDRESS = "/sys/bus/usb/devices/1-1.1.2:1.0/video4linux";//video3
 
+    public static final int MSG_TEAM_MEMBER_PROCESSOR = 1;
+    public static final int MSG_FETCH_SIM_INFO = 2;
+    public static final int MSG_GET_FRIEND_LOCATION_PROCESSOR = 3;
+    public static final int MSG_GET_TEAM_MEMBER_LIST = 4;
+    public static final int MSG_DBMANAGER_FRIEND_LIST = 5;
+    public static final int MSG_GET_HISTORY_PROCESSOR = 6;
+    public static final int MSG_RECEIVER_PROCESSOR = 7;
+
+
     public static void init(Context context) {
         if (mContext == null) {
             mContext = context;

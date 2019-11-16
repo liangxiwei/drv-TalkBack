@@ -253,7 +253,7 @@ public class BBSActivity extends BaseActivity {
                     MsgTool.deleteTeamMsg(mContext, info.getTeamID());
                     //if (!isBBS){
                     ToastR.setToast(mContext, "退出群组成功");
-                    finish();
+                    //finish();
                     //}
                 } else {
                     fail(i.getIntExtra("error_code", -1));

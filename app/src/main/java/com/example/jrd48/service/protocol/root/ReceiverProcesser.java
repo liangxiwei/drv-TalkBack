@@ -38,6 +38,7 @@ import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.example.jrd48.service.protocol.CancelNotify;
 import com.example.jrd48.service.protocol.CommonProcesser;
 import com.example.jrd48.service.protocol.ResponseErrorProcesser;
+import com.luobin.dvr.DvrConfig;
 import com.luobin.voice.VoiceHandler;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -67,6 +68,24 @@ public class ReceiverProcesser extends CommonProcesser {
         return MyFileUtil.getMemoryPath(context) + "/luobingchat";
     }
 
+    public Handler mReceiverProcesserHandler = new Handler(Looper.getMainLooper()) {
+        public void handleMessage(android.os.Message msg) {
+            Log.d("ReceiverProcesser", "mHandler what = " + msg.what);
+            switch (msg.what) {
+                case DvrConfig.MSG_RECEIVER_PROCESSOR:
+                    try {
+                        ProtoMessage.CommonRequest.Builder builderTeamList = ProtoMessage.CommonRequest.newBuilder();
+                        MyService.start(context, ProtoMessage.Cmd.cmdGetTeamList.getNumber(), builderTeamList.build());
+
+                        ProtoMessage.AcceptTeam.Builder builder = ProtoMessage.AcceptTeam.newBuilder();
+                        MyService.start(context, ProtoMessage.Cmd.cmdGetAllTeamMember.getNumber(), builder.build());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
+        }
+    };
 
     private Runnable mRefreshTeamRunnable = new Runnable() {
         @Override
@@ -313,7 +332,9 @@ public class ReceiverProcesser extends CommonProcesser {
                         i.putExtra("msg_type", 4);
                         context.sendBroadcastAsUser(i, UserHandle.ALL);
                         mHandler.removeCallbacks(mRefreshTeamRunnable);
-                        mHandler.postDelayed(mRefreshTeamRunnable, 2000);
+                        mHandler.postDelayed(mRefreshTeamRunnable, 500);
+                        //mReceiverProcesserHandler.removeMessages(DvrConfig.MSG_RECEIVER_PROCESSOR);
+                        //mReceiverProcesserHandler.sendEmptyMessageDelayed(DvrConfig.MSG_RECEIVER_PROCESSOR, 2000);
 
                         if (dbTeam != null) {
                             dbTeam.close();
@@ -435,7 +456,9 @@ public class ReceiverProcesser extends CommonProcesser {
                             i.putExtra("msg_type", 4);
                             context.sendBroadcastAsUser(i, UserHandle.ALL);
                             mHandler.removeCallbacks(mRefreshTeamRunnable);
-                            mHandler.postDelayed(mRefreshTeamRunnable, 2000);
+                            mHandler.postDelayed(mRefreshTeamRunnable, 500);
+                            //mReceiverProcesserHandler.removeMessages(DvrConfig.MSG_RECEIVER_PROCESSOR);
+                            //mReceiverProcesserHandler.sendEmptyMessageDelayed(DvrConfig.MSG_RECEIVER_PROCESSOR, 2000);
 
                             if (dbTeam != null) {
                                 dbTeam.close();

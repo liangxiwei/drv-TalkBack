@@ -22,6 +22,7 @@ import com.example.jrd48.chat.friend.FriendFaceUtill;
 import com.example.jrd48.chat.group.MsgTool;
 import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.example.jrd48.service.protocol.CommonProcesser;
+import com.luobin.dvr.DvrConfig;
 import com.luobin.dvr.R;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -46,7 +47,7 @@ public class TeamMemberProcesser extends CommonProcesser {
     }
     @Override
     public void onGot(final byte[] data) {
-        /*new AsyncTask<String, Integer, Integer>() {
+        new AsyncTask<String, Integer, Integer>() {
             @Override
             protected Integer doInBackground(String... strings) {
                 synchronized (TeamMemberProcesser.class) {
@@ -153,14 +154,15 @@ public class TeamMemberProcesser extends CommonProcesser {
                     return null;
                 }
             }
-        }.execute("");*/
-        Message msg = mHandler.obtainMessage();
-        msg.what = MSG_TEAM_MEMBER_PROCESSER;
+        }.execute("");
+        /*Message msg = mHandler.obtainMessage();
+        msg.what = DvrConfig.MSG_TEAM_MEMBER_PROCESSOR;
         Bundle bundle = new Bundle();
         bundle.putByteArray("team_member_data", data);
         msg.setData(bundle);
-        mHandler.removeMessages(MSG_TEAM_MEMBER_PROCESSER);
-        mHandler.sendMessageDelayed(msg, 1000);
+        //mHandler.removeMessages(DvrConfig.MSG_TEAM_MEMBER_PROCESSOR);
+        //mHandler.sendMessageDelayed(msg, 100);
+        mHandler.sendMessage(msg);*/
     }
 
     @Override
@@ -172,7 +174,7 @@ public class TeamMemberProcesser extends CommonProcesser {
         public void handleMessage(android.os.Message msg) {
             Log.d(TAG, "mHandler what = " + msg.what);
             switch (msg.what) {
-                case MSG_TEAM_MEMBER_PROCESSER:
+                case DvrConfig.MSG_TEAM_MEMBER_PROCESSOR:
                     byte[] data = msg.getData().getByteArray("team_member_data");
                     synchronized (TeamMemberProcesser.class) {
                         try {
