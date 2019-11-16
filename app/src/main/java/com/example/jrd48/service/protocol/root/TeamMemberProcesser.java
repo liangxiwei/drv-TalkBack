@@ -160,7 +160,7 @@ public class TeamMemberProcesser extends CommonProcesser {
         bundle.putByteArray("team_member_data", data);
         msg.setData(bundle);
         mHandler.removeMessages(MSG_TEAM_MEMBER_PROCESSER);
-        mHandler.sendMessage(msg);
+        mHandler.sendMessageDelayed(msg, 1000);
     }
 
     @Override

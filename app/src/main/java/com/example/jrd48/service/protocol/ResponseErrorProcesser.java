@@ -86,7 +86,8 @@ public class ResponseErrorProcesser {
                     ToastR.setToast(context, "附件尚未上传完毕");
                     break;
                 case ProtoMessage.ErrorCode.NOT_MY_TEAM_VALUE:
-                    ToastR.setToast(context, "不是我的群");
+                    //ToastR.setToast(context, "不是我的群");
+                    Log.e("ResponseErrorProcesser", "不是我的群");
                     break;
                 case ProtoMessage.ErrorCode.SMS_CODE_NOT_GOT_VALUE:
                     ToastR.setToast(context, "请重新获取验证码");

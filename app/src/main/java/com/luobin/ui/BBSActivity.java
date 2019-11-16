@@ -22,6 +22,7 @@ import com.example.jrd48.chat.SharedPreferencesUtils;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.bean.Track;
 import com.example.jrd48.chat.crash.MyApplication;
+import com.example.jrd48.chat.group.MsgTool;
 import com.example.jrd48.chat.group.TeamInfo;
 import com.example.jrd48.chat.group.TeamInfoList;
 import com.example.jrd48.chat.location.Utils;
@@ -32,6 +33,7 @@ import com.example.jrd48.service.proto_gen.ProtoMessage;
 import com.example.jrd48.service.protocol.ResponseErrorProcesser;
 import com.example.jrd48.service.protocol.root.ApplyGroupProcesser;
 import com.example.jrd48.service.protocol.root.BBSListProcesser;
+import com.example.jrd48.service.protocol.root.DismissTeamProcesser;
 import com.example.jrd48.service.protocol.root.DownloadTrackProcesser;
 import com.example.jrd48.service.protocol.root.GroupsListProcesser;
 import com.example.jrd48.service.protocol.root.TrackListProcesser;
@@ -115,6 +117,7 @@ public class BBSActivity extends BaseActivity {
                     mBBSGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                            groupQuit(mBBSList.get(position));
                             //加入群组，跳转到对讲界面
                             mHandler.removeMessages(MSG_ENTER_BBS);
                             Message msg = mHandler.obtainMessage();
@@ -226,6 +229,34 @@ public class BBSActivity extends BaseActivity {
                 } else {
                     ToastR.setToast(mContext, "加入海聊群失败！");
                     fail(intent.getIntExtra("error_code", -1));
+                }
+            }
+        });
+    }
+
+    private void groupQuit(final TeamInfo info) {
+        ProtoMessage.ApplyTeam.Builder builder = ProtoMessage.ApplyTeam.newBuilder();
+        builder.setTeamID(info.getTeamID());
+        MyService.start(mContext, ProtoMessage.Cmd.cmdQuitTeam.getNumber(), builder.build());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(DismissTeamProcesser.ACTION);
+        new TimeoutBroadcast(mContext, filter, getBroadcastManager()).startReceiver(10, new ITimeoutBroadcast() {
+            @Override
+            public void onTimeout() {
+                ToastR.setToast(mContext, "连接超时");
+            }
+
+            @Override
+            public void onGot(Intent i) {
+                if (i.getIntExtra("error_code", -1) ==
+                        ProtoMessage.ErrorCode.OK.getNumber()) {
+                    MsgTool.deleteTeamMsg(mContext, info.getTeamID());
+                    //if (!isBBS){
+                    ToastR.setToast(mContext, "退出群组成功");
+                    finish();
+                    //}
+                } else {
+                    fail(i.getIntExtra("error_code", -1));
                 }
             }
         });

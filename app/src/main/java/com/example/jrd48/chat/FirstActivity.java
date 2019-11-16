@@ -942,6 +942,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             GlobalStatus.setTempChat("");
             single = false;
             SharedPreferencesUtils.put(this, ReceiverProcesser.UPDATE_KEY, groupName);
+            SharedPreferencesUtils.put(this, "isBBS", isBBS);
             type = intent.getExtras().getInt("type");
             if (type == ProtoMessage.TeamRole.Owner_VALUE) {
                 Log.i(TAG, "我是群主");
@@ -2326,10 +2327,10 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                         ProtoMessage.ErrorCode.OK.getNumber()) {
 //                    deleteDBitem(group);
                     MsgTool.deleteTeamMsg(mContext, group);
-                    if (!isBBS){
+                    //if (!isBBS){
                         ToastR.setToast(mContext, "退出群组成功");
                         finish();
-                    }
+                    //}
                 } else {
                     fail(i.getIntExtra("error_code", -1));
                 }
@@ -5024,14 +5025,14 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
 
         ChatManager.getInstance().hideView();
         SharedPreferencesUtils.put(this, "firstactivity_ontop", false);
-        if (isBBS) {
+        /*if (isBBS) {
             // 如果是海聊群，退出群
             groupQuit();
             GlobalStatus.setOldChat(0, "", 0);
             GlobalStatus.clearChatRoomMsg();
             SharedPreferencesUtils.put(MyApplication.getContext(), "cur_teamId", "");
             isBBS = false;
-        }
+        }*/
         super.onPause();
     }
 

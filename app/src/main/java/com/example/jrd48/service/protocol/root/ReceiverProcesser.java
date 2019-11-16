@@ -257,7 +257,10 @@ public class ReceiverProcesser extends CommonProcesser {
                         String teamName = "";
                         TeamInfo teamInfo = null;
                         ProtoMessage.ChatRoomMsg chatRoomMsg = GlobalStatus.getChatRoomMsg();
-                        List<ProtoMessage.ChatRoomMemberMsg> memberMsgs = chatRoomMsg.getMembersList();
+                        List<ProtoMessage.ChatRoomMemberMsg> memberMsgs = null;
+                        if (chatRoomMsg != null) {
+                            memberMsgs = chatRoomMsg.getMembersList();
+                        }
                         int selectPosition = -1;
                         ProtoMessage.ChatRoomMsg.Builder builder = chatRoomMsg.toBuilder();
                         boolean isChange = false;

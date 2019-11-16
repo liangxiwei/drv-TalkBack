@@ -10,6 +10,7 @@ import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.SharedPreferencesUtils;
 import com.example.jrd48.chat.location.Utils;
 import com.example.jrd48.service.MyService;
+import com.luobin.utils.ShellUtils;
 
 
 public class PttKeyReceiver extends BroadcastReceiver {
@@ -24,7 +25,7 @@ public class PttKeyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         //if (!GlobalStatus.getBBSPageActivated()) {
-        if (!Utils.getBBSTopActivity(context)) {
+        if ((!Utils.getBBSTopActivity(context) && !(boolean) SharedPreferencesUtils.get(context, "isBBS", false)) || Utils.getFirstActivity(context)) {
             boolean pttKeyDown = false;
             Log.v(TAG, "PttKeyReceiver action:" + intent.getAction());
 //        NotifyManager.getInstance().showNotification("123");
