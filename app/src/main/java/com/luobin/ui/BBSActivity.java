@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import com.example.jrd48.GlobalStatus;
@@ -18,6 +21,7 @@ import com.example.jrd48.chat.FirstActivity;
 import com.example.jrd48.chat.SharedPreferencesUtils;
 import com.example.jrd48.chat.ToastR;
 import com.example.jrd48.chat.bean.Track;
+import com.example.jrd48.chat.crash.MyApplication;
 import com.example.jrd48.chat.group.TeamInfo;
 import com.example.jrd48.chat.group.TeamInfoList;
 import com.example.jrd48.chat.location.Utils;
@@ -47,16 +51,22 @@ import static com.example.jrd48.chat.crash.MyApplication.getContext;
 
 public class BBSActivity extends BaseActivity {
 
-    @BindView(R.id.bbs_listview1)
-    ListView bbsListview1;
-    @BindView(R.id.bbs_listview2)
-    ListView bbsListview2;
+    //@BindView(R.id.bbs_listview1)
+    //ListView bbsListview1;
+    //@BindView(R.id.bbs_listview2)
+    //ListView bbsListview2;
+    @BindView(R.id.bbs_gridview)
+    GridView mBBSGridView;
     @BindView(R.id.btn_return)
     Button btnReturn;
     BBSAdapter bbsAdapter1;
     BBSAdapter bbsAdapter2;
+    BBSAdapter mBBSAdapter;
     List<TeamInfo> bbsList1 = new ArrayList<>();
     List<TeamInfo> bbsList2 = new ArrayList<>();
+    List<TeamInfo> mBBSList = new ArrayList<>();
+    private static final int MSG_ENTER_BBS = 1;
+    private static final int MSG_JUMP_FIRSTACTIVITY = 2;
     String userPhone = "";
     private static final String TAG = "BBSActivity";
     @Override
@@ -98,7 +108,25 @@ public class BBSActivity extends BaseActivity {
                         ProtoMessage.ErrorCode.OK.getNumber()) {
                     TeamInfoList list = i.getParcelableExtra("get_bbs_list");
                     List<TeamInfo> tempList = list.getmTeamInfo();
-                    if (tempList != null) {
+                    mBBSList = list.getmTeamInfo();
+                    mBBSAdapter = new BBSAdapter(mBBSList, MyApplication.getContext());
+                    mBBSGridView.setAdapter(mBBSAdapter);
+                    mBBSGridView.setSelector(R.drawable.tab_list_item_selector);
+                    mBBSGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                            //加入群组，跳转到对讲界面
+                            mHandler.removeMessages(MSG_ENTER_BBS);
+                            Message msg = mHandler.obtainMessage();
+                            msg.what = MSG_ENTER_BBS;
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("bbs_grid_position", position);
+                            msg.setData(bundle);
+                            mHandler.sendMessageDelayed(msg, 500);
+                            //applyBBS(bbsList1.get(position));
+                        }
+                    });
+                    /*if (tempList != null) {
                         int length = tempList.size() / 2 + tempList.size() % 2;
                         int index = 0;
                         for (TeamInfo info : tempList) {
@@ -128,20 +156,7 @@ public class BBSActivity extends BaseActivity {
                                 return false;
                             }
                             if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyEvent.getRepeatCount() == 0) {
-                                /*switch (keyEvent.getKeyCode()) {
-                                    case KeyEvent.KEYCODE_F6:
-                                        int position = 0;
-                                        if (bbsListview1.getSelectedItemPosition() != -1) {
-                                            position = bbsListview1.getSelectedItemPosition();
-                                        }
-                                        if (bbsList1.size() > 0 && position >= 0 && position <= (bbsList1.size() - 1)) {
-                                            applyBBS(bbsList1.get(position));
-                                            return true;
-                                        }
-                                        break;
-                                    default:
-                                        break;
-                                }*/
+
                             }
                             return false;
                         }
@@ -164,24 +179,15 @@ public class BBSActivity extends BaseActivity {
                                 return false;
                             }
                             if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyEvent.getRepeatCount() == 0) {
-                                /*switch (keyEvent.getKeyCode()) {
-                                    case KeyEvent.KEYCODE_F6:
-                                        int position = 0;
-                                        if (bbsListview2.getSelectedItemPosition() != -1) {
-                                            position = bbsListview2.getSelectedItemPosition();
-                                        }
-                                        if (bbsList2.size() > 0 && position >= 0 && position <= (bbsList2.size() - 1)) {
-                                            applyBBS(bbsList2.get(position));
-                                            return true;
-                                        }
-                                        break;
-                                    default:
-                                        break;
-                                }*/
+
                             }
                             return false;
                         }
-                    });
+                    });*/
+                    Intent respIntent = new Intent();
+                    respIntent.putExtra("data", 0);
+                    setResult(RESULT_OK, respIntent);
+                    //finish();
                 } else {
                     fail(i.getIntExtra("error_code", -1));
                 }
@@ -209,8 +215,16 @@ public class BBSActivity extends BaseActivity {
                 int errorCode = intent.getIntExtra("error_code", -1);
                 if (errorCode == ProtoMessage.ErrorCode.OK.getNumber()) {
                     ToastR.setToast(mContext, "已加入海聊群");
-                    jumpFirstActivity(info);
+                    mHandler.removeMessages(MSG_JUMP_FIRSTACTIVITY);
+                    Message msg = mHandler.obtainMessage();
+                    msg.what = MSG_JUMP_FIRSTACTIVITY;
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("teaminfo_bbs", info);
+                    msg.setData(bundle);
+                    mHandler.sendMessageDelayed(msg, 600);
+                    //jumpFirstActivity(info);
                 } else {
+                    ToastR.setToast(mContext, "加入海聊群失败！");
                     fail(intent.getIntExtra("error_code", -1));
                 }
             }
@@ -243,4 +257,18 @@ public class BBSActivity extends BaseActivity {
     public void fail(int i) {
         new ResponseErrorProcesser(getContext(), i);
     }
+
+    private Handler mHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            Log.d(TAG, "mHandler what = " + msg.what);
+            switch (msg.what) {
+                case MSG_ENTER_BBS:
+                    applyBBS(mBBSList.get(msg.getData().getInt("bbs_grid_position")));
+                    break;
+                case MSG_JUMP_FIRSTACTIVITY:
+                    jumpFirstActivity((TeamInfo) msg.getData().getParcelable("teaminfo_bbs"));
+                    break;
+            }
+        }
+    };
 }
