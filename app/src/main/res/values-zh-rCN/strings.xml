@@ -211,5 +211,5 @@
     <string name="toast_current_video_screen_mode_pip">当前对讲使用画中画模式</string>
 
     <string name="toast_bbs_not_allowed">模拟对讲模式下禁止进入海聊群！</string>
-
+    <string name="progress_waiting_to_enter_bbs">正在进入海聊群，请稍等...</string>
 </resources>

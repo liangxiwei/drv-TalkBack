@@ -281,7 +281,10 @@ public class ReceiverProcesser extends CommonProcesser {
                             memberMsgs = chatRoomMsg.getMembersList();
                         }
                         int selectPosition = -1;
-                        ProtoMessage.ChatRoomMsg.Builder builder = chatRoomMsg.toBuilder();
+                        ProtoMessage.ChatRoomMsg.Builder builder = null;
+                        if (chatRoomMsg != null) {
+                            builder = chatRoomMsg.toBuilder();
+                        }
                         boolean isChange = false;
                         //if (resp.getMsgType() == ProtoMessage.MsgType.mtEnterTeam_VALUE) {
                         ProtoMessage.ChatRoomMemberMsg selectMember = null;

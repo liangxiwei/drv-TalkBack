@@ -214,5 +214,5 @@
     <string name="toast_current_video_screen_mode_pip">Pip mode now is working</string>
 
     <string name="toast_bbs_not_allowed">BBS not allowed in RadioChat mode</string>
-
+    <string name="progress_waiting_to_enter_bbs">Entering BBS,please wait...</string>
 </resources>

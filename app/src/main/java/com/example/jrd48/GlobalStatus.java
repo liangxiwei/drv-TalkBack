@@ -215,7 +215,7 @@ public class GlobalStatus {
             }
             if(t != null && t.getTeamType() == ProtoMessage.TeamType.teamBBS.getNumber()){
                 //Log.d(TAG,"setIsRandomChat 202");
-                //setIsRandomChat(true);
+                setIsRandomChat(true);
                 SharedPreferences preference = context.getSharedPreferences("token", Context.MODE_PRIVATE);
                 /*int teamRandom = preference.getInt("team_random", 0);
                 int teamRandomVideo = preference.getInt("team_random_video", 0);
@@ -227,7 +227,7 @@ public class GlobalStatus {
                 }*/
             }else{
                 Log.d(TAG,"setIsRandomChat 214");
-                //setIsRandomChat(false);
+                setIsRandomChat(false);
             }
         } catch (Exception e){
             e.printStackTrace();

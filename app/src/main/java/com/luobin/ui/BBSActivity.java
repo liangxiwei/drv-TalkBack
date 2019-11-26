@@ -1,5 +1,6 @@
 package com.luobin.ui;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -69,8 +70,10 @@ public class BBSActivity extends BaseActivity {
     List<TeamInfo> mBBSList = new ArrayList<>();
     private static final int MSG_ENTER_BBS = 1;
     private static final int MSG_JUMP_FIRSTACTIVITY = 2;
+    private static final int MSG_PROGRESS_CANCEL = 3;
     String userPhone = "";
     private static final String TAG = "BBSActivity";
+    private ProgressDialog mProgressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -200,8 +203,10 @@ public class BBSActivity extends BaseActivity {
 
 
     private void applyBBS(final TeamInfo info){
+        showProgressDialog();
         ProtoMessage.ApplyTeam.Builder builder = ProtoMessage.ApplyTeam.newBuilder();
         builder.setTeamID(info.getTeamID());
+        Log.d(TAG, "applyBBS-info.getTeamID()=" + info.getTeamID().toString());
         MyService.start(mContext, ProtoMessage.Cmd.cmdApplyTeam.getNumber(), builder.build());
         IntentFilter filter = new IntentFilter();
         filter.addAction(ApplyGroupProcesser.ACTION);
@@ -216,6 +221,7 @@ public class BBSActivity extends BaseActivity {
             @Override
             public void onGot(Intent intent) {
                 int errorCode = intent.getIntExtra("error_code", -1);
+                Log.d(TAG, "applyBBS-errorCode=" + errorCode);
                 if (errorCode == ProtoMessage.ErrorCode.OK.getNumber()) {
                     ToastR.setToast(mContext, "已加入海聊群");
                     mHandler.removeMessages(MSG_JUMP_FIRSTACTIVITY);
@@ -255,6 +261,10 @@ public class BBSActivity extends BaseActivity {
                     ToastR.setToast(mContext, "退出群组成功");
                     //finish();
                     //}
+                    Log.d(TAG, "groupQuit = success");
+                    GlobalStatus.setOldChat(0, "", 0);
+                    GlobalStatus.clearChatRoomMsg();
+                    SharedPreferencesUtils.put(MyApplication.getContext(), "cur_teamId", "");
                 } else {
                     fail(i.getIntExtra("error_code", -1));
                 }
@@ -270,8 +280,8 @@ public class BBSActivity extends BaseActivity {
                 + info.getTeamName() + "-getTeamID=" + info.getTeamID());
         CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + info.getTeamID());
         if (GlobalStatus.equalTeamID(info.getTeamID())) {
-            intent.putExtra("callType", 0);
-            //intent.putExtra("callType", 2);
+            //intent.putExtra("callType", 0);
+            intent.putExtra("callType", 2);
         } else if (callState != null && callState.getState() == GlobalStatus.STATE_CALL) {
             intent.putExtra("callType", 1);
         } else {
@@ -283,6 +293,7 @@ public class BBSActivity extends BaseActivity {
         intent.putExtra("isBBS",true);
         VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(getContext(), intent);
         dialog.show();
+        mHandler.sendEmptyMessageDelayed(MSG_PROGRESS_CANCEL, 1000);
     }
 
     public void fail(int i) {
@@ -299,7 +310,21 @@ public class BBSActivity extends BaseActivity {
                 case MSG_JUMP_FIRSTACTIVITY:
                     jumpFirstActivity((TeamInfo) msg.getData().getParcelable("teaminfo_bbs"));
                     break;
+                case MSG_PROGRESS_CANCEL:
+                    if (mProgressDialog.isShowing()) {
+                        mProgressDialog.dismiss();
+                    }
+                    break;
             }
         }
     };
+
+    private void showProgressDialog() {
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.setMessage(getResources().getString(R.string.progress_waiting_to_enter_bbs));
+        mProgressDialog.show();
+    }
 }

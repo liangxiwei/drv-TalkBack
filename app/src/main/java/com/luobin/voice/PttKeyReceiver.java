@@ -34,7 +34,7 @@ public class PttKeyReceiver extends BroadcastReceiver {
             } else if (intent.getAction().equals("com.agold.hy.ptt.down")) {
                 pttKeyDown = true;
             }
-
+            SharedPreferencesUtils.put(context, "pttKeyDown", pttKeyDown);
             GlobalStatus.setPttBroadCast(pttKeyDown);
             if (pttKeyDown) {
                 // 唤醒
