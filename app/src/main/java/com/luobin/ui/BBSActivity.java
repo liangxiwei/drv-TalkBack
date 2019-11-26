@@ -129,6 +129,8 @@ public class BBSActivity extends BaseActivity {
                             bundle.putInt("bbs_grid_position", position);
                             msg.setData(bundle);
                             mHandler.sendMessageDelayed(msg, 500);
+                            //avoid ptt behabior before bbs is ready
+                            SharedPreferencesUtils.put(getContext(), "ptt_not_allowed", true);
                             //applyBBS(bbsList1.get(position));
                         }
                     });
@@ -313,6 +315,8 @@ public class BBSActivity extends BaseActivity {
                 case MSG_PROGRESS_CANCEL:
                     if (mProgressDialog.isShowing()) {
                         mProgressDialog.dismiss();
+                        Log.d(TAG, "cancelProgressDialog");
+                        SharedPreferencesUtils.put(getContext(), "ptt_not_allowed", false);
                     }
                     break;
             }
@@ -320,11 +324,13 @@ public class BBSActivity extends BaseActivity {
     };
 
     private void showProgressDialog() {
+        Log.d(TAG, "showProgressDialog");
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mProgressDialog.setCancelable(false);
         mProgressDialog.setCanceledOnTouchOutside(false);
-        mProgressDialog.setMessage(getResources().getString(R.string.progress_waiting_to_enter_bbs));
+        mProgressDialog.setTitle(getResources().getString(R.string.progress_waiting_to_enter_bbs_title));
+        mProgressDialog.setMessage(getResources().getString(R.string.progress_waiting_to_enter_bbs_msg));
         mProgressDialog.show();
     }
 }

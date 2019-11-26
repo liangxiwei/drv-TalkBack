@@ -500,6 +500,7 @@ public class MyService extends Service {
         //startSimInfoService();
         GlobalStatus.setPttKeyDown(false);
         SharedPreferencesUtils.put(this, "pttKeyDown", false);
+        SharedPreferencesUtils.put(MyApplication.getContext(), "ptt_not_allowed", false);
     }
 
     private BroadcastReceiver contentObserver = new BroadcastReceiver() {

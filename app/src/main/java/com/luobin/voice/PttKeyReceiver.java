@@ -25,7 +25,9 @@ public class PttKeyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         //if (!GlobalStatus.getBBSPageActivated()) {
-        if ((!Utils.getBBSTopActivity(context) && !(boolean) SharedPreferencesUtils.get(context, "isBBS", false)) || Utils.getFirstActivity(context)) {
+        if (((!Utils.getBBSTopActivity(context) && !(boolean) SharedPreferencesUtils.get(context, "isBBS", false))
+                || Utils.getFirstActivity(context))
+                && !(Boolean) SharedPreferencesUtils.get(context, "ptt_not_allowed", false)) {
             boolean pttKeyDown = false;
             Log.v(TAG, "PttKeyReceiver action:" + intent.getAction());
 //        NotifyManager.getInstance().showNotification("123");
