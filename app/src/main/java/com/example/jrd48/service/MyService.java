@@ -498,6 +498,8 @@ public class MyService extends Service {
         registerReceiver(contentObserver, intentFilter);
         // start sim check
         //startSimInfoService();
+        GlobalStatus.setPttKeyDown(false);
+        SharedPreferencesUtils.put(this, "pttKeyDown", false);
     }
 
     private BroadcastReceiver contentObserver = new BroadcastReceiver() {
