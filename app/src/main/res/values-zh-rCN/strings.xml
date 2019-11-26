@@ -210,4 +210,6 @@
     <string name="toast_current_video_screen_mode_outer">当前对讲使用车外摄像头</string>
     <string name="toast_current_video_screen_mode_pip">当前对讲使用画中画模式</string>
 
+    <string name="toast_bbs_not_allowed">模拟对讲模式下禁止进入海聊群！</string>
+
 </resources>

@@ -213,4 +213,6 @@
     <string name="toast_current_video_screen_mode_outer">Back camera now is working</string>
     <string name="toast_current_video_screen_mode_pip">Pip mode now is working</string>
 
+    <string name="toast_bbs_not_allowed">BBS not allowed in RadioChat mode</string>
+
 </resources>

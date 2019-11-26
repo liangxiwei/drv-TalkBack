@@ -5149,9 +5149,20 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         }
     }
 
-    @OnClick({R.id.voice, R.id.btn_return, R.id.prefix_camera, R.id.goto_map, R.id.do_not_disturb, R.id.btn_add})
+    @OnClick({R.id.voice, R.id.btn_bbs_hailiao, R.id.btn_return, R.id.prefix_camera, R.id.goto_map, R.id.do_not_disturb, R.id.btn_add})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.btn_bbs_hailiao:
+                if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                    Intent intent = new Intent();
+                    intent.setClassName("com.luobin.dvr",
+                            "com.example.jrd48.chat.WelcomeActivity");
+                    intent.putExtra("className", "bbs");
+                    startActivity(intent);
+                } else {
+                    ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.toast_bbs_not_allowed));
+                }
+                break;
             case R.id.btn_return:
                 finish();
                 break;

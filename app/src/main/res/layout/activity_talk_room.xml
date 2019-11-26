@@ -23,12 +23,26 @@
       		android:id="@+id/statusBar"
             android:layout_width="192dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="31dp"
+            android:layout_marginLeft="36dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/bg_selector"
             android:layout_toRightOf="@id/action_bar_view"
             android:nextFocusDown="@+id/voice"
             android:nextFocusRight="@+id/btn_return"
+            />
+
+        <Button
+            android:id="@+id/btn_bbs_hailiao"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_alignRight="@+id/btn_return"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="90dp"
+            android:background="@drawable/button_selector"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="BBS海聊"
             />
 
         <Button
@@ -40,9 +54,10 @@
             android:text="返回"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="18dp"
             android:background="@drawable/button_selector"
             android:drawableLeft="@drawable/icon_return"
+            android:paddingLeft="13dp"
             android:nextFocusLeft="@+id/statusBar"
             />
 
