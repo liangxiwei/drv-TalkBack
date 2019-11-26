@@ -17,4 +17,6 @@
         <item>480</item>
         <item>480</item>
     </integer-array>
+    <!--working on acc off state-->
+    <bool name="working_on_acc_off_state_enabled" translatable="false">false</bool>
 </resources>

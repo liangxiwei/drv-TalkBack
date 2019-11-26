@@ -327,4 +327,9 @@ public class DvrConfig {
         Log.d(TAG, "getVideoNode=" + result);
         return result;
     }
+
+    public static boolean getAccOffStateWorkingEnabled() {
+        boolean enabled = mContext.getResources().getBoolean(R.bool.working_on_acc_off_state_enabled);
+        return enabled;
+    }
 }

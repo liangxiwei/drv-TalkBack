@@ -43,16 +43,20 @@ public class MyApplication extends MultiDexApplication {
         public void onReceive(Context context, Intent intent) {
             Log.d("MyApplication", "shutDownReceiver  action="+intent.getAction());
             if (intent.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_ON)) {
-                int type = GlobalStatus.getShutDownType(getContext());
-                if (type == 0 && !(boolean) SharedPreferencesUtils.get(getContext(), "isScreenOn", false)) {
-                    SharedPreferencesUtils.put(getContext(), "isScreenOn", true);
-                    checkStatus(true);
+                if (DvrConfig.getAccOffStateWorkingEnabled()) {
+                    int type = GlobalStatus.getShutDownType(getContext());
+                    if (type == 0 && !(boolean) SharedPreferencesUtils.get(getContext(), "isScreenOn", false)) {
+                        SharedPreferencesUtils.put(getContext(), "isScreenOn", true);
+                        checkStatus(true);
+                    }
                 }
             } else if (intent.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_OFF)) {
-                int type = GlobalStatus.getShutDownType(getContext());
-                if (type == 0) {
-                    SharedPreferencesUtils.put(getContext(), "isScreenOn", false);
-                    ActivityCollector.finishAll();
+                if (DvrConfig.getAccOffStateWorkingEnabled()) {
+                    int type = GlobalStatus.getShutDownType(getContext());
+                    if (type == 0) {
+                        SharedPreferencesUtils.put(getContext(), "isScreenOn", false);
+                        ActivityCollector.finishAll();
+                    }
                 }
             }
         }
@@ -203,11 +207,13 @@ public class MyApplication extends MultiDexApplication {
 //            ToastR.setToast(MyApplication.getContext(),(boolean) SharedPreferencesUtils.get(getContext(),"isScreenOn",false)+"naviOn");
 //        }
         if (type == 1) {
-            if((boolean) SharedPreferencesUtils.get(getContext(),"isScreenOn",false)){
-                SharedPreferencesUtils.put(getContext(),"isScreenOn",false);
-                return;
-            } else {
-                SharedPreferencesUtils.put(getContext(),"isScreenOn",false);
+            if (DvrConfig.getAccOffStateWorkingEnabled()) {
+                if ((boolean) SharedPreferencesUtils.get(getContext(), "isScreenOn", false)) {
+                    SharedPreferencesUtils.put(getContext(), "isScreenOn", false);
+                    return;
+                } else {
+                    SharedPreferencesUtils.put(getContext(), "isScreenOn", false);
+                }
             }
         }
         Log.d("wsDvr", "checkStatus type="+type +",screenOn="+screenOn);
@@ -221,8 +227,14 @@ public class MyApplication extends MultiDexApplication {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    if (0 == GlobalStatus.getShutDownType(MyApplication.getContext()) && !((boolean) SharedPreferencesUtils.get(MyApplication.getContext(), "isScreenOn", false))) {
-                        return;
+                    if (DvrConfig.getAccOffStateWorkingEnabled()) {
+                        if (0 == GlobalStatus.getShutDownType(MyApplication.getContext()) && !((boolean) SharedPreferencesUtils.get(MyApplication.getContext(), "isScreenOn", false))) {
+                            return;
+                        }
+                    } else {
+                        if (0 == GlobalStatus.getShutDownType(MyApplication.getContext())) {
+                            return;
+                        }
                     }
 
 //                    ToastR.setToast(MyApplication.getContext(),screenOn+"");

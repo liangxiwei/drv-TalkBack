@@ -110,6 +110,7 @@ import com.example.jrd48.service.protocol.root.UserInfoProcesser;
 import com.example.jrd48.service.protocol.root.UserRegProcesser;
 import com.example.jrd48.service.protocol.root.VoiceAcceptProcesser;
 import com.example.jrd48.service.protocol.root.VoiceStartProcesser;
+import com.luobin.dvr.DvrConfig;
 import com.luobin.dvr.DvrService;
 import com.luobin.dvr.R;
 import com.luobin.log.DBMyLogHelper;
@@ -336,9 +337,15 @@ public class MyService extends Service {
         shutDownObserver = new ShutDownObserver(new Handler());
         shutDownObserver.startObserving();
 
-        if (0 == GlobalStatus.getShutDownType(this) && !((boolean) SharedPreferencesUtils.get(MyService.this, "isScreenOn", false))) {
-//            ToastR.setToastLong(this,"当前处于熄火状态");
-            return;
+        if (DvrConfig.getAccOffStateWorkingEnabled()) {
+            if (0 == GlobalStatus.getShutDownType(this) && !((boolean) SharedPreferencesUtils.get(MyService.this, "isScreenOn", false))) {
+            //ToastR.setToastLong(this,"当前处于熄火状态");
+                return;
+            }
+        } else {
+            if (0 == GlobalStatus.getShutDownType(this)) {
+                return;
+            }
         }
         // videoChat or radioChat after power on
         if (GlobalStatus.getChatVideoMode(this) == 1) {
@@ -523,11 +530,13 @@ public class MyService extends Service {
                 }
                 stopThread();
             } else if (intent.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_OFF)) {
-                Log.d(TAG, "MyService=ACTION_SCREEN_OFF");
-                int type = GlobalStatus.getShutDownType(MyService.this);
-                if (type == 0) {
-                    SharedPreferencesUtils.put(MyService.this, "isScreenOn", false);
-                    stopService(context);
+                if (DvrConfig.getAccOffStateWorkingEnabled()) {
+                    Log.d(TAG, "MyService=ACTION_SCREEN_OFF");
+                    int type = GlobalStatus.getShutDownType(MyService.this);
+                    if (type == 0) {
+                        SharedPreferencesUtils.put(MyService.this, "isScreenOn", false);
+                        stopService(context);
+                    }
                 }
             } else if(intent.getAction().equalsIgnoreCase(RESClient.ACTION_VIDEO_VOIDE_SWITCH)) {
                 //Log.i("MyService", "updateViewReceiver：" + intent.getAction());
@@ -628,9 +637,15 @@ public class MyService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //Log.d("chatjrd", "onStartCommand");
-        if (0 == GlobalStatus.getShutDownType(this) && !((boolean) SharedPreferencesUtils.get(MyService.this, "isScreenOn", false))) {
-//            ToastR.setToastLong(this,"当前处于熄火状态");
-            return super.onStartCommand(intent, flags, startId);
+        if (DvrConfig.getAccOffStateWorkingEnabled()) {
+            if (0 == GlobalStatus.getShutDownType(this) && !((boolean) SharedPreferencesUtils.get(MyService.this, "isScreenOn", false))) {
+                //ToastR.setToastLong(this,"当前处于熄火状态");
+                return super.onStartCommand(intent, flags, startId);
+            }
+        } else {
+            if (0 == GlobalStatus.getShutDownType(this)) {
+                return super.onStartCommand(intent, flags, startId);
+            }
         }
         parseIntent(intent);
         return START_STICKY;

@@ -798,17 +798,21 @@ public class DvrService extends Service {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            } else if(intent.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_ON)) {
-                int type = GlobalStatus.getShutDownType(DvrService.this);
-                if(type == 0){
-                    SharedPreferencesUtils.put(DvrService.this,"isScreenOn",true);
-                    checkStatus(true);
+            } else if (intent.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_ON)) {
+                if (DvrConfig.getAccOffStateWorkingEnabled()) {
+                    int type = GlobalStatus.getShutDownType(DvrService.this);
+                    if (type == 0) {
+                        SharedPreferencesUtils.put(DvrService.this, "isScreenOn", true);
+                        checkStatus(true);
+                    }
                 }
-            } else if(intent.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_OFF)) {
-                int type = GlobalStatus.getShutDownType(DvrService.this);
-                if(type == 0){
-                    SharedPreferencesUtils.put(DvrService.this,"isScreenOn",false);
-                    checkStatus(false);
+            } else if (intent.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_OFF)) {
+                if (DvrConfig.getAccOffStateWorkingEnabled()) {
+                    int type = GlobalStatus.getShutDownType(DvrService.this);
+                    if (type == 0) {
+                        SharedPreferencesUtils.put(DvrService.this, "isScreenOn", false);
+                        checkStatus(false);
+                    }
                 }
             } else if ("erobbing.take_photo_test".equals(intent.getAction())) {
                 Log.d("====", "============takephoto test");
@@ -889,8 +893,14 @@ public class DvrService extends Service {
             mImpl = DvrImplFactory.createDvrImpl(getApplicationContext());
         }
         RESClient.getInstance().setDvrService(this);
-        if(0 == GlobalStatus.getShutDownType(this) && !((boolean)SharedPreferencesUtils.get(DvrService.this,"isScreenOn",false))){
-            return;
+        if (DvrConfig.getAccOffStateWorkingEnabled()) {
+            if (0 == GlobalStatus.getShutDownType(this) && !((boolean) SharedPreferencesUtils.get(DvrService.this, "isScreenOn", false))) {
+                return;
+            }
+        } else {
+            if (0 == GlobalStatus.getShutDownType(this)) {
+                return;
+            }
         }
         setServerForeground();
         if (DvrConfig.getAutoRunWhenBoot()) {
@@ -1074,8 +1084,14 @@ public class DvrService extends Service {
     @Override
     public int onStartCommand(final Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand");
-        if(0 == GlobalStatus.getShutDownType(this) && !((boolean)SharedPreferencesUtils.get(DvrService.this,"isScreenOn",false))){
-            return START_STICKY;
+        if (DvrConfig.getAccOffStateWorkingEnabled()) {
+            if (0 == GlobalStatus.getShutDownType(this) && !((boolean) SharedPreferencesUtils.get(DvrService.this, "isScreenOn", false))) {
+                return START_STICKY;
+            }
+        } else {
+            if (0 == GlobalStatus.getShutDownType(this)) {
+                return START_STICKY;
+            }
         }
         String path = null;
 //        RESClient.getInstance().createSurfaceView();
@@ -1461,7 +1477,7 @@ public class DvrService extends Service {
             GlobalStatus.setCamera(null);
         }
 
-        if (1 == type || screenOn) {
+        if (1 == type || DvrConfig.getAccOffStateWorkingEnabled() && screenOn) {
             System.exit(0);
         } else if (0 == type) {
             //TODO 熄火
