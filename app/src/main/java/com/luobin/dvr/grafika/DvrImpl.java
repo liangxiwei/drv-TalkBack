@@ -872,12 +872,12 @@ public class DvrImpl extends DvrImplBase
                 GLES20.glViewport(0, 0, viewWidth, viewHeight);
                 mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
             }*/
-            if (dvrShow == 1) {
+            /*if (dvrShow == 1) {
                 if (mUsbTextureId >= 0) {
                     GLES20.glViewport(0, 0, viewWidth, viewHeight);
                     mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
                 }
-            } else {
+            } else {*/
                 if (mUsbTextureId >= 0) {
                     switch (mCurrentVideoScreenMode) {
                         case 0:
@@ -918,7 +918,7 @@ public class DvrImpl extends DvrImplBase
                             break;
                     }
                 }
-            }
+            //}
             /*
             Log.d(TAG, "mTmpMatrix="+mTmpMatrix);
             for (int i=0; i<mTmpMatrix.length; i+=4) {
@@ -952,7 +952,7 @@ public class DvrImpl extends DvrImplBase
                 mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
             }*/
             if (mUsbTextureId >= 0) {
-                if (GlobalStatus.getDvrSwitchToPipEnable()) {
+                //if (GlobalStatus.getDvrSwitchToPipEnable()) {
                     switch (mCurrentVideoScreenMode) {
                         case 0:
                             GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
@@ -990,8 +990,8 @@ public class DvrImpl extends DvrImplBase
                                     break;
                             }
                             break;
-                    }
-                } else {
+                    //}
+                } /*else {
                     GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);
                     mUsbFrameBlit.drawFrame(mUsbTextureId, mTmpMatrix);
                     //updateTimeStampBmpIfNeeded();
@@ -1001,7 +1001,7 @@ public class DvrImpl extends DvrImplBase
                         GLES20.glBlendFunc(GLES20.GL_SRC_ALPHA, GLES20.GL_ONE_MINUS_SRC_ALPHA);
                         mWaterMarkBlit.drawFrame(mWaterMarkTextureId, mTmpMatrix);
                     }
-                }
+                }*/
                 /*switch (mCurrentVideoScreenMode) {
                     case 0:
                         GLES20.glViewport(0, 0, mCamPrevWidth, mCamPrevHeight);

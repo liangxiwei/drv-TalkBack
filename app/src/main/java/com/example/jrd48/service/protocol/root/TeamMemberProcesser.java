@@ -47,7 +47,7 @@ public class TeamMemberProcesser extends CommonProcesser {
     }
     @Override
     public void onGot(final byte[] data) {
-        new AsyncTask<String, Integer, Integer>() {
+        /*new AsyncTask<String, Integer, Integer>() {
             @Override
             protected Integer doInBackground(String... strings) {
                 synchronized (TeamMemberProcesser.class) {
@@ -154,15 +154,15 @@ public class TeamMemberProcesser extends CommonProcesser {
                     return null;
                 }
             }
-        }.execute("");
-        /*Message msg = mHandler.obtainMessage();
+        }.execute("");*/
+        Message msg = mHandler.obtainMessage();
         msg.what = DvrConfig.MSG_TEAM_MEMBER_PROCESSOR;
         Bundle bundle = new Bundle();
         bundle.putByteArray("team_member_data", data);
         msg.setData(bundle);
         //mHandler.removeMessages(DvrConfig.MSG_TEAM_MEMBER_PROCESSOR);
         //mHandler.sendMessageDelayed(msg, 100);
-        mHandler.sendMessage(msg);*/
+        mHandler.sendMessage(msg);
     }
 
     @Override
