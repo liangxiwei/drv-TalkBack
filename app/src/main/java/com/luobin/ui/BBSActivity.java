@@ -225,7 +225,7 @@ public class BBSActivity extends BaseActivity {
                 int errorCode = intent.getIntExtra("error_code", -1);
                 Log.d(TAG, "applyBBS-errorCode=" + errorCode);
                 if (errorCode == ProtoMessage.ErrorCode.OK.getNumber()) {
-                    ToastR.setToast(mContext, "已加入海聊群");
+                    ToastR.setToast(mContext, "已进入BBS");
                     mHandler.removeMessages(MSG_JUMP_FIRSTACTIVITY);
                     Message msg = mHandler.obtainMessage();
                     msg.what = MSG_JUMP_FIRSTACTIVITY;
