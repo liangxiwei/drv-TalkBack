@@ -626,7 +626,7 @@ public class MyService extends Service {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        stopSimInfoService();
+        //stopSimInfoService();
         super.onDestroy();
     }
 
@@ -989,7 +989,7 @@ public class MyService extends Service {
                     Log.d(TAG, "xihuo-GlobalStatus.getOldTeam()=" + GlobalStatus.getOldTeam());
                     stopService(context);
                 }
-            } else if (CHAT_VIDEO_RADIO_SWITCH_URI.equals(uri)) {
+            } /*else if (CHAT_VIDEO_RADIO_SWITCH_URI.equals(uri)) {
                 int currentMode = GlobalStatus.getChatVideoMode(context);
                 Log.d(TAG, "ChatVideoMode switch=" + currentMode);
                 if (currentMode == 1) {
@@ -997,7 +997,7 @@ public class MyService extends Service {
                 } else if (currentMode == 0) {
                     mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_VIDEO, 800);
                 }
-            }
+            }*/
         }
 
         public void startObserving() {

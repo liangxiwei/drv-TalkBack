@@ -335,7 +335,7 @@ public class ReceiverProcesser extends CommonProcesser {
                         i.putExtra("msg_type", 4);
                         context.sendBroadcastAsUser(i, UserHandle.ALL);
                         mHandler.removeCallbacks(mRefreshTeamRunnable);
-                        mHandler.postDelayed(mRefreshTeamRunnable, 2000);
+                        mHandler.postDelayed(mRefreshTeamRunnable, 500);
                         //mReceiverProcesserHandler.removeMessages(DvrConfig.MSG_RECEIVER_PROCESSOR);
                         //mReceiverProcesserHandler.sendEmptyMessageDelayed(DvrConfig.MSG_RECEIVER_PROCESSOR, 2000);
 
@@ -459,7 +459,7 @@ public class ReceiverProcesser extends CommonProcesser {
                             i.putExtra("msg_type", 4);
                             context.sendBroadcastAsUser(i, UserHandle.ALL);
                             mHandler.removeCallbacks(mRefreshTeamRunnable);
-                            mHandler.postDelayed(mRefreshTeamRunnable, 2000);
+                            mHandler.postDelayed(mRefreshTeamRunnable, 500);
                             //mReceiverProcesserHandler.removeMessages(DvrConfig.MSG_RECEIVER_PROCESSOR);
                             //mReceiverProcesserHandler.sendEmptyMessageDelayed(DvrConfig.MSG_RECEIVER_PROCESSOR, 2000);
 

@@ -39,7 +39,9 @@ public class SpeakerBeginProcesser extends CommonProcesser {
                         ToastR.setToast(context, "请开始讲话 :-)", Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
                     }
                 } else {
-                    ToastR.setToast(context, "当前在线成员只有一人", Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+                    if (!"LB1822".equals(Build.PRODUCT)) {
+                        ToastR.setToast(context, "当前在线成员只有一人", Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+                    }
                 }
             }
             Intent i = new Intent(ACTION);

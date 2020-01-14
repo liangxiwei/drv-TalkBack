@@ -1201,6 +1201,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                             closeRoom(true);
                             //forceCloseRoom();
                             groupQuit();
+                            MyService.restart(FirstActivity.this);
                             fail(i.getIntExtra("error_code", -1));
                         }
                     }

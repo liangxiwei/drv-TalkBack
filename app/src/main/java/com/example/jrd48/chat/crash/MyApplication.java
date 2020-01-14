@@ -11,6 +11,8 @@ import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.provider.Settings;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
@@ -38,6 +40,24 @@ public class MyApplication extends MultiDexApplication {
     private static Context context;
     private static Choreographer choreographer;
     private RefWatcher mRefWatcher;
+    private static final int MSG_VIDEO_RADIO_SWITCH_START_VIDEO = 2;
+    private static final int MSG_VIDEO_RADIO_SWITCH_START_RADIO = 3;
+    private Handler mHandler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            int what = msg.what;
+            switch (what) {
+                case MSG_VIDEO_RADIO_SWITCH_START_VIDEO:
+                    startVideoChat();
+                    break;
+                case MSG_VIDEO_RADIO_SWITCH_START_RADIO:
+                    startRadioChat();
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
+
     private BroadcastReceiver shutDownReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -170,10 +190,12 @@ public class MyApplication extends MultiDexApplication {
             } else if (CHAT_VIDEO_RADIO_SWITCH_URI.equals(uri)) {
                 int currentMode = GlobalStatus.getChatVideoMode(getContext());
                 Log.d("Application", "ChatVideoMode switch=" + currentMode);
-                if (currentMode == 0) {
-                    //checkStatus(false);
+                if (currentMode == 1) {
+                    mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_RADIO);
+                    mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_RADIO, 500);
                 } else {
-                    //ActivityCollector.finishAll();
+                    mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_VIDEO);
+                    mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_VIDEO, 500);
                 }
             }
         }
@@ -263,6 +285,30 @@ public class MyApplication extends MultiDexApplication {
             }
         }
         return "none";
+    }
+
+    private void startVideoChat() {
+        Intent intentVideo = new Intent();
+        intentVideo.setClassName("com.luobin.dvr",
+                "com.example.jrd48.chat.WelcomeActivity");
+        intentVideo.putExtra("className", "bbs");
+        context.startActivity(intentVideo);
+    }
+
+    private void startRadioChat() {
+        goHome(context);
+        Intent intentRadio = new Intent();
+        intentRadio.setClassName("com.benshikj.ht.jf",
+                "com.dw.ht.JFMainActivity");
+        context.startActivity(intentRadio);
+    }
+
+    public static void goHome(Context context) {
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.MAIN");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addCategory("android.intent.category.HOME");
+        context.startActivity(intent);
     }
 
     private void initLeakCanary() {
