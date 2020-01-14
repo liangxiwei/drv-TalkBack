@@ -1,5 +1,6 @@
 package com.luobin.ui;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +28,7 @@ import com.example.jrd48.chat.group.MsgTool;
 import com.example.jrd48.chat.group.TeamInfo;
 import com.example.jrd48.chat.group.TeamInfoList;
 import com.example.jrd48.chat.location.Utils;
+import com.example.jrd48.chat.wiget.TransparentProgressDialog;
 import com.example.jrd48.service.ITimeoutBroadcast;
 import com.example.jrd48.service.MyService;
 import com.example.jrd48.service.TimeoutBroadcast;
@@ -71,9 +73,12 @@ public class BBSActivity extends BaseActivity {
     private static final int MSG_ENTER_BBS = 1;
     private static final int MSG_JUMP_FIRSTACTIVITY = 2;
     private static final int MSG_PROGRESS_CANCEL = 3;
+    private static final int MSG_PROGRESS_DISMISS = 4;
     String userPhone = "";
     private static final String TAG = "BBSActivity";
     private ProgressDialog mProgressDialog;
+    private Dialog mTransparentProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +100,7 @@ public class BBSActivity extends BaseActivity {
         finish();
     }
 
-    private void initData(){
+    private void initData() {
         GlobalStatus.setBBSPageActivated(true);
         ProtoMessage.CommonRequest.Builder builder = ProtoMessage.CommonRequest.newBuilder();
         MyService.start(getContext(), ProtoMessage.Cmd.cmdGetBBSList.getNumber(), builder.build());
@@ -204,7 +209,7 @@ public class BBSActivity extends BaseActivity {
     }
 
 
-    private void applyBBS(final TeamInfo info){
+    private void applyBBS(final TeamInfo info) {
         showProgressDialog();
         ProtoMessage.ApplyTeam.Builder builder = ProtoMessage.ApplyTeam.newBuilder();
         builder.setTeamID(info.getTeamID());
@@ -225,7 +230,7 @@ public class BBSActivity extends BaseActivity {
                 int errorCode = intent.getIntExtra("error_code", -1);
                 Log.d(TAG, "applyBBS-errorCode=" + errorCode);
                 if (errorCode == ProtoMessage.ErrorCode.OK.getNumber()) {
-                    ToastR.setToast(mContext, "已进入BBS");
+                    //ToastR.setToast(mContext, "已进入BBS");
                     mHandler.removeMessages(MSG_JUMP_FIRSTACTIVITY);
                     Message msg = mHandler.obtainMessage();
                     msg.what = MSG_JUMP_FIRSTACTIVITY;
@@ -237,6 +242,7 @@ public class BBSActivity extends BaseActivity {
                 } else {
                     ToastR.setToast(mContext, "加入海聊群失败！");
                     fail(intent.getIntExtra("error_code", -1));
+                    groupQuit(info);
                 }
             }
         });
@@ -274,7 +280,7 @@ public class BBSActivity extends BaseActivity {
         });
     }
 
-    private void jumpFirstActivity(TeamInfo info){
+    private void jumpFirstActivity(TeamInfo info) {
         Intent intent = new Intent(getContext(), FirstActivity.class);
         intent.putExtra("data", 1);
         Log.d(TAG, "jumpFirstActivity.TeamInfo.group="
@@ -292,7 +298,7 @@ public class BBSActivity extends BaseActivity {
         intent.putExtra("group", info.getTeamID());
         intent.putExtra("type", info.getMemberRole());
         intent.putExtra("group_name", info.getTeamName());
-        intent.putExtra("isBBS",true);
+        intent.putExtra("isBBS", true);
         VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(getContext(), intent);
         dialog.show();
         mHandler.sendEmptyMessageDelayed(MSG_PROGRESS_CANCEL, 1000);
@@ -313,11 +319,13 @@ public class BBSActivity extends BaseActivity {
                     jumpFirstActivity((TeamInfo) msg.getData().getParcelable("teaminfo_bbs"));
                     break;
                 case MSG_PROGRESS_CANCEL:
-                    if (mProgressDialog.isShowing()) {
-                        mProgressDialog.dismiss();
-                        Log.d(TAG, "cancelProgressDialog");
-                        SharedPreferencesUtils.put(getContext(), "ptt_not_allowed", false);
-                    }
+                    Log.d(TAG, "cancelProgressDialog");
+                    hideProgressDialog();
+                    SharedPreferencesUtils.put(getContext(), "ptt_not_allowed", false);
+                    break;
+                case MSG_PROGRESS_DISMISS:
+                    Log.d(TAG, "dimissProgressDialog");
+                    hideProgressDialog();
                     break;
             }
         }
@@ -325,12 +333,24 @@ public class BBSActivity extends BaseActivity {
 
     private void showProgressDialog() {
         Log.d(TAG, "showProgressDialog");
-        mProgressDialog = new ProgressDialog(this);
+        /*mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mProgressDialog.setCancelable(false);
         mProgressDialog.setCanceledOnTouchOutside(false);
         mProgressDialog.setTitle(getResources().getString(R.string.progress_waiting_to_enter_bbs_title));
         mProgressDialog.setMessage(getResources().getString(R.string.progress_waiting_to_enter_bbs_msg));
-        mProgressDialog.show();
+        mProgressDialog.show();*/
+        if (mTransparentProgressDialog == null) {
+            mTransparentProgressDialog = TransparentProgressDialog.createLoadingDialog(this, "loading");
+            mTransparentProgressDialog.show();
+            mHandler.sendEmptyMessageDelayed(MSG_PROGRESS_DISMISS, 10000);
+        }
+    }
+
+    private void hideProgressDialog() {
+        if (mTransparentProgressDialog != null) {
+            mTransparentProgressDialog.dismiss();
+            mTransparentProgressDialog = null;
+        }
     }
 }

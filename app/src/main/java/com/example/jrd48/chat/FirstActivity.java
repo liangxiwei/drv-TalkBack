@@ -1200,7 +1200,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                             ToastR.setToast(FirstActivity.this, "接收呼叫失败");
                             closeRoom(true);
                             //forceCloseRoom();
-                            //groupQuit();
+                            groupQuit();
                             fail(i.getIntExtra("error_code", -1));
                         }
                     }
