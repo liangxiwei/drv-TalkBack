@@ -302,7 +302,9 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 case 2:
                     if (r != null) {
                         name.setText(groupName);
-                        sta_num.setText(nowMansNum + "/" + mansNum);
+                        if (!isBBS) {
+                            sta_num.setText(nowMansNum + "/" + mansNum);
+                        }
                         r = null;
                     } else {
                         name.setText(groupName);
@@ -3113,16 +3115,29 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             }
             if (r != null) {
                 List<ProtoMessage.ChatRoomMemberMsg> members = r.getMembersList();
+                List<ProtoMessage.ChatRoomMemberMsg> bbsMembers = null;
                 for (ProtoMessage.ChatRoomMemberMsg member : members) {
                     if (member.getPhoneNum().equals(in.getUserPhone())) {
                         status = member.getStatus();
-                        if (status == ProtoMessage.ChatStatus.csOk_VALUE) {
-                            nowMansNum++;
-                        } else if (status == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
-                            nowMansNum++;
+                        Log.d(TAG, "convertViewTeamMember.status" + status);
+                        if (isBBS) {
+                            if (status == ProtoMessage.ChatStatus.csOk_VALUE
+                                    || status == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
+                                nowMansNum += 1;
+                                //bbsMembers.add(member);
+                            }
+                        } else {
+                            if (status == ProtoMessage.ChatStatus.csOk_VALUE) {
+                                nowMansNum++;
+                            } else if (status == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
+                                nowMansNum++;
+                            }
                         }
                         break;
                     }
+                }
+                if (isBBS) {
+                    //members = bbsMembers;
                 }
             }
             Log.i(TAG, "getGroupMan nowMansNum = " + nowMansNum);
@@ -3424,7 +3439,9 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 sta_num.setText(online[nowMansNum]);
             } else {
                 name.setText(groupName);
-                sta_num.setText(nowMansNum + "/" + mansNum);
+                if (!isBBS) {
+                    sta_num.setText(nowMansNum + "/" + mansNum);
+                }
             }
             //  mMap.refreshMapLocalData(userList);
         }
