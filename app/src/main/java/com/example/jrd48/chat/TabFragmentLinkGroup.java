@@ -2,6 +2,7 @@ package com.example.jrd48.chat;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Instrumentation;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -128,7 +129,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     private static final int QUIT_TEAM = 0;
     private static final int DELETE_TEAM = 1;
     private static final int UPDATE_UI = 0;
-    private static final int MSG_GET_FOCUS = 1;
     LoadingDialog loadingDialog;
 
     public static final int MOVE_GROUP_LIST = 0;
@@ -212,21 +212,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                         }
                     }
                     break;
-                case MSG_GET_FOCUS:
-                    Log.d(TAG, "======MSG_GET_FOCUS=");
-                    if (isResumed()) {
-                        if (groupListView.getCount() > 0) {
-                            groupListView.setSelection(groupSelectPosition >= 0 ? groupSelectPosition : 0);
-                        }
-                        groupListView.requestFocus();
-                        groupListView.requestFocusFromTouch();
-                        try {
-                            Runtime.getRuntime().exec("input keyevent KEYCODE_ENTER");
-                        } catch (IOException e) {
-
-                        }
-                    }
-                    break;
                 default:
                     break;
             }
@@ -281,7 +266,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     @Override
     public void onPause() {
         super.onPause();
-        mHandler.removeMessages(MSG_GET_FOCUS);
     }
 
     @Override
@@ -311,15 +295,13 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     @Override
     public void onResume() {
         super.onResume();
+        (new Instrumentation()).setInTouchMode(false);
         if (groupList == null || groupList.size() == 0) {
             (new Thread(new Runnable() {
                 @Override
                 public void run() {
                     Log.i("TabFragmentLinkGroup", "onResume set groupSelectPosition to 0");
                     getDBMsg();
-                    if (isResumed()) {
-                        mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 500);
-                    }
                 }
             })).start();
         } else {
@@ -330,7 +312,6 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             Collections.sort(groupList, comparator);
             groupSelectPosition = 0;
             mHandler.sendEmptyMessage(UPDATE_UI);
-            mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 500);
         }
     }
 
