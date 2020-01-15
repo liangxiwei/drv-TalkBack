@@ -276,6 +276,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     @Override
     public void onPause() {
         super.onPause();
+        mHandler.removeMessages(MSG_GET_FOCUS);
     }
 
     @Override
