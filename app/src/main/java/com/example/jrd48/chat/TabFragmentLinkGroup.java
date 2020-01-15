@@ -211,15 +211,15 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     }
                     break;
                 case MSG_GET_FOCUS:
+                    Log.d(TAG, "======MSG_GET_FOCUS=");
                     if (groupListView.getCount() > 0) {
-                        Log.d(TAG, "======MSG_GET_FOCUS=");
                         groupListView.setSelection(groupSelectPosition >= 0 ? groupSelectPosition : 0);
-                        groupListView.requestFocus();
-//                        try {
-//                            Runtime.getRuntime().exec("input keyevent 66");
-//                        } catch (IOException e) {
-//
-//                        }
+                    }
+                    groupListView.requestFocus();
+                    try {
+                        Runtime.getRuntime().exec("input keyevent 66");
+                    } catch (IOException e) {
+
                     }
                     break;
                 default:
@@ -310,7 +310,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             public void run() {
                 Log.i("TabFragmentLinkGroup", "onResume set groupSelectPosition to 0");
                 getDBMsg();
-                mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 2500);
+                mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 500);
             }
         })).start();
     }
