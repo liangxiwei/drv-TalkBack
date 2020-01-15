@@ -27,6 +27,7 @@ import com.example.jrd48.chat.SharedPreferencesUtils;
 import com.example.jrd48.service.MyService;
 import com.luobin.dvr.DvrConfig;
 import com.luobin.dvr.R;
+import com.luobin.utils.ShellUtils;
 import com.luobin.utils.VideoRoadUtils;
 import com.qihoo.linker.logcollector.LogCollector;
 import com.qihoo.linker.logcollector.upload.HttpParameters;
@@ -194,6 +195,8 @@ public class MyApplication extends MultiDexApplication {
                     mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_RADIO);
                     mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_RADIO, 500);
                 } else {
+                    ShellUtils.execCommand("input keyevent 4", false);
+                    ShellUtils.execCommand("input keyevent 4", false);
                     mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_VIDEO);
                     mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_VIDEO, 500);
                 }
@@ -296,7 +299,7 @@ public class MyApplication extends MultiDexApplication {
     }
 
     private void startRadioChat() {
-        goHome(context);
+        //goHome(context);
         Intent intentRadio = new Intent();
         intentRadio.setClassName("com.benshikj.ht.jf",
                 "com.dw.ht.JFMainActivity");
