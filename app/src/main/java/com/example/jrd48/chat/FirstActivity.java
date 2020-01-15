@@ -177,6 +177,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         , Animation.AnimationListener {
     private static final String TAG = "FirstActivity";
     public static final int SWITCH_BTN_ALPHA = 200;
+    @BindView(R.id.btn_bbs_hailiao)
+    Button btnBBS;
     @BindView(R.id.btn_return)
     Button btnReturn;
     @BindView(R.id.prefix_camera)
@@ -355,14 +357,11 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                     getGroupMan(group);
                     break;
                 case MSG_BUTTON_BBS:
-                    Intent intent = new Intent();
-                    intent.setClassName("com.luobin.dvr",
-                            "com.example.jrd48.chat.WelcomeActivity");
-                    intent.putExtra("className", "bbs");
-                    startActivity(intent);
+                    btnBBS.setEnabled(true);
+                    btnReturn.setEnabled(true);
                     break;
                 case MSG_BUTTON_BACK:
-                    finish();
+                    //finish();
                     break;
                 default:
                     break;
@@ -569,6 +568,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
 		*/
         mVideoRadioSwitchObserver = new VideoRadioSwitchObserver(new Handler());
         mVideoRadioSwitchObserver.startObserving();
+        btnBBS.setEnabled(false);
+        btnReturn.setEnabled(false);
     }
 
     private void checkRandomChat() {
@@ -1213,6 +1214,9 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                             closeRoom(true);
                             //forceCloseRoom();
                             groupQuit();
+                            GlobalStatus.setOldChat(0, "", 0);
+                            GlobalStatus.clearChatRoomMsg();
+                            GlobalStatus.setPttKeyDown(false);
                             MyService.restart(FirstActivity.this);
                             fail(i.getIntExtra("error_code", -1));
                         }
@@ -3459,6 +3463,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 showSpeakMan.setVisibility(VISIBLE);
             }
         }
+        refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BBS, 2000);
     }
 
     public void showSpeakMan() {
@@ -5171,15 +5176,17 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         switch (view.getId()) {
             case R.id.btn_bbs_hailiao:
                 if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
-                    refreshHandler.removeMessages(MSG_BUTTON_BBS);
-                    refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BBS, 1000);
+                    Intent intent = new Intent();
+                    intent.setClassName("com.luobin.dvr",
+                            "com.example.jrd48.chat.WelcomeActivity");
+                    intent.putExtra("className", "bbs");
+                    startActivity(intent);
                 } else {
                     ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.toast_bbs_not_allowed));
                 }
                 break;
             case R.id.btn_return:
-                refreshHandler.removeMessages(MSG_BUTTON_BACK);
-                refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BACK, 1000);
+                finish();
                 break;
             case R.id.prefix_camera:
                 //前置对讲
