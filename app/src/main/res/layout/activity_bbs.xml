@@ -58,7 +58,7 @@
             android:layout_weight="1"
             >
 
-			<Button
+			<!--<Button
 				android:id="@+id/btn_group"
 				android:layout_width="80dp"
 				android:layout_height="45dp"
@@ -69,7 +69,7 @@
 				android:gravity="center"
 				android:text="群组"
 				android:textColor="@color/white"
-				android:textSize="16dp" />
+				android:textSize="16dp" />-->
             <Button
                 android:id="@+id/btn_return"
                 android:layout_width="80dp"

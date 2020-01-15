@@ -359,15 +359,23 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                     getGroupMan(group);
                     break;
                 case MSG_BUTTON_BBS:
-                    if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                    //if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                    if (isBBS) {
+                        Intent intent = new Intent();
+                        intent.setClassName("com.luobin.dvr",
+                                "com.example.jrd48.chat.WelcomeActivity");
+                        intent.putExtra("className", "duijiang");
+                        startActivity(intent);
+                    } else {
                         Intent intent = new Intent();
                         intent.setClassName("com.luobin.dvr",
                                 "com.example.jrd48.chat.WelcomeActivity");
                         intent.putExtra("className", "bbs");
                         startActivity(intent);
-                    } else {
-                        ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.toast_bbs_not_allowed));
                     }
+                    //} else {
+                    //    ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.toast_bbs_not_allowed));
+                    //}
                     break;
                 case MSG_BUTTON_BACK:
                     finish();
@@ -4915,6 +4923,11 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         GlobalStatus.setIsFirstPause(false);
         ChatManager.getInstance().setIsFinishing(false);
         SharedPreferencesUtils.put(this, "firstactivity_ontop", true);
+        if (isBBS) {
+            btnBBS.setText("群组");
+        } else {
+            btnBBS.setText("BBS海聊");
+        }
         super.onResume();
     }
 
