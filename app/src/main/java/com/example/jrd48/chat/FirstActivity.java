@@ -5141,6 +5141,14 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    protected void onUserLeaveHint() {
+        // process home behavior
+        if (isBBS) {
+            groupQuit();
+        }
+        super.onUserLeaveHint();
+    }
 
     private void showDialog(final String type) {
         String msg = "";
