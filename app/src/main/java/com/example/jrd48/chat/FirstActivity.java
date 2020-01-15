@@ -141,6 +141,7 @@ import com.luobin.search.friends.map.TeamMemberLocationActivity;
 import com.luobin.timer.ChatManager;
 import com.luobin.ui.FriendDetailsDialogActivity;
 import com.luobin.ui.SelectMemberActivity;
+import com.luobin.utils.ShellUtils;
 import com.luobin.voice.AudioInitailFailedBroadcast;
 import com.luobin.voice.AudioRecordStatusBroadcast;
 import com.luobin.voice.VoiceHandler;
@@ -294,6 +295,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     private ImageView mImageViewFace;
     private PopupWindow mPopupWindow;
     private View mPopView;
+    boolean gotoMapButtonPressed = false;
 
     private Handler refreshHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -1056,6 +1058,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(MainActivity.FRIEND_ACTION);
+        filter.addAction("erobbing.video_chat_home_press");
         filter.setPriority(Integer.MAX_VALUE);
         registerReceiver(myReceiver, filter);
 
@@ -1242,8 +1245,14 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                             ToastR.setToast(FirstActivity.this, "接收呼叫失败");
                             closeRoom(true);
                             //forceCloseRoom();
-                            //groupQuit();
-                            HungupClick();
+                            if (isBBS) {
+                                groupQuit();
+                                closeRoom(false);
+                                GlobalStatus.setPttKeyDown(false);
+                                isBBS = false;
+                            } else {
+                                HungupClick();
+                            }
                             GlobalStatus.setPttKeyDown(false);
                             MyService.restart(FirstActivity.this);
                             fail(i.getIntExtra("error_code", -1));
@@ -1302,7 +1311,14 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                         ToastR.setToast(FirstActivity.this, "呼叫失败");
                         Log.e(TAG, "===CallClick=呼叫失败");
                         closeRoom(true);
-                        HungupClick();
+                        if (isBBS) {
+                            groupQuit();
+                            closeRoom(false);
+                            GlobalStatus.setPttKeyDown(false);
+                            isBBS = false;
+                        } else {
+                            HungupClick();
+                        }
                         GlobalStatus.setPttKeyDown(false);
                         fail(i.getIntExtra("error_code", -1));
                     }
@@ -1533,20 +1549,32 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     private BroadcastReceiver myReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String deletePhone = intent.getStringExtra("phone");
-            String str = intent.getStringExtra("delete");
-            if (!single) {
-                if (deletePhone != null && deletePhone.length() > 0) {
-                    //                    ToastR.setToast(mContext,"你");
-                    //                finish();
-                    getlistMembersCache();
-                    if (allTeamMemberInfos != null) {
-                        convertViewTeamMember(allTeamMemberInfos);
-                    }
+            if ("erobbing.video_chat_home_press".equals(intent.getAction())) {
+                Log.d(TAG, "home_pressed");
+                if (isBBS) {
+                    groupQuit();
+                    closeRoom(false);
+                    GlobalStatus.setPttKeyDown(false);
+                    isBBS = false;
+                } else {
+                    HungupClick();
                 }
-            } else if (deletePhone != null && str != null && str.length() > 0 && deletePhone.equals(linkmanPhone)) {
-                showNotification = false;
-                finish();
+            } else {
+                String deletePhone = intent.getStringExtra("phone");
+                String str = intent.getStringExtra("delete");
+                if (!single) {
+                    if (deletePhone != null && deletePhone.length() > 0) {
+                        //                    ToastR.setToast(mContext,"你");
+                        //                finish();
+                        getlistMembersCache();
+                        if (allTeamMemberInfos != null) {
+                            convertViewTeamMember(allTeamMemberInfos);
+                        }
+                    }
+                } else if (deletePhone != null && str != null && str.length() > 0 && deletePhone.equals(linkmanPhone)) {
+                    showNotification = false;
+                    finish();
+                }
             }
         }
     };
@@ -1844,6 +1872,9 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         if (isBBS){
             // 如果是海聊群，退出群
             groupQuit();
+            closeRoom(false);
+            GlobalStatus.setPttKeyDown(false);
+            isBBS = false;
         }
         mVideoRadioSwitchObserver.stopObserving();
         SharedPreferencesUtils.put(this, "isBBS", false);
@@ -4908,6 +4939,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     @Override
     protected void onResume() {
         Log.v(TAG, "onResume");
+        gotoMapButtonPressed = false;
         // 设置地图参数及事件处理
         if (run) {
             hideSystemNaviBar();
@@ -5117,8 +5149,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             SharedPreferencesUtils.put(MyApplication.getContext(), "cur_teamId", "");
             isBBS = false;
         }*/
-        if (!isBBS) {
-            HungupClick();
+        if (!isBBS && !gotoMapButtonPressed) {
+            HungupClick();//recovery
         }
         super.onPause();
     }
@@ -5143,13 +5175,31 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         return super.onKeyDown(keyCode, event);
     }
 
-    @Override
+    /*@Override
     protected void onUserLeaveHint() {
+        Log.d(TAG, "onUserLeaveHint--gotoMapButtonPressed=" + gotoMapButtonPressed);
         // process home behavior
-        if (isBBS) {
-            groupQuit();
+        if (isBBS && !gotoMapButtonPressed) {
+            groupQuit();//onUserLeaveHint cause problem,pause goes here
+            closeRoom(false);
+            GlobalStatus.setPttKeyDown(false);
+            isBBS = false;
         }
         super.onUserLeaveHint();
+    }*/
+
+    public static String captureHomeLog() {
+        int succeed = ShellUtils.execCommand(new String[]{"logcat", "ActivityManager:I *:S"}, false).result;
+        String result;
+        if (succeed == 0) {
+            result = ShellUtils.execCommand(new String[]{"logcat", "ActivityManager:I *:S"}, false).successMsg;
+            if (result.contains("android.intent.category.HOME")) {
+                //home key pressed
+            }
+        } else {
+            result = "";
+        }
+        return result;
     }
 
     private void showDialog(final String type) {
@@ -5283,6 +5333,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 break;
             case R.id.goto_map:
                 // 地图查看
+                gotoMapButtonPressed = true;
                 //rs modified for crash LBCJW-67
                 Log.d(TAG, "firstactivity goto_map clicked->single:"+single+", linkmanPhone:"+linkmanPhone+", linkman:"+linkman);
                 Intent mapIntent = new Intent(mContext, TeamMemberLocationActivity.class);
@@ -5534,6 +5585,12 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 } else {
                     ToastR.setToast(FirstActivity.this, "呼叫失败");
                     Log.e(TAG, "===startVideoCall=呼叫失败");
+                    if (isBBS) {
+                        groupQuit();
+                        closeRoom(false);
+                        GlobalStatus.setPttKeyDown(false);
+                        isBBS = false;
+                    }
                     fail(i.getIntExtra("error_code", -1));
                 }
             }

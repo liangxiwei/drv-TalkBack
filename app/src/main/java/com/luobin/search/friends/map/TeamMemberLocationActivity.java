@@ -376,6 +376,7 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
     public void registerBoradcastReceiver() {
         IntentFilter myIntentFilter = new IntentFilter();
         myIntentFilter.addAction(FriendLocationChangedProcesser.ACTION);
+        myIntentFilter.addAction("erobbing.video_chat_home_press");
         //注册广播
         registerReceiver(mBroadcastReceiver, myIntentFilter);
     }
@@ -1320,6 +1321,8 @@ public class TeamMemberLocationActivity extends BaseActivity implements Permissi
                     Log.i("pocdemo", "没有找到需要定位的Marker");
                 }
 
+            } else if ("erobbing.video_chat_home_press".equals(action)) {
+                finish();
             }
         }
     };
