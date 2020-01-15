@@ -357,11 +357,18 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                     getGroupMan(group);
                     break;
                 case MSG_BUTTON_BBS:
-                    btnBBS.setEnabled(true);
-                    btnReturn.setEnabled(true);
+                    if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                        Intent intent = new Intent();
+                        intent.setClassName("com.luobin.dvr",
+                                "com.example.jrd48.chat.WelcomeActivity");
+                        intent.putExtra("className", "bbs");
+                        startActivity(intent);
+                    } else {
+                        ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.toast_bbs_not_allowed));
+                    }
                     break;
                 case MSG_BUTTON_BACK:
-                    //finish();
+                    finish();
                     break;
                 default:
                     break;
@@ -3463,7 +3470,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 showSpeakMan.setVisibility(VISIBLE);
             }
         }
-        refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BBS, 2000);
+        //refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BBS, 2000);
+        refreshHandler.postDelayed(mButtonRunnable, 2500);
     }
 
     public void showSpeakMan() {
@@ -5175,7 +5183,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_bbs_hailiao:
-                if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                /*if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
                     Intent intent = new Intent();
                     intent.setClassName("com.luobin.dvr",
                             "com.example.jrd48.chat.WelcomeActivity");
@@ -5183,10 +5191,12 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                     startActivity(intent);
                 } else {
                     ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.toast_bbs_not_allowed));
-                }
+                }*/
+                finish();
+                refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BBS, 500);
                 break;
             case R.id.btn_return:
-                finish();
+                refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BACK, 500);
                 break;
             case R.id.prefix_camera:
                 //前置对讲
@@ -5580,4 +5590,12 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             cr.unregisterContentObserver(this);
         }
     }
+
+    private Runnable mButtonRunnable = new Runnable() {
+        @Override
+        public void run() {
+            btnBBS.setEnabled(true);
+            btnReturn.setEnabled(true);
+        }
+    };
 }
