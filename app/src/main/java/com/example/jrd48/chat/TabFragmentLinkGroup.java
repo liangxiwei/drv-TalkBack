@@ -311,16 +311,27 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     @Override
     public void onResume() {
         super.onResume();
-        (new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Log.i("TabFragmentLinkGroup", "onResume set groupSelectPosition to 0");
-                getDBMsg();
-                if (isResumed()) {
-                    mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 500);
+        if (groupList == null || groupList.size() == 0) {
+            (new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Log.i("TabFragmentLinkGroup", "onResume set groupSelectPosition to 0");
+                    getDBMsg();
+                    if (isResumed()) {
+                        mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 500);
+                    }
                 }
-            }
-        })).start();
+            })).start();
+        } else {
+            DBManagerChatTimeList chatDB = new DBManagerChatTimeList(getContext(), true, DBTableName.getTableName(getContext(), DBHelperChatTimeList.NAME));
+            Map<Long, Long> timeList = chatDB.getTimeList();
+            chatDB.closeDB();
+            AllTeamPinyinComparator comparator = new AllTeamPinyinComparator(timeList);
+            Collections.sort(groupList, comparator);
+            groupSelectPosition = 0;
+            mHandler.sendEmptyMessage(UPDATE_UI);
+            mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 500);
+        }
     }
 
     @Override
