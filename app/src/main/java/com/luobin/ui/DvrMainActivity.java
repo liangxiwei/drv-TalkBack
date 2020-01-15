@@ -173,13 +173,11 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event)
+    public boolean onKeyDown(int keyCode, KeyEvent event)
     {
-        if(event.getAction() == KeyEvent.ACTION_UP){
-            if(keyCode == KeyEvent.KEYCODE_BACK && this.isResumed()){
-                MyService.goHome(this);
-                return true;
-            }
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            MyService.goHome(this);
+            return true;
         }
         return super.onKeyUp(keyCode, event);
     }
