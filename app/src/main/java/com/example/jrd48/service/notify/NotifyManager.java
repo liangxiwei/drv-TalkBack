@@ -14,6 +14,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
@@ -57,6 +58,7 @@ import com.luobin.dvr.R;
 import com.luobin.ui.OtherVideoSetting;
 import com.luobin.utils.ButtonUtils;
 import com.luobin.utils.VideoRoadUtils;
+import com.luobin.voice.MediaPlayerTool;
 import com.luobin.voice.SoundPoolTool;
 import com.luobin.widget.MaxHeightListView;
 
@@ -418,6 +420,10 @@ public class NotifyManager {
     }
 
     public void showSound() {
-        SoundPoolTool.getInstance(MyApplication.getContext()).play_voice();
+        if ("LB1822".equals(Build.PRODUCT)) {
+            MediaPlayerTool.getInstance().play(MyApplication.getContext(), R.raw.incomming_chat);
+        } else {
+            SoundPoolTool.getInstance(MyApplication.getContext()).play_voice();
+        }
     }
 }
