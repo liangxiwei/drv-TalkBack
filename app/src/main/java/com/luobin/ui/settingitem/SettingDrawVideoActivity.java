@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 
+import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.SharedPreferencesUtils;
 import com.luobin.dvr.R;
 import com.luobin.ui.BaseDialogActivity;
@@ -90,6 +91,7 @@ public class SettingDrawVideoActivity extends BaseDialogActivity {
             case R.id.btnSure:
                 SharedPreferencesUtils.put(context,"picture",result);
 				SharedPreferencesUtils.put(context,"picture_position",(Integer)selectedPosition);
+                GlobalStatus.setPipMode((Integer)selectedPosition);
                 finish();
                 break;
             default:

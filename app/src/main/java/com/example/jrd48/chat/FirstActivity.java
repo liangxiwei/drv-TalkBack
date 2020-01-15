@@ -911,7 +911,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
 		//rs added for get huazhonghua settings,show image with settings
 		int savedPosition = (int)SharedPreferencesUtils.get(mContext,"picture_position", 0);
 		Log.d(TAG, "firstActivity->get settings position:"+savedPosition);
-		switch (savedPosition){
+		/*switch (savedPosition){
             case 0:
 				prefixCamera.setImageResource(R.mipmap.pic_pre_right);
                 break;
@@ -926,7 +926,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 break;
            	default:
                 break;
-        }
+        }*/
 		//end
     }
 

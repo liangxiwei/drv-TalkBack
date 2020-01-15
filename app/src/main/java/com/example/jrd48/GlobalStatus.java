@@ -710,11 +710,13 @@ public class GlobalStatus {
     }
 
     public static int getPipMode() {
-        return (int) SharedPreferencesUtils.get(MyApplication.getContext(), "pip_mode", 0);
+        //return (int) SharedPreferencesUtils.get(MyApplication.getContext(), "pip_mode", 0);
+        return Settings.System.getInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_PIP_MODE, 0);
     }
 
     public static void setPipMode(int mode) {
-        SharedPreferencesUtils.put(MyApplication.getContext(), "pip_mode", mode);
+        //SharedPreferencesUtils.put(MyApplication.getContext(), "pip_mode", mode);
+        Settings.System.putInt(MyApplication.getContext().getContentResolver(), Settings.System.CHAT_PIP_MODE, mode);
     }
 
     public static final String DvrSwitchToPip = Settings.System.DVR_SWITCH_TO_PIP;
