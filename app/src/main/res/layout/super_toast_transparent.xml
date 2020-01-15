@@ -12,8 +12,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="1dp"
         android:layout_marginTop="10dp"
-        android:paddingLeft="1dp"
+        android:paddingLeft="15dp"
         android:text=""
-        android:textColor="@color/red"
-        android:textSize="20sp" />
+        android:textColor="@color/dvr_full_red"
+        android:textSize="32dp" />
 </RelativeLayout>

@@ -2,8 +2,11 @@ package com.example.jrd48.chat.wiget;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -39,6 +42,15 @@ public class TransparentProgressDialog {
         loadingDialog.setContentView(layout, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT));
+        Window window = loadingDialog.getWindow();
+        WindowManager.LayoutParams lp = window.getAttributes();
+        window.setGravity(Gravity.LEFT | Gravity.BOTTOM);
+        lp.x = -10;
+        lp.y = 6;
+        lp.width = 500;
+        lp.height = 200;
+        lp.alpha = 1.0f;
+        window.setAttributes(lp);
         return loadingDialog;
     }
 }
