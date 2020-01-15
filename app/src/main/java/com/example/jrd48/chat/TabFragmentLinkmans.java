@@ -585,7 +585,7 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 int position = listView.getSelectedItemPosition();
                 Log.v("wsDvr", "position:" + position);
-                if (keyCode == KeyEvent.KEYCODE_F6 && event.getAction() == KeyEvent.ACTION_DOWN && position > 0) {
+                if (keyCode == KeyEvent.KEYCODE_F6 && event.getAction() == KeyEvent.ACTION_DOWN && listView.getCount() > 0) {
 
                     final Linkmans linkmans = (Linkmans) adapter.getItem(position);
                     if (linkmans != null) {
