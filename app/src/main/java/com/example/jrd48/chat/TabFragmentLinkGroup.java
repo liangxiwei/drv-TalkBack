@@ -180,6 +180,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                             memberAdapter.setAppliedFriends(listFriends);
                             memberListView.setAdapter(memberAdapter);
                             groupListView.setSelection(groupSelectPosition);
+                            groupListView.requestFocus();
                             tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
                         }
                     } else {
@@ -199,6 +200,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                             memberAdapter.setAppliedFriends(listFriends);
                             memberAdapter.notifyDataSetChanged();
                             groupListView.setSelection(groupSelectPosition);
+                            groupListView.requestFocus();
                             tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
                         } else {//如果当前没有群组，清空群成员列表
                             List<AppliedFriends> listFriends = getlistMembersCache();
@@ -211,11 +213,13 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                 case MSG_GET_FOCUS:
                     if (groupListView.getCount() > 0) {
                         Log.d(TAG, "======MSG_GET_FOCUS=");
-                        try {
-                            Runtime.getRuntime().exec("input keyevent 66");
-                        } catch (IOException e) {
-
-                        }
+                        groupListView.setSelection(groupSelectPosition >= 0 ? groupSelectPosition : 0);
+                        groupListView.requestFocus();
+//                        try {
+//                            Runtime.getRuntime().exec("input keyevent 66");
+//                        } catch (IOException e) {
+//
+//                        }
                     }
                     break;
                 default:
@@ -301,10 +305,14 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (run) {
-            Log.i("TabFragmentLinkGroup", "onResume set groupSelectPosition to 0");
-            getDBMsg();
-        }
+        (new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("TabFragmentLinkGroup", "onResume set groupSelectPosition to 0");
+                getDBMsg();
+                mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 2500);
+            }
+        })).start();
     }
 
     @Override
@@ -333,12 +341,11 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
         getContext().registerReceiver(chatStatusReceiver, filt);
 
         initBroadcast();
-        myPhone = getMyPhone();
-        if (!run) {
-            run = true;
-            getDBMsg(); 
-        }
-        mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 2500);
+//        myPhone = getMyPhone();
+//        if (!run) {
+//            run = true;
+//            getDBMsg();
+//        }
     }
 
     private void showLoading() {
@@ -899,7 +906,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             List<TeamInfo> mTeamInfo = db.getTeams();
             db.closeDB();
             //showLoading();
-            if (mTeamInfo.size() <= 0) {
+            if (true || mTeamInfo.size() <= 0) {
                 Log.i(ServiceCheckUserEvent.TAG, "get team list = 0");
                 loadTeamListFromNet();
             } else {
