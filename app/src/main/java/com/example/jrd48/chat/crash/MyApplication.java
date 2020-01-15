@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
@@ -193,12 +194,11 @@ public class MyApplication extends MultiDexApplication {
                 Log.d("Application", "ChatVideoMode switch=" + currentMode);
                 if (currentMode == 1) {
                     mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_RADIO);
-                    mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_RADIO, 500);
+                    mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_RADIO, 800);
                 } else {
-                    ShellUtils.execCommand("input keyevent 4", false);
-                    ShellUtils.execCommand("input keyevent 4", false);
+                    stopRadioChat();
                     mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_VIDEO);
-                    mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_VIDEO, 500);
+                    mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_VIDEO, 800);
                 }
             }
         }

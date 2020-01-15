@@ -127,6 +127,11 @@ public class ResponseErrorProcesser {
                     Log.e("ResponseErrorProcesser", "错误1037,停止对讲");
                     //Intent i = new Intent(context, MyService.class);
                     //context.stopService(i);
+                    //ActivityCollector.finishAll();
+                    GlobalStatus.setOldChat(0, "", 0);
+                    GlobalStatus.clearChatRoomMsg();
+                    GlobalStatus.setPttKeyDown(false);
+                    //System.exit(0);
                     MyService.restart(context);
                     break;
 				case 1083: //rs added for LBCJW-276

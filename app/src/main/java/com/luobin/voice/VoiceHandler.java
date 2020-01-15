@@ -204,6 +204,10 @@ public class VoiceHandler {
         try {
             if (GlobalStatus.getRoomID() <= 0) {
                 Log.w("pocdemo", "停止讲话：不在任何房间");
+                GlobalStatus.setOldChat(0, "", 0);
+                GlobalStatus.clearChatRoomMsg();
+                GlobalStatus.setPttKeyDown(false);
+                //System.exit(0);
                 return;
             }
             doVoiceAction(context, false);
@@ -350,6 +354,9 @@ public class VoiceHandler {
 //
 //                        }
 //                    }, 0);
+                    //Intent i = new Intent(context, ShowVoiceActivity.class);
+                    //i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //context.startActivity(i);
 
                 }
 

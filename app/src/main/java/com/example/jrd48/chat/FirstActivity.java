@@ -284,6 +284,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     private List<TeamMemberInfo> allTeamMemberInfos;
     boolean isBBS = false;
     private VideoRadioSwitchObserver mVideoRadioSwitchObserver;
+    public static final int MSG_BUTTON_BBS = 11;
+    public static final int MSG_BUTTON_BACK = 12;
 
     private Handler refreshHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -351,6 +353,16 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 case 10:
                     //hanjiming
                     getGroupMan(group);
+                    break;
+                case MSG_BUTTON_BBS:
+                    Intent intent = new Intent();
+                    intent.setClassName("com.luobin.dvr",
+                            "com.example.jrd48.chat.WelcomeActivity");
+                    intent.putExtra("className", "bbs");
+                    startActivity(intent);
+                    break;
+                case MSG_BUTTON_BACK:
+                    finish();
                     break;
                 default:
                     break;
@@ -5159,17 +5171,15 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         switch (view.getId()) {
             case R.id.btn_bbs_hailiao:
                 if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
-                    Intent intent = new Intent();
-                    intent.setClassName("com.luobin.dvr",
-                            "com.example.jrd48.chat.WelcomeActivity");
-                    intent.putExtra("className", "bbs");
-                    startActivity(intent);
+                    refreshHandler.removeMessages(MSG_BUTTON_BBS);
+                    refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BBS, 1000);
                 } else {
                     ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.toast_bbs_not_allowed));
                 }
                 break;
             case R.id.btn_return:
-                finish();
+                refreshHandler.removeMessages(MSG_BUTTON_BACK);
+                refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BACK, 1000);
                 break;
             case R.id.prefix_camera:
                 //前置对讲

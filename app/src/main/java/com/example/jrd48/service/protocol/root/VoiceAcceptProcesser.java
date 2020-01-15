@@ -60,6 +60,11 @@ public class VoiceAcceptProcesser extends CommonProcesser {
                     //GlobalStatus.clearChatRoomMsg();
                     //GlobalStatus.setChatRoomMsg(resp);
                 }
+            } else if (resp.getErrorCode() == 1037) {
+                GlobalStatus.setOldChat(0, "", 0);
+                GlobalStatus.clearChatRoomMsg();
+                GlobalStatus.setPttKeyDown(false);
+                //System.exit(0);
             }
             // TODO: 0 OK，其他值，失败
             //
