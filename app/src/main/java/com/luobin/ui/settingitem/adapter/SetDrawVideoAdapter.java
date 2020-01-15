@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.luobin.dvr.R;
 import com.luobin.ui.InterestBean;
 import com.luobin.ui.SelectInterestAdapter;
@@ -54,16 +55,16 @@ public class SetDrawVideoAdapter extends
         }
         switch (position){
             case 0:
-                Glide.with(context).load(R.mipmap.pic_chat_right_bottom).into(holder.imgBig);
+                Glide.with(context).load(R.mipmap.pic_chat_right_bottom).diskCacheStrategy(DiskCacheStrategy.NONE).into(holder.imgBig);
                 break;
             case 1:
-                Glide.with(context).load(R.mipmap.pic_chat_left_bottom).into(holder.imgBig);
+                Glide.with(context).load(R.mipmap.pic_chat_left_bottom).diskCacheStrategy(DiskCacheStrategy.NONE).into(holder.imgBig);
                 break;
             case 2:
-                Glide.with(context).load(R.mipmap.pic_dvr_right_bottom).into(holder.imgBig);
+                Glide.with(context).load(R.mipmap.pic_dvr_right_bottom).diskCacheStrategy(DiskCacheStrategy.NONE).into(holder.imgBig);
                 break;
             case 3:
-                Glide.with(context).load(R.mipmap.pic_dvr_left_bottom).into(holder.imgBig);
+                Glide.with(context).load(R.mipmap.pic_dvr_left_bottom).diskCacheStrategy(DiskCacheStrategy.NONE).into(holder.imgBig);
                 break;
                 default:
                     break;
