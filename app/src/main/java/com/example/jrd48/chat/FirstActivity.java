@@ -3429,6 +3429,12 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         }
         Log.v(TAG, "changespeaking:" + judge + ",phone:" + changephone);
         if (judge == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
+            if (!GlobalStatus.isVideo()) {
+                if (tempHead != null) {
+                    mImageViewFace.setImageBitmap(tempHead);
+                }
+                mPopupWindow.showAtLocation(mRelativeLayout, Gravity.NO_GRAVITY, 0, 0);
+            }
             for (int i = 0; i < userList.size(); i++) {
                 if (userList.get(i).getState() == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
                     userList.get(i).setState(ProtoMessage.ChatStatus.csOk_VALUE);
@@ -3458,6 +3464,9 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 }
             }
         } else {
+            if (!GlobalStatus.isVideo()) {
+                mPopupWindow.dismiss();
+            }
             for (int i = 0; i < userList.size(); i++) {
                 if (userList.get(i).getPhone().equals(changephone)) {
                     userList.get(i).setState(judge);
@@ -5070,17 +5079,17 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     private void changeSpeakSign(boolean bRecording) {
         if (bRecording) {
             Log.i(TAG, "正在录音++++");
-            if (!GlobalStatus.isVideo()) {
+            /*if (!GlobalStatus.isVideo()) {
                 if (tempHead != null) {
                     mImageViewFace.setImageBitmap(tempHead);
                 }
                 mPopupWindow.showAtLocation(mRelativeLayout, Gravity.NO_GRAVITY, 0, 0);
-            }
+            }*/
         } else {
             Log.i(TAG, "停止录音----");
-            if (!GlobalStatus.isVideo()) {
+            /*if (!GlobalStatus.isVideo()) {
                 mPopupWindow.dismiss();
-            }
+            }*/
         }
     }
 
