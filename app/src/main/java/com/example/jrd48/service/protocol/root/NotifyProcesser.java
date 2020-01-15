@@ -99,7 +99,7 @@ public class NotifyProcesser extends CommonProcesser {
             final String phone = resp.getFriendPhoneNum();
             final Long teamID = resp.getTeamID();
 
-            if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 1) {
+            /*if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 1) {
                 Log.e("chat", "=====phone=" + phone + "----teamID=" + teamID + "----resp.getRoomID()=" + resp.getRoomID());
                 DBManagerFriendsList db0 = new DBManagerFriendsList(context, true, DBTableName.getTableName(context, DBHelperFriendsList.NAME));
                 AppliedFriends linkman = db0.getFriend(phone);
@@ -148,7 +148,7 @@ public class NotifyProcesser extends CommonProcesser {
                     mToastHandler.removeCallbacks(mToastRunnable);
                     mToastHandler.postDelayed(mToastRunnable, 500);
                 }
-            }
+            }*/
             SharedPreferences preferences = context.getSharedPreferences("token", Context.MODE_PRIVATE);
             String myPhone = preferences.getString("phone", "");
             if (resp.getNotifyType() == ProtoMessage.NotifyType.NotifyApplyFriend.getNumber()) {
@@ -327,9 +327,9 @@ public class NotifyProcesser extends CommonProcesser {
                     callState.setState(GlobalStatus.STATE_CALL);
                     GlobalStatus.putCallCallStatus(temp, callState);
                 }
-                if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                //if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
                     NotifyManager.getInstance().showNotification(temp, 0);
-                }
+                //}
                 Log.e("====", "=============notify1111111");
             } else if (resp.getNotifyType() == ProtoMessage.NotifyType.NotifyChatStatus_VALUE) {
                 Log.i("wsDvr", "notify chat status msg: " + resp.toString());
@@ -418,9 +418,9 @@ public class NotifyProcesser extends CommonProcesser {
                                     }
                                     GlobalStatus.putCallCallStatus(temp, callState);
                                 }
-                                if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                                //if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
                                     NotifyManager.getInstance().showNotification(temp, 0);
-                                }
+                                //}
                             }
 //                            else {
 //                                temp = String.valueOf(1) + String.valueOf(teamID);
@@ -443,9 +443,9 @@ public class NotifyProcesser extends CommonProcesser {
                             VideoRoadUtils.AcceptLiveCall(context, phone);
                         } else if (teamID == 0) {
                             GlobalStatus.addViewRoadPhone(phone);
-                            if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                            //if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
                                 NotifyManager.getInstance().showNotification("0" + phone, 1);
-                            }
+                            //}
                         }
 //                        else if (teamID == 0) {
 //                            Log.v("VideoCall", "当前正在对讲自动屏蔽路况分享请求");

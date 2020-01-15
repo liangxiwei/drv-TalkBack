@@ -144,15 +144,15 @@ public class DiagramParser {
                         itemsCopy.add(new Item(x));
                     }
                     // msg排队导致界面刷新延时太大
-                    getListener().onGotPackage(itemsCopy);
-//                    mHandler.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//
-//                            getListener().onGotPackage(itemsCopy);
-//
-//                        }
-//                    });
+                    //getListener().onGotPackage(itemsCopy);
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            getListener().onGotPackage(itemsCopy);
+
+                        }
+                    });
                 }
 
                 if (mSyncListener != null) {
