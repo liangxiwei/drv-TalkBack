@@ -62,6 +62,8 @@ public class BBSActivity extends BaseActivity {
     //ListView bbsListview2;
     @BindView(R.id.bbs_gridview)
     GridView mBBSGridView;
+    @BindView(R.id.btn_group)
+    Button btnGroup;
     @BindView(R.id.btn_return)
     Button btnReturn;
     BBSAdapter bbsAdapter1;
@@ -93,6 +95,15 @@ public class BBSActivity extends BaseActivity {
     protected void onPause() {
         GlobalStatus.setBBSPageActivated(false);
         super.onPause();
+    }
+
+    @OnClick(R.id.btn_group)
+    public void onBtnGroupClick(View view) {
+        finish();
+        Intent intent = new Intent();
+        intent.setClassName("com.luobin.dvr", "com.example.jrd48.chat.WelcomeActivity");
+        intent.putExtra("className", "duijiang");
+        startActivity(intent);
     }
 
     @OnClick(R.id.btn_return)
