@@ -143,15 +143,16 @@ public class DiagramParser {
                     for (Item x : mItems) {
                         itemsCopy.add(new Item(x));
                     }
-
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            getListener().onGotPackage(itemsCopy);
-
-                        }
-                    });
+                    // msg排队导致界面刷新延时太大
+                    getListener().onGotPackage(itemsCopy);
+//                    mHandler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//
+//                            getListener().onGotPackage(itemsCopy);
+//
+//                        }
+//                    });
                 }
 
                 if (mSyncListener != null) {

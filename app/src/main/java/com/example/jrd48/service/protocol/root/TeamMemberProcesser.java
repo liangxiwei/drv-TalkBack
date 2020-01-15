@@ -162,7 +162,8 @@ public class TeamMemberProcesser extends CommonProcesser {
         msg.setData(bundle);
         //mHandler.removeMessages(DvrConfig.MSG_TEAM_MEMBER_PROCESSOR);
         //mHandler.sendMessageDelayed(msg, 100);
-        mHandler.sendMessage(msg);
+        // mHandler.sendMessage(msg);
+        mHandler.handleMessage(msg); //msg排队导致界面刷新延时太大
     }
 
     @Override
