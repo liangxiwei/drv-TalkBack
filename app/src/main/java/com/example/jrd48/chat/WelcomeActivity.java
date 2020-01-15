@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.animation.Animation;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ public class WelcomeActivity extends BaseActivity implements Animation.Animation
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        Log.d("WelcomeActivity", "onCreate");
         setContentView(R.layout.welcome);
         if (getIntent() != null){
             className = getIntent().getStringExtra("className");

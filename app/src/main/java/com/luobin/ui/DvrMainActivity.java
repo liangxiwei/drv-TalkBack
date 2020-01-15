@@ -108,6 +108,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
 		*/
 		//end
 
+        Log.d("DvrMainActivity", "onCreate");
         tabFragmentLinkGroup = new TabFragmentLinkGroup();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts, tabFragmentLinkGroup)
                 .commitAllowingStateLoss();
@@ -171,6 +172,17 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         ToastR.setToast(DvrMainActivity.this, "权限设置失败");
     }
 
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event)
+    {
+        if(event.getAction() == KeyEvent.ACTION_UP){
+            if(keyCode == KeyEvent.KEYCODE_BACK){
+                MyService.goHome(this);
+                return true;
+            }
+        }
+        return super.onKeyUp(keyCode, event);
+    }
 
     @Override
     public void onClick(View v) {
@@ -194,7 +206,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
                 break;
 
             case R.id.btn_return:
-                super.onBackPressed();
+                MyService.goHome(this);
                 break;
 
             case R.id.btn_change:
