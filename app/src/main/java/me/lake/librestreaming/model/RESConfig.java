@@ -8,8 +8,8 @@ import android.os.Build;
  * Created by lake on 16-3-16.
  */
 public class RESConfig {
-    public static final int VIDEO_WIDTH = "LB1822".equals(Build.PRODUCT) ? 320 : 640;
-    public static final int VIDEO_HEIGHT = "LB1822".equals(Build.PRODUCT) ? 180 : 360;
+    public static final int VIDEO_WIDTH = "LB1822".equals(Build.PRODUCT) ? 640 : 640;
+    public static final int VIDEO_HEIGHT = "LB1822".equals(Build.PRODUCT) ? 360 : 360;
     public static final int VIDEO_HEIGHT2 = 480;
     public static final int VIDEO_WIDTH_BIG = 1280;
     public static final int VIDEO_HEIGHT_BIG = 720;
