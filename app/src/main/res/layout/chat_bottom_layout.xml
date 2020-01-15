@@ -127,7 +127,7 @@
             android:textSize="@dimen/normal_text_size"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/white"
-            android:text="挂断" />
+            android:text="@string/chat_close" />
     </LinearLayout>
 
     <RelativeLayout

@@ -4935,7 +4935,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         ChatManager.getInstance().setIsFinishing(false);
         SharedPreferencesUtils.put(this, "firstactivity_ontop", true);
         if (isBBS) {
-            btnBBS.setText("群组");
+            btnBBS.setText("对讲群组");
         } else {
             btnBBS.setText("BBS海聊");
         }

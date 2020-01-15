@@ -224,7 +224,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
                     }
                     if (fragmentPostion == FRAGMENT_POSITION_GROUP) {
                         fragmentPostion = FRAGMENT_POSITION_MANS;
-                        btnChange.setText("群组");
+                        btnChange.setText("对讲群组");
                         if (tabFragmentLinkmans == null) {
                             tabFragmentLinkmans = new TabFragmentLinkmans();
                         }

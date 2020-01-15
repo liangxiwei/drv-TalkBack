@@ -98,7 +98,7 @@
 
     <string name="switch_to_video">切换到视频聊天</string>
     <string name="switch_to_voice">切换到语音聊天</string>
-    <string name="chat_close">挂断</string>
+    <string name="chat_close">退出</string>
     <string name="switch_camera">转换摄像头</string>
 
     <string name="group_title">群组</string>
