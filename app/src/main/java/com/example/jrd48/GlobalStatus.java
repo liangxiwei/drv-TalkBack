@@ -856,9 +856,16 @@ public class GlobalStatus {
         return Settings.System.getInt(context.getContentResolver(), NAVI_START_STOP, 1);
     }
 
-    public static final String CHAT_VIDEO_RADIO_SWITCH = Settings.System.CHAT_VIDEO_RADIO_SWITCH;
+    /*public static final String CHAT_VIDEO_RADIO_SWITCH = Settings.System.CHAT_VIDEO_RADIO_SWITCH;
     public static int getChatVideoMode(Context context) {
         return Settings.System.getInt(context.getContentResolver(), CHAT_VIDEO_RADIO_SWITCH, 0);
+    }*/
+    public static final String CHAT_VIDEO_RADIO_SWITCH = Settings.System.RADIO_IN_FOREGROUND;
+    public static int getChatVideoMode(Context context) {
+        return Settings.System.getInt(context.getContentResolver(), Settings.System.RADIO_IN_FOREGROUND, 0);
+    }
+    public static void setChatVideoMode(Context context, int mode) {
+        Settings.System.putInt(context.getContentResolver(), Settings.System.RADIO_IN_FOREGROUND, mode);
     }
 
     public static final String TAKE_PHOTO_COUNT = Settings.System.TAKE_PHOTO_COUNT;
