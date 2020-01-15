@@ -1,6 +1,7 @@
 package com.luobin.ui;
 
 import android.app.Dialog;
+import android.app.Instrumentation;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -89,6 +90,17 @@ public class BBSActivity extends BaseActivity {
         SharedPreferences preferences = getSharedPreferences("token", Context.MODE_PRIVATE);
         userPhone = preferences.getString("phone", "");
         initData();
+    }
+
+    @Override
+    protected void onResume() {
+        Instrumentation inst = new Instrumentation();
+        inst.setInTouchMode(false);
+        mBBSGridView.requestFocus();
+        if (mBBSGridView.getCount() > 0) {
+            mBBSGridView.setSelection(0);
+        }
+        super.onResume();
     }
 
     @Override
