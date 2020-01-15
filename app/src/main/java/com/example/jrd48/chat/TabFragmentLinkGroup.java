@@ -181,6 +181,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                             memberListView.setAdapter(memberAdapter);
                             groupListView.setSelection(groupSelectPosition);
                             groupListView.requestFocus();
+                            groupListView.requestFocusFromTouch();
                             tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
                         }
                     } else {
@@ -201,6 +202,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                             memberAdapter.notifyDataSetChanged();
                             groupListView.setSelection(groupSelectPosition);
                             groupListView.requestFocus();
+                            groupListView.requestFocusFromTouch();
                             tvGroupName.setText(groupList.get(groupSelectPosition).getLinkmanName());
                         } else {//如果当前没有群组，清空群成员列表
                             List<AppliedFriends> listFriends = getlistMembersCache();
@@ -212,14 +214,17 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                     break;
                 case MSG_GET_FOCUS:
                     Log.d(TAG, "======MSG_GET_FOCUS=");
-                    if (groupListView.getCount() > 0) {
-                        groupListView.setSelection(groupSelectPosition >= 0 ? groupSelectPosition : 0);
-                    }
-                    groupListView.requestFocus();
-                    try {
-                        Runtime.getRuntime().exec("input keyevent 66");
-                    } catch (IOException e) {
+                    if (isResumed()) {
+                        if (groupListView.getCount() > 0) {
+                            groupListView.setSelection(groupSelectPosition >= 0 ? groupSelectPosition : 0);
+                        }
+                        groupListView.requestFocus();
+                        groupListView.requestFocusFromTouch();
+                        try {
+                            Runtime.getRuntime().exec("input keyevent KEYCODE_ENTER");
+                        } catch (IOException e) {
 
+                        }
                     }
                     break;
                 default:
@@ -311,7 +316,9 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             public void run() {
                 Log.i("TabFragmentLinkGroup", "onResume set groupSelectPosition to 0");
                 getDBMsg();
-                mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 500);
+                if (isResumed()) {
+                    mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 500);
+                }
             }
         })).start();
     }
