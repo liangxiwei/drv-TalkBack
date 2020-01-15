@@ -46,6 +46,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextMenu;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -67,6 +68,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -288,6 +290,10 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     private VideoRadioSwitchObserver mVideoRadioSwitchObserver;
     public static final int MSG_BUTTON_BBS = 11;
     public static final int MSG_BUTTON_BACK = 12;
+    private RelativeLayout mRelativeLayout;
+    private ImageView mImageViewFace;
+    private PopupWindow mPopupWindow;
+    private View mPopView;
 
     private Handler refreshHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -558,6 +564,11 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         //
         checkRandomChat();
         bottomLayoutManager = new BottomLayoutManager(this);
+        mRelativeLayout = (RelativeLayout) findViewById(R.id.first_root);
+        mPopView = LayoutInflater.from(this).inflate(R.layout.super_toast_icon, null);
+        mImageViewFace = mPopView.findViewById(R.id.face);
+        mPopupWindow = new PopupWindow(mPopView,
+                WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         initViewPager();
         initView1();
         if (!ConnUtil.isConnected(this)) {
@@ -1495,9 +1506,9 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 // bottomLayoutManager.show(true);
             } else if (intent.getAction().equalsIgnoreCase(RESClient.ACTION_VIDEO_VOIDE_SWITCH) && bottomLayoutManager != null) {
                 boolean isVideo = intent.getBooleanExtra("isVideo", false);
-                if (!GlobalStatus.IsRandomChat()) {
+                //if (!GlobalStatus.IsRandomChat()) {
                     bottomLayoutManager.switchVoiceOrVideo(isVideo);
-                }
+                //}
                 bottomLayoutManager.updateChatModeSelection();
             } else if (intent.getAction().equalsIgnoreCase(RESClient.ACTION_VIDEO_VOIDE_UPDATE) && bottomLayoutManager != null) {
                 //bottomLayoutManager.updateSwitchText();
@@ -5025,10 +5036,17 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
     private void changeSpeakSign(boolean bRecording) {
         if (bRecording) {
             Log.i(TAG, "正在录音++++");
-
+            if (!GlobalStatus.isVideo()) {
+                if (tempHead != null) {
+                    mImageViewFace.setImageBitmap(tempHead);
+                }
+                mPopupWindow.showAtLocation(mRelativeLayout, Gravity.NO_GRAVITY, 0, 0);
+            }
         } else {
             Log.i(TAG, "停止录音----");
-
+            if (!GlobalStatus.isVideo()) {
+                mPopupWindow.dismiss();
+            }
         }
     }
 
