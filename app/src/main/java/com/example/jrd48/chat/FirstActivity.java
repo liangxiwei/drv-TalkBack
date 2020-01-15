@@ -5306,7 +5306,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                     ToastR.setToast(MyApplication.getContext(), getResources().getString(R.string.toast_bbs_not_allowed));
                 }*/
                 finish();
-                refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BBS, 500);
+                //refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BBS, 500);
+                refreshHandler.sendEmptyMessage(MSG_BUTTON_BBS);
                 break;
             case R.id.btn_return:
                 refreshHandler.sendEmptyMessageDelayed(MSG_BUTTON_BACK, 500);
