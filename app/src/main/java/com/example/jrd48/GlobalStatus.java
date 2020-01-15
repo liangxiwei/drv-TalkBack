@@ -529,9 +529,9 @@ public class GlobalStatus {
         Log.d(TAG,"Global,isVideo="+isVideo);
         Log.d(TAG,"Global,isRandom="+IsRandomChat());
         Log.d(TAG,"Global,IsRandomChatVideo="+IsRandomChatVideo());
-        if(IsRandomChat()){
+        /*if(IsRandomChat()){
             return IsRandomChatVideo();
-        }
+        }*/
         return isVideo;
     }
 
