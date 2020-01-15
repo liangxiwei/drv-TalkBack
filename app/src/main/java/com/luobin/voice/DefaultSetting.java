@@ -17,6 +17,6 @@ public class DefaultSetting {
     public static final int CACHE_BUFFER_SIZE = 60 * 10;                  // 暂时 10 最优值
 
     public static int sampleRate = 8000;
-    public static int bitrate = 8000;
+    public static int bitrate = 32 * 1000;
     //public static final int AUDIO_TRACK_PLAY_BUFF = PcmRecorder.frequency;
 }
