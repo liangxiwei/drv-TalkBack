@@ -50,6 +50,7 @@ public class MyApplication extends MultiDexApplication {
             int what = msg.what;
             switch (what) {
                 case MSG_VIDEO_RADIO_SWITCH_START_VIDEO:
+                    stopRadioChat();
                     startVideoChat();
                     break;
                 case MSG_VIDEO_RADIO_SWITCH_START_RADIO:
@@ -196,9 +197,13 @@ public class MyApplication extends MultiDexApplication {
                     mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_RADIO);
                     mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_RADIO, 800);
                 } else {
-                    stopRadioChat();
-                    mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_VIDEO);
-                    mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_VIDEO, 800);
+                    Long lastTimeStamp = (Long) SharedPreferencesUtils.get(context, "db_change_time_stamp", (Long) 0L);
+                    Long delta = System.currentTimeMillis() - lastTimeStamp;
+                    SharedPreferencesUtils.put(context, "db_change_time_stamp", System.currentTimeMillis());
+                    if (delta > 3000) {
+                        mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_VIDEO);
+                        mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_VIDEO, 800);
+                    }
                 }
             }
         }
