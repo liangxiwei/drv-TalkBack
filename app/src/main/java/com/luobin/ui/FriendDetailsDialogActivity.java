@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -115,6 +116,8 @@ public class FriendDetailsDialogActivity extends BaseActivity {
     public static  int REQUST_TYPE = 0;
     public static final  int ADD_FRIEND = 1;
     public static final int DELETE_MEMBER = 2;
+
+    private Handler mHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -490,6 +493,8 @@ public class FriendDetailsDialogActivity extends BaseActivity {
         SharedPreferences preferences = getSharedPreferences("token", mContext.MODE_PRIVATE);
         myPhone = preferences.getString("phone", "");
 
+        Log.d(TAG, String.format("userPhone:%s userName=%s teamID=%d myPhone=%s", userPhone, userName, teamID, myPhone));
+
         if (appliedFriend == null) {
             if (teamID < 0){
                 return;
@@ -576,24 +581,31 @@ public class FriendDetailsDialogActivity extends BaseActivity {
 
                 if (i.getIntExtra("error_code", -1) ==
                         ProtoMessage.ErrorCode.OK.getNumber()) {
-                    try {
-                        GlobalImg.clear();
-                        DBManagerFriendsList db = new DBManagerFriendsList(mContext, DBTableName.getTableName(mContext, DBHelperFriendsList.NAME));
-                        listMembersCache = db.getFriends(false);
-                        db.closeDB();
-                        if (listMembersCache != null && listMembersCache.size() > 0) {
-                            for (AppliedFriends vm : listMembersCache) {
-                                if (userPhone.equals(vm.getPhoneNum())) {
-                                    appliedFriend = vm;
-                                    isFriends = true;
-                                    break;
+
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                GlobalImg.clear();
+                                DBManagerFriendsList db = new DBManagerFriendsList(mContext, DBTableName.getTableName(mContext, DBHelperFriendsList.NAME));
+                                listMembersCache = db.getFriends(false);
+                                db.closeDB();
+                                if (listMembersCache != null && listMembersCache.size() > 0) {
+                                    for (AppliedFriends vm : listMembersCache) {
+                                        if (userPhone.equals(vm.getPhoneNum())) {
+                                            appliedFriend = vm;
+                                            isFriends = true;
+                                            break;
+                                        }
+                                    }
                                 }
+                                refreshUI();
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
                         }
-                        refreshUI();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    });
+
                 } else {
 
                 }
