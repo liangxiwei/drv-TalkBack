@@ -306,6 +306,11 @@ public class MyApplication extends MultiDexApplication {
         context.startActivity(intentRadio);
     }
 
+    private void stopRadioChat() {
+        Intent intent = new Intent("com.benshikj.ht.jf.action.RX_STOP");
+        context.sendBroadcastAsUser(intent, UserHandle.ALL);
+    }
+
     public static void goHome(Context context) {
         Intent intent = new Intent();
         intent.setAction("android.intent.action.MAIN");
