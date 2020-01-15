@@ -17,16 +17,20 @@ import java.util.Map;
 
 public class PolyphonePinYin {
     private static String path = "/assets/duoyinzi_dic.txt";
-    private static Map<String, List<String>> pinyinMap = new HashMap<String, List<String>>();
+    private static Map<String, List<String>> pinyinMap = null;
 
     public static Map<String, List<String>> getPinyinMap() {
+        if (pinyinMap == null) {
+            pinyinMap = new HashMap<String, List<String>>();
+            initPinyin();
+        }
         return pinyinMap;
     }
 
     /**
      * 初始化 所有的多音字词组
      */
-    public static void initPinyin() {
+    private static void initPinyin() {
         // 读取多音字的全部拼音表;
         InputStream file = PinyinHelper.class.getResourceAsStream(path);
         pinyinMap.clear();

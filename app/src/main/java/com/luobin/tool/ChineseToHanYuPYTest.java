@@ -309,7 +309,7 @@ public class ChineseToHanYuPYTest {
 
     private static void checkPinYinMapIsEmpty() {
         if (pinyinMap == null || pinyinMap.size() <= 0) {
-            PolyphonePinYin.initPinyin();
+            // PolyphonePinYin.initPinyin();
             pinyinMap = PolyphonePinYin.getPinyinMap();
         }
     }

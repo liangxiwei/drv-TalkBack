@@ -245,7 +245,7 @@ public class MainActivity extends BaseActivity
 //        checkLocation();
 //        checkStoragePermisson();
         //初始化多音字拼音
-        PolyphonePinYin.initPinyin();
+        // PolyphonePinYin.initPinyin();
         new ChineseToHanYuPYTest();
     }
 

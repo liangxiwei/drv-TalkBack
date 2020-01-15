@@ -90,7 +90,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         actionbarAdd.setOnClickListener(this);
         actionbarSearch = (LinearLayout) findViewById(R.id.actionbar_search);
         actionbarSearch.setOnClickListener(this);
-        PolyphonePinYin.initPinyin();
+        // PolyphonePinYin.initPinyin();
         requestAllPermisson();
         initBroadCast();
 
