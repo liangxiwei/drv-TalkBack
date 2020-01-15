@@ -897,7 +897,7 @@ public class RESClient {
                     mCamViewParams.width = width;
                     mCamViewParams.height = height;
                     Log.v(TAG, "updateSurfaceView:" + mCamViewParams.toString());
-                    if (self_video && started && mCamView != null) {
+                    if (false && self_video && started && mCamView != null) {
                         try {
                             if (isNo) {
                                 mCamView.setNoDrawing(true);
