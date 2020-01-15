@@ -5168,6 +5168,13 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                 intent1.putExtra("keyCode",KeyEvent.KEYCODE_F9);
                 sendBroadcastAsUser(intent1, UserHandle.ALL);
                 break;
+            case KeyEvent.KEYCODE_BACK:
+                if (isBBS) {
+                    groupQuit();
+                } else {
+                    HungupClick();
+                }
+                break;
             default:
                 break;
         }
