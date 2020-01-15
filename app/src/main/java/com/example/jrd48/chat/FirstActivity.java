@@ -1222,9 +1222,8 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                             ToastR.setToast(FirstActivity.this, "接收呼叫失败");
                             closeRoom(true);
                             //forceCloseRoom();
-                            groupQuit();
-                            GlobalStatus.setOldChat(0, "", 0);
-                            GlobalStatus.clearChatRoomMsg();
+                            //groupQuit();
+                            HungupClick();
                             GlobalStatus.setPttKeyDown(false);
                             MyService.restart(FirstActivity.this);
                             fail(i.getIntExtra("error_code", -1));
@@ -1281,7 +1280,10 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                         notifyCallSuccess();
                     } else {
                         ToastR.setToast(FirstActivity.this, "呼叫失败");
+                        Log.e(TAG, "===CallClick=呼叫失败");
                         closeRoom(true);
+                        HungupClick();
+                        GlobalStatus.setPttKeyDown(false);
                         fail(i.getIntExtra("error_code", -1));
                     }
                 }
@@ -5082,6 +5084,9 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             SharedPreferencesUtils.put(MyApplication.getContext(), "cur_teamId", "");
             isBBS = false;
         }*/
+        if (!isBBS) {
+            HungupClick();
+        }
         super.onPause();
     }
 
@@ -5487,6 +5492,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                     }
                 } else {
                     ToastR.setToast(FirstActivity.this, "呼叫失败");
+                    Log.e(TAG, "===startVideoCall=呼叫失败");
                     fail(i.getIntExtra("error_code", -1));
                 }
             }

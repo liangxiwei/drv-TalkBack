@@ -424,6 +424,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                                 intent.putExtra("group", msg.getTeamID());
                                 intent.putExtra("type", msg.getMemberRole());
                                 intent.putExtra("group_name", msg.getLinkmanName());
+                                Log.d("TabFragmentLinkGroup", "==========KEYCODE_F6-=group=" + msg.getTeamID()
+                                        + "--type=" + msg.getMemberRole() + "--group_name=" + msg.getLinkmanName());
                                 intent.putParcelableArrayListExtra("memberList", (ArrayList<? extends Parcelable>) allMemberMap.get(groupList.get(groupSelectPosition).getTeamID()));
                                 VideoOrVoiceDialog dialog = new VideoOrVoiceDialog(getContext(), intent);
                                 dialog.show();
