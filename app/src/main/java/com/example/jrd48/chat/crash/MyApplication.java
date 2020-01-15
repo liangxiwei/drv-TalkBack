@@ -295,7 +295,6 @@ public class MyApplication extends MultiDexApplication {
         intentVideo.setClassName("com.luobin.dvr",
                 "com.example.jrd48.chat.WelcomeActivity");
         intentVideo.putExtra("className", "duijiang");
-        startActivity(intentVideo);
         context.startActivity(intentVideo);
     }
 
