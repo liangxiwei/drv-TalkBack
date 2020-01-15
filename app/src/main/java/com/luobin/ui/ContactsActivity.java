@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.jrd48.GlobalStatus;
 import com.example.jrd48.chat.BaseActivity;
+import com.example.jrd48.chat.SharedPreferencesUtils;
 import com.example.jrd48.chat.TabFragmentLinkGroup;
 import com.example.jrd48.chat.TabFragmentLinkmans;
 import com.luobin.dvr.R;
@@ -48,6 +49,7 @@ public class ContactsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         GlobalStatus.setIsFirstPause(false);
+        SharedPreferencesUtils.put(this, "isBBS", false);
         super.onResume();
     }
 

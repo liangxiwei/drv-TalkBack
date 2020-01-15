@@ -977,6 +977,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             }
 
             SharedPreferencesUtils.put(this, ReceiverProcesser.UPDATE_KEY, linkmanPhone);
+            SharedPreferencesUtils.put(this, "isBBS", isBBS);
             GlobalStatus.setTempChat(linkmanPhone);
             //list_layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1));
         } else {
@@ -1845,6 +1846,7 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             groupQuit();
         }
         mVideoRadioSwitchObserver.stopObserving();
+        SharedPreferencesUtils.put(this, "isBBS", false);
         super.onDestroy();
     }
 

@@ -100,6 +100,7 @@ public class BBSActivity extends BaseActivity {
         if (mBBSGridView.getCount() > 0) {
             mBBSGridView.setSelection(0);
         }
+        SharedPreferencesUtils.put(this, "isBBS", false);
         super.onResume();
     }
 

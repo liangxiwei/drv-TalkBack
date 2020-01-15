@@ -27,6 +27,7 @@ import com.example.jrd48.PolyphonePinYin;
 import com.example.jrd48.chat.BadgeView;
 import com.example.jrd48.chat.BaseActivity;
 import com.example.jrd48.chat.MainActivity;
+import com.example.jrd48.chat.SharedPreferencesUtils;
 import com.example.jrd48.chat.TabFragmentLinkGroup;
 import com.example.jrd48.chat.TabFragmentLinkmans;
 import com.example.jrd48.chat.ToastR;
@@ -138,6 +139,7 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     protected void onResume() {
         loadFriendsListFromNet();
         loadGroupListFromNet();
+        SharedPreferencesUtils.put(this, "isBBS", false);
         super.onResume();
     }
 
