@@ -40,8 +40,8 @@ public class SettingActivity extends BaseActivity {
     SettingAdapter adapter = null;
 
     String[] data = {"账号", "背景墙", "蓝牙手咪", "系统升级",
-            /*"轨迹设置"*/"恢复出厂设置", "画中画", "随手拍照片", "随手拍视频", "无线电设置",
-            "离线地图"};
+            /*"轨迹设置"*/"恢复出厂设置", "画中画", "随手拍照片", "随手拍视频"/*, "无线电设置",
+            "离线地图"*/};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
