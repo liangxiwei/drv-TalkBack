@@ -16,6 +16,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
@@ -120,7 +121,7 @@ public class DBManagerFriendsList {
         }
     }
 
-    public Handler mHandler = new Handler() {
+    public Handler mHandler = new Handler((Looper.getMainLooper())) {
         public void handleMessage(android.os.Message msg) {
             Log.d("DBManagerFriendsList", "mHandler what = " + msg.what);
             switch (msg.what) {
