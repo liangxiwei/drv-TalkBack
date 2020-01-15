@@ -75,6 +75,7 @@ import com.luobin.widget.PromptDialog;
 import com.luobin.widget.ScrollListView;
 import com.qihoo.linker.logcollector.utils.LogCollectorUtility;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -127,6 +128,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
     private static final int QUIT_TEAM = 0;
     private static final int DELETE_TEAM = 1;
     private static final int UPDATE_UI = 0;
+    private static final int MSG_GET_FOCUS = 1;
     LoadingDialog loadingDialog;
 
     public static final int MOVE_GROUP_LIST = 0;
@@ -203,6 +205,16 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                             memberAdapter.setAppliedFriends(listFriends);
                             memberAdapter.setData(new ArrayList<TeamMemberInfo>());
                             memberAdapter.notifyDataSetChanged();
+                        }
+                    }
+                    break;
+                case MSG_GET_FOCUS:
+                    if (groupListView.getCount() > 0) {
+                        Log.d(TAG, "======MSG_GET_FOCUS=");
+                        try {
+                            Runtime.getRuntime().exec("input keyevent 66");
+                        } catch (IOException e) {
+
                         }
                     }
                     break;
@@ -326,6 +338,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
             run = true;
             getDBMsg(); 
         }
+        mHandler.sendEmptyMessageDelayed(MSG_GET_FOCUS, 2500);
     }
 
     private void showLoading() {
@@ -401,8 +414,8 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
                                 intent.putExtra("data", 1);
                                 CallState callState = GlobalStatus.getCallCallStatus().get(String.valueOf(1) + msg.getTeamID());
                                 if (GlobalStatus.equalTeamID(msg.getTeamID())) {
-                                    intent.putExtra("callType", 0);
-                                    //intent.putExtra("callType", 2);
+                                    //intent.putExtra("callType", 0);
+                                    intent.putExtra("callType", 2);
                                 } else if (callState != null && callState.getState() == GlobalStatus.STATE_CALL) {
                                     intent.putExtra("callType", 1);
                                 } else {
@@ -1159,7 +1172,7 @@ public class TabFragmentLinkGroup extends BaseLazyFragment {
 
 						db.close();//rs added
 						//end
-	                    
+
                     }
                 }
             });
