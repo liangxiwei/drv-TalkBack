@@ -12,7 +12,7 @@
         android:gravity="center"
         android:visibility="gone"
         android:background="@drawable/btn_change"
-        android:text="设置话权"
+        android:text="@string/text_member_menu_priority_setting"
         android:textSize="20sp" />
 
     <View
@@ -29,7 +29,7 @@
         android:gravity="center"
         android:background="@drawable/btn_change"
         android:visibility="gone"
-        android:text="设置昵称"
+        android:text="@string/text_member_menu_nickname_setting"
         android:textSize="20sp" />
 
     <View
@@ -46,7 +46,7 @@
         android:gravity="center"
         android:background="@drawable/btn_change"
         android:visibility="gone"
-        android:text="设置管理员"
+        android:text="@string/text_member_menu_supervisor_setting"
         android:textSize="20sp" />
 
     <View
@@ -62,6 +62,6 @@
         android:gravity="center"
         android:background="@drawable/btn_change"
         android:visibility="gone"
-        android:text="删除"
+        android:text="@string/button_delete"
         android:textSize="20sp" />
 </LinearLayout>

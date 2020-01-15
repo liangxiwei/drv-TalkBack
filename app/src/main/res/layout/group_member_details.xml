@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"
-            android:text="成员详细资料" />
+            android:text="@string/text_group_member_detail" />
 
         <ImageView
             android:id="@+id/iv_detail"
@@ -88,7 +88,7 @@
                         android:id="@+id/tv_friend_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="未设置"
+                        android:text="@string/text_friend_detail_unset"
                         android:textColor="@color/white"
                         android:maxLines="1"
                         android:ellipsize="end"
@@ -125,7 +125,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="设置备注"
+                    android:text="@string/text_friend_detail_note"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -165,7 +165,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="添加好友"
+                    android:text="@string/add_link_man"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size"  />
             </RelativeLayout>
@@ -184,7 +184,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="用户名"
+                    android:text="@string/text_friend_detail_name"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -194,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/TextView01"
-                    android:text="未设置"
+                    android:text="@string/text_friend_detail_unset"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:textColor="#AAAAAA"
@@ -214,7 +214,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="电话号码"
+                    android:text="@string/text_friend_detail_phone"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -224,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/tv_region_temp"
-                    android:text="未设置"
+                    android:text="@string/text_friend_detail_unset"
                     android:textColor="#AAAAAA"
                     android:textSize="@dimen/normal_text_size" />
             </RelativeLayout>
@@ -244,7 +244,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="角色"
+                    android:text="@string/text_group_member_detail_role"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -254,7 +254,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/TextView04"
-                    android:text="未设置"
+                    android:text="@string/text_friend_detail_unset"
                     android:textColor="#AAAAAA"
                     android:textSize="@dimen/normal_text_size" />
             </RelativeLayout>
@@ -274,7 +274,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="话权"
+                    android:text="@string/text_group_member_detail_priority"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -284,7 +284,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/TextView05"
-                    android:text="未设置"
+                    android:text="@string/text_friend_detail_unset"
                     android:textColor="#AAAAAA"
                     android:textSize="@dimen/normal_text_size" />
             </RelativeLayout>
@@ -309,7 +309,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="车载设备号"
+                    android:text="@string/text_friend_detail_car_id"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -319,7 +319,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/TextView07"
-                    android:text="未绑定"
+                    android:text="@string/text_friend_detail_unbind"
                     android:textColor="#AAAAAA"
                     android:textSize="@dimen/normal_text_size" />
             </RelativeLayout>
@@ -342,7 +342,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="车牌号"
+                    android:text="@string/text_friend_detail_license_plate"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -352,7 +352,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/TextView08"
-                    android:text="未设置"
+                    android:text="@string/text_friend_detail_unset"
                     android:textColor="#AAAAAA"
                     android:textSize="@dimen/normal_text_size" />
             </RelativeLayout>
@@ -375,7 +375,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="品牌"
+                    android:text="@string/text_friend_detail_brand"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -385,7 +385,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/TextView09"
-                    android:text="未设置"
+                    android:text="@string/text_friend_detail_unset"
                     android:textColor="#AAAAAA"
                     android:textSize="@dimen/normal_text_size" />
             </RelativeLayout>
@@ -408,7 +408,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="车型"
+                    android:text="@string/text_friend_detail_car_type"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -418,7 +418,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/TextView10"
-                    android:text="未设置"
+                    android:text="@string/text_friend_detail_unset"
                     android:textColor="#AAAAAA"
                     android:textSize="@dimen/normal_text_size" />
             </RelativeLayout>
@@ -446,7 +446,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="性别"
+                    android:text="@string/text_friend_detail_sex"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -456,7 +456,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/TextView11"
-                    android:text="未设置"
+                    android:text="@string/text_friend_detail_unset"
                     android:textColor="#AAAAAA"
                     android:textSize="@dimen/normal_text_size" />
             </RelativeLayout>
@@ -476,7 +476,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="出生日期"
+                    android:text="@string/text_friend_detail_brithday"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -486,7 +486,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/TextView12"
-                    android:text="未设置"
+                    android:text="@string/text_friend_detail_unset"
                     android:textColor="#AAAAAA"
                     android:textSize="@dimen/normal_text_size" />
             </RelativeLayout>
@@ -509,7 +509,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingLeft="8dp"
-                    android:text="所在地"
+                    android:text="@string/text_friend_detail_location_area"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -519,7 +519,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/TextView06"
-                    android:text="未设置"
+                    android:text="@string/text_friend_detail_unset"
                     android:textColor="#AAAAAA"
                     android:textSize="@dimen/normal_text_size" />
             </RelativeLayout>
@@ -544,7 +544,7 @@
                     android:nextFocusDown="@+id/image_show"
                     android:focusable="true"
                     android:paddingTop="7dp"
-                    android:text="删除"
+                    android:text="@string/button_delete"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -560,7 +560,7 @@
                     android:background="@drawable/button_selector"
                     android:paddingBottom="7dp"
                     android:paddingTop="7dp"
-                    android:text="发消息"
+                    android:text="@string/button_send"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
             </LinearLayout>

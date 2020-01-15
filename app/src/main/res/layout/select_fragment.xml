@@ -14,7 +14,7 @@
         android:background="@drawable/border_search_brand_select"
         android:drawableLeft="@drawable/search_bar_icon_normal"
         android:gravity="center_vertical"
-        android:hint="请输入关键字"
+        android:hint="@string/text_select_fragment_keyword"
         android:padding="@dimen/drawable_padding"
         android:textColorHint="@color/search_friend"
         android:singleLine="true"

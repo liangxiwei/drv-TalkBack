@@ -28,7 +28,7 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="用户名:"
+            android:text="@string/text_login_user_name"
             android:textSize="18dp" />
 
         <EditText
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="请输入手机号"
+            android:hint="@string/edittext_login_user_phone"
             android:inputType="textPersonName">
 
             <requestFocus />
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
-            android:text="密码:"
+            android:text="@string/text_login_user_pwd"
             android:textSize="18dp" />
 
         <RelativeLayout
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="请输入密码"
+                android:hint="@string/edittext_login_user_pwd"
                 android:paddingRight="35dp"
                 android:inputType="numberPassword"></EditText>
 
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
-                android:text="忘记密码" />
+                android:text="@string/text_login_user_pwd_forgot" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
-                android:text="点击注册" />
+                android:text="@string/text_login_user_reg" />
         </LinearLayout>
 
 

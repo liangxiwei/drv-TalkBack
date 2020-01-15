@@ -166,7 +166,12 @@
     <string name="only_one_team">当前群组只有一个</string>
     <string name="no_team">当前无群组</string>
 
+    <string name="pop_title_sim_status_title">SIM卡流量不足</string>
+    <string name="pop_title_sim_status_content">SIM卡流量不足%1$dMB，请及時使用九方助手进行充值，避免产生额外费用！</string>
     <string name="button_text_i_know">我知道了</string>
+
+    <string name="toast_tip">提示</string>
+    <string name="toast_logout">退出？</string>
 
     <!-- input login -->
     <string name="edittext_input_login_phone_hint">请输入手机号</string>
@@ -213,4 +218,350 @@
     <string name="toast_bbs_not_allowed">模拟对讲模式下禁止进入BBS！</string>
     <string name="progress_waiting_to_enter_bbs_title">正在进入BBS</string>
     <string name="progress_waiting_to_enter_bbs_msg">请稍等...</string>
+
+    <string name="button_back">返回</string>
+    <string name="button_cancel">取消</string>
+    <string name="button_confirm">确定</string>
+    <string name="button_modify">修改</string>
+    <string name="button_add">添加</string>
+    <string name="button_delete">删除</string>
+    <string name="button_msg">消息</string>
+    <string name="button_complete">完成</string>
+    <string name="button_group_create">创建群组</string>
+    <string name="button_search">搜索</string>
+    <string name="button_contacts">通讯录</string>
+    <string name="button_select">选择</string>
+    <string name="button_accept">接受</string>
+    <string name="button_reject">拒绝</string>
+    <string name="button_reg">注册</string>
+    <string name="button_next">下一步</string>
+    <string name="button_pre">上一步</string>
+    <string name="button_send">发送</string>
+    <string name="button_quit">退出</string>
+    <string name="button_install">安装</string>
+    <string name="button_retry">重试</string>
+    <string name="button_commit">提交</string>
+    <string name="time_settings_gps">卫星校准</string>
+    <string name="time_settings_manual">手动设置</string>
+    <string name="text_tab_title_msg">消息</string>
+    <string name="text_tab_title_contacts">联系人</string>
+    <string name="text_tab_title_group">群</string>
+    <string name="text_note">备注</string>
+    <string name="text_tracklist_query">轨迹查询</string>
+    <string name="text_myshare">我的分享</string>
+    <string name="text_mydownload">我的下载</string>
+    <string name="text_location_show">地图显示</string>
+    <string name="text_send_to_friend">发给朋友</string>
+    <string name="text_cloud_share">云分享</string>
+    <string name="text_document_all">全部</string>
+    <string name="text_document_type">类型</string>
+    <string name="text_document_time_stamp">时间</string>
+    <string name="text_friend_detail_user_name">迷城</string>
+    <string name="text_friend_detail_user_sex">男 13900000001</string>
+    <string name="text_friend_detail_user_autograph">路越远，心越远</string>
+    <string name="text_friend_detail_user_license_plate">车牌：京A0001</string>
+    <string name="text_friend_detail_user_location">所在地：北京</string>
+    <string name="text_friend_detail_user_hometown">家乡：湖南长沙</string>
+    <string name="text_friend_detail_user_industry">行业：警察</string>
+    <string name="text_friend_detail_user_hobby">兴趣爱好：汽车 / 旅游 / 时尚 / 音乐 / 美食 / 宠物 / 公益 /</string>
+    <string name="text_friend_detail_user_show_via_map">地图查看</string>
+    <string name="text_friend_detail_user_tracklist">历史轨迹</string>
+    <string name="text_friend_detail_user_add_friend">加为好友</string>
+    <string name="text_friend_detail_user_delete_friend">删除好友</string>
+
+    <string name="text_login_hint">九方视频  通联境界</string>
+    <string name="text_login_account">账号</string>
+    <string name="edittext_login_account_hint">请输入账号</string>
+    <string name="text_login_pwd">密码</string>
+    <string name="edittext_login_pwd_hint">请输入密码</string>
+    <string name="text_login_register">注册账号</string>
+    <string name="text_login_login">登录</string>
+    <string name="text_login_forgot_pwd">忘记密码</string>
+
+    <string name="edittext_query_edid">输入ID,可查询ID上传的所有路线</string>
+    <string name="edittext_query_edaddress">输入地名,用空格隔开</string>
+    <string name="text_query_query">查询</string>
+
+    <string name="text_register_reg">注册账号</string>
+    <string name="edittext_register_phone">请输入手机号</string>
+    <string name="text_register_phone">手机号码</string>
+    <string name="text_register_verification_code_send">发送验证码</string>
+    <string name="edittext_register_verification_code_input">请输入验证码</string>
+    <string name="text_register_verification_code">验证码</string>
+    <string name="edittext_register_pwd_input">请输入密码</string>
+    <string name="text_register_pwd">密码</string>
+
+    <string name="switchbutton_register_info_ksw_text_off">隐藏</string>
+    <string name="switchbutton_register_info_ksw_text_on">显示</string>
+    <string name="text_register_info_nickname">昵称：</string>
+    <string name="text_register_info_sign">个性签名：</string>
+    <string name="text_register_info_sex">性别：</string>
+    <string name="text_register_info_phone">手机号：</string>
+    <string name="text_register_info_license_plate">车牌号：</string>
+    <string name="text_register_info_gps">GPS</string>
+    <string name="switchbutton_register_info_gps_ksw_text_off">关</string>
+    <string name="switchbutton_register_info_gps_ksw_text_on">开</string>
+    <string name="text_register_info_optional_msg">选填信息</string>
+    <string name="text_register_info_optional_msg_friends">有助于认识车友</string>
+    <string name="text_register_info_car_type">车型：</string>
+    <string name="text_register_info_select">选择</string>
+    <string name="text_register_info_birth">出生年月：</string>
+    <string name="text_register_info_location">所在地：</string>
+    <string name="text_register_info_hometown">家乡：</string>
+    <string name="text_register_info_industry">行业：</string>
+    <string name="text_register_info_hobby">兴趣爱好：</string>
+    <string name="button_reginfo_modify">修改注册信息</string>
+    <string name="button_reginfo_quit">退出账号</string>
+
+    <string name="button_invite">邀请</string>
+    <string name="text_select_member_loading">正在加载成员列表...</string>
+
+    <string name="text_setting_photo_shot">连拍</string>
+    <string name="text_setting_photo_numbers">张</string>
+    <string name="text_setting_photo_shot_interval">连拍间隔</string>
+    <string name="text_setting_photo_seconds">秒</string>
+
+    <string name="text_setting_location_track_interval">轨迹记录间隔</string>
+    <string name="text_setting_location_track_seconds">10秒</string>
+    <string name="checkbox_setting_location_track_save">对讲时是否记录本地坐标</string>
+
+    <string name="text_setting_video_shot">拍摄视频</string>
+    <string name="text_voice_chatting">语音对讲中...</string>
+    <string name="button_show_location_via_map">地图查看</string>
+
+    <string name="text_chat_serach_content_hint">名称/群号/手机号/车牌号</string>
+    <string name="text_chat_serach_strangers">按条件查找陌生人</string>
+    <string name="text_chat_serach_cars">查看附近的车</string>
+
+    <string name="text_location_track_save_start">开始记录</string>
+    <string name="text_location_track_save_end">结束记录</string>
+    <string name="text_location_track_save_interval">坐标记录点时间间隔</string>
+    <string name="text_location_track_save_def_time">30秒</string>
+    <string name="text_location_track_save_note_modify">修改备注</string>
+    <string name="text_location_track_list">轨迹记录</string>
+    <string name="text_location_track_query">轨迹查询</string>
+    <string name="text_location_track_save">存储轨迹</string>
+    <string name="text_location_track_tscondition_sex">性别</string>
+    <string name="text_location_track_tscondition_car_type">车型</string>
+    <string name="text_location_track_tscondition_age">年龄</string>
+    <string name="text_location_track_tscondition_area">地区</string>
+    <string name="text_location_track_tscondition_industry">行业</string>
+    <string name="text_location_track_tscondition_hobby">爱好</string>
+    <string name="text_location_track_tscondition_persion">查找到的车友</string>
+
+    <string name="text_adapter_cloud_tra_name">锄禾</string>
+    <string name="text_adapter_cloud_tra_time">119-111--1111</string>
+    <string name="text_adapter_cloud_tra_context">楚留香</string>
+
+    <string name="text_adapter_search_item_title">张宝</string>
+    <string name="text_adapter_search_item_title_context">黄巾三杰之一</string>
+
+    <string name="text_additional_menu_pic">图片</string>
+    <string name="text_additional_menu_cam">相机</string>
+    <string name="text_additional_menu_video">视频</string>
+
+    <string name="text_all_members_team_name">详细资料</string>
+    <string name="text_all_members_group_edit">编辑群信息</string>
+    <string name="text_all_members_team_priority">优先级</string>
+    <string name="text_all_members_team_priority_setting">优先级设置：</string>
+    <string name="text_all_members_team_desc">群描述</string>
+    <string name="text_all_members_team_unset">未设置</string>
+
+    <string name="text_applied_add_linkman">添加联系人：</string>
+    <string name="text_applied_add_linkman_name">用户名</string>
+    <string name="text_applied_add_linkman_nick_name">备注</string>
+    <string name="text_applied_add_linkman_msg">验证信息</string>
+
+    <string name="text_car_info_id">车载设备号</string>
+    <string name="text_car_info_license_plate">车牌号</string>
+    <string name="text_car_info_license_plate_hint">京A88888</string>
+    <string name="text_car_info_brand">品牌</string>
+    <string name="text_car_info_brand_hint">奥迪</string>
+    <string name="text_car_info_type">车型</string>
+    <string name="text_car_info_type_hint">TT</string>
+
+    <string name="text_group_msg_change_hint">请输入数字（1-15）</string>
+    <string name="text_group_msg_change_group_name">组名</string>
+    <string name="radiobutton_group_msg_change_tmp">临时</string>
+    <string name="radiobutton_group_msg_change_public">公有</string>
+    <string name="radiobutton_group_msg_change_private">私有</string>
+
+    <string name="edittext_chat_input">请输入...</string>
+    <string name="button_chat_map">地图</string>
+
+    <string name="text_chat_mode_video">视频模式</string>
+    <string name="text_chat_mode_voice">语音模式</string>
+
+    <string name="text_chat_popdialog_team_modify">修改群信息</string>
+    <string name="text_chat_popdialog_team_member_detail">查看群成员</string>
+    <string name="text_chat_popdialog_team_dismiss">解散该群</string>
+    <string name="text_chat_popdialog_room_close">关闭聊天室</string>
+
+    <string name="text_mms_verification_code">验证码：</string>
+    <string name="text_mms_verification_code_input_phone">请输入11位手机号</string>
+    <string name="text_mms_verification_code_hint">请输入短信验证码</string>
+    <string name="text_mms_verification_code_obtain">点击获取验证码</string>
+    <string name="text_mms_verification_code_obtain_hint">请先获取验证码</string>
+
+    <string name="text_create_group_name">群名</string>
+    <string name="text_create_group_desc">群描述</string>
+    <string name="text_create_group_members">群成员</string>
+    <string name="text_group_name_input">请输入群组名称：</string>
+
+    <string name="text_first_layout_chat_open">开启对讲</string>
+    <string name="text_first_layout_press_to_speak">按住说话</string>
+    <string name="text_first_layout_scroll_left">向左滑动,查看地图</string>
+    <string name="text_first_layout_scroll_from_side">从边缘</string>
+    <string name="text_first_layout_scroll_right">向右滑动,查看消息</string>
+
+    <string name="text_friend_detail_msg">详细资料</string>
+    <string name="text_friend_detail_unset">未设置</string>
+    <string name="text_friend_detail_note">备注</string>
+    <string name="text_friend_detail_name">用户名</string>
+    <string name="text_friend_detail_phone">电话号码</string>
+    <string name="text_friend_detail_car_id">车载设备号</string>
+    <string name="text_friend_detail_unbind">未绑定</string>
+    <string name="text_friend_detail_license_plate">车牌号</string>
+    <string name="text_friend_detail_brand">品牌</string>
+    <string name="text_friend_detail_car_type">车型</string>
+    <string name="text_friend_detail_sex">性别</string>
+    <string name="text_friend_detail_brithday">出生日期</string>
+    <string name="text_friend_detail_location_area">所在地</string>
+    <string name="text_friend_detail_map">地图查看</string>
+    <string name="text_friend_detail_star">星标</string>
+    <string name="text_friend_detail_info">联系人详情信息：</string>
+    <string name="button_friend_detail_apply_friend">申请加为好友</string>
+    <string name="text_friend_detail_verification">验证信息</string>
+
+    <string name="text_friend_new_notification">通知消息</string>
+    <string name="button_friend_new_group_create">创建群组</string>
+    <string name="text_friend_new_no_notification">目前没有通知消息</string>
+
+    <string name="text_group_location_query">位置查询</string>
+    <string name="text_group_location_data_obtain">正在获取数据，请稍等...</string>
+
+    <string name="text_group_member_detail">成员详细资料</string>
+    <string name="text_group_member_detail_role">角色</string>
+    <string name="text_group_member_detail_priority">话权</string>
+    <string name="text_group_member_detail_province">省份</string>
+    <string name="text_group_member_detail_city">城市</string>
+    <string name="button_group_member_apply">申请加为群组</string>
+    <string name="text_group_new">新的群组</string>
+    <string name="text_group_add">创建群组</string>
+    <string name="text_group_search">请输入群信息</string>
+    <string name="text_group_search_tmp">搜索：</string>
+    <string name="text_invite_join_title">邀请好友</string>
+    <string name="text_item_select_interset">汽车</string>
+    <string name="text_link_man_name_hint">张三</string>
+    <string name="text_link_man_phone_hint">Danny:不是这样的</string>
+    <string name="text_link_man_layout_wait">正在加载</string>
+    <string name="text_head_view_brand">常见汽车品牌：</string>
+
+    <string name="text_login_user_name">用户名：</string>
+    <string name="edittext_login_user_phone">请输入手机号</string>
+    <string name="text_login_user_pwd">密码：</string>
+    <string name="edittext_login_user_pwd">请输入密码</string>
+    <string name="edittext_login_user_pwd_hint">请输入密码(至少4位)</string>
+    <string name="text_login_user_pwd_forgot">忘记密码</string>
+    <string name="text_login_user_reg">点击注册</string>
+
+    <string name="text_map_click_title">张三</string>
+    <string name="text_map_click_track">跟踪位置</string>
+    <string name="text_map_click_track_detail">详细信息</string>
+    <string name="text_map_menu_track_cancel">取消跟踪</string>
+    <string name="text_map_menu_track_memberlist">成员列表</string>
+    <string name="text_map_menu_track_grouping">分组</string>
+
+    <string name="text_match_phone_number">匹配通讯录</string>
+    <string name="text_match_phone_number_refresh">下拉刷新</string>
+    <string name="text_match_phone_number_none">目前没有相匹配的号码</string>
+    <string name="text_member_info_detail">成员详情信息：</string>
+    <string name="text_member_info_username">用户名</string>
+    <string name="text_member_info_track">选择跟踪</string>
+
+    <string name="text_member_menu_priority_setting">设置话权</string>
+    <string name="text_member_menu_nickname_setting">设置昵称</string>
+    <string name="text_member_menu_supervisor_setting">设置管理员</string>
+    <string name="text_member_group_manager">群主</string>
+    <string name="text_member_group_modify">群信息修改</string>
+    <string name="text_member_group_name_hint">1号群</string>
+
+    <string name="text_myinfo_head">头像</string>
+    <string name="text_myinfo_name">名称</string>
+    <string name="text_myinfo_sex_hint">男</string>
+    <string name="text_myinfo_location_area_hint">重庆市-南岸区</string>
+    <string name="button_myinfo_tool">助手下载</string>
+    <string name="button_myinfo_quit">退出登录</string>
+
+    <string name="text_vehicles_nearby">附近车辆</string>
+    <string name="text_vehicles_location_settings">设置位置</string>
+    <string name="button_vehicles_list">列表</string>
+    <string name="text_vehicles_nearby_empty">目前未找到更多附近车辆</string>
+
+    <string name="text_notification_view_luobin_chat_title">珞宾对讲</string>
+    <string name="text_notification_view_downoading">下载中...</string>
+
+    <string name="text_permission_management">权限管理</string>
+    <string name="text_permission_required">该应用需要允许以下所有权限</string>
+    <string name="text_permission_management_contacts">访问联系人</string>
+    <string name="text_permission_management_location">定位权限</string>
+    <string name="text_permission_management_storage">访问存储器</string>
+    <string name="text_permission_management_photo">拍照</string>
+    <string name="text_permission_management_record">录音</string>
+
+    <string name="text_pull_to_refresh">下拉刷新</string>
+    <string name="text_pull_to_refresh_last_update_time">最后更新时间</string>
+
+    <string name="text_report_car_type_hint">请输入品牌和型号信息（必填）</string>
+    <string name="text_report_car_type_detail_hint">* 请填写完整的品牌以及该品牌的型号</string>
+
+    <string name="text_reset_password_new">新密码</string>
+    <string name="text_reset_password_new_hint">请输入密码（至少4位）</string>
+    <string name="text_reset_password_new_confirm">确认密码</string>
+    <string name="edittext_reset_password_new_confirm">请再次输入密码</string>
+
+    <string name="text_search_activity_search_friend">好友查找</string>
+    <string name="text_search_activity_phone_match">匹配通讯录</string>
+    <string name="text_search_activity_search_friend_online">在线搜索好友:</string>
+    <string name="text_search_activity_group_searched">查找到的群组</string>
+    <string name="text_search_activity_result">查找结果</string>
+    <string name="text_search_stranger_empty">当前没有任何陌生人</string>
+    <string name="text_select_fragment_keyword">请输入关键字</string>
+
+    <string name="radiobutton_set_member">成员</string>
+    <string name="radiobutton_set_member_supervisor">管理员</string>
+    <string name="edittext_nick_name_setting">请输入要设置的昵称</string>
+
+    <string name="text_main_settings_voice">语音设置</string>
+    <string name="text_main_settings_auto_speaker">自动打开免提</string>
+    <string name="text_main_settings_maxvolume">声音自动调至最大</string>
+    <string name="text_main_settings_voice_input">语音输入方式</string>
+    <string name="text_main_settings_map">地图设置</string>
+    <string name="text_main_settings_map_permission">请打开权限</string>
+    <string name="text_main_settings_map_permission_grant">请点击获取权限</string>
+    <string name="text_main_settings_location">打开定位</string>
+    <string name="text_main_settings_location_time_interval">定位间隔时间</string>
+    <string name="text_main_settings_map_zoom_level">地图缩放等级</string>
+    <string name="text_main_settings_tips">提示</string>
+    <string name="text_main_settings_autoboot">开机自动启动</string>
+    <string name="text_main_settings_tutor">开启教程</string>
+    <string name="text_main_settings_tutor_video">视频</string>
+    <string name="text_main_settings_tutor_video_target_check">开启查看对方视频</string>
+    <string name="text_main_settings_tutor_video_target_upload">开启上传视频</string>
+    <string name="text_main_settings_heart_beat">自定义心跳设置</string>
+    <string name="button_main_settings_reset">恢复默认设置</string>
+    <string name="text_video_settings_route_share">处理路况分享请求</string>
+
+    <string name="menu_item_group_name_modify">更改群名</string>
+    <string name="menu_item_show_location">地图显示</string>
+    <string name="menu_item_group_quit">退出</string>
+    <string name="menu_item_group_dismiss">解散</string>
+    <string name="menu_item_documents">我的文件</string>
+    <string name="menu_item_friends_nearby">附近好友</string>
+    <string name="menu_item_zxing_scan">扫一扫</string>
+    <string name="menu_item_settings">设置</string>
+    <string name="menu_item_version_check">检查更新</string>
+    <string name="menu_item_quit">退出</string>
+    <string name="menu_sub_item_logout">登出</string>
+    <string name="menu_sub_item_close">关闭</string>
 </resources>

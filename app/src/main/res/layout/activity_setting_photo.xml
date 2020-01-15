@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
                     android:gravity="center"
-                    android:text="连拍"
+                    android:text="@string/text_setting_photo_shot"
                     android:textColor="@color/text_color_90white"
                     android:textSize="16dp" />
 
@@ -69,7 +69,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_toRightOf="@+id/picPicker"
                     android:gravity="center|left"
-                    android:text="张"
+                    android:text="@string/text_setting_photo_numbers"
                     android:textColor="@color/text_color_90white"
                     android:textSize="16dp" />
             </RelativeLayout>
@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
                     android:gravity="center"
-                    android:text="连拍间隔"
+                    android:text="@string/text_setting_photo_shot_interval"
                     android:textColor="@color/text_color_90white"
                     android:textSize="16dp" />
 
@@ -114,7 +114,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_toRightOf="@+id/secPicker"
                     android:gravity="center|left"
-                    android:text="秒"
+                    android:text="@string/text_setting_photo_seconds"
                     android:textColor="@color/text_color_90white"
                     android:textSize="16dp" />
             </RelativeLayout>
@@ -133,7 +133,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/bg_panel_btn"
                 android:gravity="center"
-                android:text="确定"
+                android:text="@string/button_confirm"
                 android:textSize="16dp"
                 android:textColor="@color/text_color_90white"/>
         </RelativeLayout>

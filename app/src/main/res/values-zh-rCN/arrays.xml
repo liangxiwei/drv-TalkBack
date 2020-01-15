@@ -24,5 +24,17 @@
         <item>中</item>
         <item>低</item>
     </string-array>
-
+    <string-array name="launcher_settings">
+        <item>账号</item>
+        <item>背景墙</item>
+        <item>蓝牙手咪</item>
+        <item>系统升级</item>
+        <!--<item>轨迹设置</item>-->
+        <item>恢复出厂设置</item>
+        <item>画中画</item>
+        <item>随手拍照片</item>
+        <item>随手拍视频</item>
+        <!--<item>无线电设置</item>-->
+        <!--<item>离线地图</item>-->
+    </string-array>
 </resources>

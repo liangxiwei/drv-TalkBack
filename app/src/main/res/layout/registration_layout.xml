@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/line_bg"
                 android:ems="10"
-                android:hint="请输入11位手机号"
+                android:hint="@string/text_mms_verification_code_input_phone"
                 android:inputType="phone"
                 android:paddingLeft="65dp">
             <requestFocus />
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
-                android:text="密码"
+                android:text="@string/text_login_user_pwd"
                 android:textSize="18dp"
                 android:textColor="@color/white"/>
 
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/line_bg"
                 android:ems="10"
-                android:hint="请输入密码(至少4位)"
+                android:hint="@string/edittext_login_user_pwd_hint"
                 android:inputType="numberPassword"
                 android:paddingLeft="65dp"
                 android:paddingRight="35dp">
@@ -127,7 +127,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/button_selector"
                 android:listSelector="@drawable/btn_reg"
-                android:text="注册"
+                android:text="@string/button_reg"
                 android:textColor="#ffffff"
                 android:textSize="16dp" />
         </LinearLayout>

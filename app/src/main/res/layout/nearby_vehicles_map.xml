@@ -30,7 +30,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/iv_back"
-            android:text="附近车辆"
+            android:text="@string/text_vehicles_nearby"
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size" />
@@ -44,7 +44,7 @@
             android:layout_marginRight="10dp"
             android:gravity="center_vertical"
             android:scaleType="centerInside"
-            android:text="设置位置"
+            android:text="@string/text_vehicles_location_settings"
             android:textColor="#ffffff"
             android:textSize="18sp"
             android:visibility="gone" />
@@ -65,7 +65,7 @@
             android:textColor="@color/textColor"
             android:layout_weight="1"
             android:textSize="17dp"
-            android:text="地图" />
+            android:text="@string/button_chat_map" />
 
         <Button
             android:id="@+id/btn_list"
@@ -75,7 +75,7 @@
             android:textColor="@color/black"
             android:textSize="17dp"
             android:layout_weight="1"
-            android:text="列表" />
+            android:text="@string/button_vehicles_list" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_view"
@@ -129,7 +129,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:textSize="16sp"
-            android:text="目前未找到更多附近车辆" />
+            android:text="@string/text_vehicles_nearby_empty" />
     </FrameLayout>
 
     <RelativeLayout
@@ -192,7 +192,7 @@
             android:layout_gravity="center"
             android:background="@drawable/rotate"
             android:paddingLeft="5dp"
-            android:text="消息"
+            android:text="@string/button_msg"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:visibility="gone" />

@@ -10,7 +10,7 @@
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="选择跟踪"
+        android:text="@string/text_member_info_track"
         android:textColor="@color/white"
         android:textSize="25dp"
         android:gravity="center"/>
@@ -45,5 +45,5 @@
         android:background="@drawable/button_selector"
         android:textColor="@color/white"
         android:textSize="22dp"
-        android:text="取消" />
+        android:text="@string/button_cancel" />
 </LinearLayout>

@@ -69,7 +69,7 @@
             android:layout_gravity="center"
             android:background="@drawable/rotate"
             android:paddingLeft="5dp"
-            android:text="消息"
+            android:text="@string/button_msg"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:visibility="gone" />

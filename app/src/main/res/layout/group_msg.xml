@@ -29,7 +29,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/iv_back"
-            android:text="详细资料"
+            android:text="@string/text_friend_detail_msg"
             android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"  />
 
@@ -82,7 +82,7 @@
                     android:id="@+id/tv_group_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="未设置"
+                    android:text="@string/text_friend_detail_unset"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
@@ -110,7 +110,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:paddingLeft="8dp"
-                android:text="性别"
+                android:text="@string/text_friend_detail_sex"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/tv_group_region_temp"
-                android:text="未设置"
+                android:text="@string/text_friend_detail_unset"
                 android:textColor="#AAAAAA"
                 android:textSize="14sp" />
 
@@ -146,7 +146,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:paddingLeft="8dp"
-                android:text="省份"
+                android:text="@string/text_group_member_detail_province"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -156,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/TextView01"
-                android:text="未设置"
+                android:text="@string/text_friend_detail_unset"
                 android:textColor="#AAAAAA"
                 android:textSize="14sp" />
 
@@ -182,7 +182,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:paddingLeft="8dp"
-                android:text="城市"
+                android:text="@string/text_group_member_detail_city"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -192,7 +192,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/TextView04"
-                android:text="未设置"
+                android:text="@string/text_friend_detail_unset"
                 android:textColor="#AAAAAA"
                 android:textSize="14sp" />
 
@@ -213,7 +213,7 @@
             android:background="@drawable/button_selector"
             android:paddingBottom="7dp"
             android:paddingTop="7dp"
-            android:text="申请加为群组"
+            android:text="@string/button_group_member_apply"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
     </LinearLayout>

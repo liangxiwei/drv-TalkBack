@@ -31,7 +31,7 @@
                 android:layout_height="15dp"
                 android:layout_marginTop="3dp"
                 android:gravity="center"
-                android:text="本机菅"
+                android:text="@string/text_adapter_cloud_tra_name"
                 android:textColor="@color/white"
                 android:textSize="13sp" />
 
@@ -42,7 +42,7 @@
                 android:layout_marginTop="2dp"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="119-111--1111"
+                android:text="@string/text_adapter_cloud_tra_time"
                 android:textColor="@color/white"
                 android:textSize="9dp" />
 
@@ -59,7 +59,7 @@
             android:layout_toRightOf="@id/ll"
             android:gravity="center|left"
             android:maxLines="2"
-            android:text="楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN楚留香NNNNN1"
+            android:text="@string/text_adapter_cloud_tra_context"
             android:textColor="@color/white"
             android:textSize="13dp" />
 

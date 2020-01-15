@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:text="个人信息"
+            android:text="@string/self_title"
             android:textColor="@color/dvr_title_colro"
             android:textSize="@dimen/normal_title_size" />
     </RelativeLayout>
@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="15dp"
-                        android:text="头像"
+                        android:text="@string/text_myinfo_head"
                         android:textColor="@color/white"
                         android:textSize="@dimen/normal_text_size"
                         android:visibility="gone" />
@@ -107,7 +107,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
-                            android:text="名称"
+                            android:text="@string/text_myinfo_name"
                             android:textColor="@color/white"
                             android:textSize="@dimen/normal_text_size" />
 
@@ -120,7 +120,7 @@
                             android:ellipsize="end"
                             android:gravity="right"
                             android:maxLines="1"
-                            android:text="张三"
+                            android:text="@string/text_link_man_name_hint"
                             android:textSize="@dimen/normal_text_size" />
                     </RelativeLayout>
 
@@ -139,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
-                            android:text="手机号码"
+                            android:text="@string/text_register_phone"
                             android:textColor="@color/white"
                             android:textSize="@dimen/normal_text_size" />
 
@@ -181,7 +181,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="车牌号"
+                    android:text="@string/text_car_info_license_plate"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -195,7 +195,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="渝A 888888"
+                    android:text="@string/text_car_info_license_plate_hint"
                     android:textSize="@dimen/normal_text_size" />
             </LinearLayout>
 
@@ -214,7 +214,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="品牌"
+                    android:text="@string/text_car_info_brand"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -228,7 +228,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="奥迪"
+                    android:text="@string/text_car_info_brand_hint"
                     android:textSize="@dimen/normal_text_size" />
             </LinearLayout>
 
@@ -247,7 +247,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="车型"
+                    android:text="@string/text_car_info_type"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -261,7 +261,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="捷达"
+                    android:text="@string/text_car_info_type_hint"
                     android:textSize="@dimen/normal_text_size" />
             </LinearLayout>
 
@@ -280,7 +280,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="性别"
+                    android:text="@string/text_friend_detail_sex"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -294,7 +294,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="男"
+                    android:text="@string/text_myinfo_sex_hint"
                     android:textSize="@dimen/normal_text_size" />
             </LinearLayout>
 
@@ -316,7 +316,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="出生日期"
+                    android:text="@string/text_friend_detail_brithday"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -352,7 +352,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="所在地"
+                    android:text="@string/text_friend_detail_location_area"
                     android:textColor="@color/white"
                     android:textSize="@dimen/normal_text_size" />
 
@@ -366,7 +366,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="重庆市-南岸区"
+                    android:text="@string/text_myinfo_location_area_hint"
                     android:textSize="@dimen/normal_text_size" />
             </LinearLayout>
 
@@ -386,7 +386,7 @@
                     android:layout_height="60dp"
                     android:layout_margin="20dp"
                     android:background="@drawable/dvr_button_background"
-                    android:text="确认"
+                    android:text="@string/button_confirm"
                     android:visibility="visible"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/normal_text_size" />
@@ -405,7 +405,7 @@
                         android:layout_margin="20dp"
                         android:layout_weight="1"
                         android:background="@drawable/dvr_button_background"
-                        android:text="助手下载"
+                        android:text="@string/button_myinfo_tool"
                         android:nextFocusDown="@+id/logout"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/normal_text_size" />
@@ -417,7 +417,7 @@
                         android:layout_margin="20dp"
                         android:layout_weight="1"
                         android:background="@drawable/dvr_button_background"
-                        android:text="退出登录"
+                        android:text="@string/button_myinfo_quit"
                         android:nextFocusUp="@+id/code_image"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/normal_text_size" />

@@ -35,7 +35,7 @@
             android:layout_marginLeft="20dp"
             android:layout_centerHorizontal="true"
             android:layout_toRightOf="@id/iv_back"
-            android:text="邀请好友"
+            android:text="@string/text_invite_join_title"
             android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"  />
 
@@ -72,7 +72,7 @@
         android:layout_marginRight="12dp"
         android:focusable="true"
         android:layout_marginTop="5dp"
-        android:text="确定"
+        android:text="@string/button_confirm"
         android:nextFocusUp="@+id/invie_list"
         android:background="@drawable/button_selector"
         android:textColor="@color/white"

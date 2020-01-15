@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/img"
                     android:layout_marginTop="5dp"
-                    android:text="轨迹查询"
+                    android:text="@string/text_tracklist_query"
                     android:textColor="@color/white"
                     android:textSize="12dp" />
 
@@ -59,7 +59,7 @@
                 android:drawableLeft="@mipmap/setting_back_icon"
                 android:paddingEnd="15dp"
                 android:paddingStart="15dp"
-                android:text="返回"
+                android:text="@string/button_back"
                 android:textColor="@color/text_color_90white"
                 android:textSize="16sp" />
 
@@ -87,7 +87,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="我的分享"
+                android:text="@string/text_myshare"
                 android:textColor="@color/white"
                 android:textSize="13dp" />
 
@@ -97,7 +97,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="我的下载"
+                android:text="@string/text_mydownload"
                 android:textColor="@color/white"
                 android:textSize="13dp" />
 
@@ -119,7 +119,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/bg_panel_setting"
                 android:gravity="center"
-                android:text="删除"
+                android:text="@string/button_delete"
                 android:textColor="@color/white"
                 android:textSize="13dp" />
 
@@ -135,7 +135,7 @@
                 android:gravity="center"
                 android:paddingEnd="5dp"
                 android:paddingStart="5dp"
-                android:text="地图显示"
+                android:text="@string/text_location_show"
                 android:textColor="@color/white"
                 android:textSize="13dp" />
 
@@ -150,7 +150,7 @@
                 android:gravity="center"
                 android:paddingEnd="5dp"
                 android:paddingStart="5dp"
-                android:text="发送朋友"
+                android:text="@string/text_send_to_friend"
                 android:textColor="@color/white"
                 android:textSize="13dp" />
 
@@ -165,7 +165,7 @@
                 android:gravity="center"
                 android:paddingEnd="5dp"
                 android:paddingStart="5dp"
-                android:text="云分享"
+                android:text="@string/text_cloud_share"
                 android:textColor="@color/white"
                 android:textSize="13dp" />
 
@@ -199,7 +199,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_panel_setting"
             android:gravity="center"
-            android:text="确定"
+            android:text="@string/button_confirm"
             android:textColor="@color/white"
             android:textSize="16dp" />
 

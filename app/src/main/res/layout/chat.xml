@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:hint="请输入..."
+                    android:hint="@string/edittext_chat_input"
                     android:maxLines="4"></EditText>
 
                 <Button
@@ -114,7 +114,7 @@
                 android:id="@+id/btn_to_map"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:text="地图"
+                android:text="@string/button_chat_map"
                 android:paddingRight="5dp"
                 android:layout_gravity="center"
                 android:textColor="@color/white"

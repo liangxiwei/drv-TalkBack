@@ -41,7 +41,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="14dp"
             android:layout_toRightOf="@id/iv_back"
-            android:text="通知消息"
+            android:text="@string/text_friend_new_notification"
             android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"  />
 
@@ -57,7 +57,7 @@
             android:gravity="center"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:text="创建群组"
+            android:text="@string/button_friend_new_group_create"
             android:textColor="#fff"
             android:textSize="15sp" />
 
@@ -79,7 +79,7 @@
         android:gravity="center"
         android:visibility="gone"
         android:textSize="20sp"
-        android:text="目前没有通知消息" />
+        android:text="@string/text_friend_new_no_notification" />
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/pull_request_in_refresh_list"
         android:layout_width="match_parent"

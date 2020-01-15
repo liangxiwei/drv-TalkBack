@@ -20,7 +20,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
             android:gravity="right"
-            android:text="备注"
+            android:text="@string/text_friend_detail_note"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -52,7 +52,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
             android:gravity="right"
-            android:text="验证信息"
+            android:text="@string/text_friend_detail_verification"
             android:textColor="@color/black"
             android:textSize="20sp" />
 

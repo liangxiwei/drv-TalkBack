@@ -24,7 +24,7 @@
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
             android:layout_toRightOf="@+id/iv_show_member_icon"
-            android:text="成员详情信息："
+            android:text="@string/text_member_info_detail"
             android:textColor="#37B3E6"
             android:textSize="20sp" />
     </RelativeLayout>
@@ -46,7 +46,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="用户名"
+            android:text="@string/text_member_info_username"
             android:textSize="17sp" />
 
         <TextView
@@ -64,7 +64,7 @@
             android:layout_alignRight="@+id/user_name"
             android:layout_marginLeft="10dp"
             android:background="@drawable/btn_change_color1"
-            android:text="添加好友"
+            android:text="@string/add_link_man"
             android:textColor="@color/white"
             android:textSize="14sp" />
     </RelativeLayout>
@@ -82,7 +82,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="备注"
+            android:text="@string/text_note"
             android:textSize="17sp" />
 
         <TextView
@@ -100,7 +100,7 @@
             android:layout_alignRight="@+id/nick_name"
             android:layout_marginLeft="10dp"
             android:background="@drawable/btn_change_color1"
-            android:text="备注"
+            android:text="@string/text_note"
             android:textColor="@color/white"
             android:textSize="14sp" />
     </RelativeLayout>
@@ -118,7 +118,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="角色"
+            android:text="@string/text_group_member_detail_role"
             android:textSize="17sp" />
 
         <TextView
@@ -143,7 +143,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="话权"
+            android:text="@string/text_group_member_detail_priority"
             android:textSize="17sp" />
 
         <TextView
@@ -168,7 +168,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="手机号"
+            android:text="@string/text_friend_detail_phone"
             android:textSize="17sp" />
 
         <TextView
@@ -196,7 +196,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_change"
-            android:text="取消"
+            android:text="@string/button_cancel"
             android:textSize="17sp" />
     </RelativeLayout>
 

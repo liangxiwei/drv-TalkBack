@@ -30,7 +30,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/iv_back"
-            android:text="群信息修改"
+            android:text="@string/text_member_group_modify"
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"  />
@@ -71,7 +71,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:textColor="@color/white"
-                android:text="群名"
+                android:text="@string/text_create_group_name"
                 android:textSize="17sp" />
 
             <EditText
@@ -103,7 +103,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
-                android:text="优先级"
+                android:text="@string/text_all_members_team_priority"
                 android:textColor="@color/white"
                 android:textSize="17sp" />
 
@@ -113,7 +113,7 @@
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="80dp"
-                android:hint="选择优先级"
+                android:hint="@string/text_all_members_team_priority_setting"
                 android:clickable="true"
                 android:gravity="center"
                 android:background="@drawable/dvr_cancel_background"
@@ -138,7 +138,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:textColor="@color/white"
-                android:text="群描述"
+                android:text="@string/text_all_members_team_desc"
                 android:textSize="17sp" />
 
             <EditText
@@ -169,7 +169,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
-                android:text="类型"
+                android:text="@string/text_document_type"
                 android:textSize="17sp"
                 android:visibility="gone" />
 
@@ -186,21 +186,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="临时" />
+                    android:text="@string/radiobutton_group_msg_change_tmp" />
 
                 <RadioButton
                     android:id="@+id/change_radio_public"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="公有" />
+                    android:text="@string/radiobutton_group_msg_change_public" />
 
                 <RadioButton
                     android:id="@+id/change_radio_private"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="私有" />
+                    android:text="@string/radiobutton_group_msg_change_private" />
             </RadioGroup>
         </RelativeLayout>
 
@@ -213,7 +213,7 @@
             android:layout_marginTop="42dp"
             android:paddingBottom="7dp"
             android:paddingTop="7dp"
-            android:text="确定"
+            android:text="@string/button_confirm"
             android:focusable="true"
             android:nextFocusUp="@+id/change_et_group_describe"
             android:nextFocusDown="@+id/change_et_group_name"

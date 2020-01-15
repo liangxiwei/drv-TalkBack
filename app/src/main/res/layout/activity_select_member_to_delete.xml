@@ -28,7 +28,7 @@
             android:layout_height="45dp"
             android:background="@drawable/button_selector"
             android:textColor="@color/white"
-            android:text="删除"
+            android:text="@string/button_delete"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"

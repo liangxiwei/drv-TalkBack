@@ -20,6 +20,7 @@ import com.luobin.ui.settingitem.SettingTrajectoryActivity;
 import com.luobin.ui.settingitem.SettingVideoActivity;
 
 import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,7 +49,7 @@ public class SettingActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
-        adapter = new SettingAdapter(this, Arrays.asList(data));
+        adapter = new SettingAdapter(this, Arrays.asList(getResources().getStringArray(R.array.launcher_settings)));
         gvItem.setAdapter(adapter);
 
     }

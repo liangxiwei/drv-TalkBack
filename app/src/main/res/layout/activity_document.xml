@@ -56,7 +56,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="全部"
+                android:text="@string/text_document_all"
                 android:textColor="@color/black" />
 
             <ImageView
@@ -87,7 +87,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:paddingLeft="20dp"
-                android:text="类型"
+                android:text="@string/text_document_type"
                 android:textColor="@color/black" />
 
             <ImageView
@@ -117,7 +117,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="时间"
+                android:text="@string/text_document_time_stamp"
                 android:paddingLeft="20dp"
                 android:textColor="@color/black" />
 

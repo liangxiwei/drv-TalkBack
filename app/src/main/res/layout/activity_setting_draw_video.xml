@@ -39,7 +39,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/bg_panel_btn"
                 android:textColor="@color/white"
-                android:text="确定"
+                android:text="@string/button_confirm"
                 android:textSize="16dp" />
 
         </RelativeLayout>

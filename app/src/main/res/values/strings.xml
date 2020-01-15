@@ -27,38 +27,38 @@
     <string name="download_url_key">updateURL</string>
     <string name="update_url" translatable="false">http://www.irobbing.com/download/pocdemo/update_pocdemo.json</string>
     <string name="title_activity_show_photo">ShowPhotoActivity</string>
-    <string name="my_msg_cancel">您撤回了一条消息</string>
-    <string name="other_msg_cancel">该条消息已被撤回</string>
+    <string name="my_msg_cancel">You withdrew a message</string>
+    <string name="other_msg_cancel">Message has withdrawn</string>
     <string name="btn_download_image">Download image</string>
-    <string name="modify_name_tip">为了方便好友辨识您，请点击名称进行修改。</string>
+    <string name="modify_name_tip">To make it easy for friends to identify you, please click on the name to modify</string>
     <string name="permission_message">Set permissions</string>
     <string name="download_version_update_description">versionDesc</string>
     <string name="buffering">Disconnected</string>
     <string name="connecting">Connecting</string>
     <string name="add_link_man">Add Friends</string>
-    <string name="contain">包含：</string>
-    <string name="download_already_latest">已经是最新版本.</string>
-    <string name="download_btn_later">稍后再说</string>
-    <string name="download_btn_start">开始下载</string>
-    <string name="download_check_version_fail">检查版本出错：</string>
-    <string name="download_doing">正在下载，请稍候.</string>
-    <string name="download_failed">下载失败</string>
-    <string name="download_find_new_version">发现新版本，是否立即下载？\n当前版本号：%1$s\n最新版本号：%2$s</string>
-    <string name="download_progress_btn_background">后台下载</string>
-    <string name="download_progress_btn_cancel">取消</string>
-    <string name="download_progress_title">正在下载新版本</string>
-    <string name="download_prompt_title">提示:</string>
-    <string name="my_team_nick_name">我在本群的昵称</string>
-    <string name="prompt">0-优先级最低，15-优先级最高</string>
+    <string name="contain">Contains:</string>
+    <string name="download_already_latest">Latest version already.</string>
+    <string name="download_btn_later">Remind me later</string>
+    <string name="download_btn_start">Start downloading</string>
+    <string name="download_check_version_fail">Version checking error:</string>
+    <string name="download_doing">Downloading,please wait...</string>
+    <string name="download_failed">Download failed</string>
+    <string name="download_find_new_version">New version is ready,download now？\n current version:%1$s\n latest version:%2$s</string>
+    <string name="download_progress_btn_background">Download background</string>
+    <string name="download_progress_btn_cancel">Cancel</string>
+    <string name="download_progress_title">Downloading</string>
+    <string name="download_prompt_title">Prompts:</string>
+    <string name="my_team_nick_name">My nick name</string>
+    <string name="prompt">0-Lowest priority，15-Highest priority</string>
     <!--<string name="search_prompt">名称/手机号/群名</string>-->
-    <string name="search_prompt">名称/手机号/车牌号</string>
-    <string name="team_delete_and_quit">删除并退出</string>
-    <string name="team_dismiss">解散</string>
+    <string name="search_prompt">Name/Phone/License plate number</string>
+    <string name="team_delete_and_quit">Delete and quit</string>
+    <string name="team_dismiss">Dismiss the team</string>
 
-    <string name="unknown_name">未知</string>
-    <string name="tracking_location">跟踪位置</string>
+    <string name="unknown_name">Unknown</string>
+    <string name="tracking_location">Tracking the location</string>
     <string name="detailed_information">Detailed Information</string>
-    <string name="options_first">选项</string>
+    <string name="options_first">Options</string>
     <string name="add_friend">Add Friend</string>
 
     <string name="create_team">Create Group</string>
@@ -68,16 +68,16 @@
     <string name="letter_tile_letter_font_family" translatable="false">sans-serif-thin</string>
     <string name="letter_tile_letter_font_english" translatable="false">sans-serif-light</string>
     <string name="video_invited_title">Video Call</string>
-    <string name="video_invited_single_content">%s邀请你进行视频对讲</string>
-    <string name="video_invited_team_content">群组%s邀请你进行视频对讲</string>
+    <string name="video_invited_single_content">%s invite you for a video chat</string>
+    <string name="video_invited_team_content">Group %s invite you for a video chat</string>
     <string name="video_invited_ok">Accept</string>
     <string name="video_invited_cancel">Cancel</string>
 
-    <string name="video_not_wifi">你正在使用手机流量，请确认要进入视频对讲吗？</string>
+    <string name="video_not_wifi">Using mobile data to video chat?</string>
 
-    <string name="download_not_wifi">你正在使用手机流量，确认要开始下载？</string>
+    <string name="download_not_wifi">Using mobile data to download?</string>
 
-    <string name="dialog_send_image">send_image：</string>
+    <string name="dialog_send_image">send_image:</string>
     <string name="dialog_cancel">cancel</string>
     <string name="dialog_send">send</string>
     <string name="document_pic">Document Pic</string>
@@ -115,11 +115,11 @@
     <string name="null_person">Free</string>
 
     <string name="no_road_request">No Road Request</string>
-    <string name="close_room_success">房间被成功挂断</string>
-    <string name="group_count">人数:</string>
+    <string name="close_room_success">Chat room closed</string>
+    <string name="group_count">Group count:</string>
     <string name="usb_open_failed"> Camera not ready，please try again later！</string>
     <string name="camera_node_not_exist"> Node not exist,camera not ready,please try again later！</string>
-    <string name="bluetooth_disconnect_close_speak">由于蓝牙失联，停止说话</string>
+    <string name="bluetooth_disconnect_close_speak">BT disconnect,chat stoped</string>
 
     <string name="no_notice">No Notice Msg</string>
     <string name="accept">accept</string>
@@ -129,9 +129,9 @@
     <string name="j_pickerview_cancel">Cancel</string>
     <string name="j_pickerview_submit">Sure</string>
     <string name="j_pickerview_title">Location</string>
-    <string name="long_click_get_address"><Data><![CDATA[确定要查找<font color="#ffffff"><b>%s</b></font>车辆?<br>]]></Data>
+    <string name="long_click_get_address"><Data><![CDATA[search the car <font color="#ffffff"><b>%s</b></font>?<br>]]></Data>
     </string>
-    <string name="nearby">附近</string>
+    <string name="nearby">Nearby</string>
     <string name="road_inquiry">Road Inquiry</string>
     <string name="search_show">Be sure to search for vehicles near that location ?</string>
     <string name="find_strangers_on_condition">Find strangers on condition</string>
@@ -146,13 +146,13 @@
     <string name="selection_distance">Selection distance</string>
     <string name="add_mobile_contact">Add contacts</string>
 
-    <!-- 选择车信息 -->
+    <!-- car msg -->
     <string name="select_car_brand">Select car brand</string>
     <string name="select_car_type">Select car type</string>
-    <string name="car_brand">品牌:</string>
-    <string name="write_brand">输入品牌</string>
-    <string name="report_car_type">上报品牌型号</string>
-    <string name="report">上报</string>
+    <string name="car_brand">Brand:</string>
+    <string name="write_brand">Input brand</string>
+    <string name="report_car_type">Brand report</string>
+    <string name="report">Report</string>
 
     <string name="not_set">Not set</string>
     <string name="only_one_team">Only One Team</string>
@@ -160,16 +160,16 @@
 
     <string name="poc_call">POC CALL</string>
 
-    <string name="dialog_ok">ok</string>
+    <string name="dialog_ok">OK</string>
     <string name="heart_time_set">Heartbeat set time</string>
     <string name="heart_set_error">Please set right heart time</string>
 
-    <string name="pop_title_sim_status_title">SIM卡流量不足</string>
-    <string name="pop_title_sim_status_content">SIM卡流量不足%1$dMB，请及時使用九方助手进行充值，避免产生额外费用！</string>
+    <string name="pop_title_sim_status_title">Insufficient data flow</string>
+    <string name="pop_title_sim_status_content">Data flow less than %1$dMB，please recharge to avoid extra charges!</string>
     <string name="button_text_i_know">I Know.</string>
 
-    <string name="toast_tip">提示</string>
-    <string name="toast_logout">确认退出当前账号吗？</string>
+    <string name="toast_tip">Tips</string>
+    <string name="toast_logout">Logout?</string>
 
     <!-- input login -->
     <string name="edittext_input_login_phone_hint">Please input phone number</string>
@@ -190,16 +190,16 @@
 
     <string name="network_show">There is no network currently, please check if the network is connected!</string>
     <string name="ignore">ignore</string>
-    <string name="traffic_request_show">路况分享请求已发出，等待对方允许后，请在车机上查看</string>
+    <string name="traffic_request_show">Traffic share request sent out,please waiting for feedback</string>
 
-    <string name="camera_on_failed">相机打开失败，请检查是否有相机权限、是否被其他应用占用</string>
+    <string name="camera_on_failed">Camera open failed，please check permission</string>
 
     <string name="about_us">\t\t\t\t九方助手由北京九方广维科技有限公司于2017年开发的app，与车机联合使用的一套产品。
                                 \n\t\t\t\t九方助手主要是为车机提供基本的辅助功能，比如：添加好友、添加群组、扫码登录车机、套餐订购、解绑车机、扫描登录、强制下线、
                                 查看附近车辆等等。该应用功能虽然不多，但对于车机来说是不可或缺的，每次登录、下线都需要通过九方助手来操作。</string>
     <string name="send_car">send car</string>
     <string name="send_location_msg">send location msg</string>
-    <string name="address_show">当前地址：%s</string>
+    <string name="address_show">address:%s</string>
 
     <string name="manual_input">manual input</string>
     <string name="video_capture_started">Video capturing</string>
@@ -216,4 +216,350 @@
     <string name="toast_bbs_not_allowed">BBS not allowed in RadioChat mode</string>
     <string name="progress_waiting_to_enter_bbs_title">Entering BBS</string>
     <string name="progress_waiting_to_enter_bbs_msg">Please wait...</string>
+
+    <string name="button_back">Back</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_confirm">Confirm</string>
+    <string name="button_modify">Modify</string>
+    <string name="button_add">Add</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_msg">Message</string>
+    <string name="button_complete">Done</string>
+    <string name="button_group_create">Create group</string>
+    <string name="button_search">Search</string>
+    <string name="button_contacts">Contacts</string>
+    <string name="button_select">Select</string>
+    <string name="button_accept">Accept</string>
+    <string name="button_reject">Reject</string>
+    <string name="button_reg">Register</string>
+    <string name="button_next">Next</string>
+    <string name="button_pre">Previous</string>
+    <string name="button_send">Send</string>
+    <string name="button_quit">Quit</string>
+    <string name="button_install">Install</string>
+    <string name="button_retry">Retry</string>
+    <string name="button_commit">Commit</string>
+    <string name="time_settings_gps">GPS Time</string>
+    <string name="time_settings_manual">Manual</string>
+    <string name="text_tab_title_msg">Message</string>
+    <string name="text_tab_title_contacts">Contacts</string>
+    <string name="text_tab_title_group">Group</string>
+    <string name="text_note">Note</string>
+    <string name="text_tracklist_query">Tracklist query</string>
+    <string name="text_myshare">My share</string>
+    <string name="text_mydownload">My download</string>
+    <string name="text_location_show">Location show</string>
+    <string name="text_send_to_friend">Send to friend</string>
+    <string name="text_cloud_share">Cloud share</string>
+    <string name="text_document_all">All</string>
+    <string name="text_document_type">Type</string>
+    <string name="text_document_time_stamp">Time</string>
+    <string name="text_friend_detail_user_name">Kel</string>
+    <string name="text_friend_detail_user_sex">Male 13900000001</string>
+    <string name="text_friend_detail_user_autograph">Race does not mean that glory, I have seen the best of Orcs, have seen the most despicable human beings.</string>
+    <string name="text_friend_detail_user_license_plate">A0001</string>
+    <string name="text_friend_detail_user_location">Beijing</string>
+    <string name="text_friend_detail_user_hometown">Azeroth</string>
+    <string name="text_friend_detail_user_industry">Warrior</string>
+    <string name="text_friend_detail_user_hobby">Hobby：Driving / Travelling</string>
+    <string name="text_friend_detail_user_show_via_map">Location</string>
+    <string name="text_friend_detail_user_tracklist">Tracklist</string>
+    <string name="text_friend_detail_user_add_friend">Add friend</string>
+    <string name="text_friend_detail_user_delete_friend">Delete friend</string>
+
+    <string name="text_login_hint">Join the world</string>
+    <string name="text_login_account">Account</string>
+    <string name="edittext_login_account_hint">Please input account</string>
+    <string name="text_login_pwd">Password</string>
+    <string name="edittext_login_pwd_hint">Please input password</string>
+    <string name="text_login_register">Register new account</string>
+    <string name="text_login_login">Login</string>
+    <string name="text_login_forgot_pwd">Forgot password</string>
+
+    <string name="edittext_query_edid">Input id,you can query all tracklist</string>
+    <string name="edittext_query_edaddress">Input location,use space off</string>
+    <string name="text_query_query">Query</string>
+
+    <string name="text_register_reg">Register</string>
+    <string name="edittext_register_phone">Please input phone number</string>
+    <string name="text_register_phone">Phone number</string>
+    <string name="text_register_verification_code_send">Send verification code</string>
+    <string name="edittext_register_verification_code_input">Please input verification code</string>
+    <string name="text_register_verification_code">Verification code</string>
+    <string name="edittext_register_pwd_input">Please input password</string>
+    <string name="text_register_pwd">Password</string>
+
+    <string name="switchbutton_register_info_ksw_text_off">Hidden</string>
+    <string name="switchbutton_register_info_ksw_text_on">Show</string>
+    <string name="text_register_info_nickname">Nick name:</string>
+    <string name="text_register_info_sign">Sign:</string>
+    <string name="text_register_info_sex">Sex:</string>
+    <string name="text_register_info_phone">Phone:</string>
+    <string name="text_register_info_license_plate">License plate:</string>
+    <string name="text_register_info_gps">GPS</string>
+    <string name="switchbutton_register_info_gps_ksw_text_off">Off</string>
+    <string name="switchbutton_register_info_gps_ksw_text_on">On</string>
+    <string name="text_register_info_optional_msg">Optinoal message</string>
+    <string name="text_register_info_optional_msg_friends">Help to make friends</string>
+    <string name="text_register_info_car_type">Car type:</string>
+    <string name="text_register_info_select">Select</string>
+    <string name="text_register_info_birth">Birthday:</string>
+    <string name="text_register_info_location">Home:</string>
+    <string name="text_register_info_hometown">Home town:</string>
+    <string name="text_register_info_industry">Industry:</string>
+    <string name="text_register_info_hobby">Hobby:</string>
+    <string name="button_reginfo_modify">Reg info modify</string>
+    <string name="button_reginfo_quit">Account quit</string>
+
+    <string name="button_invite">Invite</string>
+    <string name="text_select_member_loading">Loading members,please wait...</string>
+
+    <string name="text_setting_photo_shot">Shot</string>
+    <string name="text_setting_photo_numbers"></string>
+    <string name="text_setting_photo_shot_interval">Shot interval</string>
+    <string name="text_setting_photo_seconds">seconds</string>
+
+    <string name="text_setting_location_track_interval">Location track interval</string>
+    <string name="text_setting_location_track_seconds">10 seconds</string>
+    <string name="checkbox_setting_location_track_save">Save location point while chatting</string>
+
+    <string name="text_setting_video_shot">Video record</string>
+    <string name="text_voice_chatting">Now in voice chatting...</string>
+    <string name="button_show_location_via_map">Location</string>
+
+    <string name="text_chat_serach_content_hint">Name/Group/Phone/License plate</string>
+    <string name="text_chat_serach_strangers">Search strangers</string>
+    <string name="text_chat_serach_cars">Search cars nearby</string>
+
+    <string name="text_location_track_save_start">Start track</string>
+    <string name="text_location_track_save_end">End track</string>
+    <string name="text_location_track_save_interval">Track time interval</string>
+    <string name="text_location_track_save_def_time">30 seconds</string>
+    <string name="text_location_track_save_note_modify">Note modify</string>
+    <string name="text_location_track_list">Track list</string>
+    <string name="text_location_track_query">Track query</string>
+    <string name="text_location_track_save">Track save</string>
+    <string name="text_location_track_tscondition_sex">Sex</string>
+    <string name="text_location_track_tscondition_car_type">Car type</string>
+    <string name="text_location_track_tscondition_age">Age</string>
+    <string name="text_location_track_tscondition_area">Area</string>
+    <string name="text_location_track_tscondition_industry">Industry</string>
+    <string name="text_location_track_tscondition_hobby">Hobby</string>
+    <string name="text_location_track_tscondition_persion">Persions found</string>
+
+    <string name="text_adapter_cloud_tra_name">Jack</string>
+    <string name="text_adapter_cloud_tra_time">119-111--1111</string>
+    <string name="text_adapter_cloud_tra_context">Jack context</string>
+
+    <string name="text_adapter_search_item_title">Jack</string>
+    <string name="text_adapter_search_item_title_context">Blizzard</string>
+
+    <string name="text_additional_menu_pic">Picture</string>
+    <string name="text_additional_menu_cam">Camera</string>
+    <string name="text_additional_menu_video">Video</string>
+
+    <string name="text_all_members_team_name">Detail</string>
+    <string name="text_all_members_group_edit">Group msg edit</string>
+    <string name="text_all_members_team_priority">Priority</string>
+    <string name="text_all_members_team_priority_setting">Priority setting:</string>
+    <string name="text_all_members_team_desc">Group description</string>
+    <string name="text_all_members_team_unset">Unset</string>
+
+    <string name="text_applied_add_linkman">Add contacts:</string>
+    <string name="text_applied_add_linkman_name">Name</string>
+    <string name="text_applied_add_linkman_nick_name">Nick name</string>
+    <string name="text_applied_add_linkman_msg">Verification message</string>
+
+    <string name="text_car_info_id">Car id</string>
+    <string name="text_car_info_license_plate">License plate</string>
+    <string name="text_car_info_license_plate_hint">A88888</string>
+    <string name="text_car_info_brand">Brand</string>
+    <string name="text_car_info_brand_hint">Audi</string>
+    <string name="text_car_info_type">Type</string>
+    <string name="text_car_info_type_hint">TT</string>
+
+    <string name="text_group_msg_change_hint">Please input numbers(1-15)</string>
+    <string name="text_group_msg_change_group_name">Group name</string>
+    <string name="radiobutton_group_msg_change_tmp">Temporary</string>
+    <string name="radiobutton_group_msg_change_public">Public</string>
+    <string name="radiobutton_group_msg_change_private">Private</string>
+
+    <string name="edittext_chat_input">Please input...</string>
+    <string name="button_chat_map">Map</string>
+
+    <string name="text_chat_mode_video">Video mode</string>
+    <string name="text_chat_mode_voice">Voice mode</string>
+
+    <string name="text_chat_popdialog_team_modify">Group message modify</string>
+    <string name="text_chat_popdialog_team_member_detail">Group member detail</string>
+    <string name="text_chat_popdialog_team_dismiss">Group dismiss</string>
+    <string name="text_chat_popdialog_room_close">Close chat room</string>
+
+    <string name="text_mms_verification_code">Verification code:</string>
+    <string name="text_mms_verification_code_input_phone">Please input phone numbers</string>
+    <string name="text_mms_verification_code_hint">Please input mms verification code</string>
+    <string name="text_mms_verification_code_obtain">Click to get mms verification code</string>
+    <string name="text_mms_verification_code_obtain_hint">You need obtain mms verification code</string>
+
+    <string name="text_create_group_name">Group name</string>
+    <string name="text_create_group_desc">Group description</string>
+    <string name="text_create_group_members">Group members</string>
+    <string name="text_group_name_input">Please input group name:</string>
+
+    <string name="text_first_layout_chat_open">Chat open</string>
+    <string name="text_first_layout_press_to_speak">Press to speak</string>
+    <string name="text_first_layout_scroll_left">Scroll left to check map</string>
+    <string name="text_first_layout_scroll_from_side">From side</string>
+    <string name="text_first_layout_scroll_right">Scroll right to check message</string>
+
+    <string name="text_friend_detail_msg">Detail message</string>
+    <string name="text_friend_detail_unset">Unset</string>
+    <string name="text_friend_detail_note">Note</string>
+    <string name="text_friend_detail_name">Name</string>
+    <string name="text_friend_detail_phone">Phone</string>
+    <string name="text_friend_detail_car_id">Device id</string>
+    <string name="text_friend_detail_unbind">Unbind</string>
+    <string name="text_friend_detail_license_plate">License plate</string>
+    <string name="text_friend_detail_brand">Brand</string>
+    <string name="text_friend_detail_car_type">Car type</string>
+    <string name="text_friend_detail_sex">Sex</string>
+    <string name="text_friend_detail_brithday">Birthday</string>
+    <string name="text_friend_detail_location_area">Location area</string>
+    <string name="text_friend_detail_map">Map</string>
+    <string name="text_friend_detail_star">Star</string>
+    <string name="text_friend_detail_info">Detail infomation:</string>
+    <string name="button_friend_detail_apply_friend">Apply friend</string>
+    <string name="text_friend_detail_verification">Verification</string>
+
+    <string name="text_friend_new_notification">Notification</string>
+    <string name="button_friend_new_group_create">Create group</string>
+    <string name="text_friend_new_no_notification">Notification empty</string>
+
+    <string name="text_group_location_query">Location query</string>
+    <string name="text_group_location_data_obtain">Location data obtain,please wait...</string>
+
+    <string name="text_group_member_detail">Members detail</string>
+    <string name="text_group_member_detail_role">Role</string>
+    <string name="text_group_member_detail_priority">Priority</string>
+    <string name="text_group_member_detail_province">Province</string>
+    <string name="text_group_member_detail_city">City</string>
+    <string name="button_group_member_apply">Group apply</string>
+    <string name="text_group_new">New group</string>
+    <string name="text_group_add">Cteate group</string>
+    <string name="text_group_search">Please input group message</string>
+    <string name="text_group_search_tmp">Search:</string>
+    <string name="text_invite_join_title">Friend invite</string>
+    <string name="text_item_select_interset">Vehicle</string>
+    <string name="text_link_man_name_hint">Jack</string>
+    <string name="text_link_man_phone_hint">Danny</string>
+    <string name="text_link_man_layout_wait">Loading</string>
+    <string name="text_head_view_brand">Common brands:</string>
+
+    <string name="text_login_user_name">User name:</string>
+    <string name="edittext_login_user_phone">Please input phone number</string>
+    <string name="text_login_user_pwd">Password:</string>
+    <string name="edittext_login_user_pwd">Please input password</string>
+    <string name="edittext_login_user_pwd_hint">Please input password at least 4</string>
+    <string name="text_login_user_pwd_forgot">Forgot password</string>
+    <string name="text_login_user_reg">Click to register</string>
+
+    <string name="text_map_click_title">Jack</string>
+    <string name="text_map_click_track">Location track</string>
+    <string name="text_map_click_track_detail">Detail</string>
+    <string name="text_map_menu_track_cancel">Untrack</string>
+    <string name="text_map_menu_track_memberlist">Members list</string>
+    <string name="text_map_menu_track_grouping">Grouping</string>
+
+    <string name="text_match_phone_number">Contacts match</string>
+    <string name="text_match_phone_number_refresh">Pull to refresh</string>
+    <string name="text_match_phone_number_none">No matches phone found</string>
+    <string name="text_member_info_detail">Members detail：</string>
+    <string name="text_member_info_username">User name</string>
+    <string name="text_member_info_track">Track</string>
+
+    <string name="text_member_menu_priority_setting">Chat priority settings</string>
+    <string name="text_member_menu_nickname_setting">Nick name settings</string>
+    <string name="text_member_menu_supervisor_setting">Supervisor settings</string>
+    <string name="text_member_group_manager">Group owner</string>
+    <string name="text_member_group_modify">Group message modify</string>
+    <string name="text_member_group_name_hint">group one</string>
+
+    <string name="text_myinfo_head">Head icon</string>
+    <string name="text_myinfo_name">Name</string>
+    <string name="text_myinfo_sex_hint">Male</string>
+    <string name="text_myinfo_location_area_hint">Nanan district, chongqing</string>
+    <string name="button_myinfo_tool">Tools download</string>
+    <string name="button_myinfo_quit">Quit</string>
+
+    <string name="text_vehicles_nearby">Vehicles nearby</string>
+    <string name="text_vehicles_location_settings">Location settings</string>
+    <string name="button_vehicles_list">Vehicles list</string>
+    <string name="text_vehicles_nearby_empty">No more vehicles around</string>
+
+    <string name="text_notification_view_luobin_chat_title">Luobin Chat</string>
+    <string name="text_notification_view_downoading">Downloading...</string>
+
+    <string name="text_permission_management">Permission management</string>
+    <string name="text_permission_required">All permissions required</string>
+    <string name="text_permission_management_contacts">Access to contacts</string>
+    <string name="text_permission_management_location">Location permission</string>
+    <string name="text_permission_management_storage">Storage permission</string>
+    <string name="text_permission_management_photo">Camera permission</string>
+    <string name="text_permission_management_record">Record permission</string>
+
+    <string name="text_pull_to_refresh">Pull to refresh</string>
+    <string name="text_pull_to_refresh_last_update_time">Last update</string>
+
+    <string name="text_report_car_type_hint">Please input brand and model information (required)</string>
+    <string name="text_report_car_type_detail_hint">* Please fill in the complete brand and the model of the brand</string>
+
+    <string name="text_reset_password_new">New password</string>
+    <string name="text_reset_password_new_hint">Please input your password (at least 4 digits)</string>
+    <string name="text_reset_password_new_confirm">Password confirm</string>
+    <string name="edittext_reset_password_new_confirm">Please input new password again</string>
+
+    <string name="text_search_activity_search_friend">Friend search</string>
+    <string name="text_search_activity_phone_match">Contacts match</string>
+    <string name="text_search_activity_search_friend_online">Search friends online:</string>
+    <string name="text_search_activity_group_searched">Group searched</string>
+    <string name="text_search_activity_result">Search result</string>
+    <string name="text_search_stranger_empty">No strangers found</string>
+    <string name="text_select_fragment_keyword">Please input keyword</string>
+
+    <string name="radiobutton_set_member">Members</string>
+    <string name="radiobutton_set_member_supervisor">Supervisor</string>
+    <string name="edittext_nick_name_setting">Please input nickname</string>
+
+    <string name="text_main_settings_voice">Voice settings</string>
+    <string name="text_main_settings_auto_speaker">Speaker auto</string>
+    <string name="text_main_settings_maxvolume">Auto turn to maxvolume</string>
+    <string name="text_main_settings_voice_input">Voice input</string>
+    <string name="text_main_settings_map">Map settings</string>
+    <string name="text_main_settings_map_permission">Permissions settings</string>
+    <string name="text_main_settings_map_permission_grant">Click to grant permission</string>
+    <string name="text_main_settings_location">Location start</string>
+    <string name="text_main_settings_location_time_interval">Location time interval</string>
+    <string name="text_main_settings_map_zoom_level">Map zoom level</string>
+    <string name="text_main_settings_tips">Tips</string>
+    <string name="text_main_settings_autoboot">Autoboot</string>
+    <string name="text_main_settings_tutor">Start tutoring</string>
+    <string name="text_main_settings_tutor_video">Video</string>
+    <string name="text_main_settings_tutor_video_target_check">Open and view each other's video</string>
+    <string name="text_main_settings_tutor_video_target_upload">Start uploading video</string>
+    <string name="text_main_settings_heart_beat">Heart beat settings</string>
+    <string name="button_main_settings_reset">Reset to default</string>
+    <string name="text_video_settings_route_share">Handle route share</string>
+
+    <string name="menu_item_group_name_modify">Group name modify</string>
+    <string name="menu_item_show_location">Location show</string>
+    <string name="menu_item_group_quit">Quit</string>
+    <string name="menu_item_group_dismiss">Dismiss</string>
+    <string name="menu_item_documents">My documents</string>
+    <string name="menu_item_friends_nearby">Friends nearby</string>
+    <string name="menu_item_zxing_scan">Zxing scan</string>
+    <string name="menu_item_settings">Settings</string>
+    <string name="menu_item_version_check">Version check</string>
+    <string name="menu_item_quit">Quit</string>
+    <string name="menu_sub_item_logout">Logout</string>
+    <string name="menu_sub_item_close">Close</string>
 </resources>

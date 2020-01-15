@@ -17,7 +17,7 @@
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="提示"
+            android:text="@string/toast_tip"
             android:maxLines="1"
             android:maxEms="8"
             android:ellipsize="end"
@@ -63,7 +63,7 @@
             android:layout_marginRight="20dp"
             android:textColor="@color/white"
             android:gravity="center"
-            android:text="取消"
+            android:text="@string/button_cancel"
             android:background="@drawable/button_selector"/>
 
         <TextView
@@ -74,7 +74,7 @@
             android:gravity="center"
             android:textSize="16sp"
             android:textColor="@color/white"
-            android:text="确定"
+            android:text="@string/button_confirm"
             android:background="@drawable/button_selector"/>
 
     </LinearLayout>

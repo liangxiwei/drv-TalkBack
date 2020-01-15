@@ -20,14 +20,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="成员" />
+            android:text="@string/radiobutton_set_member" />
 
         <RadioButton
             android:id="@+id/radio_manager"
             android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="管理员" />
+            android:text="@string/radiobutton_set_member_supervisor" />
 
     </RadioGroup>
 

@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:maxLines="1"
-                android:text="张三"
+                android:text="@string/text_link_man_name_hint"
                 android:textColor="@color/white"
                 android:textSize="13sp" />
             <TextView
@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="Danny:不是这样的"
+                android:text="@string/text_link_man_phone_hint"
                 android:textColor="@color/text_color"
                 android:textSize="12sp" />
         </LinearLayout>

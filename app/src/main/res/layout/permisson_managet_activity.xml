@@ -32,7 +32,7 @@
             android:layout_marginLeft="14dp"
             android:gravity="center"
             android:layout_toRightOf="@id/iv_back"
-            android:text="权限管理"
+            android:text="@string/text_permission_management"
             android:textColor="@color/dvr_title_colro"
             android:textSize="@dimen/normal_title_size"  />
 
@@ -53,7 +53,7 @@
         android:layout_below="@+id/title"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="该应用需要允许以下所有权限" />
+        android:text="@string/text_permission_required" />
 
     <RelativeLayout
         android:id="@+id/rl_read_contacts"
@@ -74,7 +74,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="访问联系人"
+            android:text="@string/text_permission_management_contacts"
             android:textSize="17sp" />
 
         <ImageView
@@ -106,7 +106,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="定位权限"
+            android:text="@string/text_permission_management_location"
             android:textSize="17sp" />
 
         <ImageView
@@ -138,7 +138,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="访问存储器"
+            android:text="@string/text_permission_management_storage"
             android:textSize="17sp" />
 
         <ImageView
@@ -170,7 +170,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="拍照"
+            android:text="@string/text_permission_management_photo"
             android:textSize="17sp" />
 
         <ImageView
@@ -202,7 +202,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="录音"
+            android:text="@string/text_permission_management_record"
             android:textSize="17sp" />
 
         <ImageView
@@ -222,6 +222,6 @@
         android:layout_height="48dp"
         android:gravity="center"
         android:layout_below="@+id/rl_record_audio"
-        android:text="取消"
+        android:text="@string/button_cancel"
         android:textSize="17sp" />
 </RelativeLayout>

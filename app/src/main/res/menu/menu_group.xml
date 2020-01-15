@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/modify_group_name"
-        android:title="更改群名"
+        android:title="@string/menu_item_group_name_modify"
         app:showAsAction="never"/>
     <item
         android:id="@+id/show_location"
-        android:title="地图显示"
+        android:title="@string/menu_item_show_location"
         app:showAsAction="never"/>
     <item
         android:id="@+id/quit_group"
-        android:title="退出"
+        android:title="@string/menu_item_group_quit"
         app:showAsAction="never"/>
     <item
         android:id="@+id/dismiss_group"
-        android:title="解散"
+        android:title="@string/menu_item_group_dismiss"
         app:showAsAction="never"/>
 </menu>

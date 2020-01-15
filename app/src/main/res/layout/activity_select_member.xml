@@ -28,7 +28,7 @@
             android:layout_height="45dp"
             android:background="@drawable/button_selector"
             android:textColor="@color/white"
-            android:text="邀请"
+            android:text="@string/button_invite"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
@@ -54,7 +54,7 @@
 	        android:gravity="center"
 	        android:textSize="@dimen/normal_text_size"
 	        android:textColor="@color/colorWirte"
-	        android:text="正在加载成员列表..."
+	        android:text="@string/text_select_member_loading"
 	        />
     </RelativeLayout>
 

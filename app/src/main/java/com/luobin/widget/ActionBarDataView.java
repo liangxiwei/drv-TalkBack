@@ -16,6 +16,7 @@ import com.luobin.dvr.R;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class ActionBarDataView extends FrameLayout {
     private final String TAG = "ActionBarDataView";
@@ -96,7 +97,13 @@ public class ActionBarDataView extends FrameLayout {
             Log.d(TAG,"time size = " + time.length());
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+        String locale = Locale.getDefault().getLanguage();
+        SimpleDateFormat dateFormat;
+        if (locale.contains("zh")) {
+            dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+        } else {
+            dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        }
         SimpleDateFormat weekFormat = new SimpleDateFormat("EEEE");
         mDate.setText(dateFormat.format(new Date(System.currentTimeMillis())));
         mWeek.setText(weekFormat.format(new Date(System.currentTimeMillis())));

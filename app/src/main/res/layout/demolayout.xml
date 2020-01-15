@@ -57,7 +57,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="10dp"
-                        android:text="群成员"
+                        android:text="@string/text_create_group_members"
                         android:textColor="@color/colorWirte"
                         android:textSize="16dp" />
 
@@ -67,7 +67,7 @@
                             android:layout_height="wrap_content"
                             android:layout_toLeftOf="@id/tv_group"
                             android:layout_marginRight="10dp"
-                            android:text="添加"
+                            android:text="@string/button_add"
                             android:textColor="@color/colorWirte"
                             android:textSize="16dp"
                             />

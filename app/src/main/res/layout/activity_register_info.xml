@@ -64,7 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="昵称："
+                        android:text="@string/text_register_info_nickname"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -88,8 +88,8 @@
                         android:layout_centerVertical="true"
                         android:textColor="@color/white"
                         android:textSize="6dp"
-                        app:kswTextOff="隐藏"
-                        app:kswTextOn="显示" />
+                        app:kswTextOff="@string/switchbutton_register_info_ksw_text_off"
+                        app:kswTextOn="@string/switchbutton_register_info_ksw_text_on" />
 
                 </RelativeLayout>
 
@@ -104,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="个性签名："
+                        android:text="@string/text_register_info_sign"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -129,8 +129,8 @@
                         android:layout_centerVertical="true"
                         android:textColor="@color/white"
                         android:textSize="6dp"
-                        app:kswTextOff="隐藏"
-                        app:kswTextOn="显示" />
+                        app:kswTextOff="@string/switchbutton_register_info_ksw_text_off"
+                        app:kswTextOn="@string/switchbutton_register_info_ksw_text_on" />
 
                 </RelativeLayout>
 
@@ -145,7 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="性别："
+                        android:text="@string/text_register_info_sex"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -170,9 +170,9 @@
                         android:layout_centerVertical="true"
                         android:textColor="@color/white"
                         android:textSize="6dp"
-                        app:kswTextOff="隐藏"
+                        app:kswTextOff="@string/switchbutton_register_info_ksw_text_off"
 
-                        app:kswTextOn="显示" />
+                        app:kswTextOn="@string/switchbutton_register_info_ksw_text_on" />
 
                 </RelativeLayout>
 
@@ -187,7 +187,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="手机号："
+                        android:text="@string/text_register_info_phone"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -211,8 +211,8 @@
                         android:layout_centerVertical="true"
                         android:textColor="@color/white"
                         android:textSize="6dp"
-                        app:kswTextOff="隐藏"
-                        app:kswTextOn="显示" />
+                        app:kswTextOff="@string/switchbutton_register_info_ksw_text_off"
+                        app:kswTextOn="@string/switchbutton_register_info_ksw_text_on" />
 
                 </RelativeLayout>
 
@@ -227,7 +227,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="车牌号："
+                        android:text="@string/text_register_info_license_plate"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -252,8 +252,8 @@
                         android:textColor="@color/white"
                         android:textSize="6dp"
 
-                        app:kswTextOff="隐藏"
-                        app:kswTextOn="显示" />
+                        app:kswTextOff="@string/switchbutton_register_info_ksw_text_off"
+                        app:kswTextOn="@string/switchbutton_register_info_ksw_text_on" />
 
                 </RelativeLayout>
 
@@ -270,7 +270,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="50dp"
                         android:singleLine="true"
-                        android:text="GPS"
+                        android:text="@string/text_register_info_gps"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -282,8 +282,8 @@
                         android:layout_centerVertical="true"
                         android:textColor="@color/white"
                         android:textSize="6dp"
-                        app:kswTextOff="关"
-                        app:kswTextOn="开"
+                        app:kswTextOff="@string/switchbutton_register_info_gps_ksw_text_off"
+                        app:kswTextOn="@string/switchbutton_register_info_gps_ksw_text_on"
                         app:kswThumbColor="@color/white" />
 
                 </RelativeLayout>
@@ -314,7 +314,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="68dp"
                 android:layout_marginTop="32dp"
-                android:text="选填信息"
+                android:text="@string/text_register_info_optional_msg"
                 android:textColor="@color/text_color_90white"
                 android:textSize="16dp" />
 
@@ -324,7 +324,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignStart="@+id/tvTextInfo"
                 android:layout_marginTop="60dp"
-                android:text="有助于认识车友"
+                android:text="@string/text_register_info_optional_msg_friends"
                 android:textColor="@color/text_color_90white"
                 android:textSize="9dp" />
 
@@ -345,7 +345,7 @@
                         android:layout_centerVertical="true"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:text="车型："
+                        android:text="@string/text_register_info_car_type"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -368,7 +368,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/bg_panel_btn"
-                        android:text="选择"
+                        android:text="@string/text_register_info_select"
                         android:textColor="@color/text_color_90white"
                         android:textSize="10dp" />
 
@@ -386,7 +386,7 @@
                         android:gravity="center"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:text="出生年月："
+                        android:text="@string/text_register_info_birth"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -410,7 +410,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/bg_panel_btn"
-                        android:text="选择"
+                        android:text="@string/text_register_info_select"
                         android:textColor="@color/text_color_90white"
                         android:textSize="10dp" />
 
@@ -428,7 +428,7 @@
                         android:gravity="center"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:text="所在地："
+                        android:text="@string/text_register_info_location"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -451,7 +451,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/bg_panel_btn"
-                        android:text="选择"
+                        android:text="@string/text_register_info_select"
                         android:textColor="@color/text_color_90white"
                         android:textSize="10dp" />
 
@@ -470,7 +470,7 @@
                         android:gravity="center"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:text="家乡："
+                        android:text="@string/text_register_info_hometown"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -493,7 +493,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/bg_panel_btn"
-                        android:text="选择"
+                        android:text="@string/text_register_info_select"
                         android:textColor="@color/text_color_90white"
                         android:textSize="10dp" />
 
@@ -510,7 +510,7 @@
                         android:layout_centerVertical="true"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:text="行业："
+                        android:text="@string/text_register_info_industry"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -533,7 +533,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/bg_panel_btn"
-                        android:text="选择"
+                        android:text="@string/text_register_info_select"
                         android:textColor="@color/text_color_90white"
                         android:textSize="10dp" />
 
@@ -550,7 +550,7 @@
                         android:layout_centerVertical="true"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:text="兴趣爱好："
+                        android:text="@string/text_register_info_hobby"
                         android:textColor="@color/text_color_90white"
                         android:textSize="13dp" />
 
@@ -574,7 +574,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="6dp"
                         android:background="@drawable/bg_panel_btn"
-                        android:text="选择"
+                        android:text="@string/text_register_info_select"
                         android:textColor="@color/text_color_90white"
                         android:textSize="10dp" />
 
@@ -596,7 +596,7 @@
              android:layout_alignParentStart="true"
              android:layout_marginStart="50dp"
              android:background="@drawable/bg_panel_btn"
-             android:text="修改注册信息"
+             android:text="@string/button_reginfo_modify"
              android:textColor="@color/text_color_90white"
              android:textSize="14dp" />
         <Button
@@ -609,7 +609,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="50dp"
             android:background="@drawable/bg_panel_btn"
-            android:text="退出账号"
+            android:text="@string/button_reginfo_quit"
             android:textColor="@color/text_color_90white"
             android:textSize="14dp" />
         </RelativeLayout>

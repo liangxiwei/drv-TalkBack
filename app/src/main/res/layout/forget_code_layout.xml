@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/line_bg"
             android:ems="10"
-            android:hint="请输入11位手机号"
+            android:hint="@string/text_mms_verification_code_input_phone"
             android:inputType="phone"
             android:paddingLeft="80dp">
             <requestFocus />
@@ -80,7 +80,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="验证码:"
+                android:text="@string/text_mms_verification_code"
                 android:textSize="18dp"
                 android:textColor="@color/white"/>
 
@@ -93,7 +93,7 @@
                 android:background="#00ffffff"
                 android:ems="10"
                 android:inputType="number"
-                android:hint="请先获取验证码→"
+                android:hint="@string/text_mms_verification_code_obtain_hint"
                 android:maxLines="1">
         	</EditText>
         </LinearLayout>
@@ -104,7 +104,7 @@
             android:background="@drawable/btn_code"
             android:ems="5"
             android:maxLines="2"
-            android:text="点击获取验证码"
+            android:text="@string/text_mms_verification_code_obtain"
             android:textColor="@color/white"
             android:textSize="14dp"/>
         
@@ -117,7 +117,7 @@
             android:layout_gravity="center"
             android:background="@drawable/button_selector"
             android:listSelector="@drawable/btn_reg"
-            android:text="下一步"
+            android:text="@string/button_next"
             android:textColor="@color/white"
             android:textSize="16dp" />
 

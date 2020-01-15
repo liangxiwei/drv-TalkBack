@@ -16,7 +16,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="添加联系人："
+            android:text="@string/text_applied_add_linkman"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </RelativeLayout>
@@ -39,7 +39,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="用户名"
+            android:text="@string/text_applied_add_linkman_name"
             android:textSize="17sp"
             android:textColor="@color/white"/>
 
@@ -66,7 +66,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="备注"
+            android:text="@string/text_applied_add_linkman_nick_name"
             android:textSize="17sp"
             android:textColor="@color/white"/>
 
@@ -96,7 +96,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="验证信息"
+            android:text="@string/text_applied_add_linkman_msg"
             android:textSize="17sp"
             android:textColor="@color/white"/>
 
@@ -130,7 +130,7 @@
             android:gravity="center"
             android:textSize="16dp"
             android:textColor="@color/white"
-            android:text="取消"/>
+            android:text="@string/button_cancel"/>
 
         <TextView
             android:id="@+id/ok"
@@ -141,7 +141,7 @@
             android:textSize="16dp"
             android:textColor="@color/white"
             android:layout_marginLeft="10dp"
-            android:text="确定"/>
+            android:text="@string/button_confirm"/>
 
     </LinearLayout>
 

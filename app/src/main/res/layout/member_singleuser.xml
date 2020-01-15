@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="小明"
+                android:text="@string/text_link_man_name_hint"
                 android:textSize="@dimen/normal_text_size"
                 android:maxLines="1"
                 android:ellipsize="end"
@@ -46,7 +46,7 @@
                 android:id="@+id/user_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="群主"
+                android:text="@string/text_member_group_manager"
                 android:layout_weight="1"
                 android:maxLines="1"
                 android:ellipsize="end"
@@ -88,7 +88,7 @@
                 android:background="@drawable/btn_bg_change"
                 android:textColor="@color/white"
                 android:visibility="gone"
-                android:text="修改备注" />
+                android:text="@string/text_location_track_save_note_modify" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

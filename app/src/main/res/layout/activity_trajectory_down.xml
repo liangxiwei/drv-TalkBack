@@ -39,7 +39,7 @@
                 android:drawableLeft="@mipmap/setting_back_icon"
                 android:paddingEnd="15dp"
                 android:paddingStart="15dp"
-                android:text="返回"
+                android:text="@string/button_back"
                 android:textColor="@color/text_color_90white"
                 android:textSize="16sp" />
 
@@ -70,7 +70,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_panel_setting"
             android:gravity="center"
-            android:text="确定"
+            android:text="@string/button_confirm"
             android:textColor="@color/white"
             android:textSize="16dp" />
 

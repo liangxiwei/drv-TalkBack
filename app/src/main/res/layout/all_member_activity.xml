@@ -31,7 +31,7 @@
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size"
-            android:text="详细资料" />
+            android:text="@string/text_all_members_team_name" />
 
         <View
             android:id="@+id/view_temp3"
@@ -73,7 +73,7 @@
             android:layout_marginLeft="20dp"
             android:gravity="center_vertical"
             android:textSize="@dimen/normal_text_size"
-            android:text="编辑群信息"/>
+            android:text="@string/text_all_members_group_edit"/>
         <LinearLayout
             android:id="@+id/ll_team_priority"
             android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/normal_text_size"
                 android:textColor="@color/white"
-                android:text="优先级" />
+                android:text="@string/text_all_members_team_priority" />
 
             <TextView
                 android:id="@+id/tv_team_priority"
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/normal_text_size"
                 android:textColor="@color/white"
-                android:text="群描述" />
+                android:text="@string/text_all_members_team_desc" />
 
             <TextView
                 android:id="@+id/tv_team_desc"
@@ -123,7 +123,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/white"
-                android:text="未设置" />
+                android:text="@string/text_all_members_team_unset" />
         </LinearLayout>
     </RelativeLayout>
 

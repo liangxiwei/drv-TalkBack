@@ -20,7 +20,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
             android:gravity="center"
-            android:text="备注"
+            android:text="@string/text_note"
             android:textColor="@color/white"
             android:textSize="20sp" />
 

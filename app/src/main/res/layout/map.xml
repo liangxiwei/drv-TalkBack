@@ -54,7 +54,7 @@
 			android:id="@+id/btn_to_chat"
 			android:layout_width="60dp"
 			android:layout_height="60dp"
-			android:text="消息"
+			android:text="@string/button_msg"
 			android:paddingLeft="5dp"
 			android:layout_gravity="center"
 			android:textColor="@color/white"

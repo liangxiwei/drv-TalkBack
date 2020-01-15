@@ -57,7 +57,7 @@
             >
             <Button
                 android:id="@+id/btnBack"
-                android:layout_width="80dp"
+                android:layout_width="88dp"
                 android:layout_height="45dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
@@ -65,8 +65,8 @@
                 android:background="@drawable/bg_panel_setting"
                 android:drawableLeft="@mipmap/setting_back_icon"
                 android:paddingEnd="15dp"
-                android:paddingStart="15dp"
-                android:text="返回"
+                android:paddingStart="12dp"
+                android:text="@string/button_back"
                 android:textColor="@color/text_color_90white"
                 android:textSize="16sp" />
 

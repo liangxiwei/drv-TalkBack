@@ -30,7 +30,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/iv_back"
             android:layout_centerHorizontal="true"
-            android:text="位置查询"
+            android:text="@string/text_group_location_query"
             android:textColor="@color/white"
             android:textSize="@dimen/normal_title_size" />
 
@@ -96,7 +96,7 @@
             android:layout_gravity="center"
             android:background="@drawable/rotate"
             android:paddingLeft="5dp"
-            android:text="消息"
+            android:text="@string/button_msg"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:visibility="gone" />
@@ -110,7 +110,7 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:background="#55dddddd"
         android:textSize="22sp"
-        android:text="正在获取数据，请稍等..."
+        android:text="@string/text_group_location_data_obtain"
         />
 
 </RelativeLayout>

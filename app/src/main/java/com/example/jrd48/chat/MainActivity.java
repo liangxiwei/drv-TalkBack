@@ -444,9 +444,9 @@ public class MainActivity extends BaseActivity
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
 
         //添加页卡标题
-        mTitleList.add("消息");
-        mTitleList.add("联系人");
-        mTitleList.add("群");
+        mTitleList.add(getResources().getString(R.string.text_tab_title_msg));
+        mTitleList.add(getResources().getString(R.string.text_tab_title_contacts));
+        mTitleList.add(getResources().getString(R.string.text_tab_title_group));
 
         mFragments.add(new TabFragmentMsg());
         mFragments.add(new TabFragmentLinkmans());

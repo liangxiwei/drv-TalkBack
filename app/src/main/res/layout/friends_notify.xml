@@ -42,7 +42,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="14dp"
             android:layout_toRightOf="@id/iv_back"
-            android:text="通知消息"
+            android:text="@string/text_friend_new_notification"
             android:textColor="#ffffff"
             android:textSize="18sp" />
 
@@ -69,7 +69,7 @@
             android:layout_centerInParent="true"
             android:visibility="gone"
             android:textSize="20sp"
-            android:text="目前没有通知消息" />
+            android:text="@string/text_friend_new_no_notification" />
 
         <com.handmark.pulltorefresh.library.PullToRefreshListView
             android:id="@+id/pull_request_in_refresh_list"

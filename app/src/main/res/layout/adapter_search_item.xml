@@ -25,7 +25,7 @@
             android:layout_toEndOf="@+id/imgHead"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="张宝"
+            android:text="@string/text_adapter_search_item_title"
             android:textColor="@color/text_color_90white"
             android:textSize="15dp" />
 
@@ -38,7 +38,7 @@
             android:layout_toEndOf="@+id/imgHead"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="大爷的"
+            android:text="@string/text_adapter_search_item_title_context"
             android:textColor="@color/text_color_90white"
             android:textSize="15dp" />
 

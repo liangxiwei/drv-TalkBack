@@ -6,25 +6,25 @@
             android:id="@+id/my_documents"
             android:icon="@drawable/ic_my_file"
             android:visible="false"
-            android:title="我的文件" />
+            android:title="@string/menu_item_documents" />
         <item
             android:id="@+id/add_friend"
             android:icon="@drawable/location"
             android:visible="false"
-            android:title="附近好友" />
+            android:title="@string/menu_item_friends_nearby" />
         <item
             android:id="@+id/scan"
             android:icon="@drawable/ic_menu_camera"
             android:visible="false"
-            android:title="扫一扫" />
+            android:title="@string/menu_item_zxing_scan" />
         <item
             android:id="@+id/setting"
             android:icon="@drawable/ic_menu_manage"
-            android:title="设置" />
+            android:title="@string/menu_item_settings" />
         <item
             android:id="@+id/nav_update"
             android:icon="@drawable/update"
-            android:title="检查更新" />
+            android:title="@string/menu_item_version_check" />
     </group>
 
     <!--<item android:title="通信">

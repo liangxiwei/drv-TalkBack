@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="珞宾对讲"
+                    android:text="@string/text_notification_view_luobin_chat_title"
                     style="@style/TextAppearance.AppCompat.Notification.Title" />
 
                 <TextView
@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_alignParentLeft="true"
-                    android:text="下载中..."
+                    android:text="@string/text_notification_view_downoading"
                     style="@style/TextAppearance.AppCompat.Notification.Line2"
                      />
 
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:visibility="visible"
             android:textSize="12sp"
-            android:text="安装"
+            android:text="@string/button_install"
             android:layout_marginLeft="10dp" />
 
         <Button
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:visibility="visible"
             android:textSize="12sp"
-            android:text="重试"
+            android:text="@string/button_retry"
             android:layout_marginLeft="10dp"/>
 
         <Button
@@ -111,7 +111,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:visibility="visible"
-            android:text="取消"
+            android:text="@string/button_cancel"
             android:textSize="12sp" />
     </LinearLayout>
 

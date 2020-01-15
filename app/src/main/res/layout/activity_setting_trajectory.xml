@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:gravity="center"
-                android:text="轨迹记录间隔"
+                android:text="@string/text_setting_location_track_interval"
                 android:textColor="@color/text_color_90white"
                 android:textSize="16dp" />
 
@@ -71,7 +71,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="10秒"
+                        android:text="@string/text_setting_location_track_seconds"
                         android:textColor="@color/text_color_90white"
                         android:textSize="16dp" />
 
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvtext"
-                android:text="对讲时是否记录本地坐标"
+                android:text="@string/checkbox_setting_location_track_save"
                 android:textColor="@color/text_color_90white"
                 android:textSize="13dp" />
 
@@ -119,7 +119,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/bg_panel_btn"
                 android:gravity="center"
-                android:text="确定"
+                android:text="@string/button_confirm"
                 android:textSize="16dp"
                 android:textColor="@color/text_color_90white"/>
 

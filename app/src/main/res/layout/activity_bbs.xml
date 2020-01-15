@@ -79,7 +79,7 @@
                 android:layout_centerVertical="true"
                 android:textColor="@color/white"
                 android:textSize="16dp"
-                android:text="返回"
+                android:text="@string/button_back"
                 android:background="@drawable/button_selector"
                 />
 

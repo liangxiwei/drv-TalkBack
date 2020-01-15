@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="80dp"
-            android:hint="请输入数字（1-15）"
+            android:hint="@string/text_group_msg_change_hint"
             android:inputType="number"
             android:maxLines="1"
             android:paddingLeft="10dp"
@@ -28,7 +28,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="优先级"
+            android:text="@string/text_all_members_team_priority"
             android:textSize="17sp" />
     </RelativeLayout>
 

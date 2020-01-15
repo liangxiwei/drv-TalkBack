@@ -31,7 +31,7 @@ tools:context="com.luobin.ui.TalkBackSearch.TSConditionPersonActivity">
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="查找到的群组"
+        android:text="@string/text_search_activity_group_searched"
         android:textColor="@color/text_color_90white"
         android:textSize="16dp" />
 

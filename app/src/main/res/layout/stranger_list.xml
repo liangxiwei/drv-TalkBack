@@ -22,7 +22,7 @@
             android:layout_marginTop="10dp"
             android:textColor="@color/gray_text"
             android:gravity="center"
-            android:text="目前未找到更多附近车辆"
+            android:text="@string/text_vehicles_nearby_empty"
             android:textSize="@dimen/normal_text_size" />
     </FrameLayout>
 

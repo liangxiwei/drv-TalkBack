@@ -31,7 +31,7 @@
             android:id="@+id/btn_auto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="卫星校准"
+            android:text="@string/time_settings_gps"
             android:textColor="@color/colorWirte"
             android:textSize="12dp"
             android:background="@drawable/bg_selector"
@@ -41,7 +41,7 @@
             android:id="@+id/btn_manual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="手动设置"
+            android:text="@string/time_settings_manual"
             android:textColor="@color/colorWirte"
             android:textSize="12dp"
             android:background="@drawable/bg_selector"
@@ -65,7 +65,7 @@
             android:textSize="14dp"
             android:textColor="@color/colorWirte"
             android:background="@drawable/button_selector"
-            android:text="取消"/>
+            android:text="@string/button_cancel"/>
 
         <Button
             android:id="@+id/btn_confirm"
@@ -75,7 +75,7 @@
             android:textSize="14dp"
             android:textColor="@color/colorWirte"
             android:background="@drawable/button_selector"
-            android:text="确认"/>
+            android:text="@string/button_confirm"/>
 
     </LinearLayout>
 

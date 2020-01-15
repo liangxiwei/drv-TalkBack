@@ -44,6 +44,19 @@
         <item>middle</item>
         <item>low</item>
     </string-array>
+    <string-array name="launcher_settings">
+        <item>Account</item>
+        <item>Background</item>
+        <item>BT handset mic</item>
+        <item>System upgrade</item>
+        <!--<item>Location track</item>-->
+        <item>Master clear</item>
+        <item>Pip settings</item>
+        <item>Easy snapshot</item>
+        <item>Easy recording</item>
+        <!--<item>Radio settings</item>-->
+        <!--<item>Offline map</item>-->
+    </string-array>
     <!-- 碰撞检测加速度 -->
     <integer-array name="collision_value">
         <item>2</item>

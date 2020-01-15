@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:layout_marginLeft="5dp"
-            android:text="张三"
+            android:text="@string/text_map_click_title"
             style="@style/Base.DialogWindowTitle.AppCompat"
             android:textSize="18sp" />
     </LinearLayout>
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center"
-            android:text="跟踪位置"
+            android:text="@string/text_map_click_track"
             android:textSize="15sp" />
     </LinearLayout>
 
@@ -110,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="详细信息"
+            android:text="@string/text_map_click_track_detail"
             android:textSize="15dip" />
     </LinearLayout>
 
@@ -140,7 +140,7 @@
             android:layout_height="fill_parent"
             android:layout_marginLeft="10dp"
             android:gravity="center"
-            android:text="退出"
+            android:text="@string/button_quit"
             android:textColor="@color/white"
             android:textSize="15dip" />
     </LinearLayout>

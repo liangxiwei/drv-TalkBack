@@ -15,7 +15,7 @@
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="请输入群组名称："
+            android:text="@string/text_group_name_input"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </RelativeLayout>
@@ -63,7 +63,7 @@
             android:textColor="@color/white"
             android:layout_margin="10dp"
             android:background="@drawable/button_selector"
-            android:text="取消"/>
+            android:text="@string/button_cancel"/>
 
         <Button
             android:id="@+id/ok"
@@ -74,7 +74,7 @@
             android:textColor="@color/white"
             android:layout_margin="10dp"
             android:background="@drawable/button_selector"
-            android:text="确定"/>
+            android:text="@string/button_confirm"/>
 
     </LinearLayout>
 

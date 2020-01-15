@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="28dp"
             android:gravity="center"
-            android:text="取消跟踪"
+            android:text="@string/text_map_menu_track_cancel"
             android:textSize="15sp" />
     </LinearLayout>
 
@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="28dp"
             android:gravity="center"
-            android:text="成员列表"
+            android:text="@string/text_map_menu_track_memberlist"
             android:textSize="15sp" />
     </LinearLayout>
 
@@ -98,7 +98,7 @@
             android:layout_height="fill_parent"
             android:layout_marginLeft="10dp"
             android:gravity="center"
-            android:text="分组"
+            android:text="@string/text_map_menu_track_grouping"
             android:textColor="@color/white"
             android:textSize="15dip" />
     </LinearLayout>
@@ -129,7 +129,7 @@
             android:layout_height="fill_parent"
             android:layout_marginLeft="10dp"
             android:gravity="center"
-            android:text="退出"
+            android:text="@string/button_quit"
             android:textColor="@color/white"
             android:textSize="15dip" />
     </LinearLayout>

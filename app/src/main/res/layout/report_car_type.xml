@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dip"
         android:gravity="center_vertical"
-        android:hint="请输入品牌和型号信息（必填）"
+        android:hint="@string/text_report_car_type_hint"
         android:minHeight="32dp"
         android:singleLine="true"
         android:layout_margin="5dp"
@@ -48,7 +48,7 @@
         android:layout_height="64dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
-        android:text="* 请填写完整的品牌以及该品牌的型号"
+        android:text="@string/text_report_car_type_detail_hint"
         android:textColor="@color/red"
         android:textSize="12sp" />
 
@@ -90,7 +90,7 @@
             android:background="@drawable/button_selector"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
-            android:text="取消"
+            android:text="@string/button_cancel"
             android:textColor="@color/white"/>
     </RelativeLayout>
 
