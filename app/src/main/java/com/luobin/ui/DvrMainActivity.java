@@ -14,6 +14,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.UserHandle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -60,6 +61,8 @@ import java.util.List;
  */
 
 public class DvrMainActivity extends BaseActivity implements View.OnClickListener, PermissionUtil.PermissionCallBack {
+    private static final String TAG = "DvrMainActivity";
+    private static final int MSG_USER_ICON_COPY = 1;
     private Context context;
     protected PermissionUtil mPermissionUtil;
     private LinearLayout actionbarMessage, actionbarAdd, actionbarSearch;
@@ -74,6 +77,19 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
     ImageView btnImage;
     NotifyFriendBroadcast mNotifyFriendBroadcast;
     private int mCountMessage;
+
+    private Handler mHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            Log.d(TAG, "mHandler what = " + msg.what);
+            switch (msg.what) {
+                case MSG_USER_ICON_COPY:
+                    ShellUtils.execCommand("cp -r /data/data/com.luobin.dvr/files/friend_face/*.jpg " + DvrConfig.getStoragePath() + "/friend_face", false);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +130,8 @@ public class DvrMainActivity extends BaseActivity implements View.OnClickListene
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_contacts, tabFragmentLinkGroup)
                 .commitAllowingStateLoss();
 
-        ShellUtils.execCommand("cp -r /data/data/com.luobin.dvr/files/friend_face/*.jpg " + DvrConfig.getStoragePath() + "/friend_face", false);
+        //ShellUtils.execCommand("cp -r /data/data/com.luobin.dvr/files/friend_face/*.jpg " + DvrConfig.getStoragePath() + "/friend_face", false);
+        mHandler.sendEmptyMessageDelayed(MSG_USER_ICON_COPY, 6 * 1000);
     }
 
     private void initBroadCast() {
