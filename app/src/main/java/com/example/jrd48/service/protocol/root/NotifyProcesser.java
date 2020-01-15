@@ -89,6 +89,7 @@ public class NotifyProcesser extends CommonProcesser {
         //mSuperCustomToast = SuperCustomToast.getInstance(MyApplication.getContext());
         mToastHandler = new Handler();
         mToast = Toast.makeText(MyApplication.getContext(), "", Toast.LENGTH_LONG);
+        mHandler = new Handler(Looper.getMainLooper());
     }
 
     @Override
@@ -327,10 +328,17 @@ public class NotifyProcesser extends CommonProcesser {
                     callState.setState(GlobalStatus.STATE_CALL);
                     GlobalStatus.putCallCallStatus(temp, callState);
                 }
-                //if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
-                    NotifyManager.getInstance().showNotification(temp, 0);
-                //}
-                Log.e("====", "=============notify1111111");
+                final String ftemp = temp;
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //if (GlobalStatus.getChatVideoMode(MyApplication.getContext()) == 0) {
+                        NotifyManager.getInstance().showNotification(ftemp, 0);
+                        //}
+                        Log.e("====", "=============notify1111111");
+                    }
+                });
+
             } else if (resp.getNotifyType() == ProtoMessage.NotifyType.NotifyChatStatus_VALUE) {
                 Log.i("wsDvr", "notify chat status msg: " + resp.toString());
                 int waitTime = 0;
@@ -338,9 +346,6 @@ public class NotifyProcesser extends CommonProcesser {
                     waitTime = 500;
                 }
 
-                if (mHandler == null) {
-                    mHandler = new Handler(Looper.getMainLooper());
-                }
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
