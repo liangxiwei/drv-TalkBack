@@ -1319,13 +1319,13 @@ public class TabFragmentLinkmans extends BaseLazyFragment {
     public void getIndexView(int layoutHeight) {
         height = layoutHeight / indexStr.length;
 		//rs modified for LBCJW-13
-        int size = 11;
+        int size = 10;
         if (height >= 40 ){
-            size = 11;
+            size = 10;
         } else if (height >= 25 && height < 40){
-            size = 9;
+            size = 8;
         } else if (height >= 10 && height < 25){
-            size = 7;
+            size = 6;
         } else {
             size = 5;
         }
