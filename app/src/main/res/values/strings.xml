@@ -208,6 +208,7 @@
     <string name="photo_capture_succeed">Photo capture succeed</string>
     <string name="switch_not_allowed_when_ptt_pressed">Switch not allowed when ptt pressed</string>
     <string name="pip_not_allowed_when_ptt_pressed">Pip switch not allowed when ptt pressed</string>
+    <string name="switch_allowed_when_accoff">Switch not allowed when acc off!</string>
 
     <string name="toast_current_video_screen_mode_inner">Front camera now is working</string>
     <string name="toast_current_video_screen_mode_outer">Back camera now is working</string>
@@ -544,7 +545,7 @@
     <string name="text_main_settings_autoboot">Autoboot</string>
     <string name="text_main_settings_tutor">Start tutoring</string>
     <string name="text_main_settings_tutor_video">Video</string>
-    <string name="text_main_settings_tutor_video_target_check">Open and view each other's video</string>
+    <string name="text_main_settings_tutor_video_target_check">Open and view each other\'s video</string>
     <string name="text_main_settings_tutor_video_target_upload">Start uploading video</string>
     <string name="text_main_settings_heart_beat">Heart beat settings</string>
     <string name="button_main_settings_reset">Reset to default</string>

@@ -44,6 +44,7 @@ public class MyApplication extends MultiDexApplication {
     private RefWatcher mRefWatcher;
     private static final int MSG_VIDEO_RADIO_SWITCH_START_VIDEO = 2;
     private static final int MSG_VIDEO_RADIO_SWITCH_START_RADIO = 3;
+    private static final int MSG_VIDEO_RADIO_SWITCH_STOP_RADIO = 4;
     private Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
@@ -55,6 +56,9 @@ public class MyApplication extends MultiDexApplication {
                     break;
                 case MSG_VIDEO_RADIO_SWITCH_START_RADIO:
                     startRadioChat();
+                    break;
+                case MSG_VIDEO_RADIO_SWITCH_STOP_RADIO:
+                    stopRadioChat();
                     break;
             }
             super.handleMessage(msg);
@@ -185,7 +189,10 @@ public class MyApplication extends MultiDexApplication {
                 int type = GlobalStatus.getShutDownType(getContext());
                 Log.d("Application", "ShutDownObserver type:" + type);
                 if (0 == type) {
+                    //Utils.killProcess(getContext(), "com.benshikj.ht.jf");
                     ActivityCollector.finishAll();
+                    mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_STOP_RADIO);
+                    mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_STOP_RADIO, 1000);
                 } else {
                     Log.d("Application", "onChange checkStatus ");
                     checkStatus(false);
@@ -193,16 +200,18 @@ public class MyApplication extends MultiDexApplication {
             } else if (CHAT_VIDEO_RADIO_SWITCH_URI.equals(uri)) {
                 int currentMode = GlobalStatus.getChatVideoMode(getContext());
                 Log.d("Application", "ChatVideoMode switch=" + currentMode);
-                if (currentMode == 1) {
-                    mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_RADIO);
-                    mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_RADIO, 800);
-                } else {
-                    Long lastTimeStamp = (Long) SharedPreferencesUtils.get(context, "db_change_time_stamp", (Long) 0L);
-                    Long delta = System.currentTimeMillis() - lastTimeStamp;
-                    SharedPreferencesUtils.put(context, "db_change_time_stamp", System.currentTimeMillis());
-                    if (delta > 3000) {
-                        mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_VIDEO);
-                        mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_VIDEO, 800);
+                if (GlobalStatus.getShutDownType(getContext()) == 1) {
+                    if (currentMode == 1) {
+                        mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_RADIO);
+                        mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_RADIO, 800);
+                    } else {
+                        Long lastTimeStamp = (Long) SharedPreferencesUtils.get(context, "db_change_time_stamp", (Long) 0L);
+                        Long delta = System.currentTimeMillis() - lastTimeStamp;
+                        SharedPreferencesUtils.put(context, "db_change_time_stamp", System.currentTimeMillis());
+                        if (delta > 3000) {
+                            mHandler.removeMessages(MSG_VIDEO_RADIO_SWITCH_START_VIDEO);
+                            mHandler.sendEmptyMessageDelayed(MSG_VIDEO_RADIO_SWITCH_START_VIDEO, 800);
+                        }
                     }
                 }
             }

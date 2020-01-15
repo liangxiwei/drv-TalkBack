@@ -210,6 +210,7 @@
     <string name="photo_capture_succeed">拍照完成</string>
     <string name="switch_not_allowed_when_ptt_pressed">PTT 键按下时禁止切换对讲！</string>
     <string name="pip_not_allowed_when_ptt_pressed">PTT 键按下时禁止切换画中画模式！</string>
+    <string name="switch_allowed_when_accoff">熄火时禁止切换对讲！</string>
 
     <string name="toast_current_video_screen_mode_inner">当前对讲使用车内摄像头</string>
     <string name="toast_current_video_screen_mode_outer">当前对讲使用车外摄像头</string>
