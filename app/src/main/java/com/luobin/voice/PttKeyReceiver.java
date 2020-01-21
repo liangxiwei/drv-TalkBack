@@ -73,6 +73,4 @@ public class PttKeyReceiver extends BroadcastReceiver {
         }
             GlobalStatus.setIsVideo(true);
         }
-
-    }
 }
