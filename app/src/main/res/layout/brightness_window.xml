@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toast_root"
+    android:layout_width="600dp"
+    android:layout_height="40dp"
+    android:layout_marginTop="2dp"
+    android:background="@drawable/toast_bg_brightness">
+
+    <TextView
+        android:id="@+id/toast_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="15dp"
+        android:text=""
+        android:textColor="@color/dvr_full_red"
+        android:textSize="32dp"
+        android:visibility="gone" />
+
+    <!--<ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="400dp"
+        android:layout_height="90dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp" />-->
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="400dp"
+        android:layout_height="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="1dp" />
+</RelativeLayout>

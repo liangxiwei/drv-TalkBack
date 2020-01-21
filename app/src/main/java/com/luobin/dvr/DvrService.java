@@ -1302,6 +1302,8 @@ public class DvrService extends Service {
                 Settings.System.getUriFor(GlobalStatus.TAKE_PHOTO_INTERVAL_MS);
         private final Uri DVR_SWITCH_TO_PIP_URI =
                 Settings.System.getUriFor("dvr_switch_to_pip");
+        private final Uri BRIGHTNESS_URI =
+                Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS);
 
         public ShutDownObserver(Handler handler) {
             super(handler);
@@ -1326,6 +1328,9 @@ public class DvrService extends Service {
                 if (!GlobalStatus.getDvrSwitchToPipEnable()) {
                     mPipHandler.sendEmptyMessageDelayed(MSG_DVR_SWITCH_VIDEO, 100);
                 }
+            } else if (BRIGHTNESS_URI.equals(uri)) {
+                int brightness = Settings.System.getInt(MyApplication.getContext().getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, 0);
+                ToastR.showBrightness("", brightness);
             }
         }
 
@@ -1346,6 +1351,9 @@ public class DvrService extends Service {
                     false, this);
             cr.registerContentObserver(
                     DVR_SWITCH_TO_PIP_URI,
+                    false, this);
+            cr.registerContentObserver(
+                    BRIGHTNESS_URI,
                     false, this);
         }
 

@@ -6,6 +6,8 @@ import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,8 @@ import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.luobin.dvr.R;
@@ -28,6 +32,8 @@ public class AppToast {
     private ViewGroup layout;
 //    private ViewGroup content;
     private TextView textView;
+    private SeekBar seekBar;
+    private ProgressBar progressBar;
     private boolean isShow;
     private boolean isAdd;
     private WindowManager wm;
@@ -75,6 +81,43 @@ public class AppToast {
         layout.setVisibility(View.GONE);
     }
 
+    public AppToast(final Context application, int resID, int brightness) {
+        handler = new Handler(Looper.getMainLooper());
+        wm = (WindowManager) application.getSystemService(Context.WINDOW_SERVICE);
+        layout = (ViewGroup) LayoutInflater.from(application).inflate(R.layout.brightness_window, null);
+        textView = (TextView) layout.getChildAt(0);
+        seekBar = (SeekBar) layout.getChildAt(1);
+        //progressBar = (ProgressBar) layout.getChildAt(1);
+        params = new WindowManager.LayoutParams();
+        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        params.width = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
+        params.y = 60;
+        params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+        params.format = PixelFormat.TRANSLUCENT;
+        params.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                showBrightness("", progress);
+                Settings.System.putInt(application.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        layout.setVisibility(View.GONE);
+    }
+
     public void setGravity(int gravity,int x,int y){
         params.gravity = gravity;
     }
@@ -84,6 +127,14 @@ public class AppToast {
      * 显示Toast
      */
     public void show(String s) {
+        show(s, 2500);
+    }
+
+    public void showBrightness(String s, int brightness) {
+        seekBar.setMax(255);
+        seekBar.setProgress(brightness);
+        //progressBar.setMax(255);
+        //progressBar.setProgress(brightness);
         show(s, 2500);
     }
 
