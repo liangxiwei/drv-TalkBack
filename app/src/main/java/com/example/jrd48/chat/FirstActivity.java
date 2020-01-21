@@ -3429,14 +3429,6 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
         }
         Log.v(TAG, "changespeaking:" + judge + ",phone:" + changephone);
         if (judge == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
-            //if (!GlobalStatus.isVideo()) {
-            if (mPopupWindow != null) {
-                if (tempHead != null) {
-                    mImageViewFace.setImageBitmap(tempHead);
-                }
-                mPopupWindow.showAtLocation(mRelativeLayout, Gravity.NO_GRAVITY, 0, 0);
-            }
-            //}
             for (int i = 0; i < userList.size(); i++) {
                 if (userList.get(i).getState() == ProtoMessage.ChatStatus.csSpeaking_VALUE) {
                     userList.get(i).setState(ProtoMessage.ChatStatus.csOk_VALUE);
@@ -3465,12 +3457,13 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
                     msgList.add(new Msg("您在话权中", Msg.TYPE_MSG_RECORD, time, 0, 0, changephone, 0, 0));
                 }
             }
-        } else {
-            //if (!GlobalStatus.isVideo()) {
             if (mPopupWindow != null) {
-                mPopupWindow.dismiss();
+                if (tempHead != null) {
+                    mImageViewFace.setImageBitmap(tempHead);
+                }
+                mPopupWindow.showAtLocation(mRelativeLayout, Gravity.NO_GRAVITY, 0, 0);
             }
-            //}
+        } else {
             for (int i = 0; i < userList.size(); i++) {
                 if (userList.get(i).getPhone().equals(changephone)) {
                     userList.get(i).setState(judge);
@@ -3487,6 +3480,9 @@ public class FirstActivity extends BaseActivity/*SelectActivity*/ implements OnC
             }
             if (changephone.equals(myPhone)) {
                 speakingUser.setName("");
+            }
+            if (mPopupWindow != null) {
+                mPopupWindow.dismiss();
             }
         }
         changeTitle();
